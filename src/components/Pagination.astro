@@ -26,19 +26,19 @@ const BASE = RAW_BASE.endsWith("/") ? RAW_BASE : `${RAW_BASE}/`;
         disabled={!page.url.prev}
         href={page.url.prev ? `${BASE}${(page.url.prev as string).replace(/^\//, "")}` : undefined}
         class:list={["me-4 select-none", { "opacity-50": !page.url.prev }]}
-        aria-label="Goto Previous Page"
+        aria-label="Ir a la página anterior"
       >
         <IconArrowLeft class="inline-block rtl:rotate-180" />
-        Prev
+        Anterior
       </LinkButton>
       {page.currentPage} / {page.lastPage}
       <LinkButton
         disabled={!page.url.next}
         href={page.url.next ? `${BASE}${(page.url.next as string).replace(/^\//, "")}` : undefined}
         class:list={["ms-4 select-none", { "opacity-50": !page.url.next }]}
-        aria-label="Goto Next Page"
+        aria-label="Ir a la página siguiente"
       >
-        Next
+        Siguiente
         <IconArrowRight class="inline-block rtl:rotate-180" />
       </LinkButton>
     </nav>
