@@ -1,0 +1,40 @@
+---
+/**
+ * Componente IndicadorEconomico
+ * Muestra un valor calculado en base a UF o UTM obtenido desde mindicador.cl
+ * 
+ * Props:
+ * - tipo: "uf" | "utm" — qué indicador usar como base
+ * - multiplicador: número por el que se multiplica el indicador (ej: 600 para 600 UF)
+ * - descripcion: texto descriptivo que acompaña al valor (ej: "600 UF anuales")
+ * - mostrarFecha: si se muestra la fecha de actualización (default: true)
+ */
+
+import { getIndicadores, fmt, fmtFecha } from "@/utils/indicadores";
+
+interface Props {
+  tipo: "uf" | "utm";
+  multiplicador: number;
+  descripcion?: string;
+  mostrarFecha?: boolean;
+}
+
+const { tipo, multiplicador, descripcion, mostrarFecha = true } = Astro.props;
+
+const indicadores = await getIndicadores();
+const base = tipo === "uf" ? indicadores.uf : indicadores.utm;
+const valor = base * multiplicador;
+---
+
+<span class="indicador-economico">
+  <strong class="text-accent">{fmt(valor)}</strong>
+  {descripcion && <span class="text-foreground/60"> ({descripcion})</span>}
+  {mostrarFecha && (
+    <sup
+      title={`Basado en ${tipo.toUpperCase()} = ${fmt(base)} al ${fmtFecha(indicadores.fecha)}`}
+      class="cursor-help text-xs text-foreground/40 ml-0.5"
+    >
+      ⓘ
+    </sup>
+  )}
+</span>
