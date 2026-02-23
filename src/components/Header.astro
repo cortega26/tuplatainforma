@@ -79,22 +79,22 @@ const isActive = (path: string) => {
         ]}
       >
         <li class="col-span-2">
-          <a href={`${import.meta.env.BASE_URL}posts`} class:list={{ "active-nav": isActive("/posts") }}>
+          <a href={`${import.meta.env.BASE_URL}posts/`} class:list={{ "active-nav": isActive("/posts") }}>
             Artículos
           </a>
         </li>
         <li class="col-span-2">
-          <a href={`${import.meta.env.BASE_URL}calculadoras`} class:list={{ "active-nav": isActive("/calculadoras") }}>
+          <a href={`${import.meta.env.BASE_URL}calculadoras/`} class:list={{ "active-nav": isActive("/calculadoras") }}>
             Calculadoras
           </a>
         </li>
         <li class="col-span-2">
-          <a href={`${import.meta.env.BASE_URL}tags`} class:list={{ "active-nav": isActive("/tags") }}>
+          <a href={`${import.meta.env.BASE_URL}tags/`} class:list={{ "active-nav": isActive("/tags") }}>
             Tags
           </a>
         </li>
         <li class="col-span-2">
-          <a href={`${import.meta.env.BASE_URL}about`} class:list={{ "active-nav": isActive("/about") }}>
+          <a href={`${import.meta.env.BASE_URL}about/`} class:list={{ "active-nav": isActive("/about") }}>
             Nosotros
           </a>
         </li>
@@ -102,7 +102,7 @@ const isActive = (path: string) => {
           SITE.showArchives && (
             <li class="col-span-2">
               <LinkButton
-                href={`${import.meta.env.BASE_URL}archives`}
+                href={`${import.meta.env.BASE_URL}archives/`}
                 class:list={[
                   "focus-outline flex justify-center p-3 sm:p-1",
                   {
@@ -120,7 +120,7 @@ const isActive = (path: string) => {
         }
         <li class="col-span-1 flex items-center justify-center">
           <LinkButton
-            href={`${import.meta.env.BASE_URL}search`}
+            href={`${import.meta.env.BASE_URL}search/`}
             class:list={[
               "focus-outline flex p-3 sm:p-1",
               { "[&>svg]:stroke-accent": isActive("/search") },
