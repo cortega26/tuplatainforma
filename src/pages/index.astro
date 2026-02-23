@@ -17,6 +17,9 @@ const posts = await getCollection("blog");
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+
+const RAW_BASE = import.meta.env.BASE_URL || "/";
+const BASE = RAW_BASE.endsWith("/") ? RAW_BASE : `${RAW_BASE}/`;
 ---
 
 <Layout>
@@ -49,7 +52,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         Explora las guías o prueba nuestras
         <LinkButton
           class="underline decoration-dashed underline-offset-4 hover:text-accent"
-          href="/calculadoras/"
+          href={`${BASE}calculadoras/`}
         >
           calculadoras financieras
         </LinkButton>.
@@ -99,7 +102,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     }
 
     <div class="my-8 text-center">
-      <LinkButton href="/posts/">
+      <LinkButton href={`${BASE}posts/`}>
         Ver todos los artículos
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>
