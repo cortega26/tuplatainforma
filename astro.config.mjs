@@ -1,8 +1,10 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://cortega26.github.io',
   base: '/tuplatainforma',
-  integrations: [tailwind()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
