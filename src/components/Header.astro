@@ -9,10 +9,17 @@ import LinkButton from "./LinkButton.astro";
 import { SITE } from "@/config";
 
 const { pathname } = Astro.url;
+const BASE = import.meta.env.BASE_URL || "/";
+// Normalize pathname by stripping BASE for accurate active-state checks
+const basePrefixLen = BASE.endsWith("/") ? BASE.length - 1 : BASE.length;
+const normalizedPathname =
+  pathname.startsWith(BASE) ? pathname.slice(basePrefixLen) : pathname;
 
-// Remove trailing slash from current pathname if exists
+// Remove trailing slash from normalized pathname if exists
 const currentPath =
-  pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
+  normalizedPathname.endsWith("/") && normalizedPathname !== "/"
+    ? normalizedPathname.slice(0, -1)
+    : normalizedPathname;
 
 const isActive = (path: string) => {
   const currentPathArray = currentPath.split("/").filter(p => p.trim());
@@ -43,7 +50,7 @@ const isActive = (path: string) => {
     ]}
   >
     <a
-      href="/"
+      href={import.meta.env.BASE_URL}
       class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
     >
       {SITE.title}
@@ -72,22 +79,22 @@ const isActive = (path: string) => {
         ]}
       >
         <li class="col-span-2">
-          <a href="/posts" class:list={{ "active-nav": isActive("/posts") }}>
+          <a href={`${import.meta.env.BASE_URL}posts`} class:list={{ "active-nav": isActive("/posts") }}>
             Artículos
           </a>
         </li>
         <li class="col-span-2">
-          <a href="/calculadoras" class:list={{ "active-nav": isActive("/calculadoras") }}>
+          <a href={`${import.meta.env.BASE_URL}calculadoras`} class:list={{ "active-nav": isActive("/calculadoras") }}>
             Calculadoras
           </a>
         </li>
         <li class="col-span-2">
-          <a href="/tags" class:list={{ "active-nav": isActive("/tags") }}>
+          <a href={`${import.meta.env.BASE_URL}tags`} class:list={{ "active-nav": isActive("/tags") }}>
             Tags
           </a>
         </li>
         <li class="col-span-2">
-          <a href="/about" class:list={{ "active-nav": isActive("/about") }}>
+          <a href={`${import.meta.env.BASE_URL}about`} class:list={{ "active-nav": isActive("/about") }}>
             Nosotros
           </a>
         </li>
@@ -95,7 +102,7 @@ const isActive = (path: string) => {
           SITE.showArchives && (
             <li class="col-span-2">
               <LinkButton
-                href="/archives"
+                href={`${import.meta.env.BASE_URL}archives`}
                 class:list={[
                   "focus-outline flex justify-center p-3 sm:p-1",
                   {
@@ -113,7 +120,7 @@ const isActive = (path: string) => {
         }
         <li class="col-span-1 flex items-center justify-center">
           <LinkButton
-            href="/search"
+            href={`${import.meta.env.BASE_URL}search`}
             class:list={[
               "focus-outline flex p-3 sm:p-1",
               { "[&>svg]:stroke-accent": isActive("/search") },
