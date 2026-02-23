@@ -1,0 +1,215 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<Layout>
+  <Header />
+  <main id="main-content" class="app-layout">
+
+    <section class="pt-8 pb-6 border-b border-border">
+      <h1 class="text-3xl font-bold sm:text-4xl my-4">
+        💰 Calculadora de Sueldo Líquido
+      </h1>
+      <p class="text-foreground/70 max-w-xl">
+        Ingresa tu sueldo bruto y obtén el desglose exacto de AFP, salud, seguro de cesantía e impuesto de segunda categoría. Actualizado 2025.
+      </p>
+    </section>
+
+    <section class="py-8 grid gap-6 sm:grid-cols-2 items-start">
+
+      <!-- FORMULARIO -->
+      <div class="rounded-xl border border-border p-6">
+        <h2 class="font-semibold text-lg mb-5">📝 Ingresa tus datos</h2>
+
+        <div class="mb-4">
+          <label for="sueldo" class="block text-sm font-medium mb-1 text-foreground/70">
+            Sueldo bruto mensual ($)
+          </label>
+          <input
+            type="number"
+            id="sueldo"
+            placeholder="Ej: 1.200.000"
+            min="0"
+            class="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:border-accent"
+          />
+          <p class="text-xs text-foreground/50 mt-1">El sueldo antes de cualquier descuento</p>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-2 text-foreground/70">Sistema de salud</label>
+          <div class="flex gap-2">
+            <label class="flex-1 cursor-pointer">
+              <input type="radio" name="salud" value="fonasa" checked class="peer sr-only" />
+              <span class="block text-center py-2 px-3 rounded-lg border border-border text-sm font-medium peer-checked:border-accent peer-checked:text-accent transition-all">
+                Fonasa (7%)
+              </span>
+            </label>
+            <label class="flex-1 cursor-pointer">
+              <input type="radio" name="salud" value="isapre" class="peer sr-only" />
+              <span class="block text-center py-2 px-3 rounded-lg border border-border text-sm font-medium peer-checked:border-accent peer-checked:text-accent transition-all">
+                Isapre (7%+)
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div id="isapre-field" class="mb-4 hidden">
+          <label for="isapre-adicional" class="block text-sm font-medium mb-1 text-foreground/70">
+            Cotización adicional Isapre (%)
+          </label>
+          <input
+            type="number"
+            id="isapre-adicional"
+            placeholder="Ej: 2.5"
+            min="0" max="20" step="0.1" value="2"
+            class="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:border-accent"
+          />
+          <p class="text-xs text-foreground/50 mt-1">Porcentaje adicional al 7% base según tu plan</p>
+        </div>
+
+        <div class="mb-4">
+          <label for="afp-tasa" class="block text-sm font-medium mb-1 text-foreground/70">
+            AFP
+          </label>
+          <select
+            id="afp-tasa"
+            class="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:border-accent"
+          >
+            <option value="10.58">Capital – 10.58%</option>
+            <option value="10.65">Cuprum – 10.65%</option>
+            <option value="10.77" selected>Habitat – 10.77%</option>
+            <option value="10.58">Modelo – 10.58%</option>
+            <option value="10.49">PlanVital – 10.49%</option>
+            <option value="10.69">ProVida – 10.69%</option>
+            <option value="10.75">Uno – 10.75%</option>
+          </select>
+        </div>
+
+        <button
+          id="calcBtn"
+          class="w-full mt-2 py-3 px-4 rounded-lg bg-accent text-background font-bold text-base hover:opacity-90 transition-opacity"
+        >
+          Calcular sueldo líquido →
+        </button>
+      </div>
+
+      <!-- RESULTADO -->
+      <div id="resultado" class="rounded-xl border border-border p-6 bg-background">
+        <h2 class="font-semibold text-lg mb-5">💵 Resultado</h2>
+        <div id="resultado-contenido" class="text-center text-foreground/40 py-8">
+          <p class="text-4xl mb-3">🧮</p>
+          <p class="text-sm">Ingresa tu sueldo y presiona calcular.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- EXPLICACIÓN -->
+    <section class="pb-12 border-t border-border pt-8 prose prose-sm max-w-none">
+      <h2>¿Cómo se calcula el sueldo líquido en Chile?</h2>
+      <p>
+        El sueldo líquido es lo que efectivamente depositan en tu cuenta cada mes. Se obtiene restando al sueldo bruto las cotizaciones previsionales y, si corresponde, el impuesto de segunda categoría.
+      </p>
+      <ul>
+        <li><strong>AFP (10% + comisión):</strong> Entre 10.49% y 10.77% según tu AFP. El 10% va a tu fondo personal, el resto es la comisión del servicio.</li>
+        <li><strong>Salud (7%):</strong> Va a Fonasa o tu Isapre para cubrir atención médica.</li>
+        <li><strong>Seguro de cesantía (0.6%):</strong> Fondo para periodos de desempleo.</li>
+        <li><strong>Impuesto de segunda categoría:</strong> Solo aplica si tu sueldo supera el primer tramo exento (~$935.000 en 2025). Es progresivo.</li>
+      </ul>
+      <p class="text-sm text-foreground/50">
+        ⚠️ Esta calculadora entrega valores referenciales. Para información oficial consulta la <a href="https://www.spensiones.cl" target="_blank">Superintendencia de Pensiones</a> y el <a href="https://www.sii.cl" target="_blank">SII</a>.
+      </p>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  const UTM = 67294;
+
+  const TRAMOS = [
+    { hasta: 13.5 * UTM, tasa: 0,     rebaja: 0 },
+    { hasta: 30 * UTM,   tasa: 0.04,  rebaja: 13.5 * UTM * 0.04 },
+    { hasta: 50 * UTM,   tasa: 0.08,  rebaja: 30 * UTM * (0.08 - 0.04) + 13.5 * UTM * 0.04 },
+    { hasta: 70 * UTM,   tasa: 0.135, rebaja: 50 * UTM * (0.135 - 0.08) + 30 * UTM * 0.04 },
+    { hasta: 90 * UTM,   tasa: 0.23,  rebaja: 70 * UTM * (0.23 - 0.135) + 50 * UTM * 0.08 },
+    { hasta: 120 * UTM,  tasa: 0.304, rebaja: 90 * UTM * (0.304 - 0.23) + 70 * UTM * 0.135 },
+    { hasta: 150 * UTM,  tasa: 0.35,  rebaja: 120 * UTM * (0.35 - 0.304) + 90 * UTM * 0.23 },
+    { hasta: Infinity,   tasa: 0.40,  rebaja: 150 * UTM * (0.40 - 0.35) + 120 * UTM * 0.304 },
+  ];
+
+  function calcularImpuesto(base: number): number {
+    for (const tramo of TRAMOS) {
+      if (base <= tramo.hasta) {
+        return Math.max(0, base * tramo.tasa - tramo.rebaja);
+      }
+    }
+    return 0;
+  }
+
+  function fmt(n: number): string {
+    return "$" + Math.round(n).toLocaleString("es-CL");
+  }
+
+  function fmtPct(n: number): string {
+    return n.toFixed(2) + "%";
+  }
+
+  // Toggle Isapre
+  document.querySelectorAll("input[name='salud']").forEach(radio => {
+    radio.addEventListener("change", () => {
+      const isIsapre = (document.querySelector("input[name='salud']:checked") as HTMLInputElement)?.value === "isapre";
+      const field = document.getElementById("isapre-field");
+      if (field) field.classList.toggle("hidden", !isIsapre);
+    });
+  });
+
+  document.getElementById("calcBtn")?.addEventListener("click", () => {
+    const bruto = parseFloat((document.getElementById("sueldo") as HTMLInputElement).value) || 0;
+    if (bruto <= 0) { alert("Por favor ingresa un sueldo válido."); return; }
+
+    const afpTasa = parseFloat((document.getElementById("afp-tasa") as HTMLSelectElement).value) / 100;
+    const isIsapre = (document.querySelector("input[name='salud']:checked") as HTMLInputElement)?.value === "isapre";
+    const isapreadicional = parseFloat((document.getElementById("isapre-adicional") as HTMLInputElement).value) || 0;
+    const saludTasa = 0.07 + (isIsapre ? isapreadicional / 100 : 0);
+    const cesantia = 0.006;
+
+    const descAfp     = bruto * afpTasa;
+    const descSalud   = bruto * saludTasa;
+    const descCesantia = bruto * cesantia;
+    const baseImpuesto = bruto - descAfp - descSalud;
+    const impuesto    = calcularImpuesto(baseImpuesto);
+    const totalDesc   = descAfp + descSalud + descCesantia + impuesto;
+    const liquido     = bruto - totalDesc;
+    const pctDesc     = (totalDesc / bruto) * 100;
+
+    const row = (label: string, value: string, color = "") =>
+      `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
+        <span class="text-foreground/60">${label}</span>
+        <span class="font-semibold font-mono ${color}">${value}</span>
+      </div>`;
+
+    document.getElementById("resultado-contenido")!.innerHTML = `
+      <div class="text-center mb-6 p-4 rounded-lg bg-accent/10 border border-accent/20">
+        <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Sueldo Líquido</p>
+        <p class="text-4xl font-bold">${fmt(liquido)}</p>
+      </div>
+      ${row("Sueldo bruto", fmt(bruto), "text-green-500")}
+      ${row(`AFP (${fmtPct(afpTasa * 100)})`, "− " + fmt(descAfp), "text-red-400")}
+      ${row(`Salud (${fmtPct(saludTasa * 100)})`, "− " + fmt(descSalud), "text-red-400")}
+      ${row("Seg. cesantía (0.6%)", "− " + fmt(descCesantia), "text-red-400")}
+      ${row("Imp. 2ª categoría", "− " + fmt(impuesto), "text-red-400")}
+      <div class="mt-3 pt-3 flex justify-between text-sm font-semibold">
+        <span>Total descuentos</span>
+        <span class="text-red-400">${fmt(totalDesc)} (${fmtPct(pctDesc)})</span>
+      </div>
+    `;
+  });
+
+  document.getElementById("sueldo")?.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.key === "Enter") (document.getElementById("calcBtn") as HTMLButtonElement)?.click();
+  });
+</script>

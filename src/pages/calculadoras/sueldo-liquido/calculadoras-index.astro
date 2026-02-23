@@ -1,0 +1,91 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+
+const calculadoras = [
+  {
+    titulo: "Calculadora de Sueldo Líquido",
+    descripcion: "¿Cuánto recibirás después de AFP, salud e impuestos? Obtén el desglose completo de tus descuentos.",
+    href: "/calculadoras/sueldo-liquido/",
+    icono: "💰",
+    tag: "Más usada",
+  },
+  {
+    titulo: "Simulador APV",
+    descripcion: "Calcula cuánto ahorras en impuestos con el APV Régimen A o B según tu sueldo.",
+    href: "/calculadoras/apv/",
+    icono: "📈",
+    tag: "Próximamente",
+  },
+  {
+    titulo: "Costo Real Tarjeta de Crédito",
+    descripcion: "Descubre cuánto pagas realmente si solo abonas el mínimo de tu tarjeta.",
+    href: "/calculadoras/tarjeta-credito/",
+    icono: "💳",
+    tag: "Próximamente",
+  },
+  {
+    titulo: "Simulador de Jubilación",
+    descripcion: "Estima cuánto acumularás al jubilar según tu ahorro mensual y años restantes.",
+    href: "/calculadoras/jubilacion/",
+    icono: "🏖️",
+    tag: "Próximamente",
+  },
+  {
+    titulo: "Calculadora de Crédito de Consumo",
+    descripcion: "Calcula el costo total, CAE y cuotas de cualquier crédito de consumo.",
+    href: "/calculadoras/credito-consumo/",
+    icono: "🏦",
+    tag: "Próximamente",
+  },
+];
+---
+
+<Layout>
+  <Header />
+  <main id="main-content" class="app-layout">
+    <section class="pt-8 pb-6 border-b border-border">
+      <h1 class="text-3xl font-bold sm:text-4xl my-4">
+        🧮 Calculadoras Financieras
+      </h1>
+      <p class="text-foreground/70 max-w-xl">
+        Herramientas gratuitas para hacer tus propios números. Sin registro, sin datos personales.
+      </p>
+    </section>
+
+    <section class="py-8">
+      <ul class="grid gap-4 sm:grid-cols-2">
+        {calculadoras.map(calc => (
+          <li>
+            <a
+              href={calc.tag === "Próximamente" ? "#" : calc.href}
+              class:list={[
+                "block p-5 rounded-xl border border-border",
+                "transition-all duration-200",
+                calc.tag === "Próximamente"
+                  ? "opacity-60 cursor-not-allowed"
+                  : "hover:border-accent hover:bg-accent/5",
+              ]}
+            >
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <span class="text-2xl">{calc.icono}</span>
+                <span class:list={[
+                  "text-xs font-bold px-2 py-0.5 rounded-full",
+                  calc.tag === "Más usada"
+                    ? "bg-accent/20 text-accent"
+                    : "bg-foreground/10 text-foreground/50",
+                ]}>
+                  {calc.tag}
+                </span>
+              </div>
+              <h2 class="font-semibold text-lg mb-1">{calc.titulo}</h2>
+              <p class="text-sm text-foreground/60">{calc.descripcion}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </main>
+  <Footer />
+</Layout>
