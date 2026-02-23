@@ -1,37 +1,31 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: "¿Quiénes somos?"
 ---
 
-AstroPaper is a minimal, accessible and SEO-friendly blog theme built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
+**TuPlataInforma** es un sitio independiente de educación financiera enfocado en Chile, creado para ayudarte a entender cómo funciona tu dinero sin tecnicismos ni letra chica.
 
-![Astro Paper](public/astropaper-og.jpg)
+Somos un equipo apasionado por las finanzas personales que cree en una sola idea simple: **cuando entiendes tu plata, tomas mejores decisiones**.
 
-AstroPaper provides a solid foundation for blogs, or even portfolios\_ with full markdown support, built-in dark mode, and a clean layout that works out-of-the-box.
+## ¿Por qué existe este sitio?
 
-The blog posts in this theme also serve as guides, docs or example articles\_ making AstroPaper a flexible starting point for your next content-driven site.
+Porque la mayoría de la información financiera disponible en internet está escrita para economistas, no para personas normales. Los trámites de la AFP, el beneficio tributario del APV, los tramos del impuesto de segunda categoría, todo eso afecta directamente tu bolsillo, pero nadie te lo explica en términos simples.
 
-## Features
+TuPlataInforma nació para cambiar eso.
 
-AstroPaper comes with a set of useful features that make content publishing easy and effective:
+## ¿Qué encontrarás aquí?
 
-- SEO-friendly
-- Fast performance
-- Light & dark mode
-- Highly customizable
-- Organizable blog posts
-- Responsive & accessible
-- Static search with [PageFind](https://pagefind.app/)
-- Automatic social image generation
+- **Guías claras** sobre AFP, APV, impuestos, inversiones y créditos
+- **Calculadoras prácticas** para que puedas hacer tus propios números
+- **Contenido actualizado** pensado para la realidad chilena
+- **Sin letra chica**: todo gratis, sin registro, sin spam
 
-and so much more.
+## Aviso importante
 
-## Show your support
+La información publicada en TuPlataInforma tiene **carácter exclusivamente educativo** y no constituye asesoría financiera, tributaria ni legal. Siempre consulta con un profesional calificado antes de tomar decisiones importantes sobre tu dinero.
 
-If you like [AstroPaper](https://github.com/satnaing/astro-paper), consider giving it a star ⭐️.
+Para información oficial consulta la [Superintendencia de Pensiones](https://www.spensiones.cl), la [CMF](https://www.cmfchile.cl) y el [SII](https://www.sii.cl).
 
-Found a bug 🐛 or have an improvement ✨ in mind? Feel free to open an [issue](https://github.com/satnaing/astro-paper/issues), submit a [pull request](https://github.com/satnaing/astro-paper/pulls) or start a [discussion](https://github.com/satnaing/astro-paper/discussions).
+---
 
-If you find this theme helpful, you can also [sponsor me on GitHub](https://github.com/sponsors/satnaing) or [buy me a coffee](https://buymeacoffee.com/satnaing) to show your support — every penny counts.
-
-Kyay zuu! 🙏🏼
+¿Tienes alguna sugerencia o encontraste un error? Escríbenos a través de GitHub.
