@@ -3,20 +3,20 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import Socials from "@/components/Socials.astro";
-import LinkButton from "@/components/LinkButton.astro";
 import Card from "@/components/Card.astro";
+import LinkButton from "@/components/LinkButton.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
-import IconRss from "@/assets/icons/IconRss.svg";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
-import { SOCIALS } from "@/constants";
 
 const posts = await getCollection("blog");
-
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const heroPosts = featuredPosts.slice(0, 1);
+const secondaryPosts = [...featuredPosts.slice(1), ...recentPosts].slice(0, 2);
+const usedSlugs = new Set([...heroPosts, ...secondaryPosts].map(p => p.id));
+const remainingPosts = sortedPosts.filter(p => !usedSlugs.has(p.id)).slice(0, SITE.postPerIndex);
 
 const BASE = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 ---
@@ -24,91 +24,72 @@ const BASE = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 <Layout>
   <Header />
   <main id="main-content" data-layout="index" class="app-layout">
-    <section id="hero" class:list={["pt-8 pb-6", "border-b border-border"]}>
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        Tu Plata Informa
-      </h1>
-      <a
-        target="_blank"
-        href={`${BASE}rss.xml`}
-        class="inline-block"
-        aria-label="rss feed"
-        title="RSS Feed"
-      >
-        <IconRss
-          width={20}
-          height={20}
-          class="scale-125 stroke-accent stroke-3 rtl:-rotate-90"
-        />
-        <span class="sr-only">RSS Feed</span>
-      </a>
 
-      <p>
-        Guías claras sobre AFP, APV, impuestos, inversiones y créditos para
-        chilenos. Sin tecnicismos, sin letra chica. Toma mejores decisiones con
-        tu dinero.
-      </p>
-      <p class="mt-2">
-        Explora las guías o prueba nuestras
-        <LinkButton
-          class="underline decoration-dashed underline-offset-4 hover:text-accent"
-          href={`${BASE}calculadoras/`}
-        >
-          calculadoras financieras
-        </LinkButton>.
-      </p>
-      {
-        // only display if at least one social link is enabled
-        SOCIALS.length > 0 && (
-          <div class="mt-4 flex max-sm:flex-col sm:items-center">
-            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">Social Links:</div>
-            <Socials />
-          </div>
-        )
-      }
+    <!-- HERO -->
+    {heroPosts.length > 0 && heroPosts.map(post => (
+      <section class="border-b border-border py-8">
+        <a href={`${BASE}posts/${post.data.slug ?? post.id}/`} class="group block">
+          <span class="mb-3 inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-accent">
+            Destacado
+          </span>
+          <h1 class="mb-3 text-3xl font-bold leading-tight group-hover:text-accent transition-colors sm:text-4xl">
+            {post.data.title}
+          </h1>
+          <p class="mb-4 max-w-2xl text-foreground/60 text-base leading-relaxed">
+            {post.data.description}
+          </p>
+          <span class="inline-flex items-center gap-1 text-sm font-semibold text-accent">
+            Leer artículo <IconArrowRight class="inline-block" />
+          </span>
+        </a>
+      </section>
+    ))}
+
+    <!-- GRID SECUNDARIO -->
+    {secondaryPosts.length > 0 && (
+      <section class="grid gap-6 border-b border-border py-8 sm:grid-cols-2">
+        {secondaryPosts.map(post => (
+          <a href={`${BASE}posts/${post.data.slug ?? post.id}/`} class="group rounded-xl border border-border p-5 transition-colors hover:border-accent">
+            <h2 class="mb-2 text-lg font-semibold leading-snug group-hover:text-accent transition-colors">
+              {post.data.title}
+            </h2>
+            <p class="text-sm text-foreground/60 leading-relaxed">
+              {post.data.description}
+            </p>
+          </a>
+        ))}
+      </section>
+    )}
+
+    <!-- ARTÍCULOS RECIENTES -->
+    {remainingPosts.length > 0 && (
+      <section class="py-8">
+        <h2 class="mb-6 text-xl font-semibold tracking-wide">Artículos Recientes</h2>
+        <ul>
+          {remainingPosts.map(data => (
+            <Card variant="h3" {...data} />
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <!-- CALCULADORAS CTA -->
+    <section class="mb-8 rounded-xl border border-accent/20 bg-accent/5 px-6 py-6">
+      <h2 class="mb-1 text-lg font-semibold">🧮 Calculadoras financieras</h2>
+      <p class="mb-4 text-sm text-foreground/60">Calculá tu sueldo líquido, AFP y más — actualizado 2025.</p>
+      <LinkButton href={`${BASE}calculadoras/`}>
+        Ver calculadoras <IconArrowRight class="inline-block rtl:-rotate-180" />
+      </LinkButton>
     </section>
 
-    {
-      featuredPosts.length > 0 && (
-        <section
-          id="featured"
-          class:list={[
-            "pt-12 pb-6",
-            { "border-b border-border": recentPosts.length > 0 },
-          ]}
-        >
-          <h2 class="text-2xl font-semibold tracking-wide">Destacados</h2>
-          <ul>
-            {featuredPosts.map(data => (
-              <Card variant="h3" {...data} />
-            ))}
-          </ul>
-        </section>
-      )
-    }
-
-    {
-      recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">
-            Artículos Recientes
-          </h2>
-          <ul>
-            {recentPosts.map(
-              (data, index) =>
-                index < SITE.postPerIndex && <Card variant="h3" {...data} />
-            )}
-          </ul>
-        </section>
-      )
-    }
-
-    <div class="my-8 text-center">
+    <!-- VER TODOS -->
+    <div class="mb-10 text-center">
       <LinkButton href={`${BASE}posts/`}>
         Ver todos los artículos
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>
     </div>
+
   </main>
   <Footer />
 </Layout>
