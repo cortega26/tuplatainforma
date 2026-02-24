@@ -3,16 +3,27 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default [
-  ...tseslint.configs.recommended,
-  ...eslintPluginAstro.configs.recommended,
   {
     languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
       globals: {
         ...globals.browser,
         ...globals.node,
       },
     },
   },
-  { rules: { "no-console": "error" } },
-  { ignores: ["dist/**", ".astro", "public/pagefind/**"] },
+
+  ...tseslint.configs.recommended,
+  ...eslintPluginAstro.configs.recommended,
+
+  {
+    rules: {
+      "no-console": "error",
+    },
+  },
+
+  {
+    ignores: ["dist/**", ".astro", "public/pagefind/**"],
+  },
 ];

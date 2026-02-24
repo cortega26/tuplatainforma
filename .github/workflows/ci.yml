@@ -49,8 +49,6 @@ jobs:
 
       - name: "🔎 Lint code"
         run: pnpm run lint
-        env:
-          ESLINT_USE_FLAT_CONFIG: "true"
 
       - name: "📝 Checking code format"
         run: pnpm run format:check
