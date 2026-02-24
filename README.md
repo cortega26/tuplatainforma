@@ -44,16 +44,19 @@ Requisitos: Node 20
   - npm run build
 
 Notas:
+
 - El proyecto utiliza una base de despliegue en subdirectorio (/tuplatainforma). Para evitar enlaces rotos, los componentes generan URLs usando import.meta.env.BASE_URL normalizada con barra final.
 - La generación de páginas de artículos se basa en contenido Markdown dentro de src/data/blog.
 
 ## Despliegue (GitHub Pages)
 
 El repositorio incluye un workflow (.github/workflows/deploy.yml) que:
+
 - Ejecuta npm ci y npm run build
 - Sube el contenido de dist/ como artifact y lo publica vía GitHub Pages
 
 Asegúrate de que:
+
 - La configuración de Astro (astro.config.ts) mantiene base: "/tuplatainforma"
 - La constante SITE.website en src/config.ts apunta a la URL pública con el subpath
 

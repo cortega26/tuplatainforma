@@ -51,17 +51,17 @@ El error más común es fijarse solo en la comisión. Aunque es importante, no e
 
 La comisión es el porcentaje que cobra la AFP por administrar tu fondo. A menor comisión, más dinero queda en tu cuenta cada mes. Las comisiones vigentes al inicio de 2026 son:
 
-| AFP | Comisión |
-|-----|----------|
-| Uno | 0.46% |
-| PlanVital | 0.49% |* 
-| Modelo | 0.58% |
-| Capital | 0.58% |
-| Cuprum | 0.65% |
-| ProVida | 0.69% |
-| Habitat | 0.77% |
+| AFP       | Comisión |
+| --------- | -------- | --- |
+| Uno       | 0.46%    |
+| PlanVital | 0.49%    | \*  |
+| Modelo    | 0.58%    |
+| Capital   | 0.58%    |
+| Cuprum    | 0.65%    |
+| ProVida   | 0.69%    |
+| Habitat   | 0.77%    |
 
-*Comisiones sobre remuneración imponible. Pueden variar. Verifica siempre en la [Superintendencia de Pensiones](https://www.spensiones.cl).
+\*Comisiones sobre remuneración imponible. Pueden variar. Verifica siempre en la [Superintendencia de Pensiones](https://www.spensiones.cl).
 
 La diferencia entre la comisión más baja (0.46%) y la más alta (0.77%) puede parecer pequeña, pero en un sueldo de $1.500.000 mensuales son más de $4.600 adicionales al mes en tu bolsillo, o cerca de $55.000 al año.
 
@@ -118,4 +118,4 @@ Recházalo. Ofrecer incentivos económicos o materiales para conseguir traspasos
 
 ---
 
-*La información de este artículo está basada en la normativa vigente a febrero de 2026, incluyendo la Ley N°21.735 de Reforma Previsional. Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl).*
+_La información de este artículo está basada en la normativa vigente a febrero de 2026, incluyendo la Ley N°21.735 de Reforma Previsional. Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl)._

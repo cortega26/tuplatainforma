@@ -88,13 +88,13 @@ A personas jóvenes, entre 18 y 35 años, con más de 30 años por delante hasta
 
 ## Comparación rápida
 
-| Fondo | Renta variable máx. | Riesgo | Horizonte recomendado |
-|-------|-------------------|--------|----------------------|
-| A | 80% | Muy alto | +30 años |
-| B | 60% | Alto | 20–30 años |
-| C | 40% | Moderado | 10–20 años |
-| D | 20% | Bajo | 5–10 años |
-| E | 5% | Muy bajo | Menos de 5 años |
+| Fondo | Renta variable máx. | Riesgo   | Horizonte recomendado |
+| ----- | ------------------- | -------- | --------------------- |
+| A     | 80%                 | Muy alto | +30 años              |
+| B     | 60%                 | Alto     | 20–30 años            |
+| C     | 40%                 | Moderado | 10–20 años            |
+| D     | 20%                 | Bajo     | 5–10 años             |
+| E     | 5%                  | Muy bajo | Menos de 5 años       |
 
 ## ¿Cuál fondo te conviene según tu edad?
 
@@ -142,4 +142,4 @@ El Fondo C concentra la mayor parte de los afiliados, en parte porque es el fond
 
 ---
 
-*La información de este artículo es de carácter educativo. Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl).*
+_La información de este artículo es de carácter educativo. Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl)._

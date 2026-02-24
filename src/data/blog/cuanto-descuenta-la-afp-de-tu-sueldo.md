@@ -33,15 +33,15 @@ Este porcentaje es el cobro que hace la AFP por administrar tu fondo. A diferenc
 
 ### Tabla de tasas por AFP (2025)
 
-| AFP | Cotización | Comisión | Total descuento |
-|-----|-----------|----------|----------------|
-| Capital | 10% | 0.58% | 10.58% |
-| Cuprum | 10% | 0.65% | 10.65% |
-| Habitat | 10% | 0.77% | 10.77% |
-| Modelo | 10% | 0.58% | 10.58% |
-| PlanVital | 10% | 0.49% | 10.49% |
-| ProVida | 10% | 0.69% | 10.69% |
-| Uno | 10% | 0.75% | 10.75% |
+| AFP       | Cotización | Comisión | Total descuento |
+| --------- | ---------- | -------- | --------------- |
+| Capital   | 10%        | 0.58%    | 10.58%          |
+| Cuprum    | 10%        | 0.65%    | 10.65%          |
+| Habitat   | 10%        | 0.77%    | 10.77%          |
+| Modelo    | 10%        | 0.58%    | 10.58%          |
+| PlanVital | 10%        | 0.49%    | 10.49%          |
+| ProVida   | 10%        | 0.69%    | 10.69%          |
+| Uno       | 10%        | 0.75%    | 10.75%          |
 
 > 💡 **Dato importante:** La AFP con menor comisión actualmente es PlanVital (0.49%), seguida de Modelo y Capital (0.58%).
 
@@ -66,11 +66,11 @@ Este porcentaje cubre los costos operacionales de la AFP: administración, inver
 
 Supongamos que tienes un sueldo bruto de **$1.000.000** y estás en Habitat (10.77%):
 
-| Concepto | Cálculo | Monto |
-|----------|---------|-------|
-| Cotización obligatoria (10%) | $1.000.000 × 10% | **$100.000** → va a tu fondo |
-| Comisión AFP (0.77%) | $1.000.000 × 0.77% | **$7.700** → paga el servicio |
-| **Total descuento AFP** | | **$107.700** |
+| Concepto                     | Cálculo            | Monto                         |
+| ---------------------------- | ------------------ | ----------------------------- |
+| Cotización obligatoria (10%) | $1.000.000 × 10%   | **$100.000** → va a tu fondo  |
+| Comisión AFP (0.77%)         | $1.000.000 × 0.77% | **$7.700** → paga el servicio |
+| **Total descuento AFP**      |                    | **$107.700**                  |
 
 De ese total, **$100.000 son tuyos** y se suman a tu cuenta de pensión. Solo $7.700 son el costo real del servicio.
 
@@ -111,4 +111,4 @@ No. El saldo acumulado en tu cuenta individual pasa a tus herederos o beneficiar
 
 ---
 
-*La información de este artículo es de carácter educativo. Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl).*
+_La información de este artículo es de carácter educativo. Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl)._

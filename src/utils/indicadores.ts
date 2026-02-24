@@ -25,7 +25,8 @@ export async function getIndicadores(): Promise<Indicadores> {
     return {
       uf: data.uf.valor,
       utm: data.utm.valor,
-      fecha: data.uf.fecha?.slice(0, 10) ?? new Date().toISOString().slice(0, 10),
+      fecha:
+        data.uf.fecha?.slice(0, 10) ?? new Date().toISOString().slice(0, 10),
     };
   } catch {
     return FALLBACK;

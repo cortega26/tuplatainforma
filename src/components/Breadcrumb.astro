@@ -57,12 +57,18 @@ const toHref = (path: string) => new URL(path, SITE_URL).pathname;
 ---
 
 <nav class="app-layout mt-8 mb-1" aria-label="breadcrumb">
-  <ul class="font-light [&>li]:inline [&>li:not(:last-child)>a]:hover:opacity-100">
+  <ul
+    class="font-light [&>li]:inline [&>li:not(:last-child)>a]:hover:opacity-100"
+  >
     <li>
       <a href={homeHref} class="opacity-80">Inicio</a>
-      {crumbs.length > 0 ? (
-        <span aria-hidden="true" class="opacity-80">&raquo;</span>
-      ) : null}
+      {
+        crumbs.length > 0 ? (
+          <span aria-hidden="true" class="opacity-80">
+            &raquo;
+          </span>
+        ) : null
+      }
     </li>
 
     {

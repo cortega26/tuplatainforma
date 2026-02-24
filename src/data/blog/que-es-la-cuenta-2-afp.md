@@ -70,13 +70,13 @@ Tampoco conviene si necesitas el dinero con urgencia inmediata, ya que la AFP ti
 
 ## Cuenta 2 vs APV: ¿cuál es la diferencia?
 
-| | Cuenta 2 | APV |
-|--|----------|-----|
-| Beneficio al depositar | No | Sí (Régimen A o B) |
-| Beneficio al retirar | Sí (exento si rentabilidad < 30 UTM) | Depende del régimen |
-| Flexibilidad de retiro | Alta (24 retiros/año) | Menor |
-| Límite de depósito | Sin límite | 600 UF anuales con beneficio |
-| Para quién es ideal | Ahorro flexible mediano plazo | Reducir impuestos hoy |
+|                        | Cuenta 2                             | APV                          |
+| ---------------------- | ------------------------------------ | ---------------------------- |
+| Beneficio al depositar | No                                   | Sí (Régimen A o B)           |
+| Beneficio al retirar   | Sí (exento si rentabilidad < 30 UTM) | Depende del régimen          |
+| Flexibilidad de retiro | Alta (24 retiros/año)                | Menor                        |
+| Límite de depósito     | Sin límite                           | 600 UF anuales con beneficio |
+| Para quién es ideal    | Ahorro flexible mediano plazo        | Reducir impuestos hoy        |
 
 Si tienes capacidad de ahorro y pagas impuesto de segunda categoría, lo ideal es combinar ambos instrumentos: APV para el beneficio tributario inmediato, y Cuenta 2 para el ahorro flexible.
 
@@ -102,4 +102,4 @@ No. Los fondos de la Cuenta 2 no se consideran para determinar el derecho a la G
 
 ---
 
-*La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2025. Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl).*
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2025. Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl)._
