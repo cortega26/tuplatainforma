@@ -38,10 +38,19 @@ jobs:
           cache: "pnpm"
 
       - name: "📦 Install dependencies"
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
+
+      - name: "🔍 Tooling versions"
+        run: |
+          node -v
+          pnpm -v
+          pnpm -s exec eslint -v
+          pnpm -s list eslint @typescript-eslint/parser typescript
 
       - name: "🔎 Lint code"
         run: pnpm run lint
+        env:
+          ESLINT_USE_FLAT_CONFIG: "true"
 
       - name: "📝 Checking code format"
         run: pnpm run format:check

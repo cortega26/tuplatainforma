@@ -3,6 +3,11 @@ dist/
 
 # generated types
 .astro/
+.cache/
+.vscode/
+.qodo/
+.continue
+
 
 # dependencies
 node_modules/
