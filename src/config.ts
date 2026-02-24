@@ -6,7 +6,7 @@ export const SITE = {
   title: "Tu Plata Informa",
   ogImage: "tuplatainforma-og.jpg",
   lightAndDarkMode: true,
-  postPerIndex: 4,
+  postPerIndex: 6,
   postPerPage: 4,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   showArchives: true,
