@@ -1839,7 +1839,7 @@ index 561196b..e709158 100644
 +  <main id="main-content" data-layout="index" class="app-layout">
 +    <section id="hero" class:list={["pt-8 pb-6", "border-b border-border"]}>
 +      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-+        Mingalaba
++        Tu Plata Informa
 +      </h1>
 +      <a
 +        target="_blank"
