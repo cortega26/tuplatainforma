@@ -45,10 +45,10 @@ export const SOCIALS: Social[] = [
 
 export const SHARE_LINKS: Social[] = [
   {
-  name: "WhatsApp",
-  href: "https://wa.me/?text=",
-  linkTitle: `Compartir este artículo por WhatsApp`,
-  icon: IconWhatsapp,
+    name: "WhatsApp",
+    href: "https://wa.me/?text=",
+    linkTitle: `Compartir este artículo por WhatsApp`,
+    icon: IconWhatsapp,
   },
   {
     name: "Facebook",
