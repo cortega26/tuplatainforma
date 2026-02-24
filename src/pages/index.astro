@@ -18,8 +18,7 @@ const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
-const RAW_BASE = import.meta.env.BASE_URL || "/";
-const BASE = RAW_BASE.endsWith("/") ? RAW_BASE : `${RAW_BASE}/`;
+const BASE = import.meta.env.BASE_URL;
 ---
 
 <Layout>
@@ -114,12 +113,8 @@ const BASE = RAW_BASE.endsWith("/") ? RAW_BASE : `${RAW_BASE}/`;
   <Footer />
 </Layout>
 
-<script>
+<script define:vars={{ BASE }}>
   document.addEventListener("astro:page-load", () => {
-    const indexLayout = (document.querySelector("#main-content") as HTMLElement)
-      ?.dataset?.layout;
-    if (indexLayout) {
-      sessionStorage.setItem("backUrl", "/");
-    }
+    sessionStorage.setItem("backUrl", BASE);
   });
 </script>
