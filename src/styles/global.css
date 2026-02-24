@@ -5,19 +5,19 @@
 
 :root,
 html[data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
-  --muted: #e6e6e6;
-  --border: #ece9e9;
+  --background: #f8f9fb;
+  --foreground: #1a2332;
+  --accent: #1a4f8a;
+  --muted: #dde3ed;
+  --border: #c8d3e0;
 }
 
 html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #343f60;
-  --border: #ab4b08;
+  --background: #0f1923;
+  --foreground: #e2e8f0;
+  --accent: #4a9edd;
+  --muted: #1e3a5f;
+  --border: #2a4a6b;
 }
 
 @theme inline {
@@ -52,7 +52,7 @@ html[data-theme="dark"] {
 }
 
 @utility max-w-app {
-  @apply max-w-3xl;
+  @apply max-w-6xl;
 }
 
 @utility app-layout {
