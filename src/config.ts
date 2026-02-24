@@ -1,5 +1,5 @@
 export const SITE = {
-  website: "https://cortega26.github.io/",
+  website: "https://cortega26.github.io/tuplatainforma/",
   author: "Carlos Ortega",
   profile: "https://github.com/cortega26",
   desc: "Finanzas personales para chilenos. Guías sobre AFP, APV, impuestos, inversiones y calculadoras prácticas.",
