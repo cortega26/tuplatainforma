@@ -84,7 +84,7 @@ Sí. El descuento de AFP no es el único. En tu liquidación también verás:
 
 Todos estos descuentos juntos determinan tu **sueldo líquido** — lo que realmente recibes en tu cuenta.
 
-> 🧮 ¿Quieres saber exactamente cuánto recibirás este mes? Usa nuestra [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/) para obtener el desglose completo en segundos.
+> 🧮 ¿Quieres saber exactamente cuánto recibirás este mes? Usa nuestra [calculadora de sueldo líquido](../calculadoras/sueldo-liquido/) para obtener el desglose completo en segundos.
 
 ## ¿Puedo cambiarme de AFP para pagar menos comisión?
 
