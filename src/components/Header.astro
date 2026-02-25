@@ -183,7 +183,7 @@ const isActive = (path: string) => {
       const openMenu = menuBtn.getAttribute("aria-expanded") === "true";
 
       menuBtn.setAttribute("aria-expanded", openMenu ? "false" : "true");
-      menuBtn.setAttribute("aria-label", openMenu ? "Open Menu" : "Close Menu");
+      menuBtn.setAttribute("aria-label", openMenu ? "Cerrar menú" : "Abrir menú");
 
       menuItems.classList.toggle("hidden");
       menuIcon.classList.toggle("hidden");
