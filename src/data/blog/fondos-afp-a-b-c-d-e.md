@@ -17,7 +17,7 @@ Cuando te afilias a una AFP, tu dinero no queda guardado en una caja fuerte — 
 
 Aquí te explicamos qué es cada fondo, sin tecnicismos.
 
-## Table of contents
+## Tabla de contenidos
 
 ## ¿Qué son los fondos AFP?
 

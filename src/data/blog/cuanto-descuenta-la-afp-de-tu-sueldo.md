@@ -17,7 +17,7 @@ Cada mes ves en tu liquidación de sueldo una línea que dice "AFP" y un número
 
 En esta guía te explicamos todo de forma simple.
 
-## Table of contents
+## Tabla de contenidos
 
 ## ¿Cuánto descuenta la AFP?
 

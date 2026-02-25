@@ -16,7 +16,7 @@ description: "Guía práctica sobre el Informe de Deudas CMF: cómo descargarlo 
 
 "Estoy en DICOM" es una de las frases más usadas en Chile para hablar de deudas. El problema es que DICOM como tal dejó de existir hace años, y la mayoría de las personas no sabe exactamente qué información tiene sobre ellas ni dónde está. Esta guía lo aclara de una vez.
 
-## Table of contents
+## Tabla de contenidos
 
 ## Qué es el Informe de Deudas CMF
 

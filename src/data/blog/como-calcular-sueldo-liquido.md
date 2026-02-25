@@ -16,7 +16,7 @@ description: "Guía completa para entender tu liquidación de sueldo en Chile: q
 
 Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí.
 
-## Table of contents
+## Tabla de contenidos
 
 ## La diferencia entre sueldo bruto y sueldo líquido
 

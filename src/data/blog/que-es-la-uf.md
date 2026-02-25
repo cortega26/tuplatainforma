@@ -16,7 +16,7 @@ description: "Explicación práctica de la Unidad de Fomento (UF): qué es, cóm
 
 Tu arriendo sube todos los años "por la UF" y tu dividendo también. Pero casi nadie sabe exactamente qué es la UF ni por qué cambia todos los días. Acá te explicamos de verdad — con números y sin fórmulas intimidantes.
 
-## Table of contents
+## Tabla de contenidos
 
 ## Qué es la UF
 

@@ -17,7 +17,7 @@ Cuando la gente habla de su AFP, casi siempre se refiere a la cuenta obligatoria
 
 En esta guía te explicamos todo lo que necesitas saber para decidir si te conviene usarla.
 
-## Table of contents
+## Tabla de contenidos
 
 ## ¿Qué es la Cuenta 2?
 
