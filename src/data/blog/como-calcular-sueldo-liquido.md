@@ -24,13 +24,13 @@ Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. N
 
 Para un trabajador dependiente con contrato indefinido, los descuentos típicos son estos:
 
-| Descuento | Porcentaje | Va a... |
-|---|---|---|
-| AFP (cotización) | 10% | Tu cuenta de pensión |
-| AFP (comisión) | 0.46% – 0.77% | La AFP por administrar |
-| Salud (Fonasa o Isapre) | 7% mínimo | Tu cobertura médica |
-| Seguro de cesantía | 0.6% | Tu fondo de cesantía |
-| Impuesto único 2ª categoría | Variable | El Fisco |
+| Descuento                   | Porcentaje    | Va a...                |
+| --------------------------- | ------------- | ---------------------- |
+| AFP (cotización)            | 10%           | Tu cuenta de pensión   |
+| AFP (comisión)              | 0.46% – 0.77% | La AFP por administrar |
+| Salud (Fonasa o Isapre)     | 7% mínimo     | Tu cobertura médica    |
+| Seguro de cesantía          | 0.6%          | Tu fondo de cesantía   |
+| Impuesto único 2ª categoría | Variable      | El Fisco               |
 
 El porcentaje exacto depende de tu AFP, si estás en Fonasa o Isapre, y cuánto ganas.
 
@@ -59,15 +59,15 @@ Esto también tiene un límite superior: existe un **tope imponible** para las c
 
 El 10% de cotización obligatoria va íntegro a tu cuenta de capitalización individual — ese dinero es tuyo. Adicional al 10%, pagas la comisión de la AFP por el servicio de administración, que varía entre AFP:
 
-| AFP | Comisión 2026 |
-|---|---|
-| Uno | 0.46% |
-| PlanVital | 0.49% |
-| Modelo | 0.58% |
-| Capital | 0.58% |
-| Cuprum | 0.65% |
-| ProVida | 0.69% |
-| Habitat | 0.77% |
+| AFP       | Comisión 2026 |
+| --------- | ------------- |
+| Uno       | 0.46%         |
+| PlanVital | 0.49%         |
+| Modelo    | 0.58%         |
+| Capital   | 0.58%         |
+| Cuprum    | 0.65%         |
+| ProVida   | 0.69%         |
+| Habitat   | 0.77%         |
 
 En un imponible de $1.000.000, la diferencia entre la AFP más barata y la más cara es $3.100 al mes — cerca de $37.000 al año. No es fortuna, pero es tuyo.
 
@@ -87,10 +87,10 @@ Este descuento va a la **Administradora de Fondos de Cesantía (AFC)**. Acumula 
 
 Lo importante: el porcentaje cambia según el tipo de contrato.
 
-| Tipo de contrato | Descuento trabajador | Aporte empleador |
-|---|---|---|
-| Indefinido | 0.6% | 2.4% |
-| Plazo fijo / obra o faena | 0% | 3% |
+| Tipo de contrato          | Descuento trabajador | Aporte empleador |
+| ------------------------- | -------------------- | ---------------- |
+| Indefinido                | 0.6%                 | 2.4%             |
+| Plazo fijo / obra o faena | 0%                   | 3%               |
 
 Si tienes contrato a plazo fijo, **no te descuentan** el seguro de cesantía — pero igual acumulas porque el empleador paga el 3%.
 
@@ -102,16 +102,16 @@ Este es el más variable y el que más confusión genera. Es el equivalente al i
 
 Se calcula aplicando una tabla progresiva sobre tu **renta imponible mensual** (tu imponible menos AFP y salud). Los tramos vigentes en 2026:
 
-| Renta imponible mensual | Tasa |
-|---|---|
-| Hasta ~$893.000 (13,5 UTM) | Exento |
-| ~$893.001 a ~$1.985.000 | 4% |
-| ~$1.985.001 a ~$3.309.000 | 8% |
-| ~$3.309.001 a ~$4.633.000 | 13.5% |
-| ~$4.633.001 a ~$5.957.000 | 23% |
-| Más de ~$5.957.000 | 30.4% y más |
+| Renta imponible mensual    | Tasa        |
+| -------------------------- | ----------- |
+| Hasta ~$893.000 (13,5 UTM) | Exento      |
+| ~$893.001 a ~$1.985.000    | 4%          |
+| ~$1.985.001 a ~$3.309.000  | 8%          |
+| ~$3.309.001 a ~$4.633.000  | 13.5%       |
+| ~$4.633.001 a ~$5.957.000  | 23%         |
+| Más de ~$5.957.000         | 30.4% y más |
 
-*(Los montos exactos los publica el SII mensualmente: [tabla vigente](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm))*
+_(Los montos exactos los publica el SII mensualmente: [tabla vigente](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm))_
 
 El impuesto es **marginal**: solo el tramo que supera el umbral paga la tasa más alta, no todo tu sueldo.
 
@@ -133,16 +133,16 @@ Si antes estabas en Fonasa (7% fijo) y te cambiaste a una Isapre con un plan de 
 
 **Supuesto:** Trabajador con contrato indefinido, sueldo bruto $1.500.000, imponible $1.350.000 (incluye colación no imponible de $150.000), afiliado a Capital AFP (0.58%) y Fonasa.
 
-| Concepto | Cálculo | Monto |
-|---|---|---|
-| Sueldo bruto | — | $1.500.000 |
-| (-) AFP cotización 10% | $1.350.000 × 10% | -$135.000 |
-| (-) AFP comisión 0.58% | $1.350.000 × 0.58% | -$7.830 |
-| (-) Salud Fonasa 7% | $1.350.000 × 7% | -$94.500 |
-| (-) Seguro cesantía 0.6% | $1.350.000 × 0.6% | -$8.100 |
-| = Renta imponible para impuesto | $1.350.000 - $237.330 | $1.112.670 |
-| (-) Impuesto único 2ª categoría | ~4% s/exceso de ~$893.000 | -$8.786 |
-| **= Sueldo líquido** | | **~$1.245.784** |
+| Concepto                        | Cálculo                   | Monto           |
+| ------------------------------- | ------------------------- | --------------- |
+| Sueldo bruto                    | —                         | $1.500.000      |
+| (-) AFP cotización 10%          | $1.350.000 × 10%          | -$135.000       |
+| (-) AFP comisión 0.58%          | $1.350.000 × 0.58%        | -$7.830         |
+| (-) Salud Fonasa 7%             | $1.350.000 × 7%           | -$94.500        |
+| (-) Seguro cesantía 0.6%        | $1.350.000 × 0.6%         | -$8.100         |
+| = Renta imponible para impuesto | $1.350.000 - $237.330     | $1.112.670      |
+| (-) Impuesto único 2ª categoría | ~4% s/exceso de ~$893.000 | -$8.786         |
+| **= Sueldo líquido**            |                           | **~$1.245.784** |
 
 De $1.500.000 brutos a ~$1.245.000 líquidos. La diferencia de ~$254.000 se explica así: $237.330 en cotizaciones (AFP + salud + cesantía) y ~$8.786 en impuesto. El resto es el imponible vs bruto.
 
@@ -204,4 +204,4 @@ El SII publica la tabla mensual del Impuesto Único de Segunda Categoría en su 
 
 ---
 
-*La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Los tramos del impuesto único se actualizan mensualmente en el [sitio del SII](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm). Para asesoría personalizada consulta con un profesional.*
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Los tramos del impuesto único se actualizan mensualmente en el [sitio del SII](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm). Para asesoría personalizada consulta con un profesional._

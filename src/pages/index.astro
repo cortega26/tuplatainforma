@@ -16,7 +16,9 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const heroPosts = featuredPosts.slice(0, 1);
 const secondaryPosts = [...featuredPosts.slice(1), ...recentPosts].slice(0, 2);
 const usedSlugs = new Set([...heroPosts, ...secondaryPosts].map(p => p.id));
-const remainingPosts = sortedPosts.filter(p => !usedSlugs.has(p.id)).slice(0, SITE.postPerIndex);
+const remainingPosts = sortedPosts
+  .filter(p => !usedSlugs.has(p.id))
+  .slice(0, SITE.postPerIndex);
 
 const BASE = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 ---
@@ -24,59 +26,74 @@ const BASE = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 <Layout>
   <Header />
   <main id="main-content" data-layout="index" class="app-layout">
-
     <!-- HERO -->
-    {heroPosts.length > 0 && heroPosts.map(post => (
-      <section class="border-b border-border py-8">
-        <a href={`${BASE}posts/${post.id}/`} class="group block">
-          <span class="mb-3 inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-accent">
-            Destacado
-          </span>
-          <h1 class="mb-3 text-3xl font-bold leading-tight group-hover:text-accent transition-colors sm:text-4xl">
-            {post.data.title}
-          </h1>
-          <p class="mb-4 max-w-2xl text-foreground/60 text-base leading-relaxed">
-            {post.data.description}
-          </p>
-          <span class="inline-flex items-center gap-1 text-sm font-semibold text-accent">
-            Leer artículo <IconArrowRight class="inline-block" />
-          </span>
-        </a>
-      </section>
-    ))}
+    {
+      heroPosts.length > 0 &&
+        heroPosts.map(post => (
+          <section class="border-b border-border py-8">
+            <a href={`${BASE}posts/${post.id}/`} class="group block">
+              <span class="mb-3 inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold tracking-widest text-accent uppercase">
+                Destacado
+              </span>
+              <h1 class="mb-3 text-3xl leading-tight font-bold transition-colors group-hover:text-accent sm:text-4xl">
+                {post.data.title}
+              </h1>
+              <p class="mb-4 max-w-2xl text-base leading-relaxed text-foreground/60">
+                {post.data.description}
+              </p>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-accent">
+                Leer artículo <IconArrowRight class="inline-block" />
+              </span>
+            </a>
+          </section>
+        ))
+    }
 
     <!-- GRID SECUNDARIO -->
-    {secondaryPosts.length > 0 && (
-      <section class="grid gap-6 border-b border-border py-8 sm:grid-cols-2">
-        {secondaryPosts.map(post => (
-          <a href={`${BASE}posts/${post.id}/`} class="group rounded-xl border border-border p-5 transition-colors hover:border-accent">
-            <h2 class="mb-2 text-lg font-semibold leading-snug group-hover:text-accent transition-colors">
-              {post.data.title}
-            </h2>
-            <p class="text-sm text-foreground/60 leading-relaxed">
-              {post.data.description}
-            </p>
-          </a>
-        ))}
-      </section>
-    )}
+    {
+      secondaryPosts.length > 0 && (
+        <section class="grid gap-6 border-b border-border py-8 sm:grid-cols-2">
+          {secondaryPosts.map(post => (
+            <a
+              href={`${BASE}posts/${post.id}/`}
+              class="group rounded-xl border border-border p-5 transition-colors hover:border-accent"
+            >
+              <h2 class="mb-2 text-lg leading-snug font-semibold transition-colors group-hover:text-accent">
+                {post.data.title}
+              </h2>
+              <p class="text-sm leading-relaxed text-foreground/60">
+                {post.data.description}
+              </p>
+            </a>
+          ))}
+        </section>
+      )
+    }
 
     <!-- ARTÍCULOS RECIENTES -->
-    {remainingPosts.length > 0 && (
-      <section class="py-8">
-        <h2 class="mb-6 text-xl font-semibold tracking-wide">Artículos Recientes</h2>
-        <ul>
-          {remainingPosts.map(data => (
-            <Card variant="h3" {...data} />
-          ))}
-        </ul>
-      </section>
-    )}
+    {
+      remainingPosts.length > 0 && (
+        <section class="py-8">
+          <h2 class="mb-6 text-xl font-semibold tracking-wide">
+            Artículos Recientes
+          </h2>
+          <ul>
+            {remainingPosts.map(data => (
+              <Card variant="h3" {...data} />
+            ))}
+          </ul>
+        </section>
+      )
+    }
 
     <!-- CALCULADORAS CTA -->
-    <section class="mb-8 rounded-xl border border-accent/20 bg-accent/5 px-6 py-6">
+    <section
+      class="mb-8 rounded-xl border border-accent/20 bg-accent/5 px-6 py-6"
+    >
       <h2 class="mb-1 text-lg font-semibold">🧮 Calculadoras financieras</h2>
-      <p class="mb-4 text-sm text-foreground/60">Calculá tu sueldo líquido, AFP y más — actualizado 2025.</p>
+      <p class="mb-4 text-sm text-foreground/60">
+        Calculá tu sueldo líquido, AFP y más — actualizado 2025.
+      </p>
       <LinkButton href={`${BASE}calculadoras/`}>
         Ver calculadoras <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>
@@ -89,7 +106,6 @@ const BASE = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>
     </div>
-
   </main>
   <Footer />
 </Layout>
