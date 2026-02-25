@@ -25,12 +25,14 @@ La **Comisión para el Mercado Financiero (CMF)** es el organismo que supervisa 
 Con esa información, la CMF genera el **Informe de Deudas de Personas Naturales**: un documento que muestra el detalle de todas tus deudas vigentes con el sistema financiero regulado. Es gratuito, oficial y puedes descargarlo cuando quieras.
 
 Lo que incluye:
+
 - Deudas con bancos (créditos de consumo, hipotecarios, líneas de crédito, tarjetas)
 - Deudas con cooperativas de ahorro y crédito supervisadas por la CMF
 - Deudas con cajas de compensación (en su parte crediticia)
 - Deudas con compañías de leasing y factoring reguladas
 
 Lo que **no** incluye:
+
 - Deudas con casas comerciales (Falabella, Ripley, La Polar y similares)
 - Deudas con empresas de telecomunicaciones
 - Deudas con empresas de servicios básicos (luz, agua, gas)
@@ -45,13 +47,13 @@ Si alguien te niega un arriendo "porque saliste en el informe CMF" por una deuda
 
 Aquí está la confusión más común, aclarada de una vez:
 
-| | Informe CMF | Boletín Comercial | DICOM (Equifax) |
-|---|---|---|---|
-| **Qué es** | Registro oficial de deudas con el sistema financiero regulado | Registro de protestos de documentos (cheques, letras, pagarés) | Producto comercial de Equifax (empresa privada) |
-| **Quién lo emite** | CMF (organismo del Estado) | Cámara de Comercio de Santiago | Equifax (empresa privada) |
-| **Qué incluye** | Deudas con bancos y entidades supervisadas | Documentos protestados sin pagar (cheques, pagarés) | Combina varias fuentes: Boletín Comercial, morosidades de retail, servicios, etc. |
-| **Costo** | Gratis, ilimitado | Gratis 1 vez cada 4 meses (Ley 20.575); pagado el resto | Depende del producto |
-| **Cómo se accede** | [conocetudeuda.cmfchile.cl](https://conocetudeuda.cmfchile.cl/) | [boletincomercial.cl](https://www.boletincomercial.cl/) | equifax.cl |
+|                    | Informe CMF                                                     | Boletín Comercial                                              | DICOM (Equifax)                                                                   |
+| ------------------ | --------------------------------------------------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| **Qué es**         | Registro oficial de deudas con el sistema financiero regulado   | Registro de protestos de documentos (cheques, letras, pagarés) | Producto comercial de Equifax (empresa privada)                                   |
+| **Quién lo emite** | CMF (organismo del Estado)                                      | Cámara de Comercio de Santiago                                 | Equifax (empresa privada)                                                         |
+| **Qué incluye**    | Deudas con bancos y entidades supervisadas                      | Documentos protestados sin pagar (cheques, pagarés)            | Combina varias fuentes: Boletín Comercial, morosidades de retail, servicios, etc. |
+| **Costo**          | Gratis, ilimitado                                               | Gratis 1 vez cada 4 meses (Ley 20.575); pagado el resto        | Depende del producto                                                              |
+| **Cómo se accede** | [conocetudeuda.cmfchile.cl](https://conocetudeuda.cmfchile.cl/) | [boletincomercial.cl](https://www.boletincomercial.cl/)        | equifax.cl                                                                        |
 
 Cuando alguien dice "estoy en DICOM", generalmente quiere decir que tiene deudas morosas registradas en alguno de estos sistemas. Pero cada uno es distinto, recoge información diferente y tiene reglas distintas sobre cuánto tiempo permanece un registro.
 
@@ -162,4 +164,4 @@ El primer paso es tener el informe CMF completo y saber exactamente cuánto debe
 
 ---
 
-*La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para más información visita la [CMF](https://www.cmfchile.cl) o el [Boletín Comercial](https://www.boletincomercial.cl/).*
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para más información visita la [CMF](https://www.cmfchile.cl) o el [Boletín Comercial](https://www.boletincomercial.cl/)._

@@ -56,7 +56,8 @@ const isActive = (path: string) => {
   >
     <a
       href={BASE}
-      class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none" style="font-family: var(--font-playfair), Georgia, serif; letter-spacing: -0.02em;"
+      class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
+      style="font-family: var(--font-playfair), Georgia, serif; letter-spacing: -0.02em;"
     >
       {SITE.title}
     </a>
@@ -175,7 +176,10 @@ const isActive = (path: string) => {
       const openMenu = menuBtn.getAttribute("aria-expanded") === "true";
 
       menuBtn.setAttribute("aria-expanded", openMenu ? "false" : "true");
-      menuBtn.setAttribute("aria-label", openMenu ? "Cerrar menú" : "Abrir menú");
+      menuBtn.setAttribute(
+        "aria-label",
+        openMenu ? "Cerrar menú" : "Abrir menú"
+      );
 
       menuItems.classList.toggle("hidden");
       menuIcon.classList.toggle("hidden");

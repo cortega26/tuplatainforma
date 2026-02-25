@@ -156,4 +156,4 @@ En el sitio del Banco Central: [si3.bcentral.cl/Siete](https://si3.bcentral.cl/S
 
 ---
 
-*La información de este artículo es de carácter educativo y está basada en la metodología oficial del [Banco Central de Chile](https://si3.bcentral.cl/estadisticas/Principal1/Metodologias/EMF/UF.pdf). Los valores de UF mencionados son referenciales — consulta el valor vigente en [si3.bcentral.cl](https://si3.bcentral.cl/Indicadoressiete/secure/Indicadoresdiarios.aspx).*
+_La información de este artículo es de carácter educativo y está basada en la metodología oficial del [Banco Central de Chile](https://si3.bcentral.cl/estadisticas/Principal1/Metodologias/EMF/UF.pdf). Los valores de UF mencionados son referenciales — consulta el valor vigente en [si3.bcentral.cl](https://si3.bcentral.cl/Indicadoressiete/secure/Indicadoresdiarios.aspx)._
