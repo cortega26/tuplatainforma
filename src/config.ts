@@ -12,7 +12,7 @@ export const SITE = {
   showArchives: true,
   showBackButton: true, // show back button in post detail
   editPost: {
-    enabled: true,
+    enabled: false,
     text: "Editar página",
     url: "https://github.com/cortega26/tuplatainforma/edit/main/",
   },
