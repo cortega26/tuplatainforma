@@ -24,7 +24,10 @@ export default defineConfig({
     mdx(),
   ],
   markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Tabla de contenidos" }]],
+    remarkPlugins: [
+      [remarkToc, { heading: /^(Table of contents|Tabla de contenidos)$/i }],
+      [remarkCollapse, { test: /^(Table of contents|Tabla de contenidos)$/i }],
+    ],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "night-owl" },
