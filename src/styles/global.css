@@ -5,11 +5,19 @@
 
 :root,
 html[data-theme="light"] {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
   --background: #f8f9fb;
   --foreground: #1a2332;
   --accent: #1a4f8a;
   --muted: #dde3ed;
   --border: #c8d3e0;
+  --color-accent-2: #0d9488;
+  --color-accent-2-dark: #14b8a6;
+  --color-highlight: #d97706;
+  --color-highlight-dark: #f59e0b;
+  --color-surface: #f8fafc;
+  --color-surface-dark: #1e293b;
 }
 
 html[data-theme="dark"] {
@@ -18,11 +26,16 @@ html[data-theme="dark"] {
   --accent: #4a9edd;
   --muted: #1e3a5f;
   --border: #2a4a6b;
+  --color-accent-2: #14b8a6;
+  --color-accent-2-dark: #14b8a6;
+  --color-highlight: #f59e0b;
+  --color-highlight-dark: #f59e0b;
+  --color-surface: #1e293b;
+  --color-surface-dark: #1e293b;
 }
 
 @theme inline {
-  --font-app: var(--font-inter);
-  --font-display: var(--font-playfair);
+  --font-app: var(--font-body);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
@@ -73,6 +86,6 @@ html[data-theme="dark"] {
 @layer base {
   h1,
   h2 {
-    font-family: var(--font-playfair), Georgia, serif;
+    font-family: var(--font-display);
   }
 }

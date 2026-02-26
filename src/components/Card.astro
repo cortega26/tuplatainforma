@@ -3,18 +3,21 @@ import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@/utils/slugify";
 import { getPath, getPostPath } from "@/utils/getPath";
 import Datetime from "./Datetime.astro";
+import ArticlePlaceholder from "./ArticlePlaceholder.astro";
 
 type Props = {
   variant?: "h2" | "h3";
 } & CollectionEntry<"blog">;
 
 const { variant: Heading = "h2", id, data, filePath } = Astro.props;
-const { title, description, tags, ...props } = data;
+const { title, description, tags, ogImage, ...props } = data;
 const href = getPath(`${getPostPath(id, filePath)}/`);
+const firstTag = tags?.[0] ?? "";
+const imageSrc = typeof ogImage === "string" ? ogImage : ogImage?.src;
 ---
 
 <li
-  class="group my-4 rounded-xl border border-border p-5 transition-all hover:border-accent hover:shadow-sm"
+  class="card group my-4 rounded-xl border border-border p-5"
 >
   <!-- Tags -->
   {
@@ -29,11 +32,29 @@ const href = getPath(`${getPostPath(id, filePath)}/`);
     )
   }
 
-  <!-- Título -->
+  <!-- Miniatura + Título -->
   <a href={href} class="transition-colors group-hover:text-accent">
+    <div class="mb-3 overflow-hidden rounded-lg">
+      {
+        imageSrc ? (
+          <img
+            src={imageSrc}
+            alt={`Portada de ${title}`}
+            class="aspect-video w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <ArticlePlaceholder tag={firstTag} />
+        )
+      }
+    </div>
     <Heading
       class="mb-1 text-lg leading-snug font-semibold text-foreground transition-colors group-hover:text-accent"
-      style={{ viewTransitionName: slugifyStr(title.replaceAll(".", "-")) }}
+      style={{
+        viewTransitionName: slugifyStr(title.replaceAll(".", "-")),
+        fontFamily: "var(--font-display)",
+      }}
     >
       {title}
     </Heading>
@@ -47,3 +68,18 @@ const href = getPath(`${getPostPath(id, filePath)}/`);
   <!-- Descripción -->
   <p class="text-sm leading-relaxed text-foreground/60">{description}</p>
 </li>
+
+<style>
+  .card {
+    border-top: 3px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-top-color 0.2s ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      border-top-color: var(--color-accent-2);
+    }
+  }
+</style>
