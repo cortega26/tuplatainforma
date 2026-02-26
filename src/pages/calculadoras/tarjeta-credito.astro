@@ -147,7 +147,7 @@ import Footer from "@/components/Footer.astro";
 
     const usarFijo = pagoFijo > 0;
     const pagoFn = usarFijo
-      ? (_: number) => pagoFijo
+      ? () => pagoFijo
       : (saldo: number) => saldo * pctMinimo;
 
     const resultado = simular(deuda, tasaMensual, pagoFn);
@@ -155,7 +155,7 @@ import Footer from "@/components/Footer.astro";
 
     // Escenario "pago doble" para comparar
     const pagoFnDoble = usarFijo
-      ? (_: number) => pagoFijo * 2
+      ? () => pagoFijo * 2
       : (saldo: number) => saldo * pctMinimo * 2;
     const resultadoDoble = simular(deuda, tasaMensual, pagoFnDoble);
 
