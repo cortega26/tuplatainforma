@@ -1,117 +1,23 @@
 ---
+import { getCategoryMeta } from "@/utils/categoryIcons";
+
 type Props = {
   tag?: string;
 };
 
 const { tag = "" } = Astro.props;
-const normalizedTag = tag.toLowerCase();
-
-const getThemeByTag = (value: string) => {
-  const laboralTags = [
-    "laboral",
-    "trabajo",
-    "cesantia",
-    "desempleo",
-    "liquidacion",
-    "sueldo",
-    "contrato",
-  ];
-  const calculadoraTags = ["calculadora", "calculadoras"];
-  const finanzasTags = [
-    "finanzas",
-    "afp",
-    "apv",
-    "impuestos",
-    "credito",
-    "creditos",
-    "deuda",
-    "deudas",
-    "uf",
-    "inflacion",
-    "ahorro",
-    "pensiones",
-  ];
-
-  if (laboralTags.some(tagItem => value.includes(tagItem))) {
-    return {
-      gradient: "linear-gradient(135deg, #1d4ed8 0%, #0f172a 100%)",
-      icon: "laboral",
-    };
-  }
-
-  if (calculadoraTags.some(tagItem => value.includes(tagItem))) {
-    return {
-      gradient: "linear-gradient(135deg, #f97316 0%, #7c2d12 100%)",
-      icon: "calculadora",
-    };
-  }
-
-  if (finanzasTags.some(tagItem => value.includes(tagItem))) {
-    return {
-      gradient: "linear-gradient(135deg, #047857 0%, #052e16 100%)",
-      icon: "finanzas",
-    };
-  }
-
-  return {
-    gradient: "linear-gradient(135deg, #1a4f8a 0%, #1a2332 100%)",
-    icon: "finanzas",
-  };
-};
-
-const theme = getThemeByTag(normalizedTag);
+const category = getCategoryMeta(tag);
+const gradient = `linear-gradient(135deg, color-mix(in srgb, ${category.color} 85%, #0f172a 15%) 0%, color-mix(in srgb, ${category.color} 35%, #020617 65%) 100%)`;
 ---
 
 <div
   class="relative w-full overflow-hidden rounded-lg"
-  style={`aspect-ratio: 16 / 9; background: ${theme.gradient};`}
+  style={`aspect-ratio: 16 / 9; background: ${gradient};`}
   aria-hidden="true"
 >
-  <svg
-    class="absolute inset-0 h-full w-full text-white/70"
-    viewBox="0 0 160 90"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <rect x="0" y="0" width="160" height="90" fill="url(#overlay)" />
-    <defs>
-      <linearGradient id="overlay" x1="0" y1="0" x2="160" y2="90">
-        <stop offset="0" stop-color="white" stop-opacity="0.06"></stop>
-        <stop offset="1" stop-color="white" stop-opacity="0"></stop>
-      </linearGradient>
-    </defs>
-    {
-      theme.icon === "laboral" && (
-        <>
-          <rect x="54" y="28" width="52" height="34" rx="4" stroke="currentColor" stroke-width="3"></rect>
-          <path d="M70 28v-6h20v6" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
-          <path d="M54 42h52" stroke="currentColor" stroke-width="3"></path>
-        </>
-      )
-    }
-    {
-      theme.icon === "finanzas" && (
-        <>
-          <path d="M46 60h68" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
-          <rect x="52" y="46" width="8" height="14" rx="1.5" fill="currentColor"></rect>
-          <rect x="66" y="38" width="8" height="22" rx="1.5" fill="currentColor"></rect>
-          <rect x="80" y="32" width="8" height="28" rx="1.5" fill="currentColor"></rect>
-          <rect x="94" y="24" width="8" height="36" rx="1.5" fill="currentColor"></rect>
-        </>
-      )
-    }
-    {
-      theme.icon === "calculadora" && (
-        <>
-          <rect x="58" y="18" width="44" height="54" rx="6" stroke="currentColor" stroke-width="3"></rect>
-          <rect x="64" y="24" width="32" height="10" rx="2" fill="currentColor" fill-opacity="0.45"></rect>
-          <rect x="64" y="40" width="8" height="8" rx="1.5" fill="currentColor"></rect>
-          <rect x="76" y="40" width="8" height="8" rx="1.5" fill="currentColor"></rect>
-          <rect x="88" y="40" width="8" height="8" rx="1.5" fill="currentColor"></rect>
-          <rect x="64" y="52" width="8" height="8" rx="1.5" fill="currentColor"></rect>
-          <rect x="76" y="52" width="20" height="8" rx="1.5" fill="currentColor"></rect>
-        </>
-      )
-    }
-  </svg>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.2),transparent_45%)]"></div>
+  <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,transparent_100%)]"></div>
+  <span class="absolute inset-0 flex items-center justify-center text-4xl drop-shadow-sm sm:text-5xl">
+    {category.icon}
+  </span>
 </div>

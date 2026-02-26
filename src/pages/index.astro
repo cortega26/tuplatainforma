@@ -7,6 +7,8 @@ import Card from "@/components/Card.astro";
 import Datetime from "@/components/Datetime.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import ArticlePlaceholder from "@/components/ArticlePlaceholder.astro";
+import RevealOnScroll from "@/components/RevealOnScroll.astro";
+import SectionDivider from "@/components/SectionDivider.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
@@ -26,120 +28,130 @@ const homePath = getPath("/");
     <!-- GRID EDITORIAL -->
     {
       heroPost && (
-        <section class="grid gap-6 border-b border-border py-8 lg:grid-cols-3">
-          <article class="lg:col-span-2">
-            <a href={getPath(`/posts/${heroPost.id}/`)} class="group block">
-              <div class="mb-4 overflow-hidden rounded-xl">
-                {(() => {
-                  const heroImage =
-                    typeof heroPost.data.ogImage === "string"
-                      ? heroPost.data.ogImage
-                      : heroPost.data.ogImage?.src;
-                  return heroImage ? (
-                    <img
-                      src={heroImage}
-                      alt={`Portada de ${heroPost.data.title}`}
-                      class="aspect-video w-full object-cover"
-                      loading="eager"
-                      decoding="async"
-                    />
-                  ) : (
-                    <ArticlePlaceholder tag={heroPost.data.tags?.[0]} />
-                  );
-                })()}
-              </div>
-              <span class="mb-3 inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold tracking-widest text-accent uppercase">
-                Destacado
-              </span>
-              <h1 class="mb-3 text-2xl leading-tight font-bold transition-colors group-hover:text-accent sm:text-4xl">
-                {heroPost.data.title}
-              </h1>
-              <p class="mb-4 max-w-3xl text-base leading-relaxed text-foreground/60">
-                {heroPost.data.description}
-              </p>
-              <div class="mb-4">
-                <Datetime
-                  pubDatetime={heroPost.data.pubDatetime}
-                  modDatetime={heroPost.data.modDatetime}
-                  timezone={heroPost.data.timezone}
-                />
-              </div>
-              <span class="inline-flex items-center gap-1 text-sm font-semibold text-accent">
-                Leer artículo <IconArrowRight class="inline-block" />
-              </span>
-            </a>
-          </article>
+        <RevealOnScroll initialVisible={true}>
+          <section class="grid gap-6 border-b border-border py-8 lg:grid-cols-3">
+            <article class="lg:col-span-2">
+              <a href={getPath(`/posts/${heroPost.id}/`)} class="group block">
+                <div class="mb-4 overflow-hidden rounded-xl">
+                  {(() => {
+                    const heroImage =
+                      typeof heroPost.data.ogImage === "string"
+                        ? heroPost.data.ogImage
+                        : heroPost.data.ogImage?.src;
+                    return heroImage ? (
+                      <img
+                        src={heroImage}
+                        alt={`Portada de ${heroPost.data.title}`}
+                        class="aspect-video w-full object-cover"
+                        loading="eager"
+                        decoding="async"
+                      />
+                    ) : (
+                      <ArticlePlaceholder tag={heroPost.data.tags?.[0]} />
+                    );
+                  })()}
+                </div>
+                <span class="mb-3 inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold tracking-widest text-accent uppercase">
+                  Destacado
+                </span>
+                <h1 class="mb-3 text-2xl leading-tight font-bold transition-colors group-hover:text-accent sm:text-4xl">
+                  {heroPost.data.title}
+                </h1>
+                <p class="mb-4 max-w-3xl text-base leading-relaxed text-foreground/60">
+                  {heroPost.data.description}
+                </p>
+                <div class="mb-4">
+                  <Datetime
+                    pubDatetime={heroPost.data.pubDatetime}
+                    modDatetime={heroPost.data.modDatetime}
+                    timezone={heroPost.data.timezone}
+                  />
+                </div>
+                <span class="inline-flex items-center gap-1 text-sm font-semibold text-accent">
+                  Leer artículo <IconArrowRight class="inline-block" />
+                </span>
+              </a>
+            </article>
 
-          <div class="grid gap-6 lg:col-span-1">
-            {secondaryPosts.map(post => {
-              const secondaryImage =
-                typeof post.data.ogImage === "string"
-                  ? post.data.ogImage
-                  : post.data.ogImage?.src;
-              return (
-                <article class="rounded-xl border border-border p-4">
-                  <a
-                    href={getPath(`/posts/${post.id}/`)}
-                    class="group block transition-colors"
-                  >
-                    <div class="mb-3 overflow-hidden rounded-lg">
-                      {secondaryImage ? (
-                        <img
-                          src={secondaryImage}
-                          alt={`Portada de ${post.data.title}`}
-                          class="aspect-video w-full object-cover"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      ) : (
-                        <ArticlePlaceholder tag={post.data.tags?.[0]} />
-                      )}
-                    </div>
-                    <h2 class="mb-2 text-lg leading-snug font-semibold transition-colors group-hover:text-accent">
-                      {post.data.title}
-                    </h2>
-                    <Datetime
-                      pubDatetime={post.data.pubDatetime}
-                      modDatetime={post.data.modDatetime}
-                      timezone={post.data.timezone}
-                    />
-                  </a>
-                </article>
-              );
-            })}
-          </div>
-        </section>
+            <div class="grid gap-6 lg:col-span-1">
+              {secondaryPosts.map(post => {
+                const secondaryImage =
+                  typeof post.data.ogImage === "string"
+                    ? post.data.ogImage
+                    : post.data.ogImage?.src;
+                return (
+                  <article class="rounded-xl border border-border p-4">
+                    <a
+                      href={getPath(`/posts/${post.id}/`)}
+                      class="group block transition-colors"
+                    >
+                      <div class="mb-3 overflow-hidden rounded-lg">
+                        {secondaryImage ? (
+                          <img
+                            src={secondaryImage}
+                            alt={`Portada de ${post.data.title}`}
+                            class="aspect-video w-full object-cover"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        ) : (
+                          <ArticlePlaceholder tag={post.data.tags?.[0]} />
+                        )}
+                      </div>
+                      <h2 class="mb-2 text-lg leading-snug font-semibold transition-colors group-hover:text-accent">
+                        {post.data.title}
+                      </h2>
+                      <Datetime
+                        pubDatetime={post.data.pubDatetime}
+                        modDatetime={post.data.modDatetime}
+                        timezone={post.data.timezone}
+                      />
+                    </a>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        </RevealOnScroll>
       )
     }
+
+    <SectionDivider />
 
     <!-- ARTÍCULOS RECIENTES -->
     {
       remainingPosts.length > 0 && (
-        <section class="py-8">
-          <h2 class="mb-6 text-xl font-semibold tracking-wide">
-            Artículos Recientes
-          </h2>
-          <ul class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {remainingPosts.map(data => (
-              <Card variant="h3" {...data} />
-            ))}
-          </ul>
-        </section>
+        <RevealOnScroll delay={100}>
+          <section class="py-8">
+            <h2 class="mb-6 text-xl font-semibold tracking-wide">
+              Artículos Recientes
+            </h2>
+            <ul class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {remainingPosts.map(data => (
+                <Card variant="h3" {...data} />
+              ))}
+            </ul>
+          </section>
+        </RevealOnScroll>
       )
     }
 
+    <SectionDivider />
+
     <!-- CALCULADORAS CTA -->
-    <section
-      class="mb-8 rounded-xl border border-accent/20 bg-accent/5 px-6 py-6"
-    >
-      <h2 class="mb-1 text-lg font-semibold">🧮 Calculadoras financieras</h2>
-      <p class="mb-4 text-sm text-foreground/60">
-        Calculá tu sueldo líquido, AFP y más — actualizado 2025.
-      </p>
-      <LinkButton href={getPath("/calculadoras/")}>
-        Ver calculadoras <IconArrowRight class="inline-block rtl:-rotate-180" />
-      </LinkButton>
-    </section>
+    <RevealOnScroll delay={200}>
+      <section
+        class="mb-8 rounded-xl border border-accent/20 bg-accent/5 px-6 py-6"
+      >
+        <h2 class="mb-1 text-lg font-semibold">🧮 Calculadoras financieras</h2>
+        <p class="mb-4 text-sm text-foreground/60">
+          Calculá tu sueldo líquido, AFP y más — actualizado 2025.
+        </p>
+        <LinkButton href={getPath("/calculadoras/")}>
+          Ver calculadoras <IconArrowRight class="inline-block rtl:-rotate-180" />
+        </LinkButton>
+      </section>
+    </RevealOnScroll>
 
     <!-- VER TODOS -->
     <div class="mb-10 text-center">

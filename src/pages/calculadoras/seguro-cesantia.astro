@@ -206,11 +206,23 @@ import Footer from "@/components/Footer.astro";
 </Layout>
 
 <script>
+  import { animateCount } from "@/utils/animateCount";
+
   // Porcentajes de pago por mes (sobre promedio últimas remuneraciones)
   const PCT_PAGO = [0.7, 0.55, 0.45, 0.4, 0.35, 0.3];
+  const currencyFormatter = new Intl.NumberFormat("es-CL", {
+    style: "currency",
+    currency: "CLP",
+    maximumFractionDigits: 0,
+  });
 
-  function fmt(n: number): string {
-    return "$" + Math.round(n).toLocaleString("es-CL");
+  function fmtCurrency(n: number): string {
+    return currencyFormatter.format(Math.round(n));
+  }
+
+  function animatedCurrency(value: number): string {
+    const target = Math.round(value);
+    return `<span data-animate="true" data-target="${target}">${fmtCurrency(target)}</span>`;
   }
 
   function row(label: string, value: string, color = "") {
@@ -222,6 +234,28 @@ import Footer from "@/components/Footer.astro";
 
   function badge(texto: string, color: string) {
     return `<span class="inline-block rounded-full px-2 py-0.5 text-xs font-bold ${color}">${texto}</span>`;
+  }
+
+  function animateResultValues() {
+    const container = document.getElementById("resultado-contenido");
+    if (!container) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    container.querySelectorAll("[data-animate='true']").forEach(element => {
+      const htmlElement = element as HTMLElement;
+      const target = Number(htmlElement.dataset.target ?? "0");
+
+      if (reduceMotion) {
+        htmlElement.textContent = fmtCurrency(target);
+        return;
+      }
+
+      htmlElement.textContent = fmtCurrency(0);
+      animateCount(htmlElement, target, 800, n => fmtCurrency(n));
+    });
   }
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
@@ -300,7 +334,7 @@ import Footer from "@/components/Footer.astro";
       html = `
         <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
           <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Saldo CIC estimado</p>
-          <p class="text-4xl font-bold">${fmt(saldoCIC)}</p>
+          <p class="text-4xl font-bold">${animatedCurrency(saldoCIC)}</p>
           ${saldoIngresado > 0 ? '<p class="text-xs text-foreground/50 mt-1">Según saldo ingresado</p>' : '<p class="text-xs text-foreground/50 mt-1">Estimado (ingresa saldo real desde afc.cl para más precisión)</p>'}
         </div>
 
@@ -308,9 +342,9 @@ import Footer from "@/components/Footer.astro";
         ${pagos
           .map((p: number, i: number) =>
             p > 0
-              ? row(
+                ? row(
                   `Mes ${i + 1} (${(PCT_PAGO[i] * 100).toFixed(0)}% del sueldo)`,
-                  fmt(p),
+                  animatedCurrency(p),
                   i === 0 ? "text-accent" : ""
                 )
               : row(`Mes ${i + 1}`, "Sin saldo", "text-foreground/30")
@@ -319,7 +353,7 @@ import Footer from "@/components/Footer.astro";
 
         <div class="mt-4 pt-3 flex justify-between text-sm font-semibold border-t border-border">
           <span>Total cobertura CIC</span>
-          <span>${fmt(totalCIC)} · ${mesesCubiertos} ${mesesCubiertos === 1 ? "mes" : "meses"}</span>
+          <span>${animatedCurrency(totalCIC)} · ${mesesCubiertos} ${mesesCubiertos === 1 ? "mes" : "meses"}</span>
         </div>
 
         <div class="mt-4 rounded-lg ${cumpleFCS ? "border-green-500/30 bg-green-500/5" : "border-foreground/10 bg-foreground/5"} border p-3 text-sm">
@@ -338,5 +372,6 @@ import Footer from "@/components/Footer.astro";
     }
 
     document.getElementById("resultado-contenido")!.innerHTML = html;
+    animateResultValues();
   });
 </script>

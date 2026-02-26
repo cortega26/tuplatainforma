@@ -1,0 +1,84 @@
+---
+interface Props {
+  delay?: number;
+  class?: string;
+  initialVisible?: boolean;
+}
+
+const {
+  delay = 0,
+  class: className = "",
+  initialVisible = false,
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "reveal-on-scroll",
+    className,
+    { "is-visible": initialVisible },
+  ]}
+  style={delay ? `--reveal-delay: ${delay}ms` : ""}
+>
+  <slot />
+</div>
+
+<style>
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  function initRevealOnScroll() {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const elements = Array.from(
+      document.querySelectorAll(".reveal-on-scroll")
+    ) as HTMLElement[];
+
+    if (reducedMotion) {
+      elements.forEach(el => el.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    elements.forEach(el => {
+      if (!el.classList.contains("is-visible") && !el.dataset.revealBound) {
+        el.dataset.revealBound = "true";
+        observer.observe(el);
+      }
+    });
+  }
+
+  document.addEventListener("astro:page-load", initRevealOnScroll);
+  initRevealOnScroll();
+</script>

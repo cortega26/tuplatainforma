@@ -1,15 +1,18 @@
 ---
 import IconHash from "@/assets/icons/IconHash.svg";
 import { getPath } from "@/utils/getPath";
+import { getCategoryMeta } from "@/utils/categoryIcons";
 
 type Props = {
   tag: string;
   tagName: string;
   count?: number;
   size?: "sm" | "lg";
+  showIcon?: boolean;
 };
 
-const { tag, tagName, count, size = "lg" } = Astro.props;
+const { tag, tagName, count, size = "lg", showIcon = false } = Astro.props;
+const categoryMeta = getCategoryMeta(tag);
 ---
 
 <li>
@@ -25,13 +28,28 @@ const { tag, tagName, count, size = "lg" } = Astro.props;
       { "text-lg": size === "lg" },
     ]}
   >
-    <IconHash
-      class:list={[
-        "opacity-80",
-        { "size-5": size === "lg" },
-        { "size-4": size === "sm" },
-      ]}
-    />
+    {
+      showIcon ? (
+        <span
+          class:list={[
+            "inline-flex items-center justify-center",
+            { "text-base": size === "sm" },
+            { "text-xl": size === "lg" },
+          ]}
+          style={`color: ${categoryMeta.color};`}
+        >
+          {categoryMeta.icon}
+        </span>
+      ) : (
+        <IconHash
+          class:list={[
+            "opacity-80",
+            { "size-5": size === "lg" },
+            { "size-4": size === "sm" },
+          ]}
+        />
+      )
+    }
     {tagName}
     {
       typeof count === "number" && (

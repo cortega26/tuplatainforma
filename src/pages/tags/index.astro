@@ -21,7 +21,7 @@ const tags = getUniqueTagsWithCount(posts);
   >
     <ul class="flex flex-wrap gap-6">
       {tags.map(({ tag, tagName, count }) => (
-        <Tag tag={tag} tagName={tagName} count={count} />
+        <Tag tag={tag} tagName={tagName} count={count} showIcon={true} />
       ))}
     </ul>
   </Main>

@@ -1,0 +1,26 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div
+  class:list={["section-divider", className]}
+  aria-hidden="true"
+></div>
+
+<style>
+  .section-divider {
+    height: 1px;
+    margin: 2rem 0;
+    background: linear-gradient(
+      to right,
+      transparent,
+      color-mix(in srgb, var(--color-accent-2) 30%, transparent) 20%,
+      color-mix(in srgb, var(--color-accent-2) 30%, transparent) 80%,
+      transparent
+    );
+  }
+</style>
