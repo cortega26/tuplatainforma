@@ -180,14 +180,15 @@ import Footer from "@/components/Footer.astro";
     const cumpleFCS = tieneCausalFCS && mesesCotizados >= 10;
 
     // Pagos estimados con CIC
-    const pagos = PCT_PAGO.map((pct, i) => {
-      const monto = sueldo * pct;
-      const disponible = saldoCIC - pagos.slice(0, i).reduce((a, b) => a + b, 0);
-      return disponible > 0 ? Math.min(monto, disponible) : 0;
+    const pagos: number[] = [];
+    PCT_PAGO.forEach((pct: number, i: number): void => {
+      const monto: number = sueldo * pct;
+      const disponible: number = saldoCIC - pagos.slice(0, i).reduce((a: number, b: number) => a + b, 0);
+      pagos.push(disponible > 0 ? Math.min(monto, disponible) : 0);
     });
 
-    const mesesCubiertos = pagos.filter(p => p > 0).length;
-    const totalCIC = pagos.reduce((a, b) => a + b, 0);
+    const mesesCubiertos: number = pagos.filter((p: number) => p > 0).length;
+    const totalCIC: number = pagos.reduce((a: number, b: number) => a + b, 0);
 
     // Construir HTML
     let html = "";
@@ -207,7 +208,7 @@ import Footer from "@/components/Footer.astro";
         </div>
 
         <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Pagos estimados por mes</p>
-        ${pagos.map((p, i) => p > 0
+        ${pagos.map((p: number, i: number) => p > 0
           ? row(`Mes ${i + 1} (${(PCT_PAGO[i] * 100).toFixed(0)}% del sueldo)`, fmt(p), i === 0 ? "text-accent" : "")
           : row(`Mes ${i + 1}`, "Sin saldo", "text-foreground/30")
         ).join("")}
