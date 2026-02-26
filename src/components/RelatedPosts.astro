@@ -1,0 +1,108 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getPath, getPostPath } from "@/utils/getPath";
+import Datetime from "./Datetime.astro";
+import ArticlePlaceholder from "./ArticlePlaceholder.astro";
+
+interface Props {
+  currentSlug: string;
+  currentTags: string[];
+  allPosts: CollectionEntry<"blog">[];
+}
+
+const { currentSlug, currentTags, allPosts } = Astro.props as Props;
+const normalizedCurrentTags = currentTags.map(tag => tag.toLowerCase());
+
+const candidatePosts = allPosts.filter(
+  post => post.id !== currentSlug && !post.data.draft
+);
+
+const scoredPosts = candidatePosts.map(post => {
+  const score = post.data.tags.filter(tag =>
+    normalizedCurrentTags.includes(tag.toLowerCase())
+  ).length;
+
+  return { ...post, score };
+});
+
+const sortByScoreAndDate = (
+  a: (CollectionEntry<"blog"> & { score: number }),
+  b: (CollectionEntry<"blog"> & { score: number })
+) =>
+  b.score - a.score ||
+  b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime();
+
+const tagMatchedPosts = scoredPosts
+  .filter(post => post.score > 0)
+  .sort(sortByScoreAndDate);
+
+const fallbackPosts = scoredPosts
+  .filter(post => post.score === 0)
+  .sort(
+    (a, b) => b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime()
+  );
+
+const relatedPosts = [...tagMatchedPosts, ...fallbackPosts].slice(0, 3);
+---
+
+{
+  relatedPosts.length > 0 && (
+    <section
+      class="mt-10 border-t border-border pt-8"
+      style="background: linear-gradient(to bottom, color-mix(in srgb, var(--color-surface) 70%, transparent) 0%, transparent 24%);"
+    >
+      <h2
+        class="mb-5 text-2xl font-bold sm:text-3xl"
+        style="font-family: var(--font-display);"
+      >
+        También puede interesarte
+      </h2>
+
+      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {relatedPosts.map(post => {
+          const imageSrc =
+            typeof post.data.ogImage === "string"
+              ? post.data.ogImage
+              : post.data.ogImage?.src;
+
+          return (
+            <li class="rounded-xl border border-border p-3">
+              <a
+                href={getPath(`${getPostPath(post.id, post.filePath)}/`)}
+                class="group block"
+              >
+                <div class="mb-3 overflow-hidden rounded-lg">
+                  {imageSrc ? (
+                    <img
+                      src={imageSrc}
+                      alt={`Portada de ${post.data.title}`}
+                      class="aspect-video w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <ArticlePlaceholder tag={post.data.tags?.[0]} />
+                  )}
+                </div>
+
+                <h3
+                  class="mb-2 text-base leading-snug font-semibold transition-colors group-hover:text-accent"
+                  style="font-family: var(--font-display);"
+                >
+                  {post.data.title}
+                </h3>
+
+                <Datetime
+                  pubDatetime={post.data.pubDatetime}
+                  modDatetime={post.data.modDatetime}
+                  timezone={post.data.timezone}
+                  size="sm"
+                />
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )
+}

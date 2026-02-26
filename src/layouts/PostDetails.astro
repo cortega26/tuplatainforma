@@ -11,8 +11,10 @@ import BackButton from "@/components/BackButton.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
 import { getPath, getPostPath } from "@/utils/getPath";
 import { slugifyStr } from "@/utils/slugify";
+import { getReadingTime } from "@/utils/readingTime";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
+import RelatedPosts from "@/components/RelatedPosts.astro";
 import { SITE } from "@/config";
 
 type Props = {
@@ -21,6 +23,7 @@ type Props = {
 };
 
 const { post, posts } = Astro.props;
+const readingTime = getReadingTime(post.body ?? "");
 
 const {
   title,
@@ -101,7 +104,13 @@ const nextPost =
     </h1>
 
     <div class="my-2 flex items-center gap-2">
-      <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
+      <Datetime
+        {pubDatetime}
+        {modDatetime}
+        {timezone}
+        readingTime={readingTime}
+        size="lg"
+      />
       <span
         aria-hidden="true"
         class:list={[
@@ -164,6 +173,8 @@ const nextPost =
         )
       }
     </div>
+
+    <RelatedPosts currentSlug={post.id} currentTags={tags} allPosts={posts} />
   </main>
 
   <Footer />

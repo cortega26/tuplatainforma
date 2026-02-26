@@ -5,10 +5,11 @@ import { getPath } from "@/utils/getPath";
 type Props = {
   tag: string;
   tagName: string;
+  count?: number;
   size?: "sm" | "lg";
 };
 
-const { tag, tagName, size = "lg" } = Astro.props;
+const { tag, tagName, count, size = "lg" } = Astro.props;
 ---
 
 <li>
@@ -32,5 +33,18 @@ const { tag, tagName, size = "lg" } = Astro.props;
       ]}
     />
     {tagName}
+    {
+      typeof count === "number" && (
+        <span
+          class:list={[
+            "ms-1 rounded-full px-1.5 py-0.5 text-xs font-semibold",
+            "bg-[color:var(--color-surface)] text-[color:var(--color-accent-2)]",
+            { "text-[10px]": size === "sm" },
+          ]}
+        >
+          {count}
+        </span>
+      )
+    }
   </a>
 </li>
