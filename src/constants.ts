@@ -6,7 +6,6 @@ import IconLinkedin from "@/assets/icons/IconLinkedin.svg";
 import IconWhatsapp from "@/assets/icons/IconWhatsapp.svg";
 import IconFacebook from "@/assets/icons/IconFacebook.svg";
 import IconTelegram from "@/assets/icons/IconTelegram.svg";
-import IconPinterest from "@/assets/icons/IconPinterest.svg";
 import { SITE } from "@/config";
 
 interface Social {
@@ -69,10 +68,10 @@ export const SHARE_LINKS: Social[] = [
     icon: IconTelegram,
   },
   {
-    name: "Pinterest",
-    href: "https://pinterest.com/pin/create/button/?url=",
-    linkTitle: `Compartir este artículo en Pinterest`,
-    icon: IconPinterest,
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/sharing/share-offsite/?url=",
+    linkTitle: `Compartir este artículo en LinkedIn`,
+    icon: IconLinkedin,
   },
   {
     name: "Mail",
