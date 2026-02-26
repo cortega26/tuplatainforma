@@ -15,7 +15,8 @@ import Footer from "@/components/Footer.astro";
         💳 Costo Real de la Tarjeta de Crédito
       </h1>
       <p class="max-w-xl text-foreground/70">
-        Descubre cuánto pagas realmente si solo abonas el mínimo de tu tarjeta. Ve el costo total en tiempo e intereses.
+        Descubre cuánto pagas realmente si solo abonas el mínimo de tu tarjeta.
+        Ve el costo total en tiempo e intereses.
       </p>
     </section>
 
@@ -25,47 +26,79 @@ import Footer from "@/components/Footer.astro";
         <h2 class="mb-5 text-lg font-semibold">📝 Datos de tu deuda</h2>
 
         <div class="mb-4">
-          <label for="deuda" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="deuda"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Deuda actual ($)
           </label>
           <input
-            type="number" id="deuda" placeholder="Ej: 500.000" min="0"
+            type="number"
+            id="deuda"
+            placeholder="Ej: 500.000"
+            min="0"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
         </div>
 
         <div class="mb-4">
-          <label for="tasa" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="tasa"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Tasa de interés mensual (%)
           </label>
           <input
-            type="number" id="tasa" placeholder="Ej: 3.5" min="0" max="10" step="0.01" value="3.49"
+            type="number"
+            id="tasa"
+            placeholder="Ej: 3.5"
+            min="0"
+            max="10"
+            step="0.01"
+            value="3.49"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
           <p class="mt-1 text-xs text-foreground/50">
-            La TMC (tasa máxima convencional) vigente en 2026 para tarjetas es ~3.49% mensual. Revisa tu contrato para el valor exacto.
+            La TMC (tasa máxima convencional) vigente en 2026 para tarjetas es
+            ~3.49% mensual. Revisa tu contrato para el valor exacto.
           </p>
         </div>
 
         <div class="mb-4">
-          <label for="pago-minimo-pct" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="pago-minimo-pct"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Porcentaje de pago mínimo (%)
           </label>
           <input
-            type="number" id="pago-minimo-pct" placeholder="Ej: 5" min="1" max="50" step="0.5" value="5"
+            type="number"
+            id="pago-minimo-pct"
+            placeholder="Ej: 5"
+            min="1"
+            max="50"
+            step="0.5"
+            value="5"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
           <p class="mt-1 text-xs text-foreground/50">
-            El pago mínimo varía por banco, generalmente entre 3% y 10% del saldo.
+            El pago mínimo varía por banco, generalmente entre 3% y 10% del
+            saldo.
           </p>
         </div>
 
         <div class="mb-4">
-          <label for="pago-fijo" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="pago-fijo"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             O bien, pago mensual fijo ($) — opcional
           </label>
           <input
-            type="number" id="pago-fijo" placeholder="Ej: 80.000" min="0"
+            type="number"
+            id="pago-fijo"
+            placeholder="Ej: 80.000"
+            min="0"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
           <p class="mt-1 text-xs text-foreground/50">
@@ -82,9 +115,15 @@ import Footer from "@/components/Footer.astro";
       </div>
 
       <!-- RESULTADO -->
-      <div id="resultado" class="rounded-xl border border-border bg-background p-6">
+      <div
+        id="resultado"
+        class="rounded-xl border border-border bg-background p-6"
+      >
         <h2 class="mb-5 text-lg font-semibold">💸 Resultado</h2>
-        <div id="resultado-contenido" class="py-8 text-center text-foreground/40">
+        <div
+          id="resultado-contenido"
+          class="py-8 text-center text-foreground/40"
+        >
           <p class="mb-3 text-4xl">💳</p>
           <p class="text-sm">Ingresa tu deuda y presiona calcular.</p>
         </div>
@@ -92,18 +131,37 @@ import Footer from "@/components/Footer.astro";
     </section>
 
     <!-- EXPLICACIÓN -->
-    <section class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert">
+    <section
+      class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert"
+    >
       <h2>¿Por qué el pago mínimo es tan costoso?</h2>
       <p>
-        Cuando pagas solo el mínimo de tu tarjeta, la mayor parte de ese dinero cubre los intereses del mes — no la deuda. El saldo baja muy lentamente, y los intereses se calculan sobre ese saldo cada mes. El efecto es que terminas pagando el doble o el triple del valor original.
+        Cuando pagas solo el mínimo de tu tarjeta, la mayor parte de ese dinero
+        cubre los intereses del mes — no la deuda. El saldo baja muy lentamente,
+        y los intereses se calculan sobre ese saldo cada mes. El efecto es que
+        terminas pagando el doble o el triple del valor original.
       </p>
       <ul>
-        <li><strong>Tasa máxima convencional (TMC):</strong> Es el máximo legal que puede cobrar una tarjeta. En 2026, para créditos de consumo hasta 200 UF es de aproximadamente 3.49% mensual (equivalente a más de 50% anual).</li>
-        <li><strong>Interés sobre saldo:</strong> Los intereses se calculan sobre lo que debes cada mes, no sobre el monto original.</li>
-        <li><strong>La solución:</strong> Pagar siempre más del mínimo, o usar el excedente de otros meses para abonar al capital.</li>
+        <li>
+          <strong>Tasa máxima convencional (TMC):</strong> Es el máximo legal que
+          puede cobrar una tarjeta. En 2026, para créditos de consumo hasta 200 UF
+          es de aproximadamente 3.49% mensual (equivalente a más de 50% anual).
+        </li>
+        <li>
+          <strong>Interés sobre saldo:</strong> Los intereses se calculan sobre lo
+          que debes cada mes, no sobre el monto original.
+        </li>
+        <li>
+          <strong>La solución:</strong> Pagar siempre más del mínimo, o usar el excedente
+          de otros meses para abonar al capital.
+        </li>
       </ul>
       <p class="text-sm text-foreground/50">
-        ⚠️ Valores referenciales. La simulación asume cuotas constantes. Las TMC reales varían por banco y tipo de operación — verifica en la <a href="https://www.cmfchile.cl" target="_blank">CMF</a>.
+        ⚠️ Valores referenciales. La simulación asume cuotas constantes. Las TMC
+        reales varían por banco y tipo de operación — verifica en la <a
+          href="https://www.cmfchile.cl"
+          target="_blank">CMF</a
+        >.
       </p>
     </section>
   </main>
@@ -115,7 +173,12 @@ import Footer from "@/components/Footer.astro";
     return "$" + Math.round(n).toLocaleString("es-CL");
   }
 
-  function simular(deuda: number, tasaMensual: number, pagoFn: (saldo: number) => number, maxMeses = 600) {
+  function simular(
+    deuda: number,
+    tasaMensual: number,
+    pagoFn: (saldo: number) => number,
+    maxMeses = 600
+  ) {
     let saldo = deuda;
     let totalPagado = 0;
     let meses = 0;
@@ -135,10 +198,21 @@ import Footer from "@/components/Footer.astro";
   }
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
-    const deuda = parseFloat((document.getElementById("deuda") as HTMLInputElement).value) || 0;
-    const tasaMensual = parseFloat((document.getElementById("tasa") as HTMLInputElement).value) / 100;
-    const pctMinimo = parseFloat((document.getElementById("pago-minimo-pct") as HTMLInputElement).value) / 100;
-    const pagoFijo = parseFloat((document.getElementById("pago-fijo") as HTMLInputElement).value) || 0;
+    const deuda =
+      parseFloat(
+        (document.getElementById("deuda") as HTMLInputElement).value
+      ) || 0;
+    const tasaMensual =
+      parseFloat((document.getElementById("tasa") as HTMLInputElement).value) /
+      100;
+    const pctMinimo =
+      parseFloat(
+        (document.getElementById("pago-minimo-pct") as HTMLInputElement).value
+      ) / 100;
+    const pagoFijo =
+      parseFloat(
+        (document.getElementById("pago-fijo") as HTMLInputElement).value
+      ) || 0;
 
     if (deuda <= 0) {
       alert("Por favor ingresa una deuda válida.");
@@ -161,11 +235,17 @@ import Footer from "@/components/Footer.astro";
 
     const años = Math.floor(resultado.meses / 12);
     const mesesRest = resultado.meses % 12;
-    const tiempoStr = años > 0 ? `${años} año${años > 1 ? "s" : ""} y ${mesesRest} meses` : `${resultado.meses} meses`;
+    const tiempoStr =
+      años > 0
+        ? `${años} año${años > 1 ? "s" : ""} y ${mesesRest} meses`
+        : `${resultado.meses} meses`;
 
     const añosDoble = Math.floor(resultadoDoble.meses / 12);
     const mesesDoble = resultadoDoble.meses % 12;
-    const tiempoDobleStr = añosDoble > 0 ? `${añosDoble} año${añosDoble > 1 ? "s" : ""} y ${mesesDoble} meses` : `${resultadoDoble.meses} meses`;
+    const tiempoDobleStr =
+      añosDoble > 0
+        ? `${añosDoble} año${añosDoble > 1 ? "s" : ""} y ${mesesDoble} meses`
+        : `${resultadoDoble.meses} meses`;
 
     const row = (label: string, value: string, color = "") =>
       `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
@@ -173,12 +253,13 @@ import Footer from "@/components/Footer.astro";
         <span class="font-semibold font-mono ${color}">${value}</span>
       </div>`;
 
-    const primerosPagosHtml = primerasCuotas.length > 0
-      ? `<div class="mt-4 rounded-lg bg-foreground/5 p-3">
+    const primerosPagosHtml =
+      primerasCuotas.length > 0
+        ? `<div class="mt-4 rounded-lg bg-foreground/5 p-3">
           <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Primeras cuotas estimadas</p>
           ${primerasCuotas.map((p, i) => row(`Mes ${i + 1}`, fmt(p))).join("")}
          </div>`
-      : "";
+        : "";
 
     document.getElementById("resultado-contenido")!.innerHTML = `
       <div class="text-center mb-5 p-4 rounded-lg bg-red-500/10 border border-red-500/20">

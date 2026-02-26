@@ -29,6 +29,7 @@ Para personas naturales con deudas que no puede pagar, la Superir ofrece la **re
 No es un tribunal. No es una demanda. No te van a quitar la casa por iniciar este proceso. Es una mesa de negociación con el Estado como árbitro.
 
 **Lo que puede lograr una renegociación:**
+
 - Reducir el monto de las cuotas mensuales
 - Ampliar el plazo de pago
 - Obtener una tasa de interés más baja
@@ -72,11 +73,14 @@ La solicitud sin documentos completos no se admite. En la siguiente sección te 
 Este es el paso donde más personas se equivocan. La Superir no admite solicitudes incompletas y te da solo **15 días hábiles** para rectificar si falta algo — si no corriges en ese plazo, rechazan la solicitud y debes empezar de cero.
 
 ### Documentos de identidad
+
 - Fotocopia de la cédula de identidad por ambos lados
 - Certificado de matrimonio (si corresponde)
 
 ### Declaraciones juradas (te las entrega la Superir)
+
 Debes declarar bajo juramento:
+
 - **Todas tus deudas**, tanto las vencidas como las que estás pagando al día — con documentos de respaldo de cada una
 - **Todos tus ingresos** — con documentos que los acrediten
 - **Todos tus bienes** — con documentos de dominio o inscripción
@@ -84,17 +88,20 @@ Debes declarar bajo juramento:
 - **Una propuesta de pago** para cada deuda que declaraste
 
 ### Documentos de deudas
+
 - Certificados o estados de deuda emitidos por cada acreedor (banco, retail, cooperativa, etc.)
 - **Informe de deudas CMF** — descárgalo gratis en [conocetudeuda.cmfchile.cl](https://conocetudeuda.cmfchile.cl/)
 - **Certificado del Boletín Comercial** — gratis una vez cada 4 meses en [boletincomercial.cl](https://www.boletincomercial.cl/)
 
 ### Documentos de ingresos
+
 - Liquidaciones de sueldo de los últimos meses (si eres dependiente)
 - Certificado de cotizaciones previsionales de los últimos 12 meses, con el RUT de quien te paga
 - Carpeta tributaria del SII con Formulario 22 y Formulario 29 (si emites boletas o tienes actividad en SII)
 - Información de ingresos de agentes retenedores del año tributario actual y el anterior
 
 ### Documentos de bienes
+
 - Si tienes propiedades: certificado de dominio vigente, certificado de hipotecas/gravámenes y certificado de avalúo fiscal
 - Si tienes vehículos: certificado de anotaciones vigentes del Registro Civil
 
@@ -115,6 +122,7 @@ No hay atajo aquí. Consigue cada documento de la lista anterior antes de tocar 
 El trámite se hace en el sitio web de la Superir con tu **ClaveÚnica**. Hay un manual completo y videos tutoriales disponibles en su sitio.
 
 Si prefieres atención presencial, puedes ir a:
+
 - Santiago: Hermanos Amunátegui 228, de lunes a viernes 09:00–14:00 hrs
 - Regiones: [superir.gob.cl/oficinas-regionales](https://www.superir.gob.cl/oficinas-regionales/)
 
@@ -198,4 +206,4 @@ No automáticamente. Después de lograr el acuerdo, tú debes solicitarlo ante l
 
 ---
 
-*La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para iniciar el trámite visita [superir.gob.cl](https://www.superir.gob.cl/perfil-deudor-requisito-renegociacion/) o [ChileAtiende](https://www.chileatiende.gob.cl/fichas/37401-renegociacion-de-las-deudas-de-una-persona). Para asesoría gratuita contacta la [Corporación de Asistencia Judicial](https://www.cajmetro.cl/).*
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para iniciar el trámite visita [superir.gob.cl](https://www.superir.gob.cl/perfil-deudor-requisito-renegociacion/) o [ChileAtiende](https://www.chileatiende.gob.cl/fichas/37401-renegociacion-de-las-deudas-de-una-persona). Para asesoría gratuita contacta la [Corporación de Asistencia Judicial](https://www.cajmetro.cl/)._

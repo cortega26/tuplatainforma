@@ -11,11 +11,10 @@ import Footer from "@/components/Footer.astro";
   <Header />
   <main id="main-content" class="app-layout">
     <section class="border-b border-border pt-8 pb-6">
-      <h1 class="my-4 text-3xl font-bold sm:text-4xl">
-        📈 Simulador APV
-      </h1>
+      <h1 class="my-4 text-3xl font-bold sm:text-4xl">📈 Simulador APV</h1>
       <p class="max-w-xl text-foreground/70">
-        Calcula cuánto ahorras en impuestos con el APV Régimen A o B según tu sueldo. Compara ambos regímenes y encuentra cuál te conviene.
+        Calcula cuánto ahorras en impuestos con el APV Régimen A o B según tu
+        sueldo. Compara ambos regímenes y encuentra cuál te conviene.
       </p>
     </section>
 
@@ -25,7 +24,10 @@ import Footer from "@/components/Footer.astro";
         <h2 class="mb-5 text-lg font-semibold">📝 Ingresa tus datos</h2>
 
         <div class="mb-4">
-          <label for="sueldo" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="sueldo"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Sueldo bruto mensual ($)
           </label>
           <input
@@ -38,7 +40,10 @@ import Footer from "@/components/Footer.astro";
         </div>
 
         <div class="mb-4">
-          <label for="ahorro" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="ahorro"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Ahorro APV mensual ($)
           </label>
           <input
@@ -49,22 +54,40 @@ import Footer from "@/components/Footer.astro";
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
           <p class="mt-1 text-xs text-foreground/50">
-            Para recibir el bono máximo del Régimen A necesitas ahorrar al menos ~$224.000/mes (≈ 40 UTM / 12).
+            Para recibir el bono máximo del Régimen A necesitas ahorrar al menos
+            ~$224.000/mes (≈ 40 UTM / 12).
           </p>
         </div>
 
         <div class="mb-4">
-          <label class="mb-2 block text-sm font-medium text-foreground/70">Sistema de salud</label>
+          <label class="mb-2 block text-sm font-medium text-foreground/70"
+            >Sistema de salud</label
+          >
           <div class="flex gap-2">
             <label class="flex-1 cursor-pointer">
-              <input type="radio" name="salud" value="fonasa" checked class="peer sr-only" />
-              <span class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent">
+              <input
+                type="radio"
+                name="salud"
+                value="fonasa"
+                checked
+                class="peer sr-only"
+              />
+              <span
+                class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent"
+              >
                 Fonasa (7%)
               </span>
             </label>
             <label class="flex-1 cursor-pointer">
-              <input type="radio" name="salud" value="isapre" class="peer sr-only" />
-              <span class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent">
+              <input
+                type="radio"
+                name="salud"
+                value="isapre"
+                class="peer sr-only"
+              />
+              <span
+                class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent"
+              >
                 Isapre (7%+)
               </span>
             </label>
@@ -72,21 +95,33 @@ import Footer from "@/components/Footer.astro";
         </div>
 
         <div id="isapre-field" class="mb-4 hidden">
-          <label for="isapre-adicional" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="isapre-adicional"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Cotización adicional Isapre (%)
           </label>
           <input
             type="number"
             id="isapre-adicional"
             placeholder="Ej: 2.5"
-            min="0" max="20" step="0.1" value="2"
+            min="0"
+            max="20"
+            step="0.1"
+            value="2"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
         </div>
 
         <div class="mb-4">
-          <label for="afp-tasa" class="mb-1 block text-sm font-medium text-foreground/70">AFP</label>
-          <select id="afp-tasa" class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none">
+          <label
+            for="afp-tasa"
+            class="mb-1 block text-sm font-medium text-foreground/70">AFP</label
+          >
+          <select
+            id="afp-tasa"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          >
             <option value="10.58">Capital – 10.58%</option>
             <option value="10.65">Cuprum – 10.65%</option>
             <option value="10.77" selected>Habitat – 10.77%</option>
@@ -106,9 +141,15 @@ import Footer from "@/components/Footer.astro";
       </div>
 
       <!-- RESULTADO -->
-      <div id="resultado" class="rounded-xl border border-border bg-background p-6">
+      <div
+        id="resultado"
+        class="rounded-xl border border-border bg-background p-6"
+      >
         <h2 class="mb-5 text-lg font-semibold">💡 Comparación de regímenes</h2>
-        <div id="resultado-contenido" class="py-8 text-center text-foreground/40">
+        <div
+          id="resultado-contenido"
+          class="py-8 text-center text-foreground/40"
+        >
           <p class="mb-3 text-4xl">📊</p>
           <p class="text-sm">Ingresa tus datos y presiona comparar.</p>
         </div>
@@ -116,20 +157,38 @@ import Footer from "@/components/Footer.astro";
     </section>
 
     <!-- EXPLICACIÓN -->
-    <section class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert">
+    <section
+      class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert"
+    >
       <h2>¿Qué es el APV y cómo funciona el beneficio?</h2>
       <p>
-        El APV (Ahorro Previsional Voluntario) es un mecanismo legal para reducir impuestos mientras ahorras para tu pensión. Debes elegir entre dos regímenes:
+        El APV (Ahorro Previsional Voluntario) es un mecanismo legal para
+        reducir impuestos mientras ahorras para tu pensión. Debes elegir entre
+        dos regímenes:
       </p>
       <ul>
-        <li><strong>Régimen A:</strong> El Estado te deposita directamente un bono del 15% de lo que ahorraste, con tope de 6 UTM anuales (~$402.000). Ideal si tu sueldo es menor a $4.800.000.</li>
-        <li><strong>Régimen B:</strong> Tus aportes se descuentan de tu base imponible, reduciendo el impuesto que pagas cada mes. Ideal si estás en tramos altos de impuesto (23%+).</li>
+        <li>
+          <strong>Régimen A:</strong> El Estado te deposita directamente un bono del
+          15% de lo que ahorraste, con tope de 6 UTM anuales (~$402.000). Ideal si
+          tu sueldo es menor a $4.800.000.
+        </li>
+        <li>
+          <strong>Régimen B:</strong> Tus aportes se descuentan de tu base imponible,
+          reduciendo el impuesto que pagas cada mes. Ideal si estás en tramos altos
+          de impuesto (23%+).
+        </li>
       </ul>
       <p>
-        Si retiras antes de jubilar, en Régimen A devuelves el bono; en Régimen B pagas impuesto diferido más una sobretasa. El APV es un instrumento de largo plazo.
+        Si retiras antes de jubilar, en Régimen A devuelves el bono; en Régimen
+        B pagas impuesto diferido más una sobretasa. El APV es un instrumento de
+        largo plazo.
       </p>
       <p class="text-sm text-foreground/50">
-        ⚠️ Valores referenciales. UTM usada: $67.294 (enero 2026). Para información oficial visita la <a href="https://www.spensiones.cl" target="_blank">Superintendencia de Pensiones</a> y el <a href="https://www.sii.cl" target="_blank">SII</a>.
+        ⚠️ Valores referenciales. UTM usada: $67.294 (enero 2026). Para
+        información oficial visita la <a
+          href="https://www.spensiones.cl"
+          target="_blank">Superintendencia de Pensiones</a
+        > y el <a href="https://www.sii.cl" target="_blank">SII</a>.
       </p>
     </section>
   </main>
@@ -143,17 +202,42 @@ import Footer from "@/components/Footer.astro";
   const TRAMOS = [
     { hasta: 13.5 * UTM, tasa: 0, rebaja: 0 },
     { hasta: 30 * UTM, tasa: 0.04, rebaja: 13.5 * UTM * 0.04 },
-    { hasta: 50 * UTM, tasa: 0.08, rebaja: 30 * UTM * (0.08 - 0.04) + 13.5 * UTM * 0.04 },
-    { hasta: 70 * UTM, tasa: 0.135, rebaja: 50 * UTM * (0.135 - 0.08) + 30 * UTM * 0.04 },
-    { hasta: 90 * UTM, tasa: 0.23, rebaja: 70 * UTM * (0.23 - 0.135) + 50 * UTM * 0.08 },
-    { hasta: 120 * UTM, tasa: 0.304, rebaja: 90 * UTM * (0.304 - 0.23) + 70 * UTM * 0.135 },
-    { hasta: 150 * UTM, tasa: 0.35, rebaja: 120 * UTM * (0.35 - 0.304) + 90 * UTM * 0.23 },
-    { hasta: Infinity, tasa: 0.4, rebaja: 150 * UTM * (0.4 - 0.35) + 120 * UTM * 0.304 },
+    {
+      hasta: 50 * UTM,
+      tasa: 0.08,
+      rebaja: 30 * UTM * (0.08 - 0.04) + 13.5 * UTM * 0.04,
+    },
+    {
+      hasta: 70 * UTM,
+      tasa: 0.135,
+      rebaja: 50 * UTM * (0.135 - 0.08) + 30 * UTM * 0.04,
+    },
+    {
+      hasta: 90 * UTM,
+      tasa: 0.23,
+      rebaja: 70 * UTM * (0.23 - 0.135) + 50 * UTM * 0.08,
+    },
+    {
+      hasta: 120 * UTM,
+      tasa: 0.304,
+      rebaja: 90 * UTM * (0.304 - 0.23) + 70 * UTM * 0.135,
+    },
+    {
+      hasta: 150 * UTM,
+      tasa: 0.35,
+      rebaja: 120 * UTM * (0.35 - 0.304) + 90 * UTM * 0.23,
+    },
+    {
+      hasta: Infinity,
+      tasa: 0.4,
+      rebaja: 150 * UTM * (0.4 - 0.35) + 120 * UTM * 0.304,
+    },
   ];
 
   function calcularImpuesto(base: number): number {
     for (const tramo of TRAMOS) {
-      if (base <= tramo.hasta) return Math.max(0, base * tramo.tasa - tramo.rebaja);
+      if (base <= tramo.hasta)
+        return Math.max(0, base * tramo.tasa - tramo.rebaja);
     }
     return 0;
   }
@@ -175,23 +259,47 @@ import Footer from "@/components/Footer.astro";
 
   document.querySelectorAll("input[name='salud']").forEach(radio => {
     radio.addEventListener("change", () => {
-      const isIsapre = (document.querySelector("input[name='salud']:checked") as HTMLInputElement)?.value === "isapre";
-      document.getElementById("isapre-field")?.classList.toggle("hidden", !isIsapre);
+      const isIsapre =
+        (
+          document.querySelector(
+            "input[name='salud']:checked"
+          ) as HTMLInputElement
+        )?.value === "isapre";
+      document
+        .getElementById("isapre-field")
+        ?.classList.toggle("hidden", !isIsapre);
     });
   });
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
-    const bruto = parseFloat((document.getElementById("sueldo") as HTMLInputElement).value) || 0;
-    const ahorro = parseFloat((document.getElementById("ahorro") as HTMLInputElement).value) || 0;
+    const bruto =
+      parseFloat(
+        (document.getElementById("sueldo") as HTMLInputElement).value
+      ) || 0;
+    const ahorro =
+      parseFloat(
+        (document.getElementById("ahorro") as HTMLInputElement).value
+      ) || 0;
 
     if (bruto <= 0 || ahorro <= 0) {
       alert("Por favor ingresa sueldo y monto de ahorro APV.");
       return;
     }
 
-    const afpTasa = parseFloat((document.getElementById("afp-tasa") as HTMLSelectElement).value) / 100;
-    const isIsapre = (document.querySelector("input[name='salud']:checked") as HTMLInputElement)?.value === "isapre";
-    const isapreadicional = parseFloat((document.getElementById("isapre-adicional") as HTMLInputElement).value) || 0;
+    const afpTasa =
+      parseFloat(
+        (document.getElementById("afp-tasa") as HTMLSelectElement).value
+      ) / 100;
+    const isIsapre =
+      (
+        document.querySelector(
+          "input[name='salud']:checked"
+        ) as HTMLInputElement
+      )?.value === "isapre";
+    const isapreadicional =
+      parseFloat(
+        (document.getElementById("isapre-adicional") as HTMLInputElement).value
+      ) || 0;
     const saludTasa = 0.07 + (isIsapre ? isapreadicional / 100 : 0);
 
     const descAfp = bruto * afpTasa;
@@ -208,7 +316,7 @@ import Footer from "@/components/Footer.astro";
     const beneficioMensualA = bonoMensual;
 
     // Régimen B: el ahorro se descuenta de la base imponible
-    const ahorroEfectivo = Math.min(ahorro, 50 * UF / 12); // tope mensual 50 UF
+    const ahorroEfectivo = Math.min(ahorro, (50 * UF) / 12); // tope mensual 50 UF
     const baseConB = Math.max(0, baseImpuesto - ahorroEfectivo);
     const impConB = calcularImpuesto(baseConB);
     const beneficioMensualB = impSinApv - impConB;
@@ -216,7 +324,12 @@ import Footer from "@/components/Footer.astro";
     const tasa = tasaMarginal(baseImpuesto);
     const recomendacion = beneficioMensualA >= beneficioMensualB ? "A" : "B";
 
-    const card = (titulo: string, color: string, items: string[], recomendado = false) => `
+    const card = (
+      titulo: string,
+      color: string,
+      items: string[],
+      recomendado = false
+    ) => `
       <div class="rounded-lg border ${recomendado ? "border-accent bg-accent/5" : "border-border"} p-4 mb-4">
         ${recomendado ? '<p class="text-xs font-bold text-accent uppercase tracking-widest mb-2">✓ Recomendado para ti</p>' : ""}
         <h3 class="font-bold text-base mb-3 ${color}">${titulo}</h3>
@@ -229,7 +342,9 @@ import Footer from "@/components/Footer.astro";
         <strong>Impuesto sin APV:</strong> ${fmt(impSinApv)}/mes
       </div>
 
-      ${card("Régimen A — Bono del Estado", "text-blue-500",
+      ${card(
+        "Régimen A — Bono del Estado",
+        "text-blue-500",
         [
           `Impuesto mensual|${fmt(impConA)}`,
           `Bono Estado (15%)|+ ${fmt(beneficioMensualA)}/mes`,
@@ -239,7 +354,9 @@ import Footer from "@/components/Footer.astro";
         recomendacion === "A"
       )}
 
-      ${card("Régimen B — Rebaja de impuesto", "text-green-500",
+      ${card(
+        "Régimen B — Rebaja de impuesto",
+        "text-green-500",
         [
           `Base imponible reducida|${fmt(baseConB)}`,
           `Impuesto con APV|${fmt(impConB)}`,
@@ -249,7 +366,7 @@ import Footer from "@/components/Footer.astro";
         recomendacion === "B"
       )}
 
-      <p class="text-xs text-foreground/40 mt-2">El bono del Régimen A se acredita en tu cuenta APV al año siguiente (Operación Renta). El tope mensual de aporte con beneficio en Régimen B es 50 UF (~${fmt(50 * UF / 12)}).</p>
+      <p class="text-xs text-foreground/40 mt-2">El bono del Régimen A se acredita en tu cuenta APV al año siguiente (Operación Renta). El tope mensual de aporte con beneficio en Régimen B es 50 UF (~${fmt((50 * UF) / 12)}).</p>
     `;
   });
 </script>

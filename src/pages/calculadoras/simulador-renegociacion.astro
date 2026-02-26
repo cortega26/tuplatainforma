@@ -15,7 +15,8 @@ import Footer from "@/components/Footer.astro";
         ⚖️ Simulador de Renegociación Superir
       </h1>
       <p class="max-w-xl text-foreground/70">
-        Ingresa tus deudas e ingresos y estima si calificas para la renegociación gratuita y qué cuota podrías pagar.
+        Ingresa tus deudas e ingresos y estima si calificas para la
+        renegociación gratuita y qué cuota podrías pagar.
       </p>
     </section>
 
@@ -25,53 +26,119 @@ import Footer from "@/components/Footer.astro";
         <h2 class="mb-5 text-lg font-semibold">📝 Tus deudas e ingresos</h2>
 
         <div class="mb-5">
-          <p class="text-sm font-medium text-foreground/70 mb-3">Deudas vencidas (con mora +90 días)</p>
+          <p class="mb-3 text-sm font-medium text-foreground/70">
+            Deudas vencidas (con mora +90 días)
+          </p>
           <div id="deudas-container" class="space-y-3">
-            <div class="deuda-row flex gap-2 items-center">
-              <input type="number" placeholder="Monto ($) Ej: 1.500.000" min="0"
-                class="flex-1 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none deuda-monto" />
-              <input type="number" placeholder="Meses mora" min="1" max="240" value="90"
-                class="w-28 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none deuda-dias" />
+            <div class="deuda-row flex items-center gap-2">
+              <input
+                type="number"
+                placeholder="Monto ($) Ej: 1.500.000"
+                min="0"
+                class="deuda-monto flex-1 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none"
+              />
+              <input
+                type="number"
+                placeholder="Meses mora"
+                min="1"
+                max="240"
+                value="90"
+                class="deuda-dias w-28 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none"
+              />
             </div>
-            <div class="deuda-row flex gap-2 items-center">
-              <input type="number" placeholder="Monto ($) Ej: 800.000" min="0"
-                class="flex-1 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none deuda-monto" />
-              <input type="number" placeholder="Meses mora" min="1" max="240" value="90"
-                class="w-28 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none deuda-dias" />
+            <div class="deuda-row flex items-center gap-2">
+              <input
+                type="number"
+                placeholder="Monto ($) Ej: 800.000"
+                min="0"
+                class="deuda-monto flex-1 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none"
+              />
+              <input
+                type="number"
+                placeholder="Meses mora"
+                min="1"
+                max="240"
+                value="90"
+                class="deuda-dias w-28 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none"
+              />
             </div>
           </div>
-          <button id="agregar-deuda" class="mt-2 text-xs text-accent hover:underline">+ Agregar otra deuda</button>
-          <p class="mt-1 text-xs text-foreground/50">Meses mora = tiempo desde el último pago. Necesitas ≥ 3 meses en cada deuda.</p>
+          <button
+            id="agregar-deuda"
+            class="mt-2 text-xs text-accent hover:underline"
+            >+ Agregar otra deuda</button
+          >
+          <p class="mt-1 text-xs text-foreground/50">
+            Meses mora = tiempo desde el último pago. Necesitas ≥ 3 meses en
+            cada deuda.
+          </p>
         </div>
 
         <div class="mb-4">
-          <label for="ingreso" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="ingreso"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Ingreso mensual neto ($)
           </label>
-          <input type="number" id="ingreso" placeholder="Ej: 900.000" min="0"
-            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
-          <p class="mt-1 text-xs text-foreground/50">Lo que recibes en tu cuenta (líquido).</p>
+          <input
+            type="number"
+            id="ingreso"
+            placeholder="Ej: 900.000"
+            min="0"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+          <p class="mt-1 text-xs text-foreground/50">
+            Lo que recibes en tu cuenta (líquido).
+          </p>
         </div>
 
         <div class="mb-4">
-          <label for="plazo-renego" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="plazo-renego"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Plazo de renegociación deseado (meses)
           </label>
-          <input type="number" id="plazo-renego" placeholder="Ej: 36" min="6" max="120" value="36"
-            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
+          <input
+            type="number"
+            id="plazo-renego"
+            placeholder="Ej: 36"
+            min="6"
+            max="120"
+            value="36"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
         </div>
 
         <div class="mb-4">
-          <label for="tasa-renego" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="tasa-renego"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Tasa de interés del acuerdo (% mensual)
           </label>
-          <input type="number" id="tasa-renego" placeholder="Ej: 1.5" min="0" max="5" step="0.1" value="1.5"
-            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
-          <p class="mt-1 text-xs text-foreground/50">La tasa varía según el acuerdo. Los acuerdos Superir suelen bajar la tasa respecto al contrato original. Usa 0% para simular cuota sin interés.</p>
+          <input
+            type="number"
+            id="tasa-renego"
+            placeholder="Ej: 1.5"
+            min="0"
+            max="5"
+            step="0.1"
+            value="1.5"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+          <p class="mt-1 text-xs text-foreground/50">
+            La tasa varía según el acuerdo. Los acuerdos Superir suelen bajar la
+            tasa respecto al contrato original. Usa 0% para simular cuota sin
+            interés.
+          </p>
         </div>
 
-        <button id="calcBtn"
-          class="mt-2 w-full rounded-lg bg-accent px-4 py-3 text-base font-bold text-background transition-opacity hover:opacity-90">
+        <button
+          id="calcBtn"
+          class="mt-2 w-full rounded-lg bg-accent px-4 py-3 text-base font-bold text-background transition-opacity hover:opacity-90"
+        >
           Simular renegociación →
         </button>
       </div>
@@ -79,25 +146,49 @@ import Footer from "@/components/Footer.astro";
       <!-- RESULTADO -->
       <div class="rounded-xl border border-border bg-background p-6">
         <h2 class="mb-5 text-lg font-semibold">📊 Diagnóstico y simulación</h2>
-        <div id="resultado-contenido" class="py-8 text-center text-foreground/40">
+        <div
+          id="resultado-contenido"
+          class="py-8 text-center text-foreground/40"
+        >
           <p class="mb-3 text-4xl">⚖️</p>
-          <p class="text-sm">Ingresa tus deudas e ingresos para ver si calificas.</p>
+          <p class="text-sm">
+            Ingresa tus deudas e ingresos para ver si calificas.
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert">
+    <section
+      class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert"
+    >
       <h2>¿Qué es la renegociación Superir?</h2>
       <p>
-        La <strong>Superintendencia de Insolvencia y Reemprendimiento (Superir)</strong> ofrece un procedimiento gratuito donde actúa como mediadora entre tú y tus acreedores para acordar nuevas condiciones de pago. No necesitas abogado y más del 93% de quienes lo intentan llegan a acuerdo.
+        La <strong
+          >Superintendencia de Insolvencia y Reemprendimiento (Superir)</strong
+        > ofrece un procedimiento gratuito donde actúa como mediadora entre tú y tus
+        acreedores para acordar nuevas condiciones de pago. No necesitas abogado y
+        más del 93% de quienes lo intentan llegan a acuerdo.
       </p>
       <ul>
-        <li><strong>Requisito clave:</strong> 2 o más deudas vencidas hace más de 90 días corridos que sumen más de 80 UF en total.</li>
-        <li><strong>Resultado posible:</strong> cuota más baja, plazo más largo, tasa menor, meses de gracia o condonación de intereses.</li>
-        <li><strong>No aplica a:</strong> contribuyentes de primera categoría (empresas con actividad comercial) en los últimos 24 meses.</li>
+        <li>
+          <strong>Requisito clave:</strong> 2 o más deudas vencidas hace más de 90
+          días corridos que sumen más de 80 UF en total.
+        </li>
+        <li>
+          <strong>Resultado posible:</strong> cuota más baja, plazo más largo, tasa
+          menor, meses de gracia o condonación de intereses.
+        </li>
+        <li>
+          <strong>No aplica a:</strong> contribuyentes de primera categoría (empresas
+          con actividad comercial) en los últimos 24 meses.
+        </li>
       </ul>
       <p class="text-sm text-foreground/50">
-        ⚠️ Esta simulación es educativa. Las condiciones reales del acuerdo dependen de la negociación con los acreedores. Para iniciar el trámite visita <a href="https://www.superir.gob.cl" target="_blank">superir.gob.cl</a>.
+        ⚠️ Esta simulación es educativa. Las condiciones reales del acuerdo
+        dependen de la negociación con los acreedores. Para iniciar el trámite
+        visita <a href="https://www.superir.gob.cl" target="_blank"
+          >superir.gob.cl</a
+        >.
       </p>
     </section>
   </main>
@@ -125,7 +216,10 @@ import Footer from "@/components/Footer.astro";
 
   function calcularCuota(monto: number, tasa: number, plazo: number) {
     if (tasa === 0) return monto / plazo;
-    return (monto * tasa * Math.pow(1 + tasa, plazo)) / (Math.pow(1 + tasa, plazo) - 1);
+    return (
+      (monto * tasa * Math.pow(1 + tasa, plazo)) /
+      (Math.pow(1 + tasa, plazo) - 1)
+    );
   }
 
   // Agregar deuda
@@ -141,7 +235,9 @@ import Footer from "@/components/Footer.astro";
       <button class="eliminar-deuda text-foreground/40 hover:text-red-400 text-lg leading-none">×</button>
     `;
     container.appendChild(row);
-    row.querySelector(".eliminar-deuda")?.addEventListener("click", () => row.remove());
+    row
+      .querySelector(".eliminar-deuda")
+      ?.addEventListener("click", () => row.remove());
   });
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
@@ -149,14 +245,29 @@ import Footer from "@/components/Footer.astro";
     const deudas: { monto: number; meses: number }[] = [];
 
     filas.forEach(fila => {
-      const monto = parseFloat((fila.querySelector(".deuda-monto") as HTMLInputElement).value) || 0;
-      const meses = parseInt((fila.querySelector(".deuda-dias") as HTMLInputElement).value) || 0;
+      const monto =
+        parseFloat(
+          (fila.querySelector(".deuda-monto") as HTMLInputElement).value
+        ) || 0;
+      const meses =
+        parseInt(
+          (fila.querySelector(".deuda-dias") as HTMLInputElement).value
+        ) || 0;
       if (monto > 0) deudas.push({ monto, meses });
     });
 
-    const ingreso = parseFloat((document.getElementById("ingreso") as HTMLInputElement).value) || 0;
-    const plazo = parseInt((document.getElementById("plazo-renego") as HTMLInputElement).value) || 36;
-    const tasaMensual = parseFloat((document.getElementById("tasa-renego") as HTMLInputElement).value) / 100;
+    const ingreso =
+      parseFloat(
+        (document.getElementById("ingreso") as HTMLInputElement).value
+      ) || 0;
+    const plazo =
+      parseInt(
+        (document.getElementById("plazo-renego") as HTMLInputElement).value
+      ) || 36;
+    const tasaMensual =
+      parseFloat(
+        (document.getElementById("tasa-renego") as HTMLInputElement).value
+      ) / 100;
 
     if (deudas.length === 0 || ingreso <= 0) {
       alert("Por favor ingresa al menos una deuda y tu ingreso mensual.");
@@ -166,16 +277,18 @@ import Footer from "@/components/Footer.astro";
     const totalDeuda = deudas.reduce((a, b) => a + b.monto, 0);
     const totalUF = totalDeuda / UF_VALOR;
     const deudasCalificadas = deudas.filter(d => d.meses >= 3);
-    const totalUFCalificado = deudasCalificadas.reduce((a, b) => a + b.monto, 0) / UF_VALOR;
+    const totalUFCalificado =
+      deudasCalificadas.reduce((a, b) => a + b.monto, 0) / UF_VALOR;
 
     // Verificar requisitos
     const req1 = deudas.length >= 2;
     const req2 = deudasCalificadas.length >= 2;
     const req3 = totalUFCalificado >= UF_MINIMO;
 
-    const check = (ok: boolean) => ok
-      ? '<span class="text-green-500 font-bold">✓</span>'
-      : '<span class="text-red-400 font-bold">✗</span>';
+    const check = (ok: boolean) =>
+      ok
+        ? '<span class="text-green-500 font-bold">✓</span>'
+        : '<span class="text-red-400 font-bold">✗</span>';
 
     // Simulación de cuota
     const cuotaSimulada = calcularCuota(totalDeuda, tasaMensual, plazo);
@@ -209,11 +322,13 @@ import Footer from "@/components/Footer.astro";
       </div>
 
       <div class="mt-3 rounded-lg bg-foreground/5 p-3 text-xs text-foreground/60">
-        ${pctIngreso <= 30
-          ? "✅ La cuota simulada es manejable (≤30% de tu ingreso). Una propuesta en este rango tiene más chances de ser aceptada."
-          : pctIngreso <= 50
-          ? "⚠️ La cuota es alta (30–50% del ingreso). Considera extender el plazo o negociar condonación de intereses."
-          : "🔴 La cuota supera el 50% de tu ingreso. Ajusta el plazo o solicita en la Superir que medien una quita de capital."}
+        ${
+          pctIngreso <= 30
+            ? "✅ La cuota simulada es manejable (≤30% de tu ingreso). Una propuesta en este rango tiene más chances de ser aceptada."
+            : pctIngreso <= 50
+              ? "⚠️ La cuota es alta (30–50% del ingreso). Considera extender el plazo o negociar condonación de intereses."
+              : "🔴 La cuota supera el 50% de tu ingreso. Ajusta el plazo o solicita en la Superir que medien una quita de capital."
+        }
       </div>
 
       <a href="${(import.meta.env.BASE_URL || "/").replace(/\/?$/, "/")}blog/renegociacion-superir/"

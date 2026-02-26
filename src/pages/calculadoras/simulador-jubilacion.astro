@@ -15,7 +15,8 @@ import Footer from "@/components/Footer.astro";
         🏖️ Simulador de Jubilación
       </h1>
       <p class="max-w-xl text-foreground/70">
-        Estima cuánto acumularás en tu AFP al jubilar y qué pensión mensual podrías esperar, según tu sueldo y años restantes.
+        Estima cuánto acumularás en tu AFP al jubilar y qué pensión mensual
+        podrías esperar, según tu sueldo y años restantes.
       </p>
     </section>
 
@@ -25,68 +26,118 @@ import Footer from "@/components/Footer.astro";
         <h2 class="mb-5 text-lg font-semibold">📝 Tus datos</h2>
 
         <div class="mb-4">
-          <label for="edad" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="edad"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Edad actual (años)
           </label>
           <input
-            type="number" id="edad" placeholder="Ej: 35" min="18" max="64" value="35"
+            type="number"
+            id="edad"
+            placeholder="Ej: 35"
+            min="18"
+            max="64"
+            value="35"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
         </div>
 
         <div class="mb-4">
-          <label for="edad-jubilacion" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="edad-jubilacion"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Edad de jubilación (años)
           </label>
           <input
-            type="number" id="edad-jubilacion" placeholder="Ej: 65" min="60" max="75" value="65"
-            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:invoke-none"
+            type="number"
+            id="edad-jubilacion"
+            placeholder="Ej: 65"
+            min="60"
+            max="75"
+            value="65"
+            class="focus:invoke-none w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent"
           />
-          <p class="mt-1 text-xs text-foreground/50">Edad legal: 65 hombres, 60 mujeres (puede anticiparse).</p>
+          <p class="mt-1 text-xs text-foreground/50">
+            Edad legal: 65 hombres, 60 mujeres (puede anticiparse).
+          </p>
         </div>
 
         <div class="mb-4">
-          <label for="sueldo" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="sueldo"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Sueldo bruto mensual actual ($)
           </label>
           <input
-            type="number" id="sueldo" placeholder="Ej: 1.200.000" min="0"
+            type="number"
+            id="sueldo"
+            placeholder="Ej: 1.200.000"
+            min="0"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
         </div>
 
         <div class="mb-4">
-          <label for="saldo-actual" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="saldo-actual"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Saldo actual en AFP ($) — opcional
           </label>
           <input
-            type="number" id="saldo-actual" placeholder="Ej: 8.000.000" min="0"
+            type="number"
+            id="saldo-actual"
+            placeholder="Ej: 8.000.000"
+            min="0"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
-          <p class="mt-1 text-xs text-foreground/50">Consulta tu saldo en el sitio web de tu AFP.</p>
+          <p class="mt-1 text-xs text-foreground/50">
+            Consulta tu saldo en el sitio web de tu AFP.
+          </p>
         </div>
 
         <div class="mb-4">
-          <label for="rentabilidad" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="rentabilidad"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Rentabilidad anual esperada (%)
           </label>
-          <select id="rentabilidad" class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none">
+          <select
+            id="rentabilidad"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          >
             <option value="3">3% — Conservadora (Fondos D/E)</option>
             <option value="5" selected>5% — Moderada (Fondo C)</option>
             <option value="7">7% — Agresiva (Fondos A/B)</option>
           </select>
-          <p class="mt-1 text-xs text-foreground/50">Rentabilidad real histórica promedio, descontada inflación.</p>
+          <p class="mt-1 text-xs text-foreground/50">
+            Rentabilidad real histórica promedio, descontada inflación.
+          </p>
         </div>
 
         <div class="mb-4">
-          <label for="expectativa-vida" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="expectativa-vida"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Expectativa de vida estimada (años)
           </label>
           <input
-            type="number" id="expectativa-vida" placeholder="Ej: 85" min="65" max="100" value="85"
+            type="number"
+            id="expectativa-vida"
+            placeholder="Ej: 85"
+            min="65"
+            max="100"
+            value="85"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
-          <p class="mt-1 text-xs text-foreground/50">Se usa para calcular cuántos años durará tu pensión.</p>
+          <p class="mt-1 text-xs text-foreground/50">
+            Se usa para calcular cuántos años durará tu pensión.
+          </p>
         </div>
 
         <button
@@ -98,9 +149,15 @@ import Footer from "@/components/Footer.astro";
       </div>
 
       <!-- RESULTADO -->
-      <div id="resultado" class="rounded-xl border border-border bg-background p-6">
+      <div
+        id="resultado"
+        class="rounded-xl border border-border bg-background p-6"
+      >
         <h2 class="mb-5 text-lg font-semibold">📊 Proyección</h2>
-        <div id="resultado-contenido" class="py-8 text-center text-foreground/40">
+        <div
+          id="resultado-contenido"
+          class="py-8 text-center text-foreground/40"
+        >
           <p class="mb-3 text-4xl">🏖️</p>
           <p class="text-sm">Ingresa tus datos y presiona simular.</p>
         </div>
@@ -108,19 +165,44 @@ import Footer from "@/components/Footer.astro";
     </section>
 
     <!-- EXPLICACIÓN -->
-    <section class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert">
+    <section
+      class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert"
+    >
       <h2>¿Cómo funciona la simulación?</h2>
       <p>
-        La calculadora proyecta el saldo acumulado en tu AFP al momento de jubilarte, considerando las cotizaciones mensuales del 10% de tu sueldo más el aporte adicional del empleador contemplado en la Reforma Previsional 2025 (que llega al 7% en 2033).
+        La calculadora proyecta el saldo acumulado en tu AFP al momento de
+        jubilarte, considerando las cotizaciones mensuales del 10% de tu sueldo
+        más el aporte adicional del empleador contemplado en la Reforma
+        Previsional 2025 (que llega al 7% en 2033).
       </p>
       <ul>
-        <li><strong>Cotización base:</strong> 10% de tu sueldo bruto cada mes.</li>
-        <li><strong>Aporte empleador (Reforma 2025):</strong> Parte de este 7% adicional va directo a tu cuenta individual (4.5% del total). La simulación lo incorpora de forma gradual desde 2025 hasta 2033.</li>
-        <li><strong>Rentabilidad:</strong> El fondo genera rentabilidad real sobre el saldo acumulado. La rentabilidad real histórica del sistema ha sido de entre 4% y 7% anual en fondos medios.</li>
-        <li><strong>Pensión estimada:</strong> Se calcula dividiendo el saldo acumulado en los meses de vida restante desde la jubilación, sin considerar rentabilidad posterior (estimación conservadora).</li>
+        <li>
+          <strong>Cotización base:</strong> 10% de tu sueldo bruto cada mes.
+        </li>
+        <li>
+          <strong>Aporte empleador (Reforma 2025):</strong> Parte de este 7% adicional
+          va directo a tu cuenta individual (4.5% del total). La simulación lo incorpora
+          de forma gradual desde 2025 hasta 2033.
+        </li>
+        <li>
+          <strong>Rentabilidad:</strong> El fondo genera rentabilidad real sobre el
+          saldo acumulado. La rentabilidad real histórica del sistema ha sido de entre
+          4% y 7% anual en fondos medios.
+        </li>
+        <li>
+          <strong>Pensión estimada:</strong> Se calcula dividiendo el saldo acumulado
+          en los meses de vida restante desde la jubilación, sin considerar rentabilidad
+          posterior (estimación conservadora).
+        </li>
       </ul>
       <p class="text-sm text-foreground/50">
-        ⚠️ Esta es una simulación educativa con supuestos simplificados. La pensión real depende de muchos factores adicionales: lagunas previsionales, modalidad de pensión, PGU, etc. Para una proyección oficial consulta tu AFP o la <a href="https://www.spensiones.cl" target="_blank">Superintendencia de Pensiones</a>.
+        ⚠️ Esta es una simulación educativa con supuestos simplificados. La
+        pensión real depende de muchos factores adicionales: lagunas
+        previsionales, modalidad de pensión, PGU, etc. Para una proyección
+        oficial consulta tu AFP o la <a
+          href="https://www.spensiones.cl"
+          target="_blank">Superintendencia de Pensiones</a
+        >.
       </p>
     </section>
   </main>
@@ -146,12 +228,29 @@ import Footer from "@/components/Footer.astro";
   }
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
-    const edad = parseInt((document.getElementById("edad") as HTMLInputElement).value) || 35;
-    const edadJubilacion = parseInt((document.getElementById("edad-jubilacion") as HTMLInputElement).value) || 65;
-    const sueldo = parseFloat((document.getElementById("sueldo") as HTMLInputElement).value) || 0;
-    const saldoInicial = parseFloat((document.getElementById("saldo-actual") as HTMLInputElement).value) || 0;
-    const rentAnual = parseFloat((document.getElementById("rentabilidad") as HTMLSelectElement).value) / 100;
-    const expectativaVida = parseInt((document.getElementById("expectativa-vida") as HTMLInputElement).value) || 85;
+    const edad =
+      parseInt((document.getElementById("edad") as HTMLInputElement).value) ||
+      35;
+    const edadJubilacion =
+      parseInt(
+        (document.getElementById("edad-jubilacion") as HTMLInputElement).value
+      ) || 65;
+    const sueldo =
+      parseFloat(
+        (document.getElementById("sueldo") as HTMLInputElement).value
+      ) || 0;
+    const saldoInicial =
+      parseFloat(
+        (document.getElementById("saldo-actual") as HTMLInputElement).value
+      ) || 0;
+    const rentAnual =
+      parseFloat(
+        (document.getElementById("rentabilidad") as HTMLSelectElement).value
+      ) / 100;
+    const expectativaVida =
+      parseInt(
+        (document.getElementById("expectativa-vida") as HTMLInputElement).value
+      ) || 85;
 
     if (sueldo <= 0) {
       alert("Por favor ingresa tu sueldo bruto mensual.");
@@ -173,9 +272,10 @@ import Footer from "@/components/Footer.astro";
 
     for (let m = 0; m < totalMeses; m++) {
       const año = añoActual + Math.floor(m / 12);
-      const cotizacionTrabajador = sueldo * 0.10;
+      const cotizacionTrabajador = sueldo * 0.1;
       const cotizacionEmpleador = sueldo * aporteEmpleadorCuenta(año);
-      saldo = saldo * (1 + rentMensual) + cotizacionTrabajador + cotizacionEmpleador;
+      saldo =
+        saldo * (1 + rentMensual) + cotizacionTrabajador + cotizacionEmpleador;
     }
 
     const mesesPension = Math.max(1, (expectativaVida - edadJubilacion) * 12);

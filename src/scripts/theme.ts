@@ -25,9 +25,7 @@ function getPreferTheme(): string {
 let themeValue = window.theme?.themeValue ?? getPreferTheme();
 
 function getThemeAriaLabel(): string {
-  return themeValue === DARK
-    ? "Cambiar a modo claro"
-    : "Cambiar a modo oscuro";
+  return themeValue === DARK ? "Cambiar a modo claro" : "Cambiar a modo oscuro";
 }
 
 function setPreference(): void {

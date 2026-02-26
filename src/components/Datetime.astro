@@ -28,9 +28,9 @@ const {
 /* ========== Formatted Datetime ========== */
 const isModified = modDatetime && modDatetime > pubDatetime;
 
-const datetime = dayjs(isModified ? modDatetime : pubDatetime).tz(
-  postTimezone || SITE.timezone
-).locale("es");
+const datetime = dayjs(isModified ? modDatetime : pubDatetime)
+  .tz(postTimezone || SITE.timezone)
+  .locale("es");
 
 const date = datetime.format("D MMM YYYY");
 ---

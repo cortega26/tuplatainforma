@@ -15,78 +15,130 @@ import Footer from "@/components/Footer.astro";
         🔄 Conversor UF ↔ Pesos
       </h1>
       <p class="max-w-xl text-foreground/70">
-        Convierte entre Unidad de Fomento y pesos chilenos al valor oficial del día. Sin registro, sin publicidad.
+        Convierte entre Unidad de Fomento y pesos chilenos al valor oficial del
+        día. Sin registro, sin publicidad.
       </p>
     </section>
 
-    <section class="py-8 max-w-xl">
+    <section class="max-w-xl py-8">
       <!-- VALOR DEL DÍA -->
-      <div id="valor-uf-banner" class="mb-6 rounded-xl border border-accent/30 bg-accent/5 p-4 flex items-center justify-between gap-4">
+      <div
+        id="valor-uf-banner"
+        class="mb-6 flex items-center justify-between gap-4 rounded-xl border border-accent/30 bg-accent/5 p-4"
+      >
         <div>
-          <p class="text-xs font-bold uppercase tracking-widest text-accent mb-0.5">Valor UF hoy</p>
+          <p
+            class="mb-0.5 text-xs font-bold tracking-widest text-accent uppercase"
+          >
+            Valor UF hoy
+          </p>
           <p id="uf-display" class="text-3xl font-bold">$39.773,62</p>
-          <p id="uf-fecha" class="text-xs text-foreground/50 mt-0.5">25 de febrero de 2026 · Fuente: Banco Central</p>
+          <p id="uf-fecha" class="mt-0.5 text-xs text-foreground/50">
+            25 de febrero de 2026 · Fuente: Banco Central
+          </p>
         </div>
         <span class="text-4xl">🇨🇱</span>
       </div>
 
       <!-- CONVERSOR -->
-      <div class="rounded-xl border border-border p-6 mb-6">
+      <div class="mb-6 rounded-xl border border-border p-6">
         <!-- UF → Pesos -->
         <div class="mb-6">
-          <label for="uf-input" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="uf-input"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Unidades de Fomento (UF)
           </label>
           <input
-            type="number" id="uf-input" placeholder="Ej: 1000" min="0" step="0.01"
-            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none text-lg"
+            type="number"
+            id="uf-input"
+            placeholder="Ej: 1000"
+            min="0"
+            step="0.01"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-lg text-foreground focus:border-accent focus:outline-none"
           />
         </div>
 
-        <div class="flex items-center gap-3 mb-6">
-          <div class="flex-1 h-px bg-border"></div>
-          <button id="swap-btn" class="rounded-full border border-border px-3 py-1 text-sm text-foreground/60 hover:border-accent hover:text-accent transition-all">
+        <div class="mb-6 flex items-center gap-3">
+          <div class="h-px flex-1 bg-border"></div>
+          <button
+            id="swap-btn"
+            class="rounded-full border border-border px-3 py-1 text-sm text-foreground/60 transition-all hover:border-accent hover:text-accent"
+          >
             ⇅ invertir
           </button>
-          <div class="flex-1 h-px bg-border"></div>
+          <div class="h-px flex-1 bg-border"></div>
         </div>
 
         <div class="mb-6">
-          <label for="pesos-input" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="pesos-input"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Pesos chilenos ($)
           </label>
           <input
-            type="number" id="pesos-input" placeholder="Ej: 39.773.620" min="0"
-            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none text-lg"
+            type="number"
+            id="pesos-input"
+            placeholder="Ej: 39.773.620"
+            min="0"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-lg text-foreground focus:border-accent focus:outline-none"
           />
         </div>
 
         <!-- RESULTADO VISUAL -->
-        <div id="resultado" class="hidden rounded-lg bg-foreground/5 p-4 text-center">
+        <div
+          id="resultado"
+          class="hidden rounded-lg bg-foreground/5 p-4 text-center"
+        >
           <p id="resultado-texto" class="text-2xl font-bold"></p>
-          <p id="resultado-sub" class="text-sm text-foreground/50 mt-1"></p>
+          <p id="resultado-sub" class="mt-1 text-sm text-foreground/50"></p>
         </div>
       </div>
 
       <!-- TABLA DE REFERENCIA RÁPIDA -->
       <div class="rounded-xl border border-border p-6">
-        <h2 class="text-base font-semibold mb-4">Valores de referencia rápidos</h2>
+        <h2 class="mb-4 text-base font-semibold">
+          Valores de referencia rápidos
+        </h2>
         <div id="tabla-ref" class="space-y-2 text-sm"></div>
       </div>
     </section>
 
-    <section class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert">
+    <section
+      class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert"
+    >
       <h2>¿Qué es la UF y por qué cambia cada día?</h2>
       <p>
-        La <strong>Unidad de Fomento (UF)</strong> es un índice de reajustabilidad que sigue la inflación. Se actualiza diariamente desde el día 10 de cada mes hasta el día 9 del siguiente, en base al IPC del mes anterior publicado por el INE.
+        La <strong>Unidad de Fomento (UF)</strong> es un índice de reajustabilidad
+        que sigue la inflación. Se actualiza diariamente desde el día 10 de cada mes
+        hasta el día 9 del siguiente, en base al IPC del mes anterior publicado por
+        el INE.
       </p>
       <ul>
-        <li>Si el IPC de enero fue 0,5%, la UF sube ese 0,5% distribuido entre el 10 de febrero y el 9 de marzo.</li>
-        <li>El valor oficial lo publica el Banco Central en el Diario Oficial a más tardar el día 9 de cada mes.</li>
-        <li>Se usa en arriendos, créditos hipotecarios, multas y contratos de largo plazo.</li>
+        <li>
+          Si el IPC de enero fue 0,5%, la UF sube ese 0,5% distribuido entre el
+          10 de febrero y el 9 de marzo.
+        </li>
+        <li>
+          El valor oficial lo publica el Banco Central en el Diario Oficial a
+          más tardar el día 9 de cada mes.
+        </li>
+        <li>
+          Se usa en arriendos, créditos hipotecarios, multas y contratos de
+          largo plazo.
+        </li>
       </ul>
       <p class="text-sm text-foreground/50">
-        ⚠️ El valor de la UF en este conversor es referencial (25/02/2026: $39.773,62). Para el valor exacto del día consulta el <a href="https://si3.bcentral.cl/Indicadoressiete/secure/Indicadoresdiarios.aspx" target="_blank">Banco Central</a> o el <a href="https://www.sii.cl/valores_y_fechas/uf/uf2026.htm" target="_blank">SII</a>.
+        ⚠️ El valor de la UF en este conversor es referencial (25/02/2026:
+        $39.773,62). Para el valor exacto del día consulta el <a
+          href="https://si3.bcentral.cl/Indicadoressiete/secure/Indicadoresdiarios.aspx"
+          target="_blank">Banco Central</a
+        > o el <a
+          href="https://www.sii.cl/valores_y_fechas/uf/uf2026.htm"
+          target="_blank">SII</a
+        >.
       </p>
     </section>
   </main>
@@ -97,7 +149,11 @@ import Footer from "@/components/Footer.astro";
   const UF_VALOR = 39773.62;
 
   const fmt = (n: number) => "$" + Math.round(n).toLocaleString("es-CL");
-  const fmtUF = (n: number) => n.toLocaleString("es-CL", { minimumFractionDigits: 2, maximumFractionDigits: 4 }) + " UF";
+  const fmtUF = (n: number) =>
+    n.toLocaleString("es-CL", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 4,
+    }) + " UF";
 
   const ufInput = document.getElementById("uf-input") as HTMLInputElement;
   const pesosInput = document.getElementById("pesos-input") as HTMLInputElement;
@@ -116,7 +172,10 @@ import Footer from "@/components/Footer.astro";
     if (!isNaN(uf) && uf > 0) {
       const pesos = uf * UF_VALOR;
       pesosInput.value = String(Math.round(pesos));
-      mostrarResultado(fmt(pesos), `${fmtUF(uf)} = ${fmt(pesos)} al 25/02/2026`);
+      mostrarResultado(
+        fmt(pesos),
+        `${fmtUF(uf)} = ${fmt(pesos)} al 25/02/2026`
+      );
     } else {
       pesosInput.value = "";
       resultado.classList.add("hidden");
@@ -139,7 +198,9 @@ import Footer from "@/components/Footer.astro";
     const ufVal = ufInput.value;
     const pesosVal = pesosInput.value;
     ufInput.value = pesosVal ? String(parseFloat(pesosVal) / UF_VALOR) : "";
-    pesosInput.value = ufVal ? String(Math.round(parseFloat(ufVal) * UF_VALOR)) : "";
+    pesosInput.value = ufVal
+      ? String(Math.round(parseFloat(ufVal) * UF_VALOR))
+      : "";
     ufInput.dispatchEvent(new Event("input"));
   });
 
@@ -157,10 +218,13 @@ import Footer from "@/components/Footer.astro";
   ];
 
   const tablaEl = document.getElementById("tabla-ref")!;
-  tablaEl.innerHTML = refs.map(r =>
-    `<div class="flex justify-between py-1.5 border-b border-border last:border-0">
+  tablaEl.innerHTML = refs
+    .map(
+      r =>
+        `<div class="flex justify-between py-1.5 border-b border-border last:border-0">
       <span class="text-foreground/60">${r.label}</span>
       <span class="font-mono font-semibold">${fmt(r.uf * UF_VALOR)}</span>
     </div>`
-  ).join("");
+    )
+    .join("");
 </script>

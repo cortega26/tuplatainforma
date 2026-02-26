@@ -32,11 +32,11 @@ El **Seguro de Cesantía** es un seguro obligatorio administrado por la **AFC Ch
 
 El aporte mensual al seguro varía según el tipo de contrato:
 
-| Tipo de contrato | Aporte trabajador | Aporte empleador | Total |
-|---|---|---|---|
-| Indefinido | 0.6% | 2.4% | 3% |
-| Plazo fijo / obra o faena | 0% | 3% | 3% |
-| Casa particular | 0.6% | 2.4% | 3% |
+| Tipo de contrato          | Aporte trabajador | Aporte empleador | Total |
+| ------------------------- | ----------------- | ---------------- | ----- |
+| Indefinido                | 0.6%              | 2.4%             | 3%    |
+| Plazo fijo / obra o faena | 0%                | 3%               | 3%    |
+| Casa particular           | 0.6%              | 2.4%             | 3%    |
 
 Si tienes contrato a plazo fijo, **no te descuentan nada del sueldo** para el seguro — pero igual acumulas, porque el empleador pone el 3% completo.
 
@@ -63,6 +63,7 @@ También puedes verificar si estás afiliado al seguro ingresando tu RUT directa
 La Cuenta Individual puedes cobrarla **cada vez que quedes cesante**, sin importar por qué terminó el contrato. Da lo mismo si te despidieron, si renunciaste, si venció tu plazo fijo o si fue de mutuo acuerdo.
 
 **Requisitos mínimos para cobrar la CIC:**
+
 - Contrato indefinido o de casa particular: **al menos 6 cotizaciones** desde que te afiliaste o desde el último cobro
 - Contrato a plazo fijo u obra: **al menos 3 cotizaciones**
 
@@ -96,14 +97,14 @@ El Fondo Solidario tiene requisitos más estrictos porque es un fondo común. Lo
 
 Los pagos se calculan como porcentaje del **promedio de tus últimas remuneraciones** (últimas 10 si tenías contrato indefinido, últimas 5 si era a plazo fijo). El porcentaje va decreciendo mes a mes:
 
-| Mes | % del promedio de remuneraciones |
-|---|---|
-| 1° | 70% |
-| 2° | 55% |
-| 3° | 45% |
-| 4° | 40% |
-| 5° | 35% |
-| 6° en adelante | 30% |
+| Mes            | % del promedio de remuneraciones |
+| -------------- | -------------------------------- |
+| 1°             | 70%                              |
+| 2°             | 55%                              |
+| 3°             | 45%                              |
+| 4°             | 40%                              |
+| 5°             | 35%                              |
+| 6° en adelante | 30%                              |
 
 Los pagos continúan mientras haya saldo en tu cuenta. Si se acaba antes del mes 6, los pagos se detienen.
 
@@ -116,6 +117,7 @@ El FCS también financia los primeros pagos con lo que quede en tu CIC antes de 
 ### Beneficios adicionales mientras cobras
 
 Sea que cobres por CIC o FCS, mientras recibes pagos del seguro tienes derecho a:
+
 - **Cobertura de salud a través de Fonasa**
 - **Aporte a tu AFP** equivalente al 10% de la prestación (desde mayo 2025, como parte de la Reforma Previsional)
 - Acceso a cursos de capacitación gratuitos (si cobras por FCS)
@@ -183,4 +185,4 @@ No. El **seguro de cesantía** es el que administra la AFC y es para trabajadore
 
 ---
 
-*La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para consultar tu saldo y cobrar visita [afc.cl](https://www.afc.cl). Los montos y porcentajes del FCS se actualizan anualmente — verifica los valores vigentes en el sitio de la AFC.*
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para consultar tu saldo y cobrar visita [afc.cl](https://www.afc.cl). Los montos y porcentajes del FCS se actualizan anualmente — verifica los valores vigentes en el sitio de la AFC._

@@ -15,7 +15,8 @@ import Footer from "@/components/Footer.astro";
         🛡️ Calculadora de Seguro de Cesantía
       </h1>
       <p class="max-w-xl text-foreground/70">
-        Estima cuánto tienes acumulado en tu Cuenta Individual de Cesantía (CIC) y cuánto recibirías cada mes si quedaras sin trabajo.
+        Estima cuánto tienes acumulado en tu Cuenta Individual de Cesantía (CIC)
+        y cuánto recibirías cada mes si quedaras sin trabajo.
       </p>
     </section>
 
@@ -25,27 +26,50 @@ import Footer from "@/components/Footer.astro";
         <h2 class="mb-5 text-lg font-semibold">📝 Tus datos</h2>
 
         <div class="mb-4">
-          <label for="sueldo" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="sueldo"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Sueldo bruto mensual ($)
           </label>
           <input
-            type="number" id="sueldo" placeholder="Ej: 1.200.000" min="0"
+            type="number"
+            id="sueldo"
+            placeholder="Ej: 1.200.000"
+            min="0"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
         </div>
 
         <div class="mb-4">
-          <label class="mb-2 block text-sm font-medium text-foreground/70">Tipo de contrato</label>
+          <label class="mb-2 block text-sm font-medium text-foreground/70"
+            >Tipo de contrato</label
+          >
           <div class="flex gap-2">
             <label class="flex-1 cursor-pointer">
-              <input type="radio" name="contrato" value="indefinido" checked class="peer sr-only" />
-              <span class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent">
+              <input
+                type="radio"
+                name="contrato"
+                value="indefinido"
+                checked
+                class="peer sr-only"
+              />
+              <span
+                class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent"
+              >
                 Indefinido
               </span>
             </label>
             <label class="flex-1 cursor-pointer">
-              <input type="radio" name="contrato" value="plazo-fijo" class="peer sr-only" />
-              <span class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent">
+              <input
+                type="radio"
+                name="contrato"
+                value="plazo-fijo"
+                class="peer sr-only"
+              />
+              <span
+                class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent"
+              >
                 Plazo fijo / obra
               </span>
             </label>
@@ -53,11 +77,19 @@ import Footer from "@/components/Footer.astro";
         </div>
 
         <div class="mb-4">
-          <label for="meses-cotizados" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="meses-cotizados"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Meses cotizados en este trabajo
           </label>
           <input
-            type="number" id="meses-cotizados" placeholder="Ej: 24" min="1" max="600" value="24"
+            type="number"
+            id="meses-cotizados"
+            placeholder="Ej: 24"
+            min="1"
+            max="600"
+            value="24"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
           <p class="mt-1 text-xs text-foreground/50">
@@ -66,28 +98,46 @@ import Footer from "@/components/Footer.astro";
         </div>
 
         <div class="mb-4">
-          <label for="saldo-actual" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="saldo-actual"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Saldo actual en CIC ($) — opcional
           </label>
           <input
-            type="number" id="saldo-actual" placeholder="Consúltalo en afc.cl" min="0"
+            type="number"
+            id="saldo-actual"
+            placeholder="Consúltalo en afc.cl"
+            min="0"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
           <p class="mt-1 text-xs text-foreground/50">
-            Si lo ingresas, el resultado es más preciso. Si no, estimamos según cotizaciones.
+            Si lo ingresas, el resultado es más preciso. Si no, estimamos según
+            cotizaciones.
           </p>
         </div>
 
         <div class="mb-4">
-          <label for="causal" class="mb-1 block text-sm font-medium text-foreground/70">
+          <label
+            for="causal"
+            class="mb-1 block text-sm font-medium text-foreground/70"
+          >
             Causal de término
           </label>
-          <select id="causal" class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none">
-            <option value="necesidad">Necesidad de la empresa (art. 161)</option>
-            <option value="vencimiento">Vencimiento de plazo / conclusión de obra</option>
+          <select
+            id="causal"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          >
+            <option value="necesidad">Necesidad de la empresa (art. 161)</option
+            >
+            <option value="vencimiento"
+              >Vencimiento de plazo / conclusión de obra</option
+            >
             <option value="acuerdo">Mutuo acuerdo (art. 163 bis)</option>
             <option value="renuncia">Renuncia voluntaria</option>
-            <option value="despido-culpa">Despido por conducta (art. 160)</option>
+            <option value="despido-culpa"
+              >Despido por conducta (art. 160)</option
+            >
           </select>
         </div>
 
@@ -100,28 +150,55 @@ import Footer from "@/components/Footer.astro";
       </div>
 
       <!-- RESULTADO -->
-      <div id="resultado" class="rounded-xl border border-border bg-background p-6">
+      <div
+        id="resultado"
+        class="rounded-xl border border-border bg-background p-6"
+      >
         <h2 class="mb-5 text-lg font-semibold">💰 Tu cobertura estimada</h2>
-        <div id="resultado-contenido" class="py-8 text-center text-foreground/40">
+        <div
+          id="resultado-contenido"
+          class="py-8 text-center text-foreground/40"
+        >
           <p class="mb-3 text-4xl">🛡️</p>
           <p class="text-sm">Ingresa tus datos y presiona calcular.</p>
         </div>
       </div>
     </section>
 
-    <section class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert">
+    <section
+      class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert"
+    >
       <h2>¿Cómo funciona el Seguro de Cesantía?</h2>
       <p>
-        El Seguro de Cesantía tiene dos fondos: tu <strong>Cuenta Individual (CIC)</strong>, que es solo tuya, y el <strong>Fondo Solidario (FCS)</strong>, que es compartido. Siempre se usa primero la CIC; el FCS solo entra si tu saldo individual es insuficiente y cumples los requisitos.
+        El Seguro de Cesantía tiene dos fondos: tu <strong
+          >Cuenta Individual (CIC)</strong
+        >, que es solo tuya, y el <strong>Fondo Solidario (FCS)</strong>, que es
+        compartido. Siempre se usa primero la CIC; el FCS solo entra si tu saldo
+        individual es insuficiente y cumples los requisitos.
       </p>
       <ul>
-        <li><strong>Contrato indefinido:</strong> aportas 0,6% y tu empleador 2,4% → 3% total mensual sobre tu sueldo imponible.</li>
-        <li><strong>Plazo fijo / obra:</strong> solo aporta el empleador (3%). A ti no te descuentan nada.</li>
-        <li><strong>Mínimo para cobrar:</strong> 6 cotizaciones si es indefinido; 3 cotizaciones si es plazo fijo.</li>
-        <li><strong>Para acceder al FCS:</strong> 10 cotizaciones en los últimos 24 meses, las 3 últimas continuas, y la causal debe ser despido por necesidad, vencimiento de plazo u otras causales específicas.</li>
+        <li>
+          <strong>Contrato indefinido:</strong> aportas 0,6% y tu empleador 2,4% →
+          3% total mensual sobre tu sueldo imponible.
+        </li>
+        <li>
+          <strong>Plazo fijo / obra:</strong> solo aporta el empleador (3%). A ti
+          no te descuentan nada.
+        </li>
+        <li>
+          <strong>Mínimo para cobrar:</strong> 6 cotizaciones si es indefinido; 3
+          cotizaciones si es plazo fijo.
+        </li>
+        <li>
+          <strong>Para acceder al FCS:</strong> 10 cotizaciones en los últimos 24
+          meses, las 3 últimas continuas, y la causal debe ser despido por necesidad,
+          vencimiento de plazo u otras causales específicas.
+        </li>
       </ul>
       <p class="text-sm text-foreground/50">
-        ⚠️ Esta calculadora entrega estimaciones. El saldo exacto de tu CIC está en <a href="https://www.afc.cl" target="_blank">afc.cl</a> con tu ClaveÚnica. Los montos del FCS se actualizan anualmente.
+        ⚠️ Esta calculadora entrega estimaciones. El saldo exacto de tu CIC está
+        en <a href="https://www.afc.cl" target="_blank">afc.cl</a> con tu ClaveÚnica.
+        Los montos del FCS se actualizan anualmente.
       </p>
     </section>
   </main>
@@ -130,7 +207,7 @@ import Footer from "@/components/Footer.astro";
 
 <script>
   // Porcentajes de pago por mes (sobre promedio últimas remuneraciones)
-  const PCT_PAGO = [0.70, 0.55, 0.45, 0.40, 0.35, 0.30];
+  const PCT_PAGO = [0.7, 0.55, 0.45, 0.4, 0.35, 0.3];
 
   function fmt(n: number): string {
     return "$" + Math.round(n).toLocaleString("es-CL");
@@ -148,11 +225,25 @@ import Footer from "@/components/Footer.astro";
   }
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
-    const sueldo = parseFloat((document.getElementById("sueldo") as HTMLInputElement).value) || 0;
-    const mesesCotizados = parseInt((document.getElementById("meses-cotizados") as HTMLInputElement).value) || 0;
-    const saldoIngresado = parseFloat((document.getElementById("saldo-actual") as HTMLInputElement).value) || 0;
-    const contrato = (document.querySelector("input[name='contrato']:checked") as HTMLInputElement)?.value;
-    const causal = (document.getElementById("causal") as HTMLSelectElement).value;
+    const sueldo =
+      parseFloat(
+        (document.getElementById("sueldo") as HTMLInputElement).value
+      ) || 0;
+    const mesesCotizados =
+      parseInt(
+        (document.getElementById("meses-cotizados") as HTMLInputElement).value
+      ) || 0;
+    const saldoIngresado =
+      parseFloat(
+        (document.getElementById("saldo-actual") as HTMLInputElement).value
+      ) || 0;
+    const contrato = (
+      document.querySelector(
+        "input[name='contrato']:checked"
+      ) as HTMLInputElement
+    )?.value;
+    const causal = (document.getElementById("causal") as HTMLSelectElement)
+      .value;
 
     if (sueldo <= 0) {
       alert("Por favor ingresa tu sueldo bruto mensual.");
@@ -164,14 +255,16 @@ import Footer from "@/components/Footer.astro";
     const imponible = Math.min(sueldo, TOPE_IMPONIBLE);
 
     // Aporte mensual CIC según contrato
-    const aporteMensual = contrato === "indefinido"
-      ? imponible * 0.03   // 0.6% trabajador + 2.4% empleador
-      : imponible * 0.03;  // 3% solo empleador (plazo fijo)
+    const aporteMensual =
+      contrato === "indefinido"
+        ? imponible * 0.03 // 0.6% trabajador + 2.4% empleador
+        : imponible * 0.03; // 3% solo empleador (plazo fijo)
 
     // Saldo estimado si no se ingresó
-    const saldoCIC = saldoIngresado > 0
-      ? saldoIngresado
-      : aporteMensual * mesesCotizados * 0.9; // 90% por rentabilidad conservadora
+    const saldoCIC =
+      saldoIngresado > 0
+        ? saldoIngresado
+        : aporteMensual * mesesCotizados * 0.9; // 90% por rentabilidad conservadora
 
     // Mínimo de cotizaciones requerido
     const minCotizaciones = contrato === "indefinido" ? 6 : 3;
@@ -186,7 +279,8 @@ import Footer from "@/components/Footer.astro";
     const pagos: number[] = [];
     PCT_PAGO.forEach((pct: number, i: number): void => {
       const monto: number = sueldo * pct;
-      const disponible: number = saldoCIC - pagos.slice(0, i).reduce((a: number, b: number) => a + b, 0);
+      const disponible: number =
+        saldoCIC - pagos.slice(0, i).reduce((a: number, b: number) => a + b, 0);
       pagos.push(disponible > 0 ? Math.min(monto, disponible) : 0);
     });
 
@@ -211,10 +305,17 @@ import Footer from "@/components/Footer.astro";
         </div>
 
         <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Pagos estimados por mes</p>
-        ${pagos.map((p: number, i: number) => p > 0
-          ? row(`Mes ${i + 1} (${(PCT_PAGO[i] * 100).toFixed(0)}% del sueldo)`, fmt(p), i === 0 ? "text-accent" : "")
-          : row(`Mes ${i + 1}`, "Sin saldo", "text-foreground/30")
-        ).join("")}
+        ${pagos
+          .map((p: number, i: number) =>
+            p > 0
+              ? row(
+                  `Mes ${i + 1} (${(PCT_PAGO[i] * 100).toFixed(0)}% del sueldo)`,
+                  fmt(p),
+                  i === 0 ? "text-accent" : ""
+                )
+              : row(`Mes ${i + 1}`, "Sin saldo", "text-foreground/30")
+          )
+          .join("")}
 
         <div class="mt-4 pt-3 flex justify-between text-sm font-semibold border-t border-border">
           <span>Total cobertura CIC</span>
@@ -223,11 +324,12 @@ import Footer from "@/components/Footer.astro";
 
         <div class="mt-4 rounded-lg ${cumpleFCS ? "border-green-500/30 bg-green-500/5" : "border-foreground/10 bg-foreground/5"} border p-3 text-sm">
           <p class="font-bold mb-1">Fondo Solidario (FCS) ${badge(cumpleFCS ? "Acceso posible" : "Sin acceso", cumpleFCS ? "bg-green-500/20 text-green-500" : "bg-foreground/10 text-foreground/50")}</p>
-          ${cumpleFCS
-            ? `<p class="text-foreground/70">Con ${mesesCotizados} cotizaciones y causal válida podrías acceder al FCS para extender tu cobertura hasta 5 meses. El monto lo define la Superintendencia de Pensiones anualmente.</p>`
-            : causal === "renuncia" || causal === "despido-culpa"
-              ? `<p class="text-foreground/70">La causal seleccionada no da acceso al FCS. Solo puedes cobrar tu CIC.</p>`
-              : `<p class="text-foreground/70">Necesitas al menos 10 cotizaciones en los últimos 24 meses. Llevas ${mesesCotizados}.</p>`
+          ${
+            cumpleFCS
+              ? `<p class="text-foreground/70">Con ${mesesCotizados} cotizaciones y causal válida podrías acceder al FCS para extender tu cobertura hasta 5 meses. El monto lo define la Superintendencia de Pensiones anualmente.</p>`
+              : causal === "renuncia" || causal === "despido-culpa"
+                ? `<p class="text-foreground/70">La causal seleccionada no da acceso al FCS. Solo puedes cobrar tu CIC.</p>`
+                : `<p class="text-foreground/70">Necesitas al menos 10 cotizaciones en los últimos 24 meses. Llevas ${mesesCotizados}.</p>`
           }
         </div>
 

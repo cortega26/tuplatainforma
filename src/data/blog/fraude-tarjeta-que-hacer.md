@@ -60,6 +60,7 @@ El banco debe tener **canales disponibles las 24 horas**, gratuitos, para recibi
 Avisar para bloquear no es lo mismo que reclamar. Son dos acciones distintas y ambas son necesarias.
 
 El reclamo formal lo presentas ante tu institución financiera. En él debes indicar:
+
 - El monto reclamado
 - La fecha de cada operación no reconocida
 - El producto afectado (tarjeta, cuenta, etc.)
@@ -72,6 +73,7 @@ Si el banco te pide una declaración jurada, tiene la obligación de entregarte 
 ### Paso 3 — Haz la denuncia y entrega el comprobante (tienes 30 días corridos)
 
 Para que el banco pueda restituir los fondos, necesitas presentar una denuncia formal ante:
+
 - El Ministerio Público (Fiscalía)
 - Carabineros de Chile
 - La PDI (Policía de Investigaciones)
@@ -87,12 +89,12 @@ Una vez que tengas el comprobante de la denuncia, entrégaselo a tu banco dentro
 
 Una vez que cumpliste los tres pasos, la ley establece plazos concretos para la devolución:
 
-| Situación | Plazo para devolver |
-|---|---|
-| Montos hasta 35 UF (~$1.550.000 aprox.) | 10 días hábiles desde el reclamo |
-| Giros en cajero automático o avances en efectivo | 15 días hábiles |
-| Montos sobre 35 UF | 10 días hábiles por las primeras 35 UF + 7 días hábiles adicionales por el resto |
-| Entregaste el comprobante de denuncia después del plazo | 24 horas desde que lo entregues |
+| Situación                                               | Plazo para devolver                                                              |
+| ------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Montos hasta 35 UF (~$1.550.000 aprox.)                 | 10 días hábiles desde el reclamo                                                 |
+| Giros en cajero automático o avances en efectivo        | 15 días hábiles                                                                  |
+| Montos sobre 35 UF                                      | 10 días hábiles por las primeras 35 UF + 7 días hábiles adicionales por el resto |
+| Entregaste el comprobante de denuncia después del plazo | 24 horas desde que lo entregues                                                  |
 
 Fuente: [SERNAC — Especial Ley de Fraude](https://www.sernac.cl/portal/604/w3-propertyname-791.html)
 
@@ -199,4 +201,4 @@ La Ley 20.009 aplica a instituciones que operen en Chile y estén supervisadas p
 
 ---
 
-*La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026, incluyendo la Ley N° 20.009 y la interpretación del SERNAC. Para más información visita [sernac.cl](https://www.sernac.cl/portal/604/w3-propertyname-791.html) y [cmfchile.cl](https://www.cmfchile.cl).*
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026, incluyendo la Ley N° 20.009 y la interpretación del SERNAC. Para más información visita [sernac.cl](https://www.sernac.cl/portal/604/w3-propertyname-791.html) y [cmfchile.cl](https://www.cmfchile.cl)._
