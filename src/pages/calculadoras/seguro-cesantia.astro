@@ -1,0 +1,236 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<Layout>
+  <Header />
+  <main id="main-content" class="app-layout">
+    <section class="border-b border-border pt-8 pb-6">
+      <h1 class="my-4 text-3xl font-bold sm:text-4xl">
+        🛡️ Calculadora de Seguro de Cesantía
+      </h1>
+      <p class="max-w-xl text-foreground/70">
+        Estima cuánto tienes acumulado en tu Cuenta Individual de Cesantía (CIC) y cuánto recibirías cada mes si quedaras sin trabajo.
+      </p>
+    </section>
+
+    <section class="grid items-start gap-6 py-8 sm:grid-cols-2">
+      <!-- FORMULARIO -->
+      <div class="rounded-xl border border-border p-6">
+        <h2 class="mb-5 text-lg font-semibold">📝 Tus datos</h2>
+
+        <div class="mb-4">
+          <label for="sueldo" class="mb-1 block text-sm font-medium text-foreground/70">
+            Sueldo bruto mensual ($)
+          </label>
+          <input
+            type="number" id="sueldo" placeholder="Ej: 1.200.000" min="0"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="mb-2 block text-sm font-medium text-foreground/70">Tipo de contrato</label>
+          <div class="flex gap-2">
+            <label class="flex-1 cursor-pointer">
+              <input type="radio" name="contrato" value="indefinido" checked class="peer sr-only" />
+              <span class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent">
+                Indefinido
+              </span>
+            </label>
+            <label class="flex-1 cursor-pointer">
+              <input type="radio" name="contrato" value="plazo-fijo" class="peer sr-only" />
+              <span class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent">
+                Plazo fijo / obra
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="meses-cotizados" class="mb-1 block text-sm font-medium text-foreground/70">
+            Meses cotizados en este trabajo
+          </label>
+          <input
+            type="number" id="meses-cotizados" placeholder="Ej: 24" min="1" max="600" value="24"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+          <p class="mt-1 text-xs text-foreground/50">
+            Meses desde que ingresaste o desde el último cobro del seguro.
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <label for="saldo-actual" class="mb-1 block text-sm font-medium text-foreground/70">
+            Saldo actual en CIC ($) — opcional
+          </label>
+          <input
+            type="number" id="saldo-actual" placeholder="Consúltalo en afc.cl" min="0"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+          <p class="mt-1 text-xs text-foreground/50">
+            Si lo ingresas, el resultado es más preciso. Si no, estimamos según cotizaciones.
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <label for="causal" class="mb-1 block text-sm font-medium text-foreground/70">
+            Causal de término
+          </label>
+          <select id="causal" class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none">
+            <option value="necesidad">Necesidad de la empresa (art. 161)</option>
+            <option value="vencimiento">Vencimiento de plazo / conclusión de obra</option>
+            <option value="acuerdo">Mutuo acuerdo (art. 163 bis)</option>
+            <option value="renuncia">Renuncia voluntaria</option>
+            <option value="despido-culpa">Despido por conducta (art. 160)</option>
+          </select>
+        </div>
+
+        <button
+          id="calcBtn"
+          class="mt-2 w-full rounded-lg bg-accent px-4 py-3 text-base font-bold text-background transition-opacity hover:opacity-90"
+        >
+          Calcular cesantía →
+        </button>
+      </div>
+
+      <!-- RESULTADO -->
+      <div id="resultado" class="rounded-xl border border-border bg-background p-6">
+        <h2 class="mb-5 text-lg font-semibold">💰 Tu cobertura estimada</h2>
+        <div id="resultado-contenido" class="py-8 text-center text-foreground/40">
+          <p class="mb-3 text-4xl">🛡️</p>
+          <p class="text-sm">Ingresa tus datos y presiona calcular.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert">
+      <h2>¿Cómo funciona el Seguro de Cesantía?</h2>
+      <p>
+        El Seguro de Cesantía tiene dos fondos: tu <strong>Cuenta Individual (CIC)</strong>, que es solo tuya, y el <strong>Fondo Solidario (FCS)</strong>, que es compartido. Siempre se usa primero la CIC; el FCS solo entra si tu saldo individual es insuficiente y cumples los requisitos.
+      </p>
+      <ul>
+        <li><strong>Contrato indefinido:</strong> aportas 0,6% y tu empleador 2,4% → 3% total mensual sobre tu sueldo imponible.</li>
+        <li><strong>Plazo fijo / obra:</strong> solo aporta el empleador (3%). A ti no te descuentan nada.</li>
+        <li><strong>Mínimo para cobrar:</strong> 6 cotizaciones si es indefinido; 3 cotizaciones si es plazo fijo.</li>
+        <li><strong>Para acceder al FCS:</strong> 10 cotizaciones en los últimos 24 meses, las 3 últimas continuas, y la causal debe ser despido por necesidad, vencimiento de plazo u otras causales específicas.</li>
+      </ul>
+      <p class="text-sm text-foreground/50">
+        ⚠️ Esta calculadora entrega estimaciones. El saldo exacto de tu CIC está en <a href="https://www.afc.cl" target="_blank">afc.cl</a> con tu ClaveÚnica. Los montos del FCS se actualizan anualmente.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  // Porcentajes de pago por mes (sobre promedio últimas remuneraciones)
+  const PCT_PAGO = [0.70, 0.55, 0.45, 0.40, 0.35, 0.30];
+
+  function fmt(n: number): string {
+    return "$" + Math.round(n).toLocaleString("es-CL");
+  }
+
+  function row(label: string, value: string, color = "") {
+    return `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
+      <span class="text-foreground/60">${label}</span>
+      <span class="font-semibold font-mono ${color}">${value}</span>
+    </div>`;
+  }
+
+  function badge(texto: string, color: string) {
+    return `<span class="inline-block rounded-full px-2 py-0.5 text-xs font-bold ${color}">${texto}</span>`;
+  }
+
+  document.getElementById("calcBtn")?.addEventListener("click", () => {
+    const sueldo = parseFloat((document.getElementById("sueldo") as HTMLInputElement).value) || 0;
+    const mesesCotizados = parseInt((document.getElementById("meses-cotizados") as HTMLInputElement).value) || 0;
+    const saldoIngresado = parseFloat((document.getElementById("saldo-actual") as HTMLInputElement).value) || 0;
+    const contrato = (document.querySelector("input[name='contrato']:checked") as HTMLInputElement)?.value;
+    const causal = (document.getElementById("causal") as HTMLSelectElement).value;
+
+    if (sueldo <= 0) {
+      alert("Por favor ingresa tu sueldo bruto mensual.");
+      return;
+    }
+
+    // Tope imponible AFC 2026 referencial
+    const TOPE_IMPONIBLE = 131.9 * 39773.62;
+    const imponible = Math.min(sueldo, TOPE_IMPONIBLE);
+
+    // Aporte mensual CIC según contrato
+    const aporteMensual = contrato === "indefinido"
+      ? imponible * 0.03   // 0.6% trabajador + 2.4% empleador
+      : imponible * 0.03;  // 3% solo empleador (plazo fijo)
+
+    // Saldo estimado si no se ingresó
+    const saldoCIC = saldoIngresado > 0
+      ? saldoIngresado
+      : aporteMensual * mesesCotizados * 0.9; // 90% por rentabilidad conservadora
+
+    // Mínimo de cotizaciones requerido
+    const minCotizaciones = contrato === "indefinido" ? 6 : 3;
+    const cumpleMinimo = mesesCotizados >= minCotizaciones;
+
+    // Acceso al FCS
+    const causalesFCS = ["necesidad", "vencimiento", "acuerdo"];
+    const tieneCausalFCS = causalesFCS.includes(causal);
+    const cumpleFCS = tieneCausalFCS && mesesCotizados >= 10;
+
+    // Pagos estimados con CIC
+    const pagos = PCT_PAGO.map((pct, i) => {
+      const monto = sueldo * pct;
+      const disponible = saldoCIC - pagos.slice(0, i).reduce((a, b) => a + b, 0);
+      return disponible > 0 ? Math.min(monto, disponible) : 0;
+    });
+
+    const mesesCubiertos = pagos.filter(p => p > 0).length;
+    const totalCIC = pagos.reduce((a, b) => a + b, 0);
+
+    // Construir HTML
+    let html = "";
+
+    if (!cumpleMinimo) {
+      html = `<div class="rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-sm">
+        <p class="font-bold text-red-400 mb-1">⚠️ No cumples el mínimo aún</p>
+        <p class="text-foreground/70">Necesitas al menos <strong>${minCotizaciones} cotizaciones</strong> para cobrar. Llevas ${mesesCotizados}.</p>
+        <p class="mt-2 text-foreground/60">Te faltan ${minCotizaciones - mesesCotizados} ${minCotizaciones - mesesCotizados === 1 ? "mes" : "meses"}.</p>
+      </div>`;
+    } else {
+      html = `
+        <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
+          <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Saldo CIC estimado</p>
+          <p class="text-4xl font-bold">${fmt(saldoCIC)}</p>
+          ${saldoIngresado > 0 ? '<p class="text-xs text-foreground/50 mt-1">Según saldo ingresado</p>' : '<p class="text-xs text-foreground/50 mt-1">Estimado (ingresa saldo real desde afc.cl para más precisión)</p>'}
+        </div>
+
+        <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Pagos estimados por mes</p>
+        ${pagos.map((p, i) => p > 0
+          ? row(`Mes ${i + 1} (${(PCT_PAGO[i] * 100).toFixed(0)}% del sueldo)`, fmt(p), i === 0 ? "text-accent" : "")
+          : row(`Mes ${i + 1}`, "Sin saldo", "text-foreground/30")
+        ).join("")}
+
+        <div class="mt-4 pt-3 flex justify-between text-sm font-semibold border-t border-border">
+          <span>Total cobertura CIC</span>
+          <span>${fmt(totalCIC)} · ${mesesCubiertos} ${mesesCubiertos === 1 ? "mes" : "meses"}</span>
+        </div>
+
+        <div class="mt-4 rounded-lg ${cumpleFCS ? "border-green-500/30 bg-green-500/5" : "border-foreground/10 bg-foreground/5"} border p-3 text-sm">
+          <p class="font-bold mb-1">Fondo Solidario (FCS) ${badge(cumpleFCS ? "Acceso posible" : "Sin acceso", cumpleFCS ? "bg-green-500/20 text-green-500" : "bg-foreground/10 text-foreground/50")}</p>
+          ${cumpleFCS
+            ? `<p class="text-foreground/70">Con ${mesesCotizados} cotizaciones y causal válida podrías acceder al FCS para extender tu cobertura hasta 5 meses. El monto lo define la Superintendencia de Pensiones anualmente.</p>`
+            : causal === "renuncia" || causal === "despido-culpa"
+              ? `<p class="text-foreground/70">La causal seleccionada no da acceso al FCS. Solo puedes cobrar tu CIC.</p>`
+              : `<p class="text-foreground/70">Necesitas al menos 10 cotizaciones en los últimos 24 meses. Llevas ${mesesCotizados}.</p>`
+          }
+        </div>
+
+        <p class="mt-3 text-xs text-foreground/40">Consulta tu saldo real en <a href="https://www.afc.cl" target="_blank" class="underline">afc.cl</a> con tu ClaveÚnica.</p>
+      `;
+    }
+
+    document.getElementById("resultado-contenido")!.innerHTML = html;
+  });
+</script>

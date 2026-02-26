@@ -24,6 +24,12 @@ function getPreferTheme(): string {
 // Use existing theme value from inline script if available, otherwise detect
 let themeValue = window.theme?.themeValue ?? getPreferTheme();
 
+function getThemeAriaLabel(): string {
+  return themeValue === DARK
+    ? "Cambiar a modo claro"
+    : "Cambiar a modo oscuro";
+}
+
 function setPreference(): void {
   localStorage.setItem(THEME, themeValue);
   reflectPreference();
@@ -32,7 +38,9 @@ function setPreference(): void {
 function reflectPreference(): void {
   document.firstElementChild?.setAttribute("data-theme", themeValue);
 
-  document.querySelector("#theme-btn")?.setAttribute("aria-label", themeValue);
+  document
+    .querySelector("#theme-btn")
+    ?.setAttribute("aria-label", getThemeAriaLabel());
 
   // Get a reference to the body element
   const body = document.body;

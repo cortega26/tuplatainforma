@@ -32,13 +32,26 @@ const crumbs = segments.map((seg, i) => ({
   href: segments.slice(0, i + 1).join("/") + "/",
 }));
 
+const routeLabels: Record<string, string> = {
+  about: "Nosotros",
+  archives: "Archivo",
+  calculadoras: "Calculadoras",
+  posts: "Artículos",
+  search: "Buscar",
+  tags: "Etiquetas",
+};
+
 // Labels only for display (do not use for href building)
-const labels = crumbs.map(c => decodeURIComponent(c.seg));
+const labels = crumbs.map(c => {
+  const decoded = decodeURIComponent(c.seg);
+  const mapped = routeLabels[decoded];
+  return mapped ? mapped : decoded.replace(/-/g, " ");
+});
 
 // Display tweaks
 if (segments[0] === "posts") {
-  const page = segments[1] || "1";
-  if (segments.length >= 2) labels.splice(0, 2, `Artículos (página ${page})`);
+  const page = Number(segments[1]);
+  if (!Number.isNaN(page)) labels.splice(0, 2, `Artículos (página ${page})`);
   else labels.splice(0, 1, "Artículos");
 }
 
@@ -56,7 +69,7 @@ const homeHref = SITE_URL.pathname;
 const toHref = (path: string) => new URL(path, SITE_URL).pathname;
 ---
 
-<nav class="app-layout mt-8 mb-1" aria-label="breadcrumb">
+<nav class="app-layout mt-8 mb-1" aria-label="Migas de pan">
   <ul
     class="font-light [&>li]:inline [&>li:not(:last-child)>a]:hover:opacity-100"
   >

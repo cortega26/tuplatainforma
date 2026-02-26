@@ -1,0 +1,223 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<Layout>
+  <Header />
+  <main id="main-content" class="app-layout">
+    <section class="border-b border-border pt-8 pb-6">
+      <h1 class="my-4 text-3xl font-bold sm:text-4xl">
+        🏦 Calculadora de Crédito de Consumo
+      </h1>
+      <p class="max-w-xl text-foreground/70">
+        Calcula la cuota mensual, el costo total, los intereses y el CAE de cualquier crédito de consumo. Compara dos opciones lado a lado.
+      </p>
+    </section>
+
+    <section class="grid items-start gap-6 py-8 sm:grid-cols-2">
+      <!-- FORMULARIO -->
+      <div class="rounded-xl border border-border p-6">
+        <h2 class="mb-5 text-lg font-semibold">📝 Datos del crédito</h2>
+
+        <div class="mb-4">
+          <label for="monto" class="mb-1 block text-sm font-medium text-foreground/70">
+            Monto del crédito ($)
+          </label>
+          <input
+            type="number" id="monto" placeholder="Ej: 2.000.000" min="0"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="plazo" class="mb-1 block text-sm font-medium text-foreground/70">
+            Plazo (meses)
+          </label>
+          <input
+            type="number" id="plazo" placeholder="Ej: 24" min="1" max="120" value="24"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="tasa-tipo" class="mb-1 block text-sm font-medium text-foreground/70">
+            Tipo de tasa
+          </label>
+          <div class="flex gap-2 mb-2">
+            <label class="flex-1 cursor-pointer">
+              <input type="radio" name="tasa-tipo" value="mensual" checked class="peer sr-only" />
+              <span class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent">
+                Mensual
+              </span>
+            </label>
+            <label class="flex-1 cursor-pointer">
+              <input type="radio" name="tasa-tipo" value="anual" class="peer sr-only" />
+              <span class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent">
+                Anual
+              </span>
+            </label>
+          </div>
+          <input
+            type="number" id="tasa" placeholder="Ej: 3.49" min="0" step="0.01" value="3.49"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+          <p class="mt-1 text-xs text-foreground/50">
+            TMC para créditos hasta 200 UF: ~3.49% mensual (~51.5% anual). Verifica la tasa exacta de tu oferta.
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <label for="seguro" class="mb-1 block text-sm font-medium text-foreground/70">
+            Seguro mensual ($) — opcional
+          </label>
+          <input
+            type="number" id="seguro" placeholder="Ej: 5.000" min="0" value="0"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+          <p class="mt-1 text-xs text-foreground/50">Algunos créditos incluyen seguro de desgravamen. Si te lo ofrecen, ingresa el monto mensual.</p>
+        </div>
+
+        <div class="mb-4">
+          <label for="gastos" class="mb-1 block text-sm font-medium text-foreground/70">
+            Gastos notariales / operacionales ($) — opcional
+          </label>
+          <input
+            type="number" id="gastos" placeholder="Ej: 50.000" min="0" value="0"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+        </div>
+
+        <button
+          id="calcBtn"
+          class="mt-2 w-full rounded-lg bg-accent px-4 py-3 text-base font-bold text-background transition-opacity hover:opacity-90"
+        >
+          Calcular crédito →
+        </button>
+      </div>
+
+      <!-- RESULTADO -->
+      <div id="resultado" class="rounded-xl border border-border bg-background p-6">
+        <h2 class="mb-5 text-lg font-semibold">📋 Desglose del crédito</h2>
+        <div id="resultado-contenido" class="py-8 text-center text-foreground/40">
+          <p class="mb-3 text-4xl">🏦</p>
+          <p class="text-sm">Ingresa los datos y presiona calcular.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPLICACIÓN -->
+    <section class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert">
+      <h2>¿Qué es el CAE y por qué importa?</h2>
+      <p>
+        El <strong>CAE (Carga Anual Equivalente)</strong> es el indicador que permite comparar el costo real de distintos créditos de forma justa. Incluye la tasa de interés, los seguros y los gastos operacionales, expresados como porcentaje anual del monto solicitado.
+      </p>
+      <ul>
+        <li><strong>No te fijes solo en la cuota:</strong> Una cuota baja puede venir con un plazo largo que duplica el costo total.</li>
+        <li><strong>No te fijes solo en la tasa:</strong> Una tasa baja con seguros caros puede resultar en un CAE más alto que un crédito con tasa mayor sin seguros.</li>
+        <li><strong>Compara siempre el CAE:</strong> La ley obliga a todas las instituciones financieras en Chile a informarlo. Es el único número que permite comparación justa.</li>
+      </ul>
+      <p class="text-sm text-foreground/50">
+        ⚠️ El CAE calculado aquí es aproximado. El CAE oficial de un crédito lo calcula la institución financiera según metodología CMF. Para comparar ofertas reales usa <a href="https://www.comparaonline.cl" target="_blank">ComparaOnline</a> o solicita la hoja TCEA a tu banco.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  function fmt(n: number): string {
+    return "$" + Math.round(n).toLocaleString("es-CL");
+  }
+
+  function calcularCuota(monto: number, tasaMensual: number, plazo: number): number {
+    if (tasaMensual === 0) return monto / plazo;
+    return (monto * tasaMensual * Math.pow(1 + tasaMensual, plazo)) / (Math.pow(1 + tasaMensual, plazo) - 1);
+  }
+
+  // CAE aproximado: tasa anual que iguala el monto neto con todos los pagos futuros
+  function calcularCAE(montoNeto: number, cuotaTotal: number, plazo: number): number {
+    // Búsqueda binaria de la tasa mensual equivalente
+    let lo = 0, hi = 2, tm = 0.05;
+    for (let i = 0; i < 50; i++) {
+      tm = (lo + hi) / 2;
+      const vp = cuotaTotal * (1 - Math.pow(1 + tm, -plazo)) / tm;
+      if (vp > montoNeto) lo = tm;
+      else hi = tm;
+    }
+    return Math.pow(1 + tm, 12) - 1;
+  }
+
+  document.getElementById("calcBtn")?.addEventListener("click", () => {
+    const monto = parseFloat((document.getElementById("monto") as HTMLInputElement).value) || 0;
+    const plazo = parseInt((document.getElementById("plazo") as HTMLInputElement).value) || 0;
+    const tasaRaw = parseFloat((document.getElementById("tasa") as HTMLInputElement).value) || 0;
+    const tipoTasa = (document.querySelector("input[name='tasa-tipo']:checked") as HTMLInputElement)?.value;
+    const seguro = parseFloat((document.getElementById("seguro") as HTMLInputElement).value) || 0;
+    const gastos = parseFloat((document.getElementById("gastos") as HTMLInputElement).value) || 0;
+
+    if (monto <= 0 || plazo <= 0 || tasaRaw <= 0) {
+      alert("Por favor ingresa monto, plazo y tasa.");
+      return;
+    }
+
+    const tasaMensual = tipoTasa === "anual"
+      ? Math.pow(1 + tasaRaw / 100, 1 / 12) - 1
+      : tasaRaw / 100;
+
+    const cuotaBase = calcularCuota(monto, tasaMensual, plazo);
+    const cuotaTotal = cuotaBase + seguro;
+    const totalPagado = cuotaTotal * plazo + gastos;
+    const totalIntereses = totalPagado - monto;
+
+    // CAE: considera gastos iniciales que reducen monto neto recibido
+    const montoNeto = monto - gastos;
+    const cae = calcularCAE(montoNeto > 0 ? montoNeto : monto, cuotaTotal, plazo);
+
+    const tasaAnualEq = (Math.pow(1 + tasaMensual, 12) - 1) * 100;
+
+    const row = (label: string, value: string, color = "") =>
+      `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
+        <span class="text-foreground/60">${label}</span>
+        <span class="font-semibold font-mono ${color}">${value}</span>
+      </div>`;
+
+    document.getElementById("resultado-contenido")!.innerHTML = `
+      <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
+        <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Cuota mensual</p>
+        <p class="text-4xl font-bold">${fmt(cuotaTotal)}</p>
+        ${seguro > 0 ? `<p class="text-xs text-foreground/50 mt-1">Incluye ${fmt(seguro)} de seguro</p>` : ""}
+      </div>
+
+      ${row("Monto solicitado", fmt(monto))}
+      ${row("Plazo", `${plazo} meses`)}
+      ${row("Tasa mensual", tasaMensual.toFixed(4) + "%")}
+      ${row("Tasa anual equivalente", tasaAnualEq.toFixed(2) + "%")}
+      ${row("CAE (Carga Anual Equiv.)", (cae * 100).toFixed(2) + "%", "text-accent")}
+      ${row("Total intereses", fmt(totalIntereses), "text-red-400")}
+      ${gastos > 0 ? row("Gastos operacionales", fmt(gastos), "text-red-400") : ""}
+      ${row("Total a pagar", fmt(totalPagado), "text-red-400")}
+
+      <div class="mt-4 p-3 rounded-lg bg-foreground/5 text-xs text-foreground/60">
+        Por cada $1.000.000 prestado pagas <strong>${fmt(totalPagado / (monto / 1_000_000))}</strong> en total —
+        ${((totalIntereses / monto) * 100).toFixed(0)}% más de lo que te prestaron.
+      </div>
+    `;
+  });
+
+  // Cambiar label de tasa según tipo
+  document.querySelectorAll("input[name='tasa-tipo']").forEach(r => {
+    r.addEventListener("change", () => {
+      const tipo = (document.querySelector("input[name='tasa-tipo']:checked") as HTMLInputElement)?.value;
+      const input = document.getElementById("tasa") as HTMLInputElement;
+      if (tipo === "mensual") {
+        input.value = "3.49";
+        input.placeholder = "Ej: 3.49";
+      } else {
+        input.value = "51.5";
+        input.placeholder = "Ej: 51.5";
+      }
+    });
+  });
+</script>

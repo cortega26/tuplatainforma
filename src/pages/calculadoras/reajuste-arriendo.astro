@@ -1,0 +1,238 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<Layout>
+  <Header />
+  <main id="main-content" class="app-layout">
+    <section class="border-b border-border pt-8 pb-6">
+      <h1 class="my-4 text-3xl font-bold sm:text-4xl">
+        🏠 Calculadora de Reajuste de Arriendo
+      </h1>
+      <p class="max-w-xl text-foreground/70">
+        Calcula cuánto sube tu arriendo según la variación de la UF o el IPC. Útil tanto para arrendatarios como para propietarios.
+      </p>
+    </section>
+
+    <section class="grid items-start gap-6 py-8 sm:grid-cols-2">
+      <!-- FORMULARIO -->
+      <div class="rounded-xl border border-border p-6">
+        <h2 class="mb-5 text-lg font-semibold">📝 Datos del arriendo</h2>
+
+        <div class="mb-4">
+          <label class="mb-2 block text-sm font-medium text-foreground/70">Tipo de reajuste según contrato</label>
+          <div class="flex gap-2">
+            <label class="flex-1 cursor-pointer">
+              <input type="radio" name="tipo" value="uf" checked class="peer sr-only" />
+              <span class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent">
+                En UF
+              </span>
+            </label>
+            <label class="flex-1 cursor-pointer">
+              <input type="radio" name="tipo" value="ipc" class="peer sr-only" />
+              <span class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent">
+                Por IPC
+              </span>
+            </label>
+            <label class="flex-1 cursor-pointer">
+              <input type="radio" name="tipo" value="pesos" class="peer sr-only" />
+              <span class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent">
+                Pesos fijos
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- CAMPOS UF -->
+        <div id="campos-uf">
+          <div class="mb-4">
+            <label for="arriendo-uf" class="mb-1 block text-sm font-medium text-foreground/70">
+              Monto del arriendo en UF
+            </label>
+            <input type="number" id="arriendo-uf" placeholder="Ej: 15.5" min="0" step="0.01"
+              class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
+          </div>
+          <div class="mb-4">
+            <label for="uf-antes" class="mb-1 block text-sm font-medium text-foreground/70">
+              Valor UF al pagar el último arriendo ($)
+            </label>
+            <input type="number" id="uf-antes" placeholder="Ej: 38.500" min="0"
+              class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
+          </div>
+          <div class="mb-4">
+            <label for="uf-hoy" class="mb-1 block text-sm font-medium text-foreground/70">
+              Valor UF hoy ($)
+            </label>
+            <input type="number" id="uf-hoy" value="39773.62" min="0"
+              class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
+            <p class="mt-1 text-xs text-foreground/50">Valor referencial 25/02/2026. Ajusta si es necesario.</p>
+          </div>
+        </div>
+
+        <!-- CAMPOS IPC -->
+        <div id="campos-ipc" class="hidden">
+          <div class="mb-4">
+            <label for="arriendo-pesos-ipc" class="mb-1 block text-sm font-medium text-foreground/70">
+              Arriendo actual en pesos ($)
+            </label>
+            <input type="number" id="arriendo-pesos-ipc" placeholder="Ej: 450.000" min="0"
+              class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
+          </div>
+          <div class="mb-4">
+            <label for="ipc-variacion" class="mb-1 block text-sm font-medium text-foreground/70">
+              Variación IPC del período (%)
+            </label>
+            <input type="number" id="ipc-variacion" placeholder="Ej: 4.7" step="0.1"
+              class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
+            <p class="mt-1 text-xs text-foreground/50">
+              IPC acumulado del año o del período pactado. El IPC anual 2025 fue de 4,5%. Verifica en <a href="https://www.ine.cl" target="_blank" class="underline">ine.cl</a>.
+            </p>
+          </div>
+        </div>
+
+        <!-- CAMPOS PESOS FIJOS -->
+        <div id="campos-pesos" class="hidden">
+          <div class="mb-4">
+            <label for="arriendo-pesos" class="mb-1 block text-sm font-medium text-foreground/70">
+              Arriendo actual en pesos ($)
+            </label>
+            <input type="number" id="arriendo-pesos" placeholder="Ej: 450.000" min="0"
+              class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
+          </div>
+          <div class="mb-4 rounded-lg bg-yellow-500/10 border border-yellow-500/20 p-3 text-sm text-foreground/70">
+            ⚠️ Un contrato en pesos fijos <strong>no se reajusta automáticamente</strong>. El propietario solo puede subir el arriendo al renovar o renegociar el contrato. Si el contrato dice "reajuste por IPC" o "por UF", usa las otras opciones.
+          </div>
+        </div>
+
+        <button id="calcBtn"
+          class="mt-2 w-full rounded-lg bg-accent px-4 py-3 text-base font-bold text-background transition-opacity hover:opacity-90">
+          Calcular reajuste →
+        </button>
+      </div>
+
+      <!-- RESULTADO -->
+      <div class="rounded-xl border border-border bg-background p-6">
+        <h2 class="mb-5 text-lg font-semibold">📊 Resultado</h2>
+        <div id="resultado-contenido" class="py-8 text-center text-foreground/40">
+          <p class="mb-3 text-4xl">🏠</p>
+          <p class="text-sm">Ingresa los datos para calcular el reajuste.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert">
+      <h2>¿Cómo se reajusta legalmente un arriendo en Chile?</h2>
+      <p>
+        En Chile, el reajuste del arriendo depende de lo que diga el contrato. La ley no obliga a usar UF ni IPC; simplemente exige respetar lo pactado. Los tres casos más comunes son:
+      </p>
+      <ul>
+        <li><strong>Contrato en UF:</strong> El arriendo se convierte a pesos al valor de la UF del día de pago. No hay "reajuste" propiamente tal: el monto en UF es fijo, pero su equivalencia en pesos sube con la inflación automáticamente cada mes.</li>
+        <li><strong>Contrato con reajuste anual por IPC:</strong> El arriendo en pesos sube una vez al año según la variación del IPC del período. El propietario debe avisar con anticipación y el reajuste aplica desde la renovación anual.</li>
+        <li><strong>Contrato en pesos fijos sin cláusula:</strong> El monto no cambia hasta que se acuerde una modificación. El propietario no puede subir unilateralmente el precio durante la vigencia del contrato.</li>
+      </ul>
+      <p>
+        Ante cualquier duda o conflicto, el organismo competente es el <strong>Juzgado de Letras con competencia en arrendamiento</strong>. El SERNAC no tiene competencia en arriendos de vivienda.
+      </p>
+      <p class="text-sm text-foreground/50">
+        ⚠️ Esta calculadora entrega valores referenciales. Para interpretación legal de tu contrato, consulta a un abogado o la <a href="https://www.corporacionderechopublico.cl" target="_blank">Corporación de Asistencia Judicial</a>.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  function fmt(n: number) {
+    return "$" + Math.round(n).toLocaleString("es-CL");
+  }
+
+  function row(label: string, value: string, color = "") {
+    return `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
+      <span class="text-foreground/60">${label}</span>
+      <span class="font-semibold font-mono ${color}">${value}</span>
+    </div>`;
+  }
+
+  // Toggle campos
+  document.querySelectorAll("input[name='tipo']").forEach(r => {
+    r.addEventListener("change", () => {
+      const val = (document.querySelector("input[name='tipo']:checked") as HTMLInputElement)?.value;
+      document.getElementById("campos-uf")!.classList.toggle("hidden", val !== "uf");
+      document.getElementById("campos-ipc")!.classList.toggle("hidden", val !== "ipc");
+      document.getElementById("campos-pesos")!.classList.toggle("hidden", val !== "pesos");
+    });
+  });
+
+  document.getElementById("calcBtn")?.addEventListener("click", () => {
+    const tipo = (document.querySelector("input[name='tipo']:checked") as HTMLInputElement)?.value;
+
+    if (tipo === "pesos") {
+      const arriendo = parseFloat((document.getElementById("arriendo-pesos") as HTMLInputElement).value) || 0;
+      document.getElementById("resultado-contenido")!.innerHTML = `
+        <div class="rounded-lg border border-yellow-500/30 bg-yellow-500/10 p-4 text-sm text-foreground/70">
+          <p class="font-bold text-yellow-500 mb-2">Sin reajuste automático</p>
+          <p>Tu arriendo actual es <strong>${fmt(arriendo)}</strong>. Con un contrato en pesos fijos sin cláusula de reajuste, este monto no cambia hasta que se modifique el contrato de mutuo acuerdo.</p>
+          <p class="mt-2">Si tu contrato sí tiene cláusula de reajuste por UF o IPC, usa las otras opciones del formulario.</p>
+        </div>`;
+      return;
+    }
+
+    if (tipo === "uf") {
+      const arriendoUF = parseFloat((document.getElementById("arriendo-uf") as HTMLInputElement).value) || 0;
+      const ufAntes = parseFloat((document.getElementById("uf-antes") as HTMLInputElement).value) || 0;
+      const ufHoy = parseFloat((document.getElementById("uf-hoy") as HTMLInputElement).value) || 0;
+
+      if (arriendoUF <= 0 || ufAntes <= 0 || ufHoy <= 0) {
+        alert("Completa todos los campos de UF.");
+        return;
+      }
+
+      const arriendoAntes = arriendoUF * ufAntes;
+      const arriendoHoy = arriendoUF * ufHoy;
+      const diferencia = arriendoHoy - arriendoAntes;
+      const pctVariacion = ((ufHoy - ufAntes) / ufAntes) * 100;
+
+      document.getElementById("resultado-contenido")!.innerHTML = `
+        <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
+          <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Arriendo este mes</p>
+          <p class="text-4xl font-bold">${fmt(arriendoHoy)}</p>
+          <p class="text-sm text-foreground/50 mt-1">${arriendoUF.toLocaleString("es-CL", { minimumFractionDigits: 2 })} UF × $${Math.round(ufHoy).toLocaleString("es-CL")}</p>
+        </div>
+        ${row("Arriendo mes anterior", fmt(arriendoAntes))}
+        ${row("Diferencia", (diferencia >= 0 ? "+ " : "") + fmt(diferencia), diferencia > 0 ? "text-red-400" : "text-green-500")}
+        ${row("Variación UF del período", pctVariacion.toFixed(2) + "%")}
+        <p class="mt-3 text-xs text-foreground/40">El arriendo en UF no "sube" — siempre son ${arriendoUF} UF. Lo que varía es el equivalente en pesos según el valor diario de la UF.</p>
+      `;
+      return;
+    }
+
+    if (tipo === "ipc") {
+      const arriendoPesos = parseFloat((document.getElementById("arriendo-pesos-ipc") as HTMLInputElement).value) || 0;
+      const ipcVariacion = parseFloat((document.getElementById("ipc-variacion") as HTMLInputElement).value);
+
+      if (arriendoPesos <= 0 || isNaN(ipcVariacion)) {
+        alert("Completa el arriendo actual y la variación IPC.");
+        return;
+      }
+
+      const factor = 1 + ipcVariacion / 100;
+      const arriendoNuevo = arriendoPesos * factor;
+      const diferencia = arriendoNuevo - arriendoPesos;
+
+      document.getElementById("resultado-contenido")!.innerHTML = `
+        <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
+          <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Arriendo reajustado</p>
+          <p class="text-4xl font-bold">${fmt(arriendoNuevo)}</p>
+          <p class="text-sm text-foreground/50 mt-1">Con IPC ${ipcVariacion > 0 ? "+" : ""}${ipcVariacion}%</p>
+        </div>
+        ${row("Arriendo antes del reajuste", fmt(arriendoPesos))}
+        ${row("Aumento mensual", "+ " + fmt(diferencia), "text-red-400")}
+        ${row("Aumento anual", "+ " + fmt(diferencia * 12), "text-red-400")}
+        ${row("Factor aplicado", "×" + factor.toFixed(4))}
+        <p class="mt-3 text-xs text-foreground/40">El reajuste por IPC aplica sobre el monto en pesos pactado. Solo puede hacerse en la fecha de renovación anual indicada en el contrato.</p>
+      `;
+    }
+  });
+</script>

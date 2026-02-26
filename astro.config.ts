@@ -13,6 +13,8 @@ import { SITE } from "./src/config";
 
 import mdx from "@astrojs/mdx";
 
+const tocHeadingPattern = "table[ -]of[ -]contents|tabla de contenidos";
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
@@ -25,8 +27,14 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [
-      [remarkToc, { heading: /^(Table of contents|Tabla de contenidos)$/i }],
-      [remarkCollapse, { test: /^(Table of contents|Tabla de contenidos)$/i }],
+      [remarkToc, { heading: tocHeadingPattern }],
+      [
+        remarkCollapse,
+        {
+          test: new RegExp(`^(${tocHeadingPattern})$`, "i"),
+          summary: "Mostrar tabla de contenidos",
+        },
+      ],
     ],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes

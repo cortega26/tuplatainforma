@@ -1,0 +1,242 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<Layout>
+  <Header />
+  <main id="main-content" class="app-layout">
+    <section class="border-b border-border pt-8 pb-6">
+      <h1 class="my-4 text-3xl font-bold sm:text-4xl">
+        💡 ¿Me conviene prepagar el crédito?
+      </h1>
+      <p class="max-w-xl text-foreground/70">
+        Calcula cuánto ahorras en intereses si haces un abono extraordinario a tu crédito y si conviene más prepagar o invertir ese dinero.
+      </p>
+    </section>
+
+    <section class="grid items-start gap-6 py-8 sm:grid-cols-2">
+      <!-- FORMULARIO -->
+      <div class="rounded-xl border border-border p-6">
+        <h2 class="mb-5 text-lg font-semibold">📝 Tu crédito actual</h2>
+
+        <div class="mb-4">
+          <label for="saldo" class="mb-1 block text-sm font-medium text-foreground/70">
+            Saldo pendiente ($)
+          </label>
+          <input type="number" id="saldo" placeholder="Ej: 15.000.000" min="0"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
+        </div>
+
+        <div class="mb-4">
+          <label for="cuota" class="mb-1 block text-sm font-medium text-foreground/70">
+            Cuota mensual actual ($)
+          </label>
+          <input type="number" id="cuota" placeholder="Ej: 350.000" min="0"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
+        </div>
+
+        <div class="mb-4">
+          <label for="tasa-credito" class="mb-1 block text-sm font-medium text-foreground/70">
+            Tasa de interés mensual (%)
+          </label>
+          <input type="number" id="tasa-credito" placeholder="Ej: 0.8" min="0" max="5" step="0.01" value="0.8"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
+          <p class="mt-1 text-xs text-foreground/50">Hipotecarios: ~0.4–0.8% mensual. Consumo: ~1.5–3.5% mensual.</p>
+        </div>
+
+        <div class="mb-4">
+          <label for="meses-restantes" class="mb-1 block text-sm font-medium text-foreground/70">
+            Meses restantes
+          </label>
+          <input type="number" id="meses-restantes" placeholder="Ej: 180" min="1" max="480" value="180"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
+        </div>
+
+        <div class="mb-4">
+          <label for="monto-prepago" class="mb-1 block text-sm font-medium text-foreground/70">
+            Monto del abono extraordinario ($)
+          </label>
+          <input type="number" id="monto-prepago" placeholder="Ej: 2.000.000" min="0"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none" />
+        </div>
+
+        <div class="mb-4">
+          <label class="mb-2 block text-sm font-medium text-foreground/70">Efecto del prepago</label>
+          <div class="flex gap-2">
+            <label class="flex-1 cursor-pointer">
+              <input type="radio" name="efecto" value="reducir-plazo" checked class="peer sr-only" />
+              <span class="block rounded-lg border border-border px-3 py-2 text-center text-xs font-medium transition-all peer-checked:border-accent peer-checked:text-accent">
+                Acortar plazo
+              </span>
+            </label>
+            <label class="flex-1 cursor-pointer">
+              <input type="radio" name="efecto" value="reducir-cuota" class="peer sr-only" />
+              <span class="block rounded-lg border border-border px-3 py-2 text-center text-xs font-medium transition-all peer-checked:border-accent peer-checked:text-accent">
+                Bajar cuota
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-4 border-t border-border pt-4">
+          <label for="rentabilidad-alternativa" class="mb-1 block text-sm font-medium text-foreground/70">
+            Rentabilidad alternativa (% anual)
+          </label>
+          <select id="rentabilidad-alternativa" class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none">
+            <option value="3">3% — DAP / Fondo E AFP</option>
+            <option value="5" selected>5% — Fondo mutuo conservador</option>
+            <option value="7">7% — Fondo mixto / APV</option>
+            <option value="10">10% — Renta variable (estimado histórico)</option>
+          </select>
+          <p class="mt-1 text-xs text-foreground/50">Para comparar: ¿qué pasaría si en vez de prepagar, invirtieras ese dinero?</p>
+        </div>
+
+        <button id="calcBtn"
+          class="mt-2 w-full rounded-lg bg-accent px-4 py-3 text-base font-bold text-background transition-opacity hover:opacity-90">
+          Calcular ahorro →
+        </button>
+      </div>
+
+      <!-- RESULTADO -->
+      <div class="rounded-xl border border-border bg-background p-6">
+        <h2 class="mb-5 text-lg font-semibold">💰 ¿Conviene prepagar?</h2>
+        <div id="resultado-contenido" class="py-8 text-center text-foreground/40">
+          <p class="mb-3 text-4xl">💡</p>
+          <p class="text-sm">Ingresa los datos del crédito y el monto a prepagar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert">
+      <h2>¿Cuándo conviene prepagar y cuándo no?</h2>
+      <p>
+        La regla básica: <strong>si la tasa de tu crédito es mayor a la rentabilidad que puedes obtener invirtiendo, conviene prepagar</strong>. Si es al revés, puede ser mejor invertir.
+      </p>
+      <ul>
+        <li><strong>Crédito de consumo (tasa alta ~3% mensual):</strong> Casi siempre conviene prepagar. Ninguna inversión segura renta más que el 36–50% anual que cobran estas deudas.</li>
+        <li><strong>Crédito hipotecario (tasa baja ~0.5% mensual):</strong> La decisión es más pareja. Una inversión en fondos mutuos o ETF puede superar fácilmente ese costo anual de ~6%.</li>
+        <li><strong>Factor emocional:</strong> Quedar sin deudas tiene un valor que los números no capturan. Si la deuda te genera estrés, eso también importa.</li>
+        <li><strong>Comisión de prepago:</strong> Algunos créditos cobran hasta 1 mes de interés por prepago anticipado. Verifica en tu contrato antes de decidir.</li>
+      </ul>
+      <p class="text-sm text-foreground/50">
+        ⚠️ Simulación educativa con supuestos simplificados. Las condiciones reales de tu crédito pueden variar. Consulta tu contrato antes de hacer un prepago.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  function fmt(n: number) {
+    return "$" + Math.round(n).toLocaleString("es-CL");
+  }
+
+  function fmtM(n: number) {
+    if (n >= 1_000_000) return "$" + (n / 1_000_000).toFixed(2) + " M";
+    return fmt(n);
+  }
+
+  function row(label: string, value: string, color = "") {
+    return `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
+      <span class="text-foreground/60">${label}</span>
+      <span class="font-semibold font-mono ${color}">${value}</span>
+    </div>`;
+  }
+
+  function simularCredito(saldo: number, tasa: number, cuota: number, maxMeses = 600) {
+    let s = saldo, total = 0, meses = 0;
+    while (s > 100 && meses < maxMeses) {
+      const int = s * tasa;
+      const pago = Math.min(cuota, s + int);
+      s = s + int - pago;
+      total += pago;
+      meses++;
+    }
+    return { meses, totalPagado: total, totalIntereses: total - saldo };
+  }
+
+  document.getElementById("calcBtn")?.addEventListener("click", () => {
+    const saldo = parseFloat((document.getElementById("saldo") as HTMLInputElement).value) || 0;
+    const cuota = parseFloat((document.getElementById("cuota") as HTMLInputElement).value) || 0;
+    const tasa = parseFloat((document.getElementById("tasa-credito") as HTMLInputElement).value) / 100;
+    const mesesRestantes = parseInt((document.getElementById("meses-restantes") as HTMLInputElement).value) || 0;
+    const montoPrepago = parseFloat((document.getElementById("monto-prepago") as HTMLInputElement).value) || 0;
+    const efecto = (document.querySelector("input[name='efecto']:checked") as HTMLInputElement)?.value;
+    const rentAlternativa = parseFloat((document.getElementById("rentabilidad-alternativa") as HTMLSelectElement).value) / 100;
+
+    if (saldo <= 0 || cuota <= 0 || montoPrepago <= 0) {
+      alert("Por favor ingresa saldo, cuota y monto de prepago.");
+      return;
+    }
+
+    // Escenario sin prepago
+    const sinPrepago = simularCredito(saldo, tasa, cuota, mesesRestantes + 12);
+
+    // Escenario con prepago
+    const saldoConPrepago = Math.max(0, saldo - montoPrepago);
+    let conPrepago: { meses: number; totalPagado: number; totalIntereses: number };
+
+    if (efecto === "reducir-plazo") {
+      // Misma cuota, plazo más corto
+      conPrepago = simularCredito(saldoConPrepago, tasa, cuota, mesesRestantes + 12);
+    } else {
+      // Mismo plazo, cuota más baja
+      const nuevaCuota = saldoConPrepago <= 0 ? 0 :
+        tasa === 0 ? saldoConPrepago / mesesRestantes :
+        (saldoConPrepago * tasa * Math.pow(1 + tasa, mesesRestantes)) / (Math.pow(1 + tasa, mesesRestantes) - 1);
+      conPrepago = simularCredito(saldoConPrepago, tasa, nuevaCuota, mesesRestantes + 12);
+    }
+
+    const ahorroIntereses = sinPrepago.totalIntereses - conPrepago.totalIntereses;
+    const mesesAhorrados = sinPrepago.meses - conPrepago.meses;
+
+    // Si invirtiera el prepago en vez de abonarlo
+    const rentMensual = Math.pow(1 + rentAlternativa, 1 / 12) - 1;
+    const valorFuturoInversion = montoPrepago * Math.pow(1 + rentMensual, sinPrepago.meses);
+    const gananciaInversion = valorFuturoInversion - montoPrepago;
+
+    const convienePrepagar = ahorroIntereses > gananciaInversion;
+
+    const tasaAnual = (Math.pow(1 + tasa, 12) - 1) * 100;
+    const nuevaCuotaBaja = efecto === "reducir-cuota" && saldoConPrepago > 0
+      ? (tasa === 0 ? saldoConPrepago / mesesRestantes :
+        (saldoConPrepago * tasa * Math.pow(1 + tasa, mesesRestantes)) / (Math.pow(1 + tasa, mesesRestantes) - 1))
+      : null;
+
+    document.getElementById("resultado-contenido")!.innerHTML = `
+      <div class="mb-5 rounded-lg border ${convienePrepagar ? "border-green-500/30 bg-green-500/5" : "border-yellow-500/30 bg-yellow-500/5"} p-4 text-center">
+        <p class="text-xs font-bold uppercase tracking-widest ${convienePrepagar ? "text-green-500" : "text-yellow-500"} mb-1">
+          ${convienePrepagar ? "✓ Conviene prepagar" : "⚖️ Puede convenir más invertir"}
+        </p>
+        <p class="text-2xl font-bold">${fmtM(ahorroIntereses)}</p>
+        <p class="text-sm text-foreground/50">ahorrados en intereses</p>
+      </div>
+
+      <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Sin prepago</p>
+      ${row("Meses restantes", sinPrepago.meses.toString())}
+      ${row("Total intereses", fmt(sinPrepago.totalIntereses), "text-red-400")}
+
+      <p class="text-xs font-bold text-foreground/50 uppercase mt-4 mb-2">Con prepago de ${fmt(montoPrepago)}</p>
+      ${efecto === "reducir-plazo"
+        ? row("Meses que se acorta", mesesAhorrados > 0 ? mesesAhorrados + " meses menos" : "Se liquida", "text-green-500")
+        : row("Nueva cuota mensual", nuevaCuotaBaja !== null ? fmt(nuevaCuotaBaja) : "Saldado", "text-green-500")}
+      ${row("Total intereses con prepago", fmt(conPrepago.totalIntereses), "text-green-500")}
+      ${row("Ahorro en intereses", fmt(ahorroIntereses), "text-green-500")}
+
+      <div class="mt-5 rounded-lg bg-foreground/5 p-3">
+        <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Alternativa: invertir ${fmt(montoPrepago)} al ${rentAlternativa * 100}% anual</p>
+        ${row("Valor futuro (en " + sinPrepago.meses + " meses)", fmtM(valorFuturoInversion))}
+        ${row("Ganancia estimada", fmtM(gananciaInversion), gananciaInversion > ahorroIntereses ? "text-green-500" : "text-foreground/60")}
+        ${row("vs ahorro por prepago", fmtM(ahorroIntereses), ahorroIntereses >= gananciaInversion ? "text-green-500" : "text-foreground/60")}
+      </div>
+
+      <p class="mt-3 text-xs text-foreground/40">
+        ${convienePrepagar
+          ? `Con tu tasa de ${tasaAnual.toFixed(1)}% anual, el crédito "renta" más caro que la alternativa de inversión (${(rentAlternativa * 100).toFixed(0)}% anual). Prepagar es la mejor opción matemática.`
+          : `La inversión podría generar más que lo que ahorras en intereses. Pero ojo: la rentabilidad de la inversión no está garantizada.`}
+      </p>
+    `;
+  });
+</script>
