@@ -106,7 +106,7 @@ const tagStyles: Record<string, string> = {
           calculadoras.map(calc => (
             <li>
               <a
-                href={calc.tag === "Próximamente" ? "#" : calc.href}
+                href={calc.href}
                 class:list={[
                   "block rounded-xl border border-border p-5",
                   "transition-all duration-200",
