@@ -2,15 +2,14 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-
-const base = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
+import { getPath } from "@/utils/getPath";
 
 const calculadoras = [
   {
     titulo: "Calculadora de Sueldo Líquido",
     descripcion:
       "¿Cuánto recibirás después de AFP, salud e impuestos? Obtén el desglose completo de tus descuentos.",
-    href: `${base}calculadoras/sueldo-liquido/`,
+    href: getPath("/calculadoras/sueldo-liquido/"),
     icono: "💰",
     tag: "Más usada",
   },
@@ -18,7 +17,7 @@ const calculadoras = [
     titulo: "Conversor UF ↔ Pesos",
     descripcion:
       "Convierte entre UF y pesos al valor oficial del día. Incluye tabla de referencias rápidas.",
-    href: `${base}calculadoras/conversor-uf/`,
+    href: getPath("/calculadoras/conversor-uf/"),
     icono: "🔄",
     tag: "Nueva",
   },
@@ -26,7 +25,7 @@ const calculadoras = [
     titulo: "Simulador APV",
     descripcion:
       "Compara Régimen A y B según tu sueldo y descubre cuál te ahorra más en impuestos.",
-    href: `${base}calculadoras/apv/`,
+    href: getPath("/calculadoras/apv/"),
     icono: "📈",
     tag: "Nueva",
   },
@@ -34,7 +33,7 @@ const calculadoras = [
     titulo: "Costo Real Tarjeta de Crédito",
     descripcion:
       "Descubre cuánto pagas realmente si solo abonas el mínimo. Ve el costo total y el tiempo para saldar.",
-    href: `${base}calculadoras/tarjeta-credito/`,
+    href: getPath("/calculadoras/tarjeta-credito/"),
     icono: "💳",
     tag: "Nueva",
   },
@@ -42,7 +41,7 @@ const calculadoras = [
     titulo: "Simulador de Jubilación",
     descripcion:
       "Proyecta tu saldo AFP al jubilar considerando la Reforma Previsional 2025 y estima tu pensión.",
-    href: `${base}calculadoras/simulador-jubilacion/`,
+    href: getPath("/calculadoras/simulador-jubilacion/"),
     icono: "🏖️",
     tag: "Nueva",
   },
@@ -50,7 +49,7 @@ const calculadoras = [
     titulo: "Calculadora de Crédito de Consumo",
     descripcion:
       "Calcula cuota, CAE e intereses totales de cualquier crédito. Ingresa tasa mensual o anual.",
-    href: `${base}calculadoras/credito-consumo/`,
+    href: getPath("/calculadoras/credito-consumo/"),
     icono: "🏦",
     tag: "Nueva",
   },
@@ -58,7 +57,7 @@ const calculadoras = [
     titulo: "Seguro de Cesantía",
     descripcion:
       "Estima tu saldo CIC y cuánto recibirías cada mes si quedaras sin trabajo según tu contrato y causal.",
-    href: `${base}calculadoras/seguro-cesantia/`,
+    href: getPath("/calculadoras/seguro-cesantia/"),
     icono: "🛡️",
     tag: "Nueva",
   },
@@ -66,7 +65,7 @@ const calculadoras = [
     titulo: "Simulador Renegociación Superir",
     descripcion:
       "Ingresa tus deudas y verifica si calificas para la renegociación gratuita. Simula tu cuota.",
-    href: `${base}calculadoras/simulador-renegociacion/`,
+    href: getPath("/calculadoras/simulador-renegociacion/"),
     icono: "⚖️",
     tag: "Nueva",
   },
@@ -74,7 +73,7 @@ const calculadoras = [
     titulo: "¿Conviene prepagar el crédito?",
     descripcion:
       "Calcula el ahorro en intereses de un abono extraordinario y compáralo con invertir ese dinero.",
-    href: `${base}calculadoras/prepago-credito/`,
+    href: getPath("/calculadoras/prepago-credito/"),
     icono: "💡",
     tag: "Nueva",
   },
@@ -82,7 +81,7 @@ const calculadoras = [
     titulo: "Reajuste de Arriendo",
     descripcion:
       "Calcula cuánto sube tu arriendo según la variación de la UF o el IPC. Para contratos en UF, IPC o pesos.",
-    href: `${base}calculadoras/reajuste-arriendo/`,
+    href: getPath("/calculadoras/reajuste-arriendo/"),
     icono: "🏠",
     tag: "Nueva",
   },

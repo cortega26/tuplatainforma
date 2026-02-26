@@ -7,17 +7,13 @@ import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
 import { SITE } from "@/config";
+import { getPath } from "@/utils/getPath";
 
 const { pathname } = Astro.url;
-const RAW_BASE = import.meta.env.BASE_URL || "/";
-// Ensure BASE always ends with a trailing slash to avoid bad concatenation
-const BASE = RAW_BASE.endsWith("/") ? RAW_BASE : `${RAW_BASE}/`;
-// Normalize pathname by stripping BASE for accurate active-state checks
-const basePrefixLen = BASE.endsWith("/") ? BASE.length - 1 : BASE.length;
-const normalizedPathname = pathname.startsWith(BASE)
-  ? pathname.slice(basePrefixLen)
-  : pathname.startsWith(RAW_BASE)
-    ? pathname.slice(RAW_BASE.length)
+const basePath = getPath("/").replace(/\/$/, "");
+const normalizedPathname =
+  basePath && pathname.startsWith(basePath)
+    ? pathname.slice(basePath.length) || "/"
     : pathname;
 
 // Remove trailing slash from normalized pathname if exists
@@ -55,7 +51,7 @@ const isActive = (path: string) => {
     ]}
   >
     <a
-      href={BASE}
+      href={getPath("/")}
       class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
       style="font-family: var(--font-playfair), Georgia, serif; letter-spacing: -0.02em;"
     >
@@ -86,7 +82,7 @@ const isActive = (path: string) => {
       >
         <li class="col-span-2">
           <a
-            href={`${BASE}posts/`}
+            href={getPath("/posts/")}
             class:list={{ "active-nav": isActive("/posts") }}
           >
             Artículos
@@ -94,7 +90,7 @@ const isActive = (path: string) => {
         </li>
         <li class="col-span-2">
           <a
-            href={`${BASE}calculadoras/`}
+            href={getPath("/calculadoras/")}
             class:list={{ "active-nav": isActive("/calculadoras") }}
           >
             Calculadoras
@@ -102,7 +98,7 @@ const isActive = (path: string) => {
         </li>
         <li class="col-span-2">
           <a
-            href={`${BASE}about/`}
+            href={getPath("/about/")}
             class:list={{ "active-nav": isActive("/about") }}
           >
             Nosotros
@@ -112,7 +108,7 @@ const isActive = (path: string) => {
           SITE.showArchives && (
             <li class="col-span-2">
               <LinkButton
-                href={`${BASE}archives/`}
+                href={getPath("/archives/")}
                 class:list={[
                   "focus-outline flex justify-center p-3 sm:p-1",
                   {
@@ -130,7 +126,7 @@ const isActive = (path: string) => {
         }
         <li class="col-span-1 flex items-center justify-center">
           <LinkButton
-            href={`${BASE}search/`}
+            href={getPath("/search/")}
             class:list={[
               "focus-outline flex p-3 sm:p-1",
               { "[&>svg]:stroke-accent": isActive("/search") },

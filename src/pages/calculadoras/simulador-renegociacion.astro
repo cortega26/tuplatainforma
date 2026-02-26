@@ -2,6 +2,9 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import { getPath } from "@/utils/getPath";
+
+const renegociacionGuidePath = getPath("/posts/renegociacion-superir/");
 ---
 
 <Layout
@@ -148,6 +151,7 @@ import Footer from "@/components/Footer.astro";
         <h2 class="mb-5 text-lg font-semibold">📊 Diagnóstico y simulación</h2>
         <div
           id="resultado-contenido"
+          data-guide-url={renegociacionGuidePath}
           class="py-8 text-center text-foreground/40"
         >
           <p class="mb-3 text-4xl">⚖️</p>
@@ -241,6 +245,10 @@ import Footer from "@/components/Footer.astro";
   });
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
+    const guideUrl =
+      document.getElementById("resultado-contenido")?.dataset?.guideUrl;
+    if (!guideUrl) return;
+
     const filas = document.querySelectorAll(".deuda-row");
     const deudas: { monto: number; meses: number }[] = [];
 
@@ -331,7 +339,7 @@ import Footer from "@/components/Footer.astro";
         }
       </div>
 
-      <a href="${(import.meta.env.BASE_URL || "/").replace(/\/?$/, "/")}blog/renegociacion-superir/"
+      <a href="${guideUrl}"
         class="mt-4 block text-center text-xs text-accent hover:underline">
         → Leer guía completa de la renegociación Superir
       </a>
