@@ -2,10 +2,14 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
+
+const { parameters: economicParameters } = await getEconomicParameters();
+const firstTaxExemptBracket = 13.5 * economicParameters.utm;
 ---
 
 <Layout
-  title="Calculadora de Sueldo Líquido Chile 2026"
+  title="Calculadora de Sueldo Líquido Chile"
   description="Calcula tu sueldo líquido con desglose de AFP, salud, seguro de cesantía e impuesto de segunda categoría."
 >
   <Header />
@@ -16,7 +20,7 @@ import Footer from "@/components/Footer.astro";
       </h1>
       <p class="max-w-xl text-foreground/70">
         Ingresa tu sueldo bruto y obtén el desglose exacto de AFP, salud, seguro
-        de cesantía e impuesto de segunda categoría. Actualizado 2025.
+        de cesantía e impuesto de segunda categoría.
       </p>
     </section>
 
@@ -143,6 +147,13 @@ import Footer from "@/components/Footer.astro";
           <p class="mb-3 text-4xl">🧮</p>
           <p class="text-sm">Ingresa tu sueldo y presiona calcular.</p>
         </div>
+        <div
+          id="economic-parameters"
+          data-utm={String(economicParameters.utm)}
+          class="hidden"
+          aria-hidden="true"
+        >
+        </div>
       </div>
     </section>
 
@@ -170,7 +181,9 @@ import Footer from "@/components/Footer.astro";
         </li>
         <li>
           <strong>Impuesto de segunda categoría:</strong> Solo aplica si tu sueldo
-          supera el primer tramo exento (~$935.000 en 2025). Es progresivo.
+          supera el primer tramo exento (~${
+            "$" + Math.round(firstTaxExemptBracket).toLocaleString("es-CL")
+          }). Es progresivo.
         </li>
       </ul>
       <p class="text-sm text-foreground/50">
@@ -185,51 +198,7 @@ import Footer from "@/components/Footer.astro";
 </Layout>
 
 <script>
-  const UTM = 67294;
-
-  const TRAMOS = [
-    { hasta: 13.5 * UTM, tasa: 0, rebaja: 0 },
-    { hasta: 30 * UTM, tasa: 0.04, rebaja: 13.5 * UTM * 0.04 },
-    {
-      hasta: 50 * UTM,
-      tasa: 0.08,
-      rebaja: 30 * UTM * (0.08 - 0.04) + 13.5 * UTM * 0.04,
-    },
-    {
-      hasta: 70 * UTM,
-      tasa: 0.135,
-      rebaja: 50 * UTM * (0.135 - 0.08) + 30 * UTM * 0.04,
-    },
-    {
-      hasta: 90 * UTM,
-      tasa: 0.23,
-      rebaja: 70 * UTM * (0.23 - 0.135) + 50 * UTM * 0.08,
-    },
-    {
-      hasta: 120 * UTM,
-      tasa: 0.304,
-      rebaja: 90 * UTM * (0.304 - 0.23) + 70 * UTM * 0.135,
-    },
-    {
-      hasta: 150 * UTM,
-      tasa: 0.35,
-      rebaja: 120 * UTM * (0.35 - 0.304) + 90 * UTM * 0.23,
-    },
-    {
-      hasta: Infinity,
-      tasa: 0.4,
-      rebaja: 150 * UTM * (0.4 - 0.35) + 120 * UTM * 0.304,
-    },
-  ];
-
-  function calcularImpuesto(base: number): number {
-    for (const tramo of TRAMOS) {
-      if (base <= tramo.hasta) {
-        return Math.max(0, base * tramo.tasa - tramo.rebaja);
-      }
-    }
-    return 0;
-  }
+  import { calculateNetSalary } from "@/application/use-cases/CalculateNetSalary";
 
   function fmt(n: number): string {
     return "$" + Math.round(n).toLocaleString("es-CL");
@@ -238,6 +207,18 @@ import Footer from "@/components/Footer.astro";
   function fmtPct(n: number): string {
     return n.toFixed(2) + "%";
   }
+
+  function readEconomicUtm(): number {
+    const element = document.getElementById("economic-parameters");
+    const rawValue = element?.dataset?.utm;
+    const parsedValue = Number(rawValue);
+    if (!Number.isFinite(parsedValue) || parsedValue <= 0) {
+      throw new Error("No se pudo cargar el valor UTM para el cálculo.");
+    }
+    return parsedValue;
+  }
+
+  const utm = readEconomicUtm();
 
   // Toggle Isapre
   document.querySelectorAll("input[name='salud']").forEach(radio => {
@@ -263,31 +244,39 @@ import Footer from "@/components/Footer.astro";
       return;
     }
 
-    const afpTasa =
-      parseFloat(
-        (document.getElementById("afp-tasa") as HTMLSelectElement).value
-      ) / 100;
-    const isIsapre =
+    const afpTasaPercent = parseFloat(
+      (document.getElementById("afp-tasa") as HTMLSelectElement).value
+    );
+    const healthSystem =
       (
         document.querySelector(
           "input[name='salud']:checked"
         ) as HTMLInputElement
-      )?.value === "isapre";
-    const isapreadicional =
+      )?.value === "isapre"
+        ? "isapre"
+        : "fonasa";
+    const isapreAdicional =
       parseFloat(
         (document.getElementById("isapre-adicional") as HTMLInputElement).value
       ) || 0;
-    const saludTasa = 0.07 + (isIsapre ? isapreadicional / 100 : 0);
-    const cesantia = 0.006;
 
-    const descAfp = bruto * afpTasa;
-    const descSalud = bruto * saludTasa;
-    const descCesantia = bruto * cesantia;
-    const baseImpuesto = bruto - descAfp - descSalud;
-    const impuesto = calcularImpuesto(baseImpuesto);
-    const totalDesc = descAfp + descSalud + descCesantia + impuesto;
-    const liquido = bruto - totalDesc;
-    const pctDesc = (totalDesc / bruto) * 100;
+    let resultado;
+    try {
+      resultado = calculateNetSalary({
+        grossSalary: bruto,
+        afpRatePercent: afpTasaPercent,
+        healthSystem,
+        isapreAdditionalPercent: isapreAdicional,
+        economicParameters: { utm },
+      });
+    } catch (error) {
+      alert(
+        error instanceof Error
+          ? error.message
+          : "No se pudo calcular el sueldo líquido."
+      );
+      return;
+    }
 
     const row = (label: string, value: string, color = "") =>
       `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
@@ -298,16 +287,16 @@ import Footer from "@/components/Footer.astro";
     document.getElementById("resultado-contenido")!.innerHTML = `
       <div class="text-center mb-6 p-4 rounded-lg bg-accent/10 border border-accent/20">
         <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Sueldo Líquido</p>
-        <p class="text-4xl font-bold">${fmt(liquido)}</p>
+        <p class="text-4xl font-bold">${fmt(resultado.netSalary)}</p>
       </div>
       ${row("Sueldo bruto", fmt(bruto), "text-green-500")}
-      ${row(`AFP (${fmtPct(afpTasa * 100)})`, "− " + fmt(descAfp), "text-red-400")}
-      ${row(`Salud (${fmtPct(saludTasa * 100)})`, "− " + fmt(descSalud), "text-red-400")}
-      ${row("Seg. cesantía (0.6%)", "− " + fmt(descCesantia), "text-red-400")}
-      ${row("Imp. 2ª categoría", "− " + fmt(impuesto), "text-red-400")}
+      ${row(`AFP (${fmtPct(resultado.effectiveRates.afpPercent)})`, "− " + fmt(resultado.deductions.afp), "text-red-400")}
+      ${row(`Salud (${fmtPct(resultado.effectiveRates.healthPercent)})`, "− " + fmt(resultado.deductions.health), "text-red-400")}
+      ${row(`Seg. cesantía (${fmtPct(resultado.effectiveRates.unemploymentInsurancePercent)})`, "− " + fmt(resultado.deductions.unemploymentInsurance), "text-red-400")}
+      ${row("Imp. 2ª categoría", "− " + fmt(resultado.deductions.tax), "text-red-400")}
       <div class="mt-3 pt-3 flex justify-between text-sm font-semibold">
         <span>Total descuentos</span>
-        <span class="text-red-400">${fmt(totalDesc)} (${fmtPct(pctDesc)})</span>
+        <span class="text-red-400">${fmt(resultado.deductions.total)} (${fmtPct(resultado.effectiveRates.totalDeductionPercent)})</span>
       </div>
     `;
   });

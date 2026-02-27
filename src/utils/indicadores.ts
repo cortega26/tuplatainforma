@@ -1,36 +1,22 @@
-/**
- * Utilidad para obtener indicadores económicos de Chile
- * Fuente: mindicador.cl
- */
+import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
 
 export interface Indicadores {
   uf: number;
   utm: number;
   fecha: string;
+  source: "live" | "fallback";
+  telemetryFlag: string;
 }
 
-const FALLBACK: Indicadores = {
-  uf: 39300,
-  utm: 67294,
-  fecha: "valor de referencia",
-};
-
 export async function getIndicadores(): Promise<Indicadores> {
-  try {
-    const res = await fetch("https://mindicador.cl/api", {
-      signal: AbortSignal.timeout(5000),
-    });
-    if (!res.ok) throw new Error("Error al obtener indicadores");
-    const data = await res.json();
-    return {
-      uf: data.uf.valor,
-      utm: data.utm.valor,
-      fecha:
-        data.uf.fecha?.slice(0, 10) ?? new Date().toISOString().slice(0, 10),
-    };
-  } catch {
-    return FALLBACK;
-  }
+  const { parameters, telemetryFlag } = await getEconomicParameters();
+  return {
+    uf: parameters.uf,
+    utm: parameters.utm,
+    fecha: parameters.lastUpdated,
+    source: parameters.source,
+    telemetryFlag,
+  };
 }
 
 export function fmt(n: number): string {
@@ -38,7 +24,6 @@ export function fmt(n: number): string {
 }
 
 export function fmtFecha(fecha: string): string {
-  if (fecha === "valor de referencia") return fecha;
   const [y, m, d] = fecha.split("-");
   return `${d}/${m}/${y}`;
 }

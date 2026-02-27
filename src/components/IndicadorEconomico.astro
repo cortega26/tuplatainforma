@@ -24,6 +24,8 @@ const { tipo, multiplicador, descripcion, mostrarFecha = true } = Astro.props;
 const indicadores = await getIndicadores();
 const base = tipo === "uf" ? indicadores.uf : indicadores.utm;
 const valor = base * multiplicador;
+const sourceLabel =
+  indicadores.source === "live" ? "dato en línea" : "fallback controlado";
 ---
 
 <span class="indicador-economico">
@@ -32,7 +34,7 @@ const valor = base * multiplicador;
   {
     mostrarFecha && (
       <sup
-        title={`Basado en ${tipo.toUpperCase()} = ${fmt(base)} al ${fmtFecha(indicadores.fecha)}`}
+        title={`Basado en ${tipo.toUpperCase()} = ${fmt(base)} al ${fmtFecha(indicadores.fecha)} (${sourceLabel})`}
         class="ml-0.5 cursor-help text-xs text-foreground/40"
       >
         ⓘ

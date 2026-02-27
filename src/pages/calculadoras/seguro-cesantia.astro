@@ -2,6 +2,9 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
+
+const { parameters: economicParameters } = await getEconomicParameters();
 ---
 
 <Layout
@@ -162,6 +165,16 @@ import Footer from "@/components/Footer.astro";
           <p class="mb-3 text-4xl">🛡️</p>
           <p class="text-sm">Ingresa tus datos y presiona calcular.</p>
         </div>
+        <div
+          id="economic-parameters"
+          data-uf={String(economicParameters.uf)}
+          data-afc-monthly-taxable-cap-uf={String(
+            economicParameters.afcTopes?.monthlyTaxableCapUf ?? 131.9
+          )}
+          class="hidden"
+          aria-hidden="true"
+        >
+        </div>
       </div>
     </section>
 
@@ -206,10 +219,8 @@ import Footer from "@/components/Footer.astro";
 </Layout>
 
 <script>
+  import { estimateUnemploymentCoverage } from "@/application/use-cases/EstimateUnemploymentCoverage";
   import { animateCount } from "@/utils/animateCount";
-
-  // Porcentajes de pago por mes (sobre promedio últimas remuneraciones)
-  const PCT_PAGO = [0.7, 0.55, 0.45, 0.4, 0.35, 0.3];
   const currencyFormatter = new Intl.NumberFormat("es-CL", {
     style: "currency",
     currency: "CLP",
@@ -235,6 +246,30 @@ import Footer from "@/components/Footer.astro";
   function badge(texto: string, color: string) {
     return `<span class="inline-block rounded-full px-2 py-0.5 text-xs font-bold ${color}">${texto}</span>`;
   }
+
+  function readEconomicParameters(): {
+    uf: number;
+    afcMonthlyTaxableCapUf: number;
+  } {
+    const element = document.getElementById("economic-parameters");
+    const uf = Number(element?.dataset?.uf);
+    const afcMonthlyTaxableCapUf = Number(
+      element?.dataset?.afcMonthlyTaxableCapUf
+    );
+
+    if (
+      !Number.isFinite(uf) ||
+      uf <= 0 ||
+      !Number.isFinite(afcMonthlyTaxableCapUf) ||
+      afcMonthlyTaxableCapUf <= 0
+    ) {
+      throw new Error("No se pudieron cargar los parámetros económicos AFC.");
+    }
+
+    return { uf, afcMonthlyTaxableCapUf };
+  }
+
+  const economicParameters = readEconomicParameters();
 
   function animateResultValues() {
     const container = document.getElementById("resultado-contenido");
@@ -284,66 +319,58 @@ import Footer from "@/components/Footer.astro";
       return;
     }
 
-    // Tope imponible AFC 2026 referencial
-    const TOPE_IMPONIBLE = 131.9 * 39773.62;
-    const imponible = Math.min(sueldo, TOPE_IMPONIBLE);
-
-    // Aporte mensual CIC según contrato
-    const aporteMensual =
-      contrato === "indefinido"
-        ? imponible * 0.03 // 0.6% trabajador + 2.4% empleador
-        : imponible * 0.03; // 3% solo empleador (plazo fijo)
-
-    // Saldo estimado si no se ingresó
-    const saldoCIC =
-      saldoIngresado > 0
-        ? saldoIngresado
-        : aporteMensual * mesesCotizados * 0.9; // 90% por rentabilidad conservadora
-
-    // Mínimo de cotizaciones requerido
-    const minCotizaciones = contrato === "indefinido" ? 6 : 3;
-    const cumpleMinimo = mesesCotizados >= minCotizaciones;
-
-    // Acceso al FCS
-    const causalesFCS = ["necesidad", "vencimiento", "acuerdo"];
-    const tieneCausalFCS = causalesFCS.includes(causal);
-    const cumpleFCS = tieneCausalFCS && mesesCotizados >= 10;
-
-    // Pagos estimados con CIC
-    const pagos: number[] = [];
-    PCT_PAGO.forEach((pct: number, i: number): void => {
-      const monto: number = sueldo * pct;
-      const disponible: number =
-        saldoCIC - pagos.slice(0, i).reduce((a: number, b: number) => a + b, 0);
-      pagos.push(disponible > 0 ? Math.min(monto, disponible) : 0);
-    });
-
-    const mesesCubiertos: number = pagos.filter((p: number) => p > 0).length;
-    const totalCIC: number = pagos.reduce((a: number, b: number) => a + b, 0);
+    let estimacion;
+    try {
+      estimacion = estimateUnemploymentCoverage({
+        grossSalary: sueldo,
+        contractType: contrato as "indefinido" | "plazo-fijo",
+        terminationCause: causal as
+          | "necesidad"
+          | "vencimiento"
+          | "acuerdo"
+          | "renuncia"
+          | "despido-culpa",
+        monthsContributed: mesesCotizados,
+        currentCicBalance: saldoIngresado > 0 ? saldoIngresado : undefined,
+        economicParameters: {
+          uf: economicParameters.uf,
+          afcTopes: {
+            monthlyTaxableCapUf: economicParameters.afcMonthlyTaxableCapUf,
+          },
+        },
+      });
+    } catch (error) {
+      alert(
+        error instanceof Error
+          ? error.message
+          : "No se pudo calcular el seguro de cesantía."
+      );
+      return;
+    }
 
     // Construir HTML
     let html = "";
 
-    if (!cumpleMinimo) {
+    if (!estimacion.meetsMinimumContributions) {
       html = `<div class="rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-sm">
         <p class="font-bold text-red-400 mb-1">⚠️ No cumples el mínimo aún</p>
-        <p class="text-foreground/70">Necesitas al menos <strong>${minCotizaciones} cotizaciones</strong> para cobrar. Llevas ${mesesCotizados}.</p>
-        <p class="mt-2 text-foreground/60">Te faltan ${minCotizaciones - mesesCotizados} ${minCotizaciones - mesesCotizados === 1 ? "mes" : "meses"}.</p>
+        <p class="text-foreground/70">Necesitas al menos <strong>${estimacion.minimumContributionsRequired} cotizaciones</strong> para cobrar. Llevas ${mesesCotizados}.</p>
+        <p class="mt-2 text-foreground/60">Te faltan ${estimacion.minimumContributionsRequired - mesesCotizados} ${estimacion.minimumContributionsRequired - mesesCotizados === 1 ? "mes" : "meses"}.</p>
       </div>`;
     } else {
       html = `
         <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
           <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Saldo CIC estimado</p>
-          <p class="text-4xl font-bold">${animatedCurrency(saldoCIC)}</p>
+          <p class="text-4xl font-bold">${animatedCurrency(estimacion.estimatedCicBalance)}</p>
           ${saldoIngresado > 0 ? '<p class="text-xs text-foreground/50 mt-1">Según saldo ingresado</p>' : '<p class="text-xs text-foreground/50 mt-1">Estimado (ingresa saldo real desde afc.cl para más precisión)</p>'}
         </div>
 
         <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Pagos estimados por mes</p>
-        ${pagos
+        ${estimacion.payouts
           .map((p: number, i: number) =>
             p > 0
-                ? row(
-                  `Mes ${i + 1} (${(PCT_PAGO[i] * 100).toFixed(0)}% del sueldo)`,
+              ? row(
+                  `Mes ${i + 1} (${(estimacion.payoutRates[i] * 100).toFixed(0)}% del sueldo)`,
                   animatedCurrency(p),
                   i === 0 ? "text-accent" : ""
                 )
@@ -353,13 +380,13 @@ import Footer from "@/components/Footer.astro";
 
         <div class="mt-4 pt-3 flex justify-between text-sm font-semibold border-t border-border">
           <span>Total cobertura CIC</span>
-          <span>${animatedCurrency(totalCIC)} · ${mesesCubiertos} ${mesesCubiertos === 1 ? "mes" : "meses"}</span>
+          <span>${animatedCurrency(estimacion.totalCoverage)} · ${estimacion.monthsCovered} ${estimacion.monthsCovered === 1 ? "mes" : "meses"}</span>
         </div>
 
-        <div class="mt-4 rounded-lg ${cumpleFCS ? "border-green-500/30 bg-green-500/5" : "border-foreground/10 bg-foreground/5"} border p-3 text-sm">
-          <p class="font-bold mb-1">Fondo Solidario (FCS) ${badge(cumpleFCS ? "Acceso posible" : "Sin acceso", cumpleFCS ? "bg-green-500/20 text-green-500" : "bg-foreground/10 text-foreground/50")}</p>
+        <div class="mt-4 rounded-lg ${estimacion.eligibleForSolidarityFund ? "border-green-500/30 bg-green-500/5" : "border-foreground/10 bg-foreground/5"} border p-3 text-sm">
+          <p class="font-bold mb-1">Fondo Solidario (FCS) ${badge(estimacion.eligibleForSolidarityFund ? "Acceso posible" : "Sin acceso", estimacion.eligibleForSolidarityFund ? "bg-green-500/20 text-green-500" : "bg-foreground/10 text-foreground/50")}</p>
           ${
-            cumpleFCS
+            estimacion.eligibleForSolidarityFund
               ? `<p class="text-foreground/70">Con ${mesesCotizados} cotizaciones y causal válida podrías acceder al FCS para extender tu cobertura hasta 5 meses. El monto lo define la Superintendencia de Pensiones anualmente.</p>`
               : causal === "renuncia" || causal === "despido-culpa"
                 ? `<p class="text-foreground/70">La causal seleccionada no da acceso al FCS. Solo puedes cobrar tu CIC.</p>`

@@ -2,6 +2,17 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
+
+const { parameters: economicParameters } = await getEconomicParameters();
+const ufDisplay = economicParameters.uf.toLocaleString("es-CL", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
+  dateStyle: "long",
+  timeZone: "UTC",
+}).format(new Date(`${economicParameters.lastUpdated}T00:00:00.000Z`));
 ---
 
 <Layout
@@ -32,9 +43,9 @@ import Footer from "@/components/Footer.astro";
           >
             Valor UF hoy
           </p>
-          <p id="uf-display" class="text-3xl font-bold">$39.773,62</p>
+          <p id="uf-display" class="text-3xl font-bold">${"$" + ufDisplay}</p>
           <p id="uf-fecha" class="mt-0.5 text-xs text-foreground/50">
-            25 de febrero de 2026 · Fuente: Banco Central
+            {ufDateDisplay} · Fuente: mindicador.cl
           </p>
         </div>
         <span class="text-4xl">🇨🇱</span>
@@ -95,6 +106,14 @@ import Footer from "@/components/Footer.astro";
           <p id="resultado-texto" class="text-2xl font-bold"></p>
           <p id="resultado-sub" class="mt-1 text-sm text-foreground/50"></p>
         </div>
+        <div
+          id="economic-parameters"
+          data-uf={String(economicParameters.uf)}
+          data-last-updated={economicParameters.lastUpdated}
+          class="hidden"
+          aria-hidden="true"
+        >
+        </div>
       </div>
 
       <!-- TABLA DE REFERENCIA RÁPIDA -->
@@ -131,13 +150,10 @@ import Footer from "@/components/Footer.astro";
         </li>
       </ul>
       <p class="text-sm text-foreground/50">
-        ⚠️ El valor de la UF en este conversor es referencial (25/02/2026:
-        $39.773,62). Para el valor exacto del día consulta el <a
+        ⚠️ El valor de la UF en este conversor usa la última actualización
+        disponible en la fuente. Para validar el dato oficial consulta el <a
           href="https://si3.bcentral.cl/Indicadoressiete/secure/Indicadoresdiarios.aspx"
           target="_blank">Banco Central</a
-        > o el <a
-          href="https://www.sii.cl/valores_y_fechas/uf/uf2026.htm"
-          target="_blank">SII</a
         >.
       </p>
     </section>
@@ -146,7 +162,19 @@ import Footer from "@/components/Footer.astro";
 </Layout>
 
 <script>
-  const UF_VALOR = 39773.62;
+  import { convertUf } from "@/application/use-cases/ConvertUf";
+
+  function readEconomicContext(): { uf: number; lastUpdated: string } {
+    const element = document.getElementById("economic-parameters");
+    const uf = Number(element?.dataset?.uf);
+    const lastUpdated = element?.dataset?.lastUpdated;
+    if (!Number.isFinite(uf) || uf <= 0 || !lastUpdated) {
+      throw new Error("No se pudo cargar el valor UF para el conversor.");
+    }
+    return { uf, lastUpdated };
+  }
+
+  const economicContext = readEconomicContext();
 
   const fmt = (n: number) => "$" + Math.round(n).toLocaleString("es-CL");
   const fmtUF = (n: number) =>
@@ -170,11 +198,15 @@ import Footer from "@/components/Footer.astro";
   ufInput.addEventListener("input", () => {
     const uf = parseFloat(ufInput.value);
     if (!isNaN(uf) && uf > 0) {
-      const pesos = uf * UF_VALOR;
-      pesosInput.value = String(Math.round(pesos));
+      const conversion = convertUf({
+        amount: uf,
+        ufValue: economicContext.uf,
+        direction: "uf_to_clp",
+      });
+      pesosInput.value = String(Math.round(conversion.clpAmount));
       mostrarResultado(
-        fmt(pesos),
-        `${fmtUF(uf)} = ${fmt(pesos)} al 25/02/2026`
+        fmt(conversion.clpAmount),
+        `${fmtUF(conversion.ufAmount)} = ${fmt(conversion.clpAmount)} al ${economicContext.lastUpdated}`
       );
     } else {
       pesosInput.value = "";
@@ -185,9 +217,16 @@ import Footer from "@/components/Footer.astro";
   pesosInput.addEventListener("input", () => {
     const pesos = parseFloat(pesosInput.value);
     if (!isNaN(pesos) && pesos > 0) {
-      const uf = pesos / UF_VALOR;
-      ufInput.value = uf.toFixed(4);
-      mostrarResultado(fmtUF(uf), `${fmt(pesos)} = ${fmtUF(uf)} al 25/02/2026`);
+      const conversion = convertUf({
+        amount: pesos,
+        ufValue: economicContext.uf,
+        direction: "clp_to_uf",
+      });
+      ufInput.value = conversion.ufAmount.toFixed(4);
+      mostrarResultado(
+        fmtUF(conversion.ufAmount),
+        `${fmt(conversion.clpAmount)} = ${fmtUF(conversion.ufAmount)} al ${economicContext.lastUpdated}`
+      );
     } else {
       ufInput.value = "";
       resultado.classList.add("hidden");
@@ -197,9 +236,11 @@ import Footer from "@/components/Footer.astro";
   document.getElementById("swap-btn")?.addEventListener("click", () => {
     const ufVal = ufInput.value;
     const pesosVal = pesosInput.value;
-    ufInput.value = pesosVal ? String(parseFloat(pesosVal) / UF_VALOR) : "";
+    ufInput.value = pesosVal
+      ? String(parseFloat(pesosVal) / economicContext.uf)
+      : "";
     pesosInput.value = ufVal
-      ? String(Math.round(parseFloat(ufVal) * UF_VALOR))
+      ? String(Math.round(parseFloat(ufVal) * economicContext.uf))
       : "";
     ufInput.dispatchEvent(new Event("input"));
   });
@@ -223,7 +264,7 @@ import Footer from "@/components/Footer.astro";
       r =>
         `<div class="flex justify-between py-1.5 border-b border-border last:border-0">
       <span class="text-foreground/60">${r.label}</span>
-      <span class="font-mono font-semibold">${fmt(r.uf * UF_VALOR)}</span>
+      <span class="font-mono font-semibold">${fmt(r.uf * economicContext.uf)}</span>
     </div>`
     )
     .join("");

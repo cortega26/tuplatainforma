@@ -213,39 +213,10 @@ import Footer from "@/components/Footer.astro";
 </Layout>
 
 <script>
+  import { calculateConsumerCredit } from "@/application/use-cases/CalculateConsumerCredit";
+
   function fmt(n: number): string {
     return "$" + Math.round(n).toLocaleString("es-CL");
-  }
-
-  function calcularCuota(
-    monto: number,
-    tasaMensual: number,
-    plazo: number
-  ): number {
-    if (tasaMensual === 0) return monto / plazo;
-    return (
-      (monto * tasaMensual * Math.pow(1 + tasaMensual, plazo)) /
-      (Math.pow(1 + tasaMensual, plazo) - 1)
-    );
-  }
-
-  // CAE aproximado: tasa anual que iguala el monto neto con todos los pagos futuros
-  function calcularCAE(
-    montoNeto: number,
-    cuotaTotal: number,
-    plazo: number
-  ): number {
-    // Búsqueda binaria de la tasa mensual equivalente
-    let lo = 0,
-      hi = 2,
-      tm = 0.05;
-    for (let i = 0; i < 50; i++) {
-      tm = (lo + hi) / 2;
-      const vp = (cuotaTotal * (1 - Math.pow(1 + tm, -plazo))) / tm;
-      if (vp > montoNeto) lo = tm;
-      else hi = tm;
-    }
-    return Math.pow(1 + tm, 12) - 1;
   }
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
@@ -278,25 +249,24 @@ import Footer from "@/components/Footer.astro";
       return;
     }
 
-    const tasaMensual =
-      tipoTasa === "anual"
-        ? Math.pow(1 + tasaRaw / 100, 1 / 12) - 1
-        : tasaRaw / 100;
-
-    const cuotaBase = calcularCuota(monto, tasaMensual, plazo);
-    const cuotaTotal = cuotaBase + seguro;
-    const totalPagado = cuotaTotal * plazo + gastos;
-    const totalIntereses = totalPagado - monto;
-
-    // CAE: considera gastos iniciales que reducen monto neto recibido
-    const montoNeto = monto - gastos;
-    const cae = calcularCAE(
-      montoNeto > 0 ? montoNeto : monto,
-      cuotaTotal,
-      plazo
-    );
-
-    const tasaAnualEq = (Math.pow(1 + tasaMensual, 12) - 1) * 100;
+    let resultado;
+    try {
+      resultado = calculateConsumerCredit({
+        principal: monto,
+        termMonths: plazo,
+        rateValue: tasaRaw,
+        rateType: tipoTasa === "anual" ? "anual" : "mensual",
+        monthlyInsurance: seguro,
+        operatingCosts: gastos,
+      });
+    } catch (error) {
+      alert(
+        error instanceof Error
+          ? error.message
+          : "No se pudo calcular el crédito de consumo."
+      );
+      return;
+    }
 
     const row = (label: string, value: string, color = "") =>
       `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
@@ -307,22 +277,22 @@ import Footer from "@/components/Footer.astro";
     document.getElementById("resultado-contenido")!.innerHTML = `
       <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
         <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Cuota mensual</p>
-        <p class="text-4xl font-bold">${fmt(cuotaTotal)}</p>
+        <p class="text-4xl font-bold">${fmt(resultado.monthlyPaymentTotal)}</p>
         ${seguro > 0 ? `<p class="text-xs text-foreground/50 mt-1">Incluye ${fmt(seguro)} de seguro</p>` : ""}
       </div>
 
       ${row("Monto solicitado", fmt(monto))}
       ${row("Plazo", `${plazo} meses`)}
-      ${row("Tasa mensual", tasaMensual.toFixed(4) + "%")}
-      ${row("Tasa anual equivalente", tasaAnualEq.toFixed(2) + "%")}
-      ${row("CAE (Carga Anual Equiv.)", (cae * 100).toFixed(2) + "%", "text-accent")}
-      ${row("Total intereses", fmt(totalIntereses), "text-red-400")}
+      ${row("Tasa mensual", (resultado.monthlyRateDecimal * 100).toFixed(4) + "%")}
+      ${row("Tasa anual equivalente", resultado.annualEquivalentRatePercent.toFixed(2) + "%")}
+      ${row("CAE (Carga Anual Equiv.)", resultado.caePercent.toFixed(2) + "%", "text-accent")}
+      ${row("Total intereses", fmt(resultado.totalInterest), "text-red-400")}
       ${gastos > 0 ? row("Gastos operacionales", fmt(gastos), "text-red-400") : ""}
-      ${row("Total a pagar", fmt(totalPagado), "text-red-400")}
+      ${row("Total a pagar", fmt(resultado.totalPaid), "text-red-400")}
 
       <div class="mt-4 p-3 rounded-lg bg-foreground/5 text-xs text-foreground/60">
-        Por cada $1.000.000 prestado pagas <strong>${fmt(totalPagado / (monto / 1_000_000))}</strong> en total —
-        ${((totalIntereses / monto) * 100).toFixed(0)}% más de lo que te prestaron.
+        Por cada $1.000.000 prestado pagas <strong>${fmt(resultado.totalPaid / (monto / 1_000_000))}</strong> en total —
+        ${((resultado.totalInterest / monto) * 100).toFixed(0)}% más de lo que te prestaron.
       </div>
     `;
   });

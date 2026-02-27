@@ -37,11 +37,11 @@ Este sitio es 100% educativo: no solicita datos personales, no ofrece asesoría 
 Requisitos: Node 20
 
 - Instalar dependencias:
-  - npm ci
+  - pnpm install --frozen-lockfile
 - Ejecutar en modo desarrollo:
-  - npm run dev
+  - pnpm run dev
 - Compilar para producción y generar búsqueda:
-  - npm run build
+  - pnpm run build
 
 Notas:
 
@@ -52,7 +52,7 @@ Notas:
 
 El repositorio incluye un workflow (.github/workflows/deploy.yml) que:
 
-- Ejecuta npm ci y npm run build
+- Ejecuta pnpm install --frozen-lockfile y pnpm run build
 - Sube el contenido de dist/ como artifact y lo publica vía GitHub Pages
 
 Asegúrate de que:

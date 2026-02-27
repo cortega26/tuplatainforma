@@ -2,9 +2,11 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
 import { getPath } from "@/utils/getPath";
 
 const renegociacionGuidePath = getPath("/posts/renegociacion-superir/");
+const { parameters: economicParameters } = await getEconomicParameters();
 ---
 
 <Layout
@@ -152,6 +154,7 @@ const renegociacionGuidePath = getPath("/posts/renegociacion-superir/");
         <div
           id="resultado-contenido"
           data-guide-url={renegociacionGuidePath}
+          data-uf={String(economicParameters.uf)}
           class="py-8 text-center text-foreground/40"
         >
           <p class="mb-3 text-4xl">⚖️</p>
@@ -200,8 +203,7 @@ const renegociacionGuidePath = getPath("/posts/renegociacion-superir/");
 </Layout>
 
 <script>
-  const UF_VALOR = 39773.62;
-  const UF_MINIMO = 80;
+  import { simulateDebtRenegotiation } from "@/application/use-cases/SimulateDebtRenegotiation";
 
   function fmt(n: number) {
     return "$" + Math.round(n).toLocaleString("es-CL");
@@ -216,14 +218,6 @@ const renegociacionGuidePath = getPath("/posts/renegociacion-superir/");
       <span class="text-foreground/60">${label}</span>
       <span class="font-semibold font-mono ${color}">${value}</span>
     </div>`;
-  }
-
-  function calcularCuota(monto: number, tasa: number, plazo: number) {
-    if (tasa === 0) return monto / plazo;
-    return (
-      (monto * tasa * Math.pow(1 + tasa, plazo)) /
-      (Math.pow(1 + tasa, plazo) - 1)
-    );
   }
 
   // Agregar deuda
@@ -245,9 +239,10 @@ const renegociacionGuidePath = getPath("/posts/renegociacion-superir/");
   });
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
-    const guideUrl =
-      document.getElementById("resultado-contenido")?.dataset?.guideUrl;
-    if (!guideUrl) return;
+    const resultContainer = document.getElementById("resultado-contenido");
+    const guideUrl = resultContainer?.dataset?.guideUrl;
+    const ufValue = Number(resultContainer?.dataset?.uf);
+    if (!guideUrl || !Number.isFinite(ufValue) || ufValue <= 0) return;
 
     const filas = document.querySelectorAll(".deuda-row");
     const deudas: { monto: number; meses: number }[] = [];
@@ -282,58 +277,60 @@ const renegociacionGuidePath = getPath("/posts/renegociacion-superir/");
       return;
     }
 
-    const totalDeuda = deudas.reduce((a, b) => a + b.monto, 0);
-    const totalUF = totalDeuda / UF_VALOR;
-    const deudasCalificadas = deudas.filter(d => d.meses >= 3);
-    const totalUFCalificado =
-      deudasCalificadas.reduce((a, b) => a + b.monto, 0) / UF_VALOR;
-
-    // Verificar requisitos
-    const req1 = deudas.length >= 2;
-    const req2 = deudasCalificadas.length >= 2;
-    const req3 = totalUFCalificado >= UF_MINIMO;
+    let simulacion;
+    try {
+      simulacion = simulateDebtRenegotiation({
+        debts: deudas.map(deuda => ({
+          amount: deuda.monto,
+          overdueMonths: deuda.meses,
+        })),
+        monthlyIncome: ingreso,
+        termMonths: plazo,
+        monthlyRatePercent: tasaMensual * 100,
+        ufValue,
+      });
+    } catch (error) {
+      alert(
+        error instanceof Error
+          ? error.message
+          : "No se pudo simular la renegociación."
+      );
+      return;
+    }
 
     const check = (ok: boolean) =>
       ok
         ? '<span class="text-green-500 font-bold">✓</span>'
         : '<span class="text-red-400 font-bold">✗</span>';
 
-    // Simulación de cuota
-    const cuotaSimulada = calcularCuota(totalDeuda, tasaMensual, plazo);
-    const totalPagado = cuotaSimulada * plazo;
-    const totalIntereses = totalPagado - totalDeuda;
-    const pctIngreso = (cuotaSimulada / ingreso) * 100;
-
-    const califica = req1 && req2 && req3;
-
     const html = `
-      <div class="mb-5 rounded-lg border ${califica ? "border-green-500/30 bg-green-500/5" : "border-red-500/30 bg-red-500/10"} p-4">
-        <p class="font-bold ${califica ? "text-green-500" : "text-red-400"} text-base mb-3">
-          ${califica ? "✓ Probablemente calificas para renegociar" : "⚠️ Posibles problemas para calificar"}
+      <div class="mb-5 rounded-lg border ${simulacion.qualifies ? "border-green-500/30 bg-green-500/5" : "border-red-500/30 bg-red-500/10"} p-4">
+        <p class="font-bold ${simulacion.qualifies ? "text-green-500" : "text-red-400"} text-base mb-3">
+          ${simulacion.qualifies ? "✓ Probablemente calificas para renegociar" : "⚠️ Posibles problemas para calificar"}
         </p>
         <div class="space-y-1.5 text-sm">
-          <p>${check(req1)} 2 o más deudas distintas: ${deudas.length} ingresada${deudas.length > 1 ? "s" : ""}</p>
-          <p>${check(req2)} Con +90 días de mora: ${deudasCalificadas.length} califican</p>
-          <p>${check(req3)} Total supera 80 UF: ${fmtUF(totalUFCalificado)} (mín. 80 UF = ${fmt(UF_MINIMO * UF_VALOR)})</p>
+          <p>${check(simulacion.requirementChecks.hasTwoOrMoreDebts)} 2 o más deudas distintas: ${deudas.length} ingresada${deudas.length > 1 ? "s" : ""}</p>
+          <p>${check(simulacion.requirementChecks.hasTwoOrMoreQualifiedDebts)} Con +90 días de mora: ${simulacion.qualifiedDebtCount} califican</p>
+          <p>${check(simulacion.requirementChecks.reachesMinimumUf)} Total supera ${simulacion.minimumDebtUf} UF: ${fmtUF(simulacion.qualifiedDebtUf)} (mín. ${simulacion.minimumDebtUf} UF = ${fmt(simulacion.minimumDebtUf * ufValue)})</p>
         </div>
       </div>
 
-      ${row("Total deuda declarada", fmt(totalDeuda))}
-      ${row("En UF", fmtUF(totalUF))}
+      ${row("Total deuda declarada", fmt(simulacion.totalDebtClp))}
+      ${row("En UF", fmtUF(simulacion.totalDebtUf))}
 
       <div class="mt-5">
         <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Simulación de acuerdo — ${plazo} meses</p>
-        ${row("Cuota mensual estimada", fmt(cuotaSimulada), pctIngreso <= 30 ? "text-green-500" : pctIngreso <= 50 ? "text-yellow-500" : "text-red-400")}
-        ${row("Como % de tu ingreso", pctIngreso.toFixed(1) + "%", pctIngreso <= 30 ? "text-green-500" : pctIngreso <= 50 ? "text-yellow-500" : "text-red-400")}
-        ${row("Total a pagar", fmt(totalPagado))}
-        ${row("Intereses del acuerdo", fmt(totalIntereses))}
+        ${row("Cuota mensual estimada", fmt(simulacion.monthlyPayment), simulacion.incomeBurdenPercent <= 30 ? "text-green-500" : simulacion.incomeBurdenPercent <= 50 ? "text-yellow-500" : "text-red-400")}
+        ${row("Como % de tu ingreso", simulacion.incomeBurdenPercent.toFixed(1) + "%", simulacion.incomeBurdenPercent <= 30 ? "text-green-500" : simulacion.incomeBurdenPercent <= 50 ? "text-yellow-500" : "text-red-400")}
+        ${row("Total a pagar", fmt(simulacion.totalPaid))}
+        ${row("Intereses del acuerdo", fmt(simulacion.totalInterest))}
       </div>
 
       <div class="mt-3 rounded-lg bg-foreground/5 p-3 text-xs text-foreground/60">
         ${
-          pctIngreso <= 30
+          simulacion.incomeBurdenPercent <= 30
             ? "✅ La cuota simulada es manejable (≤30% de tu ingreso). Una propuesta en este rango tiene más chances de ser aceptada."
-            : pctIngreso <= 50
+            : simulacion.incomeBurdenPercent <= 50
               ? "⚠️ La cuota es alta (30–50% del ingreso). Considera extender el plazo o negociar condonación de intereses."
               : "🔴 La cuota supera el 50% de tu ingreso. Ajusta el plazo o solicita en la Superir que medien una quita de capital."
         }

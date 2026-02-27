@@ -21,6 +21,6 @@ const indicadores = await getIndicadores();
     {" "}{fmt(indicadores.utm)}
   </span>
   <span class="text-foreground/30">
-    Actualizado: {fmtFecha(indicadores.fecha)}
+    Actualizado: {fmtFecha(indicadores.fecha)} ({indicadores.source})
   </span>
 </div>

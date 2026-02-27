@@ -173,16 +173,16 @@ import Footer from "@/components/Footer.astro";
         La calculadora proyecta el saldo acumulado en tu AFP al momento de
         jubilarte, considerando las cotizaciones mensuales del 10% de tu sueldo
         más el aporte adicional del empleador contemplado en la Reforma
-        Previsional 2025 (que llega al 7% en 2033).
+        Previsional vigente (que llega gradualmente al 7%).
       </p>
       <ul>
         <li>
           <strong>Cotización base:</strong> 10% de tu sueldo bruto cada mes.
         </li>
         <li>
-          <strong>Aporte empleador (Reforma 2025):</strong> Parte de este 7% adicional
+          <strong>Aporte empleador (reforma vigente):</strong> Parte de este 7% adicional
           va directo a tu cuenta individual (4.5% del total). La simulación lo incorpora
-          de forma gradual desde 2025 hasta 2033.
+          de forma gradual durante el período de implementación.
         </li>
         <li>
           <strong>Rentabilidad:</strong> El fondo genera rentabilidad real sobre el
@@ -210,6 +210,8 @@ import Footer from "@/components/Footer.astro";
 </Layout>
 
 <script>
+  import { simulateRetirementProjection } from "@/application/use-cases/SimulateRetirementProjection";
+
   function fmt(n: number): string {
     return "$" + Math.round(n).toLocaleString("es-CL");
   }
@@ -217,14 +219,6 @@ import Footer from "@/components/Footer.astro";
   function fmtM(n: number): string {
     if (n >= 1_000_000) return "$" + (n / 1_000_000).toFixed(1) + " millones";
     return fmt(n);
-  }
-
-  // Aporte empleador gradual reforma 2025 (% que va a cuenta individual = 4.5/7 del total)
-  // Escalonamiento simplificado: 0.9% en 2025, llegando a 4.5% en 2033
-  function aporteEmpleadorCuenta(año: number): number {
-    if (año < 2025) return 0;
-    if (año >= 2033) return 0.045;
-    return 0.009 + ((año - 2025) / 8) * (0.045 - 0.009);
   }
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
@@ -263,26 +257,24 @@ import Footer from "@/components/Footer.astro";
       return;
     }
 
-    const rentMensual = Math.pow(1 + rentAnual, 1 / 12) - 1;
-    const añoActual = new Date().getFullYear();
-
-    // Proyectar mes a mes
-    let saldo = saldoInicial;
-    const totalMeses = añosRestantes * 12;
-
-    for (let m = 0; m < totalMeses; m++) {
-      const año = añoActual + Math.floor(m / 12);
-      const cotizacionTrabajador = sueldo * 0.1;
-      const cotizacionEmpleador = sueldo * aporteEmpleadorCuenta(año);
-      saldo =
-        saldo * (1 + rentMensual) + cotizacionTrabajador + cotizacionEmpleador;
+    let proyeccion;
+    try {
+      proyeccion = simulateRetirementProjection({
+        currentAge: edad,
+        retirementAge: edadJubilacion,
+        grossSalary: sueldo,
+        currentBalance: saldoInicial,
+        annualReturnPercent: rentAnual * 100,
+        lifeExpectancyAge: expectativaVida,
+      });
+    } catch (error) {
+      alert(
+        error instanceof Error
+          ? error.message
+          : "No se pudo simular la jubilación."
+      );
+      return;
     }
-
-    const mesesPension = Math.max(1, (expectativaVida - edadJubilacion) * 12);
-    const pensionEstimada = saldo / mesesPension;
-
-    // Reemplaza % del último sueldo
-    const pctSueldo = (pensionEstimada / sueldo) * 100;
 
     const row = (label: string, value: string, color = "") =>
       `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
@@ -293,19 +285,19 @@ import Footer from "@/components/Footer.astro";
     document.getElementById("resultado-contenido")!.innerHTML = `
       <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
         <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Saldo estimado al jubilar</p>
-        <p class="text-4xl font-bold">${fmtM(saldo)}</p>
+        <p class="text-4xl font-bold">${fmtM(proyeccion.projectedBalance)}</p>
         <p class="text-sm text-foreground/50 mt-1">En ${añosRestantes} años (a los ${edadJubilacion})</p>
       </div>
 
-      ${row("Pensión mensual estimada", fmt(pensionEstimada), "text-accent")}
-      ${row("Como % de tu sueldo actual", pctSueldo.toFixed(0) + "%")}
-      ${row("Años de pensión (vida estimada)", `${mesesPension / 12} años`)}
+      ${row("Pensión mensual estimada", fmt(proyeccion.estimatedMonthlyPension), "text-accent")}
+      ${row("Como % de tu sueldo actual", proyeccion.salaryReplacementPercent.toFixed(0) + "%")}
+      ${row("Años de pensión (vida estimada)", `${proyeccion.pensionMonths / 12} años`)}
       ${row("Rentabilidad anual usada", rentAnual * 100 + "%")}
       ${row("Saldo inicial ingresado", fmt(saldoInicial))}
 
       <div class="mt-4 rounded-lg bg-foreground/5 p-3 text-xs text-foreground/60">
         <strong>¿Quieres mejorar esta proyección?</strong><br>
-        Agregar APV mensual aumenta significativamente el saldo final. Con $100.000/mes de APV durante ${añosRestantes} años a ${rentAnual * 100}% anual, sumarías aprox. ${fmtM(100000 * ((Math.pow(1 + rentMensual, totalMeses) - 1) / rentMensual))} adicionales al fondo.
+        Agregar APV mensual aumenta significativamente el saldo final. Con $100.000/mes de APV durante ${añosRestantes} años a ${rentAnual * 100}% anual, sumarías aprox. ${fmtM(proyeccion.apvExtraProjectionAt100kMonthly)} adicionales al fondo.
       </div>
     `;
   });

@@ -235,6 +235,8 @@ import Footer from "@/components/Footer.astro";
 </Layout>
 
 <script>
+  import { simulateCreditPrepayment } from "@/application/use-cases/SimulateCreditPrepayment";
+
   function fmt(n: number) {
     return "$" + Math.round(n).toLocaleString("es-CL");
   }
@@ -249,25 +251,6 @@ import Footer from "@/components/Footer.astro";
       <span class="text-foreground/60">${label}</span>
       <span class="font-semibold font-mono ${color}">${value}</span>
     </div>`;
-  }
-
-  function simularCredito(
-    saldo: number,
-    tasa: number,
-    cuota: number,
-    maxMeses = 600
-  ) {
-    let s = saldo,
-      total = 0,
-      meses = 0;
-    while (s > 100 && meses < maxMeses) {
-      const int = s * tasa;
-      const pago = Math.min(cuota, s + int);
-      s = s + int - pago;
-      total += pago;
-      meses++;
-    }
-    return { meses, totalPagado: total, totalIntereses: total - saldo };
   }
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
@@ -308,106 +291,71 @@ import Footer from "@/components/Footer.astro";
       return;
     }
 
-    // Escenario sin prepago
-    const sinPrepago = simularCredito(saldo, tasa, cuota, mesesRestantes + 12);
-
-    // Escenario con prepago
-    const saldoConPrepago = Math.max(0, saldo - montoPrepago);
-    let conPrepago: {
-      meses: number;
-      totalPagado: number;
-      totalIntereses: number;
-    };
-
-    if (efecto === "reducir-plazo") {
-      // Misma cuota, plazo más corto
-      conPrepago = simularCredito(
-        saldoConPrepago,
-        tasa,
-        cuota,
-        mesesRestantes + 12
+    let simulacion;
+    try {
+      simulacion = simulateCreditPrepayment({
+        currentBalance: saldo,
+        monthlyPayment: cuota,
+        monthlyRatePercent: tasa * 100,
+        remainingMonths: mesesRestantes,
+        prepaymentAmount: montoPrepago,
+        effect: efecto === "reducir-cuota" ? "reducir-cuota" : "reducir-plazo",
+        alternativeAnnualReturnPercent: rentAlternativa * 100,
+      });
+    } catch (error) {
+      alert(
+        error instanceof Error
+          ? error.message
+          : "No se pudo simular el prepago."
       );
-    } else {
-      // Mismo plazo, cuota más baja
-      const nuevaCuota =
-        saldoConPrepago <= 0
-          ? 0
-          : tasa === 0
-            ? saldoConPrepago / mesesRestantes
-            : (saldoConPrepago * tasa * Math.pow(1 + tasa, mesesRestantes)) /
-              (Math.pow(1 + tasa, mesesRestantes) - 1);
-      conPrepago = simularCredito(
-        saldoConPrepago,
-        tasa,
-        nuevaCuota,
-        mesesRestantes + 12
-      );
+      return;
     }
 
-    const ahorroIntereses =
-      sinPrepago.totalIntereses - conPrepago.totalIntereses;
-    const mesesAhorrados = sinPrepago.meses - conPrepago.meses;
-
-    // Si invirtiera el prepago en vez de abonarlo
-    const rentMensual = Math.pow(1 + rentAlternativa, 1 / 12) - 1;
-    const valorFuturoInversion =
-      montoPrepago * Math.pow(1 + rentMensual, sinPrepago.meses);
-    const gananciaInversion = valorFuturoInversion - montoPrepago;
-
-    const convienePrepagar = ahorroIntereses > gananciaInversion;
-
-    const tasaAnual = (Math.pow(1 + tasa, 12) - 1) * 100;
-    const nuevaCuotaBaja =
-      efecto === "reducir-cuota" && saldoConPrepago > 0
-        ? tasa === 0
-          ? saldoConPrepago / mesesRestantes
-          : (saldoConPrepago * tasa * Math.pow(1 + tasa, mesesRestantes)) /
-            (Math.pow(1 + tasa, mesesRestantes) - 1)
-        : null;
-
     document.getElementById("resultado-contenido")!.innerHTML = `
-      <div class="mb-5 rounded-lg border ${convienePrepagar ? "border-green-500/30 bg-green-500/5" : "border-yellow-500/30 bg-yellow-500/5"} p-4 text-center">
-        <p class="text-xs font-bold uppercase tracking-widest ${convienePrepagar ? "text-green-500" : "text-yellow-500"} mb-1">
-          ${convienePrepagar ? "✓ Conviene prepagar" : "⚖️ Puede convenir más invertir"}
+      <div class="mb-5 rounded-lg border ${simulacion.mathematicallyBetterToPrepay ? "border-green-500/30 bg-green-500/5" : "border-yellow-500/30 bg-yellow-500/5"} p-4 text-center">
+        <p class="text-xs font-bold uppercase tracking-widest ${simulacion.mathematicallyBetterToPrepay ? "text-green-500" : "text-yellow-500"} mb-1">
+          ${simulacion.mathematicallyBetterToPrepay ? "✓ Conviene prepagar" : "⚖️ Puede convenir más invertir"}
         </p>
-        <p class="text-2xl font-bold">${fmtM(ahorroIntereses)}</p>
+        <p class="text-2xl font-bold">${fmtM(simulacion.interestSavings)}</p>
         <p class="text-sm text-foreground/50">ahorrados en intereses</p>
       </div>
 
       <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Sin prepago</p>
-      ${row("Meses restantes", sinPrepago.meses.toString())}
-      ${row("Total intereses", fmt(sinPrepago.totalIntereses), "text-red-400")}
+      ${row("Meses restantes", simulacion.withoutPrepayment.months.toString())}
+      ${row("Total intereses", fmt(simulacion.withoutPrepayment.totalInterest), "text-red-400")}
 
       <p class="text-xs font-bold text-foreground/50 uppercase mt-4 mb-2">Con prepago de ${fmt(montoPrepago)}</p>
       ${
         efecto === "reducir-plazo"
           ? row(
               "Meses que se acorta",
-              mesesAhorrados > 0
-                ? mesesAhorrados + " meses menos"
+              simulacion.monthsSaved > 0
+                ? simulacion.monthsSaved + " meses menos"
                 : "Se liquida",
               "text-green-500"
             )
           : row(
               "Nueva cuota mensual",
-              nuevaCuotaBaja !== null ? fmt(nuevaCuotaBaja) : "Saldado",
+              simulacion.newMonthlyPaymentIfReducePayment !== null
+                ? fmt(simulacion.newMonthlyPaymentIfReducePayment)
+                : "Saldado",
               "text-green-500"
             )
       }
-      ${row("Total intereses con prepago", fmt(conPrepago.totalIntereses), "text-green-500")}
-      ${row("Ahorro en intereses", fmt(ahorroIntereses), "text-green-500")}
+      ${row("Total intereses con prepago", fmt(simulacion.withPrepayment.totalInterest), "text-green-500")}
+      ${row("Ahorro en intereses", fmt(simulacion.interestSavings), "text-green-500")}
 
       <div class="mt-5 rounded-lg bg-foreground/5 p-3">
         <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Alternativa: invertir ${fmt(montoPrepago)} al ${rentAlternativa * 100}% anual</p>
-        ${row("Valor futuro (en " + sinPrepago.meses + " meses)", fmtM(valorFuturoInversion))}
-        ${row("Ganancia estimada", fmtM(gananciaInversion), gananciaInversion > ahorroIntereses ? "text-green-500" : "text-foreground/60")}
-        ${row("vs ahorro por prepago", fmtM(ahorroIntereses), ahorroIntereses >= gananciaInversion ? "text-green-500" : "text-foreground/60")}
+        ${row("Valor futuro (en " + simulacion.withoutPrepayment.months + " meses)", fmtM(simulacion.futureInvestmentValue))}
+        ${row("Ganancia estimada", fmtM(simulacion.investmentGain), simulacion.investmentGain > simulacion.interestSavings ? "text-green-500" : "text-foreground/60")}
+        ${row("vs ahorro por prepago", fmtM(simulacion.interestSavings), simulacion.interestSavings >= simulacion.investmentGain ? "text-green-500" : "text-foreground/60")}
       </div>
 
       <p class="mt-3 text-xs text-foreground/40">
         ${
-          convienePrepagar
-            ? `Con tu tasa de ${tasaAnual.toFixed(1)}% anual, el crédito "renta" más caro que la alternativa de inversión (${(rentAlternativa * 100).toFixed(0)}% anual). Prepagar es la mejor opción matemática.`
+          simulacion.mathematicallyBetterToPrepay
+            ? `Con tu tasa de ${simulacion.annualCreditRatePercent.toFixed(1)}% anual, el crédito "renta" más caro que la alternativa de inversión (${(rentAlternativa * 100).toFixed(0)}% anual). Prepagar es la mejor opción matemática.`
             : `La inversión podría generar más que lo que ahorras en intereses. Pero ojo: la rentabilidad de la inversión no está garantizada.`
         }
       </p>

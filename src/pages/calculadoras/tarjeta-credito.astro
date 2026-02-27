@@ -59,7 +59,7 @@ import Footer from "@/components/Footer.astro";
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
           <p class="mt-1 text-xs text-foreground/50">
-            La TMC (tasa máxima convencional) vigente en 2026 para tarjetas es
+            La TMC (tasa máxima convencional) vigente para tarjetas suele estar
             ~3.49% mensual. Revisa tu contrato para el valor exacto.
           </p>
         </div>
@@ -144,8 +144,8 @@ import Footer from "@/components/Footer.astro";
       <ul>
         <li>
           <strong>Tasa máxima convencional (TMC):</strong> Es el máximo legal que
-          puede cobrar una tarjeta. En 2026, para créditos de consumo hasta 200 UF
-          es de aproximadamente 3.49% mensual (equivalente a más de 50% anual).
+          puede cobrar una tarjeta. Para créditos de consumo hasta 200 UF es de aproximadamente
+          3.49% mensual (equivalente a más de 50% anual).
         </li>
         <li>
           <strong>Interés sobre saldo:</strong> Los intereses se calculan sobre lo
@@ -169,32 +169,10 @@ import Footer from "@/components/Footer.astro";
 </Layout>
 
 <script>
+  import { simulateCreditCardCost } from "@/application/use-cases/SimulateCreditCardCost";
+
   function fmt(n: number): string {
     return "$" + Math.round(n).toLocaleString("es-CL");
-  }
-
-  function simular(
-    deuda: number,
-    tasaMensual: number,
-    pagoFn: (saldo: number) => number,
-    maxMeses = 600
-  ) {
-    let saldo = deuda;
-    let totalPagado = 0;
-    let meses = 0;
-    const pagos: number[] = [];
-
-    while (saldo > 100 && meses < maxMeses) {
-      const interes = saldo * tasaMensual;
-      const pago = Math.max(pagoFn(saldo), interes + 100); // al menos cubre interés + algo
-      const pagoReal = Math.min(pago, saldo + interes);
-      saldo = saldo + interes - pagoReal;
-      totalPagado += pagoReal;
-      meses++;
-      if (meses <= 6) pagos.push(pagoReal);
-    }
-
-    return { meses, totalPagado, totalIntereses: totalPagado - deuda, pagos };
   }
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
@@ -219,33 +197,40 @@ import Footer from "@/components/Footer.astro";
       return;
     }
 
-    const usarFijo = pagoFijo > 0;
-    const pagoFn = usarFijo
-      ? () => pagoFijo
-      : (saldo: number) => saldo * pctMinimo;
+    let simulacion;
+    try {
+      simulacion = simulateCreditCardCost({
+        debt: deuda,
+        monthlyRatePercent: tasaMensual * 100,
+        minimumPaymentPercent: pctMinimo * 100,
+        fixedMonthlyPayment: pagoFijo > 0 ? pagoFijo : undefined,
+      });
+    } catch (error) {
+      alert(
+        error instanceof Error
+          ? error.message
+          : "No se pudo simular la tarjeta de crédito."
+      );
+      return;
+    }
 
-    const resultado = simular(deuda, tasaMensual, pagoFn);
-    const primerasCuotas = resultado.pagos;
+    const resultado = simulacion.baseline;
+    const resultadoDoble = simulacion.doubledPayment;
+    const primerasCuotas = resultado.firstMonthlyPayments;
 
-    // Escenario "pago doble" para comparar
-    const pagoFnDoble = usarFijo
-      ? () => pagoFijo * 2
-      : (saldo: number) => saldo * pctMinimo * 2;
-    const resultadoDoble = simular(deuda, tasaMensual, pagoFnDoble);
-
-    const años = Math.floor(resultado.meses / 12);
-    const mesesRest = resultado.meses % 12;
+    const años = Math.floor(resultado.months / 12);
+    const mesesRest = resultado.months % 12;
     const tiempoStr =
       años > 0
         ? `${años} año${años > 1 ? "s" : ""} y ${mesesRest} meses`
-        : `${resultado.meses} meses`;
+        : `${resultado.months} meses`;
 
-    const añosDoble = Math.floor(resultadoDoble.meses / 12);
-    const mesesDoble = resultadoDoble.meses % 12;
+    const añosDoble = Math.floor(resultadoDoble.months / 12);
+    const mesesDoble = resultadoDoble.months % 12;
     const tiempoDobleStr =
       añosDoble > 0
         ? `${añosDoble} año${añosDoble > 1 ? "s" : ""} y ${mesesDoble} meses`
-        : `${resultadoDoble.meses} meses`;
+        : `${resultadoDoble.months} meses`;
 
     const row = (label: string, value: string, color = "") =>
       `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
@@ -263,23 +248,23 @@ import Footer from "@/components/Footer.astro";
 
     document.getElementById("resultado-contenido")!.innerHTML = `
       <div class="text-center mb-5 p-4 rounded-lg bg-red-500/10 border border-red-500/20">
-        <p class="text-xs font-bold uppercase tracking-widest text-red-400 mb-1">Total a pagar (con ${usarFijo ? "cuota fija" : "pago mínimo"})</p>
-        <p class="text-4xl font-bold">${fmt(resultado.totalPagado)}</p>
+        <p class="text-xs font-bold uppercase tracking-widest text-red-400 mb-1">Total a pagar (con ${simulacion.usesFixedPayment ? "cuota fija" : "pago mínimo"})</p>
+        <p class="text-4xl font-bold">${fmt(resultado.totalPaid)}</p>
         <p class="text-sm text-foreground/50 mt-1">Deuda original: ${fmt(deuda)}</p>
       </div>
 
-      ${row("Intereses totales", fmt(resultado.totalIntereses), "text-red-400")}
+      ${row("Intereses totales", fmt(resultado.totalInterest), "text-red-400")}
       ${row("Tiempo para saldar", tiempoStr, "text-red-400")}
-      ${row("Factor de costo", `×${(resultado.totalPagado / deuda).toFixed(2)}`)}
+      ${row("Factor de costo", `×${(resultado.totalPaid / deuda).toFixed(2)}`)}
 
       ${primerosPagosHtml}
 
       <div class="mt-5 rounded-lg border border-green-500/30 bg-green-500/5 p-4">
         <p class="text-xs font-bold text-green-500 uppercase mb-2">✓ Si pagas el doble cada mes</p>
-        ${row("Total a pagar", fmt(resultadoDoble.totalPagado))}
-        ${row("Intereses", fmt(resultadoDoble.totalIntereses))}
+        ${row("Total a pagar", fmt(resultadoDoble.totalPaid))}
+        ${row("Intereses", fmt(resultadoDoble.totalInterest))}
         ${row("Tiempo", tiempoDobleStr)}
-        ${row("Ahorro vs mínimo", fmt(resultado.totalPagado - resultadoDoble.totalPagado), "text-green-500")}
+        ${row("Ahorro vs mínimo", fmt(resultado.totalPaid - resultadoDoble.totalPaid), "text-green-500")}
       </div>
     `;
   });

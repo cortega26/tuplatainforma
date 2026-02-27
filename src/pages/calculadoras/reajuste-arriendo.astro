@@ -2,6 +2,9 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
+
+const { parameters: economicParameters } = await getEconomicParameters();
 ---
 
 <Layout
@@ -116,12 +119,13 @@ import Footer from "@/components/Footer.astro";
             <input
               type="number"
               id="uf-hoy"
-              value="39773.62"
+              value={String(economicParameters.uf)}
               min="0"
               class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
             />
             <p class="mt-1 text-xs text-foreground/50">
-              Valor referencial 25/02/2026. Ajusta si es necesario.
+              Valor cargado desde parámetros económicos vigentes. Ajusta si es
+              necesario.
             </p>
           </div>
         </div>
@@ -158,8 +162,7 @@ import Footer from "@/components/Footer.astro";
               class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
             />
             <p class="mt-1 text-xs text-foreground/50">
-              IPC acumulado del año o del período pactado. El IPC anual 2025 fue
-              de 4,5%. Verifica en <a
+              IPC acumulado del año o del período pactado. Verifica en <a
                 href="https://www.ine.cl"
                 target="_blank"
                 class="underline">ine.cl</a
@@ -214,6 +217,13 @@ import Footer from "@/components/Footer.astro";
           <p class="mb-3 text-4xl">🏠</p>
           <p class="text-sm">Ingresa los datos para calcular el reajuste.</p>
         </div>
+        <div
+          id="economic-parameters"
+          data-uf={String(economicParameters.uf)}
+          class="hidden"
+          aria-hidden="true"
+        >
+        </div>
       </div>
     </section>
 
@@ -262,6 +272,11 @@ import Footer from "@/components/Footer.astro";
 </Layout>
 
 <script>
+  import {
+    calculateIpcRentAdjustment,
+    calculateUfRentAdjustment,
+  } from "@/application/use-cases/CalculateRentAdjustment";
+
   function fmt(n: number) {
     return "$" + Math.round(n).toLocaleString("es-CL");
   }
@@ -329,20 +344,31 @@ import Footer from "@/components/Footer.astro";
         return;
       }
 
-      const arriendoAntes = arriendoUF * ufAntes;
-      const arriendoHoy = arriendoUF * ufHoy;
-      const diferencia = arriendoHoy - arriendoAntes;
-      const pctVariacion = ((ufHoy - ufAntes) / ufAntes) * 100;
+      let reajusteUf;
+      try {
+        reajusteUf = calculateUfRentAdjustment({
+          rentUf: arriendoUF,
+          previousUfValue: ufAntes,
+          currentUfValue: ufHoy,
+        });
+      } catch (error) {
+        alert(
+          error instanceof Error
+            ? error.message
+            : "No se pudo calcular el reajuste por UF."
+        );
+        return;
+      }
 
       document.getElementById("resultado-contenido")!.innerHTML = `
         <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
           <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Arriendo este mes</p>
-          <p class="text-4xl font-bold">${fmt(arriendoHoy)}</p>
+          <p class="text-4xl font-bold">${fmt(reajusteUf.currentRentClp)}</p>
           <p class="text-sm text-foreground/50 mt-1">${arriendoUF.toLocaleString("es-CL", { minimumFractionDigits: 2 })} UF × $${Math.round(ufHoy).toLocaleString("es-CL")}</p>
         </div>
-        ${row("Arriendo mes anterior", fmt(arriendoAntes))}
-        ${row("Diferencia", (diferencia >= 0 ? "+ " : "") + fmt(diferencia), diferencia > 0 ? "text-red-400" : "text-green-500")}
-        ${row("Variación UF del período", pctVariacion.toFixed(2) + "%")}
+        ${row("Arriendo mes anterior", fmt(reajusteUf.previousRentClp))}
+        ${row("Diferencia", (reajusteUf.differenceClp >= 0 ? "+ " : "") + fmt(reajusteUf.differenceClp), reajusteUf.differenceClp > 0 ? "text-red-400" : "text-green-500")}
+        ${row("Variación UF del período", reajusteUf.ufVariationPercent.toFixed(2) + "%")}
         <p class="mt-3 text-xs text-foreground/40">El arriendo en UF no "sube" — siempre son ${arriendoUF} UF. Lo que varía es el equivalente en pesos según el valor diario de la UF.</p>
       `;
       return;
@@ -363,20 +389,31 @@ import Footer from "@/components/Footer.astro";
         return;
       }
 
-      const factor = 1 + ipcVariacion / 100;
-      const arriendoNuevo = arriendoPesos * factor;
-      const diferencia = arriendoNuevo - arriendoPesos;
+      let reajusteIpc;
+      try {
+        reajusteIpc = calculateIpcRentAdjustment({
+          currentRentClp: arriendoPesos,
+          ipcVariationPercent: ipcVariacion,
+        });
+      } catch (error) {
+        alert(
+          error instanceof Error
+            ? error.message
+            : "No se pudo calcular el reajuste por IPC."
+        );
+        return;
+      }
 
       document.getElementById("resultado-contenido")!.innerHTML = `
         <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
           <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Arriendo reajustado</p>
-          <p class="text-4xl font-bold">${fmt(arriendoNuevo)}</p>
+          <p class="text-4xl font-bold">${fmt(reajusteIpc.adjustedRentClp)}</p>
           <p class="text-sm text-foreground/50 mt-1">Con IPC ${ipcVariacion > 0 ? "+" : ""}${ipcVariacion}%</p>
         </div>
         ${row("Arriendo antes del reajuste", fmt(arriendoPesos))}
-        ${row("Aumento mensual", "+ " + fmt(diferencia), "text-red-400")}
-        ${row("Aumento anual", "+ " + fmt(diferencia * 12), "text-red-400")}
-        ${row("Factor aplicado", "×" + factor.toFixed(4))}
+        ${row("Aumento mensual", "+ " + fmt(reajusteIpc.differenceClp), "text-red-400")}
+        ${row("Aumento anual", "+ " + fmt(reajusteIpc.differenceClp * 12), "text-red-400")}
+        ${row("Factor aplicado", "×" + reajusteIpc.appliedFactor.toFixed(4))}
         <p class="mt-3 text-xs text-foreground/40">El reajuste por IPC aplica sobre el monto en pesos pactado. Solo puede hacerse en la fecha de renovación anual indicada en el contrato.</p>
       `;
     }

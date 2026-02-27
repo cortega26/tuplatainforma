@@ -2,6 +2,13 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
+
+const { parameters: economicParameters } = await getEconomicParameters();
+const formatCurrency = (value: number) =>
+  "$" + Math.round(value).toLocaleString("es-CL");
+const monthlyRegimeATarget = (40 * economicParameters.utm) / 12;
+const annualRegimeABonusCap = 6 * economicParameters.utm;
 ---
 
 <Layout
@@ -55,7 +62,7 @@ import Footer from "@/components/Footer.astro";
           />
           <p class="mt-1 text-xs text-foreground/50">
             Para recibir el bono máximo del Régimen A necesitas ahorrar al menos
-            ~$224.000/mes (≈ 40 UTM / 12).
+            ~{formatCurrency(monthlyRegimeATarget)}/mes (≈ 40 UTM / 12).
           </p>
         </div>
 
@@ -153,6 +160,14 @@ import Footer from "@/components/Footer.astro";
           <p class="mb-3 text-4xl">📊</p>
           <p class="text-sm">Ingresa tus datos y presiona comparar.</p>
         </div>
+        <div
+          id="economic-parameters"
+          data-utm={String(economicParameters.utm)}
+          data-uf={String(economicParameters.uf)}
+          class="hidden"
+          aria-hidden="true"
+        >
+        </div>
       </div>
     </section>
 
@@ -169,8 +184,9 @@ import Footer from "@/components/Footer.astro";
       <ul>
         <li>
           <strong>Régimen A:</strong> El Estado te deposita directamente un bono del
-          15% de lo que ahorraste, con tope de 6 UTM anuales (~$402.000). Ideal si
-          tu sueldo es menor a $4.800.000.
+          15% de lo que ahorraste, con tope de 6 UTM anuales (~{
+            formatCurrency(annualRegimeABonusCap)
+          }).
         </li>
         <li>
           <strong>Régimen B:</strong> Tus aportes se descuentan de tu base imponible,
@@ -184,8 +200,8 @@ import Footer from "@/components/Footer.astro";
         largo plazo.
       </p>
       <p class="text-sm text-foreground/50">
-        ⚠️ Valores referenciales. UTM usada: $67.294 (enero 2026). Para
-        información oficial visita la <a
+        ⚠️ Valores referenciales. Parámetros económicos vigentes al momento del
+        build. Para información oficial visita la <a
           href="https://www.spensiones.cl"
           target="_blank">Superintendencia de Pensiones</a
         > y el <a href="https://www.sii.cl" target="_blank">SII</a>.
@@ -196,58 +212,7 @@ import Footer from "@/components/Footer.astro";
 </Layout>
 
 <script>
-  const UTM = 67294;
-  const UF = 38576; // valor referencial enero 2026
-
-  const TRAMOS = [
-    { hasta: 13.5 * UTM, tasa: 0, rebaja: 0 },
-    { hasta: 30 * UTM, tasa: 0.04, rebaja: 13.5 * UTM * 0.04 },
-    {
-      hasta: 50 * UTM,
-      tasa: 0.08,
-      rebaja: 30 * UTM * (0.08 - 0.04) + 13.5 * UTM * 0.04,
-    },
-    {
-      hasta: 70 * UTM,
-      tasa: 0.135,
-      rebaja: 50 * UTM * (0.135 - 0.08) + 30 * UTM * 0.04,
-    },
-    {
-      hasta: 90 * UTM,
-      tasa: 0.23,
-      rebaja: 70 * UTM * (0.23 - 0.135) + 50 * UTM * 0.08,
-    },
-    {
-      hasta: 120 * UTM,
-      tasa: 0.304,
-      rebaja: 90 * UTM * (0.304 - 0.23) + 70 * UTM * 0.135,
-    },
-    {
-      hasta: 150 * UTM,
-      tasa: 0.35,
-      rebaja: 120 * UTM * (0.35 - 0.304) + 90 * UTM * 0.23,
-    },
-    {
-      hasta: Infinity,
-      tasa: 0.4,
-      rebaja: 150 * UTM * (0.4 - 0.35) + 120 * UTM * 0.304,
-    },
-  ];
-
-  function calcularImpuesto(base: number): number {
-    for (const tramo of TRAMOS) {
-      if (base <= tramo.hasta)
-        return Math.max(0, base * tramo.tasa - tramo.rebaja);
-    }
-    return 0;
-  }
-
-  function tasaMarginal(base: number): number {
-    for (const tramo of TRAMOS) {
-      if (base <= tramo.hasta) return tramo.tasa;
-    }
-    return 0.4;
-  }
+  import { calculateApvComparison } from "@/application/use-cases/CalculateApvComparison";
 
   function fmt(n: number): string {
     return "$" + Math.round(n).toLocaleString("es-CL");
@@ -256,6 +221,18 @@ import Footer from "@/components/Footer.astro";
   function fmtPct(n: number): string {
     return (n * 100).toFixed(1) + "%";
   }
+
+  function readEconomicParameters(): { uf: number; utm: number } {
+    const element = document.getElementById("economic-parameters");
+    const uf = Number(element?.dataset?.uf);
+    const utm = Number(element?.dataset?.utm);
+    if (!Number.isFinite(uf) || uf <= 0 || !Number.isFinite(utm) || utm <= 0) {
+      throw new Error("No se pudieron cargar los parámetros económicos.");
+    }
+    return { uf, utm };
+  }
+
+  const economicParameters = readEconomicParameters();
 
   document.querySelectorAll("input[name='salud']").forEach(radio => {
     radio.addEventListener("change", () => {
@@ -286,43 +263,40 @@ import Footer from "@/components/Footer.astro";
       return;
     }
 
-    const afpTasa =
-      parseFloat(
-        (document.getElementById("afp-tasa") as HTMLSelectElement).value
-      ) / 100;
-    const isIsapre =
+    const afpTasaPercent = parseFloat(
+      (document.getElementById("afp-tasa") as HTMLSelectElement).value
+    );
+    const healthSystem =
       (
         document.querySelector(
           "input[name='salud']:checked"
         ) as HTMLInputElement
-      )?.value === "isapre";
-    const isapreadicional =
+      )?.value === "isapre"
+        ? "isapre"
+        : "fonasa";
+    const isapreAdicionalPercent =
       parseFloat(
         (document.getElementById("isapre-adicional") as HTMLInputElement).value
       ) || 0;
-    const saludTasa = 0.07 + (isIsapre ? isapreadicional / 100 : 0);
 
-    const descAfp = bruto * afpTasa;
-    const descSalud = bruto * saludTasa;
-    const baseImpuesto = bruto - descAfp - descSalud;
-
-    // Sin APV
-    const impSinApv = calcularImpuesto(baseImpuesto);
-
-    // Régimen A: no cambia el impuesto mensual, pero el Estado aporta 15% del ahorro (tope 6 UTM)
-    const bonoAnual = Math.min(ahorro * 12 * 0.15, 6 * UTM);
-    const bonoMensual = bonoAnual / 12;
-    const impConA = impSinApv; // impuesto no cambia
-    const beneficioMensualA = bonoMensual;
-
-    // Régimen B: el ahorro se descuenta de la base imponible
-    const ahorroEfectivo = Math.min(ahorro, (50 * UF) / 12); // tope mensual 50 UF
-    const baseConB = Math.max(0, baseImpuesto - ahorroEfectivo);
-    const impConB = calcularImpuesto(baseConB);
-    const beneficioMensualB = impSinApv - impConB;
-
-    const tasa = tasaMarginal(baseImpuesto);
-    const recomendacion = beneficioMensualA >= beneficioMensualB ? "A" : "B";
+    let resultado;
+    try {
+      resultado = calculateApvComparison({
+        grossSalary: bruto,
+        monthlyApvContribution: ahorro,
+        afpRatePercent: afpTasaPercent,
+        healthSystem,
+        isapreAdditionalPercent: isapreAdicionalPercent,
+        economicParameters,
+      });
+    } catch (error) {
+      alert(
+        error instanceof Error
+          ? error.message
+          : "No se pudo calcular la comparación APV."
+      );
+      return;
+    }
 
     const card = (
       titulo: string,
@@ -338,35 +312,35 @@ import Footer from "@/components/Footer.astro";
 
     document.getElementById("resultado-contenido")!.innerHTML = `
       <div class="mb-4 rounded-lg bg-foreground/5 p-3 text-sm text-foreground/70">
-        <strong>Tu tasa marginal de impuesto:</strong> ${fmtPct(tasa)}<br>
-        <strong>Impuesto sin APV:</strong> ${fmt(impSinApv)}/mes
+        <strong>Tu tasa marginal de impuesto:</strong> ${fmtPct(resultado.marginalRate)}<br>
+        <strong>Impuesto sin APV:</strong> ${fmt(resultado.taxWithoutApv)}/mes
       </div>
 
       ${card(
         "Régimen A — Bono del Estado",
         "text-blue-500",
         [
-          `Impuesto mensual|${fmt(impConA)}`,
-          `Bono Estado (15%)|+ ${fmt(beneficioMensualA)}/mes`,
-          `Bono anual estimado|+ ${fmt(bonoAnual)}`,
-          `Beneficio mensual neto|${fmt(beneficioMensualA)}`,
+          `Impuesto mensual|${fmt(resultado.regimeA.monthlyTax)}`,
+          `Bono Estado (15%)|+ ${fmt(resultado.regimeA.monthlyBenefit)}/mes`,
+          `Bono anual estimado|+ ${fmt(resultado.regimeA.annualBonus)}`,
+          `Beneficio mensual neto|${fmt(resultado.regimeA.monthlyBenefit)}`,
         ],
-        recomendacion === "A"
+        resultado.recommendedRegime === "A"
       )}
 
       ${card(
         "Régimen B — Rebaja de impuesto",
         "text-green-500",
         [
-          `Base imponible reducida|${fmt(baseConB)}`,
-          `Impuesto con APV|${fmt(impConB)}`,
-          `Ahorro impuesto mensual|${fmt(beneficioMensualB)}`,
-          `Ahorro impuesto anual|${fmt(beneficioMensualB * 12)}`,
+          `Base imponible reducida|${fmt(resultado.regimeB.reducedTaxBase)}`,
+          `Impuesto con APV|${fmt(resultado.regimeB.monthlyTax)}`,
+          `Ahorro impuesto mensual|${fmt(resultado.regimeB.monthlyBenefit)}`,
+          `Ahorro impuesto anual|${fmt(resultado.regimeB.annualBenefit)}`,
         ],
-        recomendacion === "B"
+        resultado.recommendedRegime === "B"
       )}
 
-      <p class="text-xs text-foreground/40 mt-2">El bono del Régimen A se acredita en tu cuenta APV al año siguiente (Operación Renta). El tope mensual de aporte con beneficio en Régimen B es 50 UF (~${fmt((50 * UF) / 12)}).</p>
+      <p class="text-xs text-foreground/40 mt-2">El bono del Régimen A se acredita en tu cuenta APV al año siguiente (Operación Renta). El tope mensual de aporte con beneficio en Régimen B es 50 UF (~${fmt(resultado.regimeB.monthlyContributionCap)}).</p>
     `;
   });
 </script>
