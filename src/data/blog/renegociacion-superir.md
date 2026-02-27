@@ -18,7 +18,7 @@ Tienes deudas con varios acreedores, estás en mora hace meses y no ves cómo sa
 
 Más del 93% de los deudores que la usan llegan a un acuerdo con sus acreedores. Y no necesitas abogado.
 
-## Table of contents
+## Tabla de contenidos
 
 ## Qué es la Superir y qué hace
 

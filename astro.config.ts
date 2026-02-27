@@ -10,10 +10,17 @@ import {
 } from "@shikijs/transformers";
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import { SITE } from "./src/config";
+import { getUiCopyForLocale } from "./src/i18n/ui";
 
 import mdx from "@astrojs/mdx";
 
-const tocHeadingPattern = "table[ -]of[ -]contents|tabla de contenidos";
+const tocUi = getUiCopyForLocale(SITE.lang);
+
+const escapeRegExp = (value: string) =>
+  value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+const tocHeadingPattern = tocUi.toc.title;
+const tocHeadingRegex = new RegExp(`^${escapeRegExp(tocHeadingPattern)}$`, "i");
 
 // https://astro.build/config
 export default defineConfig({
@@ -31,8 +38,8 @@ export default defineConfig({
       [
         remarkCollapse,
         {
-          test: new RegExp(`^(${tocHeadingPattern})$`, "i"),
-          summary: "Mostrar tabla de contenidos",
+          test: tocHeadingRegex,
+          summary: tocUi.toc.toggleShow,
         },
       ],
     ],

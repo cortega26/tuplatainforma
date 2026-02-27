@@ -1,3 +1,5 @@
+import { DEFAULT_LOCALE } from "./i18n/ui";
+
 export const SITE = {
   website: "https://cortega26.github.io/tuplatainforma/",
   author: "Carlos Ortega",
@@ -18,6 +20,6 @@ export const SITE = {
   },
   dynamicOgImage: true,
   dir: "ltr", // "rtl" | "auto"
-  lang: "es", // html lang code. Set this empty and default will be "en"
+  lang: DEFAULT_LOCALE, // html lang code. Set this empty and default will be "en"
   timezone: "America/Santiago", // Default global timezone (IANA format) https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 } as const;

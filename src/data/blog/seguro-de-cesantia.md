@@ -16,7 +16,7 @@ description: "Guía completa del Seguro de Cesantía en Chile: qué es la CIC y 
 
 Quedaste sin trabajo — sea porque te despidieron, se venció tu contrato o renunciaste. Lo primero que muchos no saben es que tienen plata acumulada en la AFC esperando ser cobrada. Esta guía te explica exactamente qué es, cuánto tienes y cómo cobrarlo.
 
-## Table of contents
+## Tabla de contenidos
 
 ## Qué es el Seguro de Cesantía
 

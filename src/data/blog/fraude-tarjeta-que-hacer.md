@@ -18,7 +18,7 @@ Revisas tu cuenta y ves un cargo que no hiciste. O peor: te llega un aviso de un
 
 En Chile existe una ley que protege a las víctimas de fraude financiero. Se llama **Ley N° 20.009** y obliga a los bancos e instituciones financieras a devolverte el dinero — siempre que sigas los pasos correctos y dentro de los plazos.
 
-## Table of contents
+## Tabla de contenidos
 
 ## Lo que tienes que hacer ahora mismo
 
