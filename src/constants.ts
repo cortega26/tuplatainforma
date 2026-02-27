@@ -34,12 +34,6 @@ export const SOCIALS: Social[] = [
     linkTitle: `${SITE.title} en LinkedIn`,
     icon: IconLinkedin,
   },
-  {
-    name: "Mail",
-    href: "mailto:[EMAIL_ADDRESS]",
-    linkTitle: `Enviar un correo a ${SITE.title}`,
-    icon: IconMail,
-  },
 ] as const;
 
 export const SHARE_LINKS: Social[] = [
