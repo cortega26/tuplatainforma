@@ -1,7 +1,7 @@
 ---
 title: "¿Cuánto descuenta la AFP de tu sueldo y para qué sirve ese dinero?"
 author: "Equipo TuPlataInforma"
-pubDatetime: 2025-02-23T10:00:00Z
+pubDatetime: 2026-02-23T10:00:00Z
 slug: cuanto-descuenta-la-afp-de-tu-sueldo
 featured: true
 draft: false
@@ -31,7 +31,7 @@ Este es el porcentaje fijo que va directamente a tu cuenta de capitalización in
 
 Este porcentaje es el cobro que hace la AFP por administrar tu fondo. A diferencia del 10%, este dinero no va a tu cuenta — es el costo del servicio.
 
-### Tabla de tasas por AFP (2025)
+### Tabla de tasas por AFP (2026)
 
 | AFP       | Cotización | Comisión | Total descuento |
 | --------- | ---------- | -------- | --------------- |
