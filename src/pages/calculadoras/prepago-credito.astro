@@ -246,11 +246,25 @@ import Footer from "@/components/Footer.astro";
     return fmt(n);
   }
 
-  function row(label: string, value: string, color = "") {
-    return `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
-      <span class="text-foreground/60">${label}</span>
-      <span class="font-semibold font-mono ${color}">${value}</span>
-    </div>`;
+  function buildRow(
+    label: string,
+    value: string,
+    colorClass = ""
+  ): HTMLDivElement {
+    const line = document.createElement("div");
+    line.className =
+      "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
+
+    const labelElement = document.createElement("span");
+    labelElement.className = "text-foreground/60";
+    labelElement.textContent = label;
+
+    const valueElement = document.createElement("span");
+    valueElement.className = `font-mono font-semibold ${colorClass}`.trim();
+    valueElement.textContent = value;
+
+    line.append(labelElement, valueElement);
+    return line;
   }
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
@@ -311,54 +325,125 @@ import Footer from "@/components/Footer.astro";
       return;
     }
 
-    document.getElementById("resultado-contenido")!.innerHTML = `
-      <div class="mb-5 rounded-lg border ${simulacion.mathematicallyBetterToPrepay ? "border-green-500/30 bg-green-500/5" : "border-yellow-500/30 bg-yellow-500/5"} p-4 text-center">
-        <p class="text-xs font-bold uppercase tracking-widest ${simulacion.mathematicallyBetterToPrepay ? "text-green-500" : "text-yellow-500"} mb-1">
-          ${simulacion.mathematicallyBetterToPrepay ? "✓ Conviene prepagar" : "⚖️ Puede convenir más invertir"}
-        </p>
-        <p class="text-2xl font-bold">${fmtM(simulacion.interestSavings)}</p>
-        <p class="text-sm text-foreground/50">ahorrados en intereses</p>
-      </div>
+    const container = document.getElementById("resultado-contenido")!;
 
-      <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Sin prepago</p>
-      ${row("Meses restantes", simulacion.withoutPrepayment.months.toString())}
-      ${row("Total intereses", fmt(simulacion.withoutPrepayment.totalInterest), "text-red-400")}
+    const verdict = document.createElement("div");
+    verdict.className = `mb-5 rounded-lg border p-4 text-center ${
+      simulacion.mathematicallyBetterToPrepay
+        ? "border-green-500/30 bg-green-500/5"
+        : "border-yellow-500/30 bg-yellow-500/5"
+    }`;
 
-      <p class="text-xs font-bold text-foreground/50 uppercase mt-4 mb-2">Con prepago de ${fmt(montoPrepago)}</p>
-      ${
-        efecto === "reducir-plazo"
-          ? row(
-              "Meses que se acorta",
-              simulacion.monthsSaved > 0
-                ? simulacion.monthsSaved + " meses menos"
-                : "Se liquida",
-              "text-green-500"
-            )
-          : row(
-              "Nueva cuota mensual",
-              simulacion.newMonthlyPaymentIfReducePayment !== null
-                ? fmt(simulacion.newMonthlyPaymentIfReducePayment)
-                : "Saldado",
-              "text-green-500"
-            )
-      }
-      ${row("Total intereses con prepago", fmt(simulacion.withPrepayment.totalInterest), "text-green-500")}
-      ${row("Ahorro en intereses", fmt(simulacion.interestSavings), "text-green-500")}
+    const verdictLabel = document.createElement("p");
+    verdictLabel.className = `mb-1 text-xs font-bold tracking-widest uppercase ${
+      simulacion.mathematicallyBetterToPrepay
+        ? "text-green-500"
+        : "text-yellow-500"
+    }`;
+    verdictLabel.textContent = simulacion.mathematicallyBetterToPrepay
+      ? "✓ Conviene prepagar"
+      : "⚖️ Puede convenir más invertir";
 
-      <div class="mt-5 rounded-lg bg-foreground/5 p-3">
-        <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Alternativa: invertir ${fmt(montoPrepago)} al ${rentAlternativa * 100}% anual</p>
-        ${row("Valor futuro (en " + simulacion.withoutPrepayment.months + " meses)", fmtM(simulacion.futureInvestmentValue))}
-        ${row("Ganancia estimada", fmtM(simulacion.investmentGain), simulacion.investmentGain > simulacion.interestSavings ? "text-green-500" : "text-foreground/60")}
-        ${row("vs ahorro por prepago", fmtM(simulacion.interestSavings), simulacion.interestSavings >= simulacion.investmentGain ? "text-green-500" : "text-foreground/60")}
-      </div>
+    const verdictValue = document.createElement("p");
+    verdictValue.className = "text-2xl font-bold";
+    verdictValue.textContent = fmtM(simulacion.interestSavings);
 
-      <p class="mt-3 text-xs text-foreground/40">
-        ${
-          simulacion.mathematicallyBetterToPrepay
-            ? `Con tu tasa de ${simulacion.annualCreditRatePercent.toFixed(1)}% anual, el crédito "renta" más caro que la alternativa de inversión (${(rentAlternativa * 100).toFixed(0)}% anual). Prepagar es la mejor opción matemática.`
-            : `La inversión podría generar más que lo que ahorras en intereses. Pero ojo: la rentabilidad de la inversión no está garantizada.`
-        }
-      </p>
-    `;
+    const verdictSub = document.createElement("p");
+    verdictSub.className = "text-sm text-foreground/50";
+    verdictSub.textContent = "ahorrados en intereses";
+    verdict.append(verdictLabel, verdictValue, verdictSub);
+
+    const withoutLabel = document.createElement("p");
+    withoutLabel.className =
+      "mb-2 text-xs font-bold text-foreground/50 uppercase";
+    withoutLabel.textContent = "Sin prepago";
+
+    const withLabel = document.createElement("p");
+    withLabel.className =
+      "mb-2 mt-4 text-xs font-bold text-foreground/50 uppercase";
+    withLabel.textContent = `Con prepago de ${fmt(montoPrepago)}`;
+
+    const investmentBox = document.createElement("div");
+    investmentBox.className = "mt-5 rounded-lg bg-foreground/5 p-3";
+    const investmentLabel = document.createElement("p");
+    investmentLabel.className =
+      "mb-2 text-xs font-bold text-foreground/50 uppercase";
+    investmentLabel.textContent = `Alternativa: invertir ${fmt(montoPrepago)} al ${
+      rentAlternativa * 100
+    }% anual`;
+    investmentBox.append(
+      investmentLabel,
+      buildRow(
+        `Valor futuro (en ${simulacion.withoutPrepayment.months} meses)`,
+        fmtM(simulacion.futureInvestmentValue)
+      ),
+      buildRow(
+        "Ganancia estimada",
+        fmtM(simulacion.investmentGain),
+        simulacion.investmentGain > simulacion.interestSavings
+          ? "text-green-500"
+          : "text-foreground/60"
+      ),
+      buildRow(
+        "vs ahorro por prepago",
+        fmtM(simulacion.interestSavings),
+        simulacion.interestSavings >= simulacion.investmentGain
+          ? "text-green-500"
+          : "text-foreground/60"
+      )
+    );
+
+    const finalNote = document.createElement("p");
+    finalNote.className = "mt-3 text-xs text-foreground/40";
+    finalNote.textContent = simulacion.mathematicallyBetterToPrepay
+      ? `Con tu tasa de ${simulacion.annualCreditRatePercent.toFixed(1)}% anual, el crédito "renta" más caro que la alternativa de inversión (${(
+          rentAlternativa * 100
+        ).toFixed(0)}% anual). Prepagar es la mejor opción matemática.`
+      : "La inversión podría generar más que lo que ahorras en intereses. Pero ojo: la rentabilidad de la inversión no está garantizada.";
+
+    const conditionalRow =
+      efecto === "reducir-plazo"
+        ? buildRow(
+            "Meses que se acorta",
+            simulacion.monthsSaved > 0
+              ? `${simulacion.monthsSaved} meses menos`
+              : "Se liquida",
+            "text-green-500"
+          )
+        : buildRow(
+            "Nueva cuota mensual",
+            simulacion.newMonthlyPaymentIfReducePayment !== null
+              ? fmt(simulacion.newMonthlyPaymentIfReducePayment)
+              : "Saldado",
+            "text-green-500"
+          );
+
+    container.replaceChildren(
+      verdict,
+      withoutLabel,
+      buildRow(
+        "Meses restantes",
+        simulacion.withoutPrepayment.months.toString()
+      ),
+      buildRow(
+        "Total intereses",
+        fmt(simulacion.withoutPrepayment.totalInterest),
+        "text-red-400"
+      ),
+      withLabel,
+      conditionalRow,
+      buildRow(
+        "Total intereses con prepago",
+        fmt(simulacion.withPrepayment.totalInterest),
+        "text-green-500"
+      ),
+      buildRow(
+        "Ahorro en intereses",
+        fmt(simulacion.interestSavings),
+        "text-green-500"
+      ),
+      investmentBox,
+      finalNote
+    );
   });
 </script>

@@ -58,7 +58,10 @@ const date = datetime.format("D MMM YYYY");
   {
     readingTime && (
       <>
-        <span aria-hidden="true" class:list={["text-sm", { "sm:text-base": size === "lg" }]}>
+        <span
+          aria-hidden="true"
+          class:list={["text-sm", { "sm:text-base": size === "lg" }]}
+        >
           ·
         </span>
         <span class:list={["text-sm", { "sm:text-base": size === "lg" }]}>

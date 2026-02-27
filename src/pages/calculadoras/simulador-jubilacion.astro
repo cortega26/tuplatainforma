@@ -276,29 +276,71 @@ import Footer from "@/components/Footer.astro";
       return;
     }
 
-    const row = (label: string, value: string, color = "") =>
-      `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
-        <span class="text-foreground/60">${label}</span>
-        <span class="font-semibold font-mono ${color}">${value}</span>
-      </div>`;
+    const buildRow = (label: string, value: string, colorClass = "") => {
+      const line = document.createElement("div");
+      line.className =
+        "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
 
-    document.getElementById("resultado-contenido")!.innerHTML = `
-      <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
-        <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Saldo estimado al jubilar</p>
-        <p class="text-4xl font-bold">${fmtM(proyeccion.projectedBalance)}</p>
-        <p class="text-sm text-foreground/50 mt-1">En ${añosRestantes} años (a los ${edadJubilacion})</p>
-      </div>
+      const labelElement = document.createElement("span");
+      labelElement.className = "text-foreground/60";
+      labelElement.textContent = label;
 
-      ${row("Pensión mensual estimada", fmt(proyeccion.estimatedMonthlyPension), "text-accent")}
-      ${row("Como % de tu sueldo actual", proyeccion.salaryReplacementPercent.toFixed(0) + "%")}
-      ${row("Años de pensión (vida estimada)", `${proyeccion.pensionMonths / 12} años`)}
-      ${row("Rentabilidad anual usada", rentAnual * 100 + "%")}
-      ${row("Saldo inicial ingresado", fmt(saldoInicial))}
+      const valueElement = document.createElement("span");
+      valueElement.className = `font-mono font-semibold ${colorClass}`.trim();
+      valueElement.textContent = value;
 
-      <div class="mt-4 rounded-lg bg-foreground/5 p-3 text-xs text-foreground/60">
-        <strong>¿Quieres mejorar esta proyección?</strong><br>
-        Agregar APV mensual aumenta significativamente el saldo final. Con $100.000/mes de APV durante ${añosRestantes} años a ${rentAnual * 100}% anual, sumarías aprox. ${fmtM(proyeccion.apvExtraProjectionAt100kMonthly)} adicionales al fondo.
-      </div>
-    `;
+      line.append(labelElement, valueElement);
+      return line;
+    };
+
+    const headline = document.createElement("div");
+    headline.className =
+      "mb-5 rounded-lg border border-accent/20 bg-accent/10 p-4 text-center";
+    const headlineLabel = document.createElement("p");
+    headlineLabel.className =
+      "mb-1 text-xs font-bold tracking-widest text-accent uppercase";
+    headlineLabel.textContent = "Saldo estimado al jubilar";
+    const headlineValue = document.createElement("p");
+    headlineValue.className = "text-4xl font-bold";
+    headlineValue.textContent = fmtM(proyeccion.projectedBalance);
+    const headlineSub = document.createElement("p");
+    headlineSub.className = "mt-1 text-sm text-foreground/50";
+    headlineSub.textContent = `En ${añosRestantes} años (a los ${edadJubilacion})`;
+    headline.append(headlineLabel, headlineValue, headlineSub);
+
+    const hint = document.createElement("div");
+    hint.className =
+      "mt-4 rounded-lg bg-foreground/5 p-3 text-xs text-foreground/60";
+    const hintTitle = document.createElement("strong");
+    hintTitle.textContent = "¿Quieres mejorar esta proyección?";
+    hint.append(
+      hintTitle,
+      document.createElement("br"),
+      `Agregar APV mensual aumenta significativamente el saldo final. Con $100.000/mes de APV durante ${añosRestantes} años a ${
+        rentAnual * 100
+      }% anual, sumarías aprox. ${fmtM(proyeccion.apvExtraProjectionAt100kMonthly)} adicionales al fondo.`
+    );
+
+    document
+      .getElementById("resultado-contenido")!
+      .replaceChildren(
+        headline,
+        buildRow(
+          "Pensión mensual estimada",
+          fmt(proyeccion.estimatedMonthlyPension),
+          "text-accent"
+        ),
+        buildRow(
+          "Como % de tu sueldo actual",
+          `${proyeccion.salaryReplacementPercent.toFixed(0)}%`
+        ),
+        buildRow(
+          "Años de pensión (vida estimada)",
+          `${proyeccion.pensionMonths / 12} años`
+        ),
+        buildRow("Rentabilidad anual usada", `${rentAnual * 100}%`),
+        buildRow("Saldo inicial ingresado", fmt(saldoInicial)),
+        hint
+      );
   });
 </script>

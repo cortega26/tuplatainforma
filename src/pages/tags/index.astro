@@ -20,9 +20,11 @@ const tags = getUniqueTagsWithCount(posts);
     pageDesc="Todas las etiquetas usadas en los artículos."
   >
     <ul class="flex flex-wrap gap-6">
-      {tags.map(({ tag, tagName, count }) => (
-        <Tag tag={tag} tagName={tagName} count={count} showIcon={true} />
-      ))}
+      {
+        tags.map(({ tag, tagName, count }) => (
+          <Tag tag={tag} tagName={tagName} count={count} showIcon={true} />
+        ))
+      }
     </ul>
   </Main>
   <Footer />

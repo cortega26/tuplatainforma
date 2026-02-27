@@ -26,8 +26,8 @@ const scoredPosts = candidatePosts.map(post => {
 });
 
 const sortByScoreAndDate = (
-  a: (CollectionEntry<"blog"> & { score: number }),
-  b: (CollectionEntry<"blog"> & { score: number })
+  a: CollectionEntry<"blog"> & { score: number },
+  b: CollectionEntry<"blog"> & { score: number }
 ) =>
   b.score - a.score ||
   b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime();
@@ -38,9 +38,7 @@ const tagMatchedPosts = scoredPosts
 
 const fallbackPosts = scoredPosts
   .filter(post => post.score === 0)
-  .sort(
-    (a, b) => b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime()
-  );
+  .sort((a, b) => b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime());
 
 const relatedPosts = [...tagMatchedPosts, ...fallbackPosts].slice(0, 3);
 ---

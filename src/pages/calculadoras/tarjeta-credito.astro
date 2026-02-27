@@ -232,40 +232,86 @@ import Footer from "@/components/Footer.astro";
         ? `${añosDoble} año${añosDoble > 1 ? "s" : ""} y ${mesesDoble} meses`
         : `${resultadoDoble.months} meses`;
 
-    const row = (label: string, value: string, color = "") =>
-      `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
-        <span class="text-foreground/60">${label}</span>
-        <span class="font-semibold font-mono ${color}">${value}</span>
-      </div>`;
+    const buildRow = (label: string, value: string, colorClass = "") => {
+      const line = document.createElement("div");
+      line.className =
+        "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
 
-    const primerosPagosHtml =
-      primerasCuotas.length > 0
-        ? `<div class="mt-4 rounded-lg bg-foreground/5 p-3">
-          <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Primeras cuotas estimadas</p>
-          ${primerasCuotas.map((p, i) => row(`Mes ${i + 1}`, fmt(p))).join("")}
-         </div>`
-        : "";
+      const labelElement = document.createElement("span");
+      labelElement.className = "text-foreground/60";
+      labelElement.textContent = label;
 
-    document.getElementById("resultado-contenido")!.innerHTML = `
-      <div class="text-center mb-5 p-4 rounded-lg bg-red-500/10 border border-red-500/20">
-        <p class="text-xs font-bold uppercase tracking-widest text-red-400 mb-1">Total a pagar (con ${simulacion.usesFixedPayment ? "cuota fija" : "pago mínimo"})</p>
-        <p class="text-4xl font-bold">${fmt(resultado.totalPaid)}</p>
-        <p class="text-sm text-foreground/50 mt-1">Deuda original: ${fmt(deuda)}</p>
-      </div>
+      const valueElement = document.createElement("span");
+      valueElement.className = `font-mono font-semibold ${colorClass}`.trim();
+      valueElement.textContent = value;
 
-      ${row("Intereses totales", fmt(resultado.totalInterest), "text-red-400")}
-      ${row("Tiempo para saldar", tiempoStr, "text-red-400")}
-      ${row("Factor de costo", `×${(resultado.totalPaid / deuda).toFixed(2)}`)}
+      line.append(labelElement, valueElement);
+      return line;
+    };
 
-      ${primerosPagosHtml}
+    const headline = document.createElement("div");
+    headline.className =
+      "mb-5 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-center";
+    const headlineLabel = document.createElement("p");
+    headlineLabel.className =
+      "mb-1 text-xs font-bold tracking-widest text-red-400 uppercase";
+    headlineLabel.textContent = `Total a pagar (con ${
+      simulacion.usesFixedPayment ? "cuota fija" : "pago mínimo"
+    })`;
+    const headlineValue = document.createElement("p");
+    headlineValue.className = "text-4xl font-bold";
+    headlineValue.textContent = fmt(resultado.totalPaid);
+    const originalDebt = document.createElement("p");
+    originalDebt.className = "mt-1 text-sm text-foreground/50";
+    originalDebt.textContent = `Deuda original: ${fmt(deuda)}`;
+    headline.append(headlineLabel, headlineValue, originalDebt);
 
-      <div class="mt-5 rounded-lg border border-green-500/30 bg-green-500/5 p-4">
-        <p class="text-xs font-bold text-green-500 uppercase mb-2">✓ Si pagas el doble cada mes</p>
-        ${row("Total a pagar", fmt(resultadoDoble.totalPaid))}
-        ${row("Intereses", fmt(resultadoDoble.totalInterest))}
-        ${row("Tiempo", tiempoDobleStr)}
-        ${row("Ahorro vs mínimo", fmt(resultado.totalPaid - resultadoDoble.totalPaid), "text-green-500")}
-      </div>
-    `;
+    const firstPaymentsBox = document.createElement("div");
+    firstPaymentsBox.className = "mt-4 rounded-lg bg-foreground/5 p-3";
+    const firstPaymentsLabel = document.createElement("p");
+    firstPaymentsLabel.className =
+      "mb-2 text-xs font-bold text-foreground/50 uppercase";
+    firstPaymentsLabel.textContent = "Primeras cuotas estimadas";
+    firstPaymentsBox.appendChild(firstPaymentsLabel);
+    for (const [index, payment] of primerasCuotas.entries()) {
+      firstPaymentsBox.appendChild(buildRow(`Mes ${index + 1}`, fmt(payment)));
+    }
+
+    const doublePaymentBox = document.createElement("div");
+    doublePaymentBox.className =
+      "mt-5 rounded-lg border border-green-500/30 bg-green-500/5 p-4";
+    const doublePaymentLabel = document.createElement("p");
+    doublePaymentLabel.className =
+      "mb-2 text-xs font-bold text-green-500 uppercase";
+    doublePaymentLabel.textContent = "✓ Si pagas el doble cada mes";
+    doublePaymentBox.append(
+      doublePaymentLabel,
+      buildRow("Total a pagar", fmt(resultadoDoble.totalPaid)),
+      buildRow("Intereses", fmt(resultadoDoble.totalInterest)),
+      buildRow("Tiempo", tiempoDobleStr),
+      buildRow(
+        "Ahorro vs mínimo",
+        fmt(resultado.totalPaid - resultadoDoble.totalPaid),
+        "text-green-500"
+      )
+    );
+
+    document
+      .getElementById("resultado-contenido")!
+      .replaceChildren(
+        headline,
+        buildRow(
+          "Intereses totales",
+          fmt(resultado.totalInterest),
+          "text-red-400"
+        ),
+        buildRow("Tiempo para saldar", tiempoStr, "text-red-400"),
+        buildRow(
+          "Factor de costo",
+          `×${(resultado.totalPaid / deuda).toFixed(2)}`
+        ),
+        ...(primerasCuotas.length > 0 ? [firstPaymentsBox] : []),
+        doublePaymentBox
+      );
   });
 </script>

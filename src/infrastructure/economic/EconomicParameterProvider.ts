@@ -20,6 +20,13 @@ export interface EconomicParameterBundle {
   fallbackReason?: string;
 }
 
+export interface EconomicProviderTelemetry {
+  externalFetchCount: number;
+  cacheHitCount: number;
+  lastSource?: EconomicParameters["source"];
+  lastFallbackReason?: string;
+}
+
 const FALLBACK_LAST_UPDATED = new Date().toISOString().slice(0, 10);
 
 const FALLBACK_PARAMETERS: EconomicParameters = {
@@ -38,6 +45,19 @@ const ECONOMIC_API_URL = "https://mindicador.cl/api";
 const FETCH_TIMEOUT_MS = 5000;
 
 let cachedBundlePromise: Promise<EconomicParameterBundle> | undefined;
+const telemetryState: EconomicProviderTelemetry = {
+  externalFetchCount: 0,
+  cacheHitCount: 0,
+};
+
+function syncDevTelemetry(): void {
+  if (!import.meta.env.DEV) return;
+  (
+    globalThis as typeof globalThis & {
+      __TPI_ECONOMIC_PROVIDER_TELEMETRY__?: EconomicProviderTelemetry;
+    }
+  ).__TPI_ECONOMIC_PROVIDER_TELEMETRY__ = getEconomicProviderTelemetry();
+}
 
 function toIsoDate(value: string | undefined): string {
   if (value && value.length >= 10) {
@@ -85,19 +105,47 @@ function buildFallbackBundle(reason: unknown): EconomicParameterBundle {
 
 async function loadEconomicParameterBundle(): Promise<EconomicParameterBundle> {
   try {
+    telemetryState.externalFetchCount += 1;
     const parameters = await fetchLiveEconomicParameters();
-    return {
+    const bundle: EconomicParameterBundle = {
       parameters,
       telemetryFlag: "economic_parameters_live",
     };
+    telemetryState.lastSource = bundle.parameters.source;
+    telemetryState.lastFallbackReason = undefined;
+    syncDevTelemetry();
+    return bundle;
   } catch (error) {
-    return buildFallbackBundle(error);
+    const bundle = buildFallbackBundle(error);
+    telemetryState.lastSource = bundle.parameters.source;
+    telemetryState.lastFallbackReason = bundle.fallbackReason;
+    syncDevTelemetry();
+    return bundle;
   }
 }
 
 export async function getEconomicParameterBundle(): Promise<EconomicParameterBundle> {
-  if (!cachedBundlePromise) {
-    cachedBundlePromise = loadEconomicParameterBundle();
+  if (cachedBundlePromise) {
+    telemetryState.cacheHitCount += 1;
+    syncDevTelemetry();
+    return cachedBundlePromise;
   }
+
+  cachedBundlePromise = loadEconomicParameterBundle();
   return cachedBundlePromise;
+}
+
+export function getEconomicProviderTelemetry(): EconomicProviderTelemetry {
+  return {
+    ...telemetryState,
+  };
+}
+
+export function __resetEconomicParameterProviderForTests(): void {
+  cachedBundlePromise = undefined;
+  telemetryState.externalFetchCount = 0;
+  telemetryState.cacheHitCount = 0;
+  telemetryState.lastSource = undefined;
+  telemetryState.lastFallbackReason = undefined;
+  syncDevTelemetry();
 }

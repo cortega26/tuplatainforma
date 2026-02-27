@@ -16,7 +16,7 @@ jobs:
   build:
     name: Code standards & build
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 6
 
     strategy:
       matrix:
@@ -50,8 +50,14 @@ jobs:
       - name: "🔎 Lint code"
         run: pnpm run lint
 
+      - name: "🧱 Check domain boundaries"
+        run: pnpm run check:boundaries
+
       - name: "📝 Checking code format"
         run: pnpm run format:check
+
+      - name: "🧪 Run tests"
+        run: pnpm run test
 
       - name: "🚀 Build the project"
         run: pnpm run build

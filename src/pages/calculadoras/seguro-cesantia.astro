@@ -5,6 +5,10 @@ import Footer from "@/components/Footer.astro";
 import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
 
 const { parameters: economicParameters } = await getEconomicParameters();
+const economicSourceLabel =
+  economicParameters.source === "live"
+    ? "dato en línea"
+    : "fallback controlado";
 ---
 
 <Layout
@@ -175,6 +179,11 @@ const { parameters: economicParameters } = await getEconomicParameters();
           aria-hidden="true"
         >
         </div>
+        <p class="mt-3 text-xs text-foreground/40">
+          Fuente económica: {economicSourceLabel} ({
+            economicParameters.lastUpdated
+          }).
+        </p>
       </div>
     </section>
 
@@ -231,20 +240,45 @@ const { parameters: economicParameters } = await getEconomicParameters();
     return currencyFormatter.format(Math.round(n));
   }
 
-  function animatedCurrency(value: number): string {
+  function animatedCurrency(value: number): HTMLSpanElement {
     const target = Math.round(value);
-    return `<span data-animate="true" data-target="${target}">${fmtCurrency(target)}</span>`;
+    const span = document.createElement("span");
+    span.dataset.animate = "true";
+    span.dataset.target = String(target);
+    span.textContent = fmtCurrency(target);
+    return span;
   }
 
-  function row(label: string, value: string, color = "") {
-    return `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
-      <span class="text-foreground/60">${label}</span>
-      <span class="font-semibold font-mono ${color}">${value}</span>
-    </div>`;
+  function row(
+    label: string,
+    value: string | Node,
+    colorClass = ""
+  ): HTMLDivElement {
+    const line = document.createElement("div");
+    line.className =
+      "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
+
+    const labelElement = document.createElement("span");
+    labelElement.className = "text-foreground/60";
+    labelElement.textContent = label;
+
+    const valueElement = document.createElement("span");
+    valueElement.className = `font-mono font-semibold ${colorClass}`.trim();
+    if (typeof value === "string") {
+      valueElement.textContent = value;
+    } else {
+      valueElement.appendChild(value);
+    }
+
+    line.append(labelElement, valueElement);
+    return line;
   }
 
-  function badge(texto: string, color: string) {
-    return `<span class="inline-block rounded-full px-2 py-0.5 text-xs font-bold ${color}">${texto}</span>`;
+  function badge(texto: string, colorClass: string): HTMLSpanElement {
+    const badgeElement = document.createElement("span");
+    badgeElement.className = `inline-block rounded-full px-2 py-0.5 text-xs font-bold ${colorClass}`;
+    badgeElement.textContent = texto;
+    return badgeElement;
   }
 
   function readEconomicParameters(): {
@@ -348,57 +382,132 @@ const { parameters: economicParameters } = await getEconomicParameters();
       return;
     }
 
-    // Construir HTML
-    let html = "";
-
     if (!estimacion.meetsMinimumContributions) {
-      html = `<div class="rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-sm">
-        <p class="font-bold text-red-400 mb-1">⚠️ No cumples el mínimo aún</p>
-        <p class="text-foreground/70">Necesitas al menos <strong>${estimacion.minimumContributionsRequired} cotizaciones</strong> para cobrar. Llevas ${mesesCotizados}.</p>
-        <p class="mt-2 text-foreground/60">Te faltan ${estimacion.minimumContributionsRequired - mesesCotizados} ${estimacion.minimumContributionsRequired - mesesCotizados === 1 ? "mes" : "meses"}.</p>
-      </div>`;
+      const warning = document.createElement("div");
+      warning.className =
+        "rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-sm";
+
+      const title = document.createElement("p");
+      title.className = "mb-1 font-bold text-red-400";
+      title.textContent = "⚠️ No cumples el mínimo aún";
+
+      const message = document.createElement("p");
+      message.className = "text-foreground/70";
+      const strong = document.createElement("strong");
+      strong.textContent = `${estimacion.minimumContributionsRequired} cotizaciones`;
+      message.append(
+        "Necesitas al menos ",
+        strong,
+        ` para cobrar. Llevas ${mesesCotizados}.`
+      );
+
+      const missing = document.createElement("p");
+      missing.className = "mt-2 text-foreground/60";
+      const remaining =
+        estimacion.minimumContributionsRequired - mesesCotizados;
+      missing.textContent = `Te faltan ${remaining} ${remaining === 1 ? "mes" : "meses"}.`;
+
+      warning.append(title, message, missing);
+      document.getElementById("resultado-contenido")!.replaceChildren(warning);
     } else {
-      html = `
-        <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
-          <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Saldo CIC estimado</p>
-          <p class="text-4xl font-bold">${animatedCurrency(estimacion.estimatedCicBalance)}</p>
-          ${saldoIngresado > 0 ? '<p class="text-xs text-foreground/50 mt-1">Según saldo ingresado</p>' : '<p class="text-xs text-foreground/50 mt-1">Estimado (ingresa saldo real desde afc.cl para más precisión)</p>'}
-        </div>
+      const header = document.createElement("div");
+      header.className =
+        "mb-5 rounded-lg border border-accent/20 bg-accent/10 p-4 text-center";
+      const headerTitle = document.createElement("p");
+      headerTitle.className =
+        "mb-1 text-xs font-bold tracking-widest text-accent uppercase";
+      headerTitle.textContent = "Saldo CIC estimado";
+      const headerValue = document.createElement("p");
+      headerValue.className = "text-4xl font-bold";
+      headerValue.appendChild(animatedCurrency(estimacion.estimatedCicBalance));
+      const headerSubtitle = document.createElement("p");
+      headerSubtitle.className = "mt-1 text-xs text-foreground/50";
+      headerSubtitle.textContent =
+        saldoIngresado > 0
+          ? "Según saldo ingresado"
+          : "Estimado (ingresa saldo real desde afc.cl para más precisión)";
+      header.append(headerTitle, headerValue, headerSubtitle);
 
-        <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Pagos estimados por mes</p>
-        ${estimacion.payouts
-          .map((p: number, i: number) =>
-            p > 0
-              ? row(
-                  `Mes ${i + 1} (${(estimacion.payoutRates[i] * 100).toFixed(0)}% del sueldo)`,
-                  animatedCurrency(p),
-                  i === 0 ? "text-accent" : ""
-                )
-              : row(`Mes ${i + 1}`, "Sin saldo", "text-foreground/30")
-          )
-          .join("")}
+      const payoutsLabel = document.createElement("p");
+      payoutsLabel.className =
+        "mb-2 text-xs font-bold text-foreground/50 uppercase";
+      payoutsLabel.textContent = "Pagos estimados por mes";
 
-        <div class="mt-4 pt-3 flex justify-between text-sm font-semibold border-t border-border">
-          <span>Total cobertura CIC</span>
-          <span>${animatedCurrency(estimacion.totalCoverage)} · ${estimacion.monthsCovered} ${estimacion.monthsCovered === 1 ? "mes" : "meses"}</span>
-        </div>
-
-        <div class="mt-4 rounded-lg ${estimacion.eligibleForSolidarityFund ? "border-green-500/30 bg-green-500/5" : "border-foreground/10 bg-foreground/5"} border p-3 text-sm">
-          <p class="font-bold mb-1">Fondo Solidario (FCS) ${badge(estimacion.eligibleForSolidarityFund ? "Acceso posible" : "Sin acceso", estimacion.eligibleForSolidarityFund ? "bg-green-500/20 text-green-500" : "bg-foreground/10 text-foreground/50")}</p>
-          ${
-            estimacion.eligibleForSolidarityFund
-              ? `<p class="text-foreground/70">Con ${mesesCotizados} cotizaciones y causal válida podrías acceder al FCS para extender tu cobertura hasta 5 meses. El monto lo define la Superintendencia de Pensiones anualmente.</p>`
-              : causal === "renuncia" || causal === "despido-culpa"
-                ? `<p class="text-foreground/70">La causal seleccionada no da acceso al FCS. Solo puedes cobrar tu CIC.</p>`
-                : `<p class="text-foreground/70">Necesitas al menos 10 cotizaciones en los últimos 24 meses. Llevas ${mesesCotizados}.</p>`
+      const payoutRows = estimacion.payouts.map(
+        (payout: number, index: number) => {
+          if (payout > 0) {
+            return row(
+              `Mes ${index + 1} (${(estimacion.payoutRates[index] * 100).toFixed(0)}% del sueldo)`,
+              animatedCurrency(payout),
+              index === 0 ? "text-accent" : ""
+            );
           }
-        </div>
 
-        <p class="mt-3 text-xs text-foreground/40">Consulta tu saldo real en <a href="https://www.afc.cl" target="_blank" class="underline">afc.cl</a> con tu ClaveÚnica.</p>
-      `;
+          return row(`Mes ${index + 1}`, "Sin saldo", "text-foreground/30");
+        }
+      );
+
+      const totalCoverage = document.createElement("div");
+      totalCoverage.className =
+        "mt-4 flex justify-between border-t border-border pt-3 text-sm font-semibold";
+      const totalCoverageLabel = document.createElement("span");
+      totalCoverageLabel.textContent = "Total cobertura CIC";
+      const totalCoverageValue = document.createElement("span");
+      totalCoverageValue.append(
+        animatedCurrency(estimacion.totalCoverage),
+        ` · ${estimacion.monthsCovered} ${estimacion.monthsCovered === 1 ? "mes" : "meses"}`
+      );
+      totalCoverage.append(totalCoverageLabel, totalCoverageValue);
+
+      const solidarityBox = document.createElement("div");
+      solidarityBox.className = `mt-4 rounded-lg border p-3 text-sm ${
+        estimacion.eligibleForSolidarityFund
+          ? "border-green-500/30 bg-green-500/5"
+          : "border-foreground/10 bg-foreground/5"
+      }`;
+      const solidarityHeader = document.createElement("p");
+      solidarityHeader.className = "mb-1 font-bold";
+      solidarityHeader.append(
+        "Fondo Solidario (FCS) ",
+        badge(
+          estimacion.eligibleForSolidarityFund
+            ? "Acceso posible"
+            : "Sin acceso",
+          estimacion.eligibleForSolidarityFund
+            ? "bg-green-500/20 text-green-500"
+            : "bg-foreground/10 text-foreground/50"
+        )
+      );
+      const solidarityMessage = document.createElement("p");
+      solidarityMessage.className = "text-foreground/70";
+      solidarityMessage.textContent = estimacion.eligibleForSolidarityFund
+        ? `Con ${mesesCotizados} cotizaciones y causal válida podrías acceder al FCS para extender tu cobertura hasta 5 meses. El monto lo define la Superintendencia de Pensiones anualmente.`
+        : causal === "renuncia" || causal === "despido-culpa"
+          ? "La causal seleccionada no da acceso al FCS. Solo puedes cobrar tu CIC."
+          : `Necesitas al menos 10 cotizaciones en los últimos 24 meses. Llevas ${mesesCotizados}.`;
+      solidarityBox.append(solidarityHeader, solidarityMessage);
+
+      const finalNote = document.createElement("p");
+      finalNote.className = "mt-3 text-xs text-foreground/40";
+      finalNote.append("Consulta tu saldo real en ");
+      const afcLink = document.createElement("a");
+      afcLink.href = "https://www.afc.cl";
+      afcLink.target = "_blank";
+      afcLink.className = "underline";
+      afcLink.textContent = "afc.cl";
+      finalNote.append(afcLink, " con tu ClaveÚnica.");
+
+      document
+        .getElementById("resultado-contenido")!
+        .replaceChildren(
+          header,
+          payoutsLabel,
+          ...payoutRows,
+          totalCoverage,
+          solidarityBox,
+          finalNote
+        );
     }
-
-    document.getElementById("resultado-contenido")!.innerHTML = html;
     animateResultValues();
   });
 </script>

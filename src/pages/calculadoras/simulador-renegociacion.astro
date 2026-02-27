@@ -7,6 +7,10 @@ import { getPath } from "@/utils/getPath";
 
 const renegociacionGuidePath = getPath("/posts/renegociacion-superir/");
 const { parameters: economicParameters } = await getEconomicParameters();
+const economicSourceLabel =
+  economicParameters.source === "live"
+    ? "dato en línea"
+    : "fallback controlado";
 ---
 
 <Layout
@@ -162,6 +166,11 @@ const { parameters: economicParameters } = await getEconomicParameters();
             Ingresa tus deudas e ingresos para ver si calificas.
           </p>
         </div>
+        <p class="mt-3 text-xs text-foreground/40">
+          Fuente económica: {economicSourceLabel} ({
+            economicParameters.lastUpdated
+          }).
+        </p>
       </div>
     </section>
 
@@ -213,29 +222,72 @@ const { parameters: economicParameters } = await getEconomicParameters();
     return n.toFixed(2) + " UF";
   }
 
-  function row(label: string, value: string, color = "") {
-    return `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
-      <span class="text-foreground/60">${label}</span>
-      <span class="font-semibold font-mono ${color}">${value}</span>
-    </div>`;
+  function buildRow(
+    label: string,
+    value: string,
+    colorClass = ""
+  ): HTMLDivElement {
+    const line = document.createElement("div");
+    line.className =
+      "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
+
+    const labelElement = document.createElement("span");
+    labelElement.className = "text-foreground/60";
+    labelElement.textContent = label;
+
+    const valueElement = document.createElement("span");
+    valueElement.className = `font-mono font-semibold ${colorClass}`.trim();
+    valueElement.textContent = value;
+
+    line.append(labelElement, valueElement);
+    return line;
+  }
+
+  function buildChecklistLine(
+    isValid: boolean,
+    text: string
+  ): HTMLParagraphElement {
+    const line = document.createElement("p");
+    line.textContent = `${isValid ? "✓" : "✗"} ${text}`;
+    line.className = isValid ? "text-green-500" : "text-red-400";
+    return line;
+  }
+
+  function createDebtRow(): HTMLDivElement {
+    const row = document.createElement("div");
+    row.className = "deuda-row flex items-center gap-2";
+
+    const amountInput = document.createElement("input");
+    amountInput.type = "number";
+    amountInput.placeholder = "Monto ($)";
+    amountInput.min = "0";
+    amountInput.className =
+      "deuda-monto flex-1 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none";
+
+    const overdueInput = document.createElement("input");
+    overdueInput.type = "number";
+    overdueInput.placeholder = "Meses mora";
+    overdueInput.min = "1";
+    overdueInput.max = "240";
+    overdueInput.value = "90";
+    overdueInput.className =
+      "deuda-dias w-28 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none";
+
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.textContent = "×";
+    removeButton.className =
+      "eliminar-deuda text-lg leading-none text-foreground/40 hover:text-red-400";
+    removeButton.addEventListener("click", () => row.remove());
+
+    row.append(amountInput, overdueInput, removeButton);
+    return row;
   }
 
   // Agregar deuda
   document.getElementById("agregar-deuda")?.addEventListener("click", () => {
     const container = document.getElementById("deudas-container")!;
-    const row = document.createElement("div");
-    row.className = "deuda-row flex gap-2 items-center";
-    row.innerHTML = `
-      <input type="number" placeholder="Monto ($)" min="0"
-        class="flex-1 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none deuda-monto" />
-      <input type="number" placeholder="Meses mora" min="1" max="240" value="90"
-        class="w-28 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none deuda-dias" />
-      <button class="eliminar-deuda text-foreground/40 hover:text-red-400 text-lg leading-none">×</button>
-    `;
-    container.appendChild(row);
-    row
-      .querySelector(".eliminar-deuda")
-      ?.addEventListener("click", () => row.remove());
+    container.appendChild(createDebtRow());
   });
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
@@ -298,50 +350,93 @@ const { parameters: economicParameters } = await getEconomicParameters();
       return;
     }
 
-    const check = (ok: boolean) =>
-      ok
-        ? '<span class="text-green-500 font-bold">✓</span>'
-        : '<span class="text-red-400 font-bold">✗</span>';
+    const container = document.getElementById("resultado-contenido")!;
 
-    const html = `
-      <div class="mb-5 rounded-lg border ${simulacion.qualifies ? "border-green-500/30 bg-green-500/5" : "border-red-500/30 bg-red-500/10"} p-4">
-        <p class="font-bold ${simulacion.qualifies ? "text-green-500" : "text-red-400"} text-base mb-3">
-          ${simulacion.qualifies ? "✓ Probablemente calificas para renegociar" : "⚠️ Posibles problemas para calificar"}
-        </p>
-        <div class="space-y-1.5 text-sm">
-          <p>${check(simulacion.requirementChecks.hasTwoOrMoreDebts)} 2 o más deudas distintas: ${deudas.length} ingresada${deudas.length > 1 ? "s" : ""}</p>
-          <p>${check(simulacion.requirementChecks.hasTwoOrMoreQualifiedDebts)} Con +90 días de mora: ${simulacion.qualifiedDebtCount} califican</p>
-          <p>${check(simulacion.requirementChecks.reachesMinimumUf)} Total supera ${simulacion.minimumDebtUf} UF: ${fmtUF(simulacion.qualifiedDebtUf)} (mín. ${simulacion.minimumDebtUf} UF = ${fmt(simulacion.minimumDebtUf * ufValue)})</p>
-        </div>
-      </div>
+    const statusBox = document.createElement("div");
+    statusBox.className = `mb-5 rounded-lg border p-4 ${
+      simulacion.qualifies
+        ? "border-green-500/30 bg-green-500/5"
+        : "border-red-500/30 bg-red-500/10"
+    }`;
 
-      ${row("Total deuda declarada", fmt(simulacion.totalDebtClp))}
-      ${row("En UF", fmtUF(simulacion.totalDebtUf))}
+    const statusTitle = document.createElement("p");
+    statusTitle.className = `mb-3 text-base font-bold ${
+      simulacion.qualifies ? "text-green-500" : "text-red-400"
+    }`;
+    statusTitle.textContent = simulacion.qualifies
+      ? "✓ Probablemente calificas para renegociar"
+      : "⚠️ Posibles problemas para calificar";
 
-      <div class="mt-5">
-        <p class="text-xs font-bold text-foreground/50 uppercase mb-2">Simulación de acuerdo — ${plazo} meses</p>
-        ${row("Cuota mensual estimada", fmt(simulacion.monthlyPayment), simulacion.incomeBurdenPercent <= 30 ? "text-green-500" : simulacion.incomeBurdenPercent <= 50 ? "text-yellow-500" : "text-red-400")}
-        ${row("Como % de tu ingreso", simulacion.incomeBurdenPercent.toFixed(1) + "%", simulacion.incomeBurdenPercent <= 30 ? "text-green-500" : simulacion.incomeBurdenPercent <= 50 ? "text-yellow-500" : "text-red-400")}
-        ${row("Total a pagar", fmt(simulacion.totalPaid))}
-        ${row("Intereses del acuerdo", fmt(simulacion.totalInterest))}
-      </div>
+    const checklist = document.createElement("div");
+    checklist.className = "space-y-1.5 text-sm";
+    checklist.append(
+      buildChecklistLine(
+        simulacion.requirementChecks.hasTwoOrMoreDebts,
+        `2 o más deudas distintas: ${deudas.length} ingresada${deudas.length > 1 ? "s" : ""}`
+      ),
+      buildChecklistLine(
+        simulacion.requirementChecks.hasTwoOrMoreQualifiedDebts,
+        `Con +90 días de mora: ${simulacion.qualifiedDebtCount} califican`
+      ),
+      buildChecklistLine(
+        simulacion.requirementChecks.reachesMinimumUf,
+        `Total supera ${simulacion.minimumDebtUf} UF: ${fmtUF(simulacion.qualifiedDebtUf)} (mín. ${simulacion.minimumDebtUf} UF = ${fmt(simulacion.minimumDebtUf * ufValue)})`
+      )
+    );
+    statusBox.append(statusTitle, checklist);
 
-      <div class="mt-3 rounded-lg bg-foreground/5 p-3 text-xs text-foreground/60">
-        ${
-          simulacion.incomeBurdenPercent <= 30
-            ? "✅ La cuota simulada es manejable (≤30% de tu ingreso). Una propuesta en este rango tiene más chances de ser aceptada."
-            : simulacion.incomeBurdenPercent <= 50
-              ? "⚠️ La cuota es alta (30–50% del ingreso). Considera extender el plazo o negociar condonación de intereses."
-              : "🔴 La cuota supera el 50% de tu ingreso. Ajusta el plazo o solicita en la Superir que medien una quita de capital."
-        }
-      </div>
+    const burdenColorClass =
+      simulacion.incomeBurdenPercent <= 30
+        ? "text-green-500"
+        : simulacion.incomeBurdenPercent <= 50
+          ? "text-yellow-500"
+          : "text-red-400";
 
-      <a href="${guideUrl}"
-        class="mt-4 block text-center text-xs text-accent hover:underline">
-        → Leer guía completa de la renegociación Superir
-      </a>
-    `;
+    const simulationSection = document.createElement("div");
+    simulationSection.className = "mt-5";
+    const simulationLabel = document.createElement("p");
+    simulationLabel.className =
+      "mb-2 text-xs font-bold text-foreground/50 uppercase";
+    simulationLabel.textContent = `Simulación de acuerdo — ${plazo} meses`;
+    simulationSection.append(
+      simulationLabel,
+      buildRow(
+        "Cuota mensual estimada",
+        fmt(simulacion.monthlyPayment),
+        burdenColorClass
+      ),
+      buildRow(
+        "Como % de tu ingreso",
+        `${simulacion.incomeBurdenPercent.toFixed(1)}%`,
+        burdenColorClass
+      ),
+      buildRow("Total a pagar", fmt(simulacion.totalPaid)),
+      buildRow("Intereses del acuerdo", fmt(simulacion.totalInterest))
+    );
 
-    document.getElementById("resultado-contenido")!.innerHTML = html;
+    const advisory = document.createElement("div");
+    advisory.className =
+      "mt-3 rounded-lg bg-foreground/5 p-3 text-xs text-foreground/60";
+    advisory.textContent =
+      simulacion.incomeBurdenPercent <= 30
+        ? "✅ La cuota simulada es manejable (≤30% de tu ingreso). Una propuesta en este rango tiene más chances de ser aceptada."
+        : simulacion.incomeBurdenPercent <= 50
+          ? "⚠️ La cuota es alta (30–50% del ingreso). Considera extender el plazo o negociar condonación de intereses."
+          : "🔴 La cuota supera el 50% de tu ingreso. Ajusta el plazo o solicita en la Superir que medien una quita de capital.";
+
+    const guideLink = document.createElement("a");
+    guideLink.href = guideUrl;
+    guideLink.className =
+      "mt-4 block text-center text-xs text-accent hover:underline";
+    guideLink.textContent = "→ Leer guía completa de la renegociación Superir";
+
+    container.replaceChildren(
+      statusBox,
+      buildRow("Total deuda declarada", fmt(simulacion.totalDebtClp)),
+      buildRow("En UF", fmtUF(simulacion.totalDebtUf)),
+      simulationSection,
+      advisory,
+      guideLink
+    );
   });
 </script>
