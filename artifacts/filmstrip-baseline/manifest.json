@@ -1,0 +1,42 @@
+[
+  {
+    "index": 0,
+    "timingMs": 375,
+    "file": "00-375ms.jpg"
+  },
+  {
+    "index": 1,
+    "timingMs": 750,
+    "file": "01-750ms.jpg"
+  },
+  {
+    "index": 2,
+    "timingMs": 1125,
+    "file": "02-1125ms.jpg"
+  },
+  {
+    "index": 3,
+    "timingMs": 1500,
+    "file": "03-1500ms.jpg"
+  },
+  {
+    "index": 4,
+    "timingMs": 1875,
+    "file": "04-1875ms.jpg"
+  },
+  {
+    "index": 5,
+    "timingMs": 2250,
+    "file": "05-2250ms.jpg"
+  },
+  {
+    "index": 6,
+    "timingMs": 2625,
+    "file": "06-2625ms.jpg"
+  },
+  {
+    "index": 7,
+    "timingMs": 3000,
+    "file": "07-3000ms.jpg"
+  }
+]

@@ -42,9 +42,11 @@ const homePath = getPath("/");
                       <img
                         src={heroImage}
                         alt={`Portada de ${heroPost.data.title}`}
+                        width="1200"
+                        height="675"
                         class="aspect-video w-full object-cover"
                         loading="eager"
-                        decoding="async"
+                        fetchpriority="high"
                       />
                     ) : (
                       <ArticlePlaceholder tag={heroPost.data.tags?.[0]} />
@@ -90,6 +92,8 @@ const homePath = getPath("/");
                           <img
                             src={secondaryImage}
                             alt={`Portada de ${post.data.title}`}
+                            width="1200"
+                            height="675"
                             class="aspect-video w-full object-cover"
                             loading="lazy"
                             decoding="async"
