@@ -23,7 +23,7 @@ const economicSourceLabel =
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         ⚖️ Simulador de Renegociación Superir
       </h1>
-      <p class="max-w-xl text-foreground/70">
+      <p class="max-w-xl text-secondary">
         Ingresa tus deudas e ingresos y estima si calificas para la
         renegociación gratuita y qué cuota podrías pagar.
       </p>
@@ -35,7 +35,7 @@ const economicSourceLabel =
         <h2 class="mb-5 text-lg font-semibold">📝 Tus deudas e ingresos</h2>
 
         <div class="mb-5">
-          <p class="mb-3 text-sm font-medium text-foreground/70">
+          <p class="mb-3 text-sm font-medium text-secondary">
             Deudas vencidas (con mora +90 días)
           </p>
           <div id="deudas-container" class="space-y-3">
@@ -77,7 +77,7 @@ const economicSourceLabel =
             class="mt-2 text-xs text-accent hover:underline"
             >+ Agregar otra deuda</button
           >
-          <p class="mt-1 text-xs text-foreground/50">
+          <p class="mt-1 text-xs text-muted">
             Meses mora = tiempo desde el último pago. Necesitas ≥ 3 meses en
             cada deuda.
           </p>
@@ -86,7 +86,7 @@ const economicSourceLabel =
         <div class="mb-4">
           <label
             for="ingreso"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Ingreso mensual neto ($)
           </label>
@@ -97,7 +97,7 @@ const economicSourceLabel =
             min="0"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
-          <p class="mt-1 text-xs text-foreground/50">
+          <p class="mt-1 text-xs text-muted">
             Lo que recibes en tu cuenta (líquido).
           </p>
         </div>
@@ -105,7 +105,7 @@ const economicSourceLabel =
         <div class="mb-4">
           <label
             for="plazo-renego"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Plazo de renegociación deseado (meses)
           </label>
@@ -123,7 +123,7 @@ const economicSourceLabel =
         <div class="mb-4">
           <label
             for="tasa-renego"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Tasa de interés del acuerdo (% mensual)
           </label>
@@ -137,7 +137,7 @@ const economicSourceLabel =
             value="1.5"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
-          <p class="mt-1 text-xs text-foreground/50">
+          <p class="mt-1 text-xs text-muted">
             La tasa varía según el acuerdo. Los acuerdos Superir suelen bajar la
             tasa respecto al contrato original. Usa 0% para simular cuota sin
             interés.
@@ -159,14 +159,14 @@ const economicSourceLabel =
           id="resultado-contenido"
           data-guide-url={renegociacionGuidePath}
           data-uf={String(economicParameters.uf)}
-          class="py-8 text-center text-foreground/40"
+          class="py-8 text-center text-muted"
         >
           <p class="mb-3 text-4xl">⚖️</p>
           <p class="text-sm">
             Ingresa tus deudas e ingresos para ver si calificas.
           </p>
         </div>
-        <p class="mt-3 text-xs text-foreground/40">
+        <p class="mt-3 text-xs text-muted">
           Fuente económica: {economicSourceLabel} ({
             economicParameters.lastUpdated
           }).
@@ -199,7 +199,7 @@ const economicSourceLabel =
           con actividad comercial) en los últimos 24 meses.
         </li>
       </ul>
-      <p class="text-sm text-foreground/50">
+      <p class="text-sm text-muted">
         ⚠️ Esta simulación es educativa. Las condiciones reales del acuerdo
         dependen de la negociación con los acreedores. Para iniciar el trámite
         visita <a href="https://www.superir.gob.cl" target="_blank"
@@ -232,7 +232,7 @@ const economicSourceLabel =
       "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
 
     const labelElement = document.createElement("span");
-    labelElement.className = "text-foreground/60";
+    labelElement.className = "text-secondary";
     labelElement.textContent = label;
 
     const valueElement = document.createElement("span");
@@ -277,7 +277,7 @@ const economicSourceLabel =
     removeButton.type = "button";
     removeButton.textContent = "×";
     removeButton.className =
-      "eliminar-deuda text-lg leading-none text-foreground/40 hover:text-red-400";
+      "eliminar-deuda text-lg leading-none text-muted hover:text-red-400";
     removeButton.addEventListener("click", () => row.remove());
 
     row.append(amountInput, overdueInput, removeButton);
@@ -396,7 +396,7 @@ const economicSourceLabel =
     simulationSection.className = "mt-5";
     const simulationLabel = document.createElement("p");
     simulationLabel.className =
-      "mb-2 text-xs font-bold text-foreground/50 uppercase";
+      "mb-2 text-xs font-bold text-muted uppercase";
     simulationLabel.textContent = `Simulación de acuerdo — ${plazo} meses`;
     simulationSection.append(
       simulationLabel,
@@ -416,7 +416,7 @@ const economicSourceLabel =
 
     const advisory = document.createElement("div");
     advisory.className =
-      "mt-3 rounded-lg bg-foreground/5 p-3 text-xs text-foreground/60";
+      "mt-3 rounded-lg bg-foreground/5 p-3 text-xs text-secondary";
     advisory.textContent =
       simulacion.incomeBurdenPercent <= 30
         ? "✅ La cuota simulada es manejable (≤30% de tu ingreso). Una propuesta en este rango tiene más chances de ser aceptada."

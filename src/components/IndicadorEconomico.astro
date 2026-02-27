@@ -30,12 +30,12 @@ const sourceLabel =
 
 <span class="indicador-economico">
   <strong class="text-accent">{fmt(valor)}</strong>
-  {descripcion && <span class="text-foreground/60"> ({descripcion})</span>}
+  {descripcion && <span class="text-secondary"> ({descripcion})</span>}
   {
     mostrarFecha && (
       <sup
         title={`Basado en ${tipo.toUpperCase()} = ${fmt(base)} al ${fmtFecha(indicadores.fecha)} (${sourceLabel})`}
-        class="ml-0.5 cursor-help text-xs text-foreground/40"
+        class="ml-0.5 cursor-help text-xs text-muted"
       >
         ⓘ
       </sup>

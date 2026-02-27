@@ -21,7 +21,7 @@ const economicSourceLabel =
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         🏠 Calculadora de Reajuste de Arriendo
       </h1>
-      <p class="max-w-xl text-foreground/70">
+      <p class="max-w-xl text-secondary">
         Calcula cuánto sube tu arriendo según la variación de la UF o el IPC.
         Útil tanto para arrendatarios como para propietarios.
       </p>
@@ -33,7 +33,7 @@ const economicSourceLabel =
         <h2 class="mb-5 text-lg font-semibold">📝 Datos del arriendo</h2>
 
         <div class="mb-4">
-          <label class="mb-2 block text-sm font-medium text-foreground/70"
+          <label class="mb-2 block text-sm font-medium text-secondary"
             >Tipo de reajuste según contrato</label
           >
           <div class="flex gap-2">
@@ -85,7 +85,7 @@ const economicSourceLabel =
           <div class="mb-4">
             <label
               for="arriendo-uf"
-              class="mb-1 block text-sm font-medium text-foreground/70"
+              class="mb-1 block text-sm font-medium text-secondary"
             >
               Monto del arriendo en UF
             </label>
@@ -101,7 +101,7 @@ const economicSourceLabel =
           <div class="mb-4">
             <label
               for="uf-antes"
-              class="mb-1 block text-sm font-medium text-foreground/70"
+              class="mb-1 block text-sm font-medium text-secondary"
             >
               Valor UF al pagar el último arriendo ($)
             </label>
@@ -116,7 +116,7 @@ const economicSourceLabel =
           <div class="mb-4">
             <label
               for="uf-hoy"
-              class="mb-1 block text-sm font-medium text-foreground/70"
+              class="mb-1 block text-sm font-medium text-secondary"
             >
               Valor UF hoy ($)
             </label>
@@ -127,7 +127,7 @@ const economicSourceLabel =
               min="0"
               class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
             />
-            <p class="mt-1 text-xs text-foreground/50">
+            <p class="mt-1 text-xs text-muted">
               Valor cargado desde parámetros económicos vigentes. Ajusta si es
               necesario.
             </p>
@@ -139,7 +139,7 @@ const economicSourceLabel =
           <div class="mb-4">
             <label
               for="arriendo-pesos-ipc"
-              class="mb-1 block text-sm font-medium text-foreground/70"
+              class="mb-1 block text-sm font-medium text-secondary"
             >
               Arriendo actual en pesos ($)
             </label>
@@ -154,7 +154,7 @@ const economicSourceLabel =
           <div class="mb-4">
             <label
               for="ipc-variacion"
-              class="mb-1 block text-sm font-medium text-foreground/70"
+              class="mb-1 block text-sm font-medium text-secondary"
             >
               Variación IPC del período (%)
             </label>
@@ -165,7 +165,7 @@ const economicSourceLabel =
               step="0.1"
               class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
             />
-            <p class="mt-1 text-xs text-foreground/50">
+            <p class="mt-1 text-xs text-muted">
               IPC acumulado del año o del período pactado. Verifica en <a
                 href="https://www.ine.cl"
                 target="_blank"
@@ -180,7 +180,7 @@ const economicSourceLabel =
           <div class="mb-4">
             <label
               for="arriendo-pesos"
-              class="mb-1 block text-sm font-medium text-foreground/70"
+              class="mb-1 block text-sm font-medium text-secondary"
             >
               Arriendo actual en pesos ($)
             </label>
@@ -193,7 +193,7 @@ const economicSourceLabel =
             />
           </div>
           <div
-            class="mb-4 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-3 text-sm text-foreground/70"
+            class="mb-4 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-3 text-sm text-secondary"
           >
             ⚠️ Un contrato en pesos fijos <strong
               >no se reajusta automáticamente</strong
@@ -216,7 +216,7 @@ const economicSourceLabel =
         <h2 class="mb-5 text-lg font-semibold">📊 Resultado</h2>
         <div
           id="resultado-contenido"
-          class="py-8 text-center text-foreground/40"
+          class="py-8 text-center text-muted"
         >
           <p class="mb-3 text-4xl">🏠</p>
           <p class="text-sm">Ingresa los datos para calcular el reajuste.</p>
@@ -228,7 +228,7 @@ const economicSourceLabel =
           aria-hidden="true"
         >
         </div>
-        <p class="mt-3 text-xs text-foreground/40">
+        <p class="mt-3 text-xs text-muted">
           Fuente económica: {economicSourceLabel} ({
             economicParameters.lastUpdated
           }).
@@ -268,7 +268,7 @@ const economicSourceLabel =
           >Juzgado de Letras con competencia en arrendamiento</strong
         >. El SERNAC no tiene competencia en arriendos de vivienda.
       </p>
-      <p class="text-sm text-foreground/50">
+      <p class="text-sm text-muted">
         ⚠️ Esta calculadora entrega valores referenciales. Para interpretación
         legal de tu contrato, consulta a un abogado o la <a
           href="https://www.corporacionderechopublico.cl"
@@ -300,7 +300,7 @@ const economicSourceLabel =
       "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
 
     const labelElement = document.createElement("span");
-    labelElement.className = "text-foreground/60";
+    labelElement.className = "text-secondary";
     labelElement.textContent = label;
 
     const valueElement = document.createElement("span");
@@ -341,7 +341,7 @@ const economicSourceLabel =
         ) || 0;
       const box = document.createElement("div");
       box.className =
-        "rounded-lg border border-yellow-500/30 bg-yellow-500/10 p-4 text-sm text-foreground/70";
+        "rounded-lg border border-yellow-500/30 bg-yellow-500/10 p-4 text-sm text-secondary";
 
       const title = document.createElement("p");
       title.className = "mb-2 font-bold text-yellow-500";
@@ -412,14 +412,14 @@ const economicSourceLabel =
       headerValue.className = "text-4xl font-bold";
       headerValue.textContent = fmt(reajusteUf.currentRentClp);
       const headerSub = document.createElement("p");
-      headerSub.className = "mt-1 text-sm text-foreground/50";
+      headerSub.className = "mt-1 text-sm text-muted";
       headerSub.textContent = `${arriendoUF.toLocaleString("es-CL", {
         minimumFractionDigits: 2,
       })} UF × $${Math.round(ufHoy).toLocaleString("es-CL")}`;
       header.append(headerTitle, headerValue, headerSub);
 
       const note = document.createElement("p");
-      note.className = "mt-3 text-xs text-foreground/40";
+      note.className = "mt-3 text-xs text-muted";
       note.textContent = `El arriendo en UF no "sube" - siempre son ${arriendoUF} UF. Lo que varía es el equivalente en pesos según el valor diario de la UF.`;
 
       document
@@ -482,12 +482,12 @@ const economicSourceLabel =
       headerValue.className = "text-4xl font-bold";
       headerValue.textContent = fmt(reajusteIpc.adjustedRentClp);
       const headerSub = document.createElement("p");
-      headerSub.className = "mt-1 text-sm text-foreground/50";
+      headerSub.className = "mt-1 text-sm text-muted";
       headerSub.textContent = `Con IPC ${ipcVariacion > 0 ? "+" : ""}${ipcVariacion}%`;
       header.append(headerTitle, headerValue, headerSub);
 
       const note = document.createElement("p");
-      note.className = "mt-3 text-xs text-foreground/40";
+      note.className = "mt-3 text-xs text-muted";
       note.textContent =
         "El reajuste por IPC aplica sobre el monto en pesos pactado. Solo puede hacerse en la fecha de renovación anual indicada en el contrato.";
 

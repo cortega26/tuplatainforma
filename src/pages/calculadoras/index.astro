@@ -90,7 +90,7 @@ const calculadoras = [
 const tagStyles: Record<string, string> = {
   "Más usada": "bg-accent/20 text-accent",
   Nueva: "bg-green-500/20 text-green-500",
-  Próximamente: "bg-foreground/10 text-foreground/50",
+  Próximamente: "bg-foreground/10 text-muted",
 };
 ---
 
@@ -104,7 +104,7 @@ const tagStyles: Record<string, string> = {
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         🧮 Calculadoras Financieras
       </h1>
-      <p class="max-w-xl text-foreground/70">
+      <p class="max-w-xl text-secondary">
         Herramientas gratuitas para hacer tus propios números. Sin registro, sin
         datos personales.
       </p>
@@ -131,14 +131,14 @@ const tagStyles: Record<string, string> = {
                     class:list={[
                       "rounded-full px-2 py-0.5 text-xs font-bold",
                       tagStyles[calc.tag] ??
-                        "bg-foreground/10 text-foreground/50",
+                        "bg-foreground/10 text-muted",
                     ]}
                   >
                     {calc.tag}
                   </span>
                 </div>
                 <h2 class="mb-1 text-lg font-semibold">{calc.titulo}</h2>
-                <p class="text-sm text-foreground/60">{calc.descripcion}</p>
+                <p class="text-sm text-secondary">{calc.descripcion}</p>
               </a>
             </li>
           ))

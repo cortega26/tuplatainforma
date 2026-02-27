@@ -21,7 +21,7 @@ const economicSourceLabel =
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         🛡️ Calculadora de Seguro de Cesantía
       </h1>
-      <p class="max-w-xl text-foreground/70">
+      <p class="max-w-xl text-secondary">
         Estima cuánto tienes acumulado en tu Cuenta Individual de Cesantía (CIC)
         y cuánto recibirías cada mes si quedaras sin trabajo.
       </p>
@@ -35,7 +35,7 @@ const economicSourceLabel =
         <div class="mb-4">
           <label
             for="sueldo"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Sueldo bruto mensual ($)
           </label>
@@ -49,7 +49,7 @@ const economicSourceLabel =
         </div>
 
         <div class="mb-4">
-          <label class="mb-2 block text-sm font-medium text-foreground/70"
+          <label class="mb-2 block text-sm font-medium text-secondary"
             >Tipo de contrato</label
           >
           <div class="flex gap-2">
@@ -86,7 +86,7 @@ const economicSourceLabel =
         <div class="mb-4">
           <label
             for="meses-cotizados"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Meses cotizados en este trabajo
           </label>
@@ -99,7 +99,7 @@ const economicSourceLabel =
             value="24"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
-          <p class="mt-1 text-xs text-foreground/50">
+          <p class="mt-1 text-xs text-muted">
             Meses desde que ingresaste o desde el último cobro del seguro.
           </p>
         </div>
@@ -107,7 +107,7 @@ const economicSourceLabel =
         <div class="mb-4">
           <label
             for="saldo-actual"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Saldo actual en CIC ($) — opcional
           </label>
@@ -118,7 +118,7 @@ const economicSourceLabel =
             min="0"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
-          <p class="mt-1 text-xs text-foreground/50">
+          <p class="mt-1 text-xs text-muted">
             Si lo ingresas, el resultado es más preciso. Si no, estimamos según
             cotizaciones.
           </p>
@@ -127,7 +127,7 @@ const economicSourceLabel =
         <div class="mb-4">
           <label
             for="causal"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Causal de término
           </label>
@@ -164,7 +164,7 @@ const economicSourceLabel =
         <h2 class="mb-5 text-lg font-semibold">💰 Tu cobertura estimada</h2>
         <div
           id="resultado-contenido"
-          class="py-8 text-center text-foreground/40"
+          class="py-8 text-center text-muted"
         >
           <p class="mb-3 text-4xl">🛡️</p>
           <p class="text-sm">Ingresa tus datos y presiona calcular.</p>
@@ -179,7 +179,7 @@ const economicSourceLabel =
           aria-hidden="true"
         >
         </div>
-        <p class="mt-3 text-xs text-foreground/40">
+        <p class="mt-3 text-xs text-muted">
           Fuente económica: {economicSourceLabel} ({
             economicParameters.lastUpdated
           }).
@@ -217,7 +217,7 @@ const economicSourceLabel =
           vencimiento de plazo u otras causales específicas.
         </li>
       </ul>
-      <p class="text-sm text-foreground/50">
+      <p class="text-sm text-muted">
         ⚠️ Esta calculadora entrega estimaciones. El saldo exacto de tu CIC está
         en <a href="https://www.afc.cl" target="_blank">afc.cl</a> con tu ClaveÚnica.
         Los montos del FCS se actualizan anualmente.
@@ -259,7 +259,7 @@ const economicSourceLabel =
       "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
 
     const labelElement = document.createElement("span");
-    labelElement.className = "text-foreground/60";
+    labelElement.className = "text-secondary";
     labelElement.textContent = label;
 
     const valueElement = document.createElement("span");
@@ -392,7 +392,7 @@ const economicSourceLabel =
       title.textContent = "⚠️ No cumples el mínimo aún";
 
       const message = document.createElement("p");
-      message.className = "text-foreground/70";
+      message.className = "text-secondary";
       const strong = document.createElement("strong");
       strong.textContent = `${estimacion.minimumContributionsRequired} cotizaciones`;
       message.append(
@@ -402,7 +402,7 @@ const economicSourceLabel =
       );
 
       const missing = document.createElement("p");
-      missing.className = "mt-2 text-foreground/60";
+      missing.className = "mt-2 text-secondary";
       const remaining =
         estimacion.minimumContributionsRequired - mesesCotizados;
       missing.textContent = `Te faltan ${remaining} ${remaining === 1 ? "mes" : "meses"}.`;
@@ -421,7 +421,7 @@ const economicSourceLabel =
       headerValue.className = "text-4xl font-bold";
       headerValue.appendChild(animatedCurrency(estimacion.estimatedCicBalance));
       const headerSubtitle = document.createElement("p");
-      headerSubtitle.className = "mt-1 text-xs text-foreground/50";
+      headerSubtitle.className = "mt-1 text-xs text-muted";
       headerSubtitle.textContent =
         saldoIngresado > 0
           ? "Según saldo ingresado"
@@ -430,7 +430,7 @@ const economicSourceLabel =
 
       const payoutsLabel = document.createElement("p");
       payoutsLabel.className =
-        "mb-2 text-xs font-bold text-foreground/50 uppercase";
+        "mb-2 text-xs font-bold text-muted uppercase";
       payoutsLabel.textContent = "Pagos estimados por mes";
 
       const payoutRows = estimacion.payouts.map(
@@ -443,7 +443,7 @@ const economicSourceLabel =
             );
           }
 
-          return row(`Mes ${index + 1}`, "Sin saldo", "text-foreground/30");
+          return row(`Mes ${index + 1}`, "Sin saldo", "text-muted");
         }
       );
 
@@ -475,11 +475,11 @@ const economicSourceLabel =
             : "Sin acceso",
           estimacion.eligibleForSolidarityFund
             ? "bg-green-500/20 text-green-500"
-            : "bg-foreground/10 text-foreground/50"
+            : "bg-foreground/10 text-muted"
         )
       );
       const solidarityMessage = document.createElement("p");
-      solidarityMessage.className = "text-foreground/70";
+      solidarityMessage.className = "text-secondary";
       solidarityMessage.textContent = estimacion.eligibleForSolidarityFund
         ? `Con ${mesesCotizados} cotizaciones y causal válida podrías acceder al FCS para extender tu cobertura hasta 5 meses. El monto lo define la Superintendencia de Pensiones anualmente.`
         : causal === "renuncia" || causal === "despido-culpa"
@@ -488,7 +488,7 @@ const economicSourceLabel =
       solidarityBox.append(solidarityHeader, solidarityMessage);
 
       const finalNote = document.createElement("p");
-      finalNote.className = "mt-3 text-xs text-foreground/40";
+      finalNote.className = "mt-3 text-xs text-muted";
       finalNote.append("Consulta tu saldo real en ");
       const afcLink = document.createElement("a");
       afcLink.href = "https://www.afc.cl";

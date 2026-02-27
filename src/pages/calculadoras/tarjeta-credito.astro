@@ -14,7 +14,7 @@ import Footer from "@/components/Footer.astro";
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         💳 Costo Real de la Tarjeta de Crédito
       </h1>
-      <p class="max-w-xl text-foreground/70">
+      <p class="max-w-xl text-secondary">
         Descubre cuánto pagas realmente si solo abonas el mínimo de tu tarjeta.
         Ve el costo total en tiempo e intereses.
       </p>
@@ -28,7 +28,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="deuda"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Deuda actual ($)
           </label>
@@ -44,7 +44,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="tasa"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Tasa de interés mensual (%)
           </label>
@@ -58,7 +58,7 @@ import Footer from "@/components/Footer.astro";
             value="3.49"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
-          <p class="mt-1 text-xs text-foreground/50">
+          <p class="mt-1 text-xs text-muted">
             La TMC (tasa máxima convencional) vigente para tarjetas suele estar
             ~3.49% mensual. Revisa tu contrato para el valor exacto.
           </p>
@@ -67,7 +67,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="pago-minimo-pct"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Porcentaje de pago mínimo (%)
           </label>
@@ -81,7 +81,7 @@ import Footer from "@/components/Footer.astro";
             value="5"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
-          <p class="mt-1 text-xs text-foreground/50">
+          <p class="mt-1 text-xs text-muted">
             El pago mínimo varía por banco, generalmente entre 3% y 10% del
             saldo.
           </p>
@@ -90,7 +90,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="pago-fijo"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             O bien, pago mensual fijo ($) — opcional
           </label>
@@ -101,7 +101,7 @@ import Footer from "@/components/Footer.astro";
             min="0"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
-          <p class="mt-1 text-xs text-foreground/50">
+          <p class="mt-1 text-xs text-muted">
             Si ingresas un monto fijo, se usa en lugar del porcentaje mínimo.
           </p>
         </div>
@@ -122,7 +122,7 @@ import Footer from "@/components/Footer.astro";
         <h2 class="mb-5 text-lg font-semibold">💸 Resultado</h2>
         <div
           id="resultado-contenido"
-          class="py-8 text-center text-foreground/40"
+          class="py-8 text-center text-muted"
         >
           <p class="mb-3 text-4xl">💳</p>
           <p class="text-sm">Ingresa tu deuda y presiona calcular.</p>
@@ -156,7 +156,7 @@ import Footer from "@/components/Footer.astro";
           de otros meses para abonar al capital.
         </li>
       </ul>
-      <p class="text-sm text-foreground/50">
+      <p class="text-sm text-muted">
         ⚠️ Valores referenciales. La simulación asume cuotas constantes. Las TMC
         reales varían por banco y tipo de operación — verifica en la <a
           href="https://www.cmfchile.cl"
@@ -238,7 +238,7 @@ import Footer from "@/components/Footer.astro";
         "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
 
       const labelElement = document.createElement("span");
-      labelElement.className = "text-foreground/60";
+      labelElement.className = "text-secondary";
       labelElement.textContent = label;
 
       const valueElement = document.createElement("span");
@@ -262,7 +262,7 @@ import Footer from "@/components/Footer.astro";
     headlineValue.className = "text-4xl font-bold";
     headlineValue.textContent = fmt(resultado.totalPaid);
     const originalDebt = document.createElement("p");
-    originalDebt.className = "mt-1 text-sm text-foreground/50";
+    originalDebt.className = "mt-1 text-sm text-muted";
     originalDebt.textContent = `Deuda original: ${fmt(deuda)}`;
     headline.append(headlineLabel, headlineValue, originalDebt);
 
@@ -270,7 +270,7 @@ import Footer from "@/components/Footer.astro";
     firstPaymentsBox.className = "mt-4 rounded-lg bg-foreground/5 p-3";
     const firstPaymentsLabel = document.createElement("p");
     firstPaymentsLabel.className =
-      "mb-2 text-xs font-bold text-foreground/50 uppercase";
+      "mb-2 text-xs font-bold text-muted uppercase";
     firstPaymentsLabel.textContent = "Primeras cuotas estimadas";
     firstPaymentsBox.appendChild(firstPaymentsLabel);
     for (const [index, payment] of primerasCuotas.entries()) {

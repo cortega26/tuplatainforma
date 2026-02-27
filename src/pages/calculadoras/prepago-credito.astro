@@ -14,7 +14,7 @@ import Footer from "@/components/Footer.astro";
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         💡 ¿Me conviene prepagar el crédito?
       </h1>
-      <p class="max-w-xl text-foreground/70">
+      <p class="max-w-xl text-secondary">
         Calcula cuánto ahorras en intereses si haces un abono extraordinario a
         tu crédito y si conviene más prepagar o invertir ese dinero.
       </p>
@@ -28,7 +28,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="saldo"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Saldo pendiente ($)
           </label>
@@ -44,7 +44,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="cuota"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Cuota mensual actual ($)
           </label>
@@ -60,7 +60,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="tasa-credito"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Tasa de interés mensual (%)
           </label>
@@ -74,7 +74,7 @@ import Footer from "@/components/Footer.astro";
             value="0.8"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
-          <p class="mt-1 text-xs text-foreground/50">
+          <p class="mt-1 text-xs text-muted">
             Hipotecarios: ~0.4–0.8% mensual. Consumo: ~1.5–3.5% mensual.
           </p>
         </div>
@@ -82,7 +82,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="meses-restantes"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Meses restantes
           </label>
@@ -100,7 +100,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="monto-prepago"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Monto del abono extraordinario ($)
           </label>
@@ -114,7 +114,7 @@ import Footer from "@/components/Footer.astro";
         </div>
 
         <div class="mb-4">
-          <label class="mb-2 block text-sm font-medium text-foreground/70"
+          <label class="mb-2 block text-sm font-medium text-secondary"
             >Efecto del prepago</label
           >
           <div class="flex gap-2">
@@ -151,7 +151,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4 border-t border-border pt-4">
           <label
             for="rentabilidad-alternativa"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Rentabilidad alternativa (% anual)
           </label>
@@ -165,7 +165,7 @@ import Footer from "@/components/Footer.astro";
             <option value="10">10% — Renta variable (estimado histórico)</option
             >
           </select>
-          <p class="mt-1 text-xs text-foreground/50">
+          <p class="mt-1 text-xs text-muted">
             Para comparar: ¿qué pasaría si en vez de prepagar, invirtieras ese
             dinero?
           </p>
@@ -184,7 +184,7 @@ import Footer from "@/components/Footer.astro";
         <h2 class="mb-5 text-lg font-semibold">💰 ¿Conviene prepagar?</h2>
         <div
           id="resultado-contenido"
-          class="py-8 text-center text-foreground/40"
+          class="py-8 text-center text-muted"
         >
           <p class="mb-3 text-4xl">💡</p>
           <p class="text-sm">
@@ -224,7 +224,7 @@ import Footer from "@/components/Footer.astro";
           de interés por prepago anticipado. Verifica en tu contrato antes de decidir.
         </li>
       </ul>
-      <p class="text-sm text-foreground/50">
+      <p class="text-sm text-muted">
         ⚠️ Simulación educativa con supuestos simplificados. Las condiciones
         reales de tu crédito pueden variar. Consulta tu contrato antes de hacer
         un prepago.
@@ -256,7 +256,7 @@ import Footer from "@/components/Footer.astro";
       "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
 
     const labelElement = document.createElement("span");
-    labelElement.className = "text-foreground/60";
+    labelElement.className = "text-secondary";
     labelElement.textContent = label;
 
     const valueElement = document.createElement("span");
@@ -349,25 +349,25 @@ import Footer from "@/components/Footer.astro";
     verdictValue.textContent = fmtM(simulacion.interestSavings);
 
     const verdictSub = document.createElement("p");
-    verdictSub.className = "text-sm text-foreground/50";
+    verdictSub.className = "text-sm text-muted";
     verdictSub.textContent = "ahorrados en intereses";
     verdict.append(verdictLabel, verdictValue, verdictSub);
 
     const withoutLabel = document.createElement("p");
     withoutLabel.className =
-      "mb-2 text-xs font-bold text-foreground/50 uppercase";
+      "mb-2 text-xs font-bold text-muted uppercase";
     withoutLabel.textContent = "Sin prepago";
 
     const withLabel = document.createElement("p");
     withLabel.className =
-      "mb-2 mt-4 text-xs font-bold text-foreground/50 uppercase";
+      "mb-2 mt-4 text-xs font-bold text-muted uppercase";
     withLabel.textContent = `Con prepago de ${fmt(montoPrepago)}`;
 
     const investmentBox = document.createElement("div");
     investmentBox.className = "mt-5 rounded-lg bg-foreground/5 p-3";
     const investmentLabel = document.createElement("p");
     investmentLabel.className =
-      "mb-2 text-xs font-bold text-foreground/50 uppercase";
+      "mb-2 text-xs font-bold text-muted uppercase";
     investmentLabel.textContent = `Alternativa: invertir ${fmt(montoPrepago)} al ${
       rentAlternativa * 100
     }% anual`;
@@ -382,19 +382,19 @@ import Footer from "@/components/Footer.astro";
         fmtM(simulacion.investmentGain),
         simulacion.investmentGain > simulacion.interestSavings
           ? "text-green-500"
-          : "text-foreground/60"
+          : "text-secondary"
       ),
       buildRow(
         "vs ahorro por prepago",
         fmtM(simulacion.interestSavings),
         simulacion.interestSavings >= simulacion.investmentGain
           ? "text-green-500"
-          : "text-foreground/60"
+          : "text-secondary"
       )
     );
 
     const finalNote = document.createElement("p");
-    finalNote.className = "mt-3 text-xs text-foreground/40";
+    finalNote.className = "mt-3 text-xs text-muted";
     finalNote.textContent = simulacion.mathematicallyBetterToPrepay
       ? `Con tu tasa de ${simulacion.annualCreditRatePercent.toFixed(1)}% anual, el crédito "renta" más caro que la alternativa de inversión (${(
           rentAlternativa * 100

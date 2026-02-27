@@ -34,6 +34,10 @@ html[data-theme="light"] {
   --color-highlight-dark: #f59e0b;
   --color-surface: #f8fafc;
   --color-surface-dark: #1e293b;
+  /* Avoid opacity-based paragraph colors; use semantic text tiers instead. */
+  --text-primary: var(--foreground);
+  --text-secondary: color-mix(in srgb, var(--foreground) 75%, var(--background));
+  --text-muted: color-mix(in srgb, var(--foreground) 70%, var(--background));
 }
 
 html[data-theme="dark"] {
@@ -48,14 +52,20 @@ html[data-theme="dark"] {
   --color-highlight-dark: #f59e0b;
   --color-surface: #1e293b;
   --color-surface-dark: #1e293b;
+  --text-primary: var(--foreground);
+  --text-secondary: color-mix(in srgb, var(--foreground) 75%, var(--background));
+  --text-muted: color-mix(in srgb, var(--foreground) 70%, var(--background));
 }
 
 @theme inline {
   --font-app: var(--font-body);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-muted: var(--text-muted);
   --color-accent: var(--accent);
-  --color-muted: var(--muted);
+  --color-surface-muted: var(--muted);
   --color-border: var(--border);
 }
 
@@ -63,7 +73,7 @@ html[data-theme="dark"] {
   * {
     @apply border-border outline-accent/75;
     scrollbar-width: auto;
-    scrollbar-color: var(--color-muted) transparent;
+    scrollbar-color: var(--color-surface-muted) transparent;
   }
   html {
     @apply overflow-y-scroll scroll-smooth;

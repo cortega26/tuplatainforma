@@ -29,7 +29,7 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         🔄 Conversor UF ↔ Pesos
       </h1>
-      <p class="max-w-xl text-foreground/70">
+      <p class="max-w-xl text-secondary">
         Convierte entre Unidad de Fomento y pesos chilenos al valor oficial del
         día. Sin registro, sin publicidad.
       </p>
@@ -48,7 +48,7 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
             Valor UF hoy
           </p>
           <p id="uf-display" class="text-3xl font-bold">${"$" + ufDisplay}</p>
-          <p id="uf-fecha" class="mt-0.5 text-xs text-foreground/50">
+          <p id="uf-fecha" class="mt-0.5 text-xs text-muted">
             {ufDateDisplay} · Fuente: mindicador.cl
           </p>
         </div>
@@ -61,7 +61,7 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
         <div class="mb-6">
           <label
             for="uf-input"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Unidades de Fomento (UF)
           </label>
@@ -79,7 +79,7 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
           <div class="h-px flex-1 bg-border"></div>
           <button
             id="swap-btn"
-            class="rounded-full border border-border px-3 py-1 text-sm text-foreground/60 transition-all hover:border-accent hover:text-accent"
+            class="rounded-full border border-border px-3 py-1 text-sm text-secondary transition-all hover:border-accent hover:text-accent"
           >
             ⇅ invertir
           </button>
@@ -89,7 +89,7 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
         <div class="mb-6">
           <label
             for="pesos-input"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Pesos chilenos ($)
           </label>
@@ -108,7 +108,7 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
           class="hidden rounded-lg bg-foreground/5 p-4 text-center"
         >
           <p id="resultado-texto" class="text-2xl font-bold"></p>
-          <p id="resultado-sub" class="mt-1 text-sm text-foreground/50"></p>
+          <p id="resultado-sub" class="mt-1 text-sm text-muted"></p>
         </div>
         <div
           id="economic-parameters"
@@ -126,7 +126,7 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
           Valores de referencia rápidos
         </h2>
         <div id="tabla-ref" class="space-y-2 text-sm"></div>
-        <p class="mt-3 text-xs text-foreground/40">
+        <p class="mt-3 text-xs text-muted">
           Fuente económica: {economicSourceLabel} ({
             economicParameters.lastUpdated
           }).
@@ -158,7 +158,7 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
           largo plazo.
         </li>
       </ul>
-      <p class="text-sm text-foreground/50">
+      <p class="text-sm text-muted">
         ⚠️ El valor de la UF en este conversor usa la última actualización
         disponible en la fuente. Para validar el dato oficial consulta el <a
           href="https://si3.bcentral.cl/Indicadoressiete/secure/Indicadoresdiarios.aspx"
@@ -274,7 +274,7 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
       "flex justify-between border-b border-border py-1.5 last:border-0";
 
     const label = document.createElement("span");
-    label.className = "text-foreground/60";
+    label.className = "text-secondary";
     label.textContent = reference.label;
 
     const value = document.createElement("span");

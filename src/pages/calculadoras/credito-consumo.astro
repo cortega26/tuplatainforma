@@ -14,7 +14,7 @@ import Footer from "@/components/Footer.astro";
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         🏦 Calculadora de Crédito de Consumo
       </h1>
-      <p class="max-w-xl text-foreground/70">
+      <p class="max-w-xl text-secondary">
         Calcula la cuota mensual, el costo total, los intereses y el CAE de
         cualquier crédito de consumo. Compara dos opciones lado a lado.
       </p>
@@ -28,7 +28,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="monto"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Monto del crédito ($)
           </label>
@@ -44,7 +44,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="plazo"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Plazo (meses)
           </label>
@@ -62,7 +62,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="tasa-tipo"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Tipo de tasa
           </label>
@@ -104,7 +104,7 @@ import Footer from "@/components/Footer.astro";
             value="3.49"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
-          <p class="mt-1 text-xs text-foreground/50">
+          <p class="mt-1 text-xs text-muted">
             TMC para créditos hasta 200 UF: ~3.49% mensual (~51.5% anual).
             Verifica la tasa exacta de tu oferta.
           </p>
@@ -113,7 +113,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="seguro"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Seguro mensual ($) — opcional
           </label>
@@ -125,7 +125,7 @@ import Footer from "@/components/Footer.astro";
             value="0"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
-          <p class="mt-1 text-xs text-foreground/50">
+          <p class="mt-1 text-xs text-muted">
             Algunos créditos incluyen seguro de desgravamen. Si te lo ofrecen,
             ingresa el monto mensual.
           </p>
@@ -134,7 +134,7 @@ import Footer from "@/components/Footer.astro";
         <div class="mb-4">
           <label
             for="gastos"
-            class="mb-1 block text-sm font-medium text-foreground/70"
+            class="mb-1 block text-sm font-medium text-secondary"
           >
             Gastos notariales / operacionales ($) — opcional
           </label>
@@ -164,7 +164,7 @@ import Footer from "@/components/Footer.astro";
         <h2 class="mb-5 text-lg font-semibold">📋 Desglose del crédito</h2>
         <div
           id="resultado-contenido"
-          class="py-8 text-center text-foreground/40"
+          class="py-8 text-center text-muted"
         >
           <p class="mb-3 text-4xl">🏦</p>
           <p class="text-sm">Ingresa los datos y presiona calcular.</p>
@@ -199,7 +199,7 @@ import Footer from "@/components/Footer.astro";
           justa.
         </li>
       </ul>
-      <p class="text-sm text-foreground/50">
+      <p class="text-sm text-muted">
         ⚠️ El CAE calculado aquí es aproximado. El CAE oficial de un crédito lo
         calcula la institución financiera según metodología CMF. Para comparar
         ofertas reales usa <a
@@ -274,7 +274,7 @@ import Footer from "@/components/Footer.astro";
         "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
 
       const labelElement = document.createElement("span");
-      labelElement.className = "text-foreground/60";
+      labelElement.className = "text-secondary";
       labelElement.textContent = label;
 
       const valueElement = document.createElement("span");
@@ -298,14 +298,14 @@ import Footer from "@/components/Footer.astro";
     headline.append(headlineLabel, headlineValue);
     if (seguro > 0) {
       const insuranceNote = document.createElement("p");
-      insuranceNote.className = "mt-1 text-xs text-foreground/50";
+      insuranceNote.className = "mt-1 text-xs text-muted";
       insuranceNote.textContent = `Incluye ${fmt(seguro)} de seguro`;
       headline.appendChild(insuranceNote);
     }
 
     const insight = document.createElement("div");
     insight.className =
-      "mt-4 rounded-lg bg-foreground/5 p-3 text-xs text-foreground/60";
+      "mt-4 rounded-lg bg-foreground/5 p-3 text-xs text-secondary";
     const highlightedTotal = document.createElement("strong");
     highlightedTotal.textContent = fmt(
       resultado.totalPaid / (monto / 1_000_000)
