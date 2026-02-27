@@ -1,0 +1,163 @@
+{
+  "generatedAt": "2026-02-27T23:26:11.629Z",
+  "runs": [
+    {
+      "run": 1,
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "fcpMs": 1490.035,
+      "lcpMs": 1490.035,
+      "speedIndexMs": 1507,
+      "cls": 0,
+      "tbtMs": 0,
+      "lcpElementSelector": "section.grid > article.lg:col-span-2 > a.group > h1.font-app",
+      "lcpElementSnippet": "<h1 class=\"font-app mb-3 text-2xl leading-tight font-bold group-hover:text-accent sm:…\">",
+      "lcpSubparts": [
+        {
+          "subpart": "timeToFirstByte",
+          "label": "Time to first byte",
+          "duration": 335.346
+        },
+        {
+          "subpart": "elementRenderDelay",
+          "label": "Element render delay",
+          "duration": 1154.689
+        }
+      ],
+      "renderBlockingDisplay": "Est savings of 230 ms",
+      "renderBlockingItems": [
+        {
+          "url": "https://cortega26.github.io/tuplatainforma/_astro/index.DPFRhQ6K.css",
+          "totalBytes": 12934,
+          "wastedMs": 150
+        }
+      ],
+      "forcedReflowItems": [
+        {
+          "source": {
+            "type": "source-location",
+            "url": "https://cortega26.github.io/tuplatainforma/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js",
+            "urlProvider": "network",
+            "line": 0,
+            "column": 4768
+          },
+          "reflowTime": 57.154
+        }
+      ],
+      "colorContrastScore": 1,
+      "filmstripDir": "artifacts/filmstrip-remote-run1",
+      "reportJson": "artifacts/lighthouse-remote-mobile-run1.report.json",
+      "reportHtml": "artifacts/lighthouse-remote-mobile-run1.report.html"
+    },
+    {
+      "run": 2,
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "fcpMs": 1470.3,
+      "lcpMs": 1470.3,
+      "speedIndexMs": 1487,
+      "cls": 0,
+      "tbtMs": 0,
+      "lcpElementSelector": "section.grid > article.lg:col-span-2 > a.group > h1.font-app",
+      "lcpElementSnippet": "<h1 class=\"font-app mb-3 text-2xl leading-tight font-bold group-hover:text-accent sm:…\">",
+      "lcpSubparts": [
+        {
+          "subpart": "timeToFirstByte",
+          "label": "Time to first byte",
+          "duration": 291.975
+        },
+        {
+          "subpart": "elementRenderDelay",
+          "label": "Element render delay",
+          "duration": 1178.325
+        }
+      ],
+      "renderBlockingDisplay": "Est savings of 250 ms",
+      "renderBlockingItems": [
+        {
+          "url": "https://cortega26.github.io/tuplatainforma/_astro/index.DPFRhQ6K.css",
+          "totalBytes": 12912,
+          "wastedMs": 150
+        }
+      ],
+      "forcedReflowItems": [
+        {
+          "source": {
+            "type": "source-location",
+            "url": "https://cortega26.github.io/tuplatainforma/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js",
+            "urlProvider": "network",
+            "line": 0,
+            "column": 4768
+          },
+          "reflowTime": 54.939
+        }
+      ],
+      "colorContrastScore": 1,
+      "filmstripDir": "artifacts/filmstrip-remote-run2",
+      "reportJson": "artifacts/lighthouse-remote-mobile-run2.report.json",
+      "reportHtml": "artifacts/lighthouse-remote-mobile-run2.report.html"
+    },
+    {
+      "run": 3,
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "fcpMs": 1469.598,
+      "lcpMs": 1469.598,
+      "speedIndexMs": 1486,
+      "cls": 0,
+      "tbtMs": 0,
+      "lcpElementSelector": "section.grid > article.lg:col-span-2 > a.group > h1.font-app",
+      "lcpElementSnippet": "<h1 class=\"font-app mb-3 text-2xl leading-tight font-bold group-hover:text-accent sm:…\">",
+      "lcpSubparts": [
+        {
+          "subpart": "timeToFirstByte",
+          "label": "Time to first byte",
+          "duration": 31.928
+        },
+        {
+          "subpart": "elementRenderDelay",
+          "label": "Element render delay",
+          "duration": 1437.67
+        }
+      ],
+      "renderBlockingDisplay": "Est savings of 260 ms",
+      "renderBlockingItems": [
+        {
+          "url": "https://cortega26.github.io/tuplatainforma/_astro/index.DPFRhQ6K.css",
+          "totalBytes": 12910,
+          "wastedMs": 150
+        }
+      ],
+      "forcedReflowItems": [
+        {
+          "source": {
+            "type": "source-location",
+            "url": "https://cortega26.github.io/tuplatainforma/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js",
+            "urlProvider": "network",
+            "line": 0,
+            "column": 4768
+          },
+          "reflowTime": 51.963
+        }
+      ],
+      "colorContrastScore": 1,
+      "filmstripDir": "artifacts/filmstrip-remote-run3",
+      "reportJson": "artifacts/lighthouse-remote-mobile-run3.report.json",
+      "reportHtml": "artifacts/lighthouse-remote-mobile-run3.report.html"
+    }
+  ],
+  "median": {
+    "performance": 100,
+    "fcpMs": 1470.3,
+    "lcpMs": 1470.3,
+    "speedIndexMs": 1487,
+    "cls": 0,
+    "tbtMs": 0
+  }
+}
