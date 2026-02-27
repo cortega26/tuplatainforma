@@ -5,6 +5,10 @@ import Footer from "@/components/Footer.astro";
 import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
 
 const { parameters: economicParameters } = await getEconomicParameters();
+const economicSourceLabel =
+  economicParameters.source === "live"
+    ? "dato en línea"
+    : "fallback controlado";
 ---
 
 <Layout
@@ -224,6 +228,11 @@ const { parameters: economicParameters } = await getEconomicParameters();
           aria-hidden="true"
         >
         </div>
+        <p class="mt-3 text-xs text-foreground/40">
+          Fuente económica: {economicSourceLabel} ({
+            economicParameters.lastUpdated
+          }).
+        </p>
       </div>
     </section>
 
@@ -281,11 +290,25 @@ const { parameters: economicParameters } = await getEconomicParameters();
     return "$" + Math.round(n).toLocaleString("es-CL");
   }
 
-  function row(label: string, value: string, color = "") {
-    return `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
-      <span class="text-foreground/60">${label}</span>
-      <span class="font-semibold font-mono ${color}">${value}</span>
-    </div>`;
+  function buildRow(
+    label: string,
+    value: string,
+    colorClass = ""
+  ): HTMLDivElement {
+    const line = document.createElement("div");
+    line.className =
+      "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
+
+    const labelElement = document.createElement("span");
+    labelElement.className = "text-foreground/60";
+    labelElement.textContent = label;
+
+    const valueElement = document.createElement("span");
+    valueElement.className = `font-mono font-semibold ${colorClass}`.trim();
+    valueElement.textContent = value;
+
+    line.append(labelElement, valueElement);
+    return line;
   }
 
   // Toggle campos
@@ -316,12 +339,30 @@ const { parameters: economicParameters } = await getEconomicParameters();
         parseFloat(
           (document.getElementById("arriendo-pesos") as HTMLInputElement).value
         ) || 0;
-      document.getElementById("resultado-contenido")!.innerHTML = `
-        <div class="rounded-lg border border-yellow-500/30 bg-yellow-500/10 p-4 text-sm text-foreground/70">
-          <p class="font-bold text-yellow-500 mb-2">Sin reajuste automático</p>
-          <p>Tu arriendo actual es <strong>${fmt(arriendo)}</strong>. Con un contrato en pesos fijos sin cláusula de reajuste, este monto no cambia hasta que se modifique el contrato de mutuo acuerdo.</p>
-          <p class="mt-2">Si tu contrato sí tiene cláusula de reajuste por UF o IPC, usa las otras opciones del formulario.</p>
-        </div>`;
+      const box = document.createElement("div");
+      box.className =
+        "rounded-lg border border-yellow-500/30 bg-yellow-500/10 p-4 text-sm text-foreground/70";
+
+      const title = document.createElement("p");
+      title.className = "mb-2 font-bold text-yellow-500";
+      title.textContent = "Sin reajuste automático";
+
+      const paragraph1 = document.createElement("p");
+      const strongAmount = document.createElement("strong");
+      strongAmount.textContent = fmt(arriendo);
+      paragraph1.append(
+        "Tu arriendo actual es ",
+        strongAmount,
+        ". Con un contrato en pesos fijos sin cláusula de reajuste, este monto no cambia hasta que se modifique el contrato de mutuo acuerdo."
+      );
+
+      const paragraph2 = document.createElement("p");
+      paragraph2.className = "mt-2";
+      paragraph2.textContent =
+        "Si tu contrato sí tiene cláusula de reajuste por UF o IPC, usa las otras opciones del formulario.";
+
+      box.append(title, paragraph1, paragraph2);
+      document.getElementById("resultado-contenido")!.replaceChildren(box);
       return;
     }
 
@@ -360,17 +401,43 @@ const { parameters: economicParameters } = await getEconomicParameters();
         return;
       }
 
-      document.getElementById("resultado-contenido")!.innerHTML = `
-        <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
-          <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Arriendo este mes</p>
-          <p class="text-4xl font-bold">${fmt(reajusteUf.currentRentClp)}</p>
-          <p class="text-sm text-foreground/50 mt-1">${arriendoUF.toLocaleString("es-CL", { minimumFractionDigits: 2 })} UF × $${Math.round(ufHoy).toLocaleString("es-CL")}</p>
-        </div>
-        ${row("Arriendo mes anterior", fmt(reajusteUf.previousRentClp))}
-        ${row("Diferencia", (reajusteUf.differenceClp >= 0 ? "+ " : "") + fmt(reajusteUf.differenceClp), reajusteUf.differenceClp > 0 ? "text-red-400" : "text-green-500")}
-        ${row("Variación UF del período", reajusteUf.ufVariationPercent.toFixed(2) + "%")}
-        <p class="mt-3 text-xs text-foreground/40">El arriendo en UF no "sube" — siempre son ${arriendoUF} UF. Lo que varía es el equivalente en pesos según el valor diario de la UF.</p>
-      `;
+      const header = document.createElement("div");
+      header.className =
+        "mb-5 rounded-lg border border-accent/20 bg-accent/10 p-4 text-center";
+      const headerTitle = document.createElement("p");
+      headerTitle.className =
+        "mb-1 text-xs font-bold tracking-widest text-accent uppercase";
+      headerTitle.textContent = "Arriendo este mes";
+      const headerValue = document.createElement("p");
+      headerValue.className = "text-4xl font-bold";
+      headerValue.textContent = fmt(reajusteUf.currentRentClp);
+      const headerSub = document.createElement("p");
+      headerSub.className = "mt-1 text-sm text-foreground/50";
+      headerSub.textContent = `${arriendoUF.toLocaleString("es-CL", {
+        minimumFractionDigits: 2,
+      })} UF × $${Math.round(ufHoy).toLocaleString("es-CL")}`;
+      header.append(headerTitle, headerValue, headerSub);
+
+      const note = document.createElement("p");
+      note.className = "mt-3 text-xs text-foreground/40";
+      note.textContent = `El arriendo en UF no "sube" - siempre son ${arriendoUF} UF. Lo que varía es el equivalente en pesos según el valor diario de la UF.`;
+
+      document
+        .getElementById("resultado-contenido")!
+        .replaceChildren(
+          header,
+          buildRow("Arriendo mes anterior", fmt(reajusteUf.previousRentClp)),
+          buildRow(
+            "Diferencia",
+            `${reajusteUf.differenceClp >= 0 ? "+ " : ""}${fmt(reajusteUf.differenceClp)}`,
+            reajusteUf.differenceClp > 0 ? "text-red-400" : "text-green-500"
+          ),
+          buildRow(
+            "Variación UF del período",
+            `${reajusteUf.ufVariationPercent.toFixed(2)}%`
+          ),
+          note
+        );
       return;
     }
 
@@ -404,18 +471,47 @@ const { parameters: economicParameters } = await getEconomicParameters();
         return;
       }
 
-      document.getElementById("resultado-contenido")!.innerHTML = `
-        <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
-          <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Arriendo reajustado</p>
-          <p class="text-4xl font-bold">${fmt(reajusteIpc.adjustedRentClp)}</p>
-          <p class="text-sm text-foreground/50 mt-1">Con IPC ${ipcVariacion > 0 ? "+" : ""}${ipcVariacion}%</p>
-        </div>
-        ${row("Arriendo antes del reajuste", fmt(arriendoPesos))}
-        ${row("Aumento mensual", "+ " + fmt(reajusteIpc.differenceClp), "text-red-400")}
-        ${row("Aumento anual", "+ " + fmt(reajusteIpc.differenceClp * 12), "text-red-400")}
-        ${row("Factor aplicado", "×" + reajusteIpc.appliedFactor.toFixed(4))}
-        <p class="mt-3 text-xs text-foreground/40">El reajuste por IPC aplica sobre el monto en pesos pactado. Solo puede hacerse en la fecha de renovación anual indicada en el contrato.</p>
-      `;
+      const header = document.createElement("div");
+      header.className =
+        "mb-5 rounded-lg border border-accent/20 bg-accent/10 p-4 text-center";
+      const headerTitle = document.createElement("p");
+      headerTitle.className =
+        "mb-1 text-xs font-bold tracking-widest text-accent uppercase";
+      headerTitle.textContent = "Arriendo reajustado";
+      const headerValue = document.createElement("p");
+      headerValue.className = "text-4xl font-bold";
+      headerValue.textContent = fmt(reajusteIpc.adjustedRentClp);
+      const headerSub = document.createElement("p");
+      headerSub.className = "mt-1 text-sm text-foreground/50";
+      headerSub.textContent = `Con IPC ${ipcVariacion > 0 ? "+" : ""}${ipcVariacion}%`;
+      header.append(headerTitle, headerValue, headerSub);
+
+      const note = document.createElement("p");
+      note.className = "mt-3 text-xs text-foreground/40";
+      note.textContent =
+        "El reajuste por IPC aplica sobre el monto en pesos pactado. Solo puede hacerse en la fecha de renovación anual indicada en el contrato.";
+
+      document
+        .getElementById("resultado-contenido")!
+        .replaceChildren(
+          header,
+          buildRow("Arriendo antes del reajuste", fmt(arriendoPesos)),
+          buildRow(
+            "Aumento mensual",
+            `+ ${fmt(reajusteIpc.differenceClp)}`,
+            "text-red-400"
+          ),
+          buildRow(
+            "Aumento anual",
+            `+ ${fmt(reajusteIpc.differenceClp * 12)}`,
+            "text-red-400"
+          ),
+          buildRow(
+            "Factor aplicado",
+            `×${reajusteIpc.appliedFactor.toFixed(4)}`
+          ),
+          note
+        );
     }
   });
 </script>

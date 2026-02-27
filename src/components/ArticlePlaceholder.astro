@@ -15,9 +15,17 @@ const gradient = `linear-gradient(135deg, color-mix(in srgb, ${category.color} 8
   style={`aspect-ratio: 16 / 9; background: ${gradient};`}
   aria-hidden="true"
 >
-  <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.2),transparent_45%)]"></div>
-  <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,transparent_100%)]"></div>
-  <span class="absolute inset-0 flex items-center justify-center text-4xl drop-shadow-sm sm:text-5xl">
+  <div
+    class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.2),transparent_45%)]"
+  >
+  </div>
+  <div
+    class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,transparent_100%)]"
+  >
+  </div>
+  <span
+    class="absolute inset-0 flex items-center justify-center text-4xl drop-shadow-sm sm:text-5xl"
+  >
     {category.icon}
   </span>
 </div>

@@ -13,11 +13,7 @@ const {
 ---
 
 <div
-  class:list={[
-    "reveal-on-scroll",
-    className,
-    { "is-visible": initialVisible },
-  ]}
+  class:list={["reveal-on-scroll", className, { "is-visible": initialVisible }]}
   style={delay ? `--reveal-delay: ${delay}ms` : ""}
 >
   <slot />
@@ -27,7 +23,9 @@ const {
   .reveal-on-scroll {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
     transition-delay: var(--reveal-delay, 0ms);
   }
 

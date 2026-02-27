@@ -6,6 +6,10 @@ import { getEconomicParameters } from "@/application/use-cases/GetEconomicParame
 
 const { parameters: economicParameters } = await getEconomicParameters();
 const firstTaxExemptBracket = 13.5 * economicParameters.utm;
+const economicSourceLabel =
+  economicParameters.source === "live"
+    ? "dato en línea"
+    : "fallback controlado";
 ---
 
 <Layout
@@ -154,6 +158,11 @@ const firstTaxExemptBracket = 13.5 * economicParameters.utm;
           aria-hidden="true"
         >
         </div>
+        <p class="mt-3 text-xs text-foreground/40">
+          Fuente económica: {economicSourceLabel} ({
+            economicParameters.lastUpdated
+          }).
+        </p>
       </div>
     </section>
 
@@ -278,27 +287,71 @@ const firstTaxExemptBracket = 13.5 * economicParameters.utm;
       return;
     }
 
-    const row = (label: string, value: string, color = "") =>
-      `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
-        <span class="text-foreground/60">${label}</span>
-        <span class="font-semibold font-mono ${color}">${value}</span>
-      </div>`;
+    const buildRow = (label: string, value: string, colorClass = "") => {
+      const line = document.createElement("div");
+      line.className =
+        "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
 
-    document.getElementById("resultado-contenido")!.innerHTML = `
-      <div class="text-center mb-6 p-4 rounded-lg bg-accent/10 border border-accent/20">
-        <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Sueldo Líquido</p>
-        <p class="text-4xl font-bold">${fmt(resultado.netSalary)}</p>
-      </div>
-      ${row("Sueldo bruto", fmt(bruto), "text-green-500")}
-      ${row(`AFP (${fmtPct(resultado.effectiveRates.afpPercent)})`, "− " + fmt(resultado.deductions.afp), "text-red-400")}
-      ${row(`Salud (${fmtPct(resultado.effectiveRates.healthPercent)})`, "− " + fmt(resultado.deductions.health), "text-red-400")}
-      ${row(`Seg. cesantía (${fmtPct(resultado.effectiveRates.unemploymentInsurancePercent)})`, "− " + fmt(resultado.deductions.unemploymentInsurance), "text-red-400")}
-      ${row("Imp. 2ª categoría", "− " + fmt(resultado.deductions.tax), "text-red-400")}
-      <div class="mt-3 pt-3 flex justify-between text-sm font-semibold">
-        <span>Total descuentos</span>
-        <span class="text-red-400">${fmt(resultado.deductions.total)} (${fmtPct(resultado.effectiveRates.totalDeductionPercent)})</span>
-      </div>
-    `;
+      const labelElement = document.createElement("span");
+      labelElement.className = "text-foreground/60";
+      labelElement.textContent = label;
+
+      const valueElement = document.createElement("span");
+      valueElement.className = `font-mono font-semibold ${colorClass}`.trim();
+      valueElement.textContent = value;
+
+      line.append(labelElement, valueElement);
+      return line;
+    };
+
+    const headline = document.createElement("div");
+    headline.className =
+      "mb-6 rounded-lg border border-accent/20 bg-accent/10 p-4 text-center";
+    const headlineLabel = document.createElement("p");
+    headlineLabel.className =
+      "mb-1 text-xs font-bold tracking-widest text-accent uppercase";
+    headlineLabel.textContent = "Sueldo Líquido";
+    const headlineValue = document.createElement("p");
+    headlineValue.className = "text-4xl font-bold";
+    headlineValue.textContent = fmt(resultado.netSalary);
+    headline.append(headlineLabel, headlineValue);
+
+    const totals = document.createElement("div");
+    totals.className = "mt-3 flex justify-between pt-3 text-sm font-semibold";
+    const totalsLabel = document.createElement("span");
+    totalsLabel.textContent = "Total descuentos";
+    const totalsValue = document.createElement("span");
+    totalsValue.className = "text-red-400";
+    totalsValue.textContent = `${fmt(resultado.deductions.total)} (${fmtPct(resultado.effectiveRates.totalDeductionPercent)})`;
+    totals.append(totalsLabel, totalsValue);
+
+    document
+      .getElementById("resultado-contenido")!
+      .replaceChildren(
+        headline,
+        buildRow("Sueldo bruto", fmt(bruto), "text-green-500"),
+        buildRow(
+          `AFP (${fmtPct(resultado.effectiveRates.afpPercent)})`,
+          `− ${fmt(resultado.deductions.afp)}`,
+          "text-red-400"
+        ),
+        buildRow(
+          `Salud (${fmtPct(resultado.effectiveRates.healthPercent)})`,
+          `− ${fmt(resultado.deductions.health)}`,
+          "text-red-400"
+        ),
+        buildRow(
+          `Seg. cesantía (${fmtPct(resultado.effectiveRates.unemploymentInsurancePercent)})`,
+          `− ${fmt(resultado.deductions.unemploymentInsurance)}`,
+          "text-red-400"
+        ),
+        buildRow(
+          "Imp. 2ª categoría",
+          `− ${fmt(resultado.deductions.tax)}`,
+          "text-red-400"
+        ),
+        totals
+      );
   });
 
   document

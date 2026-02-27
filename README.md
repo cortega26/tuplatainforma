@@ -32,6 +32,12 @@ Este sitio es 100% educativo: no solicita datos personales, no ofrece asesoría 
   - layouts/ (plantillas de páginas)
   - utils/ (utilidades para rutas, ordenamiento, etc.)
 
+## Documentación de gobernanza
+
+- Backlog técnico versionado: `docs/TECH_DEBT_BACKLOG.md`
+- Reporte de cierre Fase 1: `docs/PHASE1_CLOSURE_REPORT.md`
+- Fronteras de dominio: `docs/DOMAIN_CONTRACT_BOUNDARIES.md`
+
 ## Desarrollo local
 
 Requisitos: Node 20
@@ -59,6 +65,36 @@ Asegúrate de que:
 
 - La configuración de Astro (astro.config.ts) mantiene base: "/tuplatainforma"
 - La constante SITE.website en src/config.ts apunta a la URL pública con el subpath
+
+## Economic Data Governance & Fallback Strategy
+
+Fuente única:
+
+- Todas las calculadoras que dependen de UF/UTM/TMC/AFC consumen `getEconomicParameters()` y, por debajo, `src/infrastructure/economic/EconomicParameterProvider.ts`.
+
+Estrategia de fetch y cache:
+
+- El provider consulta `https://mindicador.cl/api`.
+- Se memoiza en módulo (`cachedBundlePromise`) para evitar múltiples llamadas externas en un mismo ciclo de ejecución.
+- Telemetría mínima disponible vía `getEconomicProviderTelemetry()`:
+  - `externalFetchCount`
+  - `cacheHitCount`
+  - `lastSource`
+  - `lastFallbackReason`
+
+Fallback controlado:
+
+- Si falla la API (timeout/error/status no OK), el provider retorna un bundle con:
+  - `parameters.source = "fallback"`
+  - `parameters.lastUpdated` en formato `YYYY-MM-DD`
+  - `telemetryFlag = "economic_parameters_fallback"`
+- La UI expone la fuente y fecha de datos en calculadoras e indicadores; cuando aplica fallback se muestra explícitamente el modo fallback.
+
+Validación automatizada:
+
+- Pruebas de fallback y memoización: `tests/infrastructure/EconomicParameterProvider.test.ts`.
+- Pruebas de regresión numérica de motores: `tests/application/FinancialUseCases.regression.test.ts`.
+- Pruebas de dominio tributario e invariantes económicos: `tests/domain/*.test.ts`.
 
 ## Convenciones y accesibilidad
 

@@ -18,9 +18,7 @@ const imageSrc = typeof ogImage === "string" ? ogImage : ogImage?.src;
 const readingTime = getReadingTime(body ?? "");
 ---
 
-<li
-  class="card group my-4 rounded-xl border border-border p-5"
->
+<li class="card group my-4 rounded-xl border border-border p-5">
   <!-- Tags -->
   {
     tags && tags.length > 0 && (
@@ -74,7 +72,10 @@ const readingTime = getReadingTime(body ?? "");
 <style>
   .card {
     border-top: 3px solid transparent;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-top-color 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-top-color 0.2s ease;
   }
 
   @media (hover: hover) and (pointer: fine) {

@@ -5,6 +5,10 @@ import Footer from "@/components/Footer.astro";
 import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
 
 const { parameters: economicParameters } = await getEconomicParameters();
+const economicSourceLabel =
+  economicParameters.source === "live"
+    ? "dato en línea"
+    : "fallback controlado";
 const ufDisplay = economicParameters.uf.toLocaleString("es-CL", {
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
@@ -122,6 +126,11 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
           Valores de referencia rápidos
         </h2>
         <div id="tabla-ref" class="space-y-2 text-sm"></div>
+        <p class="mt-3 text-xs text-foreground/40">
+          Fuente económica: {economicSourceLabel} ({
+            economicParameters.lastUpdated
+          }).
+        </p>
       </div>
     </section>
 
@@ -255,17 +264,25 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
     { label: "500 UF", uf: 500 },
     { label: "600 UF (tope APV anual)", uf: 600 },
     { label: "1.000 UF", uf: 1000 },
-    { label: "2.000 UF (precio aprox. depto. chico)", uf: 2000 },
+    { label: "2 mil UF (precio aprox. depto. chico)", uf: 2_000 },
   ];
 
   const tablaEl = document.getElementById("tabla-ref")!;
-  tablaEl.innerHTML = refs
-    .map(
-      r =>
-        `<div class="flex justify-between py-1.5 border-b border-border last:border-0">
-      <span class="text-foreground/60">${r.label}</span>
-      <span class="font-mono font-semibold">${fmt(r.uf * economicContext.uf)}</span>
-    </div>`
-    )
-    .join("");
+  const tableRows = refs.map(reference => {
+    const row = document.createElement("div");
+    row.className =
+      "flex justify-between border-b border-border py-1.5 last:border-0";
+
+    const label = document.createElement("span");
+    label.className = "text-foreground/60";
+    label.textContent = reference.label;
+
+    const value = document.createElement("span");
+    value.className = "font-mono font-semibold";
+    value.textContent = fmt(reference.uf * economicContext.uf);
+
+    row.append(label, value);
+    return row;
+  });
+  tablaEl.replaceChildren(...tableRows);
 </script>

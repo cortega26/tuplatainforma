@@ -268,33 +268,81 @@ import Footer from "@/components/Footer.astro";
       return;
     }
 
-    const row = (label: string, value: string, color = "") =>
-      `<div class="flex justify-between items-center py-2 border-b border-border text-sm last:border-0">
-        <span class="text-foreground/60">${label}</span>
-        <span class="font-semibold font-mono ${color}">${value}</span>
-      </div>`;
+    const buildRow = (label: string, value: string, colorClass = "") => {
+      const line = document.createElement("div");
+      line.className =
+        "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
 
-    document.getElementById("resultado-contenido")!.innerHTML = `
-      <div class="text-center mb-5 p-4 rounded-lg bg-accent/10 border border-accent/20">
-        <p class="text-xs font-bold uppercase tracking-widest text-accent mb-1">Cuota mensual</p>
-        <p class="text-4xl font-bold">${fmt(resultado.monthlyPaymentTotal)}</p>
-        ${seguro > 0 ? `<p class="text-xs text-foreground/50 mt-1">Incluye ${fmt(seguro)} de seguro</p>` : ""}
-      </div>
+      const labelElement = document.createElement("span");
+      labelElement.className = "text-foreground/60";
+      labelElement.textContent = label;
 
-      ${row("Monto solicitado", fmt(monto))}
-      ${row("Plazo", `${plazo} meses`)}
-      ${row("Tasa mensual", (resultado.monthlyRateDecimal * 100).toFixed(4) + "%")}
-      ${row("Tasa anual equivalente", resultado.annualEquivalentRatePercent.toFixed(2) + "%")}
-      ${row("CAE (Carga Anual Equiv.)", resultado.caePercent.toFixed(2) + "%", "text-accent")}
-      ${row("Total intereses", fmt(resultado.totalInterest), "text-red-400")}
-      ${gastos > 0 ? row("Gastos operacionales", fmt(gastos), "text-red-400") : ""}
-      ${row("Total a pagar", fmt(resultado.totalPaid), "text-red-400")}
+      const valueElement = document.createElement("span");
+      valueElement.className = `font-mono font-semibold ${colorClass}`.trim();
+      valueElement.textContent = value;
 
-      <div class="mt-4 p-3 rounded-lg bg-foreground/5 text-xs text-foreground/60">
-        Por cada $1.000.000 prestado pagas <strong>${fmt(resultado.totalPaid / (monto / 1_000_000))}</strong> en total —
-        ${((resultado.totalInterest / monto) * 100).toFixed(0)}% más de lo que te prestaron.
-      </div>
-    `;
+      line.append(labelElement, valueElement);
+      return line;
+    };
+
+    const headline = document.createElement("div");
+    headline.className =
+      "mb-5 rounded-lg border border-accent/20 bg-accent/10 p-4 text-center";
+    const headlineLabel = document.createElement("p");
+    headlineLabel.className =
+      "mb-1 text-xs font-bold tracking-widest text-accent uppercase";
+    headlineLabel.textContent = "Cuota mensual";
+    const headlineValue = document.createElement("p");
+    headlineValue.className = "text-4xl font-bold";
+    headlineValue.textContent = fmt(resultado.monthlyPaymentTotal);
+    headline.append(headlineLabel, headlineValue);
+    if (seguro > 0) {
+      const insuranceNote = document.createElement("p");
+      insuranceNote.className = "mt-1 text-xs text-foreground/50";
+      insuranceNote.textContent = `Incluye ${fmt(seguro)} de seguro`;
+      headline.appendChild(insuranceNote);
+    }
+
+    const insight = document.createElement("div");
+    insight.className =
+      "mt-4 rounded-lg bg-foreground/5 p-3 text-xs text-foreground/60";
+    const highlightedTotal = document.createElement("strong");
+    highlightedTotal.textContent = fmt(
+      resultado.totalPaid / (monto / 1_000_000)
+    );
+    insight.append(
+      "Por cada $1.000.000 prestado pagas ",
+      highlightedTotal,
+      " en total - ",
+      `${((resultado.totalInterest / monto) * 100).toFixed(0)}% más de lo que te prestaron.`
+    );
+
+    const rows = [
+      buildRow("Monto solicitado", fmt(monto)),
+      buildRow("Plazo", `${plazo} meses`),
+      buildRow(
+        "Tasa mensual",
+        `${(resultado.monthlyRateDecimal * 100).toFixed(4)}%`
+      ),
+      buildRow(
+        "Tasa anual equivalente",
+        `${resultado.annualEquivalentRatePercent.toFixed(2)}%`
+      ),
+      buildRow(
+        "CAE (Carga Anual Equiv.)",
+        `${resultado.caePercent.toFixed(2)}%`,
+        "text-accent"
+      ),
+      buildRow("Total intereses", fmt(resultado.totalInterest), "text-red-400"),
+      ...(gastos > 0
+        ? [buildRow("Gastos operacionales", fmt(gastos), "text-red-400")]
+        : []),
+      buildRow("Total a pagar", fmt(resultado.totalPaid), "text-red-400"),
+    ];
+
+    document
+      .getElementById("resultado-contenido")!
+      .replaceChildren(headline, ...rows, insight);
   });
 
   // Cambiar label de tasa según tipo
