@@ -1,6 +1,7 @@
 ---
 title: "Operación Renta F22 en Chile: checklist para revisar, enviar y rectificar sin errores"
 description: "Checklist práctico para revisar la propuesta del SII, enviar tu Formulario 22 y corregir observaciones sin atrasar tu devolución en Operación Renta."
+slug: operacion-renta-f22-checklist
 pubDate: 2026-02-28T15:00:00Z
 updatedDate: 2026-02-28T15:00:00Z
 tags:
@@ -8,7 +9,9 @@ tags:
   - operacion-renta
   - f22
   - sii
+category: impuestos
 lang: es-CL
+featured: false
 draft: false
 ---
 

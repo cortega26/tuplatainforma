@@ -1,15 +1,17 @@
 ---
 title: "Fondos AFP A, B, C, D y E: diferencias, riesgo y cuál te conviene"
 author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-23T11:00:00Z
+pubDate: 2026-02-23T11:00:00Z
 slug: fondos-afp-a-b-c-d-e
 featured: true
+lang: es-CL
 draft: false
 tags:
   - afp
   - fondos
   - pensiones
   - inversiones
+category: prevision
 description: "Explicación clara de los fondos AFP A, B, C, D y E: en qué invierte cada uno, cuánto riesgo tienen y cuál conviene según tu edad y perfil."
 ---
 

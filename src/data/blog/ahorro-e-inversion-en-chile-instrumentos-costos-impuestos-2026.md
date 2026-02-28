@@ -1,6 +1,7 @@
 ---
 title: "Ahorro e inversión en Chile: instrumentos, costos e impuestos (guía 2026)"
 description: "Guía 2026 para elegir instrumentos de ahorro e inversión en Chile comparando riesgo, costos e impuestos sin mezclar objetivos ni plazos."
+slug: ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026
 pubDate: 2026-02-28T16:00:00Z
 updatedDate: 2026-02-28T16:00:00Z
 tags:
@@ -8,7 +9,9 @@ tags:
   - inversiones
   - impuestos
   - chile
+category: impuestos
 lang: es-CL
+featured: false
 draft: false
 ---
 

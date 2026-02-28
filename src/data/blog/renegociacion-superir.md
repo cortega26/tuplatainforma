@@ -1,9 +1,10 @@
 ---
 title: "Renegociación Superir: qué es, quién puede pedir y cómo hacerlo sin abogado"
 author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-24T14:00:00Z
+pubDate: 2026-02-24T14:00:00Z
 slug: renegociacion-superir
 featured: false
+lang: es-CL
 draft: false
 tags:
   - deudas
@@ -11,6 +12,7 @@ tags:
   - superir
   - sobreendeudamiento
   - credito
+category: deuda-credito
 description: "Guía práctica sobre la renegociación de deudas a través de la Superir: requisitos exactos, documentos necesarios, errores que te rechazan la solicitud y qué esperar en las audiencias."
 ---
 

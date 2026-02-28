@@ -47,7 +47,7 @@ function normalizeDate(input: unknown): Date | null {
 
 export function toArticleView(entry: BlogEntry): ArticleView {
   const { slug, slugSource } = normalizeSlug(entry);
-  const pubDate = normalizeDate(entry.data.pubDate ?? entry.data.pubDatetime);
+  const pubDate = normalizeDate(entry.data.pubDate);
 
   if (!pubDate) {
     throw new Error(
@@ -55,10 +55,8 @@ export function toArticleView(entry: BlogEntry): ArticleView {
     );
   }
 
-  const updatedDate = normalizeDate(
-    entry.data.updatedDate ?? entry.data.modDatetime
-  );
-  const canonical = entry.data.canonical ?? entry.data.canonicalURL;
+  const updatedDate = normalizeDate(entry.data.updatedDate);
+  const canonical = entry.data.canonical;
   const heroImage = entry.data.heroImage ?? entry.data.ogImage;
 
   return {
@@ -80,4 +78,3 @@ export function toArticleView(entry: BlogEntry): ArticleView {
     slugSource,
   };
 }
-

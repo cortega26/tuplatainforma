@@ -1,6 +1,7 @@
 ---
 title: "Fondos mutuos: comisiones, rescate e impuestos (sin letra chica)"
 description: "Guía práctica para entender costos reales, plazos de rescate y tratamiento tributario básico de fondos mutuos en Chile durante 2026."
+slug: fondos-mutuos-comisiones-rescate-impuestos
 pubDate: 2026-02-28T16:20:00Z
 updatedDate: 2026-02-28T16:20:00Z
 tags:
@@ -8,7 +9,9 @@ tags:
   - inversiones
   - comisiones
   - impuestos
+category: impuestos
 lang: es-CL
+featured: false
 draft: false
 ---
 

@@ -1,15 +1,17 @@
 ---
 title: "¿Qué es la Cuenta 2 de la AFP y cuándo conviene usarla?"
 author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-23T12:00:00Z
+pubDate: 2026-02-23T12:00:00Z
 slug: que-es-la-cuenta-2-afp
 featured: false
+lang: es-CL
 draft: false
 tags:
   - afp
   - ahorro
   - cuenta-2
   - pensiones
+category: prevision
 description: "Todo lo que necesitas saber sobre la Cuenta 2 de la AFP: qué es, cómo funciona, cuánto puedes retirar, qué impuestos pagas y cuándo conviene usarla."
 ---
 

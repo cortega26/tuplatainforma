@@ -1,9 +1,10 @@
 ---
 title: "Sueldo líquido en Chile: qué te descuentan, por qué y cómo calcularlo tú mismo"
 author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-24T10:00:00Z
+pubDate: 2026-02-24T10:00:00Z
 slug: como-calcular-sueldo-liquido
 featured: true
+lang: es-CL
 draft: false
 tags:
   - sueldo
@@ -11,6 +12,7 @@ tags:
   - afp
   - impuestos
   - liquidacion
+category: prevision
 description: "Guía completa para entender tu liquidación de sueldo en Chile: qué descuentos son obligatorios, cómo se calculan y por qué a veces tu líquido baja aunque tu bruto sube."
 ---
 

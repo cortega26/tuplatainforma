@@ -1,6 +1,7 @@
 ---
 title: "Cómo invertir en ETFs desde Chile: comisiones, custodia e impuestos"
 description: "Paso a paso para invertir en ETFs desde Chile comparando comisión, spread, custodia, riesgo regulatorio y criterios tributarios básicos."
+slug: como-invertir-en-etfs-desde-chile
 pubDate: 2026-02-28T16:30:00Z
 updatedDate: 2026-02-28T16:30:00Z
 tags:
@@ -8,7 +9,9 @@ tags:
   - inversiones
   - corredoras
   - impuestos
+category: impuestos
 lang: es-CL
+featured: false
 draft: false
 ---
 

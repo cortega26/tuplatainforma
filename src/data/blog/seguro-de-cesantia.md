@@ -1,9 +1,10 @@
 ---
 title: "Seguro de cesantía: cómo saber tu saldo, cuándo puedes cobrar y cuánto te pagan"
 author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-25T10:00:00Z
+pubDate: 2026-02-25T10:00:00Z
 slug: seguro-de-cesantia
 featured: false
+lang: es-CL
 draft: false
 tags:
   - cesantia
@@ -11,6 +12,7 @@ tags:
   - desempleo
   - proteccion-social
   - trabajo
+category: empleo-ingresos
 description: "Guía completa del Seguro de Cesantía en Chile: qué es la CIC y el FCS, cómo consultar tu saldo, cuándo y cómo cobrar, y cuánto te pagan según tu tipo de contrato."
 ---
 

@@ -1,15 +1,17 @@
 ---
 title: "¿Puedo cambiarme de AFP? Cómo hacerlo y qué considerar en 2026"
 author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-23T13:00:00Z
+pubDate: 2026-02-23T13:00:00Z
 slug: como-cambiarse-de-afp
 featured: false
+lang: es-CL
 draft: false
 tags:
   - afp
   - pensiones
   - cambio-afp
   - reforma-pensiones
+category: prevision
 description: "Guía actualizada 2026 para cambiarse de AFP en Chile: requisitos, pasos, qué evaluar y los cambios que trae la Reforma de Pensiones (Ley 21.735)."
 ---
 

@@ -1,9 +1,10 @@
 ---
 title: "Informe de deudas CMF: cómo sacarlo, qué dice y por qué no es lo mismo que DICOM"
 author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-24T11:00:00Z
+pubDate: 2026-02-24T11:00:00Z
 slug: informe-deudas-cmf-vs-dicom
 featured: true
+lang: es-CL
 draft: false
 tags:
   - deudas
@@ -11,6 +12,7 @@ tags:
   - cmf
   - dicom
   - historial-crediticio
+category: deuda-credito
 description: "Guía práctica sobre el Informe de Deudas CMF: cómo descargarlo gratis, qué incluye, qué no incluye y en qué se diferencia del DICOM y el Boletín Comercial."
 ---
 

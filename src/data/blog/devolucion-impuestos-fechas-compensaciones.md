@@ -1,6 +1,7 @@
 ---
 title: "Devolución de impuestos en Chile: fechas de pago, estado y compensaciones"
 description: "Guía para saber cuándo depositan la devolución, cómo revisar el estado en SII/TGR y qué hacer si hay retención o compensación."
+slug: devolucion-impuestos-fechas-compensaciones
 pubDate: 2026-02-28T15:10:00Z
 updatedDate: 2026-02-28T15:10:00Z
 tags:
@@ -8,7 +9,9 @@ tags:
   - devolucion
   - operacion-renta
   - tgr
+category: impuestos
 lang: es-CL
+featured: false
 draft: false
 ---
 

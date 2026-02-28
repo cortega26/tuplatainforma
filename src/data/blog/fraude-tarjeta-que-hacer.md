@@ -1,9 +1,10 @@
 ---
 title: "Te hicieron un cargo que no reconoces: qué hacer en las primeras 24 horas (Ley 20.009)"
 author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-24T13:00:00Z
+pubDate: 2026-02-24T13:00:00Z
 slug: fraude-tarjeta-que-hacer
 featured: true
+lang: es-CL
 draft: false
 tags:
   - fraude
@@ -11,6 +12,7 @@ tags:
   - seguridad-financiera
   - ley-20009
   - derechos
+category: seguridad-financiera
 description: "Guía paso a paso para actuar ante un fraude con tarjeta o transferencia en Chile: qué hacer primero, los plazos que debes conocer y qué dice la Ley 20.009 sobre devolución del dinero."
 ---
 

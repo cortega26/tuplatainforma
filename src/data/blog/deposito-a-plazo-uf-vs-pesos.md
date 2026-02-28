@@ -1,6 +1,7 @@
 ---
 title: "Depósito a plazo: UF vs pesos — qué conviene y cuándo"
 description: "Comparativa práctica para elegir depósito a plazo en UF o pesos según inflación, plazo, liquidez y costo de oportunidad real en Chile 2026."
+slug: deposito-a-plazo-uf-vs-pesos
 pubDate: 2026-02-28T16:10:00Z
 updatedDate: 2026-02-28T16:10:00Z
 tags:
@@ -8,7 +9,9 @@ tags:
   - uf
   - ahorro
   - inversiones
+category: ahorro-inversion
 lang: es-CL
+featured: false
 draft: false
 ---
 

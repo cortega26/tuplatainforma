@@ -139,10 +139,6 @@ function hasExplicitTimezone(value) {
   return /(?:Z|[+-]\d{2}:\d{2})$/.test(value);
 }
 
-function deriveSlugFromPath(filePath) {
-  return path.basename(filePath).replace(/\.(md|mdx)$/i, "");
-}
-
 function toHttpsUrlOrNull(value) {
   if (!value) return null;
   if (typeof value !== "string") return null;
@@ -166,8 +162,8 @@ const deprecationCounters = new Map(
   DEPRECATED_FIELDS.map(field => [field, 0])
 );
 const defaultCounters = new Map([
-  ["slug_derived", 0],
-  ["category_defaulted", 0],
+  ["slug_missing", 0],
+  ["category_missing", 0],
 ]);
 const qualityCounters = new Map([
   ["title_range", 0],
@@ -193,9 +189,9 @@ for (const filePath of files) {
         (deprecationCounters.get(deprecatedField) ?? 0) + 1
       );
       pushIssue(
-        warnings,
+        errors,
         relativeFilePath,
-        `Deprecated field "${deprecatedField}" detected (allowed in Phase 3, migrate in Phase 4).`
+        `Deprecated field "${deprecatedField}" is not allowed.`
       );
     }
   }
@@ -217,16 +213,16 @@ for (const filePath of files) {
 
   const explicitSlug =
     typeof frontmatter.slug === "string" ? frontmatter.slug.trim() : "";
-  const slug = explicitSlug || deriveSlugFromPath(filePath);
+  const slug = explicitSlug;
   if (!explicitSlug) {
     defaultCounters.set(
-      "slug_derived",
-      (defaultCounters.get("slug_derived") ?? 0) + 1
+      "slug_missing",
+      (defaultCounters.get("slug_missing") ?? 0) + 1
     );
     pushIssue(
-      warnings,
+      errors,
       relativeFilePath,
-      `Missing explicit "slug"; derived slug "${slug}" from filename.`
+      'Missing required explicit field "slug".'
     );
   }
 
@@ -248,21 +244,21 @@ for (const filePath of files) {
     pushIssue(errors, relativeFilePath, 'Field "featured" must be boolean.');
   }
 
-  const category = frontmatter.category ?? "general";
+  const category = frontmatter.category;
   if (!Object.hasOwn(frontmatter, "category")) {
     defaultCounters.set(
-      "category_defaulted",
-      (defaultCounters.get("category_defaulted") ?? 0) + 1
+      "category_missing",
+      (defaultCounters.get("category_missing") ?? 0) + 1
     );
     pushIssue(
-      warnings,
+      errors,
       relativeFilePath,
-      'Missing "category"; default "general" applied for transition.'
+      'Missing required explicit field "category".'
     );
   }
-  if (typeof category !== "string" || category.trim() === "") {
+  if (category != null && (typeof category !== "string" || category.trim() === "")) {
     pushIssue(errors, relativeFilePath, 'Field "category" must be a non-empty string.');
-  } else if (!ALLOWED_CATEGORIES.has(category)) {
+  } else if (typeof category === "string" && !ALLOWED_CATEGORIES.has(category)) {
     pushIssue(
       errors,
       relativeFilePath,
@@ -270,13 +266,13 @@ for (const filePath of files) {
     );
   }
 
-  const pubDateRaw = frontmatter.pubDate ?? frontmatter.pubDatetime;
+  const pubDateRaw = frontmatter.pubDate;
   const pubDate = parseDate(pubDateRaw);
   if (!pubDateRaw) {
     pushIssue(
       errors,
       relativeFilePath,
-      'Missing publication date: define "pubDate" (preferred) or "pubDatetime" (legacy).'
+      'Missing publication date: define "pubDate".'
     );
   } else if (!pubDate) {
     pushIssue(errors, relativeFilePath, 'Publication date is not parseable.');
@@ -288,7 +284,7 @@ for (const filePath of files) {
     );
   }
 
-  const updatedDateRaw = frontmatter.updatedDate ?? frontmatter.modDatetime ?? null;
+  const updatedDateRaw = frontmatter.updatedDate ?? null;
   const updatedDate = updatedDateRaw ? parseDate(updatedDateRaw) : null;
   if (updatedDateRaw && !updatedDate) {
     pushIssue(errors, relativeFilePath, 'Field "updatedDate" is not parseable.');
@@ -312,7 +308,7 @@ for (const filePath of files) {
     );
   }
 
-  const canonicalRaw = frontmatter.canonical ?? frontmatter.canonicalURL;
+  const canonicalRaw = frontmatter.canonical;
   if (canonicalRaw) {
     const canonical = toHttpsUrlOrNull(canonicalRaw);
     if (!canonical) {

@@ -1,9 +1,10 @@
 ---
 title: "UF en simple: qué es, por qué sube todos los días y cómo te afecta"
 author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-24T12:00:00Z
+pubDate: 2026-02-24T12:00:00Z
 slug: que-es-la-uf
 featured: false
+lang: es-CL
 draft: false
 tags:
   - uf
@@ -11,6 +12,7 @@ tags:
   - ipc
   - arriendos
   - creditos
+category: deuda-credito
 description: "Explicación práctica de la Unidad de Fomento (UF): qué es, cómo se calcula, por qué cambia cada día y cómo impacta tu arriendo, dividendo y deudas en Chile."
 ---
 
