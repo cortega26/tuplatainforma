@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getPath, getPostPath } from "@/utils/getPath";
+import { getCanonicalPathFromSlug } from "@/domain/content/path";
+import { toArticleView } from "@/utils/articleView";
 import Datetime from "./Datetime.astro";
 import ArticlePlaceholder from "./ArticlePlaceholder.astro";
 
@@ -13,32 +14,42 @@ interface Props {
 const { currentSlug, currentTags, allPosts } = Astro.props as Props;
 const normalizedCurrentTags = currentTags.map(tag => tag.toLowerCase());
 
-const candidatePosts = allPosts.filter(
-  post => post.id !== currentSlug && !post.data.draft
+const normalizedPosts = allPosts.map(post => ({
+  post,
+  article: toArticleView(post),
+}));
+
+const candidatePosts = normalizedPosts.filter(
+  ({ article }) => article.slug !== currentSlug && !article.draft
 );
 
-const scoredPosts = candidatePosts.map(post => {
-  const score = post.data.tags.filter(tag =>
+const scoredPosts = candidatePosts.map(item => {
+  const score = item.article.tags.filter(tag =>
     normalizedCurrentTags.includes(tag.toLowerCase())
   ).length;
 
-  return { ...post, score };
+  return { ...item, score };
 });
 
+type RelatedItem = {
+  post: CollectionEntry<"blog">;
+  article: ReturnType<typeof toArticleView>;
+  score: number;
+};
+
 const sortByScoreAndDate = (
-  a: CollectionEntry<"blog"> & { score: number },
-  b: CollectionEntry<"blog"> & { score: number }
+  a: RelatedItem,
+  b: RelatedItem
 ) =>
-  b.score - a.score ||
-  b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime();
+  b.score - a.score || b.article.pubDate.getTime() - a.article.pubDate.getTime();
 
 const tagMatchedPosts = scoredPosts
-  .filter(post => post.score > 0)
+  .filter(item => item.score > 0)
   .sort(sortByScoreAndDate);
 
 const fallbackPosts = scoredPosts
-  .filter(post => post.score === 0)
-  .sort((a, b) => b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime());
+  .filter(item => item.score === 0)
+  .sort((a, b) => b.article.pubDate.getTime() - a.article.pubDate.getTime());
 
 const relatedPosts = [...tagMatchedPosts, ...fallbackPosts].slice(0, 3);
 ---
@@ -57,7 +68,7 @@ const relatedPosts = [...tagMatchedPosts, ...fallbackPosts].slice(0, 3);
       </h2>
 
       <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {relatedPosts.map(post => {
+        {relatedPosts.map(({ post, article }) => {
           const imageSrc =
             typeof post.data.ogImage === "string"
               ? post.data.ogImage
@@ -66,7 +77,7 @@ const relatedPosts = [...tagMatchedPosts, ...fallbackPosts].slice(0, 3);
           return (
             <li class="rounded-xl border border-border p-3">
               <a
-                href={getPath(`${getPostPath(post.id, post.filePath)}/`)}
+                href={getCanonicalPathFromSlug(article.slug)}
                 class="group block"
               >
                 <div class="mb-3 overflow-hidden rounded-lg">
@@ -81,7 +92,7 @@ const relatedPosts = [...tagMatchedPosts, ...fallbackPosts].slice(0, 3);
                       decoding="async"
                     />
                   ) : (
-                    <ArticlePlaceholder tag={post.data.tags?.[0]} />
+                    <ArticlePlaceholder tag={article.tags?.[0]} />
                   )}
                 </div>
 
@@ -89,12 +100,12 @@ const relatedPosts = [...tagMatchedPosts, ...fallbackPosts].slice(0, 3);
                   class="mb-2 text-base leading-snug font-semibold transition-colors group-hover:text-accent"
                   style="font-family: var(--font-display);"
                 >
-                  {post.data.title}
+                  {article.title}
                 </h3>
 
                 <Datetime
-                  pubDatetime={post.data.pubDatetime}
-                  modDatetime={post.data.modDatetime}
+                  pubDatetime={article.pubDate}
+                  modDatetime={article.updatedDate}
                   timezone={post.data.timezone}
                   size="sm"
                 />

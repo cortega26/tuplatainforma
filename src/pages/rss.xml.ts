@@ -1,8 +1,9 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
-import { getPath, getPostPath } from "@/utils/getPath";
+import { getCanonicalPathFromSlug } from "@/domain/content/path";
 import getSortedPosts from "@/utils/getSortedPosts";
 import { SITE } from "@/config";
+import { toArticleView } from "@/utils/articleView";
 
 export async function GET() {
   const posts = await getCollection("blog");
@@ -11,11 +12,14 @@ export async function GET() {
     title: SITE.title,
     description: SITE.desc,
     site: SITE.website,
-    items: sortedPosts.map(({ data, id, filePath }) => ({
-      link: getPath(`${getPostPath(id, filePath)}/`),
-      title: data.title,
-      description: data.description,
-      pubDate: new Date(data.modDatetime ?? data.pubDatetime),
-    })),
+    items: sortedPosts.map(post => {
+      const article = toArticleView(post);
+      return {
+        link: getCanonicalPathFromSlug(article.slug),
+        title: article.title,
+        description: article.description,
+        pubDate: article.updatedDate ?? article.pubDate,
+      };
+    }),
   });
 }

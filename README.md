@@ -37,6 +37,7 @@ Este sitio es 100% educativo: no solicita datos personales, no ofrece asesoría 
 - Backlog técnico versionado: `docs/TECH_DEBT_BACKLOG.md`
 - Reporte de cierre Fase 1: `docs/PHASE1_CLOSURE_REPORT.md`
 - Fronteras de dominio: `docs/DOMAIN_CONTRACT_BOUNDARIES.md`
+- Constitución de ingeniería para agentes IA/humanos: `docs/AI_ENGINEERING_CONSTITUTION.md`
 
 ## Desarrollo local
 

@@ -13,11 +13,16 @@ import getSortedPosts from "@/utils/getSortedPosts";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
 import { getPath } from "@/utils/getPath";
+import { getCanonicalPathFromSlug } from "@/domain/content/path";
+import { toArticleView } from "@/utils/articleView";
 
 const posts = await getCollection("blog");
 const sortedPosts = getSortedPosts(posts);
 const heroPost = sortedPosts[0];
-const secondaryPosts = sortedPosts.slice(1, 3);
+const heroArticle = heroPost ? toArticleView(heroPost) : null;
+const secondaryPosts = sortedPosts
+  .slice(1, 3)
+  .map(post => ({ post, article: toArticleView(post) }));
 const remainingPosts = sortedPosts.slice(3, 3 + SITE.postPerIndex);
 const homePath = getPath("/");
 ---
@@ -27,11 +32,14 @@ const homePath = getPath("/");
   <main id="main-content" data-layout="index" class="app-layout">
     <!-- GRID EDITORIAL -->
     {
-      heroPost && (
+      heroPost && heroArticle && (
         <RevealOnScroll initialVisible={true}>
           <section class="grid gap-6 border-b border-border py-8 lg:grid-cols-3">
             <article class="lg:col-span-2">
-              <a href={getPath(`/posts/${heroPost.id}/`)} class="group block">
+              <a
+                href={getCanonicalPathFromSlug(heroArticle.slug)}
+                class="group block"
+              >
                 <div class="mb-4 overflow-hidden rounded-xl">
                   {(() => {
                     const heroImage =
@@ -64,8 +72,8 @@ const homePath = getPath("/");
                 </p>
                 <div class="mb-4">
                   <Datetime
-                    pubDatetime={heroPost.data.pubDatetime}
-                    modDatetime={heroPost.data.modDatetime}
+                    pubDatetime={heroArticle.pubDate}
+                    modDatetime={heroArticle.updatedDate}
                     timezone={heroPost.data.timezone}
                   />
                 </div>
@@ -76,7 +84,7 @@ const homePath = getPath("/");
             </article>
 
             <div class="grid gap-6 lg:col-span-1">
-              {secondaryPosts.map(post => {
+              {secondaryPosts.map(({ post, article }) => {
                 const secondaryImage =
                   typeof post.data.ogImage === "string"
                     ? post.data.ogImage
@@ -84,7 +92,7 @@ const homePath = getPath("/");
                 return (
                   <article class="rounded-xl border border-border p-4">
                     <a
-                      href={getPath(`/posts/${post.id}/`)}
+                      href={getCanonicalPathFromSlug(article.slug)}
                       class="group block transition-colors"
                     >
                       <div class="mb-3 overflow-hidden rounded-lg">
@@ -106,8 +114,8 @@ const homePath = getPath("/");
                         {post.data.title}
                       </h2>
                       <Datetime
-                        pubDatetime={post.data.pubDatetime}
-                        modDatetime={post.data.modDatetime}
+                        pubDatetime={article.pubDate}
+                        modDatetime={article.updatedDate}
                         timezone={post.data.timezone}
                       />
                     </a>
