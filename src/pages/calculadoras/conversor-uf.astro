@@ -3,8 +3,10 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
+import { getPath } from "@/utils/getPath";
 
 const { parameters: economicParameters } = await getEconomicParameters();
+const ufGuidePath = getPath("/posts/que-es-la-uf/");
 const economicSourceLabel =
   economicParameters.source === "live"
     ? "dato en línea"
@@ -163,6 +165,11 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
         disponible en la fuente. Para validar el dato oficial consulta el <a
           href="https://si3.bcentral.cl/Indicadoressiete/secure/Indicadoresdiarios.aspx"
           target="_blank">Banco Central</a
+        >.
+      </p>
+      <p>
+        Para entender por qué la UF cambia todos los días, revisa la <a
+          href={ufGuidePath}>guía explicativa de la UF</a
         >.
       </p>
     </section>

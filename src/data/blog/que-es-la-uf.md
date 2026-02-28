@@ -154,6 +154,8 @@ En el sitio del Banco Central: [si3.bcentral.cl/Siete](https://si3.bcentral.cl/S
 - Puede bajar si hay deflación, aunque es infrecuente.
 - El valor oficial lo publica el Banco Central y es el mismo para todos.
 
+Si necesitas convertir montos al instante, usa el [conversor UF a pesos](/calculadoras/conversor-uf/). Y para aterrizarlo en contratos habitacionales, prueba la [calculadora de reajuste de arriendo](/calculadoras/reajuste-arriendo/).
+
 ---
 
 _La información de este artículo es de carácter educativo y está basada en la metodología oficial del [Banco Central de Chile](https://si3.bcentral.cl/estadisticas/Principal1/Metodologias/EMF/UF.pdf). Los valores de UF mencionados son referenciales — consulta el valor vigente en [si3.bcentral.cl](https://si3.bcentral.cl/Indicadoressiete/secure/Indicadoresdiarios.aspx)._

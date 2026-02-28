@@ -5,7 +5,7 @@
   "packageManager": "pnpm@10.30.2",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build && pnpm run check:toc-i18n && pagefind --site dist && cp -r dist/pagefind public/",
+    "build": "astro check && astro build && pnpm run check:toc-i18n && pnpm run check:editorial-guard && pagefind --site dist && cp -r dist/pagefind public/",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
@@ -13,6 +13,7 @@
     "test:watch": "vitest",
     "check:boundaries": "node scripts/check-domain-boundaries.mjs",
     "check:toc-i18n": "node scripts/check-toc-i18n.mjs",
+    "check:editorial-guard": "node scripts/check-editorial-guard.mjs",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "lint": "eslint ."

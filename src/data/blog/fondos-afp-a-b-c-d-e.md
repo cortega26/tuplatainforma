@@ -140,6 +140,8 @@ Generalmente no. Si cambias durante una caída, conviertes una pérdida temporal
 **¿Qué fondo tiene más afiliados en Chile?**
 El Fondo C concentra la mayor parte de los afiliados, en parte porque es el fondo por defecto para muchos rangos de edad.
 
+Para convertir esta elección en una decisión completa, cruza esta guía con [cómo cambiarte de AFP](/posts/como-cambiarse-de-afp/) y con el desglose de [cuánto descuenta la AFP de tu sueldo](/posts/cuanto-descuenta-la-afp-de-tu-sueldo/).
+
 ---
 
 _La información de este artículo es de carácter educativo. Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl)._

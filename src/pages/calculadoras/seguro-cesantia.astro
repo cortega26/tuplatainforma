@@ -3,8 +3,10 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
+import { getPath } from "@/utils/getPath";
 
 const { parameters: economicParameters } = await getEconomicParameters();
+const unemploymentGuidePath = getPath("/posts/seguro-de-cesantia/");
 const economicSourceLabel =
   economicParameters.source === "live"
     ? "dato en línea"
@@ -221,6 +223,11 @@ const economicSourceLabel =
         ⚠️ Esta calculadora entrega estimaciones. El saldo exacto de tu CIC está
         en <a href="https://www.afc.cl" target="_blank">afc.cl</a> con tu ClaveÚnica.
         Los montos del FCS se actualizan anualmente.
+      </p>
+      <p>
+        Para revisar requisitos legales y causales en detalle, lee la <a
+          href={unemploymentGuidePath}>guía completa del seguro de cesantía</a
+        >.
       </p>
     </section>
   </main>

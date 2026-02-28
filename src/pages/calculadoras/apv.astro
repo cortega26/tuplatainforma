@@ -3,8 +3,10 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
+import { getPath } from "@/utils/getPath";
 
 const { parameters: economicParameters } = await getEconomicParameters();
+const apvGuidePath = getPath("/posts/que-es-el-apv/");
 const formatCurrency = (value: number) =>
   "$" + Math.round(value).toLocaleString("es-CL");
 const monthlyRegimeATarget = (40 * economicParameters.utm) / 12;
@@ -214,6 +216,11 @@ const economicSourceLabel =
           href="https://www.spensiones.cl"
           target="_blank">Superintendencia de Pensiones</a
         > y el <a href="https://www.sii.cl" target="_blank">SII</a>.
+      </p>
+      <p>
+        Antes de decidir régimen, revisa la <a href={apvGuidePath}
+          >guía completa de APV</a
+        > para entender beneficios, límites y costos de retiro anticipado.
       </p>
     </section>
   </main>

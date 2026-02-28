@@ -1,0 +1,155 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { getPath } from "@/utils/getPath";
+
+const articulosCluster = [
+  {
+    titulo: "Operación Renta F22 en Chile: checklist para revisar, enviar y rectificar sin errores",
+    resumen:
+      "Guía operativa para revisar propuesta, enviar F22 y corregir observaciones sin atrasar el proceso.",
+    href: getPath("/posts/operacion-renta-f22-checklist/"),
+    tipo: "Pilar procedimental",
+  },
+  {
+    titulo: "Devolución de impuestos en Chile: fechas de pago, estado y compensaciones",
+    resumen:
+      "Explica ventanas de pago, seguimiento en SII/TGR y qué hacer ante retenciones o compensaciones.",
+    href: getPath("/posts/devolucion-impuestos-fechas-compensaciones/"),
+    tipo: "Satélite de seguimiento",
+  },
+  {
+    titulo: "Boleta de honorarios 2026: retención 15,25%, líquido recibido y cobertura anual",
+    resumen:
+      "Aclara retención vigente, impacto en líquido mensual y cobertura previsional asociada.",
+    href: getPath("/posts/boleta-honorarios-2026-retencion-cobertura/"),
+    tipo: "Satélite de independientes",
+  },
+];
+---
+
+<Layout
+  title="Guía del Cluster: Impuestos Personas | Tu Plata Informa"
+  description="Página índice del cluster Impuestos Personas: orden de lectura, artículos clave y errores frecuentes para declarar renta con menos fricción."
+>
+  <Header />
+
+  <main id="main-content" class="app-layout">
+    <section class="border-b border-border py-8">
+      <p class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase">
+        Topic Authority Layer
+      </p>
+      <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
+        Guía índice del cluster: Impuestos Personas
+      </h1>
+      <p class="max-w-3xl text-secondary">
+        Esta página resume el cluster y te ayuda a elegir ruta de lectura según tu situación.
+        No reemplaza los artículos base ni duplica su contenido completo.
+      </p>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Artículos del cluster</h2>
+      <ul class="grid gap-4">
+        {
+          articulosCluster.map(item => (
+            <li class="rounded-xl border border-border p-5">
+              <p class="mb-1 text-xs font-semibold tracking-wide text-accent uppercase">
+                {item.tipo}
+              </p>
+              <h3 class="mb-2 text-lg font-semibold">{item.titulo}</h3>
+              <p class="mb-3 text-sm text-secondary">{item.resumen}</p>
+              <a
+                href={item.href}
+                class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+              >
+                Leer artículo
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Qué leer primero si...</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <article class="rounded-xl border border-border p-5">
+          <h3 class="mb-2 text-lg font-semibold">Vas a declarar y no sabes por dónde partir</h3>
+          <p class="text-sm text-secondary">
+            Parte por el checklist F22 para ordenar revisión, envío y correcciones.
+          </p>
+          <a
+            href={getPath("/posts/operacion-renta-f22-checklist/")}
+            class="mt-3 inline-block text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+          >
+            Ir al checklist F22
+          </a>
+        </article>
+
+        <article class="rounded-xl border border-border p-5">
+          <h3 class="mb-2 text-lg font-semibold">Ya declaraste y no te cuadra la devolución</h3>
+          <p class="text-sm text-secondary">
+            Revisa primero calendario, estado y causales de compensación.
+          </p>
+          <a
+            href={getPath("/posts/devolucion-impuestos-fechas-compensaciones/")}
+            class="mt-3 inline-block text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+          >
+            Ver guía de devolución
+          </a>
+        </article>
+
+        <article class="rounded-xl border border-border p-5">
+          <h3 class="mb-2 text-lg font-semibold">Trabajas a honorarios y quieres estimar líquido</h3>
+          <p class="text-sm text-secondary">
+            Prioriza retención vigente, cobertura anual y casos exentos antes de decidir.
+          </p>
+          <a
+            href={getPath("/posts/boleta-honorarios-2026-retencion-cobertura/")}
+            class="mt-3 inline-block text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+          >
+            Ver guía de boletas 2026
+          </a>
+        </article>
+
+        <article class="rounded-xl border border-border p-5">
+          <h3 class="mb-2 text-lg font-semibold">Tienes observaciones y dudas de rectificatoria</h3>
+          <p class="text-sm text-secondary">
+            Vuelve al flujo del F22 y revisa diferencias entre reemplazo y rectificación.
+          </p>
+          <a
+            href={getPath("/posts/operacion-renta-f22-checklist/")}
+            class="mt-3 inline-block text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+          >
+            Resolver con flujo F22
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Errores comunes del cluster</h2>
+      <ul class="list-disc space-y-2 pl-6 text-secondary">
+        <li>Confundir declaración aceptada con devolución pagada.</li>
+        <li>Revisar estado solo una vez y no hacer seguimiento en SII/TGR.</li>
+        <li>Mezclar reglas de reemplazo con rectificatoria.</li>
+        <li>Tomar decisiones sin validar retenciones o compensaciones posibles.</li>
+        <li>No revisar el impacto de boletas de honorarios en cobertura anual.</li>
+      </ul>
+    </section>
+
+    <section class="py-8">
+      <div class="rounded-xl border border-accent/20 bg-accent/5 p-6">
+        <h2 class="mb-2 text-xl font-bold">Última actualización del cluster</h2>
+        <p class="text-sm text-secondary">
+          Actualizado: 2026-02-28. Este índice se revisa cuando cambian calendario de Operación Renta,
+          criterios de observación/devolución en SII-TGR o reglas de retención para honorarios.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

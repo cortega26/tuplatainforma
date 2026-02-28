@@ -199,6 +199,8 @@ No. El aviso de bloqueo debe ser gratuito. El reclamo al banco es gratuito. La d
 **¿Qué hago si el fraude involucra una cuenta en el extranjero?**
 La Ley 20.009 aplica a instituciones que operen en Chile y estén supervisadas por la CMF. Si el fraude involucra una plataforma extranjera sin presencia regulada en Chile, el camino legal es más complejo.
 
+Si después del fraude aparecen créditos o deudas desconocidas, revisa cómo leer el [Informe de Deudas CMF](/posts/informe-deudas-cmf-vs-dicom/). Y si el problema terminó en sobreendeudamiento, evalúa la [renegociación de deudas por Superir](/posts/renegociacion-superir/).
+
 ---
 
 _La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026, incluyendo la Ley N° 20.009 y la interpretación del SERNAC. Para más información visita [sernac.cl](https://www.sernac.cl/portal/604/w3-propertyname-791.html) y [cmfchile.cl](https://www.cmfchile.cl)._

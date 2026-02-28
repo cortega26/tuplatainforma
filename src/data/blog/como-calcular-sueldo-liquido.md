@@ -186,7 +186,7 @@ No a todos. El tope de 81,6 UF aplica a AFP y seguro de cesantía. El impuesto �
 No. El primer tramo exento en 2026 cubre hasta ~$893.000 de renta imponible mensual (después de descontar AFP y salud). Si tu sueldo está bajo ese nivel, no pagas impuesto único.
 
 **¿Puedo reducir legalmente lo que pago de impuesto?**
-Sí. El APV en Régimen B reduce tu base imponible mensual, lo que baja el impuesto. Si cotizas $200.000 al mes en APV Régimen B y tu tasa marginal es 8%, pagas $16.000 menos de impuesto ese mes. [Más sobre el APV aquí](../que-es-el-apv/).
+Sí. El APV en Régimen B reduce tu base imponible mensual, lo que baja el impuesto. Si cotizas $200.000 al mes en APV Régimen B y tu tasa marginal es 8%, pagas $16.000 menos de impuesto ese mes. [Más sobre el APV aquí](/posts/que-es-el-apv/).
 
 **¿Dónde veo el impuesto que me corresponde exactamente?**
 El SII publica la tabla mensual del Impuesto Único de Segunda Categoría en su sitio: [sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm)
@@ -201,6 +201,8 @@ El SII publica la tabla mensual del Impuesto Único de Segunda Categoría en su 
 - El **impuesto único** es progresivo y se recalcula cada mes — un bono puede subirte el impuesto más de lo que esperabas.
 - Si te subieron el sueldo y te bajó el líquido, probablemente cruzaste un tramo de impuesto.
 - Puedes reducir legalmente tu impuesto mensual ahorrando en **APV Régimen B**.
+
+Si quieres probar tus números exactos, usa la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/). Y si necesitas desglosar mejor el componente previsional, revisa también la guía de [seguro de cesantía](/posts/seguro-de-cesantia/).
 
 ---
 

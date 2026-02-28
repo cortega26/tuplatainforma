@@ -84,7 +84,7 @@ Sí. El descuento de AFP no es el único. En tu liquidación también verás:
 
 Todos estos descuentos juntos determinan tu **sueldo líquido** — lo que realmente recibes en tu cuenta.
 
-> 🧮 ¿Quieres saber exactamente cuánto recibirás este mes? Usa nuestra [calculadora de sueldo líquido](../calculadoras/sueldo-liquido/) para obtener el desglose completo en segundos.
+> 🧮 ¿Quieres saber exactamente cuánto recibirás este mes? Usa nuestra [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/) para obtener el desglose completo en segundos.
 
 ## ¿Puedo cambiarme de AFP para pagar menos comisión?
 
@@ -108,6 +108,8 @@ Solo en casos excepcionales permitidos por ley. Los retiros extraordinarios que 
 
 **¿El dinero de mi AFP desaparece si fallezco?**
 No. El saldo acumulado en tu cuenta individual pasa a tus herederos o beneficiarios legales como herencia.
+
+Si estás comparando alternativas, te conviene revisar [cómo cambiarte de AFP paso a paso](/posts/como-cambiarse-de-afp/) y la guía de [fondos AFP A, B, C, D y E](/posts/fondos-afp-a-b-c-d-e/).
 
 ---
 

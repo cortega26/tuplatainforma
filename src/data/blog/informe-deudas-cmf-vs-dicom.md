@@ -160,7 +160,7 @@ Sí, con documentación que acredite la calidad de heredero. El proceso es prese
 No de forma inmediata. La institución tiene hasta el próximo ciclo de reporte mensual para actualizar el estado. El desfase puede ser de semanas.
 
 **¿Qué hago si tengo deudas y quiero regularizarlas?**
-El primer paso es tener el informe CMF completo y saber exactamente cuánto debes y a quién. Si las deudas son con el sistema financiero y ya están en mora hace tiempo, puede valer la pena explorar la **renegociación a través de Superir** — el procedimiento concursal gratuito para personas naturales. [Más sobre eso en este artículo](../renegociacion-superir/).
+El primer paso es tener el informe CMF completo y saber exactamente cuánto debes y a quién. Si las deudas son con el sistema financiero y ya están en mora hace tiempo, puede valer la pena explorar la **renegociación a través de Superir** — el procedimiento concursal gratuito para personas naturales. [Más sobre eso en esta guía](/posts/renegociacion-superir/). Si además hay movimientos que no reconoces, revisa el protocolo de [fraude con tarjeta y suplantación](/posts/fraude-tarjeta-que-hacer/).
 
 ---
 

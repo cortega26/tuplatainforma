@@ -183,6 +183,8 @@ Al pensionarte puedes retirar el saldo de tu CIC en un solo giro sin pagar impue
 **¿El seguro de cesantía es lo mismo que el subsidio de cesantía?**
 No. El **seguro de cesantía** es el que administra la AFC y es para trabajadores con contrato. El **subsidio de cesantía** lo paga el IPS (ex INP) o las cajas de compensación para trabajadores que no cumplen los requisitos del seguro — es un beneficio distinto y con condiciones diferentes.
 
+Si quieres estimar cobertura con tus datos, usa la [calculadora de seguro de cesantía](/calculadoras/seguro-cesantia/). Y para ver el impacto del descuento en tu pago mensual, revisa la guía de [sueldo líquido en Chile](/posts/como-calcular-sueldo-liquido/).
+
 ---
 
 _La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para consultar tu saldo y cobrar visita [afc.cl](https://www.afc.cl). Los montos y porcentajes del FCS se actualizan anualmente — verifica los valores vigentes en el sitio de la AFC._

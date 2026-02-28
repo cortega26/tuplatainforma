@@ -1,0 +1,162 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { getPath } from "@/utils/getPath";
+
+const articulosCluster = [
+  {
+    titulo: "Ahorro e inversión en Chile: instrumentos, costos e impuestos (guía 2026)",
+    resumen:
+      "Marco general para decidir instrumentos según plazo, riesgo, costos e impacto tributario.",
+    href: getPath("/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/"),
+    tipo: "Pilar",
+  },
+  {
+    titulo: "Depósito a plazo: UF vs pesos — qué conviene y cuándo",
+    resumen:
+      "Comparativa para elegir entre tasa nominal y protección por reajuste según inflación esperada.",
+    href: getPath("/posts/deposito-a-plazo-uf-vs-pesos/"),
+    tipo: "Satélite de caja y plazo",
+  },
+  {
+    titulo: "Fondos mutuos: comisiones, rescate e impuestos (sin letra chica)",
+    resumen:
+      "Explica costos reales, reglas de rescate y tratamiento tributario básico al rescatar cuotas.",
+    href: getPath("/posts/fondos-mutuos-comisiones-rescate-impuestos/"),
+    tipo: "Satélite de fondos",
+  },
+  {
+    titulo: "Cómo invertir en ETFs desde Chile: comisiones, custodia e impuestos",
+    resumen:
+      "Guía práctica de selección de intermediario, costos, custodia y control de riesgo operativo.",
+    href: getPath("/posts/como-invertir-en-etfs-desde-chile/"),
+    tipo: "Satélite de ejecución",
+  },
+];
+---
+
+<Layout
+  title="Guía del Cluster: Ahorro e Inversión | Tu Plata Informa"
+  description="Página índice del cluster Ahorro e Inversión: orden de lectura, artículos clave y errores frecuentes para invertir con mejor estructura."
+>
+  <Header />
+
+  <main id="main-content" class="app-layout">
+    <section class="border-b border-border py-8">
+      <p class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase">
+        Topic Authority Layer
+      </p>
+      <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
+        Guía índice del cluster: Ahorro e Inversión
+      </h1>
+      <p class="max-w-3xl text-secondary">
+        Esta página organiza la arquitectura del cluster para que encuentres el artículo correcto según
+        tu etapa de decisión. Resume y conecta; no reemplaza los contenidos pilares ni satélites.
+      </p>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Artículos del cluster</h2>
+      <ul class="grid gap-4">
+        {
+          articulosCluster.map(item => (
+            <li class="rounded-xl border border-border p-5">
+              <p class="mb-1 text-xs font-semibold tracking-wide text-accent uppercase">
+                {item.tipo}
+              </p>
+              <h3 class="mb-2 text-lg font-semibold">{item.titulo}</h3>
+              <p class="mb-3 text-sm text-secondary">{item.resumen}</p>
+              <a
+                href={item.href}
+                class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+              >
+                Leer artículo
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Qué leer primero si...</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <article class="rounded-xl border border-border p-5">
+          <h3 class="mb-2 text-lg font-semibold">Eres conservador y priorizas preservar capital</h3>
+          <p class="text-sm text-secondary">
+            Comienza por depósito a plazo UF vs pesos y luego valida cómo encaja en tu estrategia global.
+          </p>
+          <a
+            href={getPath("/posts/deposito-a-plazo-uf-vs-pesos/")}
+            class="mt-3 inline-block text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+          >
+            Leer comparativa DAP
+          </a>
+        </article>
+
+        <article class="rounded-xl border border-border p-5">
+          <h3 class="mb-2 text-lg font-semibold">Eres balanceado y quieres diversificar sin complejidad extrema</h3>
+          <p class="text-sm text-secondary">
+            Parte con el pilar y sigue con fondos mutuos para entender costos y liquidez real.
+          </p>
+          <a
+            href={getPath("/posts/fondos-mutuos-comisiones-rescate-impuestos/")}
+            class="mt-3 inline-block text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+          >
+            Ver guía de fondos mutuos
+          </a>
+        </article>
+
+        <article class="rounded-xl border border-border p-5">
+          <h3 class="mb-2 text-lg font-semibold">Eres agresivo y buscas exposición a mercado global</h3>
+          <p class="text-sm text-secondary">
+            Revisa ETFs desde Chile enfocándote en costos, custodia y riesgo regulatorio operativo.
+          </p>
+          <a
+            href={getPath("/posts/como-invertir-en-etfs-desde-chile/")}
+            class="mt-3 inline-block text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+          >
+            Ir a guía de ETFs
+          </a>
+        </article>
+
+        <article class="rounded-xl border border-border p-5">
+          <h3 class="mb-2 text-lg font-semibold">Quieres un plan integral antes de mover plata</h3>
+          <p class="text-sm text-secondary">
+            Comienza por el pilar del cluster y usa los satélites como decisión de segundo nivel.
+          </p>
+          <a
+            href={getPath("/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/")}
+            class="mt-3 inline-block text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+          >
+            Leer pilar de ahorro e inversión
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Errores comunes del cluster</h2>
+      <ul class="list-disc space-y-2 pl-6 text-secondary">
+        <li>Comparar solo rentabilidad y no costo total neto.</li>
+        <li>Usar instrumentos de alta volatilidad para metas de corto plazo.</li>
+        <li>Invertir sin revisar reglas de rescate, vencimiento o custodia.</li>
+        <li>Asumir que todos los intermediarios tienen el mismo nivel de supervisión aplicable.</li>
+        <li>Postergar revisión tributaria hasta el cierre del año.</li>
+      </ul>
+    </section>
+
+    <section class="py-8">
+      <div class="rounded-xl border border-accent/20 bg-accent/5 p-6">
+        <h2 class="mb-2 text-xl font-bold">Última actualización del cluster</h2>
+        <p class="text-sm text-secondary">
+          Actualizado: 2026-02-28. Se actualiza cuando cambian reglas regulatorias CMF,
+          instrucciones tributarias SII o condiciones estructurales relevantes de instrumentos.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

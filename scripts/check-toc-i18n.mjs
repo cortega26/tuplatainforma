@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { extname, join } from "node:path";
 
