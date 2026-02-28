@@ -59,5 +59,14 @@ jobs:
       - name: "🧪 Run tests"
         run: pnpm run test
 
+      - name: "🧾 Check frontmatter contract"
+        run: pnpm run check:frontmatter
+
+      - name: "🧭 Check public routes baseline"
+        run: pnpm run check:routes
+
+      - name: "🔬 Astro check"
+        run: pnpm run astro check
+
       - name: "🚀 Build the project"
         run: pnpm run build

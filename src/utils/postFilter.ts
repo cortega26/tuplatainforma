@@ -1,11 +1,12 @@
 import type { CollectionEntry } from "astro:content";
 import { SITE } from "@/config";
+import { toArticleView } from "./articleView";
 
-const postFilter = ({ data }: CollectionEntry<"blog">) => {
+const postFilter = (post: CollectionEntry<"blog">) => {
+  const article = toArticleView(post);
   const isPublishTimePassed =
-    Date.now() >
-    new Date(data.pubDatetime).getTime() - SITE.scheduledPostMargin;
-  return !data.draft && (import.meta.env.DEV || isPublishTimePassed);
+    Date.now() > article.pubDate.getTime() - SITE.scheduledPostMargin;
+  return !article.draft && (import.meta.env.DEV || isPublishTimePassed);
 };
 
 export default postFilter;
