@@ -1,5 +1,3 @@
-import { getCanonicalPathFromSlug } from "@/domain/content/path";
-
 /**
  * Builds an internal URL path that respects Astro's configured `base`.
  * Examples:
@@ -25,13 +23,4 @@ export function getPath(path: string): string {
   }
 
   return `${normalizedBase}${normalizedPath}`;
-}
-
-/**
- * @deprecated Use `getCanonicalPathFromSlug` from `@/domain/content/path`.
- * Kept temporarily for compatibility while runtime migration completes.
- */
-export function getPostPath(id: string, _filePath: string | undefined, includeBase = true) {
-  const slug = id.split("/").at(-1) ?? id;
-  return getCanonicalPathFromSlug(slug, { includeBase });
 }

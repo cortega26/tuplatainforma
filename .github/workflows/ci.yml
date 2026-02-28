@@ -62,6 +62,9 @@ jobs:
       - name: "🧾 Check frontmatter contract"
         run: pnpm run check:frontmatter
 
+      - name: "🚫 Guard against post.id URL regressions"
+        run: pnpm run check:no-postid-urls
+
       - name: "🧭 Check public routes baseline"
         run: pnpm run check:routes
 
@@ -70,3 +73,6 @@ jobs:
 
       - name: "🚀 Build the project"
         run: pnpm run build
+
+      - name: "📡 Check RSS baseline (no removals)"
+        run: pnpm run check:rss
