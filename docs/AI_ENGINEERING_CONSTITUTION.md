@@ -59,6 +59,46 @@ Enforcement:
 - Code review checklist.
 - Domain test suite must run without mocks.
 
+### 2.3 `URL.PUBLIC.NO_POST_ID`
+
+Statement:
+
+- Public URLs must never be derived from `post.id`.
+- Public identity is exclusively `slug`.
+
+Rationale:
+
+- Keeps internal technical identity (`post.id`) separated from public domain identity (`slug`).
+- Preserves SEO stability by preventing accidental URL coupling to filesystem/content-entry internals.
+- Prevents regressions where runtime paths depend on implementation details.
+
+Enforcement:
+
+- Mandatory CI gate: `pnpm run check:no-postid-urls`.
+- Routing regression gate: `pnpm run check:routes`.
+
+Detection:
+
+- Command: `pnpm run check:no-postid-urls`
+- Expected compliant output:
+  - `[check-no-postid-urls] OK. Scanned <N> source files, no forbidden post.id URL patterns found.`
+
+Compliant example:
+
+```ts
+const href = getCanonicalPathFromSlug(article.slug);
+```
+
+Violation examples:
+
+```ts
+const href = `/posts/${post.id}/`;
+```
+
+```ts
+params: { slug: post.id };
+```
+
 ---
 
 ## 3. DDD Enforcement Rules
@@ -111,6 +151,16 @@ Invariant: Account balance cannot be negative.
 Enforced: Inside domain entity constructor.
 
 Detected: Unit test asserting negative case throws error.
+
+### 4.3 Public URL Contract
+
+- Source of truth for public URLs is `slug`.
+- `post.id` is non-public technical metadata and is only allowed for:
+  - Internal references.
+  - Non-public keys.
+  - Internal persistence.
+  - Internal tracking.
+- Any runtime API or helper that constructs public URLs from `post.id` is forbidden.
 
 ---
 

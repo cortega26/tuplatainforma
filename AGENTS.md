@@ -6,6 +6,18 @@ Binding document: `/docs/AI_ENGINEERING_CONSTITUTION.md`.
 
 Non-override clause: this file defines execution procedure only. It never overrides constitutional constraints, invariants, or prohibitions.
 
+Constitutional precedence is absolute: when AGENTS.md conflicts with Constitution, Constitution wins.
+
+## Canonical Context
+
+- Canonical context layer for agent execution:
+  - `context/INVARIANTS.md`
+  - `context/CONTRACTS.md`
+  - `context/MODULE_INDEX.md`
+  - `context/CURRENT_STATE.md`
+- Rule: before changes that touch routes, RSS, canonical URL strategy, or guard gates, agents must read `context/INVARIANTS.md` and `context/CONTRACTS.md` plus the referenced scripts.
+- Anti-duplication: AGENTS.md defines process/protocol; `context/*.md` defines concise invariant/contract state and cross-references canonical sources.
+
 ## 1. Authority Hierarchy
 
 ### Rule 1.1 - Precedence order is fixed
@@ -25,6 +37,7 @@ Non-override clause: this file defines execution procedure only. It never overri
 - Enforcement: Architectural invariants must be quoted by ID/name from source docs before modification (`INVARIANTS.md`, `CONTRACTS.md`, `DOMAIN_CONTRACT_BOUNDARIES.md`).
 - Compliant behavior: "Preserving INV-003: draft articles excluded from list/RSS/sitemap."
 - Violation: Treating `draft=true` as "visible in preview lists" without documented invariant change.
+- Mandatory citation for URL identity work: `URL.PUBLIC.NO_POST_ID`.
 
 ## 2. Agent Execution Model
 
@@ -52,6 +65,12 @@ Non-override clause: this file defines execution procedure only. It never overri
 - Compliant behavior: Add targeted fix plus tests without altering unrelated modules.
 - Violation: Deleting failing test cases to make `pnpm run test` pass.
 
+### Rule 2.7 - Forbidden public URL derivation from `post.id`
+- Rationale: Preserves invariant `URL.PUBLIC.NO_POST_ID` and prevents SEO/runtime coupling to technical IDs.
+- Enforcement: Any construction of public paths/canonical/RSS URLs from `post.id` is forbidden.
+- Compliant behavior: `getCanonicalPathFromSlug(article.slug)`.
+- Violation: `` `/posts/${post.id}/` `` or `params.slug = post.id`.
+
 ### Rule 2.5 - Uncertainty handling is explicit
 - Rationale: Silent assumptions cause contract violations.
 - Enforcement: If requirement ambiguity affects contracts/invariants, stop and request clarification; if low-risk and local, proceed with labeled assumption.
@@ -77,6 +96,14 @@ Non-override clause: this file defines execution procedure only. It never overri
 - Enforcement: Every change must include all eight items below; omission blocks merge.
 - Compliant behavior: PR description includes all eight confirmations.
 - Violation: Merging without rollback strategy or regression risk statement.
+
+### Rule 3.2 - Mandatory route-impact verification commands
+- Rationale: Public URL regressions must be blocked before merge.
+- Enforcement: Any change touching routes/canonical/RSS/sitemap, or URL helpers, must run:
+  - `pnpm run check:no-postid-urls`
+  - `pnpm run check:routes`
+  - `pnpm run check:rss`
+- Violation: Routing-affecting PR without the three command results.
 
 ### Reusable template (mandatory)
 
@@ -131,6 +158,12 @@ Non-override clause: this file defines execution procedure only. It never overri
 - Enforcement: Conflict report must contain: requested action, conflicting rule, affected paths, reason change is blocked, accepted alternatives (if any).
 - Compliant behavior: Structured conflict report posted instead of code workaround.
 - Violation: Silent reinterpretation of invariant to satisfy task.
+
+### Rule 4.5 - Halt on `post.id` URL requirement
+- Rationale: Workarounds would violate constitutional invariant `URL.PUBLIC.NO_POST_ID`.
+- Enforcement: If a requested implementation requires deriving public URL identity from `post.id`, stop immediately, document conflict, and do not implement workaround.
+- Compliant behavior: Halt + conflict report with alternative slug-based path.
+- Violation: Introducing temporary helper that maps `post.id` to public route.
 
 ### Rule 4.3 - ADR trigger conditions
 - Rationale: Architectural decisions need durable traceability.

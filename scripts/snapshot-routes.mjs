@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { mkdirSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -87,6 +87,41 @@ const payload = {
   total: routes.length,
   routes,
 };
+
+function toComparableShape(value) {
+  if (!value || typeof value !== "object") return null;
+  const maybeRoutes = Array.isArray(value.routes) ? value.routes : null;
+  if (!maybeRoutes) return null;
+  return {
+    total: Number(value.total ?? maybeRoutes.length),
+    routes: maybeRoutes.map(entry => ({
+      file: String(entry.file ?? ""),
+      route: String(entry.route ?? ""),
+    })),
+  };
+}
+
+const nextComparable = toComparableShape(payload);
+const hasPreviousSnapshot = existsSync(args.out);
+if (hasPreviousSnapshot) {
+  try {
+    const previousRaw = readFileSync(args.out, "utf8");
+    const previousParsed = JSON.parse(previousRaw);
+    const previousComparable = toComparableShape(previousParsed);
+    if (
+      previousComparable &&
+      nextComparable &&
+      JSON.stringify(previousComparable) === JSON.stringify(nextComparable)
+    ) {
+      console.log(
+        `[snapshot-routes] No route changes. Kept existing snapshot at ${args.out}`
+      );
+      process.exit(0);
+    }
+  } catch {
+    // Fall through and overwrite with a fresh valid snapshot.
+  }
+}
 
 mkdirSync(path.dirname(args.out), { recursive: true });
 writeFileSync(args.out, `${JSON.stringify(payload, null, 2)}\n`, "utf8");

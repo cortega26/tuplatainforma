@@ -47,6 +47,9 @@ jobs:
           pnpm -s exec eslint -v
           pnpm -s list eslint @typescript-eslint/parser typescript
 
+      - name: "📚 Check context layer"
+        run: pnpm run check:context
+
       - name: "🔎 Lint code"
         run: pnpm run lint
 
@@ -61,6 +64,9 @@ jobs:
 
       - name: "🧾 Check frontmatter contract"
         run: pnpm run check:frontmatter
+
+      - name: "✍️ Check editorial invariants"
+        run: pnpm run check:editorial
 
       - name: "🚫 Guard against post.id URL regressions"
         run: pnpm run check:no-postid-urls
