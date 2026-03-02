@@ -12,12 +12,13 @@ tags:
   - pensiones
   - inversiones
 category: prevision
+cluster: pensiones-afp
 description: "Explicación clara de los fondos AFP A, B, C, D y E: en qué invierte cada uno, cuánto riesgo tienen y cuál conviene según tu edad y perfil."
 ---
 
 Cuando te afilias a una AFP, tu dinero no queda guardado en una caja fuerte — se invierte en uno de cinco fondos disponibles. Elegir bien puede significar una pensión significativamente mayor. Elegir mal, también puede significar lo contrario.
 
-Aquí te explicamos qué es cada fondo, sin tecnicismos.
+Aquí te explicamos qué es cada fondo, sin tecnicismos. Para integrar esta decisión en una estrategia previsional mayor, mira la [guía central de pensiones y AFP](/guias/pensiones-afp/).
 
 ## Tabla de contenidos
 

@@ -32,6 +32,8 @@ Change log:
 - 2026-03-01: editorial hardening v2 (`NO_EMPTY_SECTIONS` raised to 8 real words, substantive H2 filtering, dialect exceptions).
 - 2026-03-01: added SEO meta description editorial invariants (required + length + duplicate detection).
 - 2026-03-02: added warning-first internal linking invariant with explicit frontmatter escape hatch.
+- 2026-03-02: added cluster-awareness invariants (declared cluster, valid cluster registry, intra-cluster linking warning).
+- 2026-03-02: formalized inter-cluster linking policy invariants (hub required, intra-cluster min-1 alias, inter-cluster max-per-edit) with human-enforced review boundaries.
 
 ## 2. Invariant Index
 
@@ -52,6 +54,12 @@ Change log:
 | `INVARIANT.EDITORIAL.NO_MARKDOWN_H1` | Markdown body must not contain H1 headings | Active | `pnpm run check:editorial-structure` |
 | `INVARIANT.EDITORIAL.TITLE_SLUG_COHERENCE` | Title should overlap with significant slug terms | Active | `pnpm run check:editorial-structure` (warning) |
 | `INVARIANT.EDITORIAL.INTERNAL_LINKS_MIN` | Articles should include minimum internal linking | Active | `pnpm run check:editorial` (warning) |
+| `INVARIANT.EDITORIAL.CLUSTER_DECLARED` | Every article declares non-empty string `cluster` in frontmatter | Active (rollout) | `pnpm run check:editorial-structure` (warning-first) |
+| `INVARIANT.EDITORIAL.CLUSTER_VALID` | `cluster` belongs to registered cluster set | Active | `pnpm run check:editorial-structure` |
+| `INVARIANT.EDITORIAL.CLUSTER_INTERNAL_LINK_MIN` | Article should link to at least one same-cluster article | Active (Canonical) | `pnpm run check:editorial-structure` (warning) |
+| `INVARIANT.EDITORIAL.LINKING.HUB_REQUIRED` | Clustered article should include a link to its hub `/guias/<cluster>/` | Active (manual) | PR review + `pnpm run check:editorial` |
+| `INVARIANT.EDITORIAL.LINKING.INTRA_CLUSTER_MIN_1` | Alias for intra-cluster min rule | Deprecated (Alias) | Reference `INVARIANT.EDITORIAL.CLUSTER_INTERNAL_LINK_MIN` |
+| `INVARIANT.EDITORIAL.LINKING.INTER_CLUSTER_MAX_2_PER_EDIT` | Inter-cluster links added in one edit should not exceed 2 per article | Active (manual) | PR review + `pnpm run check:editorial` |
 | `INVARIANT.EDITORIAL.NO_DUPLICATE_TITLES` | Duplicate frontmatter titles are forbidden | Active | `pnpm run check:editorial-structure` |
 | `INVARIANT.EDITORIAL.NO_DUPLICATE_SLUGS` | Duplicate filename-derived slugs are forbidden | Active | `pnpm run check:editorial-structure` |
 
@@ -226,6 +234,110 @@ Change log:
 - Examples:
   - Compliant: artículo con link markdown interno relativo (por ejemplo, `/ruta`, `./ruta`, `../ruta`).
   - Warning: artículo sin links internos y sin escape hatch.
+
+### `INVARIANT.EDITORIAL.CLUSTER_DECLARED`
+
+- Statement: Every article should declare frontmatter `cluster` as non-empty string scalar.
+- Canonical source: `scripts/check-editorial-structure.mjs`.
+- Rationale:
+  - Makes thematic architecture explicit in machine-readable metadata.
+  - Prevents silent editorial drift outside declared topical clusters.
+  - Enables deterministic cluster-level CI verification.
+- Enforcement: `pnpm run check:editorial-structure`.
+- Detection:
+  - Current phase (warning-first rollout): `cluster_missing>0` is reported as warning and does not block by itself.
+  - Failure output includes: `missing required "cluster"` or `"cluster" must be a string scalar`.
+  - Summary includes: `cluster_missing=<N>`, `cluster_with_value=<N>`, `cluster_coverage_pct=<N>`.
+- Rollout / Sunset Policy:
+  - This invariant becomes blocking when `cluster_coverage_pct >= 95` for 2 consecutive PRs, or when repository coverage reaches `100%`.
+  - Coverage metric source is the `check:editorial-structure` summary counters.
+- Examples:
+  - Compliant: frontmatter contains `cluster: ahorro-inversion`.
+  - Violation: missing, blank, list/object, boolean/number `cluster`.
+
+### `INVARIANT.EDITORIAL.CLUSTER_VALID`
+
+- Statement: When `cluster` is declared, its value must be registered either by folder under `src/pages/guias/` or explicit listing in `context/MODULE_INDEX.md`.
+- Canonical source: `scripts/check-editorial-structure.mjs`.
+- Rationale:
+  - Aligns article-level metadata with canonical thematic architecture.
+  - Prevents ad-hoc cluster names with no navigational/structural backing.
+  - Keeps cluster vocabulary auditable and centralized.
+- Enforcement: `pnpm run check:editorial-structure`.
+- Detection:
+  - Blocking condition: `cluster_invalid>0`.
+  - Failure output includes: `"cluster" value "<value>" is not registered...`.
+  - Summary includes: `cluster_invalid=<N>`.
+- Examples:
+  - Compliant: `cluster` matches a valid registry entry.
+  - Violation: `cluster` value not present in folder/index registry.
+
+### `INVARIANT.EDITORIAL.CLUSTER_INTERNAL_LINK_MIN`
+
+- Status: Active (Canonical)
+- Aliases:
+  - `INVARIANT.EDITORIAL.LINKING.INTRA_CLUSTER_MIN_1` (deprecated alias)
+- Statement: Each article with valid cluster assignment should include at least `1` internal markdown link to another article in the same cluster.
+- Canonical source: `scripts/check-editorial-structure.mjs`.
+- Rationale:
+  - Reinforces topical authority through explicit intra-cluster linkage.
+  - Supports discoverability and crawl depth within thematic groups.
+  - Provides measurable cluster cohesion without runtime coupling.
+- Enforcement: `pnpm run check:editorial-structure` (warning-first).
+- Detection:
+  - Warning condition: `cluster_link_warning=<N>` when intra-cluster links are below minimum.
+  - Counting policy:
+    - Uses existing internal-link rules (relative links + same-host absolutes when `SITE_HOSTNAME` is set).
+    - Ignores fenced code blocks and images.
+    - Counts links only when target article shares identical cluster and is not self-link.
+  - Exit behavior: warning-only (non-blocking) while `cluster_missing=0` and `cluster_invalid=0`.
+- Examples:
+  - Compliant: article links to at least one `/posts/<slug>/` in same cluster.
+  - Warning: article has zero same-cluster internal links.
+
+### `INVARIANT.EDITORIAL.LINKING.HUB_REQUIRED`
+
+- Statement: Todo artículo con `frontmatter.cluster` debe incluir al menos un link al hub canónico de su clúster (`/guias/<cluster>/`).
+- Rationale:
+  - Mantiene conexión explícita entre nivel artículo y nivel hub.
+  - Mejora discovery temático sin depender de navegación incidental.
+  - Evita islas de contenido dentro de clústeres.
+- Enforcement (humano):
+  - Revisión de PR obligatoria: validar presencia de link hub cuando se crea o edita artículo clusterizado.
+  - Referencia canónica de política: `context/INTER_CLUSTER_LINKING.md`.
+- Detection:
+  - Señal de salud editorial general: `pnpm run check:editorial`.
+  - Verificación puntual en diff del artículo editado (link `/guias/<cluster>/` visible en contenido).
+- Examples:
+  - Compliant: artículo `cluster: deuda-credito` contiene link a `/guias/deuda-credito/`.
+  - Violation: artículo clusterizado sin ningún link al hub de su propio clúster.
+
+### `INVARIANT.EDITORIAL.LINKING.INTRA_CLUSTER_MIN_1`
+
+- Status: Deprecated (Alias)
+- Canonical ID: `INVARIANT.EDITORIAL.CLUSTER_INTERNAL_LINK_MIN`
+- Reason: Avoid duplication and semantic drift.
+- Behavior: No operational difference; reference canonical ID moving forward.
+- Notes:
+  - Keep this alias only for backward-compatible reading of previous PR discussions.
+  - New references must use the canonical ID.
+
+### `INVARIANT.EDITORIAL.LINKING.INTER_CLUSTER_MAX_2_PER_EDIT`
+
+- Statement: En una sola edición de artículo, los links inter-cluster agregados no deben exceder `2`.
+- Rationale:
+  - Previene link stuffing y desvío temático por optimización SEO mecánica.
+  - Obliga a priorizar links inter-cluster por necesidad real de lectura.
+  - Mantiene una relación señal/ruido estable para usuarios y buscadores.
+- Enforcement (humano):
+  - Regla de revisión de PR: contar links inter-cluster añadidos por artículo en el diff.
+  - Requiere justificación causal (prerrequisito, dependencia de decisión o mitigación de riesgo).
+- Detection:
+  - `pnpm run check:editorial` para validar integridad editorial general.
+  - Inspección manual del diff para confirmar que `inter-cluster added <= 2` por artículo.
+- Examples:
+  - Compliant: se agrega 1 link a otro clúster por dependencia de decisión.
+  - Violation: en una sola edición se agregan 3+ links inter-cluster sin necesidad causal explícita.
 
 ### `INVARIANT.EDITORIAL.NO_DUPLICATE_TITLES`
 

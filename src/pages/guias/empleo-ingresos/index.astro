@@ -1,0 +1,121 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { getPath } from "@/utils/getPath";
+
+const articulosCluster = [
+  {
+    titulo: "Seguro de cesantía: cómo saber tu saldo, cuándo puedes cobrar y cuánto te pagan",
+    resumen:
+      "Guía base para entender cobertura AFC, requisitos y flujo de cobro cuando pierdes ingresos laborales.",
+    href: getPath("/posts/seguro-de-cesantia/"),
+    tipo: "Pilar de continuidad",
+  },
+  {
+    titulo: "Licencia médica en Chile: desde qué día te pagan y cómo reclamar",
+    resumen:
+      "Marco operativo para resolver pagos de licencia, rechazos y apelaciones sin perder trazabilidad.",
+    href: getPath("/posts/licencia-medica-desde-que-dia-pagan/"),
+    tipo: "Pilar de contingencia",
+  },
+  {
+    titulo: "Finiquito e indemnizaciones en Chile: qué te corresponde y cómo revisarlo",
+    resumen:
+      "Checklist práctico para validar montos de término de contrato y evitar firmas con errores de cálculo.",
+    href: getPath("/posts/finiquito-e-indemnizaciones-en-chile/"),
+    tipo: "Satélite de cierre laboral",
+  },
+];
+---
+
+<Layout
+  title="Empleo e Ingresos en Chile | Tu Plata Informa"
+  description="Página índice del cluster Empleo e Ingresos: cesantía, licencias médicas y finiquito para ordenar decisiones de flujo laboral."
+>
+  <Header />
+
+  <main id="main-content" class="app-layout">
+    <section class="border-b border-border py-8">
+      <p class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase">
+        Capa de autoridad temática
+      </p>
+      <h1 class="mb-4 text-3xl font-bold sm:text-4xl">Empleo e Ingresos en Chile</h1>
+      <p class="max-w-3xl text-secondary">
+        Este hub organiza decisiones críticas de ingreso laboral cuando hay contingencia:
+        cesantía, licencia médica o término de contrato con finiquito e indemnizaciones.
+      </p>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Artículos del cluster</h2>
+      <ul class="grid gap-4">
+        {
+          articulosCluster.map(item => (
+            <li class="rounded-xl border border-border p-5">
+              <p class="mb-1 text-xs font-semibold tracking-wide text-accent uppercase">
+                {item.tipo}
+              </p>
+              <h3 class="mb-2 text-lg font-semibold">{item.titulo}</h3>
+              <p class="mb-3 text-sm text-secondary">{item.resumen}</p>
+              <a
+                href={item.href}
+                class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+              >
+                Leer artículo
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Qué leer primero si...</h2>
+      <ul class="list-disc space-y-2 pl-6 text-secondary">
+        <li>
+          Te quedaste sin trabajo y necesitas liquidez rápida: parte por{" "}
+          <a class="text-accent underline underline-offset-4 hover:opacity-80" href={getPath("/posts/seguro-de-cesantia/")}>
+            seguro de cesantía
+          </a>
+          .
+        </li>
+        <li>
+          Tienes licencia y no entiendes pagos o rechazos: revisa{" "}
+          <a class="text-accent underline underline-offset-4 hover:opacity-80" href={getPath("/posts/licencia-medica-desde-que-dia-pagan/")}>
+            licencia médica y apelación
+          </a>
+          .
+        </li>
+        <li>
+          Estás cerrando contrato y debes firmar finiquito: continúa con{" "}
+          <a class="text-accent underline underline-offset-4 hover:opacity-80" href={getPath("/posts/finiquito-e-indemnizaciones-en-chile/")}>
+            finiquito e indemnizaciones
+          </a>
+          .
+        </li>
+      </ul>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Errores comunes</h2>
+      <ul class="list-disc space-y-2 pl-6 text-secondary">
+        <li>No revisar plazos de reclamo y notificación en contingencias laborales.</li>
+        <li>Firmar documentos de cierre sin validar cálculo y causal de término.</li>
+        <li>Tratar cesantía, licencia y finiquito como temas aislados cuando afectan la misma caja.</li>
+      </ul>
+    </section>
+
+    <section class="py-8">
+      <div class="rounded-xl border border-accent/20 bg-accent/5 p-6">
+        <h2 class="mb-2 text-xl font-bold">Última actualización del cluster</h2>
+        <p class="text-sm text-secondary">
+          Actualizado: 2026-03-02. Este índice se revisa cuando cambian reglas de subsidios,
+          cesantía, finiquito o normativa laboral con impacto directo en ingresos.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

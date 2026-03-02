@@ -13,10 +13,11 @@ tags:
   - dicom
   - historial-crediticio
 category: deuda-credito
+cluster: deuda-credito
 description: "Guía práctica sobre el Informe de Deudas CMF: cómo descargarlo gratis, qué incluye, qué no incluye y en qué se diferencia del DICOM y el Boletín Comercial."
 ---
 
-"Estoy en DICOM" es una de las frases más usadas en Chile para hablar de deudas. El problema es que DICOM como tal dejó de existir hace años, y la mayoría de las personas no sabe exactamente qué información tiene sobre ellas ni dónde está. Esta guía lo aclara de una vez.
+"Estoy en DICOM" es una de las frases más usadas en Chile para hablar de deudas. El problema es que DICOM como tal dejó de existir hace años, y la mayoría de las personas no sabe exactamente qué información tiene sobre ellas ni dónde está. Esta guía lo aclara de una vez, y si quieres ver el mapa completo del tema puedes partir por la [guía del cluster Deuda y Crédito](/guias/deuda-credito/).
 
 ## Tabla de contenidos
 

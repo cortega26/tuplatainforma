@@ -13,10 +13,11 @@ tags:
   - ley-20009
   - derechos
 category: seguridad-financiera
+cluster: seguridad-financiera
 description: "Guía paso a paso para actuar ante un fraude con tarjeta o transferencia en Chile: qué hacer primero, los plazos que debes conocer y qué dice la Ley 20.009 sobre devolución del dinero."
 ---
 
-Revisas tu cuenta y ves un cargo que no hiciste. O peor: te llega un aviso de una transferencia que nunca autorizaste. Lo primero que sientes es pánico. Lo segundo debería ser este artículo.
+Revisas tu cuenta y ves un cargo que no hiciste. O peor: te llega un aviso de una transferencia que nunca autorizaste. Lo primero que sientes es pánico. Lo segundo debería ser este artículo. Si quieres la vista completa de prevención y respuesta, usa también la [guía del cluster Seguridad Financiera](/guias/seguridad-financiera/).
 
 En Chile existe una ley que protege a las víctimas de fraude financiero. Se llama **Ley N° 20.009** y obliga a los bancos e instituciones financieras a devolverte el dinero — siempre que sigas los pasos correctos y dentro de los plazos.
 
@@ -201,7 +202,7 @@ No. El aviso de bloqueo debe ser gratuito. El reclamo al banco es gratuito. La d
 **¿Qué hago si el fraude involucra una cuenta en el extranjero?**
 La Ley 20.009 aplica a instituciones que operen en Chile y estén supervisadas por la CMF. Si el fraude involucra una plataforma extranjera sin presencia regulada en Chile, el camino legal es más complejo.
 
-Si después del fraude aparecen créditos o deudas desconocidas, revisa cómo leer el [Informe de Deudas CMF](/posts/informe-deudas-cmf-vs-dicom/). Y si el problema terminó en sobreendeudamiento, evalúa la [renegociación de deudas por Superir](/posts/renegociacion-superir/).
+Si quieres prevenir variantes por canal antes de una nueva caída, revisa [estafas financieras en Chile](/posts/estafas-financieras-chile-vishing-smishing-marketplace/). Si además aparecen créditos o deudas desconocidas, sigue el protocolo de [suplantación y créditos no reconocidos](/posts/suplantacion-identidad-creditos-no-reconocidos/).
 
 ---
 

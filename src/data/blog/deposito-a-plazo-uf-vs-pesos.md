@@ -10,6 +10,7 @@ tags:
   - ahorro
   - inversiones
 category: ahorro-inversion
+cluster: ahorro-e-inversion
 lang: es-CL
 featured: false
 draft: false

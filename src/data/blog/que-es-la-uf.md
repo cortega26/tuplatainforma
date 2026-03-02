@@ -13,10 +13,11 @@ tags:
   - arriendos
   - creditos
 category: deuda-credito
+cluster: deuda-credito
 description: "Explicación práctica de la Unidad de Fomento (UF): qué es, cómo se calcula, por qué cambia cada día y cómo impacta tu arriendo, dividendo y deudas en Chile."
 ---
 
-Tu arriendo sube todos los años "por la UF" y tu dividendo también. Pero casi nadie sabe exactamente qué es la UF ni por qué cambia todos los días. Acá te explicamos de verdad — con números y sin fórmulas intimidantes.
+Tu arriendo sube todos los años "por la UF" y tu dividendo también. Pero casi nadie sabe exactamente qué es la UF ni por qué cambia todos los días. Acá te explicamos de verdad — con números y sin fórmulas intimidantes. Si lo estás viendo desde la lógica de deudas y financiamiento, puedes complementar con la [guía del cluster Deuda y Crédito](/guias/deuda-credito/).
 
 ## Tabla de contenidos
 
@@ -92,7 +93,7 @@ Esto es lo que ocurrió entre 2021 y 2023: las cuotas hipotecarias en pesos subi
 
 ### Deudas y multas en UF
 
-Muchas deudas tributarias, multas y obligaciones legales se expresan o reajustan en UF. Dejar una deuda sin pagar en UF es más caro con el tiempo, porque el monto que debes en pesos crece con la inflación.
+Muchas deudas tributarias, multas y obligaciones legales se expresan o reajustan en UF. Dejar una deuda sin pagar en UF es más caro con el tiempo, porque el monto que debes en pesos crece con la inflación. Si necesitas priorizar pagos con datos concretos, parte por revisar tu [Informe de Deudas CMF](/posts/informe-deudas-cmf-vs-dicom/).
 
 ### Sueldos y contratos laborales en UF
 

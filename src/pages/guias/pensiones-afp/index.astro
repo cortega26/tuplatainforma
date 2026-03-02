@@ -1,0 +1,135 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { getPath } from "@/utils/getPath";
+
+const articulosCluster = [
+  {
+    titulo: "¿Puedo cambiarme de AFP? Cómo hacerlo y qué considerar en 2026",
+    resumen:
+      "Explica requisitos, pasos de traspaso y criterios para decidir un cambio sin errores de corto plazo.",
+    href: getPath("/posts/como-cambiarse-de-afp/"),
+    tipo: "Pilar operativo",
+  },
+  {
+    titulo: "¿Cuánto descuenta la AFP de tu sueldo y para qué sirve ese dinero?",
+    resumen:
+      "Desglosa cotización obligatoria, comisión y su impacto real en el líquido mensual.",
+    href: getPath("/posts/cuanto-descuenta-la-afp-de-tu-sueldo/"),
+    tipo: "Satélite de descuentos",
+  },
+  {
+    titulo: "Fondos AFP A, B, C, D y E: diferencias, riesgo y cuál te conviene",
+    resumen:
+      "Ordena el perfil de riesgo por fondo y cuándo conviene ajustar exposición según horizonte.",
+    href: getPath("/posts/fondos-afp-a-b-c-d-e/"),
+    tipo: "Satélite de fondos",
+  },
+  {
+    titulo: "¿Qué es la Cuenta 2 de la AFP y cuándo conviene usarla?",
+    resumen:
+      "Aclara uso de ahorro voluntario dentro de AFP, retiros y diferencias frente a APV.",
+    href: getPath("/posts/que-es-la-cuenta-2-afp/"),
+    tipo: "Satélite de liquidez",
+  },
+  {
+    titulo: "Sueldo líquido en Chile: qué te descuentan, por qué y cómo calcularlo tú mismo",
+    resumen:
+      "Contextualiza el efecto previsional dentro de la liquidación para decisiones laborales informadas.",
+    href: getPath("/posts/como-calcular-sueldo-liquido/"),
+    tipo: "Contexto transversal",
+  },
+];
+---
+
+<Layout
+  title="Pensiones y AFP en Chile | Tu Plata Informa"
+  description="Página índice del cluster Pensiones y AFP en Chile: orden de lectura, decisiones clave y errores comunes para gestionar tu previsión obligatoria."
+>
+  <Header />
+
+  <main id="main-content" class="app-layout">
+    <section class="border-b border-border py-8">
+      <p class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase">
+        Topic Authority Layer
+      </p>
+      <h1 class="mb-4 text-3xl font-bold sm:text-4xl">Pensiones y AFP en Chile</h1>
+      <p class="max-w-3xl text-secondary">
+        Esta página funciona como índice del cluster de previsión obligatoria. Te ayuda a priorizar
+        lectura según tu decisión actual y a conectar conceptos que suelen verse por separado.
+      </p>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Artículos del cluster</h2>
+      <ul class="grid gap-4">
+        {
+          articulosCluster.map(item => (
+            <li class="rounded-xl border border-border p-5">
+              <p class="mb-1 text-xs font-semibold tracking-wide text-accent uppercase">
+                {item.tipo}
+              </p>
+              <h3 class="mb-2 text-lg font-semibold">{item.titulo}</h3>
+              <p class="mb-3 text-sm text-secondary">{item.resumen}</p>
+              <a
+                href={item.href}
+                class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+              >
+                Leer artículo
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Qué leer primero si...</h2>
+      <ul class="list-disc space-y-2 pl-6 text-secondary">
+        <li>
+          Estás evaluando cambio de AFP: parte por{" "}
+          <a class="text-accent underline underline-offset-4 hover:opacity-80" href={getPath("/posts/como-cambiarse-de-afp/")}>
+            la guía de cambio de AFP
+          </a>{" "}
+          y luego revisa fondos A-E.
+        </li>
+        <li>
+          Quieres entender por qué baja tu líquido: comienza con{" "}
+          <a class="text-accent underline underline-offset-4 hover:opacity-80" href={getPath("/posts/cuanto-descuenta-la-afp-de-tu-sueldo/")}>
+            descuentos AFP en sueldo
+          </a>{" "}
+          y cruza con la guía de sueldo líquido.
+        </li>
+        <li>
+          Buscas ahorro previsional con mayor flexibilidad: revisa{" "}
+          <a class="text-accent underline underline-offset-4 hover:opacity-80" href={getPath("/posts/que-es-la-cuenta-2-afp/")}>
+            Cuenta 2 AFP
+          </a>{" "}
+          después de entender tu perfil de fondos.
+        </li>
+      </ul>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Errores comunes</h2>
+      <ul class="list-disc space-y-2 pl-6 text-secondary">
+        <li>Elegir AFP o fondo solo por una foto de rentabilidad de corto plazo.</li>
+        <li>Confundir comisión baja con mejor resultado previsional total.</li>
+        <li>No revisar impacto de decisiones previsionales en el sueldo líquido mensual.</li>
+      </ul>
+    </section>
+
+    <section class="py-8">
+      <div class="rounded-xl border border-accent/20 bg-accent/5 p-6">
+        <h2 class="mb-2 text-xl font-bold">Última actualización del cluster</h2>
+        <p class="text-sm text-secondary">
+          Actualizado: 2026-03-02. Este índice se revisa cuando cambian comisiones AFP,
+          reglas de traspaso, estructura de fondos o normativa previsional obligatoria.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

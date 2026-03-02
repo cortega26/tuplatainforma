@@ -10,6 +10,7 @@ tags:
   - operacion-renta
   - tgr
 category: impuestos
+cluster: impuestos-personas
 lang: es-CL
 featured: false
 draft: false

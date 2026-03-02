@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -7,20 +7,36 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const REPO_ROOT = path.resolve(__dirname, "..");
 const BLOG_DIR = path.join(REPO_ROOT, "src", "data", "blog");
+const GUIDES_DIR = path.join(REPO_ROOT, "src", "pages", "guias");
+const MODULE_INDEX_PATH = path.join(REPO_ROOT, "context", "MODULE_INDEX.md");
 
 const MIN_H2_SECTIONS = 2;
 const MIN_SECTION_WORDS = 8;
 const MIN_TITLE_WORDS = 4;
 const MIN_INTERNAL_LINKS = 1;
+const MIN_CLUSTER_INTERNAL_LINKS = 1;
+const MAX_CLUSTER_MISSING_WARNING_ITEMS = 10;
 const META_DESCRIPTION_MIN_LENGTH = 70;
 const META_DESCRIPTION_WARN_MAX_LENGTH = 155;
 const META_DESCRIPTION_HARD_MAX_LENGTH = 200;
 const INTERNAL_LINK_SKIP_VALUE = "ignore";
+const CLUSTER_FIELD = "cluster";
 const SITE_HOSTNAME = process.env.SITE_HOSTNAME?.trim().toLowerCase() || null;
 const IMAGE_LINK_EXTENSION_PATTERN =
   /\.(?:avif|bmp|gif|ico|jpe?g|png|svg|webp)$/i;
 const MARKDOWN_LINK_PATTERN =
   /\[([^\]]+)\]\(([^\s)]+)(?:\s+"[^"]*")?\)/g;
+const KEBAB_TOKEN_PATTERN = /[a-z0-9]+(?:-[a-z0-9]+)+/g;
+const YAML_NON_STRING_SCALARS = new Set([
+  "null",
+  "~",
+  "true",
+  "false",
+  ".nan",
+  ".inf",
+  "-.inf",
+  "+.inf",
+]);
 const TOC_TITLES = new Set(["tabla de contenidos", "table of contents"]);
 const TITLE_GENERIC_BLACKLIST = new Set(["articulo", "post", "guia", "contenido"]);
 const TITLE_COHERENCE_STOPWORDS = new Set([
@@ -97,8 +113,46 @@ function extractField(frontmatter, field) {
   return match[1].trim().replace(/^['"]|['"]$/g, "");
 }
 
+function extractFieldDetails(frontmatter, field) {
+  const pattern = new RegExp(`^${field}:\\s*(.*)$`, "m");
+  const match = frontmatter.match(pattern);
+  if (!match) {
+    return {
+      exists: false,
+      raw: "",
+      value: "",
+      isString: false,
+    };
+  }
+
+  const raw = (match[1] ?? "").trim();
+  const value = raw.trim().replace(/^['"]|['"]$/g, "");
+
+  return {
+    exists: true,
+    raw,
+    value,
+    isString: isYamlStringScalar(raw),
+  };
+}
+
 function hasExplicitTimezone(value) {
   return /(?:Z|[+-]\d{2}:\d{2})$/.test(value);
+}
+
+function isYamlStringScalar(rawValue) {
+  const trimmed = rawValue.trim();
+  if (!trimmed) return false;
+  if (/^[|>]/.test(trimmed)) return false;
+  if (/^[\[{]/.test(trimmed)) return false;
+  if (/^['"][\s\S]*['"]$/.test(trimmed)) return true;
+
+  const normalized = trimmed.toLowerCase();
+  if (YAML_NON_STRING_SCALARS.has(normalized)) return false;
+  if (/^[+-]?\d+(?:\.\d+)?$/.test(trimmed)) return false;
+  if (/^[+-]?\d+(?:\.\d+)?e[+-]?\d+$/i.test(trimmed)) return false;
+
+  return true;
 }
 
 function isNonSubstantiveHeading(title) {
@@ -201,6 +255,10 @@ function normalizeSlugKey(filePath) {
     .toLowerCase();
 }
 
+function normalizeClusterName(value) {
+  return normalizeForComparison(value).trim();
+}
+
 function removeFencedCodeBlocks(markdown) {
   return markdown.replace(/```[\s\S]*?```/g, " ").replace(/~~~[\s\S]*?~~~/g, " ");
 }
@@ -249,10 +307,10 @@ function isInternalLinkTarget(target, siteHostname) {
   return /^(?:\/|\.\/|\.\.\/)/.test(target);
 }
 
-function countInternalMarkdownLinks(body, siteHostname) {
+function extractInternalMarkdownLinkTargets(body, siteHostname) {
   const sanitizedBody = removeMarkdownImages(removeFencedCodeBlocks(body));
   const linkMatches = sanitizedBody.matchAll(MARKDOWN_LINK_PATTERN);
-  let internalLinks = 0;
+  const targets = [];
 
   for (const match of linkMatches) {
     const rawTarget = match[2] ?? "";
@@ -260,10 +318,104 @@ function countInternalMarkdownLinks(body, siteHostname) {
     if (!target) continue;
     if (isImageLinkTarget(target)) continue;
     if (!isInternalLinkTarget(target, siteHostname)) continue;
-    internalLinks += 1;
+    targets.push(target);
   }
 
-  return internalLinks;
+  return targets;
+}
+
+function countInternalMarkdownLinks(body, siteHostname) {
+  return extractInternalMarkdownLinkTargets(body, siteHostname).length;
+}
+
+function extractKebabTokens(value) {
+  return value.match(KEBAB_TOKEN_PATTERN) ?? [];
+}
+
+function loadValidGuideClusters(guidesDir) {
+  if (!existsSync(guidesDir)) return [];
+
+  return readdirSync(guidesDir, { withFileTypes: true })
+    .filter(entry => entry.isDirectory())
+    .map(entry => normalizeClusterName(entry.name))
+    .filter(Boolean);
+}
+
+function loadExplicitClustersFromModuleIndex(moduleIndexPath) {
+  if (!existsSync(moduleIndexPath)) return [];
+
+  const source = readFileSync(moduleIndexPath, "utf8");
+  const lines = source.split(/\r?\n/);
+  const clusters = new Set();
+  let inClusterSection = false;
+
+  for (const line of lines) {
+    if (/^##+\s+/.test(line)) {
+      inClusterSection = /\bclusters?\b/i.test(line);
+      continue;
+    }
+
+    if (inClusterSection) {
+      for (const token of extractKebabTokens(line)) {
+        clusters.add(normalizeClusterName(token));
+      }
+    }
+
+    const inlineDeclaration = line.match(/\bclusters?\s*:\s*(.+)$/i);
+    if (inlineDeclaration?.[1]) {
+      for (const token of extractKebabTokens(inlineDeclaration[1])) {
+        clusters.add(normalizeClusterName(token));
+      }
+    }
+  }
+
+  return [...clusters];
+}
+
+function extractPostSlugFromLinkTarget(target) {
+  if (!target) return "";
+
+  let routePath = toPathWithoutQueryOrHash(target);
+  if (/^https?:\/\//i.test(target)) {
+    try {
+      routePath = new URL(target).pathname;
+    } catch {
+      return "";
+    }
+  }
+
+  const normalizedPath = routePath.replace(/\/+$/, "");
+  if (!normalizedPath) return "";
+
+  const segments = normalizedPath.split("/").filter(Boolean);
+  const postsIndex = segments.indexOf("posts");
+  if (postsIndex < 0 || postsIndex >= segments.length - 1) return "";
+
+  const slug = segments[postsIndex + 1] ?? "";
+  return normalizeForComparison(slug).replace(/[^a-z0-9-]/g, "");
+}
+
+function countIntraClusterArticleLinks({
+  body,
+  currentSlug,
+  currentCluster,
+  clusterBySlug,
+  siteHostname,
+}) {
+  const linkTargets = extractInternalMarkdownLinkTargets(body, siteHostname);
+  const linkedSlugs = new Set();
+
+  for (const target of linkTargets) {
+    const linkedSlug = extractPostSlugFromLinkTarget(target);
+    if (!linkedSlug || linkedSlug === currentSlug) continue;
+
+    const linkedCluster = clusterBySlug.get(linkedSlug);
+    if (!linkedCluster || linkedCluster !== currentCluster) continue;
+
+    linkedSlugs.add(linkedSlug);
+  }
+
+  return linkedSlugs.size;
 }
 
 function getH2Sections(body) {
@@ -304,9 +456,24 @@ const markdownH1Present = [];
 const titleSlugWarnings = [];
 const internalLinksWarnings = [];
 const skippedInternalLinks = [];
+const clusterMissing = [];
+const clusterInvalid = [];
+const clusterLinkWarnings = [];
+let clusterWithValueTotal = 0;
 const normalizedMetaMap = new Map();
 const normalizedTitleMap = new Map();
 const normalizedSlugMap = new Map();
+const articleRecords = [];
+const folderClusters = loadValidGuideClusters(GUIDES_DIR);
+const moduleIndexClusters = loadExplicitClustersFromModuleIndex(MODULE_INDEX_PATH);
+const validClusterSet = new Set([...folderClusters, ...moduleIndexClusters]);
+
+if (validClusterSet.size === 0) {
+  console.error(
+    `[check-editorial-structure] FAIL. no valid clusters registered from ${path.relative(REPO_ROOT, GUIDES_DIR)} or ${path.relative(REPO_ROOT, MODULE_INDEX_PATH)}.`
+  );
+  process.exit(1);
+}
 
 for (const filePath of files) {
   const relative = path.relative(REPO_ROOT, filePath).replace(/\\/g, "/");
@@ -316,9 +483,12 @@ for (const filePath of files) {
   const title = extractField(frontmatter, "title");
   const description = extractField(frontmatter, "description");
   const pubDate = extractField(frontmatter, "pubDate");
+  const clusterDetails = extractFieldDetails(frontmatter, CLUSTER_FIELD);
+  const clusterValue = normalizeClusterName(clusterDetails.value);
   const internalLinksBehavior =
     extractField(frontmatter, "internalLinks") ||
     extractField(frontmatter, "internal_links");
+  let hasValidCluster = false;
 
   if (!title) {
     titleMissing.push(relative);
@@ -360,6 +530,44 @@ for (const filePath of files) {
     ...(normalizedSlugMap.get(normalizedSlugKey) ?? []),
     relative,
   ]);
+
+  if (!clusterDetails.exists) {
+    clusterMissing.push({ file: relative, reason: 'missing required "cluster".' });
+  } else if (!clusterDetails.raw) {
+    clusterMissing.push({ file: relative, reason: '"cluster" cannot be empty.' });
+  } else if (!clusterDetails.isString) {
+    clusterInvalid.push({
+      file: relative,
+      cluster: clusterDetails.raw,
+      reason: '"cluster" must be a string scalar.',
+    });
+    structureIssues.push({
+      file: relative,
+      message: '"cluster" must be a string scalar.',
+    });
+  } else if (!clusterValue) {
+    clusterMissing.push({
+      file: relative,
+      reason: '"cluster" cannot be empty after normalization.',
+    });
+  } else if (!validClusterSet.has(clusterValue)) {
+    clusterInvalid.push({
+      file: relative,
+      cluster: clusterDetails.value,
+      reason: `"cluster" value "${clusterDetails.value}" is not registered in src/pages/guias or context/MODULE_INDEX.md.`,
+    });
+    structureIssues.push({
+      file: relative,
+      message: `"cluster" value "${clusterDetails.value}" is not registered in src/pages/guias or context/MODULE_INDEX.md.`,
+    });
+  } else {
+    hasValidCluster = true;
+  }
+
+  if (clusterDetails.isString && clusterValue) {
+    clusterWithValueTotal += 1;
+  }
+
   if (!description.trim()) {
     metaMissing.push(relative);
     structureIssues.push({
@@ -443,6 +651,39 @@ for (const filePath of files) {
       });
     }
   }
+
+  articleRecords.push({
+    file: relative,
+    slug: normalizedSlugKey,
+    cluster: clusterValue,
+    hasValidCluster,
+    body,
+  });
+}
+
+const clusterBySlug = new Map();
+for (const article of articleRecords) {
+  if (!article.hasValidCluster) continue;
+  if (clusterBySlug.has(article.slug)) continue;
+  clusterBySlug.set(article.slug, article.cluster);
+}
+
+for (const article of articleRecords) {
+  if (!article.hasValidCluster) continue;
+  const sameClusterLinks = countIntraClusterArticleLinks({
+    body: article.body,
+    currentSlug: article.slug,
+    currentCluster: article.cluster,
+    clusterBySlug,
+    siteHostname: SITE_HOSTNAME,
+  });
+
+  if (sameClusterLinks < MIN_CLUSTER_INTERNAL_LINKS) {
+    clusterLinkWarnings.push({
+      file: article.file,
+      count: sameClusterLinks,
+    });
+  }
 }
 
 const metaDuplicates = [...normalizedMetaMap.entries()]
@@ -466,8 +707,14 @@ const duplicateSlugs = [...normalizedSlugMap.entries()]
 const titleSlugWarningTotal = titleSlugWarnings.length;
 const internalLinksWarningTotal = internalLinksWarnings.length;
 const skippedInternalLinksTotal = skippedInternalLinks.length;
+const clusterMissingTotal = clusterMissing.length;
+const clusterInvalidTotal = clusterInvalid.length;
+const clusterLinkWarningTotal = clusterLinkWarnings.length;
+const clusterCoveragePct =
+  files.length === 0 ? 100 : Math.round((100 * clusterWithValueTotal) / files.length);
 
 const hasFailures =
+  clusterInvalidTotal > 0 ||
   structureIssues.length > 0 ||
   metaMissing.length > 0 ||
   metaShort.length > 0 ||
@@ -509,9 +756,36 @@ if (internalLinksWarningTotal > 0 || skippedInternalLinksTotal > 0) {
   }
 }
 
+if (
+  clusterMissingTotal > 0 ||
+  clusterInvalidTotal > 0 ||
+  clusterLinkWarningTotal > 0
+) {
+  console.warn(
+    `[check-editorial-structure] WARN. cluster_missing=${clusterMissingTotal} cluster_invalid=${clusterInvalidTotal} cluster_link_warning=${clusterLinkWarningTotal} cluster_coverage_pct=${clusterCoveragePct} cluster_with_value=${clusterWithValueTotal} validated=${files.length} min_cluster_internal_links=${MIN_CLUSTER_INTERNAL_LINKS} (warning-first rollout).`
+  );
+
+  if (clusterMissingTotal > 0) {
+    const missingSample = clusterMissing.slice(0, MAX_CLUSTER_MISSING_WARNING_ITEMS);
+    for (const warning of missingSample) {
+      console.warn(`- ${warning.file}: ${warning.reason}`);
+    }
+    const remaining = clusterMissingTotal - missingSample.length;
+    if (remaining > 0) {
+      console.warn(`- and ${remaining} more cluster-missing file(s).`);
+    }
+  }
+
+  for (const warning of clusterLinkWarnings) {
+    console.warn(
+      `- ${warning.file}: has ${warning.count} intra-cluster internal links (min ${MIN_CLUSTER_INTERNAL_LINKS}).`
+    );
+  }
+}
+
 if (hasFailures) {
   console.error(
-    `[check-editorial-structure] FAIL. validated=${files.length} title_missing=${titleMissing.length} title_meaningless=${titleMeaningless.length} markdown_h1_present=${markdownH1Present.length} title_slug_warning=${titleSlugWarningTotal} internal_links_warning=${internalLinksWarningTotal} skipped_internal_links=${skippedInternalLinksTotal} duplicate_titles=${duplicateTitles.length} duplicate_slugs=${duplicateSlugs.length} missing=${metaMissing.length} short=${metaShort.length} long_fail=${metaLongFail.length} long_warning=${metaLongWarning.length} duplicates=${metaDuplicates.length}`
+    `[check-editorial-structure] FAIL. validated=${files.length} cluster_with_value=${clusterWithValueTotal} cluster_coverage_pct=${clusterCoveragePct} cluster_missing=${clusterMissingTotal} cluster_invalid=${clusterInvalidTotal} cluster_link_warning=${clusterLinkWarningTotal} title_missing=${titleMissing.length} title_meaningless=${titleMeaningless.length} markdown_h1_present=${markdownH1Present.length} title_slug_warning=${titleSlugWarningTotal} internal_links_warning=${internalLinksWarningTotal} skipped_internal_links=${skippedInternalLinksTotal} duplicate_titles=${duplicateTitles.length} duplicate_slugs=${duplicateSlugs.length} missing=${metaMissing.length} short=${metaShort.length} long_fail=${metaLongFail.length} long_warning=${metaLongWarning.length} duplicates=${metaDuplicates.length}`
   );
 
   for (const issue of structureIssues) {
@@ -549,5 +823,5 @@ if (hasFailures) {
 }
 
 console.log(
-  `[check-editorial-structure] OK. validated=${files.length} title_missing=0 title_meaningless=0 markdown_h1_present=0 title_slug_warning=${titleSlugWarningTotal} internal_links_warning=${internalLinksWarningTotal} skipped_internal_links=${skippedInternalLinksTotal} duplicate_titles=0 duplicate_slugs=0 missing=0 short=0 long_fail=0 long_warning=${metaLongWarning.length} duplicates=0 min_h2=${MIN_H2_SECTIONS} min_section_words=${MIN_SECTION_WORDS} min_internal_links=${MIN_INTERNAL_LINKS}`
+  `[check-editorial-structure] OK. validated=${files.length} cluster_with_value=${clusterWithValueTotal} cluster_coverage_pct=${clusterCoveragePct} cluster_missing=${clusterMissingTotal} cluster_invalid=${clusterInvalidTotal} cluster_link_warning=${clusterLinkWarningTotal} title_missing=0 title_meaningless=0 markdown_h1_present=0 title_slug_warning=${titleSlugWarningTotal} internal_links_warning=${internalLinksWarningTotal} skipped_internal_links=${skippedInternalLinksTotal} duplicate_titles=0 duplicate_slugs=0 missing=0 short=0 long_fail=0 long_warning=${metaLongWarning.length} duplicates=0 min_h2=${MIN_H2_SECTIONS} min_section_words=${MIN_SECTION_WORDS} min_internal_links=${MIN_INTERNAL_LINKS} min_cluster_internal_links=${MIN_CLUSTER_INTERNAL_LINKS}`
 );

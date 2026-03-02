@@ -10,6 +10,7 @@ tags:
   - f22
   - sii
 category: impuestos
+cluster: impuestos-personas
 lang: es-CL
 featured: false
 draft: false

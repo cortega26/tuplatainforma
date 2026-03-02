@@ -10,6 +10,7 @@ tags:
   - comisiones
   - impuestos
 category: impuestos
+cluster: ahorro-e-inversion
 lang: es-CL
 featured: false
 draft: false

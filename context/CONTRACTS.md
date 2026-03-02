@@ -29,6 +29,8 @@ Change log:
 - 2026-03-01: editorial hardening v2 (substantive section rules and controlled dialect exceptions).
 - 2026-03-01: added meta description contract (required, length range, duplicate guard).
 - 2026-03-02: added editorial internal-linking contract (warning-first + explicit skip marker).
+- 2026-03-02: added editorial cluster-awareness contract (mandatory cluster declaration + validity + intra-cluster linkage signal).
+- 2026-03-02: added formal inter-cluster linking contract (hub/intra/inter types, causal heuristics, anti-stuffing limits).
 
 ## 2. Contracts
 
@@ -224,3 +226,67 @@ Change log:
 - Enforcement:
   - `pnpm run check:editorial-structure` (warning-only counters)
   - `pnpm run check:editorial` (aggregated gate)
+
+### `CONTRACT.EDITORIAL.CLUSTER_POLICY`
+
+- Scope: Thematic cluster metadata and cohesion policy for `src/data/blog/**/*.md(x)`.
+- Source of truth:
+  - Gate logic: `scripts/check-editorial-structure.mjs`
+  - Registry references: `src/pages/guias/` directories and `context/MODULE_INDEX.md` explicit cluster listing
+  - Editorial invariant references: `context/INVARIANTS.md` (`INVARIANT.EDITORIAL.CLUSTER_DECLARED`, `INVARIANT.EDITORIAL.CLUSTER_VALID`, `INVARIANT.EDITORIAL.CLUSTER_INTERNAL_LINK_MIN`)
+  - Canonical invariant ID for intra-cluster minimum: `INVARIANT.EDITORIAL.CLUSTER_INTERNAL_LINK_MIN` (`INVARIANT.EDITORIAL.LINKING.INTRA_CLUSTER_MIN_1` is deprecated alias).
+- Purpose:
+  - Make `cluster` an explicit structural obligation in article frontmatter.
+  - Anchor each article to declared thematic architecture (cluster registry).
+  - Measure intra-cluster linking coherence as topical authority signal.
+- Baseline expectations:
+  - Rollout uses warning-first migration for missing cluster declaration.
+  - `cluster` value must exist in allowed registry (guides folder or explicit context list) whenever declared.
+  - Cluster names are registry-bound; ad-hoc/invented clusters are forbidden.
+  - Article should include at least one internal link to another article sharing the same cluster.
+  - Link counting follows existing internal-link rules and ignores fenced code blocks/images.
+- Backward-compat expectations:
+  - `cluster_missing` is warning-only during migration rollout.
+  - `cluster_invalid` is blocking (exit code `1`) whenever cluster is declared with invalid value/type.
+  - `cluster_link_warning` is warning-first and non-blocking (exit code remains `0` when only this counter is positive).
+  - `cluster_missing` returns to blocking according to `INVARIANT.EDITORIAL.CLUSTER_DECLARED` rollout/sunset policy.
+  - Policy remains runtime-agnostic and dependency-free.
+- Enforcement:
+  - `pnpm run check:editorial-structure`
+  - `pnpm run check:editorial` (aggregated gate)
+
+### `CONTRACT.EDITORIAL.INTER_CLUSTER_LINKING`
+
+- Scope: Linking policy for `src/data/blog/**/*.md(x)` under cluster architecture.
+- Source of truth:
+  - `frontmatter.cluster` for article cluster identity.
+  - `context/INTER_CLUSTER_LINKING.md` as canonical policy reference.
+- Compatibility expectations:
+  - No slug changes are required to comply with this contract.
+  - No hub invention is allowed: hub links must target existing `/guias/<cluster>/`.
+  - Existing route/public URL contracts remain unchanged (`CONTRACT.PUBLIC_URLS`).
+- Rules (operational):
+  - C1 link types:
+    - Hub link: `/guias/<cluster>/`
+    - Intra-cluster link: `/posts/<slug>/` to article with same `cluster`
+    - Inter-cluster link: `/posts/<slug>/` to article with different `cluster`, only with causal justification
+  - C2 minimum by article:
+    - Hub link expected.
+    - Intra-cluster `>=1` expected (warning-first in current gate).
+    - Inter-cluster links are recommended `0..2`, never mandatory.
+  - C3 allowed heuristics for inter-cluster links (at least one):
+    - Prerequisite concept needed to understand current article.
+    - Decision dependency across domains.
+    - Risk mitigation to prevent common user errors.
+  - C4 prohibitions:
+    - No keyword-driven link stuffing.
+    - No more than 2 inter-cluster links added per article in one edit.
+    - No links to non-existent hubs or invented slugs.
+- Enforcement:
+  - PR review (human) for heuristic validity and max-per-edit limits.
+  - Existing gates for structural/editorial integrity:
+    - `pnpm run check:editorial-structure`
+    - `pnpm run check:editorial`
+- Rollout:
+  - Gradual adoption.
+  - Inter-cluster linking remains recommendation-first and non-blocking unless future ADR hardens gate semantics.

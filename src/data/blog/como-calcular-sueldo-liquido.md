@@ -13,10 +13,11 @@ tags:
   - impuestos
   - liquidacion
 category: prevision
+cluster: ahorro-e-inversion
 description: "Guía completa para entender tu liquidación de sueldo en Chile: qué descuentos son obligatorios, cómo se calculan y por qué a veces tu líquido baja aunque tu bruto sube."
 ---
 
-Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí.
+Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí, y puedes complementar con la [guía central de ahorro e inversión](/guias/ahorro-e-inversion/) para conectar este cálculo con decisiones de mediano plazo.
 
 ## Tabla de contenidos
 
