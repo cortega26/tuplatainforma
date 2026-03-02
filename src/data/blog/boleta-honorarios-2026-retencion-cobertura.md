@@ -3,7 +3,7 @@ title: "Boleta de honorarios 2026: retención 15,25%, líquido recibido y cobert
 description: "Explicación práctica de la retención 2026 en boletas de honorarios, cuánto recibes líquido y cómo se conecta con la cobertura previsional anual."
 slug: boleta-honorarios-2026-retencion-cobertura
 pubDate: 2026-02-28T15:20:00Z
-updatedDate: 2026-02-28T15:20:00Z
+updatedDate: 2026-03-02T19:30:00Z
 tags:
   - boletas
   - honorarios
@@ -50,12 +50,12 @@ Si además quieres revisar tu declaración anual completa, complementa con el [c
 
 ## Tabla de escenarios por perfil
 
-| Perfil | ¿Retención mensual 2026? | ¿Cotiza en Operación Renta 2026? | Efecto típico |
-| --- | --- | --- | --- |
-| Independiente con boletas regulares y monto anual sobre 5 IMM | Sí, 15,25% | Sí | Menor líquido mensual, pero acceso a cobertura anual según reglas vigentes. |
-| Independiente con boletas anuales bajo 5 IMM | Sí, 15,25% al emitir | Puede quedar eximido de cotización obligatoria en OR 2026 | Mantiene retención mensual, pero la obligación previsional anual cambia según tope y normas. |
-| Pensionado (salvo invalidez parcial) | Sí, 15,25% al emitir | Puede estar eximido por norma específica | Revisar condición previsional antes de asumir cobertura nueva. |
-| Trabajador intermitente a honorarios | Sí, 15,25% en meses con boleta | Depende del total anual y reglas de cobertura | Puede tener meses sin ingresos, pero evaluación anual igual aplica. |
+| Perfil                                                        | ¿Retención mensual 2026?       | ¿Cotiza en Operación Renta 2026?                          | Efecto típico                                                                                |
+| ------------------------------------------------------------- | ------------------------------ | --------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Independiente con boletas regulares y monto anual sobre 5 IMM | Sí, 15,25%                     | Sí                                                        | Menor líquido mensual, pero acceso a cobertura anual según reglas vigentes.                  |
+| Independiente con boletas anuales bajo 5 IMM                  | Sí, 15,25% al emitir           | Puede quedar eximido de cotización obligatoria en OR 2026 | Mantiene retención mensual, pero la obligación previsional anual cambia según tope y normas. |
+| Pensionado (salvo invalidez parcial)                          | Sí, 15,25% al emitir           | Puede estar eximido por norma específica                  | Revisar condición previsional antes de asumir cobertura nueva.                               |
+| Trabajador intermitente a honorarios                          | Sí, 15,25% en meses con boleta | Depende del total anual y reglas de cobertura             | Puede tener meses sin ingresos, pero evaluación anual igual aplica.                          |
 
 ## Si te pasa X, haz Y (árbol de decisión)
 
@@ -92,7 +92,12 @@ SII informa aumento gradual hasta llegar a 17% en 2028.
 Las fuentes oficiales indican cobertura desde el 1 de julio de cada año hasta el 30 de junio del siguiente, una vez procesada la Operación Renta.
 
 **6) ¿Qué pasa si emití boletas por menos de cinco ingresos mínimos mensuales en el año base?**
-ChileAtiende informa que ese es un criterio relevante para exención de cotización obligatoria en la operación correspondiente.
+Para Operación Renta 2026 (rentas 2025), si tu renta bruta anual por boletas fue **inferior a 5 ingresos mínimos mensuales**, quedas **eximido de cotizar obligatoriamente** para pensión y salud en ese proceso.\
+Condiciones y matices relevantes:
+
+- La exención por monto anual no elimina la retención al emitir boletas (15,25% en 2026).
+- Puedes cotizar de forma voluntaria si quieres cobertura/cotización previsional.
+- También existen exenciones por causal legal específica (por ejemplo, pensionados y grupos con regla transitoria de edad definidos en la normativa).
 
 **7) ¿La base de cotización es el 100% de lo boleteado?**
 ChileAtiende indica que la renta imponible anual para este cálculo corresponde al 80% del total bruto de boletas del año base.
@@ -109,7 +114,7 @@ En tu declaración de renta y en la información previsional asociada al proceso
 
 ## Última revisión
 
-- Revisado el: 2026-02-28.
+- Revisado el: 2026-03-02.
 - Gatilla actualización: cambios en porcentaje de retención, ajustes a cobertura anual o modificaciones legales/publicación de nuevas instrucciones SII.
 
 Este contenido es informativo y no reemplaza asesoría tributaria profesional para casos complejos.

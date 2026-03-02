@@ -3,6 +3,7 @@ title: "Licencia médica en Chile: desde qué día te pagan y cómo reclamar"
 description: "Guía práctica para entender desde qué día se paga una licencia médica en Chile, quién paga según el caso y cómo apelar si rechazan o reducen el subsidio."
 slug: licencia-medica-desde-que-dia-pagan
 pubDate: 2026-03-02T18:30:00Z
+updatedDate: 2026-03-02T19:30:00Z
 tags:
   - empleo-ingresos
   - licencia-medica
@@ -18,21 +19,26 @@ draft: false
 
 Cuando te enfermas, la duda principal no es solo médica: también es de caja. Esta guía explica desde qué día se paga una licencia médica en Chile y cómo moverte si te rechazan, en coordinación con la [guía del cluster Empleo e Ingresos](/guias/empleo-ingresos/).
 
-## Regla general: desde qué día se paga
+## Licencia médica de menos de 11 días: desde qué día pagan y quién paga
 
-En términos prácticos, el pago depende de la duración de la licencia y de tu situación contractual/previsional. La regla operativa que más confunde es la de licencias cortas, donde no siempre se cubren todos los días de la misma forma.
+Respuesta directa para la duda ancla (`licencia médica menos de 11 días quién paga`):
 
-Para evitar errores, separa tres preguntas:
+- Si la licencia autorizada dura **1 a 10 días**, el subsidio se paga **desde el día 4** (los días 1, 2 y 3 no generan subsidio).
+- Si la licencia autorizada dura **11 días o más**, se paga **desde el día 1**.
 
-1. ¿La licencia fue autorizada o reducida?
-2. ¿Quién administra tu cobertura (Fonasa/Isapre y entidad pagadora)?
-3. ¿Qué tramo de días corresponde pagar según normativa vigente?
+En sector privado, el pago del subsidio se canaliza así:
+
+- Afiliado a **Fonasa**: paga **COMPIN/Servicio de Salud** o **Caja de Compensación** (si corresponde).
+- Afiliado a **Isapre**: paga la **Isapre**.
+
+En sector público (funcionarios/as regidos por estatutos públicos), la regla operativa es distinta: mantienen **remuneración íntegra** durante licencia médica y no operan con esta misma lógica de subsidio por tramo de días.
 
 ## Quién paga según tu situación
 
-- Trabajador dependiente: el pago se canaliza como subsidio por incapacidad laboral según tu afiliación.
-- Independiente con requisitos cumplidos: puede acceder a cobertura bajo reglas específicas.
-- Casos con rechazo/reducción: primero se notifica resolución y luego procede revisión o apelación.
+- Dependiente (sector privado): aplica regla de días y entidad pagadora según Fonasa/Isapre.
+- Independiente con requisitos previsionales y de cotización al día: puede acceder a subsidio bajo reglas específicas.
+- Licencias continuadas: si una primera licencia es de 10 días o menos y la continuación (misma patología) supera 10 días sin interrupción mayor a 15 días, el pago se recalcula desde día 1.
+- Casos con rechazo/reducción: primero revisa causal y resolución; luego reclama o apela dentro de plazo.
 
 Si vienes saliendo de un término de contrato o tienes ingresos inestables, cruza este análisis con la guía de [seguro de cesantía](/posts/seguro-de-cesantia/).
 

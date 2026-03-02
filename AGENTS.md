@@ -13,9 +13,13 @@ Constitutional precedence is absolute: when AGENTS.md conflicts with Constitutio
 - Canonical context layer for agent execution:
   - `context/INVARIANTS.md`
   - `context/CONTRACTS.md`
+  - `CONTRACT.YMYL_RESPONSE_STRUCTURE` (ver `context/CONTRACTS.md`)
   - `context/MODULE_INDEX.md`
   - `context/CURRENT_STATE.md`
+- Canonical editorial policy for YMYL execution:
+  - `docs/editorial/NORMA_YMYL.md`
 - Rule: before changes that touch routes, RSS, canonical URL strategy, or guard gates, agents must read `context/INVARIANTS.md` and `context/CONTRACTS.md` plus the referenced scripts.
+- Rule: before new YMYL content or substantive editorial refresh, agents must read `docs/editorial/NORMA_YMYL.md` and apply its MUST/SHOULD criteria, checklist, and scorecard.
 - Anti-duplication: AGENTS.md defines process/protocol; `context/*.md` defines concise invariant/contract state and cross-references canonical sources.
 
 ## 1. Authority Hierarchy

@@ -31,6 +31,7 @@ Change log:
 - 2026-03-02: added editorial internal-linking contract (warning-first + explicit skip marker).
 - 2026-03-02: added editorial cluster-awareness contract (mandatory cluster declaration + validity + intra-cluster linkage signal).
 - 2026-03-02: added formal inter-cluster linking contract (hub/intra/inter types, causal heuristics, anti-stuffing limits).
+- 2026-03-02: added CONTRACT.YMYL_RESPONSE_STRUCTURE (respuesta rápida, vigencia temporal y separación de reforma/aplicación).
 
 ## 2. Contracts
 
@@ -290,3 +291,29 @@ Change log:
 - Rollout:
   - Gradual adoption.
   - Inter-cluster linking remains recommendation-first and non-blocking unless future ADR hardens gate semantics.
+
+## CONTRACT.YMYL_RESPONSE_STRUCTURE
+
+**Scope:** Todo artículo clasificado como YMYL (finanzas personales, impuestos, previsión, subsidios, deudas, contratos laborales, seguridad financiera).
+
+### Requisitos obligatorios
+
+1. Debe existir un bloque explícito "Respuesta rápida" o equivalente, que contenga una regla concreta (número/criterio) alineada a la query ancla.
+2. Debe declararse la vigencia o marco temporal de la regla.
+3. Si el artículo menciona reformas o cambios normativos futuros, debe incluir separación explícita entre:
+   - Qué está aprobado
+   - Desde cuándo rige (vigencia legal)
+   - Desde cuándo se implementa (aplicación operativa)
+   - Comparación "hoy vs después"
+4. Si el artículo contiene síntesis jurídica en tablas o resúmenes, debe incluir etiqueta visible de "resumen orientativo" con limitador de alcance.
+
+### Violaciones consideradas críticas
+
+- Respuestas abstractas que no entregan regla concreta.
+- Confusión entre aprobación y aplicación.
+- Ausencia de vigencia cuando la norma es temporal o sujeta a reforma.
+- Extrapolaciones jurídicas sin respaldo o sin limitador.
+
+### Severidad
+
+Violación de este contrato se considera severidad ALTA en contexto YMYL y bloquea publicación hasta corrección.

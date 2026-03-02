@@ -25,3 +25,20 @@ Fuente base: [Gap Audit v1](docs/audits/2026-02-27_gap-audit_v1.md) y [Deep Rese
 - `Owner` queda vacío por instrucción; completar al asignar sprint.
 - `Estado` permitido: `TODO`, `IN_PROGRESS`, `REVIEW`, `DONE`, `REFRESH`.
 - Si falta evidencia en fuentes primarias durante ejecución, marcar `TODO` explícito en el issue antes de redactar.
+
+## Deuda técnica editorial (control 2026-03-02)
+
+| Ítem | Riesgo | Acción | Prioridad | Estado |
+|---|---|---|---|---|
+| Pilar #15 (CAE / costo real) sin artículo editorial | Bajo-medio | Crear artículo pilar y enlazarlo al cluster de deuda-crédito | Media | TODO |
+| Falta de `updatedDate` en batch original | Medio | Agregar `updatedDate` en próxima revisión sustantiva por artículo (sin fechas ficticias) | Media | IN_PROGRESS |
+| Respuestas abstractas (licencia/finiquito) | Alto YMYL | Concretar reglas operativas y efecto legal por causal | Alta | DONE (2026-03-02) |
+| Reforma previsional sin reflejo | Alto YMYL | Añadir bloque "Qué cambia entre 2025 y 2027" en artículos prioritarios AFP | Alta | DONE parcial (2026-03-02) |
+
+## Registro de revisiones sustantivas (`updatedDate`)
+
+Usar este registro para cada cambio sustantivo de contenido (regla, numero, vigencia, excepciones, reforma o correccion relevante).
+
+| Fecha | URL/slug | Que cambio | Por que | Fuente(s) oficial(es) |
+|---|---|---|---|---|
+| 2026-03-02 | N/A (gobernanza editorial) | Adopcion de `docs/editorial/NORMA_YMYL.md` y regla de trazabilidad para `updatedDate` | Estandarizar precision YMYL y evitar regresion a respuestas abstractas | `docs/editorial/NORMA_YMYL.md` |

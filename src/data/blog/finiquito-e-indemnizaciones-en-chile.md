@@ -3,6 +3,7 @@ title: "Finiquito e indemnizaciones en Chile: qué te corresponde y cómo revisa
 description: "Guía operativa para revisar finiquito e indemnizaciones en Chile, validar montos y detectar errores antes de firmar o reclamar un pago incompleto."
 slug: finiquito-e-indemnizaciones-en-chile
 pubDate: 2026-03-02T18:40:00Z
+updatedDate: 2026-03-02T19:30:00Z
 tags:
   - empleo-ingresos
   - finiquito
@@ -37,6 +38,21 @@ Los dos bloques más sensibles son:
 - Indemnización sustitutiva del aviso previo (cuando no hubo aviso con anticipación legal).
 
 Antes de aceptar cifras, compara antigüedad efectiva, última remuneración base y causal invocada.
+
+## Causales de término y efecto legal en indemnizaciones
+
+Resumen práctico de causales frecuentes del Código del Trabajo y su impacto:
+
+| Causal de término                                                                          | Impacto en indemnización                                                        | ¿Años de servicio?                                 | ¿Aviso previo?                                              |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------- |
+| Necesidades de la empresa (art. 161)                                                       | Aplica régimen indemnizatorio legal.                                            | Sí, si cumples requisitos legales.                 | Sí: 30 días de aviso o indemnización sustitutiva.           |
+| Mutuo acuerdo (art. 159 N°1)                                                               | Se paga lo pactado entre partes y haberes pendientes.                           | No como regla legal automática (solo si se pacta). | No como obligación legal automática.                        |
+| Renuncia voluntaria (art. 159 N°2)                                                         | Corresponden haberes pendientes y feriado proporcional.                         | No.                                                | No aplica indemnización sustitutiva.                        |
+| Despido por causales disciplinarias (art. 160)                                             | No genera indemnización legal por años de servicio ni aviso sustitutivo.        | No.                                                | No, salvo controversia judicial posterior.                  |
+| Despido injustificado (art. 168, declarado por tribunal)                                   | Se ordena pago de indemnizaciones legales más recargo legal cuando corresponda. | Sí, según sentencia.                               | Puede corresponder sustitutiva del aviso previo según caso. |
+| Otras causales relevantes (vencimiento de plazo, término de obra, caso fortuito; art. 159) | Se pagan haberes pendientes y feriado proporcional.                             | No como regla general.                             | No como regla general.                                      |
+
+La causal exacta de la carta de despido manda el cálculo. Si hay duda fundada sobre causal mal aplicada, no firmes a ciegas: deja constancia y pide revisión.
 
 ## Checklist antes de firmar
 
@@ -77,3 +93,8 @@ Contrato, anexos, liquidaciones, carta de despido y finiquito completo con desgl
 ### ¿El finiquito afecta mi acceso a cesantía?
 
 No lo reemplaza. Son flujos distintos que se cruzan en la práctica de caja, por eso conviene revisar ambos en paralelo.
+
+## Fuentes oficiales recomendadas
+
+- Código del Trabajo (artículos 159, 160, 161, 163 y 168): https://www.bcn.cl/leychile/navegar?idNorma=207436
+- Dirección del Trabajo (portal de temas laborales y causales de término): https://www.dt.gob.cl/portal/1626/w3-channel.html

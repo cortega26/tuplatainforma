@@ -1,24 +1,25 @@
 # TECH_DEBT_BACKLOG
 
-Fecha de corte: 2026-02-27
+Fecha de corte: 2026-03-02
 
 ## Métricas
 
 ### Total de items por urgencia
 - **P0:** 1
-- **P1:** 3
-- **P2:** 5
+- **P1:** 5
+- **P2:** 7
 - **P3:** 1
 
-### Estado de avance (2026-02-27)
-- **Completados:** 10 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`)
-- **En progreso:** 0 (—)
-- **Backlog sin iniciar:** 0 (—)
+### Estado de avance (2026-03-02)
+- **Completados:** 12 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0013`, `TD-0014`)
+- **En progreso:** 1 (`TD-0012`)
+- **Backlog sin iniciar:** 1 (`TD-0011`)
 
 ### Top 5 riesgos
 | Ranking | ID | Riesgo | Motivo principal |
 |---|---|---|---|
-| 1 | — | Bajo | Sin ítems abiertos en backlog de deuda técnica al corte 2026-02-27 |
+| 1 | TD-0012 | Medio | Artículos del batch original sin `updatedDate` reducen señal de frescura editorial y aumentan riesgo YMYL percibido. |
+| 2 | TD-0011 | Bajo-medio | Falta de pilar CAE/costo real deja hueco de cobertura en cluster deuda-crédito. |
 
 ### Quick wins (alto impacto / bajo esfuerzo)
 - [x] `TD-0007` Corregir email placeholder en enlaces sociales.
@@ -47,6 +48,82 @@ Fecha de corte: 2026-02-27
 - **Estado:** Completado
 - **Fecha de creación:** 2026-02-26
 - **Última actualización:** 2026-02-27
+
+## TD-0011 — Pilar CAE/costo real sin artículo editorial
+- **ID:** TD-0011
+- **Título corto:** Cubrir pilar faltante CAE/costo real
+- **Descripción:** Existe brecha editorial en query/pilar de CAE y costo real del crédito; hoy no hay artículo dedicado.
+- **Evidencia (actualizada):** `BACKLOG_EDITORIAL.md` (ED-009 como TODO), ausencia de pieza pilar en `src/data/blog/` para intención específica de CAE/costo real.
+- **Impacto:** Cobertura incompleta del cluster de deuda/crédito y menor capacidad de respuesta a intención informativa.
+- **Riesgo:** bajo-medio
+- **Severidad (1-5):** 2
+- **Urgencia:** P2
+- **Esfuerzo estimado:** M
+- **Propuesta de solución:** Crear artículo pilar CAE/costo real con fuentes primarias y enlazado interno desde guías/relacionados.
+- **Criterios de cierre (checklist verificable):**
+- [ ] Existe artículo pilar publicado para CAE/costo real con frontmatter válido.
+- [ ] Incluye fuentes primarias y enlaces internos del cluster correspondiente.
+- **Owner:** TBD
+- **Estado:** Backlog sin iniciar
+- **Fecha de creación:** 2026-03-02
+- **Última actualización:** 2026-03-02
+
+## TD-0012 — Falta `updatedDate` en batch original de artículos
+- **ID:** TD-0012
+- **Título corto:** Normalizar señal de frescura editorial
+- **Descripción:** Parte del batch original sigue sin `updatedDate`, lo que dificulta distinguir contenido revisado sustantivamente.
+- **Evidencia (actualizada):** revisión de frontmatter en `src/data/blog/` identifica artículos legacy sin `updatedDate`; actualización parcial aplicada en esta intervención para artículos con edición sustantiva.
+- **Impacto:** Señal de frescura inconsistente en contenidos de alto impacto informativo.
+- **Riesgo:** medio
+- **Severidad (1-5):** 3
+- **Urgencia:** P2
+- **Esfuerzo estimado:** S
+- **Propuesta de solución:** Agregar `updatedDate` solo en revisiones sustantivas verificables; evitar fechas ficticias o mecánicas.
+- **Criterios de cierre (checklist verificable):**
+- [ ] Cada artículo del batch original actualizado sustantivamente declara `updatedDate`.
+- [ ] No existen `updatedDate` agregados sin cambio editorial real.
+- **Owner:** TBD
+- **Estado:** En progreso
+- **Fecha de creación:** 2026-03-02
+- **Última actualización:** 2026-03-02
+
+## TD-0013 — Respuestas YMYL abstractas en licencia/finiquito
+- **ID:** TD-0013
+- **Título corto:** Concretar reglas en piezas laborales críticas
+- **Descripción:** Artículos de licencia y finiquito tenían respuestas abstractas en puntos de intención de búsqueda y efecto legal.
+- **Evidencia (actualizada):** ajustes en `src/data/blog/licencia-medica-desde-que-dia-pagan.md` y `src/data/blog/finiquito-e-indemnizaciones-en-chile.md` con reglas explícitas de pago/causales.
+- **Impacto:** Riesgo de mala interpretación de reglas laborales por ambigüedad de redacción.
+- **Riesgo:** alto
+- **Severidad (1-5):** 4
+- **Urgencia:** P1
+- **Esfuerzo estimado:** S
+- **Propuesta de solución:** Mantener tablas/reglas directas por causal y por tramo de días en artículos YMYL.
+- **Criterios de cierre (checklist verificable):**
+- [x] Artículo de licencia responde explícitamente regla `<11 días` y pagador.
+- [x] Artículo de finiquito enumera causales y efecto legal básico en indemnización.
+- **Owner:** TBD
+- **Estado:** Completado
+- **Fecha de creación:** 2026-03-02
+- **Última actualización:** 2026-03-02
+
+## TD-0014 — Reforma previsional 2025-2027 no explicitada en piezas AFP prioritarias
+- **ID:** TD-0014
+- **Título corto:** Alinear contenidos AFP a calendario de reforma
+- **Descripción:** Faltaba separar en artículos prioritarios AFP qué cambia hoy y qué cambia entre 2025-2027.
+- **Evidencia (actualizada):** bloques agregados en `src/data/blog/cuanto-descuenta-la-afp-de-tu-sueldo.md` y `src/data/blog/fondos-afp-a-b-c-d-e.md`.
+- **Impacto:** Riesgo de desalineación normativa en contenidos previsionales de alto tráfico.
+- **Riesgo:** alto
+- **Severidad (1-5):** 4
+- **Urgencia:** P1
+- **Esfuerzo estimado:** S
+- **Propuesta de solución:** Mantener bloque estructurado de vigencia con calendario y distinción "hoy vs después".
+- **Criterios de cierre (checklist verificable):**
+- [x] Ambos artículos prioritarios incluyen bloque "Qué cambia entre 2025 y 2027".
+- [x] Se documenta 7% empleador, fondos generacionales y calendario de implementación.
+- **Owner:** TBD
+- **Estado:** Completado
+- **Fecha de creación:** 2026-03-02
+- **Última actualización:** 2026-03-02
 
 ## TD-0002 — Valores financieros hardcodeados con fecha fija
 - **ID:** TD-0002
