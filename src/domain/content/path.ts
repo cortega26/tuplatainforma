@@ -26,4 +26,3 @@ export function getCanonicalOgImagePathFromSlug(slug: string): string {
 export function getSlugParamFromCanonicalSlug(slug: string): string {
   return slug.replace(/^\/+|\/+$/g, "");
 }
-

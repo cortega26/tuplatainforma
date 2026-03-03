@@ -36,12 +36,12 @@ Según Banco Central, la UF es una unidad reajustable por IPC y se actualiza dia
 
 ## Comparativa estructurada: matriz de decisión
 
-| Variable | DAP en pesos | DAP en UF |
-| --- | --- | --- |
-| Inflación esperada baja | Suele ser competitivo | Puede quedar por debajo en nominal |
-| Inflación esperada alta | Puede perder poder de compra real | Suele proteger mejor el poder de compra |
-| Plazo corto | Más flexible según oferta | Puede no ser viable según plazo mínimo reajustable |
-| Entender resultado final | Más simple (nominal) | Requiere mirar reajuste + tasa real |
+| Variable                 | DAP en pesos                      | DAP en UF                                          |
+| ------------------------ | --------------------------------- | -------------------------------------------------- |
+| Inflación esperada baja  | Suele ser competitivo             | Puede quedar por debajo en nominal                 |
+| Inflación esperada alta  | Puede perder poder de compra real | Suele proteger mejor el poder de compra            |
+| Plazo corto              | Más flexible según oferta         | Puede no ser viable según plazo mínimo reajustable |
+| Entender resultado final | Más simple (nominal)              | Requiere mirar reajuste + tasa real                |
 
 Dato operativo clave (CMF Educa): el plazo mínimo de pago de intereses/reajustes no puede ser inferior a 7 días en depósitos no reajustables y a 90 días en depósitos reajustables.
 

@@ -4,7 +4,13 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { getPath } from "@/utils/getPath";
 
-type CapaId = "ingresos" | "prevision" | "ahorro-inversion" | "impuestos" | "deuda" | "otros";
+type CapaId =
+  | "ingresos"
+  | "prevision"
+  | "ahorro-inversion"
+  | "impuestos"
+  | "deuda"
+  | "otros";
 
 type HubInfo = {
   slug: string;
@@ -17,27 +23,32 @@ const capas = [
   {
     id: "ingresos" as const,
     titulo: "Ganar y gestionar ingresos",
-    resumen: "Clústeres para ordenar decisiones sobre ingreso líquido, estabilidad laboral y gestión de flujo mensual.",
+    resumen:
+      "Clústeres para ordenar decisiones sobre ingreso líquido, estabilidad laboral y gestión de flujo mensual.",
   },
   {
     id: "prevision" as const,
     titulo: "Previsión obligatoria",
-    resumen: "Contenido para entender cotizaciones, fondos y decisiones previsionales que impactan el largo plazo.",
+    resumen:
+      "Contenido para entender cotizaciones, fondos y decisiones previsionales que impactan el largo plazo.",
   },
   {
     id: "ahorro-inversion" as const,
     titulo: "Ahorro voluntario e inversión",
-    resumen: "Rutas para elegir instrumentos, controlar costos y alinear riesgo con horizonte y objetivos.",
+    resumen:
+      "Rutas para elegir instrumentos, controlar costos y alinear riesgo con horizonte y objetivos.",
   },
   {
     id: "impuestos" as const,
     titulo: "Impuestos personales",
-    resumen: "Guías prácticas para declaración, seguimiento de devolución y obligaciones tributarias frecuentes.",
+    resumen:
+      "Guías prácticas para declaración, seguimiento de devolución y obligaciones tributarias frecuentes.",
   },
   {
     id: "deuda" as const,
     titulo: "Deuda y crédito",
-    resumen: "Material para evaluar costo total de financiamiento y reducir riesgo de sobreendeudamiento.",
+    resumen:
+      "Material para evaluar costo total de financiamiento y reducir riesgo de sobreendeudamiento.",
   },
   {
     id: "otros" as const,
@@ -95,7 +106,8 @@ const hubs = hubsDetectados
         .filter(Boolean)
         .map(parte => parte.charAt(0).toUpperCase() + parte.slice(1))
         .join(" "),
-      descripcion: "Cluster temático de finanzas personales incluido en el mapa global de guías.",
+      descripcion:
+        "Cluster temático de finanzas personales incluido en el mapa global de guías.",
       capa: "otros" as const,
     };
   })
@@ -117,13 +129,18 @@ const capasConHubs = capas
 
   <main id="main-content" class="app-layout">
     <section class="border-b border-border py-8">
-      <p class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase">
+      <p
+        class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase"
+      >
         Mapa temático
       </p>
-      <h1 class="mb-4 text-3xl font-bold sm:text-4xl">Guías de Finanzas Personales en Chile</h1>
+      <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
+        Guías de Finanzas Personales en Chile
+      </h1>
       <p class="max-w-3xl text-secondary">
-        Este hub maestro reúne todos los clusters de Tu Plata Informa en una sola vista.
-        Úsalo para encontrar la ruta de lectura según tu momento financiero y conectar temas relacionados.
+        Este hub maestro reúne todos los clusters de Tu Plata Informa en una
+        sola vista. Úsalo para encontrar la ruta de lectura según tu momento
+        financiero y conectar temas relacionados.
       </p>
     </section>
 
@@ -134,23 +151,21 @@ const capasConHubs = capas
           <p class="mb-5 max-w-3xl text-secondary">{capa.resumen}</p>
 
           <ul class="grid gap-4 sm:grid-cols-2">
-            {
-              capa.hubs.map(hub => (
-                <li class="rounded-xl border border-border p-5">
-                  <p class="mb-2 inline-flex rounded-full border border-accent/30 bg-accent/5 px-2 py-1 text-xs font-semibold tracking-wide text-accent uppercase">
-                    Clúster
-                  </p>
-                  <h3 class="mb-2 text-lg font-semibold">{hub.nombre}</h3>
-                  <p class="mb-3 text-sm text-secondary">{hub.descripcion}</p>
-                  <a
-                    href={getPath(`/guias/${hub.slug}/`)}
-                    class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
-                  >
-                    Ir al cluster
-                  </a>
-                </li>
-              ))
-            }
+            {capa.hubs.map(hub => (
+              <li class="rounded-xl border border-border p-5">
+                <p class="mb-2 inline-flex rounded-full border border-accent/30 bg-accent/5 px-2 py-1 text-xs font-semibold tracking-wide text-accent uppercase">
+                  Clúster
+                </p>
+                <h3 class="mb-2 text-lg font-semibold">{hub.nombre}</h3>
+                <p class="mb-3 text-sm text-secondary">{hub.descripcion}</p>
+                <a
+                  href={getPath(`/guias/${hub.slug}/`)}
+                  class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+                >
+                  Ir al cluster
+                </a>
+              </li>
+            ))}
           </ul>
         </section>
       ))

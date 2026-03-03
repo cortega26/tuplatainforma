@@ -57,11 +57,11 @@ La **TMC (Tasa Máxima Convencional)** es el techo legal que fija la CMF cada me
 
 La CMF publica la TMC mensualmente según el tipo y monto del crédito. Los segmentos más relevantes para personas naturales son:
 
-| Segmento | Descripción |
-| --- | --- |
-| Operaciones hasta 200 UF | Créditos de consumo pequeños, tarjetas con cupo bajo |
+| Segmento                         | Descripción                                                 |
+| -------------------------------- | ----------------------------------------------------------- |
+| Operaciones hasta 200 UF         | Créditos de consumo pequeños, tarjetas con cupo bajo        |
 | Operaciones entre 200 y 5.000 UF | Créditos de consumo medianos y algunos hipotecarios menores |
-| Operaciones sobre 5.000 UF | Hipotecarios y financiamiento de alto monto |
+| Operaciones sobre 5.000 UF       | Hipotecarios y financiamiento de alto monto                 |
 
 Si un crédito tiene CAE superior a la TMC vigente en su segmento en el mes de contratación, la diferencia se reduce automáticamente por ley al máximo permitido (Ley N° 18.010 sobre operaciones de crédito de dinero).
 
@@ -81,14 +81,14 @@ Lo que sí puedes hacer sin fórmulas:
 
 Ejemplo numérico con dos escenarios comparables (crédito de consumo, $3.000.000, 36 cuotas):
 
-| Concepto | Opción A | Opción B |
-| --- | --- | --- |
-| Tasa mensual | 1,80% | 1,50% |
-| Seguro mensual | $0 | $9.500 |
-| Gastos iniciales | $0 | $65.000 |
-| Cuota mensual estimada | $108.800 | $101.400 |
-| Total pagado | $3.916.800 | $3.715.400 + $65.000 = $3.780.400 |
-| CAE aproximado | 23,9% | 24,2% |
+| Concepto               | Opción A   | Opción B                          |
+| ---------------------- | ---------- | --------------------------------- |
+| Tasa mensual           | 1,80%      | 1,50%                             |
+| Seguro mensual         | $0         | $9.500                            |
+| Gastos iniciales       | $0         | $65.000                           |
+| Cuota mensual estimada | $108.800   | $101.400                          |
+| Total pagado           | $3.916.800 | $3.715.400 + $65.000 = $3.780.400 |
+| CAE aproximado         | 23,9%      | 24,2%                             |
 
 La opción B tiene cuota más baja pero costo total mayor. Sin el CAE, la comparación engaña.
 

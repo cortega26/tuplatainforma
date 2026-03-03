@@ -38,13 +38,13 @@ Si quieres invertir en ETFs desde Chile, esta guía te ordena el proceso de sele
 
 ## Cómo comparar plataforma/corredora
 
-| Criterio | Qué revisar | Riesgo de ignorarlo |
-| --- | --- | --- |
-| Comisión por operación | Cargo fijo o porcentual por compra/venta | Comer rentabilidad neta |
-| Costos transaccionales adicionales | Derechos de bolsa, IVA, cargos administrativos | Subestimar costo total |
-| Custodia | Dónde y cómo se registran tus valores | Riesgo operativo/documental |
-| Regulación y supervisión | Inscripción y fiscalización CMF (si aplica) | Operar sin marco local claro |
-| Acceso a mercados extranjeros | Si depende de intermediario extranjero y bajo qué condiciones | Riesgo regulatorio adicional |
+| Criterio                           | Qué revisar                                                   | Riesgo de ignorarlo          |
+| ---------------------------------- | ------------------------------------------------------------- | ---------------------------- |
+| Comisión por operación             | Cargo fijo o porcentual por compra/venta                      | Comer rentabilidad neta      |
+| Costos transaccionales adicionales | Derechos de bolsa, IVA, cargos administrativos                | Subestimar costo total       |
+| Custodia                           | Dónde y cómo se registran tus valores                         | Riesgo operativo/documental  |
+| Regulación y supervisión           | Inscripción y fiscalización CMF (si aplica)                   | Operar sin marco local claro |
+| Acceso a mercados extranjeros      | Si depende de intermediario extranjero y bajo qué condiciones | Riesgo regulatorio adicional |
 
 Dato CMF relevante: en intermediación bursátil pueden existir cobros por comisión, derechos de bolsa, IVA, custodia y otros costos.
 

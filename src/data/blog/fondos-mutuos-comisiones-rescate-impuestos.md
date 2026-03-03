@@ -29,12 +29,12 @@ Si inviertes en fondos mutuos, esta guía te muestra dónde están los costos re
 
 ## Tipos de costos: cómo leer la letra chica
 
-| Costo | Qué significa | Dónde se valida |
-| --- | --- | --- |
-| Remuneración de administración | Cobro periódico por gestionar el fondo | Reglamento interno (CMF) |
-| Comisión de rescate | Cobro al salir, según condiciones/serie/plazo | Reglamento interno + contrato |
-| Comisión de colocación | Cobro al entrar (si aplica) | Folleto + contrato |
-| Otros gastos atribuibles | Costos operativos imputados al fondo | Documentación oficial del fondo |
+| Costo                          | Qué significa                                 | Dónde se valida                 |
+| ------------------------------ | --------------------------------------------- | ------------------------------- |
+| Remuneración de administración | Cobro periódico por gestionar el fondo        | Reglamento interno (CMF)        |
+| Comisión de rescate            | Cobro al salir, según condiciones/serie/plazo | Reglamento interno + contrato   |
+| Comisión de colocación         | Cobro al entrar (si aplica)                   | Folleto + contrato              |
+| Otros gastos atribuibles       | Costos operativos imputados al fondo          | Documentación oficial del fondo |
 
 CMF Educa indica que estas condiciones deben quedar establecidas en el reglamento interno depositado en la CMF.
 

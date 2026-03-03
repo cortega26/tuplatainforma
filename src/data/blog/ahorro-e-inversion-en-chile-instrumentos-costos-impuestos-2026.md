@@ -30,11 +30,11 @@ Si quieres ordenar tus finanzas para invertir sin improvisar, esta guía te ayud
 
 ## Mapa rápido de instrumentos
 
-| Instrumento | Para qué sirve mejor | Riesgo relativo | Liquidez típica |
-| --- | --- | --- | --- |
-| Depósito a plazo | Caja de corto plazo y metas de fecha fija | Bajo | Al vencimiento pactado |
-| Fondo mutuo | Diversificar sin comprar activo por activo | Bajo a alto (según fondo) | Rescate según reglamento (fondos mutuos: <= 10 días) |
-| ETF | Exposición diversificada con lógica bursátil | Medio a alto | Depende de mercado y ejecución vía intermediario |
+| Instrumento      | Para qué sirve mejor                         | Riesgo relativo           | Liquidez típica                                      |
+| ---------------- | -------------------------------------------- | ------------------------- | ---------------------------------------------------- |
+| Depósito a plazo | Caja de corto plazo y metas de fecha fija    | Bajo                      | Al vencimiento pactado                               |
+| Fondo mutuo      | Diversificar sin comprar activo por activo   | Bajo a alto (según fondo) | Rescate según reglamento (fondos mutuos: <= 10 días) |
+| ETF              | Exposición diversificada con lógica bursátil | Medio a alto              | Depende de mercado y ejecución vía intermediario     |
 
 Para profundizar por intención específica, revisa:
 

@@ -37,11 +37,9 @@ type RelatedItem = {
   score: number;
 };
 
-const sortByScoreAndDate = (
-  a: RelatedItem,
-  b: RelatedItem
-) =>
-  b.score - a.score || b.article.pubDate.getTime() - a.article.pubDate.getTime();
+const sortByScoreAndDate = (a: RelatedItem, b: RelatedItem) =>
+  b.score - a.score ||
+  b.article.pubDate.getTime() - a.article.pubDate.getTime();
 
 const tagMatchedPosts = scoredPosts
   .filter(item => item.score > 0)

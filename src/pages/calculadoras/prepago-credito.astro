@@ -182,10 +182,7 @@ import Footer from "@/components/Footer.astro";
       <!-- RESULTADO -->
       <div class="rounded-xl border border-border bg-background p-6">
         <h2 class="mb-5 text-lg font-semibold">💰 ¿Conviene prepagar?</h2>
-        <div
-          id="resultado-contenido"
-          class="py-8 text-center text-muted"
-        >
+        <div id="resultado-contenido" class="py-8 text-center text-muted">
           <p class="mb-3 text-4xl">💡</p>
           <p class="text-sm">
             Ingresa los datos del crédito y el monto a prepagar.
@@ -354,20 +351,17 @@ import Footer from "@/components/Footer.astro";
     verdict.append(verdictLabel, verdictValue, verdictSub);
 
     const withoutLabel = document.createElement("p");
-    withoutLabel.className =
-      "mb-2 text-xs font-bold text-muted uppercase";
+    withoutLabel.className = "mb-2 text-xs font-bold text-muted uppercase";
     withoutLabel.textContent = "Sin prepago";
 
     const withLabel = document.createElement("p");
-    withLabel.className =
-      "mb-2 mt-4 text-xs font-bold text-muted uppercase";
+    withLabel.className = "mb-2 mt-4 text-xs font-bold text-muted uppercase";
     withLabel.textContent = `Con prepago de ${fmt(montoPrepago)}`;
 
     const investmentBox = document.createElement("div");
     investmentBox.className = "mt-5 rounded-lg bg-foreground/5 p-3";
     const investmentLabel = document.createElement("p");
-    investmentLabel.className =
-      "mb-2 text-xs font-bold text-muted uppercase";
+    investmentLabel.className = "mb-2 text-xs font-bold text-muted uppercase";
     investmentLabel.textContent = `Alternativa: invertir ${fmt(montoPrepago)} al ${
       rentAlternativa * 100
     }% anual`;
