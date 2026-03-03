@@ -45,13 +45,13 @@ Calendario resumido de implementación:
 
 ## ¿Cuánto descuenta la AFP?
 
-Si hablamos del descuento que sale desde tu remuneración imponible como trabajador, el total varía entre **10.49% y 10.77%** según tu AFP. Este porcentaje se divide en dos partes:
+Si hablamos del descuento que sale desde tu remuneración imponible como trabajador, el total varía entre **10.46% y 10.77%** según tu AFP. Este porcentaje se divide en dos partes:
 
 **1. Cotización obligatoria: 10%**
 
 Este es el porcentaje fijo que va directamente a tu cuenta de capitalización individual. Es tuyo, se invierte en el fondo que elegiste (A, B, C, D o E) y acumula rentabilidad hasta que te jubiles.
 
-**2. Comisión de la AFP: entre 0.49% y 0.77%**
+**2. Comisión de la AFP: entre 0.46% y 0.77%**
 
 Este porcentaje es el cobro que hace la AFP por administrar tu fondo. A diferencia del 10%, este dinero no va a tu cuenta — es el costo del servicio.
 
@@ -65,9 +65,9 @@ Este porcentaje es el cobro que hace la AFP por administrar tu fondo. A diferenc
 | Modelo    | 10%        | 0.58%    | 10.58%          |
 | PlanVital | 10%        | 0.49%    | 10.49%          |
 | ProVida   | 10%        | 0.69%    | 10.69%          |
-| Uno       | 10%        | 0.75%    | 10.75%          |
+| Uno       | 10%        | 0.46%    | 10.46%          |
 
-> 💡 **Dato importante:** La AFP con menor comisión actualmente es PlanVital (0.49%), seguida de Modelo y Capital (0.58%).
+> 💡 **Dato importante:** La AFP con menor comisión actualmente es **Uno (0.46%)**, seguida de PlanVital (0.49%) y Modelo/Capital (0.58%).
 
 ## ¿Para qué sirve cada peso descontado?
 

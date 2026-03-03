@@ -9,7 +9,8 @@ tags:
   - inversiones
   - corredoras
   - impuestos
-category: impuestos
+category: ahorro-inversion
+cluster: ahorro-e-inversion
 lang: es-CL
 featured: false
 draft: false
@@ -59,7 +60,7 @@ Dato CMF relevante: en intermediación bursátil pueden existir cobros por comis
 - SII señala que personas naturales deben declarar rentas de inversiones, con excepciones legales.
 - SII dispone asistentes e instrucciones de apoyo para determinación de mayor valor en ciertas enajenaciones/rescates.
 
-`TODO: FUENTE` para tasas específicas por tipo de ETF/mercado y casos de doble tributación internacional; esto requiere revisión normativa detallada y vigente por caso.
+Para tasas específicas según tipo de ETF o mercado, y para casos de doble tributación internacional, consulta las instrucciones vigentes del SII para el año tributario correspondiente y, de ser necesario, asesoría tributaria profesional.
 
 ## Casos por perfil
 

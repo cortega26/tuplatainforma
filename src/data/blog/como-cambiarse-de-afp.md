@@ -2,6 +2,7 @@
 title: "¿Puedo cambiarme de AFP? Cómo hacerlo y qué considerar en 2026"
 author: "Equipo TuPlataInforma"
 pubDate: 2026-02-23T13:00:00Z
+updatedDate: 2026-02-23T13:00:00Z
 slug: como-cambiarse-de-afp
 featured: false
 lang: es-CL
@@ -55,9 +56,9 @@ El error más común es fijarse solo en la comisión. Aunque es importante, no e
 La comisión es el porcentaje que cobra la AFP por administrar tu fondo. A menor comisión, más dinero queda en tu cuenta cada mes. Las comisiones vigentes al inicio de 2026 son:
 
 | AFP       | Comisión |
-| --------- | -------- | --- |
+| --------- | -------- |
 | Uno       | 0.46%    |
-| PlanVital | 0.49%    | \*  |
+| PlanVital | 0.49%    |
 | Modelo    | 0.58%    |
 | Capital   | 0.58%    |
 | Cuprum    | 0.65%    |

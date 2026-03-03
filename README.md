@@ -55,6 +55,14 @@ Notas:
 - El proyecto utiliza una base de despliegue en subdirectorio (/tuplatainforma). Para evitar enlaces rotos, los componentes generan URLs usando import.meta.env.BASE_URL normalizada con barra final.
 - La generación de páginas de artículos se basa en contenido Markdown dentro de src/data/blog.
 
+## Editorial Artifact Gate (Phase 1)
+
+- Comando: `pnpm run check:editorial-artifacts`
+- Integración: se ejecuta dentro de `pnpm run check:editorial`.
+- Modo por defecto: `warn-only` (reporta deuda sin romper el pipeline).
+- Modo estricto: `EDITORIAL_ENFORCE=1 pnpm run check:editorial-artifacts` (falla por artefactos/campos obligatorios faltantes).
+- Ubicación canónica de artefactos: `artifacts/editorial/<post_id>/<run-id>/` (según `context/EDITORIAL_AI_PIPELINE.md` y `context/CONTRACTS.md`).
+
 ## Despliegue (GitHub Pages)
 
 El repositorio incluye un workflow (.github/workflows/deploy.yml) que:

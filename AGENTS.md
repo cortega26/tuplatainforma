@@ -13,13 +13,14 @@ Constitutional precedence is absolute: when AGENTS.md conflicts with Constitutio
 - Canonical context layer for agent execution:
   - `context/INVARIANTS.md`
   - `context/CONTRACTS.md`
+  - `context/EDITORIAL_AI_PIPELINE.md`
   - `CONTRACT.YMYL_RESPONSE_STRUCTURE` (ver `context/CONTRACTS.md`)
   - `context/MODULE_INDEX.md`
   - `context/CURRENT_STATE.md`
 - Canonical editorial policy for YMYL execution:
   - `docs/editorial/NORMA_YMYL.md`
 - Rule: before changes that touch routes, RSS, canonical URL strategy, or guard gates, agents must read `context/INVARIANTS.md` and `context/CONTRACTS.md` plus the referenced scripts.
-- Rule: before new YMYL content or substantive editorial refresh, agents must read `docs/editorial/NORMA_YMYL.md` and apply its MUST/SHOULD criteria, checklist, and scorecard.
+- Rule: before new YMYL content or substantive editorial refresh, agents must read `docs/editorial/NORMA_YMYL.md` and `context/EDITORIAL_AI_PIPELINE.md`, then apply the required MUST/SHOULD criteria, checklist, scorecard, and artifact protocol.
 - Anti-duplication: AGENTS.md defines process/protocol; `context/*.md` defines concise invariant/contract state and cross-references canonical sources.
 
 ## 1. Authority Hierarchy
@@ -86,6 +87,18 @@ Constitutional precedence is absolute: when AGENTS.md conflicts with Constitutio
 - Enforcement: Halt immediately on any of: constitutional conflict, missing invariant source for required change, unresolved contract ambiguity, inability to verify critical gate, unexpected non-user edits in touched files.
 - Compliant behavior: Stop when route comparison baseline file is missing.
 - Violation: Shipping routing change without route diff verification.
+
+### Rule 2.8 - Mandatory editorial AI pipeline for YMYL/refresh
+- Rationale: High-risk editorial quality requires deterministic multi-stage controls, not ad-hoc drafting.
+- Enforcement: For every new YMYL piece or substantive YMYL refresh, the full artifact chain in `context/EDITORIAL_AI_PIPELINE.md` is mandatory (`brief`, `dossier`, `outline`, `draft`, `math audit`, `compliance`, `publish packet`).
+- Compliant behavior: PR includes pipeline artifacts (or references) and gate evidence before publication.
+- Violation: Publishing YMYL content from a single-step draft without artifact-level verification.
+
+### Rule 2.9 - Separation of duties in editorial verification
+- Rationale: Self-auditing degrades reliability in YMYL content.
+- Enforcement: `DraftAgent` cannot be the same role identity as `MathAuditAgent` or `ComplianceAgent` in one run; evidence must be recorded in publish packet.
+- Compliant behavior: distinct role identities across draft/audit/compliance stages.
+- Violation: same role signs draft and math/compliance verification.
 
 ### Execution checklist (required before code edits)
 - [ ] Scope declared (in-scope/out-of-scope).

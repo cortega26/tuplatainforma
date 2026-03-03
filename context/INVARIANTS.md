@@ -1,6 +1,6 @@
 # Context Invariants Registry
 
-Last updated: 2026-03-02
+Last updated: 2026-03-03
 Status: Active
 
 ## 1. Introduction
@@ -34,6 +34,7 @@ Change log:
 - 2026-03-02: added warning-first internal linking invariant with explicit frontmatter escape hatch.
 - 2026-03-02: added cluster-awareness invariants (declared cluster, valid cluster registry, intra-cluster linking warning).
 - 2026-03-02: formalized inter-cluster linking policy invariants (hub required, intra-cluster min-1 alias, inter-cluster max-per-edit) with human-enforced review boundaries.
+- 2026-03-03: added editorial AI pipeline invariants (cut-off date, source traceability, separation of duties, math/compliance mandatory triggers).
 
 ## 2. Invariant Index
 
@@ -45,6 +46,11 @@ Change log:
 | `FRONTMATTER.VALID` | Blog frontmatter meets required policy | Active | `pnpm run check:frontmatter` |
 | `INVARIANT.EDITORIAL.STRUCTURE_MIN` | Articles meet minimum structural shape | Active | `pnpm run check:editorial-structure` |
 | `INVARIANT.EDITORIAL.DIALECT_ES_CL` | Editorial dialect guard for Chilean Spanish | Active | `pnpm run check:dialect` |
+| `INVARIANT.EDITORIAL.CUT_OFF_DATE_REQUIRED` | YMYL content must display explicit cut-off date | Active | Manual review + `context/EDITORIAL_AI_PIPELINE.md` |
+| `INVARIANT.EDITORIAL.NO_UNSOURCED_NUMBERS` | Critical numbers require source traceability or explicit TODO marker before publish | Active | Manual review + MathAuditReport |
+| `INVARIANT.EDITORIAL.SEPARATION_OF_DUTIES` | Drafting cannot be audited/compliance-reviewed by the same agent role | Active | Manual review + publish packet role check |
+| `INVARIANT.EDITORIAL.MATH_AUDIT_REQUIRED_WHEN_CALC` | Calculation-heavy content requires math audit before publish | Active | Manual review + `requires_calculation` gate in publish packet |
+| `INVARIANT.EDITORIAL.COMPLIANCE_REVIEW_REQUIRED_WHEN_HIGH_RISK` | High regulatory sensitivity requires compliance report and human sign-off | Active | Manual review + `regulatory_sensitivity=alta` gate |
 | `INVARIANT.EDITORIAL.NO_EMPTY_SECTIONS` | H2 sections cannot be empty | Active | `pnpm run check:editorial-structure` |
 | `INVARIANT.EDITORIAL.META_DESCRIPTION_REQUIRED` | Description metadata is mandatory | Active | `pnpm run check:editorial-structure` |
 | `INVARIANT.EDITORIAL.META_DESCRIPTION_LENGTH` | Description length stays in SEO range | Active | `pnpm run check:editorial-structure` |
@@ -391,6 +397,88 @@ Change log:
 - Examples:
   - Compliant: `puedes comparar costos antes de invertir`.
   - Violation: `podés comparar costos antes de invertir`.
+
+### `INVARIANT.EDITORIAL.CUT_OFF_DATE_REQUIRED`
+
+- Statement: Every YMYL article must include a visible cut-off date (`Fecha de corte`) in public-facing content.
+- Canonical source: `context/EDITORIAL_AI_PIPELINE.md`, `docs/editorial/NORMA_YMYL.md`.
+- Rationale:
+  - Prevents temporal ambiguity in sensitive financial/legal guidance.
+  - Makes freshness limits explicit for readers and reviewers.
+  - Reduces risk of stale-rule interpretation.
+- Enforcement: Manual review (current phase), tied to YMYL editorial pipeline publish gate.
+- Detection:
+  - Required evidence in `07-publish-packet.md`: cut-off date value + location in final article.
+  - Missing visible date blocks publication.
+- Examples:
+  - Compliant: visible block `Fecha de corte: 2026-03-03`.
+  - Violation: YMYL article with no explicit cut-off date.
+
+### `INVARIANT.EDITORIAL.NO_UNSOURCED_NUMBERS`
+
+- Statement: Every critical numeric claim must include source traceability; draft-phase unresolved numbers must be marked `TODO:SOURCE`.
+- Canonical source: `context/EDITORIAL_AI_PIPELINE.md`, `CONTRACT.EDITORIAL.MATH_AUDIT_REPORT`.
+- Rationale:
+  - Prevents unsupported numerical claims in YMYL content.
+  - Creates deterministic reviewer workflow for citation closure.
+  - Improves credibility and auditability of published numbers.
+- Enforcement: Manual review via math audit and publish packet (current phase).
+- Detection:
+  - `05-math-audit.md` must map each critical number to source/recalculation status.
+  - `07-publish-packet.md` must declare unresolved `TODO:SOURCE = 0` for publish-ready state.
+- Examples:
+  - Compliant: claim includes source link or citation ID tied to dossier.
+  - Violation: critical number without source and without `TODO:SOURCE` marker.
+
+### `INVARIANT.EDITORIAL.SEPARATION_OF_DUTIES`
+
+- Statement: `DraftAgent` must not be the same role identity as `MathAuditAgent` or `ComplianceAgent` for the same run.
+- Canonical source: `context/EDITORIAL_AI_PIPELINE.md`.
+- Rationale:
+  - Reduces self-verification bias in sensitive content.
+  - Enforces independent control points before publication.
+  - Makes review accountability explicit.
+- Enforcement: Manual review-enforced (role declaration in artifact bundle).
+- Detection:
+  - `07-publish-packet.md` must include role identity map and explicit inequality check.
+  - Any role collision blocks publication.
+- Examples:
+  - Compliant: `draft_agent=claude`, `math_audit_agent=gpt-5.2`, `compliance_agent=gemini`.
+  - Violation: `draft_agent` and `math_audit_agent` set to same role identity.
+
+### `INVARIANT.EDITORIAL.MATH_AUDIT_REQUIRED_WHEN_CALC`
+
+- Statement: If brief declares `requires_calculation=true`, publication requires a completed math audit report.
+- Canonical source: `context/EDITORIAL_AI_PIPELINE.md`, `CONTRACT.EDITORIAL.BRIEF`, `CONTRACT.EDITORIAL.MATH_AUDIT_REPORT`.
+- Rationale:
+  - Prevents publication of unverified calculations.
+  - Forces explicit numerical validation on formula-driven content.
+  - Aligns YMYL quality control with calculation risk.
+- Enforcement: Manual gate in publish packet (current phase).
+- Detection:
+  - `01-brief.yaml` includes `requires_calculation`.
+  - When value is `true`, `05-math-audit.md` must exist and include verdict.
+  - Missing report blocks publication.
+- Examples:
+  - Compliant: tax/AFP calculation article with complete math audit.
+  - Violation: `requires_calculation=true` and no math audit artifact.
+
+### `INVARIANT.EDITORIAL.COMPLIANCE_REVIEW_REQUIRED_WHEN_HIGH_RISK`
+
+- Statement: If brief declares `regulatory_sensitivity=alta`, publication requires compliance report and explicit human sign-off.
+- Canonical source: `context/EDITORIAL_AI_PIPELINE.md`, `CONTRACT.EDITORIAL.COMPLIANCE_REPORT`.
+- Rationale:
+  - Adds legal/regulatory safety control for high-risk YMYL updates.
+  - Prevents automated publication without policy/legal sanity check.
+  - Makes accountability explicit for sensitive guidance.
+- Enforcement: Manual gate in publish packet (current phase).
+- Detection:
+  - `01-brief.yaml` includes `regulatory_sensitivity`.
+  - When value is `alta`, `06-compliance.md` plus `HumanEditor` approval must be present in `07-publish-packet.md`.
+  - Missing evidence blocks publication.
+- Examples:
+  - Compliant: high-risk article with compliance findings and human approval.
+  - Violation: high-risk article published without compliance artifact or sign-off.
 
 ### `INVARIANT.EDITORIAL.NO_EMPTY_SECTIONS`
 

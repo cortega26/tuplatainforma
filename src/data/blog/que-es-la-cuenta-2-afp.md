@@ -36,7 +36,7 @@ Puedes depositar dinero de dos formas: directamente cuando quieras desde el siti
 
 ## ¿Cuánto cobra la AFP por administrar la Cuenta 2?
 
-Las AFP cobran una comisión anual sobre el saldo que tengas en la cuenta. Esta comisión varía según la AFP y se aplica solo si tienes saldo — si la cuenta está vacía, no te cobran nada. A modo de referencia, las comisiones vigentes en 2025 oscilan entre 0.2% y 0.96% anual sobre el saldo administrado. Puedes consultar las comisiones exactas de cada AFP en el sitio de la [Superintendencia de Pensiones](https://www.spensiones.cl/infoydec).
+Las AFP cobran una comisión anual sobre el saldo que tengas en la cuenta. Esta comisión varía según la AFP y se aplica solo si tienes saldo — si la cuenta está vacía, no te cobran nada. Las comisiones oscilan típicamente entre 0.2% y 0.96% anual sobre el saldo administrado, pero pueden cambiar. Puedes consultar las comisiones exactas y vigentes de cada AFP en el sitio de la [Superintendencia de Pensiones](https://www.spensiones.cl/infoydec).
 
 La apertura de la cuenta es siempre gratuita.
 
@@ -107,4 +107,4 @@ Si tu foco es bajar impuestos al ahorrar, revisa [qué es el APV y cómo funcion
 
 ---
 
-_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2025. Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl)._
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl)._

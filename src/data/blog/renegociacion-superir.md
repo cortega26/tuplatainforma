@@ -19,7 +19,7 @@ description: "Guía práctica sobre la renegociación de deudas a través de la 
 
 Tienes deudas con varios acreedores, estás en mora hace meses y no ves cómo salir. Antes de contratar a un abogado o resignarte a que te sigan cobrando, existe una herramienta estatal gratuita que muy poca gente conoce: la **renegociación de deudas a través de la Superir**. Si estás ordenando este tema desde cero, también te sirve revisar la [guía del cluster Deuda y Crédito](/guias/deuda-credito/).
 
-Más del 93% de los deudores que la usan llegan a un acuerdo con sus acreedores. Y no necesitas abogado.
+Según datos de la Superir, la gran mayoría de los deudores que usan este mecanismo llegan a un acuerdo con sus acreedores. Y no necesitas abogado.
 
 ## Tabla de contenidos
 

@@ -68,7 +68,7 @@ Según SII (FAQ), en fondos mutuos:
 
 Además, SII dispone el asistente de enajenación para apoyar determinación de mayor valor en acciones/cuotas de fondos mutuos/cuotas de fondos de inversión.
 
-`TODO: FUENTE` para casos avanzados de imputación de créditos y tratamientos especiales por porcentaje de inversión en acciones, ya que requieren revisar instrucciones vigentes del F22 del año tributario correspondiente.
+Para casos avanzados de imputación de créditos y tratamientos especiales según porcentaje de inversión en acciones, consulta las instrucciones vigentes del Suplemento de Renta del SII para el año tributario correspondiente. Para situaciones complejas, conviene asesoría tributaria profesional.
 
 ## Casos por perfil
 

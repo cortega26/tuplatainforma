@@ -1,6 +1,6 @@
 # Context Contracts Registry
 
-Last updated: 2026-03-02
+Last updated: 2026-03-03
 Status: Active
 
 ## 1. Introduction
@@ -32,6 +32,7 @@ Change log:
 - 2026-03-02: added editorial cluster-awareness contract (mandatory cluster declaration + validity + intra-cluster linkage signal).
 - 2026-03-02: added formal inter-cluster linking contract (hub/intra/inter types, causal heuristics, anti-stuffing limits).
 - 2026-03-02: added CONTRACT.YMYL_RESPONSE_STRUCTURE (respuesta rápida, vigencia temporal y separación de reforma/aplicación).
+- 2026-03-03: added editorial AI artifact contracts (`CONTRACT.EDITORIAL.*`) for quality-first YMYL pipeline enforcement.
 
 ## 2. Contracts
 
@@ -291,6 +292,108 @@ Change log:
 - Rollout:
   - Gradual adoption.
   - Inter-cluster linking remains recommendation-first and non-blocking unless future ADR hardens gate semantics.
+
+### `CONTRACT.EDITORIAL.BRIEF`
+
+- Scope: Structured execution input for one editorial run.
+- Source of truth:
+  - `artifacts/editorial/<slug>/<run-id>/01-brief.yaml`
+  - Canonical pipeline spec: `context/EDITORIAL_AI_PIPELINE.md`
+- Backward-compat expectations:
+  - Required keys remain stable: `slug`, `query_anchor`, `ymyl`, `requires_calculation`, `regulatory_sensitivity`, `target_audience`, `cut_off_date`.
+  - Optional keys may be added without breaking existing consumers.
+- Enforcement: Manual-enforced (current phase), reviewed in PR/editorial workflow.
+- Detection:
+  - File exists and parses as YAML.
+  - Required keys are present with valid scalar values.
+
+### `CONTRACT.EDITORIAL.DOSSIER`
+
+- Scope: Research dossier with source traceability and retrieval context.
+- Source of truth:
+  - `artifacts/editorial/<slug>/<run-id>/02-dossier.md`
+  - Source list aligned to brief cut-off date.
+- Backward-compat expectations:
+  - Must include source references, retrieval date, and confidence/context notes.
+  - Section names may evolve if required fields remain present.
+- Enforcement: Manual-enforced (current phase).
+- Detection:
+  - Dossier contains explicit `Fecha de corte`.
+  - Every critical claim candidate has citation mapping or explicit unresolved marker.
+
+### `CONTRACT.EDITORIAL.OUTLINE`
+
+- Scope: Publish-intent structure before drafting.
+- Source of truth:
+  - `artifacts/editorial/<slug>/<run-id>/03-outline.md`
+  - Must align with YMYL response structure requirements.
+- Backward-compat expectations:
+  - Must keep explicit anchor answer section and section-level intent mapping.
+  - Heading style may vary without changing semantic fields.
+- Enforcement: Manual-enforced (current phase).
+- Detection:
+  - Outline includes `Respuesta rapida` (or equivalent), exceptions, and vigencia blocks.
+  - Outline references at least one source-backed section from dossier.
+
+### `CONTRACT.EDITORIAL.DRAFT`
+
+- Scope: Main draft text produced before audits.
+- Source of truth:
+  - `artifacts/editorial/<slug>/<run-id>/04-draft.md`
+  - Canonical policy references: `docs/editorial/NORMA_YMYL.md`, `CONTRACT.YMYL_RESPONSE_STRUCTURE`.
+- Backward-compat expectations:
+  - Draft must preserve answer-first YMYL structure and visible cut-off date.
+  - Temporary unresolved figures are allowed only with explicit `TODO:SOURCE`.
+- Enforcement:
+  - Manual-enforced for artifact checks.
+  - Script-enforced for repository-level editorial quality via `pnpm run check:editorial`.
+- Detection:
+  - Draft includes visible cut-off date marker.
+  - Critical numbers are source-cited or marked `TODO:SOURCE`.
+
+### `CONTRACT.EDITORIAL.MATH_AUDIT_REPORT`
+
+- Scope: Independent numerical verification artifact.
+- Source of truth:
+  - `artifacts/editorial/<slug>/<run-id>/05-math-audit.md`
+  - Trigger field: `requires_calculation` in brief.
+- Backward-compat expectations:
+  - Report must include table with: claim/number, source, recalculation method, result, discrepancy flag.
+  - Verdict field (`pass`/`fail`) is mandatory.
+- Enforcement: Manual-enforced; mandatory when `requires_calculation=true`.
+- Detection:
+  - For calculation-required runs, report existence is blocking.
+  - Report must provide per-number traceability and final verdict.
+
+### `CONTRACT.EDITORIAL.COMPLIANCE_REPORT`
+
+- Scope: Chile regulatory/compliance review for editorial runs.
+- Source of truth:
+  - `artifacts/editorial/<slug>/<run-id>/06-compliance.md`
+  - Trigger field: `regulatory_sensitivity` in brief.
+- Backward-compat expectations:
+  - Report must contain risk flags, severity, and corrective actions.
+  - Human escalation section must remain explicit for high-risk cases.
+- Enforcement: Manual-enforced; mandatory when `regulatory_sensitivity=alta`.
+- Detection:
+  - High-risk runs must include report plus explicit human review decision.
+  - Missing report or missing resolution state blocks publication.
+
+### `CONTRACT.EDITORIAL.PUBLISH_PACKET`
+
+- Scope: Final publication bundle decision artifact.
+- Source of truth:
+  - `artifacts/editorial/<slug>/<run-id>/07-publish-packet.md`
+  - Aggregates references to all previous artifacts.
+- Backward-compat expectations:
+  - Must preserve decision-critical fields: gate checklist, role separation evidence, unresolved TODO count, final decision (`publish`/`hold`).
+  - New optional metadata can be added without breaking compatibility.
+- Enforcement: Manual-enforced with existing script evidence attached.
+- Detection:
+  - Packet references all mandatory artifacts.
+  - Confirms `DraftAgent != MathAuditAgent != ComplianceAgent`.
+  - Confirms unresolved `TODO:SOURCE=0` for publish-ready state.
+  - Includes command evidence for `check:frontmatter` and `check:editorial`.
 
 ## CONTRACT.YMYL_RESPONSE_STRUCTURE
 
