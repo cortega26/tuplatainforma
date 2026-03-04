@@ -8,7 +8,7 @@
  *   - Inter 400 → texto UI, labels, pills
  *   - Inter 900 → número/dato ancla en Template C
  *
- * Los archivos .woff2 deben estar en public/fonts/.
+ * Los archivos .ttf deben estar en public/fonts/.
  * Ejecutar el script de descarga una sola vez:
  *
  *   node scripts/download-og-fonts.mjs
@@ -36,7 +36,7 @@ interface FontConfig {
 const FONTS_CONFIG: FontConfig[] = [
   {
     name: "Inter",
-    file: "inter-latin-400.woff2",
+    file: "inter-latin-400.ttf",
     weight: 400,
     style: "normal",
     googleFamily: "Inter",
@@ -44,13 +44,20 @@ const FONTS_CONFIG: FontConfig[] = [
   },
   {
     name: "Inter",
-    file: "inter-latin-900.woff2",
+    file: "inter-latin-900.ttf",
     weight: 900,
     style: "normal",
     googleFamily: "Inter",
     googleWeight: 900,
   },
 ];
+
+const TTF_SIGNATURE = "\x00\x01\x00\x00";
+const OTF_SIGNATURE = "OTTO";
+const WOFF_SIGNATURE = "wOFF";
+const WOFF2_SIGNATURE = "wOF2";
+const GOOGLE_FONTS_TTF_UA =
+  "Mozilla/5.0 (Linux; U; Android 4.4; en-us; Nexus 5 Build/KRT16M) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30";
 
 // ─── LEER DESDE DISCO ────────────────────────────────────────────────────────
 
@@ -59,6 +66,25 @@ function readFontFromDisk(file: string): ArrayBuffer | null {
   if (!existsSync(filePath)) return null;
 
   const buffer = readFileSync(filePath);
+  const signature = buffer.subarray(0, 4).toString("latin1");
+  if (signature === WOFF2_SIGNATURE) {
+    process.stderr.write(
+      `[og-fonts] Ignorando fuente WOFF2 incompatible con Satori: ${file}. Usa TTF/OTF/WOFF.\n`
+    );
+    return null;
+  }
+
+  if (
+    signature !== TTF_SIGNATURE &&
+    signature !== OTF_SIGNATURE &&
+    signature !== WOFF_SIGNATURE
+  ) {
+    process.stderr.write(
+      `[og-fonts] Firma de fuente no reconocida para ${file} (${JSON.stringify(signature)}).\n`
+    );
+    return null;
+  }
+
   return buffer.buffer.slice(
     buffer.byteOffset,
     buffer.byteOffset + buffer.byteLength
@@ -81,15 +107,12 @@ async function fetchFontFromGoogle(
   const css = await (
     await fetch(API, {
       headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "User-Agent": GOOGLE_FONTS_TTF_UA,
       },
     })
   ).text();
 
-  const resource = css.match(
-    /src: url\((.+?)\) format\('(opentype|truetype|woff2?)'\)/
-  );
+  const resource = css.match(/src:\s*url\((.+?)\)/);
   if (!resource)
     throw new Error(
       `[og-fonts] No se pudo parsear CSS de Google Fonts para ${family}:${weight}`
@@ -99,7 +122,15 @@ async function fetchFontFromGoogle(
   if (!res.ok)
     throw new Error(`[og-fonts] Fetch de fuente falló: ${res.status}`);
 
-  return res.arrayBuffer();
+  const fontData = await res.arrayBuffer();
+  const signature = Buffer.from(fontData).subarray(0, 4).toString("latin1");
+  if (signature === WOFF2_SIGNATURE) {
+    throw new Error(
+      `[og-fonts] Google devolvió WOFF2 para ${family}:${weight}, formato incompatible con Satori.`
+    );
+  }
+
+  return fontData;
 }
 
 // ─── EXPORT PRINCIPAL ─────────────────────────────────────────────────────────
