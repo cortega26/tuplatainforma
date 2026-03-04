@@ -61,12 +61,12 @@ async function main() {
       "--format",
       "json",
     ];
-    const result = spawnSync("pnpm", args, { encoding: "utf8" });
+    const result = spawnSync("pnpm", args, { encoding: "utf8", maxBuffer: 25 * 1024 * 1024 });
 
     if (result.error) throw result.error;
     if (result.status === null) throw new Error("linkinator did not return an exit code");
 
-    const raw = result.stdout.trim();
+    const raw = (result.stdout || result.stderr || "").trim();
     if (!raw) {
       console.error("[check-urls] Linkinator produced no JSON output.");
       process.exit(1);
@@ -77,8 +77,8 @@ async function main() {
       payload = JSON.parse(raw);
     } catch {
       console.error("[check-urls] Failed to parse Linkinator JSON output.");
-      console.error(result.stdout);
-      console.error(result.stderr);
+      if (result.stdout) console.error(result.stdout);
+      if (result.stderr) console.error(result.stderr);
       process.exit(1);
     }
 
