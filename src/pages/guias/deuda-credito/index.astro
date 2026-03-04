@@ -4,7 +4,7 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { getPath } from "@/utils/getPath";
 
-const articulosCluster = [
+const articulosSeccion = [
   {
     titulo:
       "Informe de deudas CMF: cómo sacarlo, qué dice y por qué no es lo mismo que DICOM",
@@ -45,17 +45,17 @@ const articulosCluster = [
         Deuda y Crédito en Chile
       </h1>
       <p class="max-w-3xl text-secondary">
-        Este hub organiza el cluster para ayudarte a diagnosticar tu situación,
+        Este hub organiza la sección para ayudarte a diagnosticar tu situación,
         priorizar decisiones y avanzar con una ruta concreta cuando hay presión
         de deuda o costo financiero alto.
       </p>
     </section>
 
     <section class="border-b border-border py-8">
-      <h2 class="mb-4 text-2xl font-bold">Artículos del cluster</h2>
+      <h2 class="mb-4 text-2xl font-bold">Artículos de la sección</h2>
       <ul class="grid gap-4">
         {
-          articulosCluster.map(item => (
+          articulosSeccion.map(item => (
             <li class="rounded-xl border border-border p-5">
               <h3 class="mb-2 text-lg font-semibold">{item.titulo}</h3>
               <p class="mb-3 text-sm text-secondary">{item.resumen}</p>
@@ -131,7 +131,7 @@ const articulosCluster = [
 
     <section class="py-8">
       <div class="rounded-xl border border-accent/20 bg-accent/5 p-6">
-        <h2 class="mb-2 text-xl font-bold">Última actualización del cluster</h2>
+        <h2 class="mb-2 text-xl font-bold">Última actualización de la sección</h2>
         <p class="text-sm text-secondary">
           Actualizado: 2026-03-02. Este índice se revisa cuando cambian
           criterios de reporte comercial, requisitos de renegociación o

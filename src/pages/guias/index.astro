@@ -61,31 +61,31 @@ const catalogoHubs: Record<string, Omit<HubInfo, "slug">> = {
   "pensiones-afp": {
     nombre: "Pensiones y AFP",
     descripcion:
-      "Cluster sobre previsión obligatoria en Chile: cotización, fondos y decisiones que afectan tu pensión futura.",
+      "Sección sobre previsión obligatoria en Chile: cotización, fondos y decisiones que afectan tu pensión futura.",
     capa: "prevision",
   },
   "ahorro-e-inversion": {
     nombre: "Ahorro e inversión",
     descripcion:
-      "Cluster para estructurar ahorro e inversión con foco en instrumentos, costos, impuestos y horizonte de uso.",
+      "Sección para estructurar ahorro e inversión con foco en instrumentos, costos, impuestos y horizonte de uso.",
     capa: "ahorro-inversion",
   },
   "impuestos-personas": {
     nombre: "Impuestos para personas",
     descripcion:
-      "Cluster operativo para declarar renta, seguir devoluciones y resolver dudas tributarias de personas naturales.",
+      "Sección operativo para declarar renta, seguir devoluciones y resolver dudas tributarias de personas naturales.",
     capa: "impuestos",
   },
   "deuda-credito": {
     nombre: "Deuda y crédito",
     descripcion:
-      "Cluster para comparar productos de crédito, entender CAE/costo total y tomar decisiones de endeudamiento.",
+      "Sección para comparar productos de crédito, entender CAE/costo total y tomar decisiones de endeudamiento.",
     capa: "deuda",
   },
   "empleo-ingresos": {
     nombre: "Empleo e ingresos",
     descripcion:
-      "Cluster orientado a ingresos laborales, liquidación de sueldo y gestión financiera desde el flujo mensual.",
+      "Sección orientado a ingresos laborales, liquidación de sueldo y gestión financiera desde el flujo mensual.",
     capa: "ingresos",
   },
 };
@@ -107,7 +107,7 @@ const hubs = hubsDetectados
         .map(parte => parte.charAt(0).toUpperCase() + parte.slice(1))
         .join(" "),
       descripcion:
-        "Cluster temático de finanzas personales incluido en el mapa global de guías.",
+        "Sección temático de finanzas personales incluido en el mapa global de guías.",
       capa: "otros" as const,
     };
   })
@@ -138,7 +138,7 @@ const capasConHubs = capas
         Guías de Finanzas Personales en Chile
       </h1>
       <p class="max-w-3xl text-secondary">
-        Este hub maestro reúne todos los clusters de Tu Plata Informa en una
+        Este hub maestro reúne todos las secciones de Tu Plata Informa en una
         sola vista. Úsalo para encontrar la ruta de lectura según tu momento
         financiero y conectar temas relacionados.
       </p>
@@ -162,7 +162,7 @@ const capasConHubs = capas
                   href={getPath(`/guias/${hub.slug}/`)}
                   class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
                 >
-                  Ir al cluster
+                  Ir a la sección
                 </a>
               </li>
             ))}

@@ -4,7 +4,7 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { getPath } from "@/utils/getPath";
 
-const articulosCluster = [
+const articulosSeccion = [
   {
     titulo:
       "Operación Renta F22 en Chile: checklist para revisar, enviar y rectificar sin errores",
@@ -33,8 +33,8 @@ const articulosCluster = [
 ---
 
 <Layout
-  title="Guía del Cluster: Impuestos Personas | Tu Plata Informa"
-  description="Página índice del cluster Impuestos Personas: orden de lectura, artículos clave y errores frecuentes para declarar renta con menos fricción."
+  title="Guía de la sección: Impuestos Personas | Tu Plata Informa"
+  description="Página índice de la sección Impuestos Personas: orden de lectura, artículos clave y errores frecuentes para declarar renta con menos fricción."
 >
   <Header />
 
@@ -42,20 +42,20 @@ const articulosCluster = [
     <section class="border-b border-border py-8">
       <!-- Removed Topic Authority Layer tag -->
       <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
-        Guía índice del cluster: Impuestos Personas
+        Guía índice de la sección: Impuestos Personas
       </h1>
       <p class="max-w-3xl text-secondary">
-        Esta página resume el cluster y te ayuda a elegir ruta de lectura según
+        Esta página resume la sección y te ayuda a elegir ruta de lectura según
         tu situación. No reemplaza los artículos base ni duplica su contenido
         completo.
       </p>
     </section>
 
     <section class="border-b border-border py-8">
-      <h2 class="mb-4 text-2xl font-bold">Artículos del cluster</h2>
+      <h2 class="mb-4 text-2xl font-bold">Artículos de la sección</h2>
       <ul class="grid gap-4">
         {
-          articulosCluster.map(item => (
+          articulosSeccion.map(item => (
             <li class="rounded-xl border border-border p-5">
               <h3 class="mb-2 text-lg font-semibold">{item.titulo}</h3>
               <p class="mb-3 text-sm text-secondary">{item.resumen}</p>
@@ -140,7 +140,7 @@ const articulosCluster = [
     </section>
 
     <section class="border-b border-border py-8">
-      <h2 class="mb-4 text-2xl font-bold">Errores comunes del cluster</h2>
+      <h2 class="mb-4 text-2xl font-bold">Errores comunes de la sección</h2>
       <ul class="list-disc space-y-2 pl-6 text-secondary">
         <li>Confundir declaración aceptada con devolución pagada.</li>
         <li>Revisar estado solo una vez y no hacer seguimiento en SII/TGR.</li>
@@ -156,7 +156,7 @@ const articulosCluster = [
 
     <section class="py-8">
       <div class="rounded-xl border border-accent/20 bg-accent/5 p-6">
-        <h2 class="mb-2 text-xl font-bold">Última actualización del cluster</h2>
+        <h2 class="mb-2 text-xl font-bold">Última actualización de la sección</h2>
         <p class="text-sm text-secondary">
           Actualizado: 2026-02-28. Este índice se revisa cuando cambian
           calendario de Operación Renta, criterios de observación/devolución en

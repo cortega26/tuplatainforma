@@ -4,7 +4,7 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { getPath } from "@/utils/getPath";
 
-const articulosCluster = [
+const articulosSeccion = [
   {
     titulo:
       "Ahorro e inversión en Chile: instrumentos, costos e impuestos (guía 2026)",
@@ -41,8 +41,8 @@ const articulosCluster = [
 ---
 
 <Layout
-  title="Guía del Cluster: Ahorro e Inversión | Tu Plata Informa"
-  description="Página índice del cluster Ahorro e Inversión: orden de lectura, artículos clave y errores frecuentes para invertir con mejor estructura."
+  title="Guía de la sección: Ahorro e Inversión | Tu Plata Informa"
+  description="Página índice de la sección Ahorro e Inversión: orden de lectura, artículos clave y errores frecuentes para invertir con mejor estructura."
 >
   <Header />
 
@@ -50,20 +50,20 @@ const articulosCluster = [
     <section class="border-b border-border py-8">
       <!-- Removed Topic Authority Layer tag -->
       <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
-        Guía índice del cluster: Ahorro e Inversión
+        Guía índice de la sección: Ahorro e Inversión
       </h1>
       <p class="max-w-3xl text-secondary">
-        Esta página organiza la arquitectura del cluster para que encuentres el
+        Esta página organiza la arquitectura de la sección para que encuentres el
         artículo correcto según tu etapa de decisión. Resume y conecta; no
         reemplaza los contenidos pilares ni satélites.
       </p>
     </section>
 
     <section class="border-b border-border py-8">
-      <h2 class="mb-4 text-2xl font-bold">Artículos del cluster</h2>
+      <h2 class="mb-4 text-2xl font-bold">Artículos de la sección</h2>
       <ul class="grid gap-4">
         {
-          articulosCluster.map(item => (
+          articulosSeccion.map(item => (
             <li class="rounded-xl border border-border p-5">
               <h3 class="mb-2 text-lg font-semibold">{item.titulo}</h3>
               <p class="mb-3 text-sm text-secondary">{item.resumen}</p>
@@ -135,7 +135,7 @@ const articulosCluster = [
             Quieres un plan integral antes de mover plata
           </h3>
           <p class="text-sm text-secondary">
-            Comienza por el pilar del cluster y usa los satélites como decisión
+            Comienza por el pilar de la sección y usa los satélites como decisión
             de segundo nivel.
           </p>
           <a
@@ -151,7 +151,7 @@ const articulosCluster = [
     </section>
 
     <section class="border-b border-border py-8">
-      <h2 class="mb-4 text-2xl font-bold">Errores comunes del cluster</h2>
+      <h2 class="mb-4 text-2xl font-bold">Errores comunes de la sección</h2>
       <ul class="list-disc space-y-2 pl-6 text-secondary">
         <li>Comparar solo rentabilidad y no costo total neto.</li>
         <li>
@@ -168,7 +168,7 @@ const articulosCluster = [
 
     <section class="py-8">
       <div class="rounded-xl border border-accent/20 bg-accent/5 p-6">
-        <h2 class="mb-2 text-xl font-bold">Última actualización del cluster</h2>
+        <h2 class="mb-2 text-xl font-bold">Última actualización de la sección</h2>
         <p class="text-sm text-secondary">
           Actualizado: 2026-02-28. Se actualiza cuando cambian reglas
           regulatorias CMF, instrucciones tributarias SII o condiciones
