@@ -2,8 +2,9 @@
 title: "Boleta de honorarios 2026: retención 15,25%, líquido recibido y cobertura anual"
 description: "Explicación práctica de la retención 2026 en boletas de honorarios, cuánto recibes líquido y cómo se conecta con la cobertura previsional anual."
 slug: boleta-honorarios-2026-retencion-cobertura
+author: "Equipo TuPlataInforma"
 pubDate: 2026-02-28T15:20:00Z
-updatedDate: 2026-03-02T19:30:00Z
+updatedDate: 2026-03-03T22:00:00Z
 tags:
   - boletas
   - honorarios
@@ -20,9 +21,18 @@ Si emites boletas y quieres saber cuánto te llega líquido en 2026, esta guía 
 
 ## Qué cambia y qué resuelve esta guía
 
-Desde el 1 de enero de 2026, la retención de boletas sube a **15,25%**. Este aumento forma parte del escalamiento establecido por la Ley N° 21.133, que continúa hasta llegar a 17% en 2028.
+Desde el 1 de enero de 2026, la retención de boletas sube a **15,25%**. Este aumento forma parte del escalamiento gradual establecido por la **Ley N° 21.133**, cuyo cronograma completo hasta 2028 es:
 
-Ejemplo simple oficial (SII):
+| Año      | Retención sobre bruto boleteado |
+| -------- | ------------------------------- |
+| 2025     | 14,5%                           |
+| **2026** | **15,25%** ← vigente            |
+| 2027     | 16,0%                           |
+| 2028     | 17,0%                           |
+
+El porcentaje de 2028 es el nivel de régimen permanente. Fuente: [SII — Aumento gradual de retención](https://www.sii.cl/destacados/boletas_honorarios/aumento_gradual.html).
+
+Ejemplo simple oficial (SII) con la tasa 2026:
 
 - Boleta por $100.000.
 - Retención 15,25% = $15.250.

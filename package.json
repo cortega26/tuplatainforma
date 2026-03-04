@@ -14,6 +14,7 @@
     "test:watch": "vitest",
     "check:context": "node scripts/check-context.mjs",
     "check:frontmatter": "node scripts/check-frontmatter.mjs",
+    "check:links": "node scripts/check-internal-links.mjs",
     "check:editorial-structure": "node scripts/check-editorial-structure.mjs",
     "check:dialect": "node scripts/check-dialect.mjs",
     "check:editorial-artifacts": "node scripts/check-editorial-artifacts.mjs",

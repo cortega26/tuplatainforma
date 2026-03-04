@@ -3,10 +3,21 @@ import { glob } from "astro/loaders";
 import { SITE } from "@/config";
 
 export const BLOG_PATH = "src/data/blog";
+
 const CATEGORIES = [
   "ahorro-inversion",
   "impuestos",
   "prevision",
+  "deuda-credito",
+  "seguridad-financiera",
+  "empleo-ingresos",
+  "general",
+] as const;
+
+const CLUSTERS = [
+  "ahorro-e-inversion",
+  "impuestos-personas",
+  "pensiones-afp",
   "deuda-credito",
   "seguridad-financiera",
   "empleo-ingresos",
@@ -25,10 +36,11 @@ const blog = defineCollection({
         updatedDate: z.date().optional().nullable(),
         tags: z.array(z.string().trim()).default([]),
         category: z.enum(CATEGORIES),
+        cluster: z.enum(CLUSTERS),
+        lang: z.literal("es-CL").default("es-CL"),
         draft: z.boolean().default(false),
         featured: z.boolean().default(false),
         author: z.string().trim().min(1).default(SITE.author),
-        lang: z.string().default("es-CL"),
         canonical: z
           .string()
           .url()
@@ -38,7 +50,6 @@ const blog = defineCollection({
           .optional(),
         heroImage: image().or(z.string()).optional(),
         series: z.string().trim().min(1).optional(),
-        cluster: z.string().trim().min(1).optional(),
         timezone: z.string().optional(),
         hideEditPost: z.boolean().optional(),
       })

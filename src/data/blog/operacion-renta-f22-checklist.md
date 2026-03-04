@@ -2,6 +2,7 @@
 title: "Operación Renta F22 en Chile: checklist para revisar, enviar y rectificar sin errores"
 description: "Checklist práctico para revisar la propuesta del SII, enviar tu Formulario 22 y corregir observaciones sin atrasar tu devolución en Operación Renta."
 slug: operacion-renta-f22-checklist
+author: "Equipo TuPlataInforma"
 pubDate: 2026-02-28T15:00:00Z
 updatedDate: 2026-02-28T15:00:00Z
 tags:
@@ -60,6 +61,8 @@ Caso práctico breve: si tu propuesta incluye una retención de boletas que no c
 - Si **tu declaración quedó observada**: revisa el detalle en "Consulta y seguimiento" y prepara rectificatoria.
 - Si **debes rectificar y eso genera devolución**: considera que el pago se cursa una vez autorizado por SII a TGR, y el mecanismo puede diferir de la devolución inicial.
 - Si **tu tema principal es retención de boletas y cobertura**: revisa la guía de [boletas de honorarios 2026: retención y cobertura anual](/posts/boleta-honorarios-2026-retencion-cobertura/).
+- Si **trabajas con dos empleadores al mismo tiempo**: estás obligado a declarar, porque cada empleador retuvo de forma independiente sin saber del otro, y es probable que haya diferencia de impuesto. Revisa que ambos empleadores aparezcan como agentes informantes y contrasta las retenciones totales versus tu tramo de impuesto unificado.
+- Si **no estás obligado a declarar pero te retuvieron impuestos durante el año**: igual puedes declarar voluntariamente. Si tus retenciones superaron el impuesto que realmente te corresponde, el SII te devuelve la diferencia. Esto aplica tanto a empleados dependientes como a quienes emitieron boletas con retención.
 
 ## Errores comunes que atrasan el proceso
 

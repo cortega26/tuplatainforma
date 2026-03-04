@@ -10,7 +10,6 @@ import { SITE } from "@/config";
   <Header />
   <Breadcrumb />
   <main id="main-content" class="app-layout">
-    <!-- HERO -->
     <section class="border-b border-border py-10">
       <p
         class="mb-3 text-xs font-semibold tracking-widest text-accent uppercase"
@@ -21,9 +20,12 @@ import { SITE } from "@/config";
         Cuando entiendes tu plata,<br />tomas mejores decisiones.
       </h1>
       <p class="max-w-2xl text-base leading-relaxed text-secondary">
-        <strong class="text-foreground">TuPlataInforma</strong> es un sitio independiente
-        de educación financiera enfocado en Chile, creado para ayudarte a entender
-        cómo funciona tu dinero sin tecnicismos ni letra chica.
+        <strong class="text-foreground">Tu Plata Informa</strong> es un proyecto
+        de educación financiera dedicado a explicar el sistema financiero chileno
+        de forma clara, rigurosa y basada en fuentes oficiales. Su misión es
+        ayudar a las personas a entender decisiones financieras complejas
+        —ahorro, inversión, impuestos, crédito o pensiones— sin conflictos de
+        interés.
       </p>
     </section>
 
@@ -76,6 +78,51 @@ import { SITE } from "@/config";
       </div>
     </section>
 
+    <!-- QUIÉN LO ESCRIBE -->
+    <section class="border-b border-border py-10">
+      <h2 class="mb-6 text-2xl font-bold">¿Quién lo escribe?</h2>
+      <div class="flex flex-col gap-4 rounded-xl border border-border p-5 sm:flex-row sm:items-start">
+        <div
+          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-accent/30 bg-accent/10 text-sm font-bold text-accent"
+          aria-hidden="true"
+        >
+          CO
+        </div>
+        <div>
+          <p class="font-semibold text-foreground">
+            <a
+              href="/autor/"
+              class="hover:text-accent hover:underline underline-offset-4 transition-colors"
+            >
+              Carlos Ortega González
+            </a>
+          </p>
+          <p class="mt-1 text-sm text-secondary">
+            Abogado, analista de datos y desarrollador especializado en educación
+            financiera práctica. Investiga normativa financiera chilena, compara
+            instrumentos de ahorro e inversión y desarrolla herramientas claras
+            y basadas en evidencia.
+          </p>
+          <div class="mt-2 flex flex-wrap gap-3 text-xs">
+            <a
+              href="/autor/"
+              class="text-accent hover:underline underline-offset-4"
+            >
+              Ver perfil completo →
+            </a>
+            <a
+              href="https://www.linkedin.com/in/cortega26/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-secondary hover:text-accent transition-colors"
+            >
+              LinkedIn ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- AVISO LEGAL -->
     <section class="mb-10 py-10">
       <div class="rounded-xl border border-accent/20 bg-accent/5 p-6">
@@ -86,6 +133,13 @@ import { SITE } from "@/config";
           > y no constituye asesoría financiera, tributaria ni legal. Siempre consulta
           con un profesional calificado antes de tomar decisiones importantes sobre
           tu dinero.
+        </p>
+        <p class="mt-3 text-sm text-secondary">
+          El contenido se elabora a partir de normativa oficial y fuentes públicas, y
+          se actualiza periódicamente. El sitio mantiene
+          <strong class="text-foreground">independencia editorial</strong>: no está
+          condicionado por comisiones, publicidad financiera ni acuerdos con
+          instituciones.
         </p>
         <p class="mt-3 text-sm text-secondary">
           Para información oficial consulta la

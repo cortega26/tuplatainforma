@@ -48,6 +48,12 @@ Aparecen ofertas imposibles, ejecutivos "verificados" con foto de perfil profesi
 
 La señal más clara: urgencia, emoción y un pedido de acción que no puede esperar. Si algo se puede verificar por otro canal, verifica siempre.
 
+### Falsas inversiones y esquemas piramidales
+
+Te contactan por redes sociales, correo o WhatsApp ofreciendo "rentabilidades garantizadas" del 5%, 10% o más por mes. Usan testimonios, logos de empresas reales y términos técnicos (criptomonedas, trading, forex) para aparecer legítimos. Son esquemas Ponzi: los "retornos" de los primeros participantes se pagan con el dinero de los nuevos, hasta que el esquema colapsa.
+
+La señal más clara: nadie puede garantizar rentabilidad en inversiones. Ninguna entidad supervisada por la CMF lo hace. Antes de poner dinero en cualquier instrumento, verifica que la entidad esté en el [registro oficial de entidades autorizadas de la CMF](https://www.cmfchile.cl/portal/principal/613/w3-propertyvalue-43332.html). Si no aparece, no deposites.
+
 ### Marketplace y portabilidad fraudulenta
 
 En plataformas de compraventa online (MercadoLibre, Facebook Marketplace, OLX), el estafador actúa como comprador o vendedor y pide pagos por adelantado, datos de cuenta o códigos de verificación para "confirmar la transacción". En portabilidad numérica (cambio de operador telefónico), se hace pasar por un ejecutivo y solicita el código de confirmación que llega a tu teléfono — ese código puede darle control sobre tu número y desde ahí acceder a autenticaciones bancarias.

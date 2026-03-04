@@ -29,7 +29,7 @@ Este artículo mantiene la explicación histórica de multifondos A-E, pero debe
   - Los multifondos **A, B, C, D y E siguen vigentes** y puedes elegir/cambiar fondo como hasta ahora.
   - La cotización adicional del empleador ya comenzó en **1%** (agosto 2025), sin descuento adicional a tu sueldo líquido.
 - **Qué cambia después (2027 en adelante):**
-  - Desde **abril de 2027** empieza el paso a **fondos generacionales**.
+  - Desde **abril de 2027** empieza el paso a **fondos generacionales**. [Lee la guía completa de la reforma previsional 2025](/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/) para entender el cronograma y el impacto del 7% del empleador.
   - En paralelo, desde **agosto de 2027** el aporte adicional del empleador sube a **3,5%**, dentro del calendario que llega a 7%.
 
 Calendario resumido:

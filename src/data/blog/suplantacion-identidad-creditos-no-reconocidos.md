@@ -1,5 +1,5 @@
 ---
-title: "Suplantación de identidad y créditos no reconocidos: qué hacer paso a paso"
+title: "Suplantación de identidad y créditos no reconocidos: cómo detectar, frenar y reclamar"
 author: "Equipo TuPlataInforma"
 description: "Protocolo práctico en Chile para detectar suplantación de identidad, frenar créditos no reconocidos y escalar reclamos ante banco, CMF y autoridades."
 slug: suplantacion-identidad-creditos-no-reconocidos

@@ -2,6 +2,7 @@
 title: "CAE de un crédito: qué es, cómo se calcula y por qué la tasa sola engaña"
 description: "Guía práctica para entender la Carga Anual Equivalente (CAE) en Chile, cómo compararla con la TMC y qué incluye el costo total de un crédito de consumo."
 slug: cae-costo-real-credito-chile
+author: "Equipo TuPlataInforma"
 pubDate: 2026-03-02T19:00:00Z
 updatedDate: 2026-03-02T19:00:00Z
 tags:
@@ -163,4 +164,5 @@ Esta guía es educativa y no reemplaza la revisión de tu contrato específico n
 
 - [Informe de deudas CMF: cómo sacarlo y qué dice (y qué no dice)](/posts/informe-deudas-cmf-vs-dicom/) — para diagnosticar el estado real de tus deudas antes de contratar un nuevo crédito.
 - [Renegociación Superir: requisitos, paso a paso y errores que te rechazan](/posts/renegociacion-superir/) — si ya estás en mora y buscas una salida formal.
+- [CAE, TMC y costo real del crédito en profundidad](/posts/cae-costo-real-credito-chile-tmc/) — guía extendida con cronograma de TMC, checklist pre-firma y más ejemplos numéricos.
 - [Calculadora de crédito de consumo](/calculadoras/credito-consumo/) — simula cuota, CAE y costo total con los datos de tu oferta.

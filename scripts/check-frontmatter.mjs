@@ -28,6 +28,18 @@ const ALLOWED_CATEGORIES = new Set([
   "general",
 ]);
 
+const ALLOWED_CLUSTERS = new Set([
+  "ahorro-e-inversion",
+  "impuestos-personas",
+  "pensiones-afp",
+  "deuda-credito",
+  "seguridad-financiera",
+  "empleo-ingresos",
+  "general",
+]);
+
+const REQUIRED_LANG = "es-CL";
+
 function listContentFiles(dirPath) {
   const result = [];
   const entries = readdirSync(dirPath, { withFileTypes: true }).sort((a, b) =>
@@ -263,6 +275,34 @@ for (const filePath of files) {
       errors,
       relativeFilePath,
       `Field "category" must be one of: ${Array.from(ALLOWED_CATEGORIES).join(", ")}.`
+    );
+  }
+
+  // author — required non-empty string
+  const author = frontmatter.author;
+  if (!Object.hasOwn(frontmatter, "author") || typeof author !== "string" || author.trim() === "") {
+    pushIssue(errors, relativeFilePath, 'Missing or empty required field "author".');
+  }
+
+  // lang — must be "es-CL"
+  const lang = frontmatter.lang;
+  if (!Object.hasOwn(frontmatter, "lang")) {
+    pushIssue(errors, relativeFilePath, 'Missing required field "lang" (expected "es-CL").');
+  } else if (lang !== REQUIRED_LANG) {
+    pushIssue(errors, relativeFilePath, `Field "lang" must be "${REQUIRED_LANG}", got "${lang}".`);
+  }
+
+  // cluster — required, must be one of ALLOWED_CLUSTERS
+  const cluster = frontmatter.cluster;
+  if (!Object.hasOwn(frontmatter, "cluster")) {
+    pushIssue(errors, relativeFilePath, 'Missing required field "cluster".');
+  } else if (typeof cluster !== "string" || cluster.trim() === "") {
+    pushIssue(errors, relativeFilePath, 'Field "cluster" must be a non-empty string.');
+  } else if (!ALLOWED_CLUSTERS.has(cluster)) {
+    pushIssue(
+      errors,
+      relativeFilePath,
+      `Field "cluster" must be one of: ${Array.from(ALLOWED_CLUSTERS).join(", ")}.`
     );
   }
 
