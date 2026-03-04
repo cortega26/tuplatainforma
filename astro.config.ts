@@ -1,6 +1,7 @@
 import { defineConfig, envField } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
+import { EnumChangefreq } from "sitemap";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import {
@@ -28,7 +29,31 @@ export default defineConfig({
   base: "/tuplatainforma",
   integrations: [
     sitemap({
-      filter: page => SITE.showArchives || !page.endsWith("/archives"),
+      filter: page =>
+        SITE.showArchives || !page.endsWith("/archives/"),
+      serialize(item) {
+        const url = item.url;
+
+        if (/\/(tuplatainforma\/)?$/.test(url)) {
+          return { ...item, changefreq: EnumChangefreq.DAILY, priority: 1.0 };
+        }
+        if (/\/posts\/[^/]+\/$/.test(url)) {
+          return { ...item, changefreq: EnumChangefreq.MONTHLY, priority: 0.8 };
+        }
+        if (/\/leyes\/[^/]+\/$/.test(url)) {
+          return { ...item, changefreq: EnumChangefreq.MONTHLY, priority: 0.8 };
+        }
+        if (/\/calculadoras\/[^/]+\/$/.test(url)) {
+          return { ...item, changefreq: EnumChangefreq.WEEKLY, priority: 0.7 };
+        }
+        if (
+          /\/(guias|leyes|calculadoras|tags)(\/[^/]+)?\/$/.test(url) ||
+          /\/(about|autor|search|archives)\/$/.test(url)
+        ) {
+          return { ...item, changefreq: EnumChangefreq.MONTHLY, priority: 0.6 };
+        }
+        return { ...item, changefreq: EnumChangefreq.YEARLY, priority: 0.5 };
+      },
     }),
     mdx(),
   ],
