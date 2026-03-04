@@ -104,7 +104,7 @@ Esta es otra pregunta frecuente y la respuesta no es única — depende del tipo
 
 **Informe CMF:** Las deudas aparecen mientras están vigentes. Una vez pagadas, dejan de aparecer como deudas activas. No hay un plazo fijo de "borrado" porque el informe muestra el estado actual, no el historial.
 
-**Boletín Comercial (protestos):** Un protesto de cheque o pagaré permanece hasta que sea aclarado (pagado o con acuerdo). La Ley 20.575 establece que tienes derecho a pedir la eliminación del registro del Boletín Comercial una vez que acredites el pago.
+**Boletín Comercial (protestos):** Un protesto de cheque o pagaré permanece hasta que sea aclarado (pagado o con acuerdo). La **[Ley 20.575](/leyes/ley-20575-datos-comerciales/)** establece que tienes derecho a pedir la eliminación del registro del Boletín Comercial una vez que acredites el pago.
 
 **Prescripción de deudas:** En Chile, la prescripción de una deuda civil es generalmente de 5 años para obligaciones ordinarias (Código Civil, art. 2515). Esto significa que después de ese plazo el acreedor no puede perseguirte judicialmente — pero el plazo corre desde la última gestión de cobro o reconocimiento de la deuda, no desde que dejaste de pagar.
 

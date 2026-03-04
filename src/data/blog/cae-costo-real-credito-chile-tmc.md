@@ -50,7 +50,7 @@ No incluye impuestos como el IVA sobre servicios, pero es el número más comple
 
 La TMC es el límite legal máximo que cualquier institución puede cobrar por un crédito en Chile. Está fijada por la CMF (Comisión para el Mercado Financiero) y se actualiza regularmente según las condiciones del mercado.
 
-Si una institución te cobra una tasa que supera la TMC vigente, ese cobro es nulo de pleno derecho según la Ley N° 18.010. Puedes reclamar la diferencia.
+Si una institución te cobra una tasa que supera la TMC vigente, ese cobro es nulo de pleno derecho según la **[Ley N° 18.010](/leyes/ley-18010-credito-dinero/)**. Puedes reclamar la diferencia.
 
 **¿Cómo se calcula la TMC?**
 La CMF toma el promedio ponderado de las tasas de mercado del período anterior y aplica un factor multiplicador para definir el tope. El resultado varía según el monto y tipo de crédito (consumo, hipotecario, etc.).

@@ -7,8 +7,9 @@
  * Checks:
  *   1. All /posts/<slug>/ links resolve to a published article (slug exists).
  *   2. All /guias/<slug>/ links resolve to a directory in src/pages/guias/.
- *   3. Detects orphan articles (articles with zero inbound internal links).
- *   4. Reports broken links with file + line number for easy fixing.
+ *   3. All /leyes/<slug>/ links resolve to a file in src/data/laws/.
+ *   4. Detects orphan articles (articles with zero inbound internal links).
+ *   5. Reports broken links with file + line number for easy fixing.
  *
  * Usage:
  *   node scripts/check-internal-links.mjs
@@ -29,6 +30,7 @@ const __dirname = path.dirname(__filename);
 const REPO_ROOT = path.resolve(__dirname, "..");
 const BLOG_DIR = path.join(REPO_ROOT, "src", "data", "blog");
 const GUIAS_DIR = path.join(REPO_ROOT, "src", "pages", "guias");
+const LAWS_DIR = path.join(REPO_ROOT, "src", "data", "laws");
 
 const args = new Set(process.argv.slice(2));
 const VERBOSE = args.has("--verbose");
@@ -69,8 +71,8 @@ function isDraft(source) {
 function extractInternalLinks(source) {
   const links = [];
   const lines = source.split("\n");
-  // Matches: [text](/posts/slug/) or [text](/guias/slug/) with optional trailing /
-  const RE = /\[([^\]]*)\]\((\/(posts|guias)\/([^)\s#?"]+))\)/g;
+  // Matches: [text](/posts/slug/) or [text](/guias/slug/) or [text](/leyes/slug/) with optional trailing /
+  const RE = /\[([^\]]*)\]\((\/(posts|guias|leyes)\/([^)\s#?"]+))\)/g;
   for (let i = 0; i < lines.length; i++) {
     let match;
     RE.lastIndex = 0;
@@ -107,6 +109,15 @@ const validGuias = new Set(
     ? readdirSync(GUIAS_DIR, { withFileTypes: true })
         .filter(e => e.isDirectory())
         .map(e => e.name)
+    : []
+);
+
+/** Valid law slugs: .md files in src/data/laws/ (filename without extension) */
+const validLaws = new Set(
+  existsSync(LAWS_DIR)
+    ? readdirSync(LAWS_DIR, { withFileTypes: true })
+        .filter(e => e.isFile() && /\.(md|mdx)$/i.test(e.name))
+        .map(e => e.name.replace(/\.(md|mdx)$/i, ""))
     : []
 );
 
@@ -148,6 +159,14 @@ for (const [slug, { filePath, source }] of publishedSlugs.entries()) {
           filePath: relPath,
           lineNumber: link.lineNumber,
           message: `Broken /guias/ link: directory "${link.target}" not found in src/pages/guias/.`,
+        });
+      }
+    } else if (link.type === "leyes") {
+      if (!validLaws.has(link.target)) {
+        errors.push({
+          filePath: relPath,
+          lineNumber: link.lineNumber,
+          message: `Broken /leyes/ link: law file "${link.target}" not found in src/data/laws/.`,
         });
       }
     }

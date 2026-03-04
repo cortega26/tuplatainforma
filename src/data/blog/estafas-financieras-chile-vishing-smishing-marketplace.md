@@ -81,7 +81,7 @@ Si crees que fuiste víctima de una estafa financiera, cada hora cuenta:
 2. **Cambia claves críticas:** banco, correo principal, clave de recuperación de correo y la cuenta de Google o Apple ID si usa tu teléfono para autenticación.
 3. **Revisa movimientos** de todas tus cuentas y tarjetas de los últimos 60 días.
 4. **Activa alertas de transacción** en todos tus medios de pago si no las tenías.
-5. **Formaliza el reclamo** ante tu banco dentro de las primeras horas — la Ley N° 20.009 obliga a los bancos a devolverte el dinero si no actuaste con dolo ni culpa grave, y el plazo empieza a correr desde el cargo.
+5. **Formaliza el reclamo** ante tu banco dentro de las primeras horas — la **[Ley N° 20.009](/leyes/ley-20009-tarjetas-fraude/)** obliga a los bancos a devolverte el dinero si no actuaste con dolo ni culpa grave, y el plazo empieza a correr desde el cargo.
 6. **Guarda evidencias:** SMS, capturas, correos, números de llamada. No borres nada antes de denunciar.
 7. **Denuncia** en PDI, Carabineros o Fiscalía.
 8. **Monitorea posibles deudas** no reconocidas en los sistemas oficiales de crédito.

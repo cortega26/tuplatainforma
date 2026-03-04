@@ -7,12 +7,15 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 import { SITE } from "@/config";
 
 const AREA_LABELS: Record<string, { label: string; emoji: string }> = {
-  "credito-y-deuda":          { label: "Crédito y Deuda",           emoji: "💳" },
-  "prevision-y-trabajo":      { label: "Previsión y Trabajo",        emoji: "👷" },
-  "tributaria":               { label: "Tributaria",                 emoji: "📊" },
-  "bancaria-y-financiera":    { label: "Bancaria y Financiera",      emoji: "🏦" },
-  "proteccion-al-consumidor": { label: "Protección al Consumidor",   emoji: "🛡️" },
-  "privacidad-y-datos":       { label: "Privacidad y Datos",         emoji: "🔒" },
+  "credito-y-deuda": { label: "Crédito y Deuda", emoji: "💳" },
+  "prevision-y-trabajo": { label: "Previsión y Trabajo", emoji: "👷" },
+  tributaria: { label: "Tributaria", emoji: "📊" },
+  "bancaria-y-financiera": { label: "Bancaria y Financiera", emoji: "🏦" },
+  "proteccion-al-consumidor": {
+    label: "Protección al Consumidor",
+    emoji: "🛡️",
+  },
+  "privacidad-y-datos": { label: "Privacidad y Datos", emoji: "🔒" },
 };
 
 const allLaws = await getCollection("laws", ({ data }) => !data.draft);
@@ -31,15 +34,13 @@ const AREA_ORDER = [
   "privacidad-y-datos",
 ];
 
-const areasOrdenadas = AREA_ORDER
-  .filter(a => byArea[a]?.length)
-  .map(a => ({
-    key: a,
-    ...AREA_LABELS[a],
-    laws: byArea[a].sort((x, y) =>
-      x.data.shortName.localeCompare(y.data.shortName, "es-CL")
-    ),
-  }));
+const areasOrdenadas = AREA_ORDER.filter(a => byArea[a]?.length).map(a => ({
+  key: a,
+  ...AREA_LABELS[a],
+  laws: byArea[a].sort((x, y) =>
+    x.data.shortName.localeCompare(y.data.shortName, "es-CL")
+  ),
+}));
 
 const totalLaws = allLaws.length;
 ---
@@ -51,10 +52,11 @@ const totalLaws = allLaws.length;
   <Header />
   <Breadcrumb />
   <main id="main-content" class="app-layout pb-16">
-
     <!-- HERO -->
     <section class="border-b border-border py-10">
-      <p class="mb-3 text-xs font-semibold tracking-widest text-accent uppercase">
+      <p
+        class="mb-3 text-xs font-semibold tracking-widest text-accent uppercase"
+      >
         Marco Legal
       </p>
       <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
@@ -62,8 +64,8 @@ const totalLaws = allLaws.length;
       </h1>
       <p class="max-w-2xl text-base leading-relaxed text-secondary">
         Fichas explicativas de las principales leyes que regulan finanzas
-        personales, crédito, pensiones, impuestos y protección al consumidor
-        en Chile. Cada ficha resume los puntos clave para personas, cita los
+        personales, crédito, pensiones, impuestos y protección al consumidor en
+        Chile. Cada ficha resume los puntos clave para personas, cita los
         artículos de referencia y enlaza al texto oficial en la
         <a
           href="https://www.bcn.cl"
@@ -81,12 +83,14 @@ const totalLaws = allLaws.length;
 
     <!-- DISCLAIMER -->
     <section class="py-6">
-      <div class="rounded-xl border border-accent/20 bg-accent/5 px-5 py-4 text-sm text-secondary">
+      <div
+        class="rounded-xl border border-accent/20 bg-accent/5 px-5 py-4 text-sm text-secondary"
+      >
         ⚠️ <strong class="text-foreground">Contenido educativo.</strong>
-        Las fichas de esta sección explican la normativa vigente en términos
-        accesibles, pero no constituyen asesoría legal o tributaria. Para
-        situaciones concretas consulta a un profesional calificado. El texto
-        oficial siempre prevalece sobre cualquier resumen.
+        Las fichas de esta sección explican la normativa vigente en términos accesibles,
+        pero no constituyen asesoría legal o tributaria. Para situaciones concretas
+        consulta a un profesional calificado. El texto oficial siempre prevalece sobre
+        cualquier resumen.
       </div>
     </section>
 
@@ -104,21 +108,21 @@ const totalLaws = allLaws.length;
                 <p class="mb-1 text-xs font-semibold tracking-widest text-accent uppercase">
                   {law.data.numero}
                 </p>
-                <h3 class="mb-2 text-base font-semibold leading-snug">
+                <h3 class="mb-2 text-base leading-snug font-semibold">
                   <a
                     href={`/leyes/${law.id}/`}
-                    class="hover:text-accent hover:underline underline-offset-4 transition-colors"
+                    class="underline-offset-4 transition-colors hover:text-accent hover:underline"
                   >
                     {law.data.shortName}
                   </a>
                 </h3>
-                <p class="mb-3 text-sm leading-relaxed text-secondary line-clamp-2">
+                <p class="mb-3 line-clamp-2 text-sm leading-relaxed text-secondary">
                   {law.data.description}
                 </p>
                 <div class="flex items-center justify-between text-xs text-muted">
                   <a
                     href={`/leyes/${law.id}/`}
-                    class="font-medium text-accent hover:underline underline-offset-4"
+                    class="font-medium text-accent underline-offset-4 hover:underline"
                   >
                     Ver ficha →
                   </a>
@@ -126,7 +130,7 @@ const totalLaws = allLaws.length;
                     href={law.data.bcnUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="hover:text-accent transition-colors"
+                    class="transition-colors hover:text-accent"
                   >
                     Texto oficial ↗
                   </a>

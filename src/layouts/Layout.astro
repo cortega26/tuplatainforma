@@ -30,7 +30,10 @@ const {
 const socialImageURL = new URL(ogImage, Astro.url);
 
 const AUTHOR_URL = new URL("/autor/", Astro.site ?? Astro.url.origin).href;
-const SITE_ORIGIN = (Astro.site ?? new URL(Astro.url.origin)).href.replace(/\/+$/, "");
+const SITE_ORIGIN = (Astro.site ?? new URL(Astro.url.origin)).href.replace(
+  /\/+$/,
+  ""
+);
 
 const isArticle = Boolean(pubDatetime);
 

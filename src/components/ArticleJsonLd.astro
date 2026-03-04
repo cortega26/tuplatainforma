@@ -23,7 +23,10 @@ const { title, description, pubDate, updatedDate, author } = post.data;
 
 const AUTHOR_NAME = "Carlos Ortega González";
 const AUTHOR_URL = new URL("/autor/", Astro.site ?? Astro.url.origin).href;
-const SITE_URL = (Astro.site ?? new URL(Astro.url.origin)).href.replace(/\/$/, "");
+const SITE_URL = (Astro.site ?? new URL(Astro.url.origin)).href.replace(
+  /\/$/,
+  ""
+);
 
 // ── BlogPosting ──────────────────────────────────────────────────────────────
 const articleSchema = {
@@ -112,11 +115,18 @@ function extractFaqItems(body: string): { question: string; answer: string }[] {
       const answerLines = lines
         .slice(1)
         .filter(l => l.trim() && !l.startsWith("###"))
-        .map(l => l.replace(/^\*\*|\*\*$/g, "").replace(/\*\*/g, "").trim());
+        .map(l =>
+          l
+            .replace(/^\*\*|\*\*$/g, "")
+            .replace(/\*\*/g, "")
+            .trim()
+        );
       const answer = answerLines.join(" ").substring(0, 1000); // cap for schema
       return question && answer ? { question, answer } : null;
     })
-    .filter((item): item is { question: string; answer: string } => item !== null);
+    .filter(
+      (item): item is { question: string; answer: string } => item !== null
+    );
 }
 
 const faqItems = extractFaqItems(post.body ?? "");

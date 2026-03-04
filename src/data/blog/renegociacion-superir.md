@@ -145,7 +145,7 @@ Si aceptan tu solicitud, el proceso continúa con audiencias telemáticas donde 
 
 **Audiencia de renegociación:** Aquí presentas tu propuesta de pago y los acreedores votan. Si la mayoría acepta, se firma el acuerdo con las nuevas condiciones: cuota menor, más plazo, menos interés, meses de gracia, o una combinación de todo.
 
-**Audiencia de ejecución** (solo si no hay acuerdo): Si no se llega a acuerdo de pago, se discute la venta de bienes para pagar a los acreedores. Esta es la alternativa que la mayoría quiere evitar — y que el 93% de los casos evita.
+**Audiencia de ejecución** (solo si no hay acuerdo): Si no se llega a acuerdo de pago, se discute la venta de bienes para pagar a los acreedores. Esta es la alternativa que la mayoría quiere evitar — y que, según datos históricos de la Superir, la gran mayoría de los procesos logra evitar llegando a acuerdo en la audiencia de renegociación. Para estadísticas actualizadas consulta el [sitio oficial de la Superir](https://www.superir.gob.cl).
 
 ### Paso 5 — Después del acuerdo
 

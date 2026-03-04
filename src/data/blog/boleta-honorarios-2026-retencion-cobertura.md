@@ -21,7 +21,7 @@ Si emites boletas y quieres saber cuánto te llega líquido en 2026, esta guía 
 
 ## Qué cambia y qué resuelve esta guía
 
-Desde el 1 de enero de 2026, la retención de boletas sube a **15,25%**. Este aumento forma parte del escalamiento gradual establecido por la **Ley N° 21.133**, cuyo cronograma completo hasta 2028 es:
+Desde el 1 de enero de 2026, la retención de boletas sube a **15,25%**. Este aumento forma parte del escalamiento gradual establecido por la **[Ley N° 21.133](/leyes/ley-21133-honorarios-retencion/)**, cuyo cronograma completo hasta 2028 es:
 
 | Año      | Retención sobre bruto boleteado |
 | -------- | ------------------------------- |

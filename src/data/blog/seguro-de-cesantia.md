@@ -43,7 +43,7 @@ El aporte mensual al seguro varía según el tipo de contrato:
 
 Si tienes contrato a plazo fijo, **no te descuentan nada del sueldo** para el seguro — pero igual acumulas, porque el empleador pone el 3% completo.
 
-El tope imponible para el cálculo se actualiza anualmente. Durante 2025 fue de **131,9 UF**; para el valor vigente del año actual consulta directamente en [afc.cl](https://www.afc.cl). Si ganas más que ese tope, los aportes se calculan solo sobre ese límite.
+El **tope imponible** para el cálculo se actualiza anualmente. Si ganas más que ese tope, los aportes se calculan solo sobre ese límite — no sobre tu sueldo completo. Para el valor vigente del año en curso consulta directamente en [afc.cl](https://www.afc.cl).
 
 ---
 

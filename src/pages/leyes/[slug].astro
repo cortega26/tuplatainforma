@@ -21,14 +21,18 @@ const { law } = Astro.props;
 const { Content } = await render(law);
 const d = law.data;
 
-const CANONICAL = new URL(`/leyes/${law.id}/`, Astro.site ?? Astro.url.origin).href;
-const SITE_URL = (Astro.site ?? new URL(Astro.url.origin)).href.replace(/\/$/, "");
+const CANONICAL = new URL(`/leyes/${law.id}/`, Astro.site ?? Astro.url.origin)
+  .href;
+const SITE_URL = (Astro.site ?? new URL(Astro.url.origin)).href.replace(
+  /\/$/,
+  ""
+);
 
 const AREA_LABELS: Record<string, string> = {
-  "credito-y-deuda":          "Crédito y Deuda",
-  "prevision-y-trabajo":      "Previsión y Trabajo",
-  "tributaria":               "Tributaria",
-  "bancaria-y-financiera":    "Bancaria y Financiera",
+  "credito-y-deuda": "Crédito y Deuda",
+  "prevision-y-trabajo": "Previsión y Trabajo",
+  tributaria: "Tributaria",
+  "bancaria-y-financiera": "Bancaria y Financiera",
   "proteccion-al-consumidor": "Protección al Consumidor",
 };
 
@@ -42,7 +46,9 @@ const legislationSchema = {
   url: CANONICAL,
   description: d.description,
   dateCreated: d.effective.toISOString().slice(0, 10),
-  ...(d.lastAmended ? { dateModified: d.lastAmended.toISOString().slice(0, 10) } : {}),
+  ...(d.lastAmended
+    ? { dateModified: d.lastAmended.toISOString().slice(0, 10) }
+    : {}),
   inLanguage: "es-CL",
   legislationCountry: {
     "@type": "Country",
@@ -64,9 +70,14 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio",       item: `${SITE_URL}/` },
-    { "@type": "ListItem", position: 2, name: "Marco Legal",  item: `${SITE_URL}/leyes/` },
-    { "@type": "ListItem", position: 3, name: d.shortName,    item: CANONICAL },
+    { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE_URL}/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Marco Legal",
+      item: `${SITE_URL}/leyes/`,
+    },
+    { "@type": "ListItem", position: 3, name: d.shortName, item: CANONICAL },
   ],
 };
 
@@ -82,21 +93,30 @@ const lastVerifiedStr = d.lastVerified.toLocaleDateString("es-CL", {
   description={d.description}
   canonicalURL={CANONICAL}
 >
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(legislationSchema)} />
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(legislationSchema)}
+  />
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(breadcrumbSchema)}
+  />
   <Header />
   <Breadcrumb />
   <main id="main-content" class="app-layout pb-16">
-
     <!-- HEADER DE LA FICHA -->
     <div class="border-b border-border py-8">
       <div class="mb-2 flex flex-wrap items-center gap-2">
-        <span class="inline-flex items-center rounded-full border border-accent/30 bg-accent/5 px-2.5 py-1 text-xs font-semibold text-accent">
+        <span
+          class="inline-flex items-center rounded-full border border-accent/30 bg-accent/5 px-2.5 py-1 text-xs font-semibold text-accent"
+        >
           {AREA_LABELS[d.area] ?? d.area}
         </span>
         <span class="text-xs text-muted">Ley {d.numero}</span>
       </div>
-      <h1 class="mb-3 text-2xl font-bold sm:text-3xl leading-snug">
+      <h1 class="mb-3 text-2xl leading-snug font-bold sm:text-3xl">
         {d.shortName}
       </h1>
       <p class="max-w-2xl text-sm leading-relaxed text-secondary">
@@ -107,21 +127,32 @@ const lastVerifiedStr = d.lastVerified.toLocaleDateString("es-CL", {
       <div class="mt-4 flex flex-wrap gap-4 text-xs text-muted">
         <span>
           Vigente desde: <strong class="text-secondary">
-            {d.effective.toLocaleDateString("es-CL", { year: "numeric", month: "long" })}
+            {
+              d.effective.toLocaleDateString("es-CL", {
+                year: "numeric",
+                month: "long",
+              })
+            }
           </strong>
         </span>
-        {d.lastAmended && (
-          <span>
-            Última modificación: <strong class="text-secondary">
-              {d.lastAmended.toLocaleDateString("es-CL", { year: "numeric", month: "long" })}
-            </strong>
-          </span>
-        )}
+        {
+          d.lastAmended && (
+            <span>
+              Última modificación:{" "}
+              <strong class="text-secondary">
+                {d.lastAmended.toLocaleDateString("es-CL", {
+                  year: "numeric",
+                  month: "long",
+                })}
+              </strong>
+            </span>
+          )
+        }
         <a
           href={d.bcnUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="font-medium text-accent hover:underline underline-offset-4"
+          class="font-medium text-accent underline-offset-4 hover:underline"
         >
           Texto oficial en BCN ↗
         </a>
@@ -129,44 +160,51 @@ const lastVerifiedStr = d.lastVerified.toLocaleDateString("es-CL", {
     </div>
 
     <!-- DISCLAIMER -->
-    <div class="my-6 rounded-xl border border-accent/20 bg-accent/5 px-5 py-4 text-sm text-secondary">
-      ⚠️ <strong class="text-foreground">Contenido educativo.</strong> Esta ficha resume
-      la normativa en términos accesibles. El texto oficial publicado en la BCN
-      prevalece ante cualquier discrepancia. Para situaciones concretas consulta a un
-      profesional calificado.
+    <div
+      class="my-6 rounded-xl border border-accent/20 bg-accent/5 px-5 py-4 text-sm text-secondary"
+    >
+      ⚠️ <strong class="text-foreground">Contenido educativo.</strong> Esta ficha
+      resume la normativa en términos accesibles. El texto oficial publicado en la
+      BCN prevalece ante cualquier discrepancia. Para situaciones concretas consulta
+      a un profesional calificado.
     </div>
 
     <!-- CONTENIDO DE LA FICHA -->
-    <article
-      id="article"
-      class="app-prose mt-4 w-full max-w-app"
-    >
+    <article id="article" class="app-prose mt-4 w-full max-w-app">
       <Content />
     </article>
 
     <!-- ARTÍCULOS RELACIONADOS DEL BLOG -->
-    {d.relatedArticles.length > 0 && (
-      <section class="mt-10 border-t border-dashed border-border pt-8">
-        <h2 class="mb-4 text-lg font-bold">Artículos del sitio que aplican esta ley</h2>
-        <ul class="space-y-2">
-          {d.relatedArticles.map(slug => (
-            <li>
-              <a
-                href={`/posts/${slug}/`}
-                class="text-accent hover:underline underline-offset-4"
-              >
-                → {slug.replace(/-/g, " ")}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )}
+    {
+      d.relatedArticles.length > 0 && (
+        <section class="mt-10 border-t border-dashed border-border pt-8">
+          <h2 class="mb-4 text-lg font-bold">
+            Artículos del sitio que aplican esta ley
+          </h2>
+          <ul class="space-y-2">
+            {d.relatedArticles.map(slug => (
+              <li>
+                <a
+                  href={`/posts/${slug}/`}
+                  class="text-accent underline-offset-4 hover:underline"
+                >
+                  → {slug.replace(/-/g, " ")}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
 
     <!-- ÚLTIMA VERIFICACIÓN -->
-    <footer class="mt-10 rounded-xl border border-border bg-surface-muted px-5 py-4 text-sm text-muted">
+    <footer
+      class="mt-10 rounded-xl border border-border bg-surface-muted px-5 py-4 text-sm text-muted"
+    >
       <p>
-        <strong class="text-secondary">Última verificación del contenido:</strong>{" "}
+        <strong class="text-secondary"
+          >Última verificación del contenido:</strong
+        >{" "}
         {lastVerifiedStr}
       </p>
       <p class="mt-1">
@@ -178,7 +216,7 @@ const lastVerifiedStr = d.lastVerified.toLocaleDateString("es-CL", {
           href={d.bcnUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-accent hover:underline underline-offset-4"
+          class="text-accent underline-offset-4 hover:underline"
         >
           Verificar texto oficial actualizado en BCN →
         </a>
@@ -187,11 +225,10 @@ const lastVerifiedStr = d.lastVerified.toLocaleDateString("es-CL", {
 
     <!-- NAVEGAR MARCO LEGAL -->
     <div class="mt-8 text-sm">
-      <a href="/leyes/" class="text-accent hover:underline underline-offset-4">
+      <a href="/leyes/" class="text-accent underline-offset-4 hover:underline">
         ← Volver al Marco Legal
       </a>
     </div>
-
   </main>
   <Footer />
 </Layout>

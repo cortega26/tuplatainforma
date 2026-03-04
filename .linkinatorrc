@@ -1,0 +1,29 @@
+# .linkinatorrc
+# Linkinator configuration for Tu Plata Informa
+# Run: pnpm run check:urls (after astro build)
+
+recurse: true
+timeout: 15000
+concurrency: 8
+retry: true
+retryErrors: true
+retryErrorsCount: 2
+
+# Skip patterns — avoid false positives from rate-limited or auth-required govt sites
+skip:
+  # BCN rate-limits crawlers with 403/429 — link content is verified manually
+  - "bcn.cl"
+  # SII requires session for some deep links
+  - "sii.cl/valores_y_fechas"
+  - "sii.cl/infoydec"
+  # AFC requires authentication for account-level pages
+  - "afc.cl"
+  - "afcchile.cl"
+  # SPensiones authenticated tools
+  - "spensiones.cl/infoydec"
+  # Avoid mailto: links
+  - "^mailto:"
+  # Avoid anchor-only links (#section)
+  - "^#"
+  # Avoid localhost (dev server)
+  - "^http://localhost"
