@@ -81,10 +81,12 @@ Fuente única:
 
 - Todas las calculadoras que dependen de UF/UTM/TMC/AFC consumen `getEconomicParameters()` y, por debajo, `src/infrastructure/economic/EconomicParameterProvider.ts`.
 
-Estrategia de fetch y cache:
+Estrategia de datos y cache:
 
-- El provider consulta `https://mindicador.cl/api`.
-- Se memoiza en módulo (`cachedBundlePromise`) para evitar múltiples llamadas externas en un mismo ciclo de ejecución.
+- Fuente principal en build/CI: `src/infrastructure/economic/economic-parameters.snapshot.json` (determinística, sin red).
+- Modo live opcional solo por env: `TPI_ECONOMIC_PROVIDER_MODE=live`.
+- En modo live, el provider intenta `https://mindicador.cl/api` y, si falla, vuelve al snapshot local.
+- Se memoiza en módulo (`cachedBundlePromise`) para evitar múltiples lecturas/fetch en un mismo ciclo de ejecución.
 - Telemetría mínima disponible vía `getEconomicProviderTelemetry()`:
   - `externalFetchCount`
   - `cacheHitCount`
@@ -93,11 +95,16 @@ Estrategia de fetch y cache:
 
 Fallback controlado:
 
-- Si falla la API (timeout/error/status no OK), el provider retorna un bundle con:
+- Si falla el snapshot (archivo inválido/faltante), el provider retorna un bundle con:
   - `parameters.source = "fallback"`
   - `parameters.lastUpdated` en formato `YYYY-MM-DD`
   - `telemetryFlag = "economic_parameters_fallback"`
 - La UI expone la fuente y fecha de datos en calculadoras e indicadores; cuando aplica fallback se muestra explícitamente el modo fallback.
+
+Refresh del snapshot:
+
+- Comando: `pnpm run economic:snapshot:refresh`
+- Este script consulta `mindicador.cl` y actualiza `economic-parameters.snapshot.json` con sello temporal (`capturedAt`).
 
 Validación automatizada:
 

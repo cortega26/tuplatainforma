@@ -19,7 +19,7 @@
 - `src/domain/economic/EconomicParameters.ts`
   - Single economic source-of-truth contract + invariant enforcement.
 - `src/infrastructure/economic/EconomicParameterProvider.ts`
-  - mindicador adapter, timeout, memoization, controlled fallback telemetry.
+  - Snapshot-first adapter (`economic-parameters.snapshot.json`) with optional live mode, memoization, and controlled fallback telemetry.
 - `src/domain/taxation/TaxEngine.ts`
   - Pure second-category tax engine.
 - `src/application/use-cases/*`

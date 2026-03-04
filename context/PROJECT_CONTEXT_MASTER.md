@@ -241,7 +241,7 @@ No hay snapshot del upstream dentro del repo para diff directo; por lo tanto est
 - `src/utils/getUniqueTags.ts` + `getPostsByTag.ts`: agregación y filtrado de tags.
 - `src/utils/slugify.ts`: estrategia híbrida para slug.
 - `src/utils/categoryIcons.ts`: mapeo tag -> icono/color.
-- `src/utils/indicadores.ts`: fetch de `mindicador.cl` con fallback.
+- `src/utils/indicadores.ts`: consume provider económico snapshot-first con modo live opcional y fallback controlado.
 - `src/utils/generateOgImages.ts` + `og-templates/*`: OG dinámicas vía `satori` + `resvg`.
 - `src/utils/animateCount.ts`: animación numérica (usada en `seguro-cesantia`).
 
