@@ -31,6 +31,7 @@ const REPO_ROOT = path.resolve(__dirname, "..");
 const BLOG_DIR = path.join(REPO_ROOT, "src", "data", "blog");
 const GUIAS_DIR = path.join(REPO_ROOT, "src", "pages", "guias");
 const LAWS_DIR = path.join(REPO_ROOT, "src", "data", "laws");
+const GLOSSARY_DIR = path.join(REPO_ROOT, "src", "data", "glossary");
 
 const args = new Set(process.argv.slice(2));
 const VERBOSE = args.has("--verbose");
@@ -71,8 +72,8 @@ function isDraft(source) {
 function extractInternalLinks(source) {
   const links = [];
   const lines = source.split("\n");
-  // Matches: [text](/posts/slug/) or [text](/guias/slug/) or [text](/leyes/slug/) with optional trailing /
-  const RE = /\[([^\]]*)\]\((\/(posts|guias|leyes)\/([^)\s#?"]+))\)/g;
+  // Matches: [text](/posts/slug/) or [text](/guias/slug/) or /leyes/ or /glosario/ with optional trailing /
+  const RE = /\[([^\]]*)\]\((\/(posts|guias|leyes|glosario)\/([^)\s#?"]+))\)/g;
   for (let i = 0; i < lines.length; i++) {
     let match;
     RE.lastIndex = 0;
@@ -116,6 +117,15 @@ const validGuias = new Set(
 const validLaws = new Set(
   existsSync(LAWS_DIR)
     ? readdirSync(LAWS_DIR, { withFileTypes: true })
+        .filter(e => e.isFile() && /\.(md|mdx)$/i.test(e.name))
+        .map(e => e.name.replace(/\.(md|mdx)$/i, ""))
+    : []
+);
+
+/** Valid glossary slugs: .md files in src/data/glossary/ */
+const validGlossary = new Set(
+  existsSync(GLOSSARY_DIR)
+    ? readdirSync(GLOSSARY_DIR, { withFileTypes: true })
         .filter(e => e.isFile() && /\.(md|mdx)$/i.test(e.name))
         .map(e => e.name.replace(/\.(md|mdx)$/i, ""))
     : []
@@ -167,6 +177,14 @@ for (const [slug, { filePath, source }] of publishedSlugs.entries()) {
           filePath: relPath,
           lineNumber: link.lineNumber,
           message: `Broken /leyes/ link: law file "${link.target}" not found in src/data/laws/.`,
+        });
+      }
+    } else if (link.type === "glosario") {
+      if (!validGlossary.has(link.target)) {
+        errors.push({
+          filePath: relPath,
+          lineNumber: link.lineNumber,
+          message: `Broken /glosario/ link: term file "${link.target}" not found in src/data/glossary/.`,
         });
       }
     }

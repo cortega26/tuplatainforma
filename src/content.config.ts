@@ -111,4 +111,14 @@ const laws = defineCollection({
   }),
 });
 
-export const collections = { blog, laws };
+const glossary = defineCollection({
+  type: "content",
+  schema: z.object({
+    term: z.string().trim().min(1), // Término oficial completo
+    shortDefinition: z.string().trim().min(10).max(160), // Definición concisa (SEO/Tooltip)
+    relatedTerms: z.array(z.string()).default([]), // Slugs de glosario relacionados
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { blog, laws, glossary };
