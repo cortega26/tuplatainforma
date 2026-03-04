@@ -10,6 +10,9 @@ on:
       - edited
       - synchronize
       - reopened
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * *"
   workflow_call:
 
 jobs:
@@ -17,6 +20,7 @@ jobs:
     name: Code standards & build
     runs-on: ubuntu-latest
     timeout-minutes: 6
+    if: github.event_name != 'schedule'
 
     strategy:
       matrix:
@@ -80,5 +84,81 @@ jobs:
       - name: "🚀 Build the project"
         run: pnpm run build
 
+      - name: "🔗 URL check (CI mode)"
+        id: urlcheck_ci
+        run: pnpm run check:urls:ci
+
       - name: "📡 Check RSS baseline (no removals)"
         run: pnpm run check:rss
+
+      - name: "🧩 Ensure URL check artifacts exist"
+        if: always() && steps.urlcheck_ci.outcome == 'skipped'
+        run: |
+          mkdir -p scripts/urlcheck/artifacts
+          [ -f scripts/urlcheck/artifacts/internal-broken.json ] || printf '[]\n' > scripts/urlcheck/artifacts/internal-broken.json
+          [ -f scripts/urlcheck/artifacts/internal-broken.csv ] || printf 'broken_url,status,referrer_url,context,category\n' > scripts/urlcheck/artifacts/internal-broken.csv
+          [ -f scripts/urlcheck/artifacts/urlcheck-report.json ] || printf '{"generatedAt":"%s","note":"placeholder"}\n' "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" > scripts/urlcheck/artifacts/urlcheck-report.json
+
+      - name: "📤 Upload URL check artifacts"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: urlcheck-artifacts-ci
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            scripts/urlcheck/artifacts/internal-broken.json
+            scripts/urlcheck/artifacts/internal-broken.csv
+            scripts/urlcheck/artifacts/urlcheck-report.json
+
+  external-url-audit:
+    name: External URL audit (non-blocking)
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    continue-on-error: true
+
+    steps:
+      - name: "☁️ Checkout repository"
+        uses: actions/checkout@v4
+
+      - name: "📦 Install pnpm"
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.2
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: "📦 Install dependencies"
+        run: pnpm install --frozen-lockfile
+
+      - name: "🏗️ Build static output"
+        run: pnpm run astro build
+
+      - name: "🌐 Run external URL audit (non-blocking)"
+        id: urlcheck_external_audit
+        run: pnpm run check:urls:external:audit
+
+      - name: "🧩 Ensure URL check artifacts exist"
+        if: always() && steps.urlcheck_external_audit.outcome == 'skipped'
+        run: |
+          mkdir -p scripts/urlcheck/artifacts
+          [ -f scripts/urlcheck/artifacts/internal-broken.json ] || printf '[]\n' > scripts/urlcheck/artifacts/internal-broken.json
+          [ -f scripts/urlcheck/artifacts/internal-broken.csv ] || printf 'broken_url,status,referrer_url,context,category\n' > scripts/urlcheck/artifacts/internal-broken.csv
+          [ -f scripts/urlcheck/artifacts/urlcheck-report.json ] || printf '{"generatedAt":"%s","note":"placeholder"}\n' "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" > scripts/urlcheck/artifacts/urlcheck-report.json
+
+      - name: "📤 Upload external audit artifacts"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: urlcheck-artifacts-external-audit
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            scripts/urlcheck/artifacts/internal-broken.json
+            scripts/urlcheck/artifacts/internal-broken.csv
+            scripts/urlcheck/artifacts/urlcheck-report.json

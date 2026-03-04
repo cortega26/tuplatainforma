@@ -38,7 +38,8 @@
     "lint": "eslint .",
     "check:urls:ci": "URLCHECK_MODE=ci node scripts/check-urls.mjs",
     "check:urls:canary": "node scripts/check-urls.mjs --canary",
-    "check:urls:baseline:update": "node scripts/check-urls.mjs --update-baseline"
+    "check:urls:external:audit": "URLCHECK_MODE=ci node scripts/check-urls.mjs --external-audit",
+    "check:urls:baseline:update": "node scripts/check-urls.mjs --update-baseline --allow-baseline-update"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",

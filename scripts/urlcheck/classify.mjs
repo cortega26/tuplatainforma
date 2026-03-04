@@ -1,4 +1,8 @@
-import { DENYLIST_HOSTS, EXTERNAL_SOFT_STATUS, INTERNAL_HARD_STATUS } from "./constants.mjs";
+import {
+  DENYLIST_HOSTS_ALWAYS_SOFT,
+  EXTERNAL_SOFT_STATUS,
+  INTERNAL_HARD_STATUS,
+} from "./constants.mjs";
 
 export function classifyLinks(links, { internalOrigins, allowlistHosts = [] }) {
   const internalBroken = [];
@@ -26,7 +30,7 @@ export function classifyLinks(links, { internalOrigins, allowlistHosts = [] }) {
       category: classifyFailureCategory(status, failureDetails),
       failureDetails,
       allowlisted: allowlistHosts.includes(url.host),
-      denylisted: DENYLIST_HOSTS.includes(url.host),
+      denylisted: DENYLIST_HOSTS_ALWAYS_SOFT.includes(url.host),
     };
 
     if (isInternal) {

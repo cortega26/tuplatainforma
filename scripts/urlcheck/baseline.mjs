@@ -11,10 +11,20 @@ export async function readBaseline() {
   }
 }
 
-export async function writeBaseline(report) {
+export async function writeBaseline(report, metadata = {}) {
+  const updatedAtIso = new Date().toISOString();
+  const reason = String(metadata.reason || "").trim();
+  const updatedBy = String(metadata.updatedBy || "").trim() || "unknown";
+  if (!reason) {
+    throw new Error("baseline_update_reason_required");
+  }
+
   const baseline = {
     version: 1,
-    updatedAt: new Date().toISOString(),
+    updatedAt: updatedAtIso,
+    updated_at: updatedAtIso,
+    updated_by: updatedBy,
+    reason,
     policy: {
       maxInternalBrokenTotal: 0,
     },
