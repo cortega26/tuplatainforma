@@ -12,6 +12,7 @@ import {
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import { SITE } from "./src/config";
 import { getUiCopyForLocale } from "./src/i18n/ui";
+import { remarkPrefixInternalLinks } from "./src/remark-prefix-internal-links";
 
 import mdx from "@astrojs/mdx";
 
@@ -22,11 +23,12 @@ const escapeRegExp = (value: string) =>
 
 const tocHeadingPattern = tocUi.toc.title;
 const tocHeadingRegex = new RegExp(`^${escapeRegExp(tocHeadingPattern)}$`, "i");
+const SITE_BASE = "/tuplatainforma";
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
-  base: "/tuplatainforma",
+  base: SITE_BASE,
   integrations: [
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives/"),
@@ -58,6 +60,7 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [
+      [remarkPrefixInternalLinks, SITE_BASE],
       [remarkToc, { heading: tocHeadingPattern }],
       [
         remarkCollapse,

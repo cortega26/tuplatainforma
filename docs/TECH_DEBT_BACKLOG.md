@@ -1,19 +1,19 @@
 # TECH_DEBT_BACKLOG
 
-Fecha de corte: 2026-03-02
+Fecha de corte: 2026-03-04
 
 ## Métricas
 
 ### Total de items por urgencia
 - **P0:** 1
 - **P1:** 5
-- **P2:** 7
+- **P2:** 8
 - **P3:** 1
 
 ### Estado de avance (2026-03-02)
 - **Completados:** 12 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0013`, `TD-0014`)
 - **En progreso:** 1 (`TD-0012`)
-- **Backlog sin iniciar:** 1 (`TD-0011`)
+- **Backlog sin iniciar:** 2 (`TD-0011`, `TD-0015`)
 
 ### Top 5 riesgos
 | Ranking | ID | Riesgo | Motivo principal |
@@ -86,6 +86,26 @@ Fecha de corte: 2026-03-02
 - **Estado:** En progreso
 - **Fecha de creación:** 2026-03-02
 - **Última actualización:** 2026-03-02
+
+## TD-0015 — `check:urls:ci` depende de hosts externos para métricas no bloqueantes
+- **ID:** TD-0015
+- **Título corto:** Aislar escaneo interno del ruido externo en URL checks
+- **Descripción:** El flujo `check:urls:ci` sigue consultando hosts externos para reportar `external_failures`; esto introduce timeouts intermitentes y variación de latencia aunque el gate bloqueante solo depende de `internal_broken`.
+- **Evidencia (actualizada):** salida de `pnpm run check:urls:ci` (2026-03-04) con `internal_broken=0` y `external_failures` incluyendo `timeout` en `mindicador.cl`.
+- **Impacto:** Incrementa ruido operacional y puede ocultar señales internas relevantes en revisiones rápidas.
+- **Riesgo:** medio
+- **Severidad (1-5):** 3
+- **Urgencia:** P2
+- **Esfuerzo estimado:** M
+- **Propuesta de solución:** separar modos de chequeo (`internal-only` bloqueante y `external-observability` informativo) o bloquear recursión externa en CI cuando no se esté ejecutando auditoría de externos.
+- **Criterios de cierre (checklist verificable):**
+- [ ] `check:urls:ci` no realiza requests a hosts externos por defecto.
+- [ ] Se mantiene un comando explícito para auditoría externa no bloqueante.
+- [ ] El reporte final distingue claramente estado interno (SLO) de telemetría externa.
+- **Owner:** TBD
+- **Estado:** Backlog sin iniciar
+- **Fecha de creación:** 2026-03-04
+- **Última actualización:** 2026-03-04
 
 ## TD-0013 — Respuestas YMYL abstractas en licencia/finiquito
 - **ID:** TD-0013

@@ -1,121 +1,147 @@
 #!/usr/bin/env node
 
-import { mkdtemp, rm, symlink } from "node:fs/promises";
-import { tmpdir } from "node:os";
-import path from "node:path";
-import { spawn, spawnSync } from "node:child_process";
-import http from "node:http";
+import { readFile } from "node:fs/promises";
+import { LinkChecker } from "linkinator";
+import { ALLOWLIST_HOSTS, MODES } from "./urlcheck/constants.mjs";
+import { startServerTarget } from "./urlcheck/server-target.mjs";
+import { classifyLinks } from "./urlcheck/classify.mjs";
+import { applyRetries } from "./urlcheck/retry.mjs";
+import { buildReport, printReport } from "./urlcheck/report.mjs";
+import { evaluateBaseline, readBaseline, writeBaseline } from "./urlcheck/baseline.mjs";
+import { writeInternalBrokenArtifacts } from "./urlcheck/artifacts.mjs";
+import { enrichInternalBrokenContext } from "./urlcheck/context.mjs";
 
-const HOST = "127.0.0.1";
-const PORT = 4327;
-const SITE_BASE = "tuplatainforma";
+function parseArgs(argv) {
+  const flags = new Set(argv.slice(2));
+  const forcedMode = process.env.URLCHECK_MODE || "";
 
-function wait(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-async function waitForServer(url, attempts = 30) {
-  for (let i = 0; i < attempts; i += 1) {
-    const ok = await new Promise((resolve) => {
-      const req = http.get(url, (res) => {
-        res.resume();
-        resolve(res.statusCode && res.statusCode < 500);
-      });
-      req.on("error", () => resolve(false));
-      req.setTimeout(1000, () => {
-        req.destroy();
-        resolve(false);
-      });
-    });
-    if (ok) return;
-    await wait(250);
+  if (flags.has("--canary")) {
+    return { mode: "canary", canary: true, updateBaseline: false };
   }
-  throw new Error(`Server did not become ready at ${url}`);
+
+  if (flags.has("--update-baseline")) {
+    return {
+      mode: forcedMode === "ci" ? "ci" : "local",
+      canary: false,
+      updateBaseline: true,
+    };
+  }
+
+  return {
+    mode: forcedMode === "ci" ? "ci" : "local",
+    canary: false,
+    updateBaseline: false,
+  };
 }
 
 async function main() {
-  const distDir = path.resolve("dist");
-  const tmpRoot = await mkdtemp(path.join(tmpdir(), "linkinator-root-"));
-  const mappedRoot = path.join(tmpRoot, SITE_BASE);
+  const options = parseArgs(process.argv);
+  const modeConfig = MODES[options.mode];
+  if (!modeConfig) {
+    throw new Error(`invalid_mode:${options.mode}`);
+  }
 
-  let server;
+  const target = await startServerTarget({ mode: options.mode });
+
   try {
-    await symlink(distDir, mappedRoot, "dir");
+    const checker = new LinkChecker();
+    const config = await readLinkinatorConfig();
+    const payload = await checker.check({
+      path: target.targetUrl,
+      recurse: true,
+      concurrency: modeConfig.concurrency,
+      timeout: modeConfig.timeoutMs,
+      linksToSkip: config.skip,
+      retry: false,
+      retryErrors: false,
+    });
+    let links = payload.links;
 
-    server = spawn(
-      "python3",
-      ["-m", "http.server", String(PORT), "--bind", HOST, "--directory", tmpRoot],
-      { stdio: "ignore" }
-    );
-
-    await waitForServer(`http://${HOST}:${PORT}/${SITE_BASE}/`);
-
-    const target = `http://${HOST}:${PORT}/${SITE_BASE}`;
-    const args = [
-      "exec",
-      "linkinator",
-      target,
-      "--recurse",
-      "--config",
-      ".linkinatorrc",
-      "--format",
-      "json",
-    ];
-    const result = spawnSync("pnpm", args, { encoding: "utf8", maxBuffer: 25 * 1024 * 1024 });
-
-    if (result.error) throw result.error;
-    if (result.status === null) throw new Error("linkinator did not return an exit code");
-
-    const raw = (result.stdout || result.stderr || "").trim();
-    if (!raw) {
-      console.error("[check-urls] Linkinator produced no JSON output.");
-      process.exit(1);
-    }
-
-    let payload;
-    try {
-      payload = JSON.parse(raw);
-    } catch {
-      console.error("[check-urls] Failed to parse Linkinator JSON output.");
-      if (result.stdout) console.error(result.stdout);
-      if (result.stderr) console.error(result.stderr);
-      process.exit(1);
-    }
-
-    const links = Array.isArray(payload.links) ? payload.links : [];
     if (links.length === 0) {
-      console.error("[check-urls] Linkinator scanned 0 links. Failing to avoid silent passes.");
-      process.exit(1);
+      throw new Error("zero_links_scanned");
     }
 
-    const broken = links.filter(
-      (item) => item?.state === "BROKEN" || (typeof item?.status === "number" && item.status >= 400)
+    const retryResult = await applyRetries(links, {
+      modeConfig,
+      maxConcurrency: modeConfig.concurrency,
+    });
+
+    links = retryResult.links;
+
+    const { internalBroken, externalFailures } = classifyLinks(links, {
+      internalOrigins: target.internalOrigins,
+      allowlistHosts: ALLOWLIST_HOSTS,
+    });
+    const internalBrokenWithContext = await enrichInternalBrokenContext(internalBroken, {
+      contentRoot: target.contentRoot,
+      siteBase: target.siteBase,
+    });
+
+    const report = buildReport({
+      mode: options.mode,
+      scannedLinks: links.length,
+      internalBroken: internalBrokenWithContext,
+      externalFailures,
+      retryStats: retryResult.retryStats,
+    });
+
+    const artifacts = await writeInternalBrokenArtifacts(report.internalBroken);
+    printReport(report);
+    console.log(`[check-urls] artifacts: ${artifacts.jsonPath}, ${artifacts.csvPath}`);
+
+    if (options.updateBaseline) {
+      await writeBaseline(report);
+      console.log("[check-urls] Baseline updated.");
+      return;
+    }
+
+    if (options.canary) {
+      if (report.internalBrokenTotal < 1) {
+        throw new Error("canary_expected_internal_broken_not_detected");
+      }
+      console.log("[check-urls] Canary detected known broken link as expected.");
+      return;
+    }
+
+    const baseline = await readBaseline();
+    const baselineEval = evaluateBaseline(report, baseline);
+    console.log(
+      `[check-urls] baseline_policy.max_internal_broken_total=${baselineEval.maxInternalBrokenTotal}`
     );
 
-    if (result.status !== 0 || broken.length > 0 || payload.passed === false) {
-      console.error(
-        `[check-urls] Broken URLs detected. scanned=${links.length} broken=${broken.length}`
-      );
-      const sample = broken.slice(0, 10).map((item) => item.url).filter(Boolean);
-      if (sample.length > 0) {
-        console.error("[check-urls] Sample broken URLs:");
-        for (const url of sample) console.error(`- ${url}`);
-      }
-      process.exit(1);
+    if (!baselineEval.pass) {
+      throw new Error(`internal_broken_exceeds_baseline:delta=${baselineEval.delta}`);
     }
 
-    console.log(`[check-urls] OK. scanned=${links.length} broken=0`);
-  } finally {
-    if (server && !server.killed) {
-      server.kill("SIGTERM");
-      await wait(100);
-      if (!server.killed) server.kill("SIGKILL");
+    if (report.internalBrokenTotal > 0) {
+      throw new Error(`internal_broken_detected:${report.internalBrokenTotal}`);
     }
-    await rm(tmpRoot, { recursive: true, force: true });
+
+    if (report.scannedLinks === 0) {
+      throw new Error("zero_links_scanned_post_processing");
+    }
+
+    console.log(
+      `[check-urls] OK. scanned=${report.scannedLinks} internal_broken=${report.internalBrokenTotal} external_failures=${report.externalFailures.length}`
+    );
+  } finally {
+    await target.stop();
   }
 }
 
-main().catch(async (error) => {
+main().catch((error) => {
   console.error(`[check-urls] FAIL: ${error.message}`);
   process.exit(1);
 });
+
+async function readLinkinatorConfig() {
+  try {
+    const raw = await readFile(".linkinatorrc", "utf8");
+    const json = JSON.parse(raw);
+    return {
+      skip: Array.isArray(json?.skip) ? json.skip : [],
+    };
+  } catch {
+    return { skip: [] };
+  }
+}
