@@ -15,6 +15,7 @@ cluster: impuestos-personas
 lang: es-CL
 featured: false
 draft: false
+heroImage: ../../assets/images/blog/operacion-renta-f22-checklist.avif
 ---
 
 Si vas a declarar renta como persona, este flujo te ayuda a revisar tu propuesta del SII antes de enviar el F22 y a reaccionar rápido si aparecen observaciones. Está pensado para quienes quieren evitar correcciones tardías y atrasos en devolución.

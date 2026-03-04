@@ -16,6 +16,7 @@ tags:
 category: seguridad-financiera
 cluster: seguridad-financiera
 description: "Guía paso a paso para actuar ante un fraude con tarjeta o transferencia en Chile: qué hacer primero, los plazos que debes conocer y qué dice la Ley 20.009 sobre devolución del dinero."
+heroImage: ../../assets/images/blog/fraude-tarjeta-que-hacer.avif
 ---
 
 Revisas tu cuenta y ves un cargo que no hiciste. O peor: te llega un aviso de una transferencia que nunca autorizaste. Lo primero que sientes es pánico. Lo segundo debería ser este artículo. Si quieres la vista completa de prevención y respuesta, usa también la [guía del cluster Seguridad Financiera](/guias/seguridad-financiera/).

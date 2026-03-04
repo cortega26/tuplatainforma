@@ -16,6 +16,7 @@ cluster: seguridad-financiera
 lang: es-CL
 featured: false
 draft: false
+heroImage: ../../assets/images/blog/suplantacion-identidad-creditos-no-reconocidos.avif
 ---
 
 Recibes un correo que dice "tu crédito ha sido aprobado". El problema es que tú nunca pediste ningún crédito. Eso no es un error administrativo: es una señal crítica de que alguien usó tus datos para contratar deuda a tu nombre.

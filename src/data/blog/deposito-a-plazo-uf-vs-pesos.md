@@ -15,6 +15,7 @@ cluster: ahorro-e-inversion
 lang: es-CL
 featured: false
 draft: false
+heroImage: ../../assets/images/blog/deposito-a-plazo-uf-vs-pesos.avif
 ---
 
 <!-- META: keyword_primary="deposito a plazo en uf o pesos que conviene" | intent="comparativa" | cluster="ahorro-inversion" -->

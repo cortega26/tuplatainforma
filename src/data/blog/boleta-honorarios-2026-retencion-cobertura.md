@@ -15,6 +15,7 @@ cluster: impuestos-personas
 lang: es-CL
 featured: false
 draft: false
+heroImage: ../../assets/images/blog/boleta-honorarios-2026-retencion-cobertura.avif
 ---
 
 Si emites boletas y quieres saber cuánto te llega líquido en 2026, esta guía separa tres cosas que suelen confundirse: retención mensual, cálculo de cotizaciones en Operación Renta y cobertura anual efectiva.

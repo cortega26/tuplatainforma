@@ -16,6 +16,7 @@ cluster: deuda-credito
 lang: es-CL
 featured: false
 draft: false
+heroImage: ../../assets/images/blog/cae-costo-real-credito-chile.avif
 ---
 
 <!-- META: keyword_primary="qué es la CAE de un crédito" | intent="informacional-pilar" | cluster="deuda-credito" -->

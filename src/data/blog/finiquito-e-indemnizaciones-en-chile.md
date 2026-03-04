@@ -16,6 +16,7 @@ cluster: empleo-ingresos
 lang: es-CL
 featured: false
 draft: false
+heroImage: ../../assets/images/blog/finiquito-e-indemnizaciones-en-chile.avif
 ---
 
 Te llega el finiquito, el empleador te apura para firmarlo ese mismo día, y tú no sabes si lo que dice es correcto. Es una situación más común de lo que parece — y firmar sin revisar puede costarte el equivalente a varios meses de sueldo.

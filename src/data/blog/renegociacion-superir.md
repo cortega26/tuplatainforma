@@ -16,6 +16,7 @@ tags:
 category: deuda-credito
 cluster: deuda-credito
 description: "Guía práctica sobre la renegociación de deudas a través de la Superir: requisitos exactos, documentos necesarios, errores que te rechazan la solicitud y qué esperar en las audiencias."
+heroImage: ../../assets/images/blog/renegociacion-superir.avif
 ---
 
 Tienes deudas con varios acreedores, estás en mora hace meses y no ves cómo salir. Antes de contratar a un abogado o resignarte a que te sigan cobrando, existe una herramienta estatal gratuita que muy poca gente conoce: la **renegociación de deudas a través de la Superir**. Si estás ordenando este tema desde cero, también te sirve revisar la [guía del cluster Deuda y Crédito](/guias/deuda-credito/).

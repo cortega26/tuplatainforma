@@ -15,6 +15,7 @@ cluster: empleo-ingresos
 lang: es-CL
 featured: false
 draft: false
+heroImage: ../../assets/images/blog/como-hacer-presupuesto-mensual-chile.avif
 ---
 
 Antes de invertir en algo, antes de ahorrar para algo, antes de salir de una deuda, necesitas saber a dónde va tu plata. La mayoría de los problemas financieros personales no son de ingreso — son de control. Este artículo te da un método concreto para hacer un presupuesto que funcione en la realidad chilena, no en una hoja teórica.
