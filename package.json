@@ -17,7 +17,7 @@
     "check:images": "node scripts/check-images.mjs",
     "check:frontmatter": "node scripts/check-frontmatter.mjs",
     "check:links": "node scripts/check-internal-links.mjs",
-    "check:urls": "linkinator dist/ --config .linkinatorrc",
+    "check:urls": "node scripts/check-urls.mjs",
     "check:editorial-structure": "node scripts/check-editorial-structure.mjs",
     "check:dialect": "node scripts/check-dialect.mjs",
     "check:editorial-artifacts": "node scripts/check-editorial-artifacts.mjs",
