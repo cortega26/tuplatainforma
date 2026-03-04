@@ -112,7 +112,7 @@ const laws = defineCollection({
 });
 
 const glossary = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/data/glossary" }),
   schema: z.object({
     term: z.string().trim().min(1), // Término oficial completo
     shortDefinition: z.string().trim().min(10).max(160), // Definición concisa (SEO/Tooltip)

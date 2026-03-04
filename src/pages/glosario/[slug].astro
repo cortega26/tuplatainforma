@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
@@ -21,7 +22,7 @@ const { term, shortDefinition, relatedTerms } = entry.data;
 const { Content } = await render(entry);
 
 // Fetch related terms metadata
-let relatedTermsData = [];
+let relatedTermsData: CollectionEntry<"glossary">[] = [];
 if (relatedTerms.length > 0) {
   const allEntries = await getCollection("glossary");
   relatedTermsData = allEntries.filter(e => relatedTerms.includes(e.id) && !e.data.draft);
