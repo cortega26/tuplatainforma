@@ -99,18 +99,7 @@ const isActive = (path: string) => {
             isActive={isActive("/guias")}
           />
         </li>
-        <li class="col-span-2">
-          <a
-            href={getPath("/posts/")}
-            class:list={[
-              "block px-4 py-3 text-center sm:px-2 sm:py-1",
-              "font-medium transition-colors hover:text-accent",
-              { "active-nav": isActive("/posts") }
-            ]}
-          >
-            Actualidad
-          </a>
-        </li>
+        <!-- La sección Actualidad está omitida por ser una sección futura sin contenido de noticias -->
         <li class="col-span-2">
           <a
             href={getPath("/calculadoras/")}

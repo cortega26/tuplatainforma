@@ -40,11 +40,7 @@ const articulosCluster = [
 
   <main id="main-content" class="app-layout">
     <section class="border-b border-border py-8">
-      <p
-        class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase"
-      >
-        Topic Authority Layer
-      </p>
+      <!-- Removed Topic Authority Layer tag -->
       <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
         Guía índice del cluster: Impuestos Personas
       </h1>
@@ -61,9 +57,6 @@ const articulosCluster = [
         {
           articulosCluster.map(item => (
             <li class="rounded-xl border border-border p-5">
-              <p class="mb-1 text-xs font-semibold tracking-wide text-accent uppercase">
-                {item.tipo}
-              </p>
               <h3 class="mb-2 text-lg font-semibold">{item.titulo}</h3>
               <p class="mb-3 text-sm text-secondary">{item.resumen}</p>
               <a
