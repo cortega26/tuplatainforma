@@ -2,6 +2,7 @@
 title: "Seguro de cesantía: cómo saber tu saldo, cuándo puedes cobrar y cuánto te pagan"
 author: "Equipo TuPlataInforma"
 pubDate: 2026-02-25T10:00:00Z
+updatedDate: 2026-03-04T12:00:00Z
 slug: seguro-de-cesantia
 featured: false
 lang: es-CL
@@ -190,4 +191,4 @@ Si quieres estimar cobertura con tus datos, usa la [calculadora de seguro de ces
 
 ---
 
-_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para consultar tu saldo y cobrar visita [afc.cl](https://www.afc.cl). Los montos y porcentajes del FCS se actualizan anualmente — verifica los valores vigentes en el sitio de la AFC._
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a marzo de 2026. Para consultar tu saldo y cobrar visita [afc.cl](https://www.afc.cl). Los montos y porcentajes del FCS se actualizan anualmente — verifica los valores vigentes en el sitio de la AFC._

@@ -2,6 +2,7 @@
 title: "Renegociación Superir: qué es, quién puede pedir y cómo hacerlo sin abogado"
 author: "Equipo TuPlataInforma"
 pubDate: 2026-02-24T14:00:00Z
+updatedDate: 2026-03-04T12:00:00Z
 slug: renegociacion-superir
 featured: false
 lang: es-CL
@@ -211,4 +212,4 @@ Antes de presentar la solicitud, estima tu escenario con el [simulador de renego
 
 ---
 
-_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para iniciar el trámite visita [superir.gob.cl](https://www.superir.gob.cl/perfil-deudor-requisito-renegociacion/) o [ChileAtiende](https://www.chileatiende.gob.cl/fichas/37401-renegociacion-de-las-deudas-de-una-persona). Para asesoría gratuita contacta la [Corporación de Asistencia Judicial](https://www.cajmetro.cl/)._
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a marzo de 2026. Para iniciar el trámite visita [superir.gob.cl](https://www.superir.gob.cl/perfil-deudor-requisito-renegociacion/) o [ChileAtiende](https://www.chileatiende.gob.cl/fichas/37401-renegociacion-de-las-deudas-de-una-persona). Para asesoría gratuita contacta la [Corporación de Asistencia Judicial](https://www.cajmetro.cl/)._

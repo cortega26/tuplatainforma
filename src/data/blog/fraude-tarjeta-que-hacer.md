@@ -2,6 +2,7 @@
 title: "Te hicieron un cargo que no reconoces: qué hacer en las primeras 24 horas (Ley 20.009)"
 author: "Equipo TuPlataInforma"
 pubDate: 2026-02-24T13:00:00Z
+updatedDate: 2026-03-04T12:00:00Z
 slug: fraude-tarjeta-que-hacer
 featured: true
 lang: es-CL
@@ -206,4 +207,4 @@ Si quieres prevenir variantes por canal antes de una nueva caída, revisa [estaf
 
 ---
 
-_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026, incluyendo la Ley N° 20.009 y la interpretación del SERNAC. Para más información visita [sernac.cl](https://www.sernac.cl/portal/604/w3-propertyname-791.html) y [cmfchile.cl](https://www.cmfchile.cl)._
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a marzo de 2026, incluyendo la Ley N° 20.009 y la interpretación del SERNAC. Para más información visita [sernac.cl](https://www.sernac.cl/portal/604/w3-propertyname-791.html) y [cmfchile.cl](https://www.cmfchile.cl)._

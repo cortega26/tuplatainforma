@@ -11,7 +11,6 @@ lastVerified: 2026-03-03
 updateTrigger: "Cambio en la fórmula de cálculo de la TMC publicado por la CMF, o modificación de los artículos sobre prepago o anatocismo."
 relatedArticles:
   - cae-costo-real-credito-chile
-  - cae-costo-real-credito-chile-tmc
   - informe-deudas-cmf-vs-dicom
 draft: false
 ---

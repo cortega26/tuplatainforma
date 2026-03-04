@@ -2,6 +2,7 @@
 title: "Informe de deudas CMF: cómo sacarlo, qué dice y por qué no es lo mismo que DICOM"
 author: "Equipo TuPlataInforma"
 pubDate: 2026-02-24T11:00:00Z
+updatedDate: 2026-03-04T12:00:00Z
 slug: informe-deudas-cmf-vs-dicom
 featured: true
 lang: es-CL
@@ -167,4 +168,4 @@ El primer paso es tener el informe CMF completo y saber exactamente cuánto debe
 
 ---
 
-_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para más información visita la [CMF](https://www.cmfchile.cl) o el [Boletín Comercial](https://www.boletincomercial.cl/)._
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a marzo de 2026. Para más información visita la [CMF](https://www.cmfchile.cl) o el [Boletín Comercial](https://www.boletincomercial.cl/)._
