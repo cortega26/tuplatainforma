@@ -4,7 +4,7 @@ title: "Ley Nº 21.719 — Regula la protección y el tratamiento de los datos p
 shortName: "Nueva Ley de Datos Personales (ARCO+)"
 area: privacidad-y-datos
 effective: 2024-12-13
-bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1207568
+bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1209272
 description: "Moderniza el marco de protección de datos personales en Chile. Crea la Agencia de Protección de Datos Personales, amplía los derechos del titular (ARCO+), endurece las sanciones y regula el tratamiento automatizado de decisiones."
 lastVerified: 2026-03-03
 updateTrigger: "Publicación de la normativa reglamentaria de la Agencia de Protección de Datos. La ley entra en plena vigencia en etapas — revisar cronograma oficial en BCN."
@@ -62,7 +62,7 @@ La ley crea un organismo autónomo con facultades para:
 
 ## Texto oficial
 
-Texto completo: [BCN — Ley 21.719](https://www.bcn.cl/leychile/navegar?idNorma=1207568)
+Texto completo: [BCN — Ley 21.719](https://www.bcn.cl/leychile/navegar?idNorma=1209272)
 
 Agencia de Protección de Datos: en implementación — revisa el Ministerio Secretaría General de Gobierno para el estado actual.
 

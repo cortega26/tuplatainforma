@@ -170,7 +170,7 @@ Para convertir esta elección en una decisión completa, cruza esta guía con [c
 
 - ChileAtiende, principales fechas de la reforma de pensiones: https://www.chileatiende.gob.cl/fichas/134983-conoce-las-principales-fechas-clave-de-la-reforma-de-pensiones
 - Superintendencia de Pensiones, inicio de fondos generacionales (abril 2027): https://www.spensiones.cl/portal/institucional/594/w3-article-17026.html
-- BCN, Ley N° 21.735: https://www.bcn.cl/leychile/navegar?idNorma=1220782
+- BCN, Ley N° 21.735: https://www.bcn.cl/leychile/navegar?idNorma=1212060
 
 ---
 

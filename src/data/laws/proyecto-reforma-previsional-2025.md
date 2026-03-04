@@ -1,10 +1,10 @@
 ---
-numero: "21.720"
-title: "Ley Nº 21.720 — Reforma el sistema de pensiones"
+numero: "21.735"
+title: "Ley Nº 21.735 — Reforma el sistema de pensiones"
 shortName: "Reforma Previsional 2025"
 area: prevision-y-trabajo
 effective: 2025-07-01
-bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1210698
+bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1212060
 description: "Reforma previsional promulgada en 2025: establece el aporte adicional del empleador (hasta 7%), crea el Beneficio de Ahorro Colectivo (BAC) y dispone la transición a fondos generacionales desde 2027."
 lastVerified: 2026-03-03
 updateTrigger: "Publicación de reglamentos que definan el cronograma exacto de aumento del aporte patronal por año, o modificación del mecanismo de distribución del BAC."
@@ -16,7 +16,7 @@ draft: false
 
 ## ¿Qué regula?
 
-La Ley 21.720 es la reforma previsional más importante desde la creación del sistema de AFP en 1981. Sus tres ejes son: la creación de un aporte adicional obligatorio del empleador (que subirá gradualmente hasta el 7% del sueldo imponible), la creación del Beneficio de Ahorro Colectivo (BAC) como componente solidario financiado con parte de ese aporte, y la transición desde los multifondos (A-E) a un esquema de fondos generacionales por cohorte de nacimiento.
+La Ley 21.735 (Reforma Previsional 2025) es la reforma previsional más importante desde la creación del sistema de AFP en 1981. Promulgada en marzo de 2025, sus tres ejes principales son: la creación de un aporte adicional obligatorio del empleador (que sube gradualmente hasta el 8,5% del sueldo imponible), la creación del Seguro Social (FAPP), y la transición desde los multifondos (A-E) a un esquema de fondos generacionales a partir de 2027.
 
 ## Puntos clave para personas
 
@@ -46,7 +46,7 @@ A partir de **abril de 2027** los multifondos A, B, C, D y E dejan de ser el esq
 
 ## Texto oficial
 
-Texto completo: [BCN — Ley 21.720](https://www.bcn.cl/leychile/navegar?idNorma=1210698)
+Texto completo: [BCN — Ley 21.735](https://www.bcn.cl/leychile/navegar?idNorma=1212060)
 
 Guía Ley Fácil BCN: [Reforma de Pensiones 2025](https://www.bcn.cl/api-leyfacil/servicio/ObtenerGuiaPublicadaHTML?uri=reforma-de-pensiones-de-2025)
 
