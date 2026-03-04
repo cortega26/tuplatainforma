@@ -205,8 +205,11 @@ async function run() {
 All generated images reside in \`src/assets/images/blog/\` and adhere strictly to the visual layout system ("Icon Focus" template), ensuring 100% absence of AI-generated styles and remaining comfortably within the 80KB budget.
 `;
 
-  await fs.writeFile(path.join(process.cwd(), 'docs', 'FEATURED_IMAGE_MIGRATION_REPORT.md'), report);
-  console.log('--> Migration v2 complete. Report updated.');
+  await fs.writeFile(
+    path.join(process.cwd(), 'docs', 'operations', 'reports', 'FEATURED_IMAGE_MIGRATION_REPORT.md'),
+    report
+  );
+  console.log('--> Migration v2 complete. Report updated at docs/operations/reports/FEATURED_IMAGE_MIGRATION_REPORT.md');
 }
 
 run().catch(console.error);

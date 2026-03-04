@@ -6,6 +6,13 @@ El proyecto está funcional en producción bajo subpath (`/tuplatainforma`) y co
 Las personalizaciones más relevantes son: homepage editorial, calculadoras, helpers de rutas para subpath, mejoras de UX (breadcrumbs/back button/reveal), y componentes de indicadores económicos.
 Los riesgos principales están en deuda de mantenibilidad y consistencia operativa: valores financieros hardcodeados con fecha, lógica duplicada, falta de tests, y mezcla de gestores de paquetes/workflows.
 
+### Checkpoint 2026-03-04 (Documentation Taxonomy Restructure)
+
+- Se reestructuró la documentación en capas (`governance`, `architecture`, `operations`, `development`, `research`) sin mover anclas canónicas de autoridad.
+- Se consolidaron artefactos operacionales en `docs/operations/{audits,issues,reports}`.
+- Se movieron docs raíz a `docs/` (`BACKLOG_EDITORIAL`, `audit`, `project_structure`) y se actualizaron referencias/scripts asociados.
+- ADR de respaldo: `docs/adr/ADR-20260304-documentation-restructure.md`.
+
 ## 1. Stack técnico
 
 ### Runtime y package management

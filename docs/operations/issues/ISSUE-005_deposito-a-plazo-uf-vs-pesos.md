@@ -16,7 +16,7 @@ Crear artículo comparativo para query `deposito a plazo en uf o pesos que convi
 - Fuentes oficiales o institucionales de condiciones DAP (bancos/CMF)
 
 ## Criterios de aceptación
-- Cumple [DoD editorial](../editorial/DEFINITION_OF_DONE.md)
+- Cumple [DoD editorial](../../editorial/DEFINITION_OF_DONE.md)
 - Incluye matriz de decisión explícita
 - Incluye ejemplo numérico completo
 

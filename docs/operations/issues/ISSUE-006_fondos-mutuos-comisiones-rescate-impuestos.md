@@ -16,7 +16,7 @@ Crear artículo pilar para query `comisiones fondos mutuos cuanto cobran` incluy
 - SII (tratamiento tributario)
 
 ## Criterios de aceptación
-- Cumple [DoD editorial](../editorial/DEFINITION_OF_DONE.md)
+- Cumple [DoD editorial](../../editorial/DEFINITION_OF_DONE.md)
 - Incluye tabla de costos con definiciones claras
 - Incluye casos de rescate con tiempos esperados
 

@@ -16,7 +16,7 @@ Crear artículo pilar para query `boleta de honorarios 2026 15,25 cuanto me lleg
 - ChileAtiende: cotización trabajadores a honorarios
 
 ## Criterios de aceptación
-- Cumple [DoD editorial](../editorial/DEFINITION_OF_DONE.md)
+- Cumple [DoD editorial](../../editorial/DEFINITION_OF_DONE.md)
 - Incluye tabla de escenarios por perfil
 - Incluye fecha de vigencia y próximos hitos normativos
 

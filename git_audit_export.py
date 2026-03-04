@@ -6,11 +6,11 @@ Exporta un reporte Markdown con diffs y metadata de commits seleccionados
 para auditoría de cambios (rutas/base/breadcrumbs/links).
 
 Uso típico:
-  python3 git_audit_export.py --repo . --out audit.md
+  python3 git_audit_export.py --repo . --out docs/operations/audits/repo-audit-export.md
 
 Opcional:
-  python3 git_audit_export.py --base 144f862 --include-range-diff --out audit.md
-  python3 git_audit_export.py --commits c466441 21ceaff ... --out audit.md
+  python3 git_audit_export.py --base 144f862 --include-range-diff --out docs/operations/audits/repo-audit-export.md
+  python3 git_audit_export.py --commits c466441 21ceaff ... --out docs/operations/audits/repo-audit-export.md
 """
 
 from __future__ import annotations
@@ -191,7 +191,11 @@ def git_range_diff(
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default=".", help="Ruta al repo git (por defecto: .)")
-    ap.add_argument("--out", default="audit.md", help="Archivo de salida (.md o .txt)")
+    ap.add_argument(
+        "--out",
+        default="docs/operations/audits/repo-audit-export.md",
+        help="Archivo de salida (.md o .txt)",
+    )
     ap.add_argument(
         "--commits",
         nargs="*",

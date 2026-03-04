@@ -303,8 +303,11 @@ async function run() {
 Site perfectly adheres to the v3 emotional & technical requirements while maintaining performance well below 80KB.
 `;
 
-  await fs.writeFile(path.join(process.cwd(), 'docs', 'FEATURED_IMAGE_MIGRATION_REPORT.md'), report);
-  console.log('--> Migration v3 complete. Report updated.');
+  await fs.writeFile(
+    path.join(process.cwd(), 'docs', 'operations', 'reports', 'FEATURED_IMAGE_MIGRATION_REPORT.md'),
+    report
+  );
+  console.log('--> Migration v3 complete. Report updated at docs/operations/reports/FEATURED_IMAGE_MIGRATION_REPORT.md');
 }
 
 run().catch(console.error);

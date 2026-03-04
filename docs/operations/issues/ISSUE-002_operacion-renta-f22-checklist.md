@@ -18,7 +18,7 @@ Crear artículo pilar para query `como revisar la propuesta del sii (f22)` con f
 - SII: plazos Operación Renta vigente
 
 ## Criterios de aceptación
-- Cumple [DoD editorial](../editorial/DEFINITION_OF_DONE.md)
+- Cumple [DoD editorial](../../editorial/DEFINITION_OF_DONE.md)
 - Incluye checklist descargable o checklist visible en bloque
 - Separa claramente flujo normal vs rectificación
 

@@ -17,7 +17,7 @@ Crear artículo pilar para query `como invertir en etf desde chile` con pasos y 
 - SII (declaración tributaria de inversiones)
 
 ## Criterios de aceptación
-- Cumple [DoD editorial](../editorial/DEFINITION_OF_DONE.md)
+- Cumple [DoD editorial](../../editorial/DEFINITION_OF_DONE.md)
 - Incluye checklist de due diligence de plataforma
 - Incluye distinción clara ETF vs fondo mutuo
 

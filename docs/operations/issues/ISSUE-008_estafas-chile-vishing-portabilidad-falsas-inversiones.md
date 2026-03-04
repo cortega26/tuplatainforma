@@ -17,7 +17,7 @@ Crear artículo satélite para query `me llamaron del banco y me estafaron (vish
 - CMF/SERNAC para flujos de reclamo
 
 ## Criterios de aceptación
-- Cumple [DoD editorial](../editorial/DEFINITION_OF_DONE.md)
+- Cumple [DoD editorial](../../editorial/DEFINITION_OF_DONE.md)
 - Incluye checklist accionable por canal
 - Incluye matriz `señal roja -> acción inmediata`
 

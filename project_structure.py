@@ -30,7 +30,7 @@ def get_tree(path, indent="", is_last=True):
             
     return tree_str
 
-def generate_ai_context(root_dir=".", output_file="project_structure.md"):
+def generate_ai_context(root_dir=".", output_file="docs/architecture/project-structure.md"):
     root_path = pathlib.Path(root_dir).absolute()
     
     header = f"# Project Structure: {root_path.name}\n"

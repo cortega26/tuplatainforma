@@ -17,7 +17,7 @@ Crear artículo pilar para query `licencia medica menos de 11 dias quien paga`, 
 - ChileAtiende o fuente oficial complementaria
 
 ## Criterios de aceptación
-- Cumple [DoD editorial](../editorial/DEFINITION_OF_DONE.md)
+- Cumple [DoD editorial](../../editorial/DEFINITION_OF_DONE.md)
 - Incluye checklist de documentación para apelación
 - Incluye diagrama simple de decisión
 

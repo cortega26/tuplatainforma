@@ -53,7 +53,7 @@ Fecha de corte: 2026-03-02
 - **ID:** TD-0011
 - **Título corto:** Cubrir pilar faltante CAE/costo real
 - **Descripción:** Existe brecha editorial en query/pilar de CAE y costo real del crédito; hoy no hay artículo dedicado.
-- **Evidencia (actualizada):** `BACKLOG_EDITORIAL.md` (ED-009 como TODO), ausencia de pieza pilar en `src/data/blog/` para intención específica de CAE/costo real.
+- **Evidencia (actualizada):** `docs/development/BACKLOG_EDITORIAL.md` (ED-009 como TODO), ausencia de pieza pilar en `src/data/blog/` para intención específica de CAE/costo real.
 - **Impacto:** Cobertura incompleta del cluster de deuda/crédito y menor capacidad de respuesta a intención informativa.
 - **Riesgo:** bajo-medio
 - **Severidad (1-5):** 2
