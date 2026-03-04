@@ -82,4 +82,33 @@ const blog = defineCollection({
       })),
 });
 
-export const collections = { blog };
+export const LAWS_PATH = "src/data/laws";
+
+const LEGAL_AREAS = [
+  "credito-y-deuda",
+  "prevision-y-trabajo",
+  "tributaria",
+  "bancaria-y-financiera",
+  "proteccion-al-consumidor",
+  "privacidad-y-datos",
+] as const;
+
+const laws = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: `./${LAWS_PATH}` }),
+  schema: z.object({
+    numero: z.string().trim().min(1),          // "20.009" | "DL 824"
+    title: z.string().trim().min(1),           // título oficial
+    shortName: z.string().trim().min(1),       // nombre corto para cards
+    area: z.enum(LEGAL_AREAS),
+    effective: z.date(),                       // fecha de entrada en vigor
+    lastAmended: z.date().optional(),          // última modificación oficial
+    bcnUrl: z.string().url(),                  // texto oficial en BCN
+    description: z.string().trim().min(1),    // para meta
+    lastVerified: z.date(),                    // cuándo verificamos el contenido
+    updateTrigger: z.string().trim().min(1),   // qué gatilla actualización
+    relatedArticles: z.array(z.string()).default([]), // slugs de blog relacionados
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { blog, laws };
