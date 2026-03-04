@@ -47,7 +47,7 @@ const { label, items, id = "dropdown", isActive = false } = Astro.props;
   <div
     id={`${id}-menu`}
     role="menu"
-    class="dropdown-menu hidden w-full origin-top flex-col overflow-hidden sm:absolute sm:top-full sm:-left-4 sm:w-64 sm:rounded-xl sm:border sm:border-border sm:bg-background sm:p-2 sm:shadow-lg sm:backdrop-blur-xl"
+    class="dropdown-menu hidden w-full origin-top flex-col overflow-hidden sm:absolute sm:top-full sm:-left-4 sm:w-64 sm:rounded-xl sm:border sm:border-border sm:bg-background sm:p-2 sm:shadow-lg sm:backdrop-blur-xl sm:z-50"
   >
     {items.map(item => (
       <a
