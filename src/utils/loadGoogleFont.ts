@@ -25,28 +25,28 @@ import { resolve } from "path";
 const FONTS_DIR = resolve(process.cwd(), "public/fonts");
 
 interface FontConfig {
-  name:   string;
-  file:   string;   // nombre del archivo en public/fonts/
+  name: string;
+  file: string; // nombre del archivo en public/fonts/
   weight: number;
-  style:  string;
-  googleFamily: string;  // para fallback fetch
+  style: string;
+  googleFamily: string; // para fallback fetch
   googleWeight: number;
 }
 
 const FONTS_CONFIG: FontConfig[] = [
   {
-    name:   "Inter",
-    file:   "inter-latin-400.woff2",
+    name: "Inter",
+    file: "inter-latin-400.woff2",
     weight: 400,
-    style:  "normal",
+    style: "normal",
     googleFamily: "Inter",
     googleWeight: 400,
   },
   {
-    name:   "Inter",
-    file:   "inter-latin-900.woff2",
+    name: "Inter",
+    file: "inter-latin-900.woff2",
     weight: 900,
-    style:  "normal",
+    style: "normal",
     googleFamily: "Inter",
     googleWeight: 900,
   },
@@ -72,9 +72,9 @@ async function fetchFontFromGoogle(
   weight: number,
   text: string
 ): Promise<ArrayBuffer> {
-  console.warn(
+  process.stderr.write(
     `[og-fonts] Fuente no encontrada en disco. Descargando desde Google Fonts: ${family}:${weight}. ` +
-    `Ejecuta "node scripts/download-og-fonts.mjs" para evitar dependencia de red en CI.`
+      'Ejecuta "node scripts/download-og-fonts.mjs" para evitar dependencia de red en CI.\n'
   );
 
   const API = `https://fonts.googleapis.com/css2?family=${family}:wght@${weight}&text=${encodeURIComponent(text)}`;
@@ -90,10 +90,14 @@ async function fetchFontFromGoogle(
   const resource = css.match(
     /src: url\((.+?)\) format\('(opentype|truetype|woff2?)'\)/
   );
-  if (!resource) throw new Error(`[og-fonts] No se pudo parsear CSS de Google Fonts para ${family}:${weight}`);
+  if (!resource)
+    throw new Error(
+      `[og-fonts] No se pudo parsear CSS de Google Fonts para ${family}:${weight}`
+    );
 
   const res = await fetch(resource[1]);
-  if (!res.ok) throw new Error(`[og-fonts] Fetch de fuente falló: ${res.status}`);
+  if (!res.ok)
+    throw new Error(`[og-fonts] Fetch de fuente falló: ${res.status}`);
 
   return res.arrayBuffer();
 }
@@ -102,15 +106,19 @@ async function fetchFontFromGoogle(
 
 async function loadGoogleFonts(
   text: string
-): Promise<Array<{ name: string; data: ArrayBuffer; weight: number; style: string }>> {
+): Promise<
+  Array<{ name: string; data: ArrayBuffer; weight: number; style: string }>
+> {
   const fonts = await Promise.all(
-    FONTS_CONFIG.map(async ({ name, file, weight, style, googleFamily, googleWeight }) => {
-      const data =
-        readFontFromDisk(file) ??
-        (await fetchFontFromGoogle(googleFamily, googleWeight, text));
+    FONTS_CONFIG.map(
+      async ({ name, file, weight, style, googleFamily, googleWeight }) => {
+        const data =
+          readFontFromDisk(file) ??
+          (await fetchFontFromGoogle(googleFamily, googleWeight, text));
 
-      return { name, data, weight, style };
-    })
+        return { name, data, weight, style };
+      }
+    )
   );
 
   return fonts;

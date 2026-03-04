@@ -12,12 +12,36 @@ import { SITE } from "@/config";
 import { getPath } from "@/utils/getPath";
 
 const guiasDropdown: DropdownItem[] = [
-  { href: getPath("/guias/ahorro-e-inversion/"), label: "Ahorro e Inversión", icon: "🌱" },
-  { href: getPath("/guias/deuda-credito/"), label: "Deuda y Crédito", icon: "💳" },
-  { href: getPath("/guias/empleo-ingresos/"), label: "Empleo e Ingresos", icon: "💼" },
-  { href: getPath("/guias/impuestos-personas/"), label: "Impuestos", icon: "📊" },
-  { href: getPath("/guias/pensiones-afp/"), label: "Pensiones y AFP", icon: "👴" },
-  { href: getPath("/guias/seguridad-financiera/"), label: "Seguridad Financiera", icon: "🛡️" }
+  {
+    href: getPath("/guias/ahorro-e-inversion/"),
+    label: "Ahorro e Inversión",
+    icon: "🌱",
+  },
+  {
+    href: getPath("/guias/deuda-credito/"),
+    label: "Deuda y Crédito",
+    icon: "💳",
+  },
+  {
+    href: getPath("/guias/empleo-ingresos/"),
+    label: "Empleo e Ingresos",
+    icon: "💼",
+  },
+  {
+    href: getPath("/guias/impuestos-personas/"),
+    label: "Impuestos",
+    icon: "📊",
+  },
+  {
+    href: getPath("/guias/pensiones-afp/"),
+    label: "Pensiones y AFP",
+    icon: "👴",
+  },
+  {
+    href: getPath("/guias/seguridad-financiera/"),
+    label: "Seguridad Financiera",
+    icon: "🛡️",
+  },
 ];
 
 const { pathname } = Astro.url;
@@ -50,7 +74,7 @@ const isActive = (path: string) => {
 </a>
 
 <header
-  class="app-layout flex flex-col items-center justify-between sm:flex-row relative z-50"
+  class="relative z-50 app-layout flex flex-col items-center justify-between sm:flex-row"
 >
   <div
     id="top-nav-wrap"
@@ -95,7 +119,10 @@ const isActive = (path: string) => {
           <Dropdown
             id="guias-dropdown"
             label="Guías"
-            items={guiasDropdown.map(i => ({ ...i, isActive: isActive(i.href) }))}
+            items={guiasDropdown.map(i => ({
+              ...i,
+              isActive: isActive(i.href),
+            }))}
             isActive={isActive("/guias")}
           />
         </li>
@@ -106,7 +133,7 @@ const isActive = (path: string) => {
             class:list={[
               "block px-4 py-3 text-center sm:px-2 sm:py-1",
               "font-medium transition-colors hover:text-accent",
-              { "active-nav": isActive("/calculadoras") }
+              { "active-nav": isActive("/calculadoras") },
             ]}
           >
             Calculadoras
@@ -118,7 +145,7 @@ const isActive = (path: string) => {
             class:list={[
               "block px-4 py-3 text-center sm:px-2 sm:py-1",
               "font-medium transition-colors hover:text-accent",
-              { "active-nav": isActive("/leyes") }
+              { "active-nav": isActive("/leyes") },
             ]}
           >
             Marco Legal
@@ -130,7 +157,7 @@ const isActive = (path: string) => {
             class:list={[
               "block px-4 py-3 text-center sm:px-2 sm:py-1",
               "font-medium transition-colors hover:text-accent",
-              { "active-nav": isActive("/about") }
+              { "active-nav": isActive("/about") },
             ]}
           >
             Nosotros

@@ -96,7 +96,6 @@ async function run() {
   
   const files = await fs.readdir(BLOG_DIR);
   let totalArticles = 0;
-  let totalSizeOld = 0; // Estimation since old images might not exist or be tracked
   let totalSizeNew = 0;
 
   for (const file of files) {

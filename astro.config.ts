@@ -29,8 +29,7 @@ export default defineConfig({
   base: "/tuplatainforma",
   integrations: [
     sitemap({
-      filter: page =>
-        SITE.showArchives || !page.endsWith("/archives/"),
+      filter: page => SITE.showArchives || !page.endsWith("/archives/"),
       serialize(item) {
         const url = item.url;
 

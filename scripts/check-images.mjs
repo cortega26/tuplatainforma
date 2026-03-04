@@ -8,7 +8,7 @@ const ALLOWED_EXTS = ['.avif', '.webp'];
 async function checkImages() {
   try {
     await fs.stat(IMAGES_DIR);
-  } catch (e) {
+  } catch {
     // Directory might not exist yet, that's fine
     console.log(`[check:images] Directory ${IMAGES_DIR} not found, skipping.`);
     return;

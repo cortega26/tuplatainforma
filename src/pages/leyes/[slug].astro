@@ -22,8 +22,10 @@ const { law } = Astro.props;
 const { Content } = await render(law);
 const d = law.data;
 
-const CANONICAL = new URL(getPath(`/leyes/${law.id}/`), Astro.site ?? Astro.url.origin)
-  .href;
+const CANONICAL = new URL(
+  getPath(`/leyes/${law.id}/`),
+  Astro.site ?? Astro.url.origin
+).href;
 const SITE_URL = (Astro.site ?? new URL(Astro.url.origin)).href.replace(
   /\/$/,
   ""
@@ -226,7 +228,10 @@ const lastVerifiedStr = d.lastVerified.toLocaleDateString("es-CL", {
 
     <!-- NAVEGAR MARCO LEGAL -->
     <div class="mt-8 text-sm">
-      <a href={getPath("/leyes/")} class="text-accent underline-offset-4 hover:underline">
+      <a
+        href={getPath("/leyes/")}
+        class="text-accent underline-offset-4 hover:underline"
+      >
         ← Volver al Marco Legal
       </a>
     </div>

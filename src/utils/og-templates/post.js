@@ -153,44 +153,6 @@ function verticalDivider() {
   };
 }
 
-// ─── CATEGORY PILL ───────────────────────────────────────────────────────────
-
-function categoryPill(label, x, y) {
-  return {
-    type: "div",
-    props: {
-      style: {
-        position: "absolute",
-        bottom: `${H - y}px`,
-        left: `${x}px`,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "rgba(255,255,255,0.12)",
-        borderRadius: "26px",
-        paddingLeft: "32px",
-        paddingRight: "32px",
-        paddingTop: "12px",
-        paddingBottom: "12px",
-      },
-      children: {
-        type: "span",
-        props: {
-          style: {
-            fontFamily: "'Inter', sans-serif",
-            fontSize: 20,
-            fontWeight: 700,
-            color: "#ccfbf1",
-            letterSpacing: "5px",
-            opacity: 0.9,
-          },
-          children: label,
-        },
-      },
-    },
-  };
-}
-
 // ─── SITE WATERMARK ──────────────────────────────────────────────────────────
 
 function siteWatermark() {
