@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import { getPath } from "@/utils/getPath";
 import { SITE } from "@/config";
 
 const AREA_LABELS: Record<string, { label: string; emoji: string }> = {
@@ -110,7 +111,7 @@ const totalLaws = allLaws.length;
                 </p>
                 <h3 class="mb-2 text-base leading-snug font-semibold">
                   <a
-                    href={`/leyes/${law.id}/`}
+                    href={getPath(`/leyes/${law.id}/`)}
                     class="underline-offset-4 transition-colors hover:text-accent hover:underline"
                   >
                     {law.data.shortName}
@@ -121,7 +122,7 @@ const totalLaws = allLaws.length;
                 </p>
                 <div class="flex items-center justify-between text-xs text-muted">
                   <a
-                    href={`/leyes/${law.id}/`}
+                    href={getPath(`/leyes/${law.id}/`)}
                     class="font-medium text-accent underline-offset-4 hover:underline"
                   >
                     Ver ficha →

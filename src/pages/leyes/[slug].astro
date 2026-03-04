@@ -5,6 +5,7 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import { getPath } from "@/utils/getPath";
 import { SITE } from "@/config";
 
 export async function getStaticPaths() {
@@ -21,7 +22,7 @@ const { law } = Astro.props;
 const { Content } = await render(law);
 const d = law.data;
 
-const CANONICAL = new URL(`/leyes/${law.id}/`, Astro.site ?? Astro.url.origin)
+const CANONICAL = new URL(getPath(`/leyes/${law.id}/`), Astro.site ?? Astro.url.origin)
   .href;
 const SITE_URL = (Astro.site ?? new URL(Astro.url.origin)).href.replace(
   /\/$/,
@@ -75,7 +76,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 2,
       name: "Marco Legal",
-      item: `${SITE_URL}/leyes/`,
+      item: `${SITE_URL}${getPath("/leyes/")}`,
     },
     { "@type": "ListItem", position: 3, name: d.shortName, item: CANONICAL },
   ],
@@ -185,7 +186,7 @@ const lastVerifiedStr = d.lastVerified.toLocaleDateString("es-CL", {
             {d.relatedArticles.map(slug => (
               <li>
                 <a
-                  href={`/posts/${slug}/`}
+                  href={getPath(`/posts/${slug}/`)}
                   class="text-accent underline-offset-4 hover:underline"
                 >
                   → {slug.replace(/-/g, " ")}
@@ -225,7 +226,7 @@ const lastVerifiedStr = d.lastVerified.toLocaleDateString("es-CL", {
 
     <!-- NAVEGAR MARCO LEGAL -->
     <div class="mt-8 text-sm">
-      <a href="/leyes/" class="text-accent underline-offset-4 hover:underline">
+      <a href={getPath("/leyes/")} class="text-accent underline-offset-4 hover:underline">
         ← Volver al Marco Legal
       </a>
     </div>
