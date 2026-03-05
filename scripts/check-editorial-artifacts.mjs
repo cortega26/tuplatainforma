@@ -588,6 +588,12 @@ function run() {
   );
 
   if (!STRICT_MODE) {
+    if (process.argv.includes("--ci") || process.env.CI) {
+      console.error(
+        "[check-editorial-artifacts] FAIL: CI environments must export EDITORIAL_ENFORCE=1. YMYL compliance cannot be bypassed."
+      );
+      process.exit(1);
+    }
     console.log(
       "[check-editorial-artifacts] WARN: Gate in warn-only mode. Set EDITORIAL_ENFORCE=1 to fail on violations."
     );

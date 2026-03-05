@@ -341,36 +341,7 @@ function loadValidGuideClusters(guidesDir) {
     .filter(Boolean);
 }
 
-function loadExplicitClustersFromModuleIndex(moduleIndexPath) {
-  if (!existsSync(moduleIndexPath)) return [];
 
-  const source = readFileSync(moduleIndexPath, "utf8");
-  const lines = source.split(/\r?\n/);
-  const clusters = new Set();
-  let inClusterSection = false;
-
-  for (const line of lines) {
-    if (/^##+\s+/.test(line)) {
-      inClusterSection = /\bclusters?\b/i.test(line);
-      continue;
-    }
-
-    if (inClusterSection) {
-      for (const token of extractKebabTokens(line)) {
-        clusters.add(normalizeClusterName(token));
-      }
-    }
-
-    const inlineDeclaration = line.match(/\bclusters?\s*:\s*(.+)$/i);
-    if (inlineDeclaration?.[1]) {
-      for (const token of extractKebabTokens(inlineDeclaration[1])) {
-        clusters.add(normalizeClusterName(token));
-      }
-    }
-  }
-
-  return [...clusters];
-}
 
 function extractPostSlugFromLinkTarget(target) {
   if (!target) return "";
@@ -459,14 +430,29 @@ const skippedInternalLinks = [];
 const clusterMissing = [];
 const clusterInvalid = [];
 const clusterLinkWarnings = [];
+const deadInternalLinks = [];
 let clusterWithValueTotal = 0;
 const normalizedMetaMap = new Map();
 const normalizedTitleMap = new Map();
 const normalizedSlugMap = new Map();
 const articleRecords = [];
+const CLUSTERS_TS_PATH = path.join(REPO_ROOT, "src", "config", "clusters.ts");
+const clustersSource = readFileSync(CLUSTERS_TS_PATH, "utf8");
+const clustersMatch = clustersSource.match(/export const CLUSTERS = \[\s*([\s\S]*?)\s*\]/);
+const validClusterArray = clustersMatch[1]
+  .split(',')
+  .map(s => s.trim().replace(/^["']|["']$/g, ''))
+  .filter(Boolean);
+
+const validClusterSet = new Set(validClusterArray);
 const folderClusters = loadValidGuideClusters(GUIDES_DIR);
-const moduleIndexClusters = loadExplicitClustersFromModuleIndex(MODULE_INDEX_PATH);
-const validClusterSet = new Set([...folderClusters, ...moduleIndexClusters]);
+
+for (const folder of folderClusters) {
+  if (!validClusterSet.has(folder)) {
+    console.error(`[check-editorial-structure] FAIL. Physical cluster folder present in src/pages/guias/${folder} is not registered in src/config/clusters.ts.`);
+    process.exit(1);
+  }
+}
 
 if (validClusterSet.size === 0) {
   console.error(
@@ -650,6 +636,18 @@ for (const filePath of files) {
         count: internalLinksCount,
       });
     }
+
+    const linkTargets = extractInternalMarkdownLinkTargets(body, SITE_HOSTNAME);
+    for (const target of linkTargets) {
+      const targetSlug = extractPostSlugFromLinkTarget(target);
+      if (targetSlug && !normalizedSlugMap.has(targetSlug)) {
+        deadInternalLinks.push({ file: relative, target, slug: targetSlug });
+        structureIssues.push({
+          file: relative,
+          message: `Internal link targets dead post: [${target}] => slug "${targetSlug}" not found.`,
+        });
+      }
+    }
   }
 
   articleRecords.push({
@@ -707,6 +705,7 @@ const duplicateSlugs = [...normalizedSlugMap.entries()]
 const titleSlugWarningTotal = titleSlugWarnings.length;
 const internalLinksWarningTotal = internalLinksWarnings.length;
 const skippedInternalLinksTotal = skippedInternalLinks.length;
+const deadInternalLinksTotal = deadInternalLinks.length;
 const clusterMissingTotal = clusterMissing.length;
 const clusterInvalidTotal = clusterInvalid.length;
 const clusterLinkWarningTotal = clusterLinkWarnings.length;
@@ -721,7 +720,8 @@ const hasFailures =
   metaLongFail.length > 0 ||
   metaDuplicates.length > 0 ||
   duplicateTitles.length > 0 ||
-  duplicateSlugs.length > 0;
+  duplicateSlugs.length > 0 ||
+  deadInternalLinksTotal > 0;
 
 if (metaLongWarning.length > 0) {
   console.warn(
@@ -785,7 +785,7 @@ if (
 
 if (hasFailures) {
   console.error(
-    `[check-editorial-structure] FAIL. validated=${files.length} cluster_with_value=${clusterWithValueTotal} cluster_coverage_pct=${clusterCoveragePct} cluster_missing=${clusterMissingTotal} cluster_invalid=${clusterInvalidTotal} cluster_link_warning=${clusterLinkWarningTotal} title_missing=${titleMissing.length} title_meaningless=${titleMeaningless.length} markdown_h1_present=${markdownH1Present.length} title_slug_warning=${titleSlugWarningTotal} internal_links_warning=${internalLinksWarningTotal} skipped_internal_links=${skippedInternalLinksTotal} duplicate_titles=${duplicateTitles.length} duplicate_slugs=${duplicateSlugs.length} missing=${metaMissing.length} short=${metaShort.length} long_fail=${metaLongFail.length} long_warning=${metaLongWarning.length} duplicates=${metaDuplicates.length}`
+    `[check-editorial-structure] FAIL. validated=${files.length} dead_links=${deadInternalLinksTotal} cluster_with_value=${clusterWithValueTotal} cluster_coverage_pct=${clusterCoveragePct} cluster_missing=${clusterMissingTotal} cluster_invalid=${clusterInvalidTotal} cluster_link_warning=${clusterLinkWarningTotal} title_missing=${titleMissing.length} title_meaningless=${titleMeaningless.length} markdown_h1_present=${markdownH1Present.length} title_slug_warning=${titleSlugWarningTotal} internal_links_warning=${internalLinksWarningTotal} skipped_internal_links=${skippedInternalLinksTotal} duplicate_titles=${duplicateTitles.length} duplicate_slugs=${duplicateSlugs.length} missing=${metaMissing.length} short=${metaShort.length} long_fail=${metaLongFail.length} long_warning=${metaLongWarning.length} duplicates=${metaDuplicates.length}`
   );
 
   for (const issue of structureIssues) {

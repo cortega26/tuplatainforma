@@ -2,6 +2,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import yaml from "js-yaml";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,15 +29,15 @@ const ALLOWED_CATEGORIES = new Set([
   "general",
 ]);
 
-const ALLOWED_CLUSTERS = new Set([
-  "ahorro-e-inversion",
-  "impuestos-personas",
-  "pensiones-afp",
-  "deuda-credito",
-  "seguridad-financiera",
-  "empleo-ingresos",
-  "general",
-]);
+const CLUSTERS_TS_PATH = path.join(REPO_ROOT, "src", "config", "clusters.ts");
+const clustersSource = readFileSync(CLUSTERS_TS_PATH, "utf8");
+const clustersMatch = clustersSource.match(/export const CLUSTERS = \[\s*([\s\S]*?)\s*\]/);
+const ALLOWED_CLUSTERS = new Set(
+  clustersMatch[1]
+    .split(",")
+    .map(s => s.trim().replace(/^["']|["']$/g, ""))
+    .filter(Boolean)
+);
 
 const REQUIRED_LANG = "es-CL";
 
@@ -65,78 +66,7 @@ function extractFrontmatter(filePath) {
   return match ? match[1] : null;
 }
 
-function stripQuotes(value) {
-  return value.replace(/^['"]|['"]$/g, "");
-}
 
-function parseInlineArray(rawValue) {
-  const trimmed = rawValue.trim();
-  if (!trimmed.startsWith("[") || !trimmed.endsWith("]")) return null;
-  const inside = trimmed.slice(1, -1).trim();
-  if (!inside) return [];
-  return inside
-    .split(",")
-    .map(item => stripQuotes(item.trim()))
-    .filter(Boolean);
-}
-
-function parseScalar(rawValue) {
-  const value = rawValue.trim();
-  if (value === "true") return true;
-  if (value === "false") return false;
-  if (value === "null") return null;
-  const inlineArray = parseInlineArray(value);
-  if (inlineArray) return inlineArray;
-  return stripQuotes(value);
-}
-
-function parseFrontmatterBlock(block) {
-  const lines = block.split(/\r?\n/);
-  const parsed = {};
-
-  for (let i = 0; i < lines.length; i += 1) {
-    const line = lines[i];
-    if (!line.trim() || line.trim().startsWith("#")) continue;
-    if (/^\s/.test(line)) continue;
-
-    const separatorIndex = line.indexOf(":");
-    if (separatorIndex < 0) continue;
-
-    const key = line.slice(0, separatorIndex).trim();
-    const rawValue = line.slice(separatorIndex + 1).trim();
-
-    if (rawValue.length > 0) {
-      parsed[key] = parseScalar(rawValue);
-      continue;
-    }
-
-    const listValues = [];
-    let cursor = i + 1;
-    while (cursor < lines.length) {
-      const child = lines[cursor];
-      if (/^\s*-\s+/.test(child)) {
-        listValues.push(stripQuotes(child.replace(/^\s*-\s+/, "").trim()));
-        cursor += 1;
-        continue;
-      }
-      if (/^\s+$/.test(child) || child.trim() === "") {
-        cursor += 1;
-        continue;
-      }
-      break;
-    }
-
-    if (listValues.length > 0) {
-      parsed[key] = listValues;
-      i = cursor - 1;
-      continue;
-    }
-
-    parsed[key] = "";
-  }
-
-  return parsed;
-}
 
 function parseDate(value) {
   if (value instanceof Date) return value;
@@ -193,7 +123,14 @@ for (const filePath of files) {
     continue;
   }
 
-  const frontmatter = parseFrontmatterBlock(frontmatterBlock);
+  let frontmatter;
+  try {
+    const parsed = yaml.load(frontmatterBlock, { schema: yaml.JSON_SCHEMA }) || {};
+    frontmatter = typeof parsed === "object" ? parsed : {};
+  } catch (err) {
+    pushIssue(errors, relativeFilePath, `Invalid YAML format: ${err.message}`);
+    continue;
+  }
   for (const deprecatedField of DEPRECATED_FIELDS) {
     if (deprecatedField in frontmatter) {
       deprecationCounters.set(
@@ -224,7 +161,7 @@ for (const filePath of files) {
   }
 
   const explicitSlug =
-    typeof frontmatter.slug === "string" ? frontmatter.slug.trim() : "";
+    typeof frontmatter.slug === "string" ? frontmatter.slug.trim().toLowerCase() : "";
   const slug = explicitSlug;
   if (!explicitSlug) {
     defaultCounters.set(

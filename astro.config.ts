@@ -29,6 +29,7 @@ const SITE_BASE = "/tuplatainforma";
 export default defineConfig({
   site: SITE.website,
   base: SITE_BASE,
+  trailingSlash: "always",
   integrations: [
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives/"),

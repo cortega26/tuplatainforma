@@ -2,7 +2,7 @@
 
 Last updated: 2026-03-04\
 Status: Active\
-Version: 3.0 — reemplaza v2.x
+Version: 3.1 — agrega Sección 12: Prompt Engineering anti-AI
 
 ---
 
@@ -19,6 +19,7 @@ Version: 3.0 — reemplaza v2.x
 9. [Estructura de archivos](#9-estructura-de-archivos)
 10. [Validación y CI/CD](#10-validación-y-cicd)
 11. [Casos límite y resolución](#11-casos-límite-y-resolución)
+12. [Prompt Engineering anti-AI](#12-prompt-engineering-anti-ai)
 
 ---
 
@@ -469,3 +470,200 @@ Integrado en `check` y `build` en `package.json`. Si una imagen infringe las reg
 | Template C: el dato es demasiado largo | Si no cabe en ≤6 caracteres de forma legible, usar Template B. |
 | Safe area 1.91:1 vs crop 16:9 | Diseñar en 1200×630. Elementos clave dentro de 1134×596. Verificar en ambos ratios antes de publicar. |
 | Personaje con rostro necesario para la escena | Abstraer a silueta o vista de espalda. Si es imprescindible, forma geométrica simple sin rasgos. |
+
+---
+
+## 12. Prompt Engineering anti-AI
+
+Esta sección traduce las reglas visuales del sistema a instrucciones de prompt concretas para generadores de imagen (Midjourney, Firefly, DALL-E, Ideogram, etc.). El objetivo es producir imágenes que cumplan el sistema visual de tuplatainforma y que **no activen el reconocimiento de "imagen IA"** en el lector.
+
+---
+
+### 12.1 Por qué las imágenes parecen IA — y cómo evitarlo
+
+El lector moderno reconoce las imágenes IA por marcadores específicos, no por la imagen completa. Eliminar esos marcadores es suficiente para cambiar la percepción.
+
+| Marcador IA más reconocido | Por qué ocurre | Cómo neutralizarlo en el prompt |
+|---------------------------|----------------|----------------------------------|
+| Iluminación volumétrica / rim light / god rays | El modelo por defecto dramatiza la luz | Pedir explícitamente `flat lighting`, `no shadows`, `uniform illumination` |
+| Piel o cabello hiperrealistas | El modelo optimiza para fotorrealismo | Pedir `geometric shapes only`, `no skin texture`, `vector-style characters` |
+| Profundidad de campo y bokeh | Estética fotográfica que los modelos emulan | `flat composition`, `no depth of field`, `no blur` |
+| Objetos imposibles o deformados | Falla del modelo en geometría compleja | Limitar objetos a 3–4 máximo, simples y reconocibles |
+| Colores saturados y gradientes complejos | El modelo maximiza impacto visual por defecto | Especificar paleta hex exacta, `solid color background`, `no gradients` |
+| Tipografía generada (letras incorrectas) | Debilidad estructural de los modelos | Nunca pedir texto en la imagen; añadirlo en post-proceso |
+| Composición "cinematográfica" | El modelo interpreta "buena imagen" como cine | `flat design`, `editorial illustration`, `2D graphic` |
+
+---
+
+### 12.2 Estructura base del prompt
+
+Todo prompt para tuplatainforma sigue esta estructura de cuatro bloques. El orden importa.
+
+```
+[ESTILO] + [ESCENA o ELEMENTO] + [PALETA] + [NEGATIVOS]
+```
+
+**Bloque ESTILO** — establece el registro visual y bloquea los defaults del modelo:
+```
+flat vector illustration, editorial graphic design, 2D geometric shapes,
+minimal detail, no gradients, no photorealism, no 3D rendering
+```
+
+**Bloque ESCENA / ELEMENTO** — describe el contenido (ver plantillas por template en 12.4):
+```
+[descripción concreta de personaje/ícono/composición]
+```
+
+**Bloque PALETA** — especifica colores para evitar las decisiones automáticas del modelo:
+```
+solid background color [HEX], limited palette of 3 colors maximum,
+flat color fills, no shadows, no highlights
+```
+
+**Bloque NEGATIVOS** (negative prompt o al final del prompt con `--no`):
+```
+no photorealistic skin, no hair texture, no facial features, no bokeh,
+no depth of field, no cinematic lighting, no rim light, no god rays,
+no lens flare, no gradient, no glow, no neon, no 3D, no realistic shadows,
+no text, no letters, no typography, no watermark, no logo
+```
+
+---
+
+### 12.3 Negativos permanentes — copiar siempre
+
+Este bloque se incluye en **todos los prompts** sin excepción. Es el núcleo del sistema anti-AI.
+
+```
+NEGATIVE PROMPT (copiar íntegro):
+
+photorealistic, hyperrealistic, 3D render, CGI, bokeh, depth of field,
+cinematic lighting, volumetric light, rim light, god rays, lens flare,
+gradient background, glowing effects, neon colors, golden coins, crypto aesthetic,
+skin texture, hair texture, facial features, detailed anatomy, realistic hands,
+muscle definition, wrinkles, pores, subsurface scattering,
+drop shadow, long shadow, complex shadow, ambient occlusion,
+text, letters, numbers, typography, watermark, signature, logo,
+busy composition, multiple scenes, collage, photo manipulation,
+stock photo aesthetic, corporate clipart, emoji style, cartoon network style,
+oil painting, watercolor, sketch, pencil drawing, anime, manga
+```
+
+---
+
+### 12.4 Plantillas de prompt por template
+
+#### Template A — Scene Illustration
+
+```
+flat vector illustration, editorial style, geometric characters,
+[descripción de la escena: 1 figura + 2-3 objetos],
+figure shown from behind / as silhouette / without face,
+[objetos: nombre simple separados por coma],
+solid background color [HEX de la categoría],
+2D flat design, uniform lighting, limited palette,
+clean composition, centered safe area,
+1200x630 pixels aspect ratio
+
+NEGATIVE: [negativos permanentes de 12.3]
+```
+
+**Ejemplo — artículo sobre presupuesto familiar:**
+```
+flat vector illustration, editorial style, geometric human figure seated at table,
+figure shown from behind, simple round head shape no facial features,
+table with calculator, papers, and coffee cup, all flat geometric shapes,
+solid background color #0d9488, 2D flat design, uniform lighting,
+3 color palette maximum, clean composition, 1200x630 aspect ratio
+
+NEGATIVE: photorealistic, hyperrealistic, 3D render, bokeh, cinematic lighting,
+skin texture, hair texture, facial features, text, letters, gradient background,
+neon, glow, drop shadow, complex shadow, stock photo
+```
+
+---
+
+#### Template B — Icon Focus
+
+```
+flat vector icon, single centered graphic element,
+[nombre del ícono / objeto] as geometric vector shape,
+solid background [HEX], icon at 40% of image width,
+2D flat design, stroke lines only OR solid fill only (not both),
+no background elements, minimal composition,
+1200x630 aspect ratio
+
+NEGATIVE: [negativos permanentes de 12.3]
+```
+
+**Ejemplo — artículo sobre AFP:**
+```
+flat vector icon, hourglass as simple geometric shape,
+centered on solid background #0d9488, icon occupies 40% of width,
+2D flat design, white stroke lines, no fill, clean minimal composition,
+1200x630 aspect ratio
+
+NEGATIVE: photorealistic, 3D render, shadow, glow, gradient,
+text, letters, realistic textures, cinematic lighting
+```
+
+---
+
+#### Template C — Type + Icon
+
+> ⚠️ No pedir texto al modelo. Generar solo el fondo + ícono secundario. El texto se agrega en post-proceso con Figma, Canva o equivalente usando las especificaciones de sección 7.
+
+```
+flat vector background composition,
+small [nombre del ícono] icon in bottom right corner,
+solid background [HEX], minimal 2D graphic,
+left two-thirds of image empty (reserved for text overlay),
+icon at 15% of image width, flat vector style,
+1200x630 aspect ratio
+
+NEGATIVE: [negativos permanentes de 12.3]
+```
+
+---
+
+#### Templates D y E — Fotografía
+
+Para los templates que usan fotografía real, no se genera con IA. Se busca en bancos de imágenes bajo licencia (Unsplash, Pexels, Adobe Stock). El duotono y la desaturación se aplican en post-proceso.
+
+Criterios de búsqueda para fotografía:
+- Sin personas con rostro en primer plano
+- Sin logos ni marcas reconocibles
+- Sin estética "stock photo" obvia (poses forzadas, fondo blanco)
+- Preferir: manos sosteniendo objetos, espacios de trabajo vistos desde arriba, objetos sobre superficies texturadas
+
+---
+
+### 12.5 Ajustes por generador
+
+Cada herramienta tiene comportamientos por defecto distintos. Estos ajustes complementan el prompt base.
+
+| Generador | Ajuste adicional | Nota |
+|-----------|-----------------|------|
+| Midjourney | Agregar `--style raw` y `--stylize 50` | `raw` reduce la "mejora" automática. Stylize bajo = menos drama visual |
+| DALL-E 3 | Incluir en el prompt: `"do not add photorealistic details, maintain flat 2D style throughout"` | El modelo tiende a agregar realismo sin pedirlo |
+| Adobe Firefly | Seleccionar estilo "Flat Graphic" o "Vector Look" en la interfaz antes de generar | El selector de estilo es más efectivo que el prompt para Firefly |
+| Ideogram | Usar `--style illustration` | Buen control de estilo plano. Agregar `--palette [hex]` si está disponible |
+| Stable Diffusion | Usar modelo "juggernaut-xl" o "dreamshaper" con LoRA flat-design | Los modelos base de SD tienden al fotorrealismo |
+
+---
+
+### 12.6 Checklist de verificación antes de publicar
+
+Antes de usar cualquier imagen generada, verificar:
+
+- [ ] Sin rostros visibles ni expresiones faciales
+- [ ] Sin texturas de piel, cabello o tela realista
+- [ ] Sin iluminación volumétrica, rim light o bokeh
+- [ ] Sin gradientes en el fondo (el fondo es color sólido)
+- [ ] Sin texto generado en la imagen
+- [ ] Sin objetos deformados o anatómicamente incorrectos
+- [ ] Paleta de 3 colores máximo, todos dentro del sistema
+- [ ] La escena completa es legible en crop 16:9 (safe area 1134×596)
+- [ ] Tamaño del archivo ≤ 80 KB tras exportar en .avif
+
+Si algún punto falla: regenerar o ajustar el prompt. No corregir en post-proceso elementos que indican estética IA — la corrección parcial sigue siendo detectable.

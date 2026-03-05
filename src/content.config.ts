@@ -1,6 +1,7 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 import { SITE } from "@/config";
+import { CLUSTERS } from "./config/clusters";
 
 export const BLOG_PATH = "src/data/blog";
 
@@ -8,16 +9,6 @@ const CATEGORIES = [
   "ahorro-inversion",
   "impuestos",
   "prevision",
-  "deuda-credito",
-  "seguridad-financiera",
-  "empleo-ingresos",
-  "general",
-] as const;
-
-const CLUSTERS = [
-  "ahorro-e-inversion",
-  "impuestos-personas",
-  "pensiones-afp",
   "deuda-credito",
   "seguridad-financiera",
   "empleo-ingresos",

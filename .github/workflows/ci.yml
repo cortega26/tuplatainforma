@@ -71,6 +71,8 @@ jobs:
 
       - name: "✍️ Check editorial invariants"
         run: pnpm run check:editorial
+        env:
+          EDITORIAL_ENFORCE: "1"
 
       - name: "🚫 Guard against post.id URL regressions"
         run: pnpm run check:no-postid-urls

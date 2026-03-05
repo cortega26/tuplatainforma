@@ -28,12 +28,12 @@ function normalizeSlug(entry: BlogEntry): {
 } {
   const explicitSlug = entry.data.slug?.trim();
   if (explicitSlug) {
-    return { slug: explicitSlug, slugSource: "frontmatter" };
+    return { slug: explicitSlug.toLowerCase(), slugSource: "frontmatter" };
   }
 
   // Legacy fallback: derive slug from content entry id.
   const derivedSlug = entry.id.split("/").at(-1) ?? entry.id;
-  return { slug: derivedSlug, slugSource: "derived" };
+  return { slug: derivedSlug.toLowerCase(), slugSource: "derived" };
 }
 
 function normalizeDate(input: unknown): Date | null {
