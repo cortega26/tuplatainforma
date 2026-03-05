@@ -164,10 +164,6 @@ for (const filePath of files) {
     typeof frontmatter.slug === "string" ? frontmatter.slug.trim().toLowerCase() : "";
   const slug = explicitSlug;
   if (!explicitSlug) {
-    defaultCounters.set(
-      "slug_missing",
-      (defaultCounters.get("slug_missing") ?? 0) + 1
-    );
     pushIssue(
       errors,
       relativeFilePath,
