@@ -247,7 +247,10 @@ function normalizeTitleKey(value) {
   return value.trim().replace(/\s+/g, " ").toLowerCase();
 }
 
-function normalizeSlugKey(filePath) {
+function normalizeSlugKey(filePath, explicitSlug) {
+  if (typeof explicitSlug === "string" && explicitSlug.trim()) {
+    return explicitSlug.trim().toLowerCase();
+  }
   return path
     .basename(filePath, path.extname(filePath))
     .trim()
@@ -511,7 +514,8 @@ for (const filePath of files) {
     }
   }
 
-  const normalizedSlugKey = normalizeSlugKey(relative);
+  const explicitSlug = extractField(frontmatter, "slug");
+  const normalizedSlugKey = normalizeSlugKey(relative, explicitSlug);
   normalizedSlugMap.set(normalizedSlugKey, [
     ...(normalizedSlugMap.get(normalizedSlugKey) ?? []),
     relative,
@@ -637,17 +641,6 @@ for (const filePath of files) {
       });
     }
 
-    const linkTargets = extractInternalMarkdownLinkTargets(body, SITE_HOSTNAME);
-    for (const target of linkTargets) {
-      const targetSlug = extractPostSlugFromLinkTarget(target);
-      if (targetSlug && !normalizedSlugMap.has(targetSlug)) {
-        deadInternalLinks.push({ file: relative, target, slug: targetSlug });
-        structureIssues.push({
-          file: relative,
-          message: `Internal link targets dead post: [${target}] => slug "${targetSlug}" not found.`,
-        });
-      }
-    }
   }
 
   articleRecords.push({
@@ -657,6 +650,20 @@ for (const filePath of files) {
     hasValidCluster,
     body,
   });
+}
+
+for (const article of articleRecords) {
+  const linkTargets = extractInternalMarkdownLinkTargets(article.body, SITE_HOSTNAME);
+  for (const target of linkTargets) {
+    const targetSlug = extractPostSlugFromLinkTarget(target);
+    if (targetSlug && !normalizedSlugMap.has(targetSlug)) {
+      deadInternalLinks.push({ file: article.file, target, slug: targetSlug });
+      structureIssues.push({
+        file: article.file,
+        message: `Internal link targets dead post: [${target}] => slug "${targetSlug}" not found.`,
+      });
+    }
+  }
 }
 
 const clusterBySlug = new Map();
