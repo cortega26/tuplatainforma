@@ -1,6 +1,6 @@
 ---
 title: "¿Cuánto descuenta la AFP de tu sueldo y para qué sirve ese dinero?"
-author: "Equipo TuPlataInforma"
+author: "Equipo Monedario"
 pubDate: 2026-02-23T10:00:00Z
 updatedDate: 2026-03-02T19:30:00Z
 slug: cuanto-descuenta-la-afp-de-tu-sueldo

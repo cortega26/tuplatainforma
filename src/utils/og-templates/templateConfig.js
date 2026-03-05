@@ -1,6 +1,6 @@
 /**
  * templateConfig.js
- * Sistema visual v3 — tuplatainforma
+ * Sistema visual v3 — monedario
  *
  * Fuente de verdad para: paleta semántica, íconos narrativos,
  * datos ancla (Template C) y label de categoría.

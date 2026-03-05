@@ -2,7 +2,7 @@
 title: "CAE de un crédito: qué es, cómo se calcula y por qué la tasa sola engaña"
 description: "Guía práctica para entender la Carga Anual Equivalente (CAE) en Chile, cómo se relaciona con la TMC, qué incluye el costo real de un crédito y cómo leerlo antes de firmar."
 slug: cae-costo-real-credito-chile
-author: "Equipo TuPlataInforma"
+author: "Equipo Monedario"
 pubDate: 2026-03-02T19:00:00Z
 updatedDate: 2026-03-04T12:00:00Z
 tags:

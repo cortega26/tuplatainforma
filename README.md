@@ -1,4 +1,4 @@
-# Tu Plata Informa
+# Monedario
 
 Proyecto educativo de finanzas personales para Chile. Su objetivo es explicar, con lenguaje claro y sin letra chica, temas como AFP, APV, impuestos, inversiones y herramientas prácticas (calculadoras) para que cualquier persona pueda comprender y tomar mejores decisiones con su dinero.
 
@@ -6,7 +6,7 @@ Este sitio es 100% educativo: no solicita datos personales, no ofrece asesoría 
 
 ## Sitio en producción
 
-- URL: https://cortega26.github.io/tuplatainforma/
+- URL: https://monedario.cl/
 
 ## Tecnologías principales
 
@@ -52,7 +52,7 @@ Requisitos: Node 20
 
 Notas:
 
-- El proyecto utiliza una base de despliegue en subdirectorio (/tuplatainforma). Para evitar enlaces rotos, los componentes generan URLs usando import.meta.env.BASE_URL normalizada con barra final.
+- El proyecto usa dominio raíz (`/`) en producción. Para evitar enlaces rotos, los componentes generan URLs usando `import.meta.env.BASE_URL` normalizada con barra final.
 - La generación de páginas de artículos se basa en contenido Markdown dentro de src/data/blog.
 
 ## Editorial Artifact Gate (Phase 1)
@@ -72,8 +72,8 @@ El repositorio incluye un workflow (.github/workflows/deploy.yml) que:
 
 Asegúrate de que:
 
-- La configuración de Astro (astro.config.ts) mantiene base: "/tuplatainforma"
-- La constante SITE.website en src/config.ts apunta a la URL pública con el subpath
+- La configuración de Astro (`astro.config.ts`) deriva `base` desde `SITE.website` y debe permanecer alineada con el dominio público.
+- La constante `SITE.website` en `src/config.ts` debe apuntar a `https://monedario.cl/`
 
 ## Economic Data Governance & Fallback Strategy
 

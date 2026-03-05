@@ -33,6 +33,8 @@ Change log:
 - 2026-03-02: added formal inter-cluster linking contract (hub/intra/inter types, causal heuristics, anti-stuffing limits).
 - 2026-03-02: added CONTRACT.YMYL_RESPONSE_STRUCTURE (respuesta rápida, vigencia temporal y separación de reforma/aplicación).
 - 2026-03-03: added editorial AI artifact contracts (`CONTRACT.EDITORIAL.*`) for quality-first YMYL pipeline enforcement.
+- 2026-03-05: added hero image pipeline contract for deterministic prompt generation and published-asset enforcement.
+- 2026-03-05: hardened hero image pipeline contract to require article-reading-based semantic selection.
 
 ## 2. Contracts
 
@@ -201,6 +203,33 @@ Change log:
 - Enforcement:
   - `pnpm run check:editorial-structure`
   - `pnpm run check:editorial` (aggregated gate)
+
+### `CONTRACT.EDITORIAL.HERO_IMAGE_PIPELINE`
+
+- Scope: Deterministic hero-image prompt derivation, optional generation, and publication-time asset validation for `src/data/blog/**/*.md(x)`.
+- Source of truth:
+  - Pipeline scripts: `scripts/hero-images/*`
+  - Guard gate: `scripts/check-hero-images.mjs`
+  - Policy/spec: `context/EDITORIAL_IMAGE_SYSTEM.md`
+- Baseline expectations:
+  - Publishable criterion: `draft !== true`.
+  - Every publishable article must expose a resolvable `heroImage` value.
+  - Canonical public hero asset must exist by slug at `public/images/hero/<slug>.avif|.webp`.
+  - Prompt derivation is deterministic from manifest input (stable sort + stable heuristics + `promptHash`).
+  - Image selection is mandatory from article reading, not metadata-only matching.
+  - Each prompt entry must preserve a situation-level mapping between article text and selected template/scene/icon.
+  - The final visual choice must remain inside the controlled scene system defined by `context/EDITORIAL_IMAGE_SYSTEM.md`.
+  - Generation is optional and key-gated; CI standard mode must not require API secrets.
+- Backward-compat expectations:
+  - Legacy `heroImage` path styles may coexist during migration, provided canonical public assets exist.
+  - Hardening to public-only path mode requires explicit policy update.
+  - Semantic selection may start from metadata heuristics, but publication requires text-backed confirmation.
+- Enforcement:
+  - `node scripts/hero-images/scan-articles.mjs`
+  - `node scripts/hero-images/build-prompts.mjs`
+  - `node scripts/check-hero-prompts.mjs`
+  - `node scripts/check-hero-images.mjs`
+  - Artifact/manual review for final text-to-scene quality until deeper semantic checks are automated
 
 ### `CONTRACT.EDITORIAL.INTERNAL_LINKING`
 

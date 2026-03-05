@@ -1,6 +1,6 @@
 ---
 title: "UF en simple: qué es, por qué sube todos los días y cómo te afecta"
-author: "Equipo TuPlataInforma"
+author: "Equipo Monedario"
 pubDate: 2026-02-24T12:00:00Z
 updatedDate: 2026-03-04T12:00:00Z
 slug: que-es-la-uf

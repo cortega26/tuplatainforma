@@ -1,6 +1,6 @@
 ---
 name: "✨ Feature Request"
-about: Suggest an idea for improving Tu Plata Informa
+about: Suggest an idea for improving Monedario
 title: "[Feature Request]: "
 labels: enhancement
 assignees: ""

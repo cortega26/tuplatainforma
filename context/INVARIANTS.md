@@ -35,6 +35,8 @@ Change log:
 - 2026-03-02: added cluster-awareness invariants (declared cluster, valid cluster registry, intra-cluster linking warning).
 - 2026-03-02: formalized inter-cluster linking policy invariants (hub required, intra-cluster min-1 alias, inter-cluster max-per-edit) with human-enforced review boundaries.
 - 2026-03-03: added editorial AI pipeline invariants (cut-off date, source traceability, separation of duties, math/compliance mandatory triggers).
+- 2026-03-05: added hero-image publication invariant (published article requires resolvable hero image + canonical public asset).
+- 2026-03-05: added hero-image semantic selection invariant (image choice must derive from article reading, not metadata-only matching).
 
 ## 2. Invariant Index
 
@@ -68,6 +70,8 @@ Change log:
 | `INVARIANT.EDITORIAL.LINKING.INTER_CLUSTER_MAX_2_PER_EDIT` | Inter-cluster links added in one edit should not exceed 2 per article | Active (manual) | PR review + `pnpm run check:editorial` |
 | `INVARIANT.EDITORIAL.NO_DUPLICATE_TITLES` | Duplicate frontmatter titles are forbidden | Active | `pnpm run check:editorial-structure` |
 | `INVARIANT.EDITORIAL.NO_DUPLICATE_SLUGS` | Duplicate filename-derived slugs are forbidden | Active | `pnpm run check:editorial-structure` |
+| `INVARIANT.EDITORIAL.HERO_IMAGE_PUBLISHED_REQUIRED` | Published article must have resolvable hero image and canonical public hero asset | Active | `node scripts/check-hero-images.mjs` |
+| `INVARIANT.EDITORIAL.HERO_IMAGE_TEXT_MATCH_REQUIRED` | Hero image selection must derive from article text and preserve situation-level match | Active | `node scripts/check-hero-prompts.mjs` + artifact review |
 
 ## 3. Invariants
 
@@ -378,6 +382,40 @@ Change log:
 - Examples:
   - Compliant: unique filename-derived slug per article.
   - Violation: two files derive the same slug.
+
+### `INVARIANT.EDITORIAL.HERO_IMAGE_PUBLISHED_REQUIRED`
+
+- Statement: Every published article (`draft !== true`) must define a resolvable `heroImage` and have a canonical public hero asset in `public/images/hero/<slug>.avif|.webp`.
+- Canonical source: `scripts/check-hero-images.mjs`, `context/EDITORIAL_IMAGE_SYSTEM.md`.
+- Rationale:
+  - Avoids published entries without visual identity.
+  - Guarantees deterministic social/card rendering availability.
+  - Keeps image contract auditable and CI-enforced.
+- Enforcement: `node scripts/check-hero-images.mjs`.
+- Detection:
+  - Blocking condition: missing/invalid `heroImage` in published article frontmatter.
+  - Blocking condition: missing canonical public asset by slug.
+  - Blocking condition: unsupported extension or file size budget violation.
+- Examples:
+  - Compliant: publishable article with valid `heroImage` and existing `public/images/hero/<slug>.avif`.
+  - Violation: publishable article with missing hero image or missing canonical public asset.
+
+### `INVARIANT.EDITORIAL.HERO_IMAGE_TEXT_MATCH_REQUIRED`
+
+- Statement: Every new or refreshed hero image must be chosen from a reading of the article text and must match the reader situation described by the article, not only its metadata.
+- Canonical source: `context/EDITORIAL_IMAGE_SYSTEM.md` (v3.3, Section 13.4).
+- Rationale:
+  - Improves editorial relevance beyond topic-level tagging.
+  - Prevents generic or misleading finance imagery.
+  - Preserves visual consistency through a controlled scene system instead of freeform image intuition.
+- Enforcement: `node scripts/check-hero-prompts.mjs` (text-backed evidence presence) + human review for final scene quality.
+- Detection:
+  - Required evidence must identify `readerSituation`, `primaryIntent`, `templateChoice`, and chosen scene/icon.
+  - Metadata-only selection (`slug`, `tags`, `category`, `cluster`) without article-text justification is non-compliant and blocking.
+  - Review should reject image choices that do not reflect the main situation described in the body.
+- Examples:
+  - Compliant: fraud article mapped to alert posture + phone-based scene because the body centers on suspicious contact and immediate defensive action.
+  - Violation: debt article assigned a generic bank icon only because the `category` is `deuda-credito`, without body-level match.
 
 ### `INVARIANT.EDITORIAL.DIALECT_ES_CL`
 

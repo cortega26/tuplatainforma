@@ -1,6 +1,6 @@
 ---
 title: "Estafas financieras en Chile: señales por canal y checklist de 24 horas"
-author: "Equipo TuPlataInforma"
+author: "Equipo Monedario"
 description: "Guía preventiva y operativa para detectar estafas financieras en Chile por llamada, SMS, WhatsApp, marketplace y portabilidad, y actuar en 24 horas."
 slug: estafas-financieras-chile-vishing-smishing-marketplace
 pubDate: 2026-03-02T18:10:00Z

@@ -1,4 +1,4 @@
-import { mkdtemp, rm, symlink } from "node:fs/promises";
+import { mkdir, mkdtemp, rm, symlink } from "node:fs/promises";
 import { spawn } from "node:child_process";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -8,27 +8,34 @@ import { HOST, SITE_BASE } from "./constants.mjs";
 export async function startServerTarget({ mode }) {
   const port = Number(process.env.URLCHECK_PORT || (4300 + Math.floor(Math.random() * 200)));
   const tmpRoot = await mkdtemp(path.join(tmpdir(), `urlcheck-${mode}-`));
-  const targetDir = path.join(tmpRoot, SITE_BASE);
+  const normalizedBase = SITE_BASE.replace(/^\/+|\/+$/g, "");
   const sourceDir = mode === "canary"
-    ? path.resolve("scripts/urlcheck/fixtures/site/tuplatainforma")
+    ? path.resolve("scripts/urlcheck/fixtures/site/monedario")
     : path.resolve("dist");
+  const serverRoot = normalizedBase ? tmpRoot : sourceDir;
 
-  await symlink(sourceDir, targetDir, "dir");
+  if (normalizedBase) {
+    const targetDir = path.join(tmpRoot, normalizedBase);
+    await mkdir(path.dirname(targetDir), { recursive: true });
+    await symlink(sourceDir, targetDir, "dir");
+  }
 
   const server = spawn(
     "python3",
-    ["-m", "http.server", String(port), "--bind", HOST, "--directory", tmpRoot],
+    ["-m", "http.server", String(port), "--bind", HOST, "--directory", serverRoot],
     { stdio: "ignore" }
   );
 
-  const targetUrl = `http://${HOST}:${port}/${SITE_BASE}`;
+  const targetUrl = normalizedBase
+    ? `http://${HOST}:${port}/${normalizedBase}`
+    : `http://${HOST}:${port}`;
   await waitForServer(`${targetUrl}/`);
 
   return {
     targetUrl,
     internalOrigins: new Set([`http://${HOST}:${port}`]),
     contentRoot: sourceDir,
-    siteBase: SITE_BASE,
+    siteBase: normalizedBase,
     async stop() {
       if (!server.killed) {
         server.kill("SIGTERM");

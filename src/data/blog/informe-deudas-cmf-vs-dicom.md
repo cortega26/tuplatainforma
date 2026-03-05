@@ -1,6 +1,6 @@
 ---
 title: "Informe de deudas CMF: cómo sacarlo, qué dice y por qué no es lo mismo que DICOM"
-author: "Equipo TuPlataInforma"
+author: "Equipo Monedario"
 pubDate: 2026-02-24T11:00:00Z
 updatedDate: 2026-03-04T12:00:00Z
 slug: informe-deudas-cmf-vs-dicom

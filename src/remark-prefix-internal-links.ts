@@ -10,7 +10,7 @@ export function remarkPrefixInternalLinks(basePath: string) {
   const normalizedBase = normalizeBase(basePath);
 
   return function transformer(tree: unknown) {
-    // Ensure markdown-authored root links honor Astro `base` (e.g. /tuplatainforma)
+    // Ensure markdown-authored root links honor Astro `base` (e.g. "" or "/subpath")
     // so static link checks resolve against the built route tree.
     walk(tree as NodeWithUrlAndChildren, node => {
       if (node.type !== "link" && node.type !== "definition") return;

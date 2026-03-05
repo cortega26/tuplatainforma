@@ -1,6 +1,6 @@
 ---
 title: "Finiquito e indemnizaciones en Chile: qué te corresponde y cómo revisarlo"
-author: "Equipo TuPlataInforma"
+author: "Equipo Monedario"
 description: "Guía operativa para revisar finiquito e indemnizaciones en Chile, validar montos y detectar errores antes de firmar o reclamar un pago incompleto."
 slug: finiquito-e-indemnizaciones-en-chile
 pubDate: 2026-03-02T18:40:00Z

@@ -69,6 +69,18 @@ jobs:
       - name: "🧾 Check frontmatter contract"
         run: pnpm run check:frontmatter
 
+      - name: "🗂️ Scan publishable articles for hero pipeline"
+        run: node scripts/hero-images/scan-articles.mjs
+
+      - name: "🧠 Build deterministic hero prompts"
+        run: node scripts/hero-images/build-prompts.mjs
+
+      - name: "🧭 Check semantic hero prompt contract"
+        run: node scripts/check-hero-prompts.mjs
+
+      - name: "🖼️ Check hero image contract"
+        run: node scripts/check-hero-images.mjs
+
       - name: "✍️ Check editorial invariants"
         run: pnpm run check:editorial
         env:

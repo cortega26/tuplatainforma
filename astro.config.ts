@@ -23,7 +23,8 @@ const escapeRegExp = (value: string) =>
 
 const tocHeadingPattern = tocUi.toc.title;
 const tocHeadingRegex = new RegExp(`^${escapeRegExp(tocHeadingPattern)}$`, "i");
-const SITE_BASE = "/tuplatainforma";
+const SITE_BASE = new URL(SITE.website).pathname.replace(/\/$/, "") || "/";
+const HOME_PATH = SITE_BASE === "/" ? "/" : `${SITE_BASE}/`;
 
 // https://astro.build/config
 export default defineConfig({
@@ -35,8 +36,9 @@ export default defineConfig({
       filter: page => SITE.showArchives || !page.endsWith("/archives/"),
       serialize(item) {
         const url = item.url;
+        const pathname = new URL(url).pathname;
 
-        if (/\/(tuplatainforma\/)?$/.test(url)) {
+        if (pathname === HOME_PATH) {
           return { ...item, changefreq: EnumChangefreq.DAILY, priority: 1.0 };
         }
         if (/\/posts\/[^/]+\/$/.test(url)) {

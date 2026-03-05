@@ -1,8 +1,8 @@
 # Editorial Image System
 
-Last updated: 2026-03-04\
+Last updated: 2026-03-05\
 Status: Active\
-Version: 3.1 — agrega Sección 12: Prompt Engineering anti-AI
+Version: 3.3 — selección semántica obligatoria desde lectura de artículo
 
 ---
 
@@ -29,7 +29,7 @@ Version: 3.1 — agrega Sección 12: Prompt Engineering anti-AI
 
 ## 1. Propósito y alcance
 
-Este documento define el sistema visual de imágenes destacadas (`heroImage`) para tuplatainforma. Es la referencia única para creación de contenido nuevo, migraciones visuales y generación automatizada.
+Este documento define el sistema visual de imágenes destacadas (`heroImage`) para monedario. Es la referencia única para creación de contenido nuevo, migraciones visuales y generación automatizada.
 
 > **⚠️ Dominio YMYL**\
 > Este sitio opera en el dominio "Tu dinero o tu vida". La evolución visual de v3 no relaja ese principio — lo reencuadra. La credibilidad ahora se construye también a través de cercanía y reconocimiento, no solo a través de sobriedad. Un lector que se identifica con la imagen confía más en el contenido.
@@ -40,6 +40,12 @@ Aplica a:
 - Actualizaciones de contenido existente (content refresh)
 - Migraciones visuales de artículos legacy
 - Generación automatizada vía pipeline editorial
+
+Regla mandatoria desde v3.3:
+
+- La creación de toda `heroImage` nueva o reemplazada debe partir de la lectura del artículo.
+- Queda prohibido seleccionar imagen solo por `slug`, `tags`, `category` o intuición libre del agente.
+- La metadata editorial puede iniciar la hipótesis visual, pero la decisión final debe salir del contenido real del artículo.
 
 Documento complementario: `context/EDITORIAL_AI_PIPELINE.md`
 
@@ -64,7 +70,7 @@ El sistema v3 se calibra entre dos referentes:
 
 **Investopedia** — autoridad educativa. Las imágenes refuerzan que el contenido es confiable y bien fundamentado. La estética no es decorativa — acompaña el argumento.
 
-Lo que estos referentes tienen en común con tuplatainforma: **hablan de plata sin hacerlo complicado**. El diseño debe hacer lo mismo.
+Lo que estos referentes tienen en común con monedario: **hablan de plata sin hacerlo complicado**. El diseño debe hacer lo mismo.
 
 ### 2.3 Principio rector
 
@@ -80,7 +86,7 @@ Eso requiere que las imágenes representen situaciones, no conceptos. Una person
 
 **Claro, cercano, sin condescendencia.**
 
-El tono visual de tuplatainforma es el de un amigo que sabe de finanzas y te explica bien las cosas. No es un banco. No es una fintech con estética startup. No es un profesor universitario. Es alguien que entiende que la plata es un tema serio pero que puede tratarse sin hacerlo intimidante.
+El tono visual de monedario es el de un amigo que sabe de finanzas y te explica bien las cosas. No es un banco. No es una fintech con estética startup. No es un profesor universitario. Es alguien que entiende que la plata es un tema serio pero que puede tratarse sin hacerlo intimidante.
 
 ### 3.2 Equilibrio emocional por tipo de contenido
 
@@ -475,7 +481,7 @@ Integrado en `check` y `build` en `package.json`. Si una imagen infringe las reg
 
 ## 12. Prompt Engineering anti-AI
 
-Esta sección traduce las reglas visuales del sistema a instrucciones de prompt concretas para generadores de imagen (Midjourney, Firefly, DALL-E, Ideogram, etc.). El objetivo es producir imágenes que cumplan el sistema visual de tuplatainforma y que **no activen el reconocimiento de "imagen IA"** en el lector.
+Esta sección traduce las reglas visuales del sistema a instrucciones de prompt concretas para generadores de imagen (Midjourney, Firefly, DALL-E, Ideogram, etc.). El objetivo es producir imágenes que cumplan el sistema visual de monedario y que **no activen el reconocimiento de "imagen IA"** en el lector.
 
 ---
 
@@ -497,7 +503,7 @@ El lector moderno reconoce las imágenes IA por marcadores específicos, no por 
 
 ### 12.2 Estructura base del prompt
 
-Todo prompt para tuplatainforma sigue esta estructura de cuatro bloques. El orden importa.
+Todo prompt para monedario sigue esta estructura de cuatro bloques. El orden importa.
 
 ```
 [ESTILO] + [ESCENA o ELEMENTO] + [PALETA] + [NEGATIVOS]
@@ -667,3 +673,170 @@ Antes de usar cualquier imagen generada, verificar:
 - [ ] Tamaño del archivo ≤ 80 KB tras exportar en .avif
 
 Si algún punto falla: regenerar o ajustar el prompt. No corregir en post-proceso elementos que indican estética IA — la corrección parcial sigue siendo detectable.
+---
+
+## 13. Pipeline determinístico y auditable (v3.2)
+
+### 13.1 Source of truth técnico
+
+La implementación canónica de prompts vive en:
+
+- `scripts/hero-images/config.mjs`
+
+Incluye:
+
+- `COLORS`
+- `SCENE_EXAMPLES`
+- `POSTURAS`
+- `OBJETOS_SUGERIDOS`
+- `NEGATIVES`
+- builders `buildPromptA/B/C(...)`
+
+Consumidores actuales:
+
+- `scripts/prompt-generator.jsx` importa esta config compartida y no debe redefinir paletas, escenas ni builders localmente.
+
+Nota de migración:
+
+- Existe un generador externo (`prompt-generator.txt`, fuera del repo) usado como referencia de diseño.
+- Ese archivo no es fuente canónica operativa en CI.
+- Cualquier ajuste de política visual debe reflejarse primero en este documento y en `scripts/hero-images/config.mjs`.
+
+### 13.2 Definición de artículo publicado
+
+Para el pipeline de hero images:
+
+- `publicable = draft !== true`
+
+Esta definición está alineada con contratos/invariantes editoriales actuales.
+
+### 13.3 Contrato de `heroImage`
+
+Contrato preferido:
+
+- `heroImage: /images/hero/<slug>.avif`
+
+Reglas:
+
+- Archivo físico en `public/images/hero/<slug>.avif`
+- Extensiones permitidas: `.avif`, `.webp`
+- Presupuesto de tamaño: `<= 80KB`
+- Naming canónico: basename igual al slug
+
+Compatibilidad transicional:
+
+- Se permite path legacy por defecto en `check-hero-images`.
+- Para endurecer, usar `--require-public-path`.
+- El gate bloqueante valida dos condiciones:
+  - `heroImage` resoluble (path actual del artículo).
+  - asset canónico presente en `public/images/hero/<slug>.avif|.webp`.
+- El modo `public-only` queda disponible para endurecimiento futuro.
+
+### 13.4 Flujo operativo
+
+1. Scan (`scan-articles`)
+2. Lectura del artículo y derivación semántica de escena
+3. Build prompts (`build-prompts`)
+4. Generación opcional (`generate-images --run`) con `OPENAI_API_KEY`
+5. Postproceso (`postprocess-images`) a `.avif` 1200x630
+6. Aplicación (`apply-images`) a `public/images/hero` + wiring de frontmatter
+7. Guardrails CI (`check-hero-images`)
+
+### 13.4.1 Regla obligatoria de lectura semántica
+
+Antes de crear un prompt, el agente o script debe leer el artículo y extraer una representación visual mínima del contenido.
+
+Campos obligatorios de decisión:
+
+- `readerSituation`: situación principal que vive el lector
+- `primaryIntent`: intención dominante del artículo (`explicar`, `alertar`, `comparar`, `guiar`, `calcular`)
+- `toneClass`: tono visual esperado (`neutral`, `serio`, `alerta`, `educativo`, `progreso`)
+- `templateChoice`: `A`, `B` o `C`
+- `sceneChoice` o `iconChoice`
+- `visualEvidence`: frases breves que expliquen por qué esa escena sí corresponde al texto
+
+La selección semántica debe responder a esta pregunta:
+
+> Si el lector viera la imagen sin leer el título, ¿reconocería la situación concreta descrita por el artículo?
+
+### 13.4.2 Qué queda prohibido
+
+No cumple la norma:
+
+- elegir imagen solo por `slug`
+- elegir imagen solo por `category` o `cluster`
+- elegir imagen solo por coincidencia superficial de keywords
+- usar una escena \"genérica de finanzas\" sin relación clara con el cuerpo del artículo
+- cambiar de template o escena por gusto visual si contradice el tono o la situación descrita
+
+Sí cumple la norma:
+
+- usar metadata como punto de partida y luego confirmar/ajustar con lectura del artículo
+- seleccionar una escena del sistema controlado (`Template A/B/C`) que represente la situación principal
+- registrar por qué la escena elegida calza con el contenido
+
+### 13.4.3 Regla operativa para agentes
+
+Para cada artículo publicado o refresh visual:
+
+1. Leer el artículo completo o una extracción estructurada construida desde el cuerpo completo.
+2. Identificar la situación principal del lector, no solo el tema.
+3. Elegir el template según la función editorial del artículo.
+4. Elegir escena/objetos/ícono dentro del sistema visual existente.
+5. Construir el prompt final recién después de esa decisión.
+
+La lectura del cuerpo del artículo es mandatoria. La heurística por metadata sola no es suficiente para aprobar una imagen final.
+
+Comandos base:
+
+```bash
+node scripts/hero-images/scan-articles.mjs
+node scripts/hero-images/build-prompts.mjs
+node scripts/check-hero-prompts.mjs
+node scripts/hero-images/generate-images.mjs --dry-run
+node scripts/hero-images/postprocess-images.mjs
+node scripts/hero-images/apply-images.mjs --enforce-public-path
+node scripts/check-hero-images.mjs
+```
+
+### 13.5 Reproducibilidad
+
+Artefactos determinísticos:
+
+- `scripts/hero-images/manifest.json`
+- `scripts/hero-images/prompts.json`
+
+Artefactos semánticos obligatorios por entrada:
+
+- `template`
+- `sceneId`
+- `selectors.ruleId`
+- `visualEvidence` o campo equivalente de justificación semántica
+- `promptHash`
+
+Garantías:
+
+- Orden estable por slug
+- Heurísticas determinísticas de selección (`prompt-plan.mjs`)
+- La decisión visual debe ser trazable desde el texto del artículo hacia la escena elegida
+- `promptHash` (`sha256`) por entrada para detectar drift
+
+### 13.6 Guardrails de CI (sin secretos)
+
+En CI estándar:
+
+- no se ejecuta generación OpenAI
+- sí se ejecuta scan/build/check
+- `check-hero-prompts` bloquea ausencia de evidencia textual o selección metadata-only
+- `check-hero-images` bloquea falta de asset público, formato inválido o presupuesto excedido
+
+En workflow manual/scheduled con secretos:
+
+- se habilita `generate-images --run`
+- la salida queda en staging para revisión humana (sin commit automático)
+
+Estado de enforcement:
+
+- Bloqueante por script hoy: existencia de `heroImage`, asset canónico, formato y presupuesto.
+- Mandatorio por norma desde v3.3: lectura semántica del artículo antes de elegir imagen.
+- Mientras no exista un checker semántico más profundo, la correspondencia texto-imagen se considera enforcement mixto: artefacto + revisión humana.

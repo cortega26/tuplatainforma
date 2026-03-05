@@ -1,8 +1,8 @@
 /**
  * Builds an internal URL path that respects Astro's configured `base`.
  * Examples:
- * - getPath("posts/mi-articulo") => "/tuplatainforma/posts/mi-articulo"
- * - getPath("/posts/mi-articulo") => "/tuplatainforma/posts/mi-articulo"
+ * - getPath("posts/mi-articulo") => "/posts/mi-articulo"
+ * - getPath("/posts/mi-articulo") => "/posts/mi-articulo"
  */
 export function getPath(path: string): string {
   const rawBase = import.meta.env.BASE_URL || "/";

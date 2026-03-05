@@ -2,8 +2,8 @@
 
 ## 0. Resumen ejecutivo
 El repositorio es un sitio estático en **Astro 5** (fork/customización sobre base AstroPaper) enfocado en educación financiera para Chile, con contenido editorial y una suite de calculadoras financieras.
-El proyecto está funcional en producción bajo subpath (`/tuplatainforma`) y combina contenido Markdown/MDX con páginas `.astro` de lógica cliente.
-Las personalizaciones más relevantes son: homepage editorial, calculadoras, helpers de rutas para subpath, mejoras de UX (breadcrumbs/back button/reveal), y componentes de indicadores económicos.
+El proyecto está funcional en producción bajo dominio propio raíz (`https://monedario.cl/`) y combina contenido Markdown/MDX con páginas `.astro` de lógica cliente.
+Las personalizaciones más relevantes son: homepage editorial, calculadoras, helpers de rutas compatibles con dominio raíz o subpath, mejoras de UX (breadcrumbs/back button/reveal), y componentes de indicadores económicos.
 Los riesgos principales están en deuda de mantenibilidad y consistencia operativa: valores financieros hardcodeados con fecha, lógica duplicada, falta de tests, y mezcla de gestores de paquetes/workflows.
 
 ### Checkpoint 2026-03-04 (Documentation Taxonomy Restructure)
@@ -12,6 +12,14 @@ Los riesgos principales están en deuda de mantenibilidad y consistencia operati
 - Se consolidaron artefactos operacionales en `docs/operations/{audits,issues,reports}`.
 - Se movieron docs raíz a `docs/` (`BACKLOG_EDITORIAL`, `audit`, `project_structure`) y se actualizaron referencias/scripts asociados.
 - ADR de respaldo: `docs/adr/ADR-20260304-documentation-restructure.md`.
+
+### Checkpoint 2026-03-05 (Monedario Root-Domain Migration)
+
+- La marca pública del sitio pasa de `Tu Plata Informa` a `Monedario`.
+- `SITE.website` cambia a `https://monedario.cl/`.
+- `astro.config.ts` deja de hardcodear `base` y la deriva desde `SITE.website`, permitiendo despliegue en raíz sin romper CSS ni assets.
+- Se agrega `public/CNAME` para hacer persistente el dominio custom en GitHub Pages.
+- ADR de respaldo: `docs/adr/ADR-20260305-monedario-root-domain.md`.
 
 ## 1. Stack técnico
 
@@ -54,7 +62,7 @@ Archivo: `astro.config.ts`
 
 ```ts
 site: SITE.website
-base: "/tuplatainforma"
+base: new URL(SITE.website).pathname.replace(/\/$/, "") || "/"
 integrations: [sitemap(...), mdx()]
 markdown.remarkPlugins: [remarkToc, remarkCollapse]
 markdown.shikiConfig.transformers: [transformerFileName, ...]
@@ -65,7 +73,7 @@ experimental: { preserveScriptOrder: true, fonts: [...] }
 ```
 
 Puntos clave:
-- `site` y `base` dependen de `src/config.ts` (`SITE.website` y subpath).
+- `site` y `base` dependen de `src/config.ts` (`SITE.website` es la source of truth del dominio y del base path).
 - Sitemap filtra `/archives` según `SITE.showArchives`.
 - No hay adapter explícito: comportamiento estático por defecto.
 
@@ -193,8 +201,9 @@ No hay snapshot del upstream dentro del repo para diff directo; por lo tanto est
 ## 5. Rutas y páginas
 
 ### Base pública
-- `astro.config.ts` define `base: "/tuplatainforma"`.
-- Todas las rutas públicas salen con prefijo `/tuplatainforma` en producción (GitHub Pages).
+- `astro.config.ts` deriva `base` desde `SITE.website`.
+- En producción actual (`https://monedario.cl/`) las rutas públicas salen desde raíz (`/`).
+- El diseño sigue tolerando subpath futuro si `SITE.website` vuelve a incluirlo.
 
 ### Mapa de rutas públicas (site-local)
 - `/`
@@ -254,7 +263,7 @@ No hay snapshot del upstream dentro del repo para diff directo; por lo tanto est
 
 ## 7. Assets y recursos estáticos
 - `public/favicon.svg`: favicon.
-- `public/tuplatainforma-og.jpg`: OG estática base (`SITE.ogImage`).
+- `public/monedario-og.jpg`: OG estática base (`SITE.ogImage`).
 - `public/pagefind/**`: bundle/índice de búsqueda (generado por build, ruta gitignored).
 - `src/assets/icons/*.svg`: set de iconos UI/social.
 - `src/assets/images/*.png`: imágenes de apoyo.

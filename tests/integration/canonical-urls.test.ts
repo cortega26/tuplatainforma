@@ -8,21 +8,21 @@ describe("Canonical URL Generation Verification", () => {
   }
 
   it("strips query parameters from the canonical origin", () => {
-    const originUrl = "https://tuplatainforma.com/posts/example?utm_source=twitter&foo=bar";
+    const originUrl = "https://monedario.cl/posts/example?utm_source=twitter&foo=bar";
     const pathname = "/posts/example/";
     
     // Test mimicking `Astro.url` resolving its parameters dynamically.
     const result = generateCanonicalTestURL(pathname, originUrl);
-    expect(result).toBe("https://tuplatainforma.com/posts/example/");
+    expect(result).toBe("https://monedario.cl/posts/example/");
     expect(result).not.toContain("utm_source");
   });
 
   it("forces a trailing slash when the pathname is explicitly standardized to it", () => {
     // Assuming Astro maps URL pathnames appropriately using trailingSlash: 'always'.
-    const originUrl = "https://tuplatainforma.com/posts/example-two";
+    const originUrl = "https://monedario.cl/posts/example-two";
     const pathnameAstroResolution = "/posts/example-two/";
     
     const result = generateCanonicalTestURL(pathnameAstroResolution, originUrl);
-    expect(result).toBe("https://tuplatainforma.com/posts/example-two/");
+    expect(result).toBe("https://monedario.cl/posts/example-two/");
   });
 });

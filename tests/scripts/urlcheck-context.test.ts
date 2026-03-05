@@ -25,7 +25,7 @@ describe("urlcheck context enrichment", () => {
       path.join(siteRoot, "index.html"),
       [
         "<!doctype html>",
-        '<a href="/tuplatainforma/posts/cae-costo-real-credito-chile/">Guia CAE 2026</a>',
+        '<a href="/posts/cae-costo-real-credito-chile/">Guia CAE 2026</a>',
       ].join("\n"),
       "utf8"
     );
@@ -33,13 +33,13 @@ describe("urlcheck context enrichment", () => {
     const [item] = await enrichInternalBrokenContext(
       [
         {
-          url: "http://127.0.0.1:4300/tuplatainforma/posts/cae-costo-real-credito-chile/",
-          parent: "http://127.0.0.1:4300/tuplatainforma/",
+          url: "http://127.0.0.1:4300/posts/cae-costo-real-credito-chile/",
+          parent: "http://127.0.0.1:4300/",
           status: 404,
           category: "404",
         },
       ],
-      { contentRoot: siteRoot, siteBase: "tuplatainforma" }
+      { contentRoot: siteRoot, siteBase: "" }
     );
 
     expect(item.context).toBe("Guia CAE 2026");
@@ -57,13 +57,13 @@ describe("urlcheck context enrichment", () => {
     const [item] = await enrichInternalBrokenContext(
       [
         {
-          url: "http://127.0.0.1:4300/tuplatainforma/posts/destino/",
-          parent: "http://127.0.0.1:4300/tuplatainforma/posts/origen/",
+          url: "http://127.0.0.1:4300/posts/destino/",
+          parent: "http://127.0.0.1:4300/posts/origen/",
           status: 404,
           category: "404",
         },
       ],
-      { contentRoot: siteRoot, siteBase: "tuplatainforma" }
+      { contentRoot: siteRoot, siteBase: "" }
     );
 
     expect(item.context).toBe("Revisa destino");

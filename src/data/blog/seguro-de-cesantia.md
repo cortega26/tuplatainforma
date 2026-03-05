@@ -1,6 +1,6 @@
 ---
 title: "Seguro de cesantía: cómo saber tu saldo, cuándo puedes cobrar y cuánto te pagan"
-author: "Equipo TuPlataInforma"
+author: "Equipo Monedario"
 pubDate: 2026-02-25T10:00:00Z
 updatedDate: 2026-03-04T12:00:00Z
 slug: seguro-de-cesantia

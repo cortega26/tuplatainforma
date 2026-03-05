@@ -1,6 +1,6 @@
 ---
 title: "Reforma previsional 2025: qué cambia, cuándo y cómo te afecta (guía actualizada)"
-author: "Equipo TuPlataInforma"
+author: "Equipo Monedario"
 description: "Guía práctica de la reforma previsional chilena: el 7% adicional del empleador, el BAC, los fondos generacionales y qué significa para tu jubilación."
 slug: reforma-previsional-2025-que-cambia-y-como-te-afecta
 pubDate: 2026-03-03T23:00:00Z

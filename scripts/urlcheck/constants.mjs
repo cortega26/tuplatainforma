@@ -1,5 +1,5 @@
 export const HOST = "127.0.0.1";
-export const SITE_BASE = "tuplatainforma";
+export const SITE_BASE = "";
 
 export const MODES = {
   ci: {

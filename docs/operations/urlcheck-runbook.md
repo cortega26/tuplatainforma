@@ -48,7 +48,7 @@ Core artifacts written on each run:
 - Implementation error name: `canary_expected_internal_broken_not_detected`.
 - Meaning: canary fixture is no longer validating failure detection.
 - Response:
-  1. Inspect `scripts/urlcheck/fixtures/site/tuplatainforma/index.html`.
+  1. Inspect `scripts/urlcheck/fixtures/site/monedario/index.html`.
   2. Ensure fixture still includes one known broken internal target.
   3. Fix fixture/checker and require canary pass before merging.
 

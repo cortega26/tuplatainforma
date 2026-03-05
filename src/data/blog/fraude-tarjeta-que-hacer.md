@@ -1,6 +1,6 @@
 ---
 title: "Te hicieron un cargo que no reconoces: qué hacer en las primeras 24 horas (Ley 20.009)"
-author: "Equipo TuPlataInforma"
+author: "Equipo Monedario"
 pubDate: 2026-02-24T13:00:00Z
 updatedDate: 2026-03-04T12:00:00Z
 slug: fraude-tarjeta-que-hacer

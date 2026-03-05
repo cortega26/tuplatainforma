@@ -1,12 +1,12 @@
 import { DEFAULT_LOCALE } from "./i18n/ui";
 
 export const SITE = {
-  website: "https://cortega26.github.io/tuplatainforma/",
+  website: "https://monedario.cl/",
   author: "Carlos Ortega",
   profile: "https://github.com/cortega26",
   desc: "Finanzas personales para chilenos. Guías sobre AFP, APV, impuestos, inversiones y calculadoras prácticas.",
-  title: "Tu Plata Informa",
-  ogImage: "tuplatainforma-og.jpg",
+  title: "Monedario",
+  ogImage: "monedario-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 6,
   postPerPage: 8,

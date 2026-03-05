@@ -1,0 +1,950 @@
+{
+  "schemaVersion": 1,
+  "sourceManifest": "scripts/hero-images/manifest.json",
+  "count": 26,
+  "entries": [
+    {
+      "slug": "ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026",
+      "sourcePath": "src/data/blog/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.md",
+      "targetImagePath": "/images/hero/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.avif",
+      "template": "A",
+      "sceneId": "A:Declaracion renta",
+      "readerSituation": "Persona completando o revisando formularios y fechas tributarias.",
+      "primaryIntent": "guiar",
+      "toneClass": "serio",
+      "visualEvidence": [
+        "text contains 'impuesto' in article body/title context",
+        "text contains 'renta' in article body/title context",
+        "primary intent classified as 'guiar' from article text",
+        "reader situation anchored to scene rule 'renta'"
+      ],
+      "palette": {
+        "category": "Credito / Deuda / Impuestos / Riesgo",
+        "hex": "#d97706"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure seated at desk, focused forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near computer screen showing a form, calendar. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #d97706, (2) white #ffffff for the figure silhouette, (3) light tint #eab476 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #8d4d04 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "258ed049dd8da2272674f5d84e3bd6d445fb21f175c63cb213285f737b99ad1b",
+      "selectors": {
+        "ruleId": "renta",
+        "category": "impuestos",
+        "cluster": "ahorro-e-inversion",
+        "matchedKeywords": [
+          "impuesto",
+          "renta"
+        ]
+      }
+    },
+    {
+      "slug": "boleta-honorarios-2026-retencion-cobertura",
+      "sourcePath": "src/data/blog/boleta-honorarios-2026-retencion-cobertura.md",
+      "targetImagePath": "/images/hero/boleta-honorarios-2026-retencion-cobertura.avif",
+      "template": "A",
+      "sceneId": "A:Declaracion renta",
+      "readerSituation": "Persona completando o revisando formularios y fechas tributarias.",
+      "primaryIntent": "calcular",
+      "toneClass": "serio",
+      "visualEvidence": [
+        "text contains 'renta' in article body/title context",
+        "text contains 'sii' in article body/title context",
+        "text contains 'retencion' in article body/title context",
+        "primary intent classified as 'calcular' from article text"
+      ],
+      "palette": {
+        "category": "Credito / Deuda / Impuestos / Riesgo",
+        "hex": "#d97706"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure seated at desk, focused forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near computer screen showing a form, calendar. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #d97706, (2) white #ffffff for the figure silhouette, (3) light tint #eab476 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #8d4d04 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "258ed049dd8da2272674f5d84e3bd6d445fb21f175c63cb213285f737b99ad1b",
+      "selectors": {
+        "ruleId": "renta",
+        "category": "impuestos",
+        "cluster": "impuestos-personas",
+        "matchedKeywords": [
+          "renta",
+          "sii",
+          "retencion"
+        ]
+      }
+    },
+    {
+      "slug": "cae-costo-real-credito-chile",
+      "sourcePath": "src/data/blog/cae-costo-real-credito-chile.md",
+      "targetImagePath": "/images/hero/cae-costo-real-credito-chile.avif",
+      "template": "C",
+      "sceneId": "C:activity pulse line",
+      "readerSituation": "Persona entendiendo un indicador economico que afecta pagos cotidianos.",
+      "primaryIntent": "explicar",
+      "toneClass": "educativo",
+      "visualEvidence": [
+        "text contains 'indicador' in article body/title context",
+        "primary intent classified as 'explicar' from article text",
+        "reader situation anchored to scene rule 'uf'"
+      ],
+      "palette": {
+        "category": "Educativo / Conceptos / Guias",
+        "hex": "#4f46e5"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector background for a personal finance graphic. 2D flat design only.\n\nBackground: solid color #4f46e5, fills entire canvas.\nElement: small activity pulse line icon in the bottom right area. White stroke lines only, 2px weight, no fill. Icon occupies approximately 15% of canvas width.\n\nColor palette: use exactly 2 colors - background #4f46e5 and stroke #ffffff. No additional colors.\nShape style: stroke lines only for the icon, no filled shapes.\nThe left two-thirds of the canvas must be completely empty - reserved for text overlay in post-production.\nNo text, no letters, no numbers anywhere in the image.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "cd246c0337d59dee76060e395f789f7ed671ee14dc53c98d861e903de04e0f50",
+      "selectors": {
+        "ruleId": "uf",
+        "category": "deuda-credito",
+        "cluster": "deuda-credito",
+        "matchedKeywords": [
+          "indicador"
+        ]
+      }
+    },
+    {
+      "slug": "como-calcular-sueldo-liquido",
+      "sourcePath": "src/data/blog/como-calcular-sueldo-liquido.md",
+      "targetImagePath": "/images/hero/como-calcular-sueldo-liquido.avif",
+      "template": "A",
+      "sceneId": "A:Declaracion renta",
+      "readerSituation": "Persona completando o revisando formularios y fechas tributarias.",
+      "primaryIntent": "comparar",
+      "toneClass": "serio",
+      "visualEvidence": [
+        "text contains 'impuesto' in article body/title context",
+        "primary intent classified as 'comparar' from article text",
+        "reader situation anchored to scene rule 'renta'"
+      ],
+      "palette": {
+        "category": "Credito / Deuda / Impuestos / Riesgo",
+        "hex": "#d97706"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure seated at desk, focused forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near computer screen showing a form, calendar. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #d97706, (2) white #ffffff for the figure silhouette, (3) light tint #eab476 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #8d4d04 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "258ed049dd8da2272674f5d84e3bd6d445fb21f175c63cb213285f737b99ad1b",
+      "selectors": {
+        "ruleId": "renta",
+        "category": "empleo-ingresos",
+        "cluster": "empleo-ingresos",
+        "matchedKeywords": [
+          "impuesto"
+        ]
+      }
+    },
+    {
+      "slug": "como-cambiarse-de-afp",
+      "sourcePath": "src/data/blog/como-cambiarse-de-afp.md",
+      "targetImagePath": "/images/hero/como-cambiarse-de-afp.avif",
+      "template": "A",
+      "sceneId": "A:Declaracion renta",
+      "readerSituation": "Persona completando o revisando formularios y fechas tributarias.",
+      "primaryIntent": "guiar",
+      "toneClass": "serio",
+      "visualEvidence": [
+        "text contains 'renta' in article body/title context",
+        "primary intent classified as 'guiar' from article text",
+        "reader situation anchored to scene rule 'renta'"
+      ],
+      "palette": {
+        "category": "Credito / Deuda / Impuestos / Riesgo",
+        "hex": "#d97706"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure seated at desk, focused forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near computer screen showing a form, calendar. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #d97706, (2) white #ffffff for the figure silhouette, (3) light tint #eab476 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #8d4d04 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "258ed049dd8da2272674f5d84e3bd6d445fb21f175c63cb213285f737b99ad1b",
+      "selectors": {
+        "ruleId": "renta",
+        "category": "prevision",
+        "cluster": "pensiones-afp",
+        "matchedKeywords": [
+          "renta"
+        ]
+      }
+    },
+    {
+      "slug": "como-hacer-presupuesto-mensual-chile",
+      "sourcePath": "src/data/blog/como-hacer-presupuesto-mensual-chile.md",
+      "targetImagePath": "/images/hero/como-hacer-presupuesto-mensual-chile.avif",
+      "template": "C",
+      "sceneId": "C:activity pulse line",
+      "readerSituation": "Persona entendiendo un indicador economico que afecta pagos cotidianos.",
+      "primaryIntent": "explicar",
+      "toneClass": "educativo",
+      "visualEvidence": [
+        "text contains 'ipc' in article body/title context",
+        "primary intent classified as 'explicar' from article text",
+        "reader situation anchored to scene rule 'uf'"
+      ],
+      "palette": {
+        "category": "Educativo / Conceptos / Guias",
+        "hex": "#4f46e5"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector background for a personal finance graphic. 2D flat design only.\n\nBackground: solid color #4f46e5, fills entire canvas.\nElement: small activity pulse line icon in the bottom right area. White stroke lines only, 2px weight, no fill. Icon occupies approximately 15% of canvas width.\n\nColor palette: use exactly 2 colors - background #4f46e5 and stroke #ffffff. No additional colors.\nShape style: stroke lines only for the icon, no filled shapes.\nThe left two-thirds of the canvas must be completely empty - reserved for text overlay in post-production.\nNo text, no letters, no numbers anywhere in the image.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "cd246c0337d59dee76060e395f789f7ed671ee14dc53c98d861e903de04e0f50",
+      "selectors": {
+        "ruleId": "uf",
+        "category": "general",
+        "cluster": "empleo-ingresos",
+        "matchedKeywords": [
+          "ipc"
+        ]
+      }
+    },
+    {
+      "slug": "como-invertir-en-etfs-desde-chile",
+      "sourcePath": "src/data/blog/como-invertir-en-etfs-desde-chile.md",
+      "targetImagePath": "/images/hero/como-invertir-en-etfs-desde-chile.avif",
+      "template": "A",
+      "sceneId": "A:Declaracion renta",
+      "readerSituation": "Persona completando o revisando formularios y fechas tributarias.",
+      "primaryIntent": "comparar",
+      "toneClass": "serio",
+      "visualEvidence": [
+        "text contains 'impuesto' in article body/title context",
+        "primary intent classified as 'comparar' from article text",
+        "reader situation anchored to scene rule 'renta'"
+      ],
+      "palette": {
+        "category": "Credito / Deuda / Impuestos / Riesgo",
+        "hex": "#d97706"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure seated at desk, focused forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near computer screen showing a form, calendar. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #d97706, (2) white #ffffff for the figure silhouette, (3) light tint #eab476 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #8d4d04 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "258ed049dd8da2272674f5d84e3bd6d445fb21f175c63cb213285f737b99ad1b",
+      "selectors": {
+        "ruleId": "renta",
+        "category": "ahorro-inversion",
+        "cluster": "ahorro-e-inversion",
+        "matchedKeywords": [
+          "impuesto"
+        ]
+      }
+    },
+    {
+      "slug": "cuanto-descuenta-la-afp-de-tu-sueldo",
+      "sourcePath": "src/data/blog/cuanto-descuenta-la-afp-de-tu-sueldo.md",
+      "targetImagePath": "/images/hero/cuanto-descuenta-la-afp-de-tu-sueldo.avif",
+      "template": "A",
+      "sceneId": "A:Cesantia",
+      "readerSituation": "Persona revisando ingresos laborales, pagos o periodos sin trabajo.",
+      "primaryIntent": "calcular",
+      "toneClass": "neutral",
+      "visualEvidence": [
+        "text contains 'sueldo' in article body/title context",
+        "primary intent classified as 'calcular' from article text",
+        "reader situation anchored to scene rule 'empleo'"
+      ],
+      "palette": {
+        "category": "Finanzas general / AFP / Empleo / Ahorro",
+        "hex": "#0d9488"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #0d9488.\n\nScene: one geometric human figure seated on a chair, slouched, head slightly down, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near closed laptop, empty cup. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #0d9488, (2) white #ffffff for the figure silhouette, (3) light tint #7ac4be for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #086058 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "e3090f81bfacdd3665ba3f42d19e1b8d7dae3ba3978a53970f9067a8f2742d54",
+      "selectors": {
+        "ruleId": "empleo",
+        "category": "prevision",
+        "cluster": "pensiones-afp",
+        "matchedKeywords": [
+          "sueldo"
+        ]
+      }
+    },
+    {
+      "slug": "deposito-a-plazo-uf-vs-pesos",
+      "sourcePath": "src/data/blog/deposito-a-plazo-uf-vs-pesos.md",
+      "targetImagePath": "/images/hero/deposito-a-plazo-uf-vs-pesos.avif",
+      "template": "A",
+      "sceneId": "A:Declaracion renta",
+      "readerSituation": "Persona completando o revisando formularios y fechas tributarias.",
+      "primaryIntent": "comparar",
+      "toneClass": "serio",
+      "visualEvidence": [
+        "text contains 'impuesto' in article body/title context",
+        "primary intent classified as 'comparar' from article text",
+        "reader situation anchored to scene rule 'renta'"
+      ],
+      "palette": {
+        "category": "Credito / Deuda / Impuestos / Riesgo",
+        "hex": "#d97706"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure seated at desk, focused forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near computer screen showing a form, calendar. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #d97706, (2) white #ffffff for the figure silhouette, (3) light tint #eab476 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #8d4d04 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "258ed049dd8da2272674f5d84e3bd6d445fb21f175c63cb213285f737b99ad1b",
+      "selectors": {
+        "ruleId": "renta",
+        "category": "ahorro-inversion",
+        "cluster": "ahorro-e-inversion",
+        "matchedKeywords": [
+          "impuesto"
+        ]
+      }
+    },
+    {
+      "slug": "devolucion-impuestos-fechas-compensaciones",
+      "sourcePath": "src/data/blog/devolucion-impuestos-fechas-compensaciones.md",
+      "targetImagePath": "/images/hero/devolucion-impuestos-fechas-compensaciones.avif",
+      "template": "A",
+      "sceneId": "A:Declaracion renta",
+      "readerSituation": "Persona completando o revisando formularios y fechas tributarias.",
+      "primaryIntent": "guiar",
+      "toneClass": "serio",
+      "visualEvidence": [
+        "text contains 'impuesto' in article body/title context",
+        "text contains 'renta' in article body/title context",
+        "text contains 'f22' in article body/title context",
+        "primary intent classified as 'guiar' from article text"
+      ],
+      "palette": {
+        "category": "Credito / Deuda / Impuestos / Riesgo",
+        "hex": "#d97706"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure seated at desk, focused forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near computer screen showing a form, calendar. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #d97706, (2) white #ffffff for the figure silhouette, (3) light tint #eab476 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #8d4d04 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "258ed049dd8da2272674f5d84e3bd6d445fb21f175c63cb213285f737b99ad1b",
+      "selectors": {
+        "ruleId": "renta",
+        "category": "impuestos",
+        "cluster": "impuestos-personas",
+        "matchedKeywords": [
+          "impuesto",
+          "renta",
+          "f22",
+          "sii",
+          "retencion"
+        ]
+      }
+    },
+    {
+      "slug": "estafas-financieras-chile-vishing-smishing-marketplace",
+      "sourcePath": "src/data/blog/estafas-financieras-chile-vishing-smishing-marketplace.md",
+      "targetImagePath": "/images/hero/estafas-financieras-chile-vishing-smishing-marketplace.avif",
+      "template": "A",
+      "sceneId": "A:Fraude / Estafa",
+      "readerSituation": "Persona revisando una alerta o contacto sospechoso en su telefono.",
+      "primaryIntent": "alertar",
+      "toneClass": "alerta",
+      "visualEvidence": [
+        "text contains 'estafa' in article body/title context",
+        "text contains 'vishing' in article body/title context",
+        "text contains 'smishing' in article body/title context",
+        "primary intent classified as 'alertar' from article text"
+      ],
+      "palette": {
+        "category": "Fraude / Perdida grave",
+        "hex": "#c2410c"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #c2410c.\n\nScene: one geometric human figure standing, tense posture, looking at hand, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near smartphone with alert triangle symbol. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #c2410c, (2) white #ffffff for the figure silhouette, (3) light tint #dd9779 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #7e2a08 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "59cb3540db3b1610e94bfc5a2ca462c2a197c1fd432092c5a72cf46500f229e7",
+      "selectors": {
+        "ruleId": "fraude",
+        "category": "seguridad-financiera",
+        "cluster": "seguridad-financiera",
+        "matchedKeywords": [
+          "estafa",
+          "vishing",
+          "smishing"
+        ]
+      }
+    },
+    {
+      "slug": "finiquito-e-indemnizaciones-en-chile",
+      "sourcePath": "src/data/blog/finiquito-e-indemnizaciones-en-chile.md",
+      "targetImagePath": "/images/hero/finiquito-e-indemnizaciones-en-chile.avif",
+      "template": "A",
+      "sceneId": "A:Cesantia",
+      "readerSituation": "Persona revisando ingresos laborales, pagos o periodos sin trabajo.",
+      "primaryIntent": "calcular",
+      "toneClass": "neutral",
+      "visualEvidence": [
+        "text contains 'sueldo' in article body/title context",
+        "text contains 'finiquito' in article body/title context",
+        "primary intent classified as 'calcular' from article text",
+        "reader situation anchored to scene rule 'empleo'"
+      ],
+      "palette": {
+        "category": "Finanzas general / AFP / Empleo / Ahorro",
+        "hex": "#0d9488"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #0d9488.\n\nScene: one geometric human figure seated on a chair, slouched, head slightly down, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near closed laptop, empty cup. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #0d9488, (2) white #ffffff for the figure silhouette, (3) light tint #7ac4be for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #086058 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "e3090f81bfacdd3665ba3f42d19e1b8d7dae3ba3978a53970f9067a8f2742d54",
+      "selectors": {
+        "ruleId": "empleo",
+        "category": "empleo-ingresos",
+        "cluster": "empleo-ingresos",
+        "matchedKeywords": [
+          "sueldo",
+          "finiquito"
+        ]
+      }
+    },
+    {
+      "slug": "fondos-afp-a-b-c-d-e",
+      "sourcePath": "src/data/blog/fondos-afp-a-b-c-d-e.md",
+      "targetImagePath": "/images/hero/fondos-afp-a-b-c-d-e.avif",
+      "template": "A",
+      "sceneId": "A:Cesantia",
+      "readerSituation": "Persona revisando ingresos laborales, pagos o periodos sin trabajo.",
+      "primaryIntent": "comparar",
+      "toneClass": "neutral",
+      "visualEvidence": [
+        "text contains 'sueldo' in article body/title context",
+        "primary intent classified as 'comparar' from article text",
+        "reader situation anchored to scene rule 'empleo'"
+      ],
+      "palette": {
+        "category": "Finanzas general / AFP / Empleo / Ahorro",
+        "hex": "#0d9488"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #0d9488.\n\nScene: one geometric human figure seated on a chair, slouched, head slightly down, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near closed laptop, empty cup. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #0d9488, (2) white #ffffff for the figure silhouette, (3) light tint #7ac4be for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #086058 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "e3090f81bfacdd3665ba3f42d19e1b8d7dae3ba3978a53970f9067a8f2742d54",
+      "selectors": {
+        "ruleId": "empleo",
+        "category": "prevision",
+        "cluster": "pensiones-afp",
+        "matchedKeywords": [
+          "sueldo"
+        ]
+      }
+    },
+    {
+      "slug": "fondos-mutuos-comisiones-rescate-impuestos",
+      "sourcePath": "src/data/blog/fondos-mutuos-comisiones-rescate-impuestos.md",
+      "targetImagePath": "/images/hero/fondos-mutuos-comisiones-rescate-impuestos.avif",
+      "template": "A",
+      "sceneId": "A:Declaracion renta",
+      "readerSituation": "Persona completando o revisando formularios y fechas tributarias.",
+      "primaryIntent": "calcular",
+      "toneClass": "serio",
+      "visualEvidence": [
+        "text contains 'impuesto' in article body/title context",
+        "text contains 'renta' in article body/title context",
+        "primary intent classified as 'calcular' from article text",
+        "reader situation anchored to scene rule 'renta'"
+      ],
+      "palette": {
+        "category": "Credito / Deuda / Impuestos / Riesgo",
+        "hex": "#d97706"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure seated at desk, focused forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near computer screen showing a form, calendar. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #d97706, (2) white #ffffff for the figure silhouette, (3) light tint #eab476 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #8d4d04 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "258ed049dd8da2272674f5d84e3bd6d445fb21f175c63cb213285f737b99ad1b",
+      "selectors": {
+        "ruleId": "renta",
+        "category": "impuestos",
+        "cluster": "ahorro-e-inversion",
+        "matchedKeywords": [
+          "impuesto",
+          "renta"
+        ]
+      }
+    },
+    {
+      "slug": "fraude-tarjeta-que-hacer",
+      "sourcePath": "src/data/blog/fraude-tarjeta-que-hacer.md",
+      "targetImagePath": "/images/hero/fraude-tarjeta-que-hacer.avif",
+      "template": "A",
+      "sceneId": "A:Fraude / Estafa",
+      "readerSituation": "Persona revisando una alerta o contacto sospechoso en su telefono.",
+      "primaryIntent": "alertar",
+      "toneClass": "alerta",
+      "visualEvidence": [
+        "text contains 'fraude' in article body/title context",
+        "primary intent classified as 'alertar' from article text",
+        "reader situation anchored to scene rule 'fraude'"
+      ],
+      "palette": {
+        "category": "Fraude / Perdida grave",
+        "hex": "#c2410c"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #c2410c.\n\nScene: one geometric human figure standing, tense posture, looking at hand, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near smartphone with alert triangle symbol. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #c2410c, (2) white #ffffff for the figure silhouette, (3) light tint #dd9779 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #7e2a08 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "59cb3540db3b1610e94bfc5a2ca462c2a197c1fd432092c5a72cf46500f229e7",
+      "selectors": {
+        "ruleId": "fraude",
+        "category": "seguridad-financiera",
+        "cluster": "seguridad-financiera",
+        "matchedKeywords": [
+          "fraude"
+        ]
+      }
+    },
+    {
+      "slug": "informe-deudas-cmf-vs-dicom",
+      "sourcePath": "src/data/blog/informe-deudas-cmf-vs-dicom.md",
+      "targetImagePath": "/images/hero/informe-deudas-cmf-vs-dicom.avif",
+      "template": "A",
+      "sceneId": "A:Deuda / Credito",
+      "readerSituation": "Persona enfrentando documentos, cuotas o decisiones de deuda.",
+      "primaryIntent": "comparar",
+      "toneClass": "serio",
+      "visualEvidence": [
+        "text contains 'deuda' in article body/title context",
+        "text contains 'credito' in article body/title context",
+        "text contains 'dicom' in article body/title context",
+        "primary intent classified as 'comparar' from article text"
+      ],
+      "palette": {
+        "category": "Credito / Deuda / Impuestos / Riesgo",
+        "hex": "#d97706"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure standing, one hand raised to head, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near pile of documents, credit card shape. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #d97706, (2) white #ffffff for the figure silhouette, (3) light tint #eab476 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #8d4d04 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "6e3d1f54e9d264abdb65b9e2c0b2f743f050c974916146c4901749180f81a8d6",
+      "selectors": {
+        "ruleId": "deuda",
+        "category": "deuda-credito",
+        "cluster": "deuda-credito",
+        "matchedKeywords": [
+          "deuda",
+          "credito",
+          "dicom"
+        ]
+      }
+    },
+    {
+      "slug": "licencia-medica-desde-que-dia-pagan",
+      "sourcePath": "src/data/blog/licencia-medica-desde-que-dia-pagan.md",
+      "targetImagePath": "/images/hero/licencia-medica-desde-que-dia-pagan.avif",
+      "template": "A",
+      "sceneId": "A:FONASA vs ISAPRE",
+      "readerSituation": "Persona comparando cobertura, documentos o protecciones de salud.",
+      "primaryIntent": "comparar",
+      "toneClass": "neutral",
+      "visualEvidence": [
+        "text contains 'fonasa' in article body/title context",
+        "text contains 'isapre' in article body/title context",
+        "text contains 'licencia medica' in article body/title context",
+        "primary intent classified as 'comparar' from article text"
+      ],
+      "palette": {
+        "category": "Salud / FONASA / ISAPRE",
+        "hex": "#0284c7"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #0284c7.\n\nScene: one geometric human figure standing upright, arms slightly extended, comparing posture, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near two document shapes side by side, shield shape. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #0284c7, (2) white #ffffff for the figure silhouette, (3) light tint #74bbe0 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #015681 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "4b86aa70adafa7c742a37ec77109df57dc5bc38f56dd7ec39c3e5a85a606b15d",
+      "selectors": {
+        "ruleId": "salud",
+        "category": "empleo-ingresos",
+        "cluster": "empleo-ingresos",
+        "matchedKeywords": [
+          "fonasa",
+          "isapre",
+          "licencia medica"
+        ]
+      }
+    },
+    {
+      "slug": "operacion-renta-f22-checklist",
+      "sourcePath": "src/data/blog/operacion-renta-f22-checklist.md",
+      "targetImagePath": "/images/hero/operacion-renta-f22-checklist.avif",
+      "template": "A",
+      "sceneId": "A:Declaracion renta",
+      "readerSituation": "Persona completando o revisando formularios y fechas tributarias.",
+      "primaryIntent": "guiar",
+      "toneClass": "serio",
+      "visualEvidence": [
+        "text contains 'renta' in article body/title context",
+        "text contains 'f22' in article body/title context",
+        "text contains 'sii' in article body/title context",
+        "primary intent classified as 'guiar' from article text"
+      ],
+      "palette": {
+        "category": "Credito / Deuda / Impuestos / Riesgo",
+        "hex": "#d97706"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure seated at desk, focused forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near computer screen showing a form, calendar. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #d97706, (2) white #ffffff for the figure silhouette, (3) light tint #eab476 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #8d4d04 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "258ed049dd8da2272674f5d84e3bd6d445fb21f175c63cb213285f737b99ad1b",
+      "selectors": {
+        "ruleId": "renta",
+        "category": "impuestos",
+        "cluster": "impuestos-personas",
+        "matchedKeywords": [
+          "renta",
+          "f22",
+          "sii",
+          "retencion"
+        ]
+      }
+    },
+    {
+      "slug": "que-es-el-apv",
+      "sourcePath": "src/data/blog/que-es-el-apv.mdx",
+      "targetImagePath": "/images/hero/que-es-el-apv.avif",
+      "template": "A",
+      "sceneId": "A:Declaracion renta",
+      "readerSituation": "Persona completando o revisando formularios y fechas tributarias.",
+      "primaryIntent": "comparar",
+      "toneClass": "serio",
+      "visualEvidence": [
+        "text contains 'impuesto' in article body/title context",
+        "primary intent classified as 'comparar' from article text",
+        "reader situation anchored to scene rule 'renta'"
+      ],
+      "palette": {
+        "category": "Credito / Deuda / Impuestos / Riesgo",
+        "hex": "#d97706"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure seated at desk, focused forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near computer screen showing a form, calendar. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #d97706, (2) white #ffffff for the figure silhouette, (3) light tint #eab476 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #8d4d04 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "258ed049dd8da2272674f5d84e3bd6d445fb21f175c63cb213285f737b99ad1b",
+      "selectors": {
+        "ruleId": "renta",
+        "category": "prevision",
+        "cluster": "ahorro-e-inversion",
+        "matchedKeywords": [
+          "impuesto"
+        ]
+      }
+    },
+    {
+      "slug": "que-es-el-ipc-chile-como-se-calcula",
+      "sourcePath": "src/data/blog/que-es-el-ipc-chile-como-se-calcula.md",
+      "targetImagePath": "/images/hero/que-es-el-ipc-chile-como-se-calcula.avif",
+      "template": "C",
+      "sceneId": "C:activity pulse line",
+      "readerSituation": "Persona entendiendo un indicador economico que afecta pagos cotidianos.",
+      "primaryIntent": "explicar",
+      "toneClass": "educativo",
+      "visualEvidence": [
+        "text contains 'uf' in article body/title context",
+        "text contains 'ipc' in article body/title context",
+        "text contains 'inflacion' in article body/title context",
+        "primary intent classified as 'explicar' from article text"
+      ],
+      "palette": {
+        "category": "Educativo / Conceptos / Guias",
+        "hex": "#4f46e5"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector background for a personal finance graphic. 2D flat design only.\n\nBackground: solid color #4f46e5, fills entire canvas.\nElement: small activity pulse line icon in the bottom right area. White stroke lines only, 2px weight, no fill. Icon occupies approximately 15% of canvas width.\n\nColor palette: use exactly 2 colors - background #4f46e5 and stroke #ffffff. No additional colors.\nShape style: stroke lines only for the icon, no filled shapes.\nThe left two-thirds of the canvas must be completely empty - reserved for text overlay in post-production.\nNo text, no letters, no numbers anywhere in the image.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "cd246c0337d59dee76060e395f789f7ed671ee14dc53c98d861e903de04e0f50",
+      "selectors": {
+        "ruleId": "uf",
+        "category": "general",
+        "cluster": "empleo-ingresos",
+        "matchedKeywords": [
+          "uf",
+          "ipc",
+          "inflacion",
+          "indicador"
+        ]
+      }
+    },
+    {
+      "slug": "que-es-la-cuenta-2-afp",
+      "sourcePath": "src/data/blog/que-es-la-cuenta-2-afp.md",
+      "targetImagePath": "/images/hero/que-es-la-cuenta-2-afp.avif",
+      "template": "A",
+      "sceneId": "A:Declaracion renta",
+      "readerSituation": "Persona completando o revisando formularios y fechas tributarias.",
+      "primaryIntent": "comparar",
+      "toneClass": "serio",
+      "visualEvidence": [
+        "text contains 'impuesto' in article body/title context",
+        "primary intent classified as 'comparar' from article text",
+        "reader situation anchored to scene rule 'renta'"
+      ],
+      "palette": {
+        "category": "Credito / Deuda / Impuestos / Riesgo",
+        "hex": "#d97706"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure seated at desk, focused forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near computer screen showing a form, calendar. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #d97706, (2) white #ffffff for the figure silhouette, (3) light tint #eab476 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #8d4d04 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "258ed049dd8da2272674f5d84e3bd6d445fb21f175c63cb213285f737b99ad1b",
+      "selectors": {
+        "ruleId": "renta",
+        "category": "prevision",
+        "cluster": "pensiones-afp",
+        "matchedKeywords": [
+          "impuesto"
+        ]
+      }
+    },
+    {
+      "slug": "que-es-la-uf",
+      "sourcePath": "src/data/blog/que-es-la-uf.md",
+      "targetImagePath": "/images/hero/que-es-la-uf.avif",
+      "template": "C",
+      "sceneId": "C:activity pulse line",
+      "readerSituation": "Persona entendiendo un indicador economico que afecta pagos cotidianos.",
+      "primaryIntent": "explicar",
+      "toneClass": "educativo",
+      "visualEvidence": [
+        "text contains 'uf' in article body/title context",
+        "text contains 'inflacion' in article body/title context",
+        "primary intent classified as 'explicar' from article text",
+        "reader situation anchored to scene rule 'uf'"
+      ],
+      "palette": {
+        "category": "Educativo / Conceptos / Guias",
+        "hex": "#4f46e5"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector background for a personal finance graphic. 2D flat design only.\n\nBackground: solid color #4f46e5, fills entire canvas.\nElement: small activity pulse line icon in the bottom right area. White stroke lines only, 2px weight, no fill. Icon occupies approximately 15% of canvas width.\n\nColor palette: use exactly 2 colors - background #4f46e5 and stroke #ffffff. No additional colors.\nShape style: stroke lines only for the icon, no filled shapes.\nThe left two-thirds of the canvas must be completely empty - reserved for text overlay in post-production.\nNo text, no letters, no numbers anywhere in the image.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "cd246c0337d59dee76060e395f789f7ed671ee14dc53c98d861e903de04e0f50",
+      "selectors": {
+        "ruleId": "uf",
+        "category": "deuda-credito",
+        "cluster": "deuda-credito",
+        "matchedKeywords": [
+          "uf",
+          "inflacion"
+        ]
+      }
+    },
+    {
+      "slug": "reforma-previsional-2025-que-cambia-y-como-te-afecta",
+      "sourcePath": "src/data/blog/reforma-previsional-2025-que-cambia-y-como-te-afecta.md",
+      "targetImagePath": "/images/hero/reforma-previsional-2025-que-cambia-y-como-te-afecta.avif",
+      "template": "A",
+      "sceneId": "A:Ahorro",
+      "readerSituation": "Persona organizando ahorro o controlando gastos cotidianos.",
+      "primaryIntent": "calcular",
+      "toneClass": "progreso",
+      "visualEvidence": [
+        "text contains 'ahorro' in article body/title context",
+        "primary intent classified as 'calcular' from article text",
+        "reader situation anchored to scene rule 'ahorro'"
+      ],
+      "palette": {
+        "category": "Ahorro activo / Metas / Logros",
+        "hex": "#059669"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #059669.\n\nScene: one geometric human figure standing, reaching forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near jar or container, coin shape. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #059669, (2) white #ffffff for the figure silhouette, (3) light tint #76c5ad for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #036244 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "ce75f5f5db542b7b38d4c0222866875ed1676303de7c203aab59469ef6777079",
+      "selectors": {
+        "ruleId": "ahorro",
+        "category": "prevision",
+        "cluster": "pensiones-afp",
+        "matchedKeywords": [
+          "ahorro"
+        ]
+      }
+    },
+    {
+      "slug": "renegociacion-superir",
+      "sourcePath": "src/data/blog/renegociacion-superir.md",
+      "targetImagePath": "/images/hero/renegociacion-superir.avif",
+      "template": "C",
+      "sceneId": "C:activity pulse line",
+      "readerSituation": "Persona entendiendo un indicador economico que afecta pagos cotidianos.",
+      "primaryIntent": "explicar",
+      "toneClass": "educativo",
+      "visualEvidence": [
+        "text contains 'uf' in article body/title context",
+        "primary intent classified as 'explicar' from article text",
+        "reader situation anchored to scene rule 'uf'"
+      ],
+      "palette": {
+        "category": "Educativo / Conceptos / Guias",
+        "hex": "#4f46e5"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector background for a personal finance graphic. 2D flat design only.\n\nBackground: solid color #4f46e5, fills entire canvas.\nElement: small activity pulse line icon in the bottom right area. White stroke lines only, 2px weight, no fill. Icon occupies approximately 15% of canvas width.\n\nColor palette: use exactly 2 colors - background #4f46e5 and stroke #ffffff. No additional colors.\nShape style: stroke lines only for the icon, no filled shapes.\nThe left two-thirds of the canvas must be completely empty - reserved for text overlay in post-production.\nNo text, no letters, no numbers anywhere in the image.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "cd246c0337d59dee76060e395f789f7ed671ee14dc53c98d861e903de04e0f50",
+      "selectors": {
+        "ruleId": "uf",
+        "category": "deuda-credito",
+        "cluster": "deuda-credito",
+        "matchedKeywords": [
+          "uf"
+        ]
+      }
+    },
+    {
+      "slug": "seguro-de-cesantia",
+      "sourcePath": "src/data/blog/seguro-de-cesantia.md",
+      "targetImagePath": "/images/hero/seguro-de-cesantia.avif",
+      "template": "C",
+      "sceneId": "C:activity pulse line",
+      "readerSituation": "Persona entendiendo un indicador economico que afecta pagos cotidianos.",
+      "primaryIntent": "explicar",
+      "toneClass": "educativo",
+      "visualEvidence": [
+        "text contains 'uf' in article body/title context",
+        "primary intent classified as 'explicar' from article text",
+        "reader situation anchored to scene rule 'uf'"
+      ],
+      "palette": {
+        "category": "Educativo / Conceptos / Guias",
+        "hex": "#4f46e5"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector background for a personal finance graphic. 2D flat design only.\n\nBackground: solid color #4f46e5, fills entire canvas.\nElement: small activity pulse line icon in the bottom right area. White stroke lines only, 2px weight, no fill. Icon occupies approximately 15% of canvas width.\n\nColor palette: use exactly 2 colors - background #4f46e5 and stroke #ffffff. No additional colors.\nShape style: stroke lines only for the icon, no filled shapes.\nThe left two-thirds of the canvas must be completely empty - reserved for text overlay in post-production.\nNo text, no letters, no numbers anywhere in the image.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "cd246c0337d59dee76060e395f789f7ed671ee14dc53c98d861e903de04e0f50",
+      "selectors": {
+        "ruleId": "uf",
+        "category": "empleo-ingresos",
+        "cluster": "empleo-ingresos",
+        "matchedKeywords": [
+          "uf"
+        ]
+      }
+    },
+    {
+      "slug": "suplantacion-identidad-creditos-no-reconocidos",
+      "sourcePath": "src/data/blog/suplantacion-identidad-creditos-no-reconocidos.md",
+      "targetImagePath": "/images/hero/suplantacion-identidad-creditos-no-reconocidos.avif",
+      "template": "A",
+      "sceneId": "A:Fraude / Estafa",
+      "readerSituation": "Persona revisando una alerta o contacto sospechoso en su telefono.",
+      "primaryIntent": "alertar",
+      "toneClass": "alerta",
+      "visualEvidence": [
+        "text contains 'suplantacion' in article body/title context",
+        "primary intent classified as 'alertar' from article text",
+        "reader situation anchored to scene rule 'fraude'"
+      ],
+      "palette": {
+        "category": "Fraude / Perdida grave",
+        "hex": "#c2410c"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #c2410c.\n\nScene: one geometric human figure standing, tense posture, looking at hand, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near smartphone with alert triangle symbol. All objects are flat geometric shapes, same illustration style.\n\nColor palette: use exactly these 5 colors and no others - (1) background #c2410c, (2) white #ffffff for the figure silhouette, (3) light tint #dd9779 for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent #7e2a08 for detail elements. No additional colors, no tints outside this palette, no variations.\nShape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.",
+      "promptHash": "59cb3540db3b1610e94bfc5a2ca462c2a197c1fd432092c5a72cf46500f229e7",
+      "selectors": {
+        "ruleId": "fraude",
+        "category": "seguridad-financiera",
+        "cluster": "seguridad-financiera",
+        "matchedKeywords": [
+          "suplantacion"
+        ]
+      }
+    }
+  ]
+}

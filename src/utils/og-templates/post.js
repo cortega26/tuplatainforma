@@ -1,6 +1,6 @@
 /**
  * post.js — OG image generator
- * Sistema visual v3 — tuplatainforma
+ * Sistema visual v3 — monedario
  *
  * Template B: Icon Focus  — artículos técnicos/referencia
  * Template C: Type + Icon — artículos con dato ancla claro

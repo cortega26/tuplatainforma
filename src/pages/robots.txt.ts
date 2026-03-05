@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 import { SITE } from "@/config";
 
-// Derive base path from the configured website URL (e.g. /tuplatainforma)
+// Derive base path from the configured website URL (e.g. "/" or "/subpath")
 const BASE = new URL(SITE.website).pathname.replace(/\/$/, "");
 
 const getRobotsTxt = (sitemapURL: URL) => `

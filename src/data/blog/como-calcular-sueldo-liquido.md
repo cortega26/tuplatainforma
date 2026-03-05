@@ -1,6 +1,6 @@
 ---
 title: "Sueldo líquido en Chile: qué te descuentan, por qué y cómo calcularlo tú mismo"
-author: "Equipo TuPlataInforma"
+author: "Equipo Monedario"
 pubDate: 2026-02-24T10:00:00Z
 updatedDate: 2026-03-04T12:00:00Z
 slug: como-calcular-sueldo-liquido

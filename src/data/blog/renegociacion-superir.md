@@ -1,6 +1,6 @@
 ---
 title: "Renegociación Superir: qué es, quién puede pedir y cómo hacerlo sin abogado"
-author: "Equipo TuPlataInforma"
+author: "Equipo Monedario"
 pubDate: 2026-02-24T14:00:00Z
 updatedDate: 2026-03-04T12:00:00Z
 slug: renegociacion-superir
