@@ -15,7 +15,7 @@ cluster: ahorro-e-inversion
 lang: es-CL
 featured: false
 draft: false
-heroImage: ../../assets/images/blog/como-invertir-en-etfs-desde-chile.avif
+heroImage: /images/hero/como-invertir-en-etfs-desde-chile.avif
 ---
 
 <!-- META: keyword_primary="como invertir en etf desde chile" | intent="guia-procedimental" | cluster="ahorro-inversion" -->

@@ -16,7 +16,7 @@ tags:
 category: empleo-ingresos
 cluster: empleo-ingresos
 description: "Guía completa del Seguro de Cesantía en Chile: qué es la CIC y el FCS, cómo consultar tu saldo, cuándo y cómo cobrar, y cuánto te pagan según tu tipo de contrato."
-heroImage: ../../assets/images/blog/seguro-de-cesantia.avif
+heroImage: /images/hero/seguro-de-cesantia.avif
 ---
 
 Quedaste sin trabajo — sea porque te despidieron, se venció tu contrato o renunciaste. Lo primero que muchos no saben es que tienen plata acumulada en la AFC esperando ser cobrada. Esta guía te explica exactamente qué es, cuánto tienes y cómo cobrarlo, y se complementa con la [guía del cluster Empleo e Ingresos](/guias/empleo-ingresos/).

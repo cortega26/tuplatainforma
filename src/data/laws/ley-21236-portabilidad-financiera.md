@@ -5,7 +5,7 @@ shortName: "Portabilidad Financiera"
 area: bancaria-y-financiera
 effective: 2020-07-17
 lastAmended: 2021-01-01
-bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1147782
+bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1146340
 description: "Permite trasladar productos financieros (créditos, cuentas, seguros asociados) de una institución a otra con mayor facilidad. Define plazos máximos y prohíbe cobros por la portación."
 lastVerified: 2026-03-03
 updateTrigger: "Modificación de los plazos de portabilidad, inclusión de nuevos productos financieros o cambio en el régimen de costos."
@@ -64,7 +64,7 @@ La institución **no puede cobrar** comisiones ni penalidades por el solo hecho 
 
 ## Texto oficial
 
-Texto completo: [BCN — Ley 21.236](https://www.bcn.cl/leychile/navegar?idNorma=1147782)
+Texto completo: [BCN — Ley 21.236](https://www.bcn.cl/leychile/navegar?idNorma=1146340)
 
 Guía CMF: [CMF — Portabilidad Financiera](https://www.cmfchile.cl/portal/principal/613/w3-article-27329.html)
 

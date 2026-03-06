@@ -15,7 +15,7 @@ cluster: pensiones-afp
 lang: es-CL
 featured: false
 draft: false
-heroImage: ../../assets/images/blog/reforma-previsional-2025-que-cambia-y-como-te-afecta.avif
+heroImage: /images/hero/reforma-previsional-2025-que-cambia-y-como-te-afecta.avif
 ---
 
 En julio de 2025 se promulgó la reforma previsional más importante en décadas. Cambia cómo se financia tu jubilación, introduce un nuevo beneficio para pensiones más bajas y reemplaza los multifondos con un esquema distinto. Aquí te explicamos qué hay de nuevo, cuándo entra en vigencia cada parte y qué cambia concretamente para ti.

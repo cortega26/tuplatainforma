@@ -97,7 +97,7 @@ export default function PromptGenerator() {
           </span>
         </div>
         <p style={{ fontSize: "0.75rem", color: "#555", margin: 0 }}>
-          Genera prompts para DALL-E 3 · anti-AI aesthetic · sistema editorial v3.1
+          Catalogo visual canonico para DALL-E 3 · el pipeline solo puede elegir modelos aprobados de esta lista
         </p>
       </div>
 
@@ -301,7 +301,7 @@ export default function PromptGenerator() {
           {/* Ejemplos rápidos */}
           <div>
             <label style={{ fontSize: "0.65rem", color: "#666", letterSpacing: "0.12em", textTransform: "uppercase", display: "block", marginBottom: "0.6rem" }}>
-              Ejemplos rápidos
+              Modelos aprobados
             </label>
             {template === "A" ? (
               <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>

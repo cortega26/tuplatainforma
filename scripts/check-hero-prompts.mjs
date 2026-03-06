@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import path from "node:path";
+import { findApprovedPromptModel } from "./hero-images/config.mjs";
 import {
   MANIFEST_PATH,
   PROMPTS_PATH,
@@ -83,6 +84,25 @@ async function main() {
 
     if (typeof entry.sceneId !== "string" || entry.sceneId.trim() === "") {
       pushIssue(errors, article.slug, "Missing sceneId.");
+    }
+
+    if (typeof entry.approvedModelId !== "string" || entry.approvedModelId.trim() === "") {
+      pushIssue(errors, article.slug, "Missing approvedModelId.");
+    } else {
+      const approvedModel = findApprovedPromptModel(entry.template, entry.approvedModelId);
+      if (!approvedModel) {
+        pushIssue(
+          errors,
+          article.slug,
+          `approvedModelId '${entry.approvedModelId}' is not part of the approved template catalog.`
+        );
+      } else if (entry.sceneId !== approvedModel.sceneId) {
+        pushIssue(
+          errors,
+          article.slug,
+          `sceneId '${entry.sceneId}' does not match approved model '${approvedModel.sceneId}'.`
+        );
+      }
     }
 
     if (typeof entry.readerSituation !== "string" || entry.readerSituation.trim() === "") {

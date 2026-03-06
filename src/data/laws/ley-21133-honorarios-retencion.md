@@ -5,7 +5,7 @@ shortName: "Retención Boletas de Honorarios"
 area: prevision-y-trabajo
 effective: 2019-01-05
 lastAmended: 2022-01-01
-bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1126386
+bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1128420
 description: "Establece la cotización previsional y de salud obligatoria progresiva para trabajadores a honorarios en Chile, implementada a través de la retención sobre boletas."
 lastVerified: 2026-03-03
 updateTrigger: "Cambio en el porcentaje de retención vigente para el año en curso, o modificación de la cobertura de prestaciones para independientes."
@@ -56,7 +56,7 @@ Sí. Si la retención acumulada del año supera las cotizaciones efectivamente a
 
 ## Texto oficial
 
-Texto completo: [BCN — Ley 21.133](https://www.bcn.cl/leychile/navegar?idNorma=1126386)
+Texto completo: [BCN — Ley 21.133](https://www.bcn.cl/leychile/navegar?idNorma=1128420)
 
 Tabla de retenciones vigentes: [SII — Trabajadores independientes](https://www.sii.cl/destacados/trabajadores_independientes/)
 

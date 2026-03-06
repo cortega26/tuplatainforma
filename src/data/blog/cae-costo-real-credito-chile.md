@@ -16,7 +16,7 @@ cluster: deuda-credito
 lang: es-CL
 featured: false
 draft: false
-heroImage: ../../assets/images/blog/cae-costo-real-credito-chile.avif
+heroImage: /images/hero/cae-costo-real-credito-chile.avif
 ---
 
 <!-- META: keyword_primary="qué es la CAE de un crédito" | intent="informacional-pilar" | cluster="deuda-credito" -->
@@ -214,7 +214,7 @@ La información de esta guía se basa en la normativa vigente a marzo de 2026. L
 
 - **CMF — Tasa Máxima Convencional:** [cmfchile.cl](https://www.cmfchile.cl/portal/estadisticas/606/w3-propertyvalue-17008.html)
 - **SERNAC — Derechos del consumidor financiero, simulador de créditos y denuncias:** [sernac.cl](https://www.sernac.cl)
-- **Ley N° 18.010 — Operaciones de crédito de dinero (prepago, tasa, TMC):** [bcn.cl](https://www.bcn.cl/leychile/navegar?idNorma=29748)
+- **Ley N° 18.010 — Operaciones de crédito de dinero (prepago, tasa, TMC):** [bcn.cl](https://www.bcn.cl/leychile/navegar?idNorma=29438)
 - **CMF Educa — Cómo comparar créditos y Hoja de Información Precontractual:** [cmfchile.cl/educa](https://www.cmfchile.cl/educa/621/w3-article-29903.html)
 
 _Esta guía es educativa y no reemplaza la revisión de tu contrato específico ni asesoría profesional cuando el monto o la complejidad del crédito lo requieran._

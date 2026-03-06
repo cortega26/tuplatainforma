@@ -44,86 +44,113 @@ export const COLORS = {
 export const SCENE_EXAMPLES = {
   A: [
     {
+      id: "presupuesto",
       group: "General",
       label: "Presupuesto",
-      postura: "seated at a table, leaning slightly forward",
-      objetos: "calculator, stacked papers, coffee cup",
+      postura: "standing, slightly bent forward, reaching toward the objects",
+      objetos: "calculator, stacked papers",
     },
     {
+      id: "cesantia",
       group: "General",
       label: "Cesantia",
       postura: "seated on a chair, slouched, head slightly down",
       objetos: "closed laptop, empty cup",
     },
     {
+      id: "afp-pension",
       group: "General",
       label: "AFP / Pension",
       postura: "seated in a comfortable chair, relaxed",
       objetos: "small hourglass shape, calendar",
     },
     {
+      id: "deuda-credito",
       group: "General",
       label: "Deuda / Credito",
       postura: "standing, one hand raised to head",
       objetos: "pile of documents, credit card shape",
     },
     {
+      id: "fraude-estafa",
       group: "General",
       label: "Fraude / Estafa",
       postura: "standing, tense posture, looking at hand",
       objetos: "smartphone with alert triangle symbol",
     },
     {
+      id: "primer-sueldo",
       group: "General",
       label: "Primer sueldo",
       postura: "standing upright, arms slightly raised",
       objetos: "envelope, banknote shape",
     },
     {
+      id: "declaracion-renta",
       group: "General",
       label: "Declaracion renta",
-      postura: "seated at desk, focused forward",
-      objetos: "computer screen showing a form, calendar",
+      postura: "standing, looking down at the objects in hand",
+      objetos: "paper stack, bank card shape",
     },
     {
+      id: "ahorro",
       group: "General",
       label: "Ahorro",
       postura: "standing, reaching forward",
-      objetos: "jar or container, coin shape",
+      objetos: "glass jar with coins",
     },
     {
+      id: "fondos-mutuos",
       group: "Inversion",
       label: "Fondos mutuos",
-      postura: "seated at a table, leaning slightly forward",
-      objetos: "open laptop with bar chart, small bar chart shape, coffee cup",
+      postura: "standing upright, looking down at the objects in hand",
+      objetos: "open laptop, coin shape",
     },
     {
+      id: "que-es-la-uf",
       group: "Educacion",
       label: "Que es la UF",
-      postura: "seated at a table, leaning slightly forward",
-      objetos: "open book shape, calculator, small activity line chart",
+      postura: "standing upright, one arm slightly extended toward the objects",
+      objetos: "open book shape, calculator",
     },
     {
+      id: "fonasa-vs-isapre",
       group: "Salud",
       label: "FONASA vs ISAPRE",
       postura: "standing upright, arms slightly extended, comparing posture",
-      objetos: "two document shapes side by side, shield shape",
+      objetos: "two card shapes side by side, shield shape",
     },
   ],
   B: [
-    { label: "Seguro de salud", icono: "shield with checkmark inside" },
-    { label: "Hipoteca / Arriendo", icono: "simple key shape" },
+    { id: "seguro-salud", label: "Seguro de salud", icono: "shield with checkmark inside" },
+    { id: "hipoteca-arriendo", label: "Hipoteca / Arriendo", icono: "simple key shape" },
     {
+      id: "inversion-fondos",
       label: "Inversion / Fondos",
       icono: "bar chart, three bars increasing left to right",
     },
-    { label: "UF / Indicadores", icono: "activity pulse line" },
-    { label: "CAE / Credito educacion", icono: "downward trending line chart" },
-    { label: "Renegociacion", icono: "two circular arrows forming a cycle" },
-    { label: "AFP / Cotizacion", icono: "hourglass shape" },
-    { label: "Cuenta corriente / Banco", icono: "simple smartphone outline" },
+    { id: "uf-indicadores", label: "UF / Indicadores", icono: "activity pulse line" },
+    { id: "cae-credito-educacion", label: "CAE / Credito educacion", icono: "downward trending line chart" },
+    { id: "renegociacion", label: "Renegociacion", icono: "two circular arrows forming a cycle" },
+    { id: "afp-cotizacion", label: "AFP / Cotizacion", icono: "hourglass shape" },
+    { id: "cuenta-corriente-banco", label: "Cuenta corriente / Banco", icono: "simple smartphone outline" },
   ],
 };
+
+export const APPROVED_PROMPT_MODELS = {
+  A: SCENE_EXAMPLES.A.map(scene => ({ ...scene, template: "A", sceneId: `A:${scene.id}` })),
+  B: SCENE_EXAMPLES.B.map(scene => ({ ...scene, template: "B", sceneId: `B:${scene.id}` })),
+  C: SCENE_EXAMPLES.B.map(scene => ({ ...scene, template: "C", sceneId: `C:${scene.id}` })),
+};
+
+export function findApprovedPromptModel(template, idOrLabel) {
+  const entries = APPROVED_PROMPT_MODELS[template] ?? [];
+  return (
+    entries.find(entry => entry.id === idOrLabel) ??
+    entries.find(entry => entry.label === idOrLabel) ??
+    null
+  );
+}
 
 export const POSTURAS = [
   {
@@ -175,7 +202,15 @@ export const OBJETOS_SUGERIDOS = [
 ];
 
 export const NEGATIVES =
-  "Do not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy.";
+  "Do not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy. Do not add extra objects beyond the named scene props.";
+
+function limitObjectList(objetos, limit = 2) {
+  return String(objetos ?? "")
+    .split(",")
+    .map(item => item.trim())
+    .filter(Boolean)
+    .slice(0, limit);
+}
 
 export function lightenHex(hex, amount = 0.45) {
   const r = Number.parseInt(hex.slice(1, 3), 16);
@@ -202,17 +237,16 @@ export function darkenHex(hex, amount = 0.35) {
 }
 
 export function buildPromptA(hex, postura, objetos) {
-  const light = lightenHex(hex, 0.45);
-  const dark = darkenHex(hex, 0.35);
+  const objectList = limitObjectList(objetos, 2);
+  const objectClause = objectList.join(", ") || "one simple finance object";
   return `Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.
 
 Background: solid color ${hex}.
 
-Scene: one geometric human figure ${postura}, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near ${objetos}. All objects are flat geometric shapes, same illustration style.
+Scene: one geometric human figure ${postura}, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near ${objectClause}. All objects are flat geometric shapes, same illustration style.
 
-Color palette: use exactly these 5 colors and no others - (1) background ${hex}, (2) white #ffffff for the figure silhouette, (3) light tint ${light} for primary objects, (4) near-white #f1f5f9 for secondary objects, (5) dark accent ${dark} for detail elements. No additional colors, no tints outside this palette, no variations.
-Shape style: all shapes are filled with flat color. No outlines, no strokes, no borders on any shape.
 Lighting: none. Flat uniform background only. No shadows, no highlights, no depth.
+Color palette: 3 colors maximum, all flat fills.
 Composition: all elements within the central 80% of the canvas.
 Canvas: 1200x630 pixels, landscape.
 
@@ -220,29 +254,28 @@ ${NEGATIVES}`;
 }
 
 export function buildPromptB(hex, icono) {
-  return `Create a flat vector icon illustration for a personal finance website. 2D flat design, single centered element only.
+  return `Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.
 
 Background: solid color ${hex}.
-Element: ${icono}, as a simple geometric vector icon, centered, occupying 40% of canvas width. White stroke lines only, 2px weight, no fill inside the icon. No other stroke weights.
+Scene: one simple geometric ${icono} icon, centered, occupying 40% of the canvas width. Use flat filled shapes only. No secondary elements.
 
-Color palette: use exactly 2 colors - background ${hex} and stroke #ffffff. No additional colors, no tints, no variations.
-Shape style: stroke lines only, no filled shapes, no solid fills inside the icon.
-No other elements on the canvas. No decorative background patterns.
+Lighting: none. Flat uniform background only. No shadows, no highlights, no depth.
+Color palette: 2 colors maximum, all flat fills.
+Composition: all elements within the central 80% of the canvas.
 Canvas: 1200x630 pixels, landscape.
 
 ${NEGATIVES}`;
 }
 
 export function buildPromptC(hex, icono) {
-  return `Create a flat vector background for a personal finance graphic. 2D flat design only.
+  return `Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.
 
-Background: solid color ${hex}, fills entire canvas.
-Element: small ${icono} icon in the bottom right area. White stroke lines only, 2px weight, no fill. Icon occupies approximately 15% of canvas width.
+Background: solid color ${hex}.
+Scene: one small geometric ${icono} icon in the bottom right area. Use flat filled shapes only. No other objects.
 
-Color palette: use exactly 2 colors - background ${hex} and stroke #ffffff. No additional colors.
-Shape style: stroke lines only for the icon, no filled shapes.
-The left two-thirds of the canvas must be completely empty - reserved for text overlay in post-production.
-No text, no letters, no numbers anywhere in the image.
+Lighting: none. Flat uniform background only. No shadows, no highlights, no depth.
+Color palette: 2 colors maximum, all flat fills.
+Composition: keep the left two-thirds of the canvas completely empty for text overlay. All visible elements must stay within the rightmost 30% of the canvas.
 Canvas: 1200x630 pixels, landscape.
 
 ${NEGATIVES}`;

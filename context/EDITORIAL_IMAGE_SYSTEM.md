@@ -2,7 +2,7 @@
 
 Last updated: 2026-03-05\
 Status: Active\
-Version: 3.3 — selección semántica obligatoria desde lectura de artículo
+Version: 3.4 — selección semántica obligatoria + prompt recipes validados
 
 ---
 
@@ -45,7 +45,8 @@ Regla mandatoria desde v3.3:
 
 - La creación de toda `heroImage` nueva o reemplazada debe partir de la lectura del artículo.
 - Queda prohibido seleccionar imagen solo por `slug`, `tags`, `category` o intuición libre del agente.
-- La metadata editorial puede iniciar la hipótesis visual, pero la decisión final debe salir del contenido real del artículo.
+- La lectura del artículo no autoriza a describir una escena nueva.
+- La lectura del artículo solo sirve para escoger el mejor modelo aprobado dentro del catálogo visual canónico.
 
 Documento complementario: `context/EDITORIAL_AI_PIPELINE.md`
 
@@ -87,6 +88,12 @@ Eso requiere que las imágenes representen situaciones, no conceptos. Una person
 **Claro, cercano, sin condescendencia.**
 
 El tono visual de monedario es el de un amigo que sabe de finanzas y te explica bien las cosas. No es un banco. No es una fintech con estética startup. No es un profesor universitario. Es alguien que entiende que la plata es un tema serio pero que puede tratarse sin hacerlo intimidante.
+
+Objetivo adicional de marca:
+
+- Cada imagen debe poder reconocerse como parte de la misma familia visual en menos de 2 segundos.
+- La prioridad es memorabilidad simple, no detalle.
+- La imagen debe sentirse propia de Monedario, no genérica de banco, fintech o dashboard.
 
 ### 3.2 Equilibrio emocional por tipo de contenido
 
@@ -135,10 +142,11 @@ Una escena cotidiana abstracta con personaje(s) simplificado(s), ilustrada en es
 - El artículo es un punto de entrada — alguien llegará sin saber qué busca exactamente
 
 **Estructura:**
-- Fondo de color semántico (ver sección 5)
-- Escena con 1–2 elementos humanos simplificados y 2–4 objetos de contexto
+- Fondo de color semántico sólido (ver sección 5)
+- Escena con 1 elemento humano simplificado y 1–2 objetos de contexto
 - Sin texto en la imagen
-- Textura de fondo opcional a ≤8% de opacidad
+- Sin textura, sombra ni degradado
+- Lectura inmediata con una sola acción clara
 
 **Ejemplos de escenas por tema:**
 
@@ -299,7 +307,14 @@ Los objetos anclan la escena al tema financiero. Deben ser:
 - **Planos** — mismo estilo ilustrado que los personajes
 - **En escala coherente** con el personaje
 
-Máximo 4 objetos por escena. Más elementos no añaden claridad, la reducen.
+Máximo 2 objetos por escena. Más elementos no añaden claridad, la reducen.
+
+Reglas adicionales:
+
+- Debe existir **1 objeto principal dominante**.
+- El segundo objeto, si existe, solo apoya la lectura.
+- Evitar mesas, escritorios o mobiliario grande salvo que sean indispensables para entender la acción.
+- Evitar pilas de tarjetas, dashboards, paneles o UI flotante: elevan la carga cognitiva y enfrían la escena.
 
 ### 6.3 Tabla de íconos — criterio narrativo
 
@@ -494,44 +509,60 @@ El lector moderno reconoce las imágenes IA por marcadores específicos, no por 
 | Iluminación volumétrica / rim light / god rays | El modelo por defecto dramatiza la luz | Pedir explícitamente `flat lighting`, `no shadows`, `uniform illumination` |
 | Piel o cabello hiperrealistas | El modelo optimiza para fotorrealismo | Pedir `geometric shapes only`, `no skin texture`, `vector-style characters` |
 | Profundidad de campo y bokeh | Estética fotográfica que los modelos emulan | `flat composition`, `no depth of field`, `no blur` |
-| Objetos imposibles o deformados | Falla del modelo en geometría compleja | Limitar objetos a 3–4 máximo, simples y reconocibles |
+| Objetos imposibles o deformados | Falla del modelo en geometría compleja | Limitar objetos a 1–2 máximo, simples y reconocibles |
 | Colores saturados y gradientes complejos | El modelo maximiza impacto visual por defecto | Especificar paleta hex exacta, `solid color background`, `no gradients` |
 | Tipografía generada (letras incorrectas) | Debilidad estructural de los modelos | Nunca pedir texto en la imagen; añadirlo en post-proceso |
 | Composición "cinematográfica" | El modelo interpreta "buena imagen" como cine | `flat design`, `editorial illustration`, `2D graphic` |
+| Escena demasiado corporativa | El modelo sesga hacia oficina, dashboard o ejecutivo | No pedir "estilo financiero" genérico. Pedir una acción concreta + 1-2 props concretos |
 
 ---
 
 ### 12.2 Estructura base del prompt
 
-Todo prompt para monedario sigue esta estructura de cuatro bloques. El orden importa.
+Todo prompt para monedario debe parecerse a los prompts validados manualmente. La regla es simple: pedir menos, pero pedirlo de forma concreta.
+
+Estructura fija:
 
 ```
-[ESTILO] + [ESCENA o ELEMENTO] + [PALETA] + [NEGATIVOS]
+[ESTILO BASE] + [BACKGROUND] + [SCENE] + [LIGHTING] + [PALETA] + [COMPOSICION] + [CANVAS] + [NEGATIVOS]
 ```
 
-**Bloque ESTILO** — establece el registro visual y bloquea los defaults del modelo:
+**ESTILO BASE**
 ```
-flat vector illustration, editorial graphic design, 2D geometric shapes,
-minimal detail, no gradients, no photorealism, no 3D rendering
-```
-
-**Bloque ESCENA / ELEMENTO** — describe el contenido (ver plantillas por template en 12.4):
-```
-[descripción concreta de personaje/ícono/composición]
+Create a flat vector editorial illustration for a personal finance website.
+2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.
 ```
 
-**Bloque PALETA** — especifica colores para evitar las decisiones automáticas del modelo:
+**BACKGROUND**
 ```
-solid background color [HEX], limited palette of 3 colors maximum,
-flat color fills, no shadows, no highlights
+Background: solid color [HEX].
 ```
 
-**Bloque NEGATIVOS** (negative prompt o al final del prompt con `--no`):
+**SCENE**
 ```
-no photorealistic skin, no hair texture, no facial features, no bokeh,
-no depth of field, no cinematic lighting, no rim light, no god rays,
-no lens flare, no gradient, no glow, no neon, no 3D, no realistic shadows,
-no text, no letters, no typography, no watermark, no logo
+Scene: one geometric human figure [postura], shown from behind or as a faceless silhouette -
+simple circle for head, basic rectangles for body. The figure is near [1-2 objetos].
+All objects are flat geometric shapes, same illustration style.
+```
+
+**LIGHTING**
+```
+Lighting: none. Flat uniform background only. No shadows, no highlights, no depth.
+```
+
+**PALETA**
+```
+Color palette: 3 colors maximum, all flat fills.
+```
+
+**COMPOSICION**
+```
+Composition: all elements within the central 80% of the canvas.
+```
+
+**CANVAS**
+```
+Canvas: 1200x630 pixels, landscape.
 ```
 
 ---
@@ -543,16 +574,14 @@ Este bloque se incluye en **todos los prompts** sin excepción. Es el núcleo de
 ```
 NEGATIVE PROMPT (copiar íntegro):
 
-photorealistic, hyperrealistic, 3D render, CGI, bokeh, depth of field,
-cinematic lighting, volumetric light, rim light, god rays, lens flare,
-gradient background, glowing effects, neon colors, golden coins, crypto aesthetic,
-skin texture, hair texture, facial features, detailed anatomy, realistic hands,
-muscle definition, wrinkles, pores, subsurface scattering,
-drop shadow, long shadow, complex shadow, ambient occlusion,
-text, letters, numbers, typography, watermark, signature, logo,
-busy composition, multiple scenes, collage, photo manipulation,
-stock photo aesthetic, corporate clipart, emoji style, cartoon network style,
-oil painting, watercolor, sketch, pencil drawing, anime, manga
+Do not include text, letters, numbers, logos, or watermarks.
+Do not add photorealistic details, skin texture, hair texture, or facial features.
+Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare,
+drop shadows, gradients, glows, or neon colors.
+Do not use 3D rendering or CGI.
+No cinematic lighting.
+No realistic anatomy.
+Do not add extra objects beyond the named scene props.
 ```
 
 ---
@@ -562,29 +591,38 @@ oil painting, watercolor, sketch, pencil drawing, anime, manga
 #### Template A — Scene Illustration
 
 ```
-flat vector illustration, editorial style, geometric characters,
-[descripción de la escena: 1 figura + 2-3 objetos],
-figure shown from behind / as silhouette / without face,
-[objetos: nombre simple separados por coma],
-solid background color [HEX de la categoría],
-2D flat design, uniform lighting, limited palette,
-clean composition, centered safe area,
-1200x630 pixels aspect ratio
+Create a flat vector editorial illustration for a personal finance website.
+2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.
 
-NEGATIVE: [negativos permanentes de 12.3]
+Background: solid color [HEX de la categoria].
+
+Scene: one geometric human figure [postura], shown from behind or as a faceless silhouette -
+simple circle for head, basic rectangles for body. The figure is near [1-2 objetos].
+All objects are flat geometric shapes, same illustration style.
+
+Lighting: none. Flat uniform background only. No shadows, no highlights, no depth.
+Color palette: 3 colors maximum, all flat fills.
+Composition: all elements within the central 80% of the canvas.
+Canvas: 1200x630 pixels, landscape.
+
+[negativos permanentes de 12.3]
 ```
 
 **Ejemplo — artículo sobre presupuesto familiar:**
 ```
-flat vector illustration, editorial style, geometric human figure seated at table,
-figure shown from behind, simple round head shape no facial features,
-table with calculator, papers, and coffee cup, all flat geometric shapes,
-solid background color #0d9488, 2D flat design, uniform lighting,
-3 color palette maximum, clean composition, 1200x630 aspect ratio
+Create a flat vector editorial illustration for a personal finance website.
+2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.
 
-NEGATIVE: photorealistic, hyperrealistic, 3D render, bokeh, cinematic lighting,
-skin texture, hair texture, facial features, text, letters, gradient background,
-neon, glow, drop shadow, complex shadow, stock photo
+Background: solid color #0d9488.
+
+Scene: one geometric human figure seated at a table, leaning slightly forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near calculator, stacked papers. All objects are flat geometric shapes, same illustration style.
+
+Lighting: none. Flat uniform background only. No shadows, no highlights, no depth.
+Color palette: 3 colors maximum, all flat fills.
+Composition: all elements within the central 80% of the canvas.
+Canvas: 1200x630 pixels, landscape.
+
+Do not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy. Do not add extra objects beyond the named scene props.
 ```
 
 ---
@@ -592,25 +630,34 @@ neon, glow, drop shadow, complex shadow, stock photo
 #### Template B — Icon Focus
 
 ```
-flat vector icon, single centered graphic element,
-[nombre del ícono / objeto] as geometric vector shape,
-solid background [HEX], icon at 40% of image width,
-2D flat design, stroke lines only OR solid fill only (not both),
-no background elements, minimal composition,
-1200x630 aspect ratio
+Create a flat vector editorial illustration for a personal finance website.
+2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.
 
-NEGATIVE: [negativos permanentes de 12.3]
+Background: solid color [HEX].
+Scene: one simple geometric [nombre del icono / objeto] icon, centered, occupying 40% of the canvas width. Use flat filled shapes only. No secondary elements.
+
+Lighting: none. Flat uniform background only. No shadows, no highlights, no depth.
+Color palette: 2 colors maximum, all flat fills.
+Composition: all elements within the central 80% of the canvas.
+Canvas: 1200x630 pixels, landscape.
+
+[negativos permanentes de 12.3]
 ```
 
 **Ejemplo — artículo sobre AFP:**
 ```
-flat vector icon, hourglass as simple geometric shape,
-centered on solid background #0d9488, icon occupies 40% of width,
-2D flat design, white stroke lines, no fill, clean minimal composition,
-1200x630 aspect ratio
+Create a flat vector editorial illustration for a personal finance website.
+2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.
 
-NEGATIVE: photorealistic, 3D render, shadow, glow, gradient,
-text, letters, realistic textures, cinematic lighting
+Background: solid color #0d9488.
+Scene: one simple geometric hourglass shape icon, centered, occupying 40% of the canvas width. Use flat filled shapes only. No secondary elements.
+
+Lighting: none. Flat uniform background only. No shadows, no highlights, no depth.
+Color palette: 2 colors maximum, all flat fills.
+Composition: all elements within the central 80% of the canvas.
+Canvas: 1200x630 pixels, landscape.
+
+Do not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy. Do not add extra objects beyond the named scene props.
 ```
 
 ---
@@ -620,14 +667,18 @@ text, letters, realistic textures, cinematic lighting
 > ⚠️ No pedir texto al modelo. Generar solo el fondo + ícono secundario. El texto se agrega en post-proceso con Figma, Canva o equivalente usando las especificaciones de sección 7.
 
 ```
-flat vector background composition,
-small [nombre del ícono] icon in bottom right corner,
-solid background [HEX], minimal 2D graphic,
-left two-thirds of image empty (reserved for text overlay),
-icon at 15% of image width, flat vector style,
-1200x630 aspect ratio
+Create a flat vector editorial illustration for a personal finance website.
+2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.
 
-NEGATIVE: [negativos permanentes de 12.3]
+Background: solid color [HEX].
+Scene: one small geometric [nombre del icono] icon in the bottom right area. Use flat filled shapes only. No other objects.
+
+Lighting: none. Flat uniform background only. No shadows, no highlights, no depth.
+Color palette: 2 colors maximum, all flat fills.
+Composition: keep the left two-thirds of the canvas completely empty for text overlay. All visible elements must stay within the rightmost 30% of the canvas.
+Canvas: 1200x630 pixels, landscape.
+
+[negativos permanentes de 12.3]
 ```
 
 ---
@@ -668,7 +719,10 @@ Antes de usar cualquier imagen generada, verificar:
 - [ ] Sin gradientes en el fondo (el fondo es color sólido)
 - [ ] Sin texto generado en la imagen
 - [ ] Sin objetos deformados o anatómicamente incorrectos
-- [ ] Paleta de 3 colores máximo, todos dentro del sistema
+- [ ] Paleta de hasta 3 colores planos, todos dentro del sistema
+- [ ] La escena se entiende en menos de 2 segundos
+- [ ] Hay una sola acción clara y un objeto principal dominante
+- [ ] No se percibe como clipart corporativo, dashboard o anuncio fintech
 - [ ] La escena completa es legible en crop 16:9 (safe area 1134×596)
 - [ ] Tamaño del archivo ≤ 80 KB tras exportar en .avif
 
@@ -687,6 +741,7 @@ Incluye:
 
 - `COLORS`
 - `SCENE_EXAMPLES`
+- `APPROVED_PROMPT_MODELS`
 - `POSTURAS`
 - `OBJETOS_SUGERIDOS`
 - `NEGATIVES`
@@ -737,14 +792,15 @@ Compatibilidad transicional:
 1. Scan (`scan-articles`)
 2. Lectura del artículo y derivación semántica de escena
 3. Build prompts (`build-prompts`)
-4. Generación opcional (`generate-images --run`) con `OPENAI_API_KEY`
-5. Postproceso (`postprocess-images`) a `.avif` 1200x630
-6. Aplicación (`apply-images`) a `public/images/hero` + wiring de frontmatter
-7. Guardrails CI (`check-hero-images`)
+4. Render programático opcional (`render-svg-scenes`) para escenas determinísticas
+5. Generación OpenAI opcional (`generate-images --run`) solo como benchmark o fallback
+6. Postproceso (`postprocess-images`) a `.avif` 1200x630
+7. Aplicación (`apply-images`) a `public/images/hero` + wiring de frontmatter
+8. Guardrails CI (`check-hero-images`)
 
 ### 13.4.1 Regla obligatoria de lectura semántica
 
-Antes de crear un prompt, el agente o script debe leer el artículo y extraer una representación visual mínima del contenido.
+Antes de crear un prompt, el agente o script debe leer el artículo y escoger un modelo aprobado del catálogo visual. No puede inventar una escena nueva ni ampliar la receta del catálogo.
 
 Campos obligatorios de decisión:
 
@@ -752,12 +808,31 @@ Campos obligatorios de decisión:
 - `primaryIntent`: intención dominante del artículo (`explicar`, `alertar`, `comparar`, `guiar`, `calcular`)
 - `toneClass`: tono visual esperado (`neutral`, `serio`, `alerta`, `educativo`, `progreso`)
 - `templateChoice`: `A`, `B` o `C`
+- `approvedModelId`: id del modelo aprobado elegido desde `SCENE_EXAMPLES`
 - `sceneChoice` o `iconChoice`
 - `visualEvidence`: frases breves que expliquen por qué esa escena sí corresponde al texto
 
 La selección semántica debe responder a esta pregunta:
 
 > Si el lector viera la imagen sin leer el título, ¿reconocería la situación concreta descrita por el artículo?
+
+Regla operativa:
+
+- `articulo -> clasificacion -> approvedModelId -> prompt`
+- No permitido: `articulo -> descripcion libre de escena -> prompt`
+
+Ejemplos de selección válida:
+
+- Artículo sobre cesantía: elegir `A:cesantia`
+- Artículo sobre deuda o CAE: elegir `A:deuda-credito`
+- Artículo sobre ahorro: elegir `A:ahorro`
+- Artículo sobre UF o IPC: elegir `C:uf-indicadores`
+
+Ejemplos inválidos:
+
+- Inventar una escena no presente en el catálogo del generador React
+- Agregar objetos no contemplados en el modelo aprobado
+- Redactar un prompt nuevo a partir de párrafos completos del artículo
 
 ### 13.4.2 Qué queda prohibido
 
@@ -793,11 +868,57 @@ Comandos base:
 node scripts/hero-images/scan-articles.mjs
 node scripts/hero-images/build-prompts.mjs
 node scripts/check-hero-prompts.mjs
+node scripts/hero-images/render-svg-scenes.mjs
+node scripts/hero-images/render-svg-scenes.mjs --scene cesantia
+node scripts/hero-images/render-svg-scenes.mjs --slug informe-deudas-cmf-vs-dicom
 node scripts/hero-images/generate-images.mjs --dry-run
+node scripts/hero-images/generate-images.mjs --dry-run --slug que-es-la-uf --model gpt-image-1
+node scripts/hero-images/generate-images.mjs --dry-run --slug que-es-la-uf --compare-models dall-e-3,gpt-image-1
 node scripts/hero-images/postprocess-images.mjs
 node scripts/hero-images/apply-images.mjs --enforce-public-path
 node scripts/check-hero-images.mjs
 ```
+
+### 13.4.4 Render SVG determinístico (POC activo)
+
+Cuando el objetivo visual es:
+
+- geometría simple
+- baja carga cognitiva
+- branding repetible
+- control estricto de composición
+
+el camino preferido es renderizar la imagen desde código, no pedirla a un modelo generativo.
+
+Implementación actual del POC:
+
+- `scripts/hero-images/svg/primitives.mjs`
+- `scripts/hero-images/svg/components.mjs`
+- `scripts/hero-images/svg/scene-registry.mjs`
+- `scripts/hero-images/render-svg-scenes.mjs`
+
+Escenas SVG implementadas hoy:
+
+- `cesantia`
+- `deuda-credito`
+- `ahorro`
+
+Reglas del renderer SVG:
+
+- una escena cerrada por `approvedModelId`
+- figuras geométricas sin rostro
+- props fijos y controlados
+- paleta por roles (`background`, `primary`, `dark`, `light`, `accent`)
+- sin textura
+- sin gradientes
+- sin detalle micro
+- sin deriva visual por prompt rewriting
+
+Objetivo del POC:
+
+- validar dirección visual
+- estabilizar una gramática propia de Monedario
+- sustituir gradualmente el uso de IA donde la consistencia pese más que la variación
 
 ### 13.5 Reproducibilidad
 
@@ -833,6 +954,11 @@ En CI estándar:
 En workflow manual/scheduled con secretos:
 
 - se habilita `generate-images --run`
+- `generate-images` acepta:
+  - `--slug <slug>` para probar un solo artículo
+  - `--model <model>` para fijar el modelo (`dall-e-3`, `gpt-image-1`, etc.)
+  - `--compare-models modelA,modelB` para comparar dos modelos con el mismo prompt
+  - `OPENAI_IMAGE_MODEL` como override global de modelo por entorno
 - la salida queda en staging para revisión humana (sin commit automático)
 
 Estado de enforcement:

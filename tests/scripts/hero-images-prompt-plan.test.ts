@@ -20,7 +20,9 @@ describe("hero-images deterministic selector", () => {
 
     expect(plan.template).toBe("A");
     expect(plan.colorKey).toBe("Fraude / Perdida grave");
-    expect(plan.sceneId).toContain("Fraude / Estafa");
+    expect(plan.approvedModelId).toBe("fraude-estafa");
+    expect(plan.sceneId).toBe("A:fraude-estafa");
+    expect(plan.sceneChoice).toBe("Fraude / Estafa");
     expect(plan.semantic.primaryIntent).toBe("alertar");
     expect(plan.semantic.visualEvidence.length).toBeGreaterThan(0);
   });
@@ -40,7 +42,9 @@ describe("hero-images deterministic selector", () => {
 
     expect(plan.template).toBe("C");
     expect(plan.colorKey).toBe("Educativo / Conceptos / Guias");
-    expect(plan.sceneId).toContain("activity pulse line");
+    expect(plan.approvedModelId).toBe("uf-indicadores");
+    expect(plan.sceneId).toBe("C:uf-indicadores");
+    expect(plan.iconChoice).toBe("UF / Indicadores");
     expect(plan.semantic.primaryIntent).toBe("explicar");
     expect(plan.semantic.readerSituation).toContain("indicador");
   });
@@ -80,6 +84,7 @@ describe("hero-images deterministic selector", () => {
 
     expect(plan.ruleId).toBe("uf");
     expect(plan.template).toBe("C");
+    expect(plan.approvedModelId).toBe("uf-indicadores");
     expect(plan.matchedKeywords).toContain("uf");
   });
 });

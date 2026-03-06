@@ -15,7 +15,7 @@ cluster: ahorro-e-inversion
 lang: es-CL
 featured: false
 draft: false
-heroImage: ../../assets/images/blog/fondos-mutuos-comisiones-rescate-impuestos.avif
+heroImage: /images/hero/fondos-mutuos-comisiones-rescate-impuestos.avif
 ---
 
 <!-- META: keyword_primary="comisiones fondos mutuos cuanto cobran" | intent="informacional-transaccional" | cluster="ahorro-inversion" -->

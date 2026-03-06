@@ -15,7 +15,7 @@ cluster: impuestos-personas
 lang: es-CL
 featured: false
 draft: false
-heroImage: ../../assets/images/blog/devolucion-impuestos-fechas-compensaciones.avif
+heroImage: /images/hero/devolucion-impuestos-fechas-compensaciones.avif
 ---
 
 Si ya enviaste tu declaración y tu pregunta es "¿cuándo me depositan?", esta guía te ordena por fechas, estado de trámite y motivos de compensación o retención, con foco operativo.

@@ -3,13 +3,13 @@ import {
   buildPromptB,
   buildPromptC,
   COLORS,
-  SCENE_EXAMPLES,
+  findApprovedPromptModel,
 } from "./config.mjs";
 import { normalizeForMatching } from "./lib.mjs";
 
 export const DEFAULT_MODEL_PLAN = {
   provider: "openai",
-  model: process.env.DALL_E_MODEL || "dall-e-3",
+  model: process.env.OPENAI_IMAGE_MODEL || process.env.DALL_E_MODEL || "dall-e-3",
   quality: "standard",
   size: "1792x1024",
 };
@@ -30,7 +30,7 @@ const RULES = [
     keywords: ["fraude", "estafa", "suplantacion", "vishing", "smishing"],
     colorKey: "Fraude / Perdida grave",
     template: "A",
-    sceneLabel: "Fraude / Estafa",
+    recipeId: "fraude-estafa",
     readerSituation: "Persona revisando una alerta o contacto sospechoso en su telefono.",
     toneClass: "alerta",
   },
@@ -39,7 +39,7 @@ const RULES = [
     keywords: ["impuesto", "renta", "f22", "sii", "retencion"],
     colorKey: "Credito / Deuda / Impuestos / Riesgo",
     template: "A",
-    sceneLabel: "Declaracion renta",
+    recipeId: "declaracion-renta",
     readerSituation: "Persona completando o revisando formularios y fechas tributarias.",
     toneClass: "serio",
   },
@@ -48,7 +48,7 @@ const RULES = [
     keywords: ["uf", "ipc", "inflacion", "indicador"],
     colorKey: "Educativo / Conceptos / Guias",
     template: "C",
-    icon: "activity pulse line",
+    recipeId: "uf-indicadores",
     readerSituation: "Persona entendiendo un indicador economico que afecta pagos cotidianos.",
     toneClass: "educativo",
   },
@@ -57,7 +57,7 @@ const RULES = [
     keywords: ["deuda", "credito", "cae", "dicom", "renegociacion"],
     colorKey: "Credito / Deuda / Impuestos / Riesgo",
     template: "A",
-    sceneLabel: "Deuda / Credito",
+    recipeId: "deuda-credito",
     readerSituation: "Persona enfrentando documentos, cuotas o decisiones de deuda.",
     toneClass: "serio",
   },
@@ -66,7 +66,7 @@ const RULES = [
     keywords: ["ahorro", "presupuesto", "fondo de emergencia", "meta"],
     colorKey: "Ahorro activo / Metas / Logros",
     template: "A",
-    sceneLabel: "Ahorro",
+    recipeId: "ahorro",
     readerSituation: "Persona organizando ahorro o controlando gastos cotidianos.",
     toneClass: "progreso",
   },
@@ -75,7 +75,7 @@ const RULES = [
     keywords: ["sueldo", "finiquito", "cesantia", "desempleo", "honorarios"],
     colorKey: "Finanzas general / AFP / Empleo / Ahorro",
     template: "A",
-    sceneLabel: "Cesantia",
+    recipeId: "cesantia",
     readerSituation: "Persona revisando ingresos laborales, pagos o periodos sin trabajo.",
     toneClass: "neutral",
   },
@@ -84,7 +84,7 @@ const RULES = [
     keywords: ["afp", "pension", "previsional", "cuenta 2"],
     colorKey: "Finanzas general / AFP / Empleo / Ahorro",
     template: "A",
-    sceneLabel: "AFP / Pension",
+    recipeId: "afp-pension",
     readerSituation: "Persona evaluando ahorro previsional y decisiones de largo plazo.",
     toneClass: "educativo",
   },
@@ -93,23 +93,19 @@ const RULES = [
     keywords: ["fonasa", "isapre", "salud", "licencia medica", "ges", "caec"],
     colorKey: "Salud / FONASA / ISAPRE",
     template: "A",
-    sceneLabel: "FONASA vs ISAPRE",
+    recipeId: "fonasa-vs-isapre",
     readerSituation: "Persona comparando cobertura, documentos o protecciones de salud.",
     toneClass: "neutral",
   },
 ];
 
-function findSceneByLabel(label) {
-  return SCENE_EXAMPLES.A.find(scene => scene.label === label) ?? SCENE_EXAMPLES.A[0];
-}
-
-function fallbackIconFromCategory(category = "") {
-  if (category === "prevision") return "hourglass shape";
-  if (category === "deuda-credito") return "downward trending line chart";
-  if (category === "impuestos") return "calendar";
-  if (category === "ahorro-inversion") return "bar chart, three bars increasing left to right";
-  if (category === "seguridad-financiera") return "shield with checkmark inside";
-  return "simple smartphone outline";
+function fallbackRecipeId(category = "") {
+  if (category === "prevision") return { template: "B", recipeId: "afp-cotizacion" };
+  if (category === "deuda-credito") return { template: "B", recipeId: "cae-credito-educacion" };
+  if (category === "impuestos") return { template: "A", recipeId: "declaracion-renta" };
+  if (category === "ahorro-inversion") return { template: "A", recipeId: "ahorro" };
+  if (category === "seguridad-financiera") return { template: "A", recipeId: "fraude-estafa" };
+  return { template: "B", recipeId: "cuenta-corriente-banco" };
 }
 
 function buildArticleText(article) {
@@ -253,9 +249,7 @@ export function selectPromptPlan(article) {
       id: "fallback",
       colorKey:
         CATEGORY_COLOR_FALLBACK[category] ?? "Banca / Instituciones / Referencia tecnica",
-      template: category === "general" ? "B" : "A",
-      sceneLabel: "Presupuesto",
-      icon: fallbackIconFromCategory(category),
+      ...fallbackRecipeId(category),
       readerSituation: buildFallbackReaderSituation(category),
       toneClass: "neutral",
     };
@@ -276,31 +270,32 @@ export function selectPromptPlan(article) {
     matchedKeywords,
   };
 
+  const approvedModel = findApprovedPromptModel(rule.template, rule.recipeId);
+  if (!approvedModel) {
+    throw new Error(
+      `[hero-images] Missing approved prompt model for template '${rule.template}' and recipe '${rule.recipeId}'.`
+    );
+  }
+
   if (rule.template === "A") {
-    const scene = findSceneByLabel(rule.sceneLabel || "Presupuesto");
     return {
       ...basePlan,
       template: "A",
-      sceneId: `A:${scene.label}`,
-      postura: scene.postura,
-      objetos: scene.objetos,
-      sceneChoice: scene.label,
+      approvedModelId: approvedModel.id,
+      sceneId: approvedModel.sceneId,
+      postura: approvedModel.postura,
+      objetos: approvedModel.objetos,
+      sceneChoice: approvedModel.label,
     };
   }
-
-  const icon =
-    rule.icon ||
-    SCENE_EXAMPLES.B.find(item =>
-      normalizeForMatching(item.label).includes(articleText)
-    )?.icono ||
-    fallbackIconFromCategory(category);
 
   return {
     ...basePlan,
     template: rule.template,
-    sceneId: `${rule.template}:${icon}`,
-    icon,
-    iconChoice: icon,
+    approvedModelId: approvedModel.id,
+    sceneId: approvedModel.sceneId,
+    icon: approvedModel.icono,
+    iconChoice: approvedModel.label,
   };
 }
 

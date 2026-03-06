@@ -4,7 +4,7 @@ title: "Ley Nº 21.680 — Crea el Registro de Deuda Consolidada"
 shortName: "Registro de Deuda Consolidada"
 area: credito-y-deuda
 effective: 2024-07-01
-bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1202320
+bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1204681
 description: "Crea un registro unificado que centraliza la información de deudas bancarias, financieras y comerciales de personas naturales. Permite a las instituciones evaluar mejor la solvencia del deudor antes de otorgar crédito."
 lastVerified: 2026-03-03
 updateTrigger: "Publicación de reglamentos que amplíen el universo de instituciones obligadas a reportar al registro o cambios en los plazos de actualización."
@@ -53,7 +53,7 @@ Sí. Si el RDC contiene información incorrecta sobre tus deudas, tienes derecho
 
 ## Texto oficial
 
-Texto completo: [BCN — Ley 21.680](https://www.bcn.cl/leychile/navegar?idNorma=1202320)
+Texto completo: [BCN — Ley 21.680](https://www.bcn.cl/leychile/navegar?idNorma=1204681)
 
 Informe de deudas vigente: [CMF — Portal del Consumidor Financiero](https://www.cmfchile.cl/portal/principal/613/w3-propertyname-833.html)
 

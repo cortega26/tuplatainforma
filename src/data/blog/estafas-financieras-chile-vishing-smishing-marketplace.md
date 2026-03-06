@@ -16,7 +16,7 @@ cluster: seguridad-financiera
 lang: es-CL
 featured: false
 draft: false
-heroImage: ../../assets/images/blog/estafas-financieras-chile-vishing-smishing-marketplace.avif
+heroImage: /images/hero/estafas-financieras-chile-vishing-smishing-marketplace.avif
 ---
 
 La mayoría de las estafas financieras no empieza con un hackeo sofisticado. Empieza con una llamada que suena completamente normal, de alguien que sabe tu nombre, menciona tu banco y habla en un tono que mezcla urgencia con profesionalismo. Para cuando te das cuenta de lo que ocurrió, ya autorizaste una transferencia.
@@ -127,4 +127,4 @@ Depende del tipo de fraude. Si autorizaste tú mismo la operación (porque te en
 - SERNAC, fraude en medios de pago y orientación al consumidor: https://www.sernac.cl/portal/604/w3-propertyname-791.html
 - CSIRT de Gobierno, alertas de ciberseguridad: https://www.csirt.gob.cl/
 - CMF, canal de reclamos para entidades supervisadas: https://www.cmfchile.cl/portal/principal/613/w3-propertyvalue-43332.html
-- Ley N° 20.009, responsabilidad bancaria por uso fraudulento de tarjetas: https://www.bcn.cl/leychile/navegar?idNorma=236552
+- Ley N° 20.009, responsabilidad bancaria por uso fraudulento de tarjetas: https://www.bcn.cl/leychile/navegar?idNorma=236736

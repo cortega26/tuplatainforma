@@ -5,7 +5,7 @@ shortName: "Ley de Tarjetas y Fraude (20.009 + 21.234)"
 area: proteccion-al-consumidor
 effective: 2005-04-01
 lastAmended: 2020-06-05
-bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=237343
+bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=236736
 description: "Regula la responsabilidad del titular de tarjeta ante clonación, robo o uso no autorizado. La Ley 21.234 (2020) amplió la cobertura a tarjetas de débito y casas comerciales y reforzó la obligación del banco de restituir fondos."
 lastVerified: 2026-03-03
 updateTrigger: "Modificación publicada en BCN que cambie los montos de responsabilidad, plazos de denuncia o definición de tarjetas cubiertas."
@@ -53,7 +53,7 @@ Si el banco no puede probar negligencia grave del titular, la responsabilidad es
 
 ## Texto oficial
 
-Texto completo y modificaciones: [BCN — Ley 20.009](https://www.bcn.cl/leychile/navegar?idNorma=237343)
+Texto completo y modificaciones: [BCN — Ley 20.009](https://www.bcn.cl/leychile/navegar?idNorma=236736)
 
 ---
 

@@ -4,7 +4,7 @@ title: "Ley Nº 20.575 — Establece el principio de finalidad en el tratamiento
 shortName: "Ley de Datos Comerciales (Finalidad)"
 area: privacidad-y-datos
 effective: 2012-02-17
-bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1035276
+bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1037366
 description: "Limita el uso de información comercial de personas (datos del boletín comercial, DICOM y similares) a la evaluación de solvencia económica. Prohíbe su uso para fines distintos, como la selección de empleados."
 lastVerified: 2026-03-03
 updateTrigger: "Modificación del principio de finalidad o de los tipos de información cubiertos, o nueva normativa sobre uso de datos comerciales en procesos de selección laboral."
@@ -57,7 +57,7 @@ Toda consulta a tu información en el Boletín Comercial debe quedar registrada.
 
 ## Texto oficial
 
-Texto completo: [BCN — Ley 20.575](https://www.bcn.cl/leychile/navegar?idNorma=1035276)
+Texto completo: [BCN — Ley 20.575](https://www.bcn.cl/leychile/navegar?idNorma=1037366)
 
 ---
 

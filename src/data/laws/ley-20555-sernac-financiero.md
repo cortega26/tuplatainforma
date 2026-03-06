@@ -5,7 +5,7 @@ shortName: "SERNAC Financiero"
 area: proteccion-al-consumidor
 effective: 2012-03-14
 lastAmended: 2018-04-01
-bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1038840
+bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1032865
 description: "Amplía las atribuciones de SERNAC al sector financiero. Obliga a bancos, AFP, aseguradoras y casas comerciales a entregar información estandarizada del costo real de productos financieros (CCAF, CAE, seguros)."
 lastVerified: 2026-03-03
 updateTrigger: "Modificación de los formatos de información estándar exigidos por CMF o SERNAC a las instituciones financieras."
@@ -49,7 +49,7 @@ Toda institución financiera que ofrezca un crédito de consumo, hipotecario o t
 
 ## Texto oficial
 
-Texto completo: [BCN — Ley 20.555](https://www.bcn.cl/leychile/navegar?idNorma=1038840)
+Texto completo: [BCN — Ley 20.555](https://www.bcn.cl/leychile/navegar?idNorma=1032865)
 
 Reclamos financieros: [SERNAC — Canal Financiero](https://www.sernac.cl/portal/604/w3-propertyname-3780.html)
 

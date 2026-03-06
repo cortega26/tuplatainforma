@@ -9,6 +9,14 @@ export const HERO_SCRIPT_DIR = path.join(REPO_ROOT, "scripts", "hero-images");
 export const MANIFEST_PATH = path.join(HERO_SCRIPT_DIR, "manifest.json");
 export const PROMPTS_PATH = path.join(HERO_SCRIPT_DIR, "prompts.json");
 export const DOWNLOADS_DIR = path.join(HERO_SCRIPT_DIR, "downloads");
+export const POOL_DIR = path.join(HERO_SCRIPT_DIR, "pool");
+export const POOL_ASSETS_DIR = path.join(POOL_DIR, "assets");
+export const POOL_MANIFEST_PATH = path.join(POOL_DIR, "manifest.json");
+export const POOL_ASSIGNMENTS_PATH = path.join(POOL_DIR, "assignments.json");
+export const POOL_RUN_STATE_PATH = path.join(POOL_DIR, "run-state.json");
+export const POOL_WORKLIST_PATH = path.join(POOL_DIR, "worklist.json");
+export const POOL_WORKLIST_TEXT_PATH = path.join(POOL_DIR, "worklist.txt");
+export const POOL_INBOX_DIR = path.join(POOL_DIR, "inbox");
 export const PUBLIC_HERO_DIR = path.join(REPO_ROOT, "public", "images", "hero");
 export const PUBLISHED_HERO_MAX_BYTES = 80 * 1024;
 

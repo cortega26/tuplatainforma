@@ -15,7 +15,7 @@ cluster: ahorro-e-inversion
 lang: es-CL
 featured: false
 draft: false
-heroImage: ../../assets/images/blog/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.avif
+heroImage: /images/hero/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.avif
 ---
 
 <!-- META: keyword_primary="ahorro e inversión en chile" | intent="informacional-pilar" | cluster="ahorro-inversion" -->

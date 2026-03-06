@@ -59,7 +59,8 @@ describe("check-hero-prompts script", () => {
           slug: "que-es-la-uf",
           sourcePath: "src/data/blog/que-es-la-uf.md",
           template: "C",
-          sceneId: "C:activity pulse line",
+          approvedModelId: "uf-indicadores",
+          sceneId: "C:uf-indicadores",
           readerSituation: "Persona entendiendo un indicador economico que afecta pagos cotidianos.",
           primaryIntent: "explicar",
           toneClass: "educativo",
@@ -102,7 +103,8 @@ describe("check-hero-prompts script", () => {
           slug: "deuda-generica",
           sourcePath: "src/data/blog/deuda-generica.md",
           template: "A",
-          sceneId: "A:Deuda / Credito",
+          approvedModelId: "deuda-credito",
+          sceneId: "A:deuda-credito",
           readerSituation: "Persona enfrentando documentos, cuotas o decisiones de deuda.",
           primaryIntent: "explicar",
           toneClass: "serio",
@@ -142,7 +144,8 @@ describe("check-hero-prompts script", () => {
           slug: "general",
           sourcePath: "src/data/blog/general.md",
           template: "B",
-          sceneId: "B:simple smartphone outline",
+          approvedModelId: "cuenta-corriente-banco",
+          sceneId: "B:cuenta-corriente-banco",
           readerSituation: "Persona revisando informacion financiera practica para tomar una decision.",
           primaryIntent: "explicar",
           toneClass: "neutral",
@@ -167,5 +170,47 @@ describe("check-hero-prompts script", () => {
     const strictResult = runCheck(root, ["--strict-fallback"]);
     expect(strictResult.status).toBe(1);
     expect(strictResult.stderr).toContain("Fallback scene detected after article read (strict mode)");
+  });
+
+  it("fails when prompt entry references a model outside the approved catalog", () => {
+    const root = createTempDir();
+    const prompt = "Create a flat vector editorial illustration for a personal finance website.";
+
+    writeJson(path.join(root, "manifest.json"), {
+      articles: [
+        {
+          slug: "invalid-model",
+          sourcePath: "src/data/blog/invalid-model.md",
+        },
+      ],
+    });
+    writeJson(path.join(root, "prompts.json"), {
+      entries: [
+        {
+          slug: "invalid-model",
+          sourcePath: "src/data/blog/invalid-model.md",
+          template: "A",
+          approvedModelId: "custom-scene",
+          sceneId: "A:custom-scene",
+          readerSituation: "Persona revisando informacion financiera practica para tomar una decision.",
+          primaryIntent: "explicar",
+          toneClass: "neutral",
+          visualEvidence: [
+            "text contains 'decision' in article body/title context",
+          ],
+          prompt,
+          promptHash: sha256(prompt),
+          selectors: {
+            ruleId: "fallback",
+            matchedKeywords: [],
+          },
+        },
+      ],
+    });
+
+    const result = runCheck(root);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("is not part of the approved template catalog");
   });
 });

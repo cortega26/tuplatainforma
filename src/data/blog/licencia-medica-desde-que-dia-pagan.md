@@ -16,7 +16,7 @@ cluster: empleo-ingresos
 lang: es-CL
 featured: false
 draft: false
-heroImage: ../../assets/images/blog/licencia-medica-desde-que-dia-pagan.avif
+heroImage: /images/hero/licencia-medica-desde-que-dia-pagan.avif
 ---
 
 Enfermarse siempre trae preocupaciones, pero cuando es por varios días, la pregunta que aparece junto al diagnóstico médico es casi inevitable: ¿desde cuándo me pagan y cuánto me llega? El sistema chileno de licencias médicas tiene reglas que dependen de la duración de la licencia, de quién eres afiliados y de quién la paga — y entenderlas bien puede significar la diferencia entre recibir el subsidio completo o terminar apelando un rechazo.

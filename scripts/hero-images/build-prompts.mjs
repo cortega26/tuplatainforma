@@ -23,6 +23,7 @@ async function main() {
       sourcePath: article.sourcePath,
       targetImagePath: heroPublicPath(article.slug, ".avif"),
       template: plan.template,
+      approvedModelId: plan.approvedModelId,
       sceneId: plan.sceneId,
       readerSituation: plan.semantic.readerSituation,
       primaryIntent: plan.semantic.primaryIntent,

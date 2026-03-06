@@ -5,7 +5,7 @@ shortName: "Operaciones de Crédito y TMC"
 area: credito-y-deuda
 effective: 1981-06-27
 lastAmended: 2023-01-01
-bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=29371
+bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=29438
 description: "Regula las operaciones de crédito en Chile: tasa de interés máxima convencional (TMC), interés corriente, prepago y anatocismo. Es la ley base del crédito de consumo chileno."
 lastVerified: 2026-03-03
 updateTrigger: "Cambio en la fórmula de cálculo de la TMC publicado por la CMF, o modificación de los artículos sobre prepago o anatocismo."
@@ -53,7 +53,7 @@ La CMF publica mensualmente la TMC vigente en [cmfchile.cl](https://www.cmfchile
 
 ## Texto oficial
 
-Texto completo y modificaciones: [BCN — Ley 18.010](https://www.bcn.cl/leychile/navegar?idNorma=29371)
+Texto completo y modificaciones: [BCN — Ley 18.010](https://www.bcn.cl/leychile/navegar?idNorma=29438)
 
 Tasas vigentes: [CMF — Tasas de interés](https://www.cmfchile.cl/portal/estadisticas/606/w3-propertyvalue-17636.html)
 

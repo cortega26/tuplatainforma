@@ -14,7 +14,7 @@ tags:
 category: prevision
 cluster: pensiones-afp
 description: "Todo lo que necesitas saber sobre la Cuenta 2 de la AFP: qué es, cómo funciona, cuánto puedes retirar, qué impuestos pagas y cuándo conviene usarla."
-heroImage: ../../assets/images/blog/que-es-la-cuenta-2-afp.avif
+heroImage: /images/hero/que-es-la-cuenta-2-afp.avif
 ---
 
 Cuando la gente habla de su AFP, casi siempre se refiere a la cuenta obligatoria donde va el 10% del sueldo. Pero existe una segunda cuenta, voluntaria y mucho más flexible, que muy poca gente conoce bien: la **Cuenta 2**, también llamada Cuenta de Ahorro Voluntario (CAV).

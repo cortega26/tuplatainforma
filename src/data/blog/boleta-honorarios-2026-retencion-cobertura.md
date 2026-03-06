@@ -15,7 +15,7 @@ cluster: impuestos-personas
 lang: es-CL
 featured: false
 draft: false
-heroImage: ../../assets/images/blog/boleta-honorarios-2026-retencion-cobertura.avif
+heroImage: /images/hero/boleta-honorarios-2026-retencion-cobertura.avif
 ---
 
 Si emites boletas y quieres saber cuánto te llega líquido en 2026, esta guía separa tres cosas que suelen confundirse: retención mensual, cálculo de cotizaciones en Operación Renta y cobertura anual efectiva.
@@ -120,7 +120,7 @@ En tu declaración de renta y en la información previsional asociada al proceso
 
 - SII, retención 2026 de boletas (15,25%) y progresión a 2028: https://www.sii.cl/noticias/2025/261225noti01smn.htm
 - ChileAtiende, cotización de trabajadores que emiten boletas (OR 2026, umbral 5 IMM, coberturas y exenciones): https://www.chileatiende.gob.cl/fichas/12016-cotizacion-de-trabajadores-que-emiten-boletas-de-honorarios
-- Ley N° 21.133 (BCN): https://www.bcn.cl/leychile/navegar?idNorma=1129870
+- Ley N° 21.133 (BCN): https://www.bcn.cl/leychile/navegar?idNorma=1128420
 - SII, Operación Renta Personas (flujo anual de declaración): https://www.sii.cl/destacados/renta/2025/index_personas2025.html
 
 ## Última revisión

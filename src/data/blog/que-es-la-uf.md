@@ -16,7 +16,7 @@ tags:
 category: deuda-credito
 cluster: deuda-credito
 description: "Explicación práctica de la Unidad de Fomento (UF): qué es, cómo se calcula, por qué cambia cada día y cómo impacta tu arriendo, dividendo y deudas en Chile."
-heroImage: ../../assets/images/blog/que-es-la-uf.avif
+heroImage: /images/hero/que-es-la-uf.avif
 ---
 
 Tu arriendo sube todos los años "por la UF" y tu dividendo también. Pero casi nadie sabe exactamente qué es la UF ni por qué cambia todos los días. Acá te explicamos de verdad — con números y sin fórmulas intimidantes. Si lo estás viendo desde la lógica de deudas y financiamiento, puedes complementar con la [guía del cluster Deuda y Crédito](/guias/deuda-credito/).

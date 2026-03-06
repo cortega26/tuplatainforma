@@ -4,7 +4,7 @@ title: "Ley Nº 21.521 — Incentiva la Industria Fintec e instruye la portabili
 shortName: "Ley Fintech"
 area: bancaria-y-financiera
 effective: 2023-01-04
-bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1181122
+bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=1187323
 description: "Regula los servicios de tecnología financiera en Chile: plataformas de crowdfunding, robo-advisors, intermediadores de pago y open banking. Establece requisitos de registro, capital y seguridad bajo la supervisión de la CMF."
 lastVerified: 2026-03-03
 updateTrigger: "Publicación de normativas secundarias de la CMF que definan requisitos operativos para los nuevos tipos de entidades reguladas."
@@ -57,7 +57,7 @@ El **Registro de Prestadores de Servicios Financieros** de la CMF es público. S
 
 ## Texto oficial
 
-Texto completo: [BCN — Ley 21.521](https://www.bcn.cl/leychile/navegar?idNorma=1181122)
+Texto completo: [BCN — Ley 21.521](https://www.bcn.cl/leychile/navegar?idNorma=1187323)
 
 Registro Fintech CMF: [CMF — Registro de Prestadores Financieros](https://www.cmfchile.cl)
 

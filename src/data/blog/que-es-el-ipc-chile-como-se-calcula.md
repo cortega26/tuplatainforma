@@ -15,7 +15,7 @@ cluster: empleo-ingresos
 lang: es-CL
 featured: false
 draft: false
-heroImage: ../../assets/images/blog/que-es-el-ipc-chile-como-se-calcula.avif
+heroImage: /images/hero/que-es-el-ipc-chile-como-se-calcula.avif
 ---
 
 Cuando sale el dato del IPC cada mes, los medios hablan de "inflación" y tú ves que las cosas cuestan más. Pero ¿cómo se mide exactamente? ¿Por qué a veces el IPC baja pero igual sientes que todo cuesta más? Y lo más importante: ¿qué decisiones afecta directamente en tu vida?

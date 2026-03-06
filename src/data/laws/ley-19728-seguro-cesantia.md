@@ -5,7 +5,7 @@ shortName: "Seguro de Cesantía"
 area: prevision-y-trabajo
 effective: 2002-05-14
 lastAmended: 2022-01-01
-bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=196871
+bcnUrl: https://www.bcn.cl/leychile/navegar?idNorma=184979
 description: "Crea el Seguro de Cesantía chileno: cómo se financia, qué montos puede cobrar el trabajador despedido y en qué condiciones."
 lastVerified: 2026-03-03
 updateTrigger: "Modificación de los porcentajes de cobertura, cambio del tope imponible para cotización AFC, o cambio en las condiciones de acceso al Fondo de Cesantía Solidario."
@@ -57,7 +57,7 @@ El Fondo Solidario entrega beneficios decrecientes: el primer giro es el mayor p
 
 ## Texto oficial
 
-Texto completo y modificaciones: [BCN — Ley 19.728](https://www.bcn.cl/leychile/navegar?idNorma=196871)
+Texto completo y modificaciones: [BCN — Ley 19.728](https://www.bcn.cl/leychile/navegar?idNorma=184979)
 
 Simulador de beneficios: [AFC Chile](https://www.afcchile.cl)
 

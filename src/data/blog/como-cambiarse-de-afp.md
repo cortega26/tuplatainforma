@@ -15,7 +15,7 @@ tags:
 category: prevision
 cluster: pensiones-afp
 description: "Guía actualizada 2026 para cambiarse de AFP en Chile: requisitos, pasos, qué evaluar y los cambios que trae la Reforma de Pensiones (Ley 21.735)."
-heroImage: ../../assets/images/blog/como-cambiarse-de-afp.avif
+heroImage: /images/hero/como-cambiarse-de-afp.avif
 ---
 
 Cambiarse de AFP es uno de los trámites más simples que puedes hacer para mejorar tu situación previsional, y sin embargo la mayoría de las personas nunca lo hace. En esta guía te explicamos cómo funciona el proceso, qué debes evaluar y qué cambia con la Reforma de Pensiones aprobada en 2025. Para ver el panorama completo, revisa también la [guía central de pensiones y AFP](/guias/pensiones-afp/).
