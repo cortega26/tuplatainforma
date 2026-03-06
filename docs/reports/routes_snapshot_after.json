@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-03-04T19:01:53.112Z",
-  "total": 26,
+  "generatedAt": "2026-03-06T20:55:34.010Z",
+  "total": 28,
   "routes": [
     {
       "file": "ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.md",
@@ -43,6 +43,10 @@
       "route": "/posts/devolucion-impuestos-fechas-compensaciones/"
     },
     {
+      "file": "el-poder-del-interes-compuesto.md",
+      "route": "/posts/el-poder-del-interes-compuesto/"
+    },
+    {
       "file": "estafas-financieras-chile-vishing-smishing-marketplace.md",
       "route": "/posts/estafas-financieras-chile-vishing-smishing-marketplace/"
     },
@@ -65,6 +69,10 @@
     {
       "file": "informe-deudas-cmf-vs-dicom.md",
       "route": "/posts/informe-deudas-cmf-vs-dicom/"
+    },
+    {
+      "file": "interes-compuesto-nota-metodologica.md",
+      "route": "/posts/interes-compuesto-nota-metodologica/"
     },
     {
       "file": "licencia-medica-desde-que-dia-pagan.md",

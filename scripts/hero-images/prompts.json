@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "sourceManifest": "scripts/hero-images/manifest.json",
-  "count": 26,
+  "count": 28,
   "entries": [
     {
       "slug": "ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026",
@@ -374,6 +374,42 @@
       }
     },
     {
+      "slug": "el-poder-del-interes-compuesto",
+      "sourcePath": "src/data/blog/el-poder-del-interes-compuesto.md",
+      "targetImagePath": "/images/hero/el-poder-del-interes-compuesto.avif",
+      "template": "A",
+      "approvedModelId": "declaracion-renta",
+      "sceneId": "A:declaracion-renta",
+      "readerSituation": "Persona completando o revisando formularios y fechas tributarias.",
+      "primaryIntent": "calcular",
+      "toneClass": "serio",
+      "visualEvidence": [
+        "text contains 'renta' in article body/title context",
+        "primary intent classified as 'calcular' from article text",
+        "reader situation anchored to scene rule 'renta'"
+      ],
+      "palette": {
+        "category": "Credito / Deuda / Impuestos / Riesgo",
+        "hex": "#d97706"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure standing, looking down at the objects in hand, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near paper stack, bank card shape. All objects are flat geometric shapes, same illustration style.\n\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nColor palette: 3 colors maximum, all flat fills.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy. Do not add extra objects beyond the named scene props.",
+      "promptHash": "110cf820dedb72aa14d018676cd44732d103beb305293fb02388dd1ac7b89c0a",
+      "selectors": {
+        "ruleId": "renta",
+        "category": "ahorro-inversion",
+        "cluster": "ahorro-e-inversion",
+        "matchedKeywords": [
+          "renta"
+        ]
+      }
+    },
+    {
       "slug": "estafas-financieras-chile-vishing-smishing-marketplace",
       "sourcePath": "src/data/blog/estafas-financieras-chile-vishing-smishing-marketplace.md",
       "targetImagePath": "/images/hero/estafas-financieras-chile-vishing-smishing-marketplace.avif",
@@ -596,6 +632,42 @@
           "deuda",
           "credito",
           "dicom"
+        ]
+      }
+    },
+    {
+      "slug": "interes-compuesto-nota-metodologica",
+      "sourcePath": "src/data/blog/interes-compuesto-nota-metodologica.md",
+      "targetImagePath": "/images/hero/interes-compuesto-nota-metodologica.avif",
+      "template": "A",
+      "approvedModelId": "cesantia",
+      "sceneId": "A:cesantia",
+      "readerSituation": "Persona revisando ingresos laborales, pagos o periodos sin trabajo.",
+      "primaryIntent": "guiar",
+      "toneClass": "neutral",
+      "visualEvidence": [
+        "text contains 'sueldo' in article body/title context",
+        "primary intent classified as 'guiar' from article text",
+        "reader situation anchored to scene rule 'empleo'"
+      ],
+      "palette": {
+        "category": "Finanzas general / AFP / Empleo / Ahorro",
+        "hex": "#0d9488"
+      },
+      "modelPlan": {
+        "provider": "openai",
+        "model": "dall-e-3",
+        "quality": "standard",
+        "size": "1792x1024"
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #0d9488.\n\nScene: one geometric human figure seated on a chair, slouched, head slightly down, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near closed laptop, empty cup. All objects are flat geometric shapes, same illustration style.\n\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nColor palette: 3 colors maximum, all flat fills.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy. Do not add extra objects beyond the named scene props.",
+      "promptHash": "d1160fb536ce54df94e9c3ce1eee62d2d226fee1a3ebc51918c0b385e8381fa8",
+      "selectors": {
+        "ruleId": "empleo",
+        "category": "general",
+        "cluster": "ahorro-e-inversion",
+        "matchedKeywords": [
+          "sueldo"
         ]
       }
     },

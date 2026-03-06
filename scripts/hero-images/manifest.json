@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "source": "src/data/blog/**",
   "publishableRule": "draft !== true",
-  "articleCount": 26,
-  "publishedCount": 26,
+  "articleCount": 28,
+  "publishedCount": 28,
   "articles": [
     {
       "slug": "ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026",
@@ -17,7 +17,7 @@
       "category": "impuestos",
       "cluster": "ahorro-e-inversion",
       "sourcePath": "src/data/blog/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.md",
-      "heroImage": "../../assets/images/blog/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.avif",
+      "heroImage": "/images/hero/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.avif",
       "summary": "<! META: keyword primary=\"ahorro e inversión en chile\" intent=\"informacional pilar\" cluster=\"ahorro inversion\" Si quieres ordenar tus finanzas para invertir sin improvisar, esta guía te ayuda a elegir instrumento según plazo, riesgo, costos y tratamiento tributario, con foco prác...",
       "leadParagraphs": [
         "<!-- META: keyword_primary=\"ahorro e inversión en chile\" | intent=\"informacional-pilar\" | cluster=\"ahorro-inversion\" -->",
@@ -50,7 +50,7 @@
       "category": "impuestos",
       "cluster": "impuestos-personas",
       "sourcePath": "src/data/blog/boleta-honorarios-2026-retencion-cobertura.md",
-      "heroImage": "../../assets/images/blog/boleta-honorarios-2026-retencion-cobertura.avif",
+      "heroImage": "/images/hero/boleta-honorarios-2026-retencion-cobertura.avif",
       "summary": "Si emites boletas y quieres saber cuánto te llega líquido en 2026, esta guía separa tres cosas que suelen confundirse: retención mensual, cálculo de cotizaciones en Operación Renta y cobertura anual efectiva. Qué cambia y qué resuelve esta guía Desde el 1 de enero de 2026, la ret...",
       "leadParagraphs": [
         "Si emites boletas y quieres saber cuánto te llega líquido en 2026, esta guía separa tres cosas que suelen confundirse: retención mensual, cálculo de cotizaciones en Operación Renta y cobertura anual efectiva.",
@@ -84,7 +84,7 @@
       "category": "deuda-credito",
       "cluster": "deuda-credito",
       "sourcePath": "src/data/blog/cae-costo-real-credito-chile.md",
-      "heroImage": "../../assets/images/blog/cae-costo-real-credito-chile.avif",
+      "heroImage": "/images/hero/cae-costo-real-credito-chile.avif",
       "summary": "<! META: keyword primary=\"qué es la CAE de un crédito\" intent=\"informacional pilar\" cluster=\"deuda credito\" Cuando comparas créditos, el número que más te muestran es la tasa de interés mensual. El problema es que esa tasa no incluye seguros, gastos operacionales ni comisiones. E...",
       "leadParagraphs": [
         "<!-- META: keyword_primary=\"qué es la CAE de un crédito\" | intent=\"informacional-pilar\" | cluster=\"deuda-credito\" -->",
@@ -118,7 +118,7 @@
       "category": "empleo-ingresos",
       "cluster": "empleo-ingresos",
       "sourcePath": "src/data/blog/como-calcular-sueldo-liquido.md",
-      "heroImage": "../../assets/images/blog/como-calcular-sueldo-liquido.avif",
+      "heroImage": "/images/hero/como-calcular-sueldo-liquido.avif",
       "summary": "Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí, y puedes complementar con la para conectar este cálculo con decisiones de mediano plazo. Tabla de contenidos La diferencia entre sueldo bruto y sueldo lí...",
       "leadParagraphs": [
         "Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí, y puedes complementar con la [guía central de ahorro e inversión](/guias/ahorro-e-inversion/) para conectar este cálculo con decisiones de mediano plazo.",
@@ -151,7 +151,7 @@
       "category": "prevision",
       "cluster": "pensiones-afp",
       "sourcePath": "src/data/blog/como-cambiarse-de-afp.md",
-      "heroImage": "../../assets/images/blog/como-cambiarse-de-afp.avif",
+      "heroImage": "/images/hero/como-cambiarse-de-afp.avif",
       "summary": "Cambiarse de AFP es uno de los trámites más simples que puedes hacer para mejorar tu situación previsional, y sin embargo la mayoría de las personas nunca lo hace. En esta guía te explicamos cómo funciona el proceso, qué debes evaluar y qué cambia con la Reforma de Pensiones apro...",
       "leadParagraphs": [
         "Cambiarse de AFP es uno de los trámites más simples que puedes hacer para mejorar tu situación previsional, y sin embargo la mayoría de las personas nunca lo hace. En esta guía te explicamos cómo funciona el proceso, qué debes evaluar y qué cambia con la Reforma de Pensiones aprobada en 2025. Para ver el panorama completo, revisa también la [guía central de pensiones y AFP](/guias/pensiones-afp/).",
@@ -185,7 +185,7 @@
       "category": "general",
       "cluster": "empleo-ingresos",
       "sourcePath": "src/data/blog/como-hacer-presupuesto-mensual-chile.md",
-      "heroImage": "../../assets/images/blog/como-hacer-presupuesto-mensual-chile.avif",
+      "heroImage": "/images/hero/como-hacer-presupuesto-mensual-chile.avif",
       "summary": "Antes de invertir en algo, antes de ahorrar para algo, antes de salir de una deuda, necesitas saber a dónde va tu plata. La mayoría de los problemas financieros personales no son de ingreso — son de control. Este artículo te da un método concreto para hacer un presupuesto que fun...",
       "leadParagraphs": [
         "Antes de invertir en algo, antes de ahorrar para algo, antes de salir de una deuda, necesitas saber a dónde va tu plata. La mayoría de los problemas financieros personales no son de ingreso — son de control. Este artículo te da un método concreto para hacer un presupuesto que funcione en la realidad chilena, no en una hoja teórica.",
@@ -218,7 +218,7 @@
       "category": "ahorro-inversion",
       "cluster": "ahorro-e-inversion",
       "sourcePath": "src/data/blog/como-invertir-en-etfs-desde-chile.md",
-      "heroImage": "../../assets/images/blog/como-invertir-en-etfs-desde-chile.avif",
+      "heroImage": "/images/hero/como-invertir-en-etfs-desde-chile.avif",
       "summary": "<! META: keyword primary=\"como invertir en etf desde chile\" intent=\"guia procedimental\" cluster=\"ahorro inversion\" Si quieres invertir en ETFs desde Chile, esta guía te ordena el proceso de selección de intermediario, control de costos, custodia y revisión tributaria básica antes...",
       "leadParagraphs": [
         "<!-- META: keyword_primary=\"como invertir en etf desde chile\" | intent=\"guia-procedimental\" | cluster=\"ahorro-inversion\" -->",
@@ -251,7 +251,7 @@
       "category": "prevision",
       "cluster": "pensiones-afp",
       "sourcePath": "src/data/blog/cuanto-descuenta-la-afp-de-tu-sueldo.md",
-      "heroImage": "../../assets/images/blog/cuanto-descuenta-la-afp-de-tu-sueldo.avif",
+      "heroImage": "/images/hero/cuanto-descuenta-la-afp-de-tu-sueldo.avif",
       "summary": "Cada mes ves en tu liquidación de sueldo una línea que dice \"AFP\" y un número que te descuentan. Pero, ¿sabes exactamente para qué sirve ese dinero y si lo estás aprovechando bien? En esta guía te explicamos todo de forma simple. Si quieres el contexto completo de decisiones prev...",
       "leadParagraphs": [
         "Cada mes ves en tu liquidación de sueldo una línea que dice \"AFP\" y un número que te descuentan. Pero, ¿sabes exactamente para qué sirve ese dinero y si lo estás aprovechando bien?",
@@ -284,7 +284,7 @@
       "category": "ahorro-inversion",
       "cluster": "ahorro-e-inversion",
       "sourcePath": "src/data/blog/deposito-a-plazo-uf-vs-pesos.md",
-      "heroImage": "../../assets/images/blog/deposito-a-plazo-uf-vs-pesos.avif",
+      "heroImage": "/images/hero/deposito-a-plazo-uf-vs-pesos.avif",
       "summary": "<! META: keyword primary=\"deposito a plazo en uf o pesos que conviene\" intent=\"comparativa\" cluster=\"ahorro inversion\" Si estás eligiendo entre depósito a plazo en UF o en pesos, esta guía te ayuda a decidir con criterios concretos de plazo, inflación esperada y necesidad de liqu...",
       "leadParagraphs": [
         "<!-- META: keyword_primary=\"deposito a plazo en uf o pesos que conviene\" | intent=\"comparativa\" | cluster=\"ahorro-inversion\" -->",
@@ -317,7 +317,7 @@
       "category": "impuestos",
       "cluster": "impuestos-personas",
       "sourcePath": "src/data/blog/devolucion-impuestos-fechas-compensaciones.md",
-      "heroImage": "../../assets/images/blog/devolucion-impuestos-fechas-compensaciones.avif",
+      "heroImage": "/images/hero/devolucion-impuestos-fechas-compensaciones.avif",
       "summary": "Si ya enviaste tu declaración y tu pregunta es \"¿cuándo me depositan?\", esta guía te ordena por fechas, estado de trámite y motivos de compensación o retención, con foco operativo. Qué cambia y qué debes mirar primero La devolución no depende solo de la fecha en que declaras. Tam...",
       "leadParagraphs": [
         "Si ya enviaste tu declaración y tu pregunta es \"¿cuándo me depositan?\", esta guía te ordena por fechas, estado de trámite y motivos de compensación o retención, con foco operativo.",
@@ -339,6 +339,41 @@
       "sourceFile": "devolucion-impuestos-fechas-compensaciones.md"
     },
     {
+      "slug": "el-poder-del-interes-compuesto",
+      "title": "El poder del interés compuesto: cómo el 10% del sueldo mínimo se convierte en más de $100 millones",
+      "tags": [
+        "ahorro",
+        "inversion",
+        "interes-compuesto",
+        "nasdaq-100",
+        "jubilacion",
+        "bolsa"
+      ],
+      "category": "ahorro-inversion",
+      "cluster": "ahorro-e-inversion",
+      "sourcePath": "src/data/blog/el-poder-del-interes-compuesto.md",
+      "heroImage": "/images/hero/el-poder-del-interes-compuesto.avif",
+      "summary": "<! META: keyword primary=\"interes compuesto\" intent=\"informacional ejemplo\" cluster=\"ahorro inversion\" Imagina a alguien que nunca ganó más que el sueldo mínimo. Sin bonos, sin ascensos, sin herencias. Solo su sueldo de cada mes y la disciplina de apartar el 10% de su salario net...",
+      "leadParagraphs": [
+        "<!-- META: keyword_primary=\"interes compuesto\" | intent=\"informacional-ejemplo\" | cluster=\"ahorro-inversion\" -->",
+        "Imagina a alguien que nunca ganó más que el sueldo mínimo. Sin bonos, sin ascensos, sin herencias. Solo su sueldo de cada mes y la disciplina de apartar el 10% de su salario neto para invertirlo. Durante 36 años tuvo 24 meses sin trabajo, lagunas reales como las que le pueden pasar a cualquier trabajador chileno. El resto del tiempo, invirtió ese 10% en el NASDAQ-100. Para el mapa completo del tema, revisa también la [guía central de ahorro e inversión](/guias/ahorro-e-inversion/).",
+        "**Resultado del ejercicio:** si alguien hubiera invertido el 10% de su sueldo líquido entre enero de 1990 y diciembre de 2025, la cartera cerraría cerca de **USD 104.018**, equivalentes a **$100,9 millones CLP** al tipo de cambio de cierre usado en la simulación."
+      ],
+      "headings": [
+        "Respuesta rápida",
+        "Los supuestos detrás del cálculo",
+        "Lo que habría pasado, década a década",
+        "Las crisis no lo destruyeron",
+        "El multiplicador que pocos intuyen",
+        "¿Y con esos $100 millones, cuánto se puede retirar por mes?",
+        "Lo que esto no es",
+        "Una imagen concreta: el departamento propio"
+      ],
+      "bodyExcerpt": "Imagina a alguien que nunca ganó más que el sueldo mínimo. Sin bonos, sin ascensos, sin herencias. Solo su sueldo de cada mes y la disciplina de apartar el 10% de su salario neto para invertirlo. Durante 36 años tuvo 24 meses sin trabajo, lagunas reales como las que le pueden pasar a cualquier trabajador chileno. El resto del tiempo, invirtió ese 10% en el NASDAQ-100. Para el mapa completo del tema, revisa también la . ## Respuesta rápida **Resultado del ejercicio:** si alguien hubiera invertido el 10% de su sueldo líquido entre enero de 1990 y diciembre de 2025, la cartera cerraría cerca de **USD 104.018**, equivalentes a **$100,9 millones CLP** al tipo de cambio de cierre usado en la simulación. **Aporte total estimado:** alrededor de **$6.183.108 CLP** de bolsillo, equivalentes a unos **USD 9.453** al tipo de cambio histórico de cada aporte. **Qué significa en simple:** el capital final sería aproximadamente **11,0 veces** lo efectivamente aportado. **Fecha de corte del ejercicio:** **2025-12-31**. **Importante:** esto es una **simulación educativa y contrafactual**, no una promesa de rentabilidad futura ni una recomendación personalizada de inversión. **Fuentes base:** Banco Ce",
+      "wordCount": 1391,
+      "sourceFile": "el-poder-del-interes-compuesto.md"
+    },
+    {
       "slug": "estafas-financieras-chile-vishing-smishing-marketplace",
       "title": "Estafas financieras en Chile: señales por canal y checklist de 24 horas",
       "tags": [
@@ -351,7 +386,7 @@
       "category": "seguridad-financiera",
       "cluster": "seguridad-financiera",
       "sourcePath": "src/data/blog/estafas-financieras-chile-vishing-smishing-marketplace.md",
-      "heroImage": "../../assets/images/blog/estafas-financieras-chile-vishing-smishing-marketplace.avif",
+      "heroImage": "/images/hero/estafas-financieras-chile-vishing-smishing-marketplace.avif",
       "summary": "La mayoría de las estafas financieras no empieza con un hackeo sofisticado. Empieza con una llamada que suena completamente normal, de alguien que sabe tu nombre, menciona tu banco y habla en un tono que mezcla urgencia con profesionalismo. Para cuando te das cuenta de lo que ocu...",
       "leadParagraphs": [
         "La mayoría de las estafas financieras no empieza con un hackeo sofisticado. Empieza con una llamada que suena completamente normal, de alguien que sabe tu nombre, menciona tu banco y habla en un tono que mezcla urgencia con profesionalismo. Para cuando te das cuenta de lo que ocurrió, ya autorizaste una transferencia.",
@@ -385,7 +420,7 @@
       "category": "empleo-ingresos",
       "cluster": "empleo-ingresos",
       "sourcePath": "src/data/blog/finiquito-e-indemnizaciones-en-chile.md",
-      "heroImage": "../../assets/images/blog/finiquito-e-indemnizaciones-en-chile.avif",
+      "heroImage": "/images/hero/finiquito-e-indemnizaciones-en-chile.avif",
       "summary": "Te llega el finiquito, el empleador te apura para firmarlo ese mismo día, y tú no sabes si lo que dice es correcto. Es una situación más común de lo que parece — y firmar sin revisar puede costarte el equivalente a varios meses de sueldo. Esta guía te ayuda a entender qué debe in...",
       "leadParagraphs": [
         "Te llega el finiquito, el empleador te apura para firmarlo ese mismo día, y tú no sabes si lo que dice es correcto. Es una situación más común de lo que parece — y firmar sin revisar puede costarte el equivalente a varios meses de sueldo.",
@@ -418,7 +453,7 @@
       "category": "prevision",
       "cluster": "pensiones-afp",
       "sourcePath": "src/data/blog/fondos-afp-a-b-c-d-e.md",
-      "heroImage": "../../assets/images/blog/fondos-afp-a-b-c-d-e.avif",
+      "heroImage": "/images/hero/fondos-afp-a-b-c-d-e.avif",
       "summary": "Cuando te afilias a una AFP, tu dinero no queda guardado en una caja fuerte — se invierte en uno de cinco fondos disponibles. Elegir bien puede significar una pensión significativamente mayor. Elegir mal, también puede significar lo contrario. Aquí te explicamos qué es cada fondo...",
       "leadParagraphs": [
         "Cuando te afilias a una AFP, tu dinero no queda guardado en una caja fuerte — se invierte en uno de cinco fondos disponibles. Elegir bien puede significar una pensión significativamente mayor. Elegir mal, también puede significar lo contrario.",
@@ -451,7 +486,7 @@
       "category": "impuestos",
       "cluster": "ahorro-e-inversion",
       "sourcePath": "src/data/blog/fondos-mutuos-comisiones-rescate-impuestos.md",
-      "heroImage": "../../assets/images/blog/fondos-mutuos-comisiones-rescate-impuestos.avif",
+      "heroImage": "/images/hero/fondos-mutuos-comisiones-rescate-impuestos.avif",
       "summary": "<! META: keyword primary=\"comisiones fondos mutuos cuanto cobran\" intent=\"informacional transaccional\" cluster=\"ahorro inversion\" Si inviertes en fondos mutuos, esta guía te muestra dónde están los costos reales, cómo funciona el rescate y qué mirar en impuestos para evitar sorpr...",
       "leadParagraphs": [
         "<!-- META: keyword_primary=\"comisiones fondos mutuos cuanto cobran\" | intent=\"informacional-transaccional\" | cluster=\"ahorro-inversion\" -->",
@@ -485,7 +520,7 @@
       "category": "seguridad-financiera",
       "cluster": "seguridad-financiera",
       "sourcePath": "src/data/blog/fraude-tarjeta-que-hacer.md",
-      "heroImage": "../../assets/images/blog/fraude-tarjeta-que-hacer.avif",
+      "heroImage": "/images/hero/fraude-tarjeta-que-hacer.avif",
       "summary": "Revisas tu cuenta y ves un cargo que no hiciste. O peor: te llega un aviso de una transferencia que nunca autorizaste. Lo primero que sientes es pánico. Lo segundo debería ser este artículo. Si quieres la vista completa de prevención y respuesta, usa también la . En Chile existe...",
       "leadParagraphs": [
         "Revisas tu cuenta y ves un cargo que no hiciste. O peor: te llega un aviso de una transferencia que nunca autorizaste. Lo primero que sientes es pánico. Lo segundo debería ser este artículo. Si quieres la vista completa de prevención y respuesta, usa también la [guía del cluster Seguridad Financiera](/guias/seguridad-financiera/).",
@@ -519,7 +554,7 @@
       "category": "deuda-credito",
       "cluster": "deuda-credito",
       "sourcePath": "src/data/blog/informe-deudas-cmf-vs-dicom.md",
-      "heroImage": "../../assets/images/blog/informe-deudas-cmf-vs-dicom.avif",
+      "heroImage": "/images/hero/informe-deudas-cmf-vs-dicom.avif",
       "summary": "\"Estoy en DICOM\" es una de las frases más usadas en Chile para hablar de deudas. El problema es que DICOM como tal dejó de existir hace años, y la mayoría de las personas no sabe exactamente qué información tiene sobre ellas ni dónde está. Esta guía lo aclara de una vez, y si qui...",
       "leadParagraphs": [
         "\"Estoy en DICOM\" es una de las frases más usadas en Chile para hablar de deudas. El problema es que DICOM como tal dejó de existir hace años, y la mayoría de las personas no sabe exactamente qué información tiene sobre ellas ni dónde está. Esta guía lo aclara de una vez, y si quieres ver el mapa completo del tema puedes partir por la [guía del cluster Deuda y Crédito](/guias/deuda-credito/).",
@@ -541,6 +576,40 @@
       "sourceFile": "informe-deudas-cmf-vs-dicom.md"
     },
     {
+      "slug": "interes-compuesto-nota-metodologica",
+      "title": "Nota metodológica: simulación de interés compuesto 1990-2025",
+      "tags": [
+        "metodologia",
+        "simulacion",
+        "ahorro",
+        "interes-compuesto",
+        "nasdaq-100"
+      ],
+      "category": "general",
+      "cluster": "ahorro-e-inversion",
+      "sourcePath": "src/data/blog/interes-compuesto-nota-metodologica.md",
+      "heroImage": "/images/hero/interes-compuesto-nota-metodologica.avif",
+      "summary": "Este documento detalla los supuestos, fuentes de datos y fórmulas utilizados en el artículo . El objetivo es que cualquier persona pueda replicar o cuestionar los resultados. Fecha de corte del ejercicio: 2025 12 31 . 1. Período y estructura de la simulación Período: enero de 199...",
+      "leadParagraphs": [
+        "Este documento detalla los supuestos, fuentes de datos y fórmulas utilizados en el artículo [El poder del interés compuesto: cómo el 10% del sueldo mínimo se convierte en más de $100 millones](/posts/el-poder-del-interes-compuesto/). El objetivo es que cualquier persona pueda replicar o cuestionar los resultados.",
+        "**Fecha de corte del ejercicio:** **2025-12-31**.",
+        "Se usaron valores del sueldo mínimo bruto chileno como puntos de control. Entre reajustes, el sueldo mínimo permanece constante; no se interpola linealmente, sino que se trata como **función escalón**."
+      ],
+      "headings": [
+        "1. Período y estructura de la simulación",
+        "2. Sueldo mínimo histórico (CLP)",
+        "3. Descuentos previsionales y cálculo del sueldo líquido",
+        "4. Tipo de cambio CLP/USD histórico",
+        "5. Retornos del NASDAQ-100 (Total Return)",
+        "6. Mecánica de la simulación mes a mes",
+        "7. Resultados de la fase de acumulación",
+        "8. Cálculo de la mensualidad de retiro"
+      ],
+      "bodyExcerpt": "Este documento detalla los supuestos, fuentes de datos y fórmulas utilizados en el artículo . El objetivo es que cualquier persona pueda replicar o cuestionar los resultados. **Fecha de corte del ejercicio:** **2025-12-31**. ## 1. Período y estructura de la simulación - **Período:** enero de 1990 a diciembre de 2025 (**432 meses = 36 años**). - **Meses con aporte:** **408**. - **Meses sin aporte (lagunas):** **24**, distribuidos aleatoriamente con semilla fija. - **Edad de inicio laboral asumida:** **18 años**. - **Edad de retiro al final de la fase de acumulación:** **54 años**. ## 2. Sueldo mínimo histórico (CLP) Se usaron valores del sueldo mínimo bruto chileno como puntos de control. Entre reajustes, el sueldo mínimo permanece constante; no se interpola linealmente, sino que se trata como **función escalón**. | Año | Sueldo mínimo bruto (CLP) | | --- | --- | | 1990 | $17.374 | | 1992 | $33.000 | | 1994 | $52.000 | | 1996 | $74.000 | | 1998 | $90.500 | | 2000 | $105.500 | | 2002 | $119.000 | | 2004 | $135.000 | | 2006 | $155.510 | | 2008 | $159.000 | | 2010 | $172.000 | | 2012 | $193.000 | | 2014 | $225.000 | | 2016 | $257.500 | | 2018 | $288.000 | | 2020 | $320.500 | | 2022 | $",
+      "wordCount": 1284,
+      "sourceFile": "interes-compuesto-nota-metodologica.md"
+    },
+    {
       "slug": "licencia-medica-desde-que-dia-pagan",
       "title": "Licencia médica en Chile: desde qué día te pagan y cómo reclamar",
       "tags": [
@@ -553,7 +622,7 @@
       "category": "empleo-ingresos",
       "cluster": "empleo-ingresos",
       "sourcePath": "src/data/blog/licencia-medica-desde-que-dia-pagan.md",
-      "heroImage": "../../assets/images/blog/licencia-medica-desde-que-dia-pagan.avif",
+      "heroImage": "/images/hero/licencia-medica-desde-que-dia-pagan.avif",
       "summary": "Enfermarse siempre trae preocupaciones, pero cuando es por varios días, la pregunta que aparece junto al diagnóstico médico es casi inevitable: ¿desde cuándo me pagan y cuánto me llega? El sistema chileno de licencias médicas tiene reglas que dependen de la duración de la licenci...",
       "leadParagraphs": [
         "Enfermarse siempre trae preocupaciones, pero cuando es por varios días, la pregunta que aparece junto al diagnóstico médico es casi inevitable: ¿desde cuándo me pagan y cuánto me llega? El sistema chileno de licencias médicas tiene reglas que dependen de la duración de la licencia, de quién eres afiliados y de quién la paga — y entenderlas bien puede significar la diferencia entre recibir el subsidio completo o terminar apelando un rechazo.",
@@ -586,7 +655,7 @@
       "category": "impuestos",
       "cluster": "impuestos-personas",
       "sourcePath": "src/data/blog/operacion-renta-f22-checklist.md",
-      "heroImage": "../../assets/images/blog/operacion-renta-f22-checklist.avif",
+      "heroImage": "/images/hero/operacion-renta-f22-checklist.avif",
       "summary": "Si vas a declarar renta como persona, este flujo te ayuda a revisar tu propuesta del SII antes de enviar el F22 y a reaccionar rápido si aparecen observaciones. Está pensado para quienes quieren evitar correcciones tardías y atrasos en devolución. Qué cambia y qué resuelve esta g...",
       "leadParagraphs": [
         "Si vas a declarar renta como persona, este flujo te ayuda a revisar tu propuesta del SII antes de enviar el F22 y a reaccionar rápido si aparecen observaciones. Está pensado para quienes quieren evitar correcciones tardías y atrasos en devolución.",
@@ -619,7 +688,7 @@
       "category": "prevision",
       "cluster": "ahorro-e-inversion",
       "sourcePath": "src/data/blog/que-es-el-apv.mdx",
-      "heroImage": "../../assets/images/blog/que-es-el-apv.avif",
+      "heroImage": "/images/hero/que-es-el-apv.avif",
       "summary": "import IndicadorEconomico from \"@/components/IndicadorEconomico.astro\"; El APV es probablemente el beneficio tributario más desaprovechado por los trabajadores chilenos. Miles de personas pagan más impuestos de los que deberían, simplemente porque no saben que existe una forma le...",
       "leadParagraphs": [
         "import IndicadorEconomico from \"@/components/IndicadorEconomico.astro\";",
@@ -653,7 +722,7 @@
       "category": "general",
       "cluster": "empleo-ingresos",
       "sourcePath": "src/data/blog/que-es-el-ipc-chile-como-se-calcula.md",
-      "heroImage": "../../assets/images/blog/que-es-el-ipc-chile-como-se-calcula.avif",
+      "heroImage": "/images/hero/que-es-el-ipc-chile-como-se-calcula.avif",
       "summary": "Cuando sale el dato del IPC cada mes, los medios hablan de \"inflación\" y tú ves que las cosas cuestan más. Pero ¿cómo se mide exactamente? ¿Por qué a veces el IPC baja pero igual sientes que todo cuesta más? Y lo más importante: ¿qué decisiones afecta directamente en tu vida? Est...",
       "leadParagraphs": [
         "Cuando sale el dato del IPC cada mes, los medios hablan de \"inflación\" y tú ves que las cosas cuestan más. Pero ¿cómo se mide exactamente? ¿Por qué a veces el IPC baja pero igual sientes que todo cuesta más? Y lo más importante: ¿qué decisiones afecta directamente en tu vida?",
@@ -686,7 +755,7 @@
       "category": "prevision",
       "cluster": "pensiones-afp",
       "sourcePath": "src/data/blog/que-es-la-cuenta-2-afp.md",
-      "heroImage": "../../assets/images/blog/que-es-la-cuenta-2-afp.avif",
+      "heroImage": "/images/hero/que-es-la-cuenta-2-afp.avif",
       "summary": "Cuando la gente habla de su AFP, casi siempre se refiere a la cuenta obligatoria donde va el 10% del sueldo. Pero existe una segunda cuenta, voluntaria y mucho más flexible, que muy poca gente conoce bien: la Cuenta 2 , también llamada Cuenta de Ahorro Voluntario (CAV). En esta g...",
       "leadParagraphs": [
         "Cuando la gente habla de su AFP, casi siempre se refiere a la cuenta obligatoria donde va el 10% del sueldo. Pero existe una segunda cuenta, voluntaria y mucho más flexible, que muy poca gente conoce bien: la **Cuenta 2**, también llamada Cuenta de Ahorro Voluntario (CAV).",
@@ -720,7 +789,7 @@
       "category": "deuda-credito",
       "cluster": "deuda-credito",
       "sourcePath": "src/data/blog/que-es-la-uf.md",
-      "heroImage": "../../assets/images/blog/que-es-la-uf.avif",
+      "heroImage": "/images/hero/que-es-la-uf.avif",
       "summary": "Tu arriendo sube todos los años \"por la UF\" y tu dividendo también. Pero casi nadie sabe exactamente qué es la UF ni por qué cambia todos los días. Acá te explicamos de verdad — con números y sin fórmulas intimidantes. Si lo estás viendo desde la lógica de deudas y financiamiento...",
       "leadParagraphs": [
         "Tu arriendo sube todos los años \"por la UF\" y tu dividendo también. Pero casi nadie sabe exactamente qué es la UF ni por qué cambia todos los días. Acá te explicamos de verdad — con números y sin fórmulas intimidantes. Si lo estás viendo desde la lógica de deudas y financiamiento, puedes complementar con la [guía del cluster Deuda y Crédito](/guias/deuda-credito/).",
@@ -754,7 +823,7 @@
       "category": "prevision",
       "cluster": "pensiones-afp",
       "sourcePath": "src/data/blog/reforma-previsional-2025-que-cambia-y-como-te-afecta.md",
-      "heroImage": "../../assets/images/blog/reforma-previsional-2025-que-cambia-y-como-te-afecta.avif",
+      "heroImage": "/images/hero/reforma-previsional-2025-que-cambia-y-como-te-afecta.avif",
       "summary": "En julio de 2025 se promulgó la reforma previsional más importante en décadas. Cambia cómo se financia tu jubilación, introduce un nuevo beneficio para pensiones más bajas y reemplaza los multifondos con un esquema distinto. Aquí te explicamos qué hay de nuevo, cuándo entra en vi...",
       "leadParagraphs": [
         "En julio de 2025 se promulgó la reforma previsional más importante en décadas. Cambia cómo se financia tu jubilación, introduce un nuevo beneficio para pensiones más bajas y reemplaza los multifondos con un esquema distinto. Aquí te explicamos qué hay de nuevo, cuándo entra en vigencia cada parte y qué cambia concretamente para ti.",
@@ -788,7 +857,7 @@
       "category": "deuda-credito",
       "cluster": "deuda-credito",
       "sourcePath": "src/data/blog/renegociacion-superir.md",
-      "heroImage": "../../assets/images/blog/renegociacion-superir.avif",
+      "heroImage": "/images/hero/renegociacion-superir.avif",
       "summary": "Tienes deudas con varios acreedores, estás en mora hace meses y no ves cómo salir. Antes de contratar a un abogado o resignarte a que te sigan cobrando, existe una herramienta estatal gratuita que muy poca gente conoce: la renegociación de deudas a través de la Superir . Si estás...",
       "leadParagraphs": [
         "Tienes deudas con varios acreedores, estás en mora hace meses y no ves cómo salir. Antes de contratar a un abogado o resignarte a que te sigan cobrando, existe una herramienta estatal gratuita que muy poca gente conoce: la **renegociación de deudas a través de la Superir**. Si estás ordenando este tema desde cero, también te sirve revisar la [guía del cluster Deuda y Crédito](/guias/deuda-credito/).",
@@ -822,7 +891,7 @@
       "category": "empleo-ingresos",
       "cluster": "empleo-ingresos",
       "sourcePath": "src/data/blog/seguro-de-cesantia.md",
-      "heroImage": "../../assets/images/blog/seguro-de-cesantia.avif",
+      "heroImage": "/images/hero/seguro-de-cesantia.avif",
       "summary": "Quedaste sin trabajo — sea porque te despidieron, se venció tu contrato o renunciaste. Lo primero que muchos no saben es que tienen plata acumulada en la AFC esperando ser cobrada. Esta guía te explica exactamente qué es, cuánto tienes y cómo cobrarlo, y se complementa con la . T...",
       "leadParagraphs": [
         "Quedaste sin trabajo — sea porque te despidieron, se venció tu contrato o renunciaste. Lo primero que muchos no saben es que tienen plata acumulada en la AFC esperando ser cobrada. Esta guía te explica exactamente qué es, cuánto tienes y cómo cobrarlo, y se complementa con la [guía del cluster Empleo e Ingresos](/guias/empleo-ingresos/).",
@@ -856,7 +925,7 @@
       "category": "seguridad-financiera",
       "cluster": "seguridad-financiera",
       "sourcePath": "src/data/blog/suplantacion-identidad-creditos-no-reconocidos.md",
-      "heroImage": "../../assets/images/blog/suplantacion-identidad-creditos-no-reconocidos.avif",
+      "heroImage": "/images/hero/suplantacion-identidad-creditos-no-reconocidos.avif",
       "summary": "Recibes un correo que dice \"tu crédito ha sido aprobado\". El problema es que tú nunca pediste ningún crédito. Eso no es un error administrativo: es una señal crítica de que alguien usó tus datos para contratar deuda a tu nombre. La suplantación de identidad financiera ocurre cuan...",
       "leadParagraphs": [
         "Recibes un correo que dice \"tu crédito ha sido aprobado\". El problema es que tú nunca pediste ningún crédito. Eso no es un error administrativo: es una señal crítica de que alguien usó tus datos para contratar deuda a tu nombre.",
