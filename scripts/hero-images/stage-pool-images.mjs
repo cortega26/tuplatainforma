@@ -17,15 +17,6 @@ import { buildPoolSelectionPlan } from "./pool-lib.mjs";
 
 const ALLOWED_ASSET_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp", ".avif"]);
 
-async function fileExists(filePath) {
-  try {
-    const stat = await fs.stat(filePath);
-    return stat.isFile();
-  } catch {
-    return false;
-  }
-}
-
 async function collectPoolAssetIndex(manifestEntries, assetsDir) {
   const assetIndex = new Map();
 

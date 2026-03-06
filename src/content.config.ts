@@ -39,7 +39,7 @@ const blog = defineCollection({
             message: 'Field "canonical" must be an absolute HTTPS URL.',
           })
           .optional(),
-        heroImage: image().or(z.string()).optional(),
+        heroImage: z.string().or(image()).optional(),
         series: z.string().trim().min(1).optional(),
         timezone: z.string().optional(),
         hideEditPost: z.boolean().optional(),

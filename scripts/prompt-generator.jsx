@@ -45,24 +45,16 @@ export default function PromptGenerator() {
     }
   }
 
-  function handleCopy() {
+  async function handleCopy() {
     try {
-      const el = document.createElement("textarea");
-      el.value = prompt;
-      el.style.position = "fixed";
-      el.style.opacity = "0";
-      document.body.appendChild(el);
-      el.focus();
-      el.select();
-      document.execCommand("copy");
-      document.body.removeChild(el);
+      if (!navigator.clipboard?.writeText) {
+        throw new Error("Clipboard API unavailable");
+      }
+      await navigator.clipboard.writeText(prompt);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch (e) {
-      navigator.clipboard?.writeText(prompt).then(() => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      });
+    } catch {
+      setCopied(false);
     }
   }
 

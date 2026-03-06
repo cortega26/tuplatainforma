@@ -22,6 +22,9 @@ describe("hero-images deterministic selector", () => {
     expect(plan.colorKey).toBe("Fraude / Perdida grave");
     expect(plan.approvedModelId).toBe("fraude-estafa");
     expect(plan.sceneId).toBe("A:fraude-estafa");
+    if (!("sceneChoice" in plan)) {
+      throw new Error("Expected Template A plan.");
+    }
     expect(plan.sceneChoice).toBe("Fraude / Estafa");
     expect(plan.semantic.primaryIntent).toBe("alertar");
     expect(plan.semantic.visualEvidence.length).toBeGreaterThan(0);
@@ -44,6 +47,9 @@ describe("hero-images deterministic selector", () => {
     expect(plan.colorKey).toBe("Educativo / Conceptos / Guias");
     expect(plan.approvedModelId).toBe("uf-indicadores");
     expect(plan.sceneId).toBe("C:uf-indicadores");
+    if (!("iconChoice" in plan)) {
+      throw new Error("Expected Template C plan.");
+    }
     expect(plan.iconChoice).toBe("UF / Indicadores");
     expect(plan.semantic.primaryIntent).toBe("explicar");
     expect(plan.semantic.readerSituation).toContain("indicador");

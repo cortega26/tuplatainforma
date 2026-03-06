@@ -401,7 +401,7 @@ async function waitForNewImage(page, seenSources, timeoutMs) {
 }
 
 async function readImageBytes(page, src) {
-  return page.evaluate(async imageSrc => {
+  const payload = await page.evaluate(async imageSrc => {
     const response = await fetch(imageSrc);
     if (!response.ok) {
       throw new Error(`Failed to fetch generated image: ${response.status}`);
@@ -409,18 +409,17 @@ async function readImageBytes(page, src) {
 
     const blob = await response.blob();
     const bytes = new Uint8Array(await blob.arrayBuffer());
-    let binary = "";
-    const chunkSize = 0x8000;
-
-    for (let index = 0; index < bytes.length; index += chunkSize) {
-      binary += String.fromCharCode(...bytes.subarray(index, index + chunkSize));
-    }
 
     return {
-      base64: btoa(binary),
+      bytes: Array.from(bytes),
       mime: blob.type || response.headers.get("content-type") || "image/png",
     };
   }, src);
+
+  return {
+    base64: Buffer.from(payload.bytes).toString("base64"),
+    mime: payload.mime,
+  };
 }
 
 async function normalizeImageOutput(bytes, mime, outputFormat) {

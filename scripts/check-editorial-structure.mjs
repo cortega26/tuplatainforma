@@ -26,7 +26,6 @@ const IMAGE_LINK_EXTENSION_PATTERN =
   /\.(?:avif|bmp|gif|ico|jpe?g|png|svg|webp)$/i;
 const MARKDOWN_LINK_PATTERN =
   /\[([^\]]+)\]\(([^\s)]+)(?:\s+"[^"]*")?\)/g;
-const KEBAB_TOKEN_PATTERN = /[a-z0-9]+(?:-[a-z0-9]+)+/g;
 const YAML_NON_STRING_SCALARS = new Set([
   "null",
   "~",
@@ -329,10 +328,6 @@ function extractInternalMarkdownLinkTargets(body, siteHostname) {
 
 function countInternalMarkdownLinks(body, siteHostname) {
   return extractInternalMarkdownLinkTargets(body, siteHostname).length;
-}
-
-function extractKebabTokens(value) {
-  return value.match(KEBAB_TOKEN_PATTERN) ?? [];
 }
 
 function loadValidGuideClusters(guidesDir) {

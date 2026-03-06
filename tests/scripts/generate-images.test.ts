@@ -2,6 +2,15 @@ import { describe, expect, it } from "vitest";
 import { buildGenerationPlan } from "../../scripts/hero-images/generate-images.mjs";
 import { parseArgs } from "../../scripts/hero-images/lib.mjs";
 
+type GenerationPlanItem = {
+  entry: { slug: string };
+  model: string;
+  options: {
+    size: string;
+    quality: string;
+  };
+};
+
 const baseEntries = [
   {
     slug: "que-es-la-uf",
@@ -28,12 +37,21 @@ const baseEntries = [
 describe("generate-images planning", () => {
   it("supports explicit model override", () => {
     const args = parseArgs(["--model", "gpt-image-1"]);
-    const plan = buildGenerationPlan(baseEntries, args);
+    const plan = buildGenerationPlan(baseEntries, args) as GenerationPlanItem[];
 
     expect(plan).toHaveLength(2);
-    expect(plan.map(item => item.model)).toEqual(["gpt-image-1", "gpt-image-1"]);
-    expect(plan.map(item => item.options.size)).toEqual(["1536x1024", "1536x1024"]);
-    expect(plan.map(item => item.options.quality)).toEqual(["auto", "auto"]);
+    expect(plan.map((item: GenerationPlanItem) => item.model)).toEqual([
+      "gpt-image-1",
+      "gpt-image-1",
+    ]);
+    expect(plan.map((item: GenerationPlanItem) => item.options.size)).toEqual([
+      "1536x1024",
+      "1536x1024",
+    ]);
+    expect(plan.map((item: GenerationPlanItem) => item.options.quality)).toEqual([
+      "auto",
+      "auto",
+    ]);
   });
 
   it("supports compare mode for one slug", () => {
@@ -43,13 +61,24 @@ describe("generate-images planning", () => {
       "--compare-models",
       "dall-e-3,gpt-image-1",
     ]);
-    const plan = buildGenerationPlan(baseEntries, args);
+    const plan = buildGenerationPlan(baseEntries, args) as GenerationPlanItem[];
 
     expect(plan).toHaveLength(2);
-    expect(plan.every(item => item.entry.slug === "que-es-la-uf")).toBe(true);
-    expect(plan.map(item => item.model)).toEqual(["dall-e-3", "gpt-image-1"]);
-    expect(plan.map(item => item.options.size)).toEqual(["1792x1024", "1536x1024"]);
-    expect(plan.map(item => item.options.quality)).toEqual(["standard", "auto"]);
+    expect(plan.every((item: GenerationPlanItem) => item.entry.slug === "que-es-la-uf")).toBe(
+      true
+    );
+    expect(plan.map((item: GenerationPlanItem) => item.model)).toEqual([
+      "dall-e-3",
+      "gpt-image-1",
+    ]);
+    expect(plan.map((item: GenerationPlanItem) => item.options.size)).toEqual([
+      "1792x1024",
+      "1536x1024",
+    ]);
+    expect(plan.map((item: GenerationPlanItem) => item.options.quality)).toEqual([
+      "standard",
+      "auto",
+    ]);
   });
 
   it("keeps plan deterministic under limit", () => {
@@ -71,15 +100,21 @@ describe("generate-images planning", () => {
 
   it("preserves explicit GPT quality override", () => {
     const args = parseArgs(["--model", "gpt-image-1", "--quality", "high"]);
-    const plan = buildGenerationPlan(baseEntries, args);
+    const plan = buildGenerationPlan(baseEntries, args) as GenerationPlanItem[];
 
-    expect(plan.map(item => item.options.quality)).toEqual(["high", "high"]);
+    expect(plan.map((item: GenerationPlanItem) => item.options.quality)).toEqual([
+      "high",
+      "high",
+    ]);
   });
 
   it("preserves explicit GPT size override", () => {
     const args = parseArgs(["--model", "gpt-image-1", "--size", "1024x1024"]);
-    const plan = buildGenerationPlan(baseEntries, args);
+    const plan = buildGenerationPlan(baseEntries, args) as GenerationPlanItem[];
 
-    expect(plan.map(item => item.options.size)).toEqual(["1024x1024", "1024x1024"]);
+    expect(plan.map((item: GenerationPlanItem) => item.options.size)).toEqual([
+      "1024x1024",
+      "1024x1024",
+    ]);
   });
 });
