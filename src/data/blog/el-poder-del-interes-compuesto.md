@@ -55,15 +55,15 @@ En 1990 no era práctico para un chileno de sueldo mínimo invertir en el NASDAQ
 
 El camino no fue recto. Hubo momentos en que la cartera se hundió con fuerza. Estos son los hitos de control del ejercicio:
 
-| Año | Valor de la cartera (USD) | En pesos (CLP) |
-| --- | --- | --- |
-| Dic 1995 | $770 | ~$320.000 |
-| Dic 2000 | $4.702 | ~$3,0 millones |
-| Dic 2005 | $4.537 | ~$2,5 millones |
-| Dic 2010 | $8.124 | ~$3,9 millones |
-| Dic 2015 | $20.258 | ~$13,2 millones |
-| Dic 2020 | $62.846 | ~$50,3 millones |
-| **Dic 2025** | **$104.018** | **~$100,9 millones** |
+| Año          | Valor de la cartera (USD) | En pesos (CLP)       |
+| ------------ | ------------------------- | -------------------- |
+| Dic 1995     | $770                      | ~$320.000            |
+| Dic 2000     | $4.702                    | ~$3,0 millones       |
+| Dic 2005     | $4.537                    | ~$2,5 millones       |
+| Dic 2010     | $8.124                    | ~$3,9 millones       |
+| Dic 2015     | $20.258                   | ~$13,2 millones      |
+| Dic 2020     | $62.846                   | ~$50,3 millones      |
+| **Dic 2025** | **$104.018**              | **~$100,9 millones** |
 
 Dos cosas llaman la atención. La primera: entre 2000 y 2005 la cartera bajó de valor, porque la burbuja puntocom golpeó muy fuerte al NASDAQ-100. La segunda: más del 60% del crecimiento total ocurrió en los últimos 10 años. Así funciona el interés compuesto: se ve lento al principio y mucho más agresivo al final.
 
@@ -80,7 +80,7 @@ En todos esos escenarios, quien mantuvo el plan salió adelante. No porque no hu
 
 ![Simulación del interés compuesto con sueldo mínimo y NASDAQ-100 entre 1990 y 2025](/images/posts/el-poder-del-interes-compuesto/interes-compuesto-nasdaq.avif)
 
-*La curva verde muestra el valor de la cartera en USD. Las líneas rojas punteadas marcan las principales crisis. El panel inferior muestra los aportes mensuales en amarillo; los espacios vacíos son los 24 meses sin cotización.*
+_La curva verde muestra el valor de la cartera en USD. Las líneas rojas punteadas marcan las principales crisis. El panel inferior muestra los aportes mensuales en amarillo; los espacios vacíos son los 24 meses sin cotización._
 
 ## El multiplicador que pocos intuyen
 
@@ -96,11 +96,11 @@ Eso es el interés compuesto en acción: los retornos de un año generan retorno
 
 Esta persona se jubilaría a los 54 años, suponiendo inicio laboral a los 18 y 36 años de acumulación. Usando escenarios de expectativa de vida referenciales y una rentabilidad conservadora de 6% anual durante la etapa de retiro, el ejercicio entrega estas mensualidades:
 
-| Escenario | Mensualidad estimada (CLP) | Mensualidad (USD) |
-| --- | --- | --- |
-| Hombre (hasta ~79 años, 301 meses) | **~$625.000** | ~$644 |
-| Promedio (hasta ~82 años, 333 meses) | **~$601.000** | ~$619 |
-| Mujer (hasta ~84 años, 366 meses) | **~$581.000** | ~$599 |
+| Escenario                            | Mensualidad estimada (CLP) | Mensualidad (USD) |
+| ------------------------------------ | -------------------------- | ----------------- |
+| Hombre (hasta ~79 años, 301 meses)   | **~$625.000**              | ~$644             |
+| Promedio (hasta ~82 años, 333 meses) | **~$601.000**              | ~$619             |
+| Mujer (hasta ~84 años, 366 meses)    | **~$581.000**              | ~$599             |
 
 En todos los escenarios, la mensualidad supera el sueldo mínimo de diciembre de 2025 ($500.000). Dicho de otra forma: bajo este ejercicio, una persona que nunca ganó más que el sueldo mínimo podría financiar un retiro mensual mayor a su último sueldo, simplemente por haber ahorrado e invertido el 10% de su líquido durante 36 años.
 

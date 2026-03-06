@@ -25,6 +25,9 @@ const tocHeadingPattern = tocUi.toc.title;
 const tocHeadingRegex = new RegExp(`^${escapeRegExp(tocHeadingPattern)}$`, "i");
 const SITE_BASE = new URL(SITE.website).pathname.replace(/\/$/, "") || "/";
 const HOME_PATH = SITE_BASE === "/" ? "/" : `${SITE_BASE}/`;
+const SITEMAP_EXCLUDED_PATHS = new Set([
+  `${SITE_BASE === "/" ? "" : SITE_BASE}/posts/interes-compuesto-nota-metodologica/`,
+]);
 
 // https://astro.build/config
 export default defineConfig({
@@ -33,7 +36,11 @@ export default defineConfig({
   trailingSlash: "always",
   integrations: [
     sitemap({
-      filter: page => SITE.showArchives || !page.endsWith("/archives/"),
+      filter: page => {
+        const pathname = new URL(page).pathname;
+        if (SITEMAP_EXCLUDED_PATHS.has(pathname)) return false;
+        return SITE.showArchives || !page.endsWith("/archives/");
+      },
       serialize(item) {
         const url = item.url;
         const pathname = new URL(url).pathname;

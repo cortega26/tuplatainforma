@@ -30,6 +30,7 @@ const blog = defineCollection({
         cluster: z.enum(CLUSTERS),
         lang: z.literal("es-CL").default("es-CL"),
         draft: z.boolean().default(false),
+        unlisted: z.boolean().default(false),
         featured: z.boolean().default(false),
         author: z.string().trim().min(1).default(SITE.author),
         canonical: z

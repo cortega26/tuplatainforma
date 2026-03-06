@@ -20,7 +20,8 @@ const normalizedPosts = allPosts.map(post => ({
 }));
 
 const candidatePosts = normalizedPosts.filter(
-  ({ article }) => article.slug !== currentSlug && !article.draft
+  ({ article }) =>
+    article.slug !== currentSlug && !article.draft && !article.unlisted
 );
 
 const scoredPosts = candidatePosts.map(item => {

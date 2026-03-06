@@ -97,6 +97,11 @@ const nextPost =
 ---
 
 <Layout {...layoutProps}>
+  {
+    article.unlisted && (
+      <meta name="robots" content="noindex,follow" slot="head" />
+    )
+  }
   <ArticleJsonLd
     {post}
     canonicalUrl={layoutProps.canonicalURL ?? ""}
@@ -107,7 +112,7 @@ const nextPost =
   <main
     id="main-content"
     class:list={["app-layout pb-12", { "mt-8": !SITE.showBackButton }]}
-    data-pagefind-body
+    data-pagefind-body={!article.unlisted || undefined}
   >
     <h1
       transition:name={slugifyStr(title.replaceAll(".", "-"))}

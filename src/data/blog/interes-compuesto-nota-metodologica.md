@@ -6,14 +6,13 @@ author: "Equipo Monedario"
 pubDate: 2026-03-06T15:00:00Z
 updatedDate: 2026-03-06T18:30:00Z
 tags:
-  - metodologia
-  - simulacion
   - ahorro
   - interes-compuesto
   - nasdaq-100
 category: general
 cluster: ahorro-e-inversion
 lang: es-CL
+unlisted: true
 featured: false
 draft: false
 heroImage: /images/hero/interes-compuesto-nota-metodologica.avif
@@ -35,27 +34,27 @@ Este documento detalla los supuestos, fuentes de datos y fórmulas utilizados en
 
 Se usaron valores del sueldo mínimo bruto chileno como puntos de control. Entre reajustes, el sueldo mínimo permanece constante; no se interpola linealmente, sino que se trata como **función escalón**.
 
-| Año | Sueldo mínimo bruto (CLP) |
-| --- | --- |
-| 1990 | $17.374 |
-| 1992 | $33.000 |
-| 1994 | $52.000 |
-| 1996 | $74.000 |
-| 1998 | $90.500 |
-| 2000 | $105.500 |
-| 2002 | $119.000 |
-| 2004 | $135.000 |
-| 2006 | $155.510 |
-| 2008 | $159.000 |
-| 2010 | $172.000 |
-| 2012 | $193.000 |
-| 2014 | $225.000 |
-| 2016 | $257.500 |
-| 2018 | $288.000 |
-| 2020 | $320.500 |
-| 2022 | $380.000 |
-| 2024 | $460.000 |
-| 2025 | $500.000 |
+| Año  | Sueldo mínimo bruto (CLP) |
+| ---- | ------------------------- |
+| 1990 | $17.374                   |
+| 1992 | $33.000                   |
+| 1994 | $52.000                   |
+| 1996 | $74.000                   |
+| 1998 | $90.500                   |
+| 2000 | $105.500                  |
+| 2002 | $119.000                  |
+| 2004 | $135.000                  |
+| 2006 | $155.510                  |
+| 2008 | $159.000                  |
+| 2010 | $172.000                  |
+| 2012 | $193.000                  |
+| 2014 | $225.000                  |
+| 2016 | $257.500                  |
+| 2018 | $288.000                  |
+| 2020 | $320.500                  |
+| 2022 | $380.000                  |
+| 2024 | $460.000                  |
+| 2025 | $500.000                  |
 
 **Fuentes base declaradas por el ejercicio:** SUSESO, Dirección del Trabajo y Biblioteca del Congreso Nacional.
 
@@ -63,12 +62,12 @@ Se usaron valores del sueldo mínimo bruto chileno como puntos de control. Entre
 
 Se aplica un descuento estándar de trabajador dependiente:
 
-| Descuento | Porcentaje |
-| --- | --- |
-| AFP (cotización) | 10,0% |
-| Salud (Fonasa mínimo) | 7,0% |
-| Seguro de cesantía (trabajador) | 0,6% |
-| **Total descuentos** | **17,6%** |
+| Descuento                       | Porcentaje |
+| ------------------------------- | ---------- |
+| AFP (cotización)                | 10,0%      |
+| Salud (Fonasa mínimo)           | 7,0%       |
+| Seguro de cesantía (trabajador) | 0,6%       |
+| **Total descuentos**            | **17,6%**  |
 
 El factor líquido queda así:
 
@@ -83,28 +82,28 @@ No se incluye impuesto único de segunda categoría porque el escenario trabaja 
 
 Los aportes en pesos se convierten a USD con el tipo de cambio del mes. El ejercicio usa puntos de control históricos y una interpolación lineal entre ellos.
 
-| Año | CLP por USD |
-| --- | --- |
-| 1990 | 340 |
-| 1993 | 400 |
-| 1996 | 415 |
-| 1999 | 508 |
-| 2001 | 634 |
-| 2003 | 600 |
-| 2005 | 560 |
-| 2007 | 525 |
-| 2009 | 560 |
-| 2011 | 483 |
-| 2013 | 495 |
-| 2015 | 655 |
-| 2017 | 649 |
-| 2019 | 703 |
-| 2020 | 795 |
-| 2021 | 800 |
-| 2022 | 873 |
-| 2023 | 840 |
-| 2024 | 960 |
-| 2025 | 970 |
+| Año  | CLP por USD |
+| ---- | ----------- |
+| 1990 | 340         |
+| 1993 | 400         |
+| 1996 | 415         |
+| 1999 | 508         |
+| 2001 | 634         |
+| 2003 | 600         |
+| 2005 | 560         |
+| 2007 | 525         |
+| 2009 | 560         |
+| 2011 | 483         |
+| 2013 | 495         |
+| 2015 | 655         |
+| 2017 | 649         |
+| 2019 | 703         |
+| 2020 | 795         |
+| 2021 | 800         |
+| 2022 | 873         |
+| 2023 | 840         |
+| 2024 | 960         |
+| 2025 | 970         |
 
 El tipo de cambio final usado para convertir el resultado a pesos es **970 CLP/USD** en diciembre de 2025.
 
@@ -118,44 +117,44 @@ retorno_mensual = (1 + retorno_anual)^(1/12) - 1
 
 Serie anual usada:
 
-| Año | Retorno anual |
-| --- | --- |
-| 1990 | -6,5% |
-| 1991 | +70,0% |
-| 1992 | +15,5% |
-| 1993 | +13,0% |
-| 1994 | +3,0% |
-| 1995 | +42,5% |
-| 1996 | +43,0% |
-| 1997 | +21,0% |
-| 1998 | +85,5% |
-| 1999 | +102,5% |
-| 2000 | -37,0% |
-| 2001 | -32,5% |
-| 2002 | -37,8% |
-| 2003 | +50,2% |
-| 2004 | +10,7% |
-| 2005 | +2,5% |
-| 2006 | +7,2% |
-| 2007 | +19,0% |
-| 2008 | -41,9% |
-| 2009 | +54,1% |
-| 2010 | +20,1% |
-| 2011 | +2,8% |
-| 2012 | +18,2% |
-| 2013 | +37,1% |
-| 2014 | +19,1% |
-| 2015 | +9,4% |
-| 2016 | +7,1% |
-| 2017 | +33,1% |
-| 2018 | -1,0% |
-| 2019 | +38,6% |
-| 2020 | +48,9% |
-| 2021 | +27,3% |
-| 2022 | -32,6% |
-| 2023 | +54,9% |
-| 2024 | +25,6% |
-| 2025 | -3,5% *(estimado conservador, dato parcial)* |
+| Año  | Retorno anual                                |
+| ---- | -------------------------------------------- |
+| 1990 | -6,5%                                        |
+| 1991 | +70,0%                                       |
+| 1992 | +15,5%                                       |
+| 1993 | +13,0%                                       |
+| 1994 | +3,0%                                        |
+| 1995 | +42,5%                                       |
+| 1996 | +43,0%                                       |
+| 1997 | +21,0%                                       |
+| 1998 | +85,5%                                       |
+| 1999 | +102,5%                                      |
+| 2000 | -37,0%                                       |
+| 2001 | -32,5%                                       |
+| 2002 | -37,8%                                       |
+| 2003 | +50,2%                                       |
+| 2004 | +10,7%                                       |
+| 2005 | +2,5%                                        |
+| 2006 | +7,2%                                        |
+| 2007 | +19,0%                                       |
+| 2008 | -41,9%                                       |
+| 2009 | +54,1%                                       |
+| 2010 | +20,1%                                       |
+| 2011 | +2,8%                                        |
+| 2012 | +18,2%                                       |
+| 2013 | +37,1%                                       |
+| 2014 | +19,1%                                       |
+| 2015 | +9,4%                                        |
+| 2016 | +7,1%                                        |
+| 2017 | +33,1%                                       |
+| 2018 | -1,0%                                        |
+| 2019 | +38,6%                                       |
+| 2020 | +48,9%                                       |
+| 2021 | +27,3%                                       |
+| 2022 | -32,6%                                       |
+| 2023 | +54,9%                                       |
+| 2024 | +25,6%                                       |
+| 2025 | -3,5% _(estimado conservador, dato parcial)_ |
 
 ## 6. Mecánica de la simulación mes a mes
 
@@ -176,13 +175,13 @@ si i no pertenece al set de lagunas:
 
 ## 7. Resultados de la fase de acumulación
 
-| Métrica | Valor |
-| --- | --- |
-| Total aportado (CLP) | $6.183.108 |
-| Total aportado (USD, al TC histórico de cada mes) | $9.453 |
-| Valor final del portafolio (dic 2025, USD) | $104.018 |
-| Valor final del portafolio (dic 2025, CLP a 970) | $100.897.701 (~$100,9M) |
-| Multiplicador sobre lo aportado | 11,0x |
+| Métrica                                           | Valor                   |
+| ------------------------------------------------- | ----------------------- |
+| Total aportado (CLP)                              | $6.183.108              |
+| Total aportado (USD, al TC histórico de cada mes) | $9.453                  |
+| Valor final del portafolio (dic 2025, USD)        | $104.018                |
+| Valor final del portafolio (dic 2025, CLP a 970)  | $100.897.701 (~$100,9M) |
+| Multiplicador sobre lo aportado                   | 11,0x                   |
 
 ## 8. Cálculo de la mensualidad de retiro
 
@@ -201,11 +200,11 @@ PMT = PV_disponible x tasa_m / (1 - (1 + tasa_m)^(-n))
 
 Resultados:
 
-| Escenario | Meses | Mensualidad (USD) | Mensualidad (CLP) |
-| --- | --- | --- | --- |
-| Hombre (~79 años) | 301 | $644 | ~$625.000 |
-| Promedio (~82 años) | 333 | $619 | ~$601.000 |
-| Mujer (~84 años) | 366 | $599 | ~$581.000 |
+| Escenario           | Meses | Mensualidad (USD) | Mensualidad (CLP) |
+| ------------------- | ----- | ----------------- | ----------------- |
+| Hombre (~79 años)   | 301   | $644              | ~$625.000         |
+| Promedio (~82 años) | 333   | $619              | ~$601.000         |
+| Mujer (~84 años)    | 366   | $599              | ~$581.000         |
 
 ## 9. Lo que esta simulación no modela
 
@@ -219,13 +218,13 @@ Resultados:
 
 Para la imagen mental del departamento se usaron rangos de mercado de 2025:
 
-| Comuna | Precio promedio departamento 2 dorm. | Fuente declarada |
-| --- | --- | --- |
-| La Florida | ~3.700 UF | BDO Chile / BioBioChile |
-| San Miguel | ~3.500 UF | BDO Chile / BioBioChile |
-| Macul | ~3.800 UF | urbani.cl |
-| Santiago Centro | ~3.100 UF | BDO Chile / BioBioChile |
-| Estación Central | ~2.600 UF | BDO Chile / BioBioChile |
+| Comuna           | Precio promedio departamento 2 dorm. | Fuente declarada        |
+| ---------------- | ------------------------------------ | ----------------------- |
+| La Florida       | ~3.700 UF                            | BDO Chile / BioBioChile |
+| San Miguel       | ~3.500 UF                            | BDO Chile / BioBioChile |
+| Macul            | ~3.800 UF                            | urbani.cl               |
+| Santiago Centro  | ~3.100 UF                            | BDO Chile / BioBioChile |
+| Estación Central | ~2.600 UF                            | BDO Chile / BioBioChile |
 
 El capital final de **$100,9 millones CLP** equivale aproximadamente a **2.621 UF**, usando una UF cercana a $38.500 en diciembre de 2025. En esa lógica, el resultado permite comprar al contado una unidad en el rango inferior de las comunas listadas o una propiedad de mayor estándar en varias ciudades regionales.
 
@@ -235,4 +234,4 @@ Los rangos de arriendo referenciales de **$350.000 a $500.000 mensuales** para d
 
 Úsala para auditar el ejercicio, no para extrapolar rentabilidades futuras. Si quieres convertir esta idea en una decisión real, el siguiente paso no es copiar el número final, sino revisar vehículo, costos, liquidez, impuestos y tolerancia a caídas con una guía práctica como [cómo invertir en ETFs desde Chile](/posts/como-invertir-en-etfs-desde-chile/).
 
-*Documento de carácter educativo. No constituye asesoría financiera personalizada.*
+_Documento de carácter educativo. No constituye asesoría financiera personalizada._

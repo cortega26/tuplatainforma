@@ -184,6 +184,11 @@ for (const filePath of files) {
     pushIssue(errors, relativeFilePath, 'Field "draft" must be boolean.');
   }
 
+  const unlisted = frontmatter.unlisted ?? false;
+  if (typeof unlisted !== "boolean") {
+    pushIssue(errors, relativeFilePath, 'Field "unlisted" must be boolean.');
+  }
+
   const featured = frontmatter.featured ?? false;
   if (typeof featured !== "boolean") {
     pushIssue(errors, relativeFilePath, 'Field "featured" must be boolean.');

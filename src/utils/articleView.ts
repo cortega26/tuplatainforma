@@ -10,6 +10,7 @@ export type ArticleView = {
   tags: string[];
   category: string;
   draft: boolean;
+  unlisted: boolean;
   featured: boolean;
   author: string;
   lang: string;
@@ -68,6 +69,7 @@ export function toArticleView(entry: BlogEntry): ArticleView {
     tags: (entry.data.tags ?? []).map(tag => tag.trim()).filter(Boolean),
     category: entry.data.category ?? "general",
     draft: entry.data.draft ?? false,
+    unlisted: entry.data.unlisted ?? false,
     featured: entry.data.featured ?? false,
     author: entry.data.author ?? SITE.author,
     lang: entry.data.lang ?? "es-CL",
