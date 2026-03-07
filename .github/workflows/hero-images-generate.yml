@@ -1,0 +1,73 @@
+name: Hero Images Generation
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_mode:
+        description: "dry-run or run"
+        required: false
+        default: "dry-run"
+        type: choice
+        options:
+          - dry-run
+          - run
+  schedule:
+    - cron: "0 7 * * 1"
+
+jobs:
+  generate-hero-images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: "☁️ Checkout repository"
+        uses: actions/checkout@v6
+
+      - name: "📦 Install pnpm"
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.2
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: "📦 Install dependencies"
+        run: pnpm install --frozen-lockfile
+
+      - name: "🗂️ Scan publishable articles"
+        run: node scripts/hero-images/scan-articles.mjs
+
+      - name: "🧠 Build deterministic prompts"
+        run: node scripts/hero-images/build-prompts.mjs
+
+      - name: "🧪 Generate images (dry-run fallback)"
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DALL_E_MODEL: ${{ vars.DALL_E_MODEL }}
+        run: |
+          MODE="${{ github.event.inputs.run_mode || 'dry-run' }}"
+          if [ "$MODE" = "run" ] && [ -n "$OPENAI_API_KEY" ]; then
+            node scripts/hero-images/generate-images.mjs --run
+            node scripts/hero-images/postprocess-images.mjs
+          else
+            node scripts/hero-images/generate-images.mjs --dry-run
+            echo "[hero-images] Generation skipped (dry-run or missing OPENAI_API_KEY)."
+          fi
+
+      - name: "📤 Upload hero-image artifacts"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hero-images-artifacts
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            scripts/hero-images/manifest.json
+            scripts/hero-images/prompts.json
+            scripts/hero-images/downloads

@@ -1,0 +1,147 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { getPath } from "@/utils/getPath";
+
+const articulosSeccion = [
+  {
+    titulo:
+      "Informe de deudas CMF: cómo sacarlo, qué dice y por qué no es lo mismo que DICOM",
+    resumen:
+      "Aclara qué muestra el informe oficial, qué no incluye y cómo usarlo para ordenar tu situación financiera.",
+    href: getPath("/posts/informe-deudas-cmf-vs-dicom/"),
+    tipo: "Pilar diagnóstico",
+  },
+  {
+    titulo:
+      "Renegociación Superir: qué es, quién puede pedir y cómo hacerlo sin abogado",
+    resumen:
+      "Guía operativa para evaluar requisitos, preparar documentos y evitar rechazos por errores formales.",
+    href: getPath("/posts/renegociacion-superir/"),
+    tipo: "Pilar de salida",
+  },
+  {
+    titulo:
+      "UF en simple: qué es, por qué sube todos los días y cómo te afecta",
+    resumen:
+      "Base práctica para entender reajustes en créditos, arriendos y obligaciones indexadas a inflación.",
+    href: getPath("/posts/que-es-la-uf/"),
+    tipo: "Satélite de costo real",
+  },
+];
+---
+
+<Layout
+  title="Deuda y Crédito en Chile | Monedario"
+  description="Guía para entender informes comerciales, renegociación y costo total del crédito en Chile con rutas de lectura y decisiones clave."
+>
+  <Header />
+
+  <main id="main-content" class="app-layout">
+    <section class="border-b border-border py-8">
+      <!-- Removed Authority Layer tag -->
+      <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
+        Deuda y Crédito en Chile
+      </h1>
+      <p class="max-w-3xl text-secondary">
+        Este hub organiza la sección para ayudarte a diagnosticar tu situación,
+        priorizar decisiones y avanzar con una ruta concreta cuando hay presión
+        de deuda o costo financiero alto.
+      </p>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Artículos de la sección</h2>
+      <ul class="grid gap-4">
+        {
+          articulosSeccion.map(item => (
+            <li class="rounded-xl border border-border p-5">
+              <h3 class="mb-2 text-lg font-semibold">{item.titulo}</h3>
+              <p class="mb-3 text-sm text-secondary">{item.resumen}</p>
+              <a
+                href={item.href}
+                class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+              >
+                Leer artículo
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Qué leer primero si...</h2>
+      <ul class="list-disc space-y-2 pl-6 text-secondary">
+        <li>
+          Necesitas saber qué deudas aparecen realmente a tu nombre: parte por{
+            " "
+          }
+          <a
+            class="text-accent underline underline-offset-4 hover:opacity-80"
+            href={getPath("/posts/informe-deudas-cmf-vs-dicom/")}
+          >
+            Informe de Deudas CMF vs DICOM
+          </a>
+          .
+        </li>
+        <li>
+          Ya estás en mora y buscas una salida formal: continúa con{" "}
+          <a
+            class="text-accent underline underline-offset-4 hover:opacity-80"
+            href={getPath("/posts/renegociacion-superir/")}
+          >
+            renegociación en Superir
+          </a>
+          .
+        </li>
+        <li>
+          Quieres entender por qué suben cuotas y montos reajustables: revisa{
+            " "
+          }
+          <a
+            class="text-accent underline underline-offset-4 hover:opacity-80"
+            href={getPath("/posts/que-es-la-uf/")}
+          >
+            la guía de la UF
+          </a>
+          .
+        </li>
+      </ul>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Errores comunes</h2>
+      <ul class="list-disc space-y-2 pl-6 text-secondary">
+        <li>
+          Tomar decisiones de crédito sin revisar primero el diagnóstico
+          completo de deudas vigentes.
+        </li>
+        <li>
+          Postergar la renegociación hasta acumular más mora y menor margen de
+          negociación real.
+        </li>
+        <li>
+          Ignorar el efecto de UF e intereses en el costo total de una deuda de
+          mediano o largo plazo.
+        </li>
+      </ul>
+    </section>
+
+    <section class="py-8">
+      <div class="rounded-xl border border-accent/20 bg-accent/5 p-6">
+        <h2 class="mb-2 text-xl font-bold">
+          Última actualización de la sección
+        </h2>
+        <p class="text-sm text-secondary">
+          Actualizado: 2026-03-02. Este índice se revisa cuando cambian
+          criterios de reporte comercial, requisitos de renegociación o
+          condiciones relevantes de crédito en Chile.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

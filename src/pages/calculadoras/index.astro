@@ -95,7 +95,7 @@ const tagStyles: Record<string, string> = {
 ---
 
 <Layout
-  title="Calculadoras Financieras en Chile | Tu Plata Informa"
+  title="Calculadoras Financieras en Chile | Monedario"
   description="Explora calculadoras gratuitas de sueldo líquido, APV, UF, crédito, cesantía, jubilación y más en un solo lugar."
 >
   <Header />
@@ -130,8 +130,7 @@ const tagStyles: Record<string, string> = {
                   <span
                     class:list={[
                       "rounded-full px-2 py-0.5 text-xs font-bold",
-                      tagStyles[calc.tag] ??
-                        "bg-foreground/10 text-muted",
+                      tagStyles[calc.tag] ?? "bg-foreground/10 text-muted",
                     ]}
                   >
                     {calc.tag}

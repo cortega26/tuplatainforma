@@ -1,6 +1,7 @@
 import { defineConfig, envField } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
+import { EnumChangefreq } from "sitemap";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import {
@@ -11,6 +12,7 @@ import {
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import { SITE } from "./src/config";
 import { getUiCopyForLocale } from "./src/i18n/ui";
+import { remarkPrefixInternalLinks } from "./src/remark-prefix-internal-links";
 
 import mdx from "@astrojs/mdx";
 
@@ -21,19 +23,54 @@ const escapeRegExp = (value: string) =>
 
 const tocHeadingPattern = tocUi.toc.title;
 const tocHeadingRegex = new RegExp(`^${escapeRegExp(tocHeadingPattern)}$`, "i");
+const SITE_BASE = new URL(SITE.website).pathname.replace(/\/$/, "") || "/";
+const HOME_PATH = SITE_BASE === "/" ? "/" : `${SITE_BASE}/`;
+const SITEMAP_EXCLUDED_PATHS = new Set([
+  `${SITE_BASE === "/" ? "" : SITE_BASE}/posts/interes-compuesto-nota-metodologica/`,
+]);
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
-  base: "/tuplatainforma",
+  base: SITE_BASE,
+  trailingSlash: "always",
   integrations: [
     sitemap({
-      filter: page => SITE.showArchives || !page.endsWith("/archives"),
+      filter: page => {
+        const pathname = new URL(page).pathname;
+        if (SITEMAP_EXCLUDED_PATHS.has(pathname)) return false;
+        return SITE.showArchives || !page.endsWith("/archives/");
+      },
+      serialize(item) {
+        const url = item.url;
+        const pathname = new URL(url).pathname;
+
+        if (pathname === HOME_PATH) {
+          return { ...item, changefreq: EnumChangefreq.DAILY, priority: 1.0 };
+        }
+        if (/\/posts\/[^/]+\/$/.test(url)) {
+          return { ...item, changefreq: EnumChangefreq.MONTHLY, priority: 0.8 };
+        }
+        if (/\/leyes\/[^/]+\/$/.test(url)) {
+          return { ...item, changefreq: EnumChangefreq.MONTHLY, priority: 0.8 };
+        }
+        if (/\/calculadoras\/[^/]+\/$/.test(url)) {
+          return { ...item, changefreq: EnumChangefreq.WEEKLY, priority: 0.7 };
+        }
+        if (
+          /\/(guias|leyes|calculadoras|tags)(\/[^/]+)?\/$/.test(url) ||
+          /\/(about|autor|search|archives)\/$/.test(url)
+        ) {
+          return { ...item, changefreq: EnumChangefreq.MONTHLY, priority: 0.6 };
+        }
+        return { ...item, changefreq: EnumChangefreq.YEARLY, priority: 0.5 };
+      },
     }),
     mdx(),
   ],
   markdown: {
     remarkPlugins: [
+      [remarkPrefixInternalLinks, SITE_BASE],
       [remarkToc, { heading: tocHeadingPattern }],
       [
         remarkCollapse,

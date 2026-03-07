@@ -14,5 +14,11 @@ export default [
     },
   },
   { rules: { "no-console": "error" } },
+  {
+    files: ["scripts/**/*.mjs", "generate_hero.mjs", "test-*.mjs"],
+    rules: {
+      "no-console": "off",
+    },
+  },
   { ignores: ["dist/**", ".astro", "public/pagefind/**"] },
 ];

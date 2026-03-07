@@ -1,6 +1,8 @@
 ---
 title: "Ahorro e inversión en Chile: instrumentos, costos e impuestos (guía 2026)"
 description: "Guía 2026 para elegir instrumentos de ahorro e inversión en Chile comparando riesgo, costos e impuestos sin mezclar objetivos ni plazos."
+slug: ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026
+author: "Equipo Monedario"
 pubDate: 2026-02-28T16:00:00Z
 updatedDate: 2026-02-28T16:00:00Z
 tags:
@@ -8,8 +10,12 @@ tags:
   - inversiones
   - impuestos
   - chile
+category: impuestos
+cluster: ahorro-e-inversion
 lang: es-CL
+featured: false
 draft: false
+heroImage: /images/hero/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.avif
 ---
 
 <!-- META: keyword_primary="ahorro e inversión en chile" | intent="informacional-pilar" | cluster="ahorro-inversion" -->
@@ -26,11 +32,11 @@ Si quieres ordenar tus finanzas para invertir sin improvisar, esta guía te ayud
 
 ## Mapa rápido de instrumentos
 
-| Instrumento | Para qué sirve mejor | Riesgo relativo | Liquidez típica |
-| --- | --- | --- | --- |
-| Depósito a plazo | Caja de corto plazo y metas de fecha fija | Bajo | Al vencimiento pactado |
-| Fondo mutuo | Diversificar sin comprar activo por activo | Bajo a alto (según fondo) | Rescate según reglamento (fondos mutuos: <= 10 días) |
-| ETF | Exposición diversificada con lógica bursátil | Medio a alto | Depende de mercado y ejecución vía intermediario |
+| Instrumento      | Para qué sirve mejor                         | Riesgo relativo           | Liquidez típica                                      |
+| ---------------- | -------------------------------------------- | ------------------------- | ---------------------------------------------------- |
+| Depósito a plazo | Caja de corto plazo y metas de fecha fija    | Bajo                      | Al vencimiento pactado                               |
+| Fondo mutuo      | Diversificar sin comprar activo por activo   | Bajo a alto (según fondo) | Rescate según reglamento (fondos mutuos: <= 10 días) |
+| ETF              | Exposición diversificada con lógica bursátil | Medio a alto              | Depende de mercado y ejecución vía intermediario     |
 
 Para profundizar por intención específica, revisa:
 
@@ -130,6 +136,12 @@ No. Esta guía es educativa y no reemplaza asesoría profesional para tu situaci
 - CMF, Registro de Corredores y Agentes: https://www.cmfchile.cl/mascerca/601/w3-article-1264.html
 - Banco Central, qué es la UF y cómo se reajusta: https://www.bcentral.cl/web/banco-central/preguntas-frecuentes/-/asset_publisher/0u850BwdK7p5/content/que-es-la-uf-y-como-se-reajusta-
 - SII FAQ, obligación de declarar rentas de inversiones: https://www.sii.cl/preguntas_frecuentes/declaracion_renta/001_140_0597.htm
+
+## Artículos relacionados
+
+- [Cómo hacer un presupuesto mensual en Chile](/posts/como-hacer-presupuesto-mensual-chile/) — antes de elegir instrumento, necesitas saber cuánto puedes destinar al ahorro.
+- [CAE y costo real del crédito en Chile](/posts/cae-costo-real-credito-chile/) — si tienes deudas de consumo, entiende su costo real antes de invertir.
+- [Qué es el IPC y cómo impacta tu bolsillo](/posts/que-es-el-ipc-chile-como-se-calcula/) — la inflación afecta directamente qué instrumentos en UF o pesos convienen.
 
 ## Última revisión
 

@@ -2,6 +2,7 @@ import {
   assertEconomicParameters,
   type EconomicParameters,
 } from "@/domain/economic/EconomicParameters";
+import { readFileSync } from "fs";
 
 type MindicadorResponse = {
   uf?: { valor?: number; fecha?: string };
@@ -10,8 +11,22 @@ type MindicadorResponse = {
   tmc?: { valor?: number };
 };
 
+interface EconomicSnapshotPayload {
+  uf: number;
+  utm: number;
+  ipc?: number;
+  tmc?: number;
+  afcTopes?: {
+    monthlyTaxableCapUf?: number;
+  };
+  lastUpdated: string;
+}
+
+type EconomicProviderMode = "snapshot" | "live";
+
 export type EconomicTelemetryFlag =
   | "economic_parameters_live"
+  | "economic_parameters_snapshot"
   | "economic_parameters_fallback";
 
 export interface EconomicParameterBundle {
@@ -27,7 +42,15 @@ export interface EconomicProviderTelemetry {
   lastFallbackReason?: string;
 }
 
+const DEFAULT_AFC_MONTHLY_TAXABLE_CAP_UF = 131.9;
 const FALLBACK_LAST_UPDATED = new Date().toISOString().slice(0, 10);
+const SNAPSHOT_FILE_URL = new URL(
+  "./economic-parameters.snapshot.json",
+  import.meta.url
+);
+const ECONOMIC_PROVIDER_MODE_ENV = "TPI_ECONOMIC_PROVIDER_MODE";
+const ECONOMIC_API_URL = "https://mindicador.cl/api";
+const FETCH_TIMEOUT_MS = 5000;
 
 const FALLBACK_PARAMETERS: EconomicParameters = {
   uf: 39300,
@@ -35,14 +58,11 @@ const FALLBACK_PARAMETERS: EconomicParameters = {
   ipc: 0,
   tmc: 3.49,
   afcTopes: {
-    monthlyTaxableCapUf: 131.9,
+    monthlyTaxableCapUf: DEFAULT_AFC_MONTHLY_TAXABLE_CAP_UF,
   },
   lastUpdated: FALLBACK_LAST_UPDATED,
   source: "fallback",
 };
-
-const ECONOMIC_API_URL = "https://mindicador.cl/api";
-const FETCH_TIMEOUT_MS = 5000;
 
 let cachedBundlePromise: Promise<EconomicParameterBundle> | undefined;
 const telemetryState: EconomicProviderTelemetry = {
@@ -66,6 +86,39 @@ function toIsoDate(value: string | undefined): string {
   return new Date().toISOString().slice(0, 10);
 }
 
+function normalizeReason(reason: unknown): string {
+  return reason instanceof Error ? reason.message : "Unknown provider error.";
+}
+
+function resolveEconomicProviderMode(): EconomicProviderMode {
+  return process.env[ECONOMIC_PROVIDER_MODE_ENV] === "live"
+    ? "live"
+    : "snapshot";
+}
+
+function loadSnapshotEconomicParameters(): EconomicParameters {
+  const payload = JSON.parse(
+    readFileSync(SNAPSHOT_FILE_URL, "utf-8")
+  ) as EconomicSnapshotPayload;
+
+  const snapshotParameters: EconomicParameters = {
+    uf: Number(payload.uf),
+    utm: Number(payload.utm),
+    ipc: Number(payload.ipc ?? 0),
+    tmc: payload.tmc !== undefined ? Number(payload.tmc) : 3.49,
+    afcTopes: {
+      monthlyTaxableCapUf: Number(
+        payload.afcTopes?.monthlyTaxableCapUf ??
+          DEFAULT_AFC_MONTHLY_TAXABLE_CAP_UF
+      ),
+    },
+    lastUpdated: String(payload.lastUpdated),
+    source: "fallback",
+  };
+
+  return assertEconomicParameters(snapshotParameters);
+}
+
 async function fetchLiveEconomicParameters(): Promise<EconomicParameters> {
   const response = await fetch(ECONOMIC_API_URL, {
     signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
@@ -83,7 +136,7 @@ async function fetchLiveEconomicParameters(): Promise<EconomicParameters> {
     ipc: Number(payload.ipc?.valor ?? 0),
     tmc: payload.tmc?.valor !== undefined ? Number(payload.tmc.valor) : 3.49,
     afcTopes: {
-      monthlyTaxableCapUf: 131.9,
+      monthlyTaxableCapUf: DEFAULT_AFC_MONTHLY_TAXABLE_CAP_UF,
     },
     lastUpdated: toIsoDate(payload.uf?.fecha ?? payload.utm?.fecha),
     source: "live",
@@ -92,18 +145,46 @@ async function fetchLiveEconomicParameters(): Promise<EconomicParameters> {
   return assertEconomicParameters(liveParameters);
 }
 
-function buildFallbackBundle(reason: unknown): EconomicParameterBundle {
-  const fallbackReason =
-    reason instanceof Error ? reason.message : "Unknown provider error.";
+function buildSnapshotBundle(reason?: unknown): EconomicParameterBundle {
+  const bundle: EconomicParameterBundle = {
+    parameters: loadSnapshotEconomicParameters(),
+    telemetryFlag: "economic_parameters_snapshot",
+  };
 
+  if (reason) {
+    bundle.fallbackReason = normalizeReason(reason);
+  }
+
+  return bundle;
+}
+
+function buildFallbackBundle(reason: unknown): EconomicParameterBundle {
   return {
     parameters: assertEconomicParameters(FALLBACK_PARAMETERS),
     telemetryFlag: "economic_parameters_fallback",
-    fallbackReason,
+    fallbackReason: normalizeReason(reason),
   };
 }
 
+function storeTelemetry(bundle: EconomicParameterBundle): void {
+  telemetryState.lastSource = bundle.parameters.source;
+  telemetryState.lastFallbackReason = bundle.fallbackReason;
+  syncDevTelemetry();
+}
+
 async function loadEconomicParameterBundle(): Promise<EconomicParameterBundle> {
+  if (resolveEconomicProviderMode() === "snapshot") {
+    try {
+      const bundle = buildSnapshotBundle();
+      storeTelemetry(bundle);
+      return bundle;
+    } catch (snapshotError) {
+      const bundle = buildFallbackBundle(snapshotError);
+      storeTelemetry(bundle);
+      return bundle;
+    }
+  }
+
   try {
     telemetryState.externalFetchCount += 1;
     const parameters = await fetchLiveEconomicParameters();
@@ -111,16 +192,24 @@ async function loadEconomicParameterBundle(): Promise<EconomicParameterBundle> {
       parameters,
       telemetryFlag: "economic_parameters_live",
     };
-    telemetryState.lastSource = bundle.parameters.source;
-    telemetryState.lastFallbackReason = undefined;
-    syncDevTelemetry();
+    storeTelemetry(bundle);
     return bundle;
-  } catch (error) {
-    const bundle = buildFallbackBundle(error);
-    telemetryState.lastSource = bundle.parameters.source;
-    telemetryState.lastFallbackReason = bundle.fallbackReason;
-    syncDevTelemetry();
-    return bundle;
+  } catch (liveError) {
+    try {
+      const bundle = buildSnapshotBundle(
+        new Error(`Live fetch failed: ${normalizeReason(liveError)}`)
+      );
+      storeTelemetry(bundle);
+      return bundle;
+    } catch (snapshotError) {
+      const bundle = buildFallbackBundle(
+        new Error(
+          `Live fetch failed: ${normalizeReason(liveError)} | Snapshot failed: ${normalizeReason(snapshotError)}`
+        )
+      );
+      storeTelemetry(bundle);
+      return bundle;
+    }
   }
 }
 

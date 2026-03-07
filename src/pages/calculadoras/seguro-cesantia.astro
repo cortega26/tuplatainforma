@@ -164,10 +164,7 @@ const economicSourceLabel =
         class="rounded-xl border border-border bg-background p-6"
       >
         <h2 class="mb-5 text-lg font-semibold">💰 Tu cobertura estimada</h2>
-        <div
-          id="resultado-contenido"
-          class="py-8 text-center text-muted"
-        >
+        <div id="resultado-contenido" class="py-8 text-center text-muted">
           <p class="mb-3 text-4xl">🛡️</p>
           <p class="text-sm">Ingresa tus datos y presiona calcular.</p>
         </div>
@@ -436,8 +433,7 @@ const economicSourceLabel =
       header.append(headerTitle, headerValue, headerSubtitle);
 
       const payoutsLabel = document.createElement("p");
-      payoutsLabel.className =
-        "mb-2 text-xs font-bold text-muted uppercase";
+      payoutsLabel.className = "mb-2 text-xs font-bold text-muted uppercase";
       payoutsLabel.textContent = "Pagos estimados por mes";
 
       const payoutRows = estimacion.payouts.map(

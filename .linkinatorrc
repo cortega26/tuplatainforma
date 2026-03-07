@@ -1,0 +1,19 @@
+{
+  "recurse": true,
+  "timeout": 15000,
+  "concurrency": 8,
+  "retry": true,
+  "retryErrors": true,
+  "retryErrorsCount": 2,
+  "skip": [
+    "bcn.cl",
+    "sii.cl/valores_y_fechas",
+    "sii.cl/infoydec",
+    "afc.cl",
+    "afcchile.cl",
+    "spensiones.cl/infoydec",
+    "^mailto:",
+    "^#",
+    "^http://localhost"
+  ]
+}

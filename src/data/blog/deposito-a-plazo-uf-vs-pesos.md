@@ -1,6 +1,8 @@
 ---
 title: "Depósito a plazo: UF vs pesos — qué conviene y cuándo"
 description: "Comparativa práctica para elegir depósito a plazo en UF o pesos según inflación, plazo, liquidez y costo de oportunidad real en Chile 2026."
+slug: deposito-a-plazo-uf-vs-pesos
+author: "Equipo Monedario"
 pubDate: 2026-02-28T16:10:00Z
 updatedDate: 2026-02-28T16:10:00Z
 tags:
@@ -8,8 +10,12 @@ tags:
   - uf
   - ahorro
   - inversiones
+category: ahorro-inversion
+cluster: ahorro-e-inversion
 lang: es-CL
+featured: false
 draft: false
+heroImage: /images/hero/deposito-a-plazo-uf-vs-pesos.avif
 ---
 
 <!-- META: keyword_primary="deposito a plazo en uf o pesos que conviene" | intent="comparativa" | cluster="ahorro-inversion" -->
@@ -32,12 +38,12 @@ Según Banco Central, la UF es una unidad reajustable por IPC y se actualiza dia
 
 ## Comparativa estructurada: matriz de decisión
 
-| Variable | DAP en pesos | DAP en UF |
-| --- | --- | --- |
-| Inflación esperada baja | Suele ser competitivo | Puede quedar por debajo en nominal |
-| Inflación esperada alta | Puede perder poder de compra real | Suele proteger mejor el poder de compra |
-| Plazo corto | Más flexible según oferta | Puede no ser viable según plazo mínimo reajustable |
-| Entender resultado final | Más simple (nominal) | Requiere mirar reajuste + tasa real |
+| Variable                 | DAP en pesos                      | DAP en UF                                          |
+| ------------------------ | --------------------------------- | -------------------------------------------------- |
+| Inflación esperada baja  | Suele ser competitivo             | Puede quedar por debajo en nominal                 |
+| Inflación esperada alta  | Puede perder poder de compra real | Suele proteger mejor el poder de compra            |
+| Plazo corto              | Más flexible según oferta         | Puede no ser viable según plazo mínimo reajustable |
+| Entender resultado final | Más simple (nominal)              | Requiere mirar reajuste + tasa real                |
 
 Dato operativo clave (CMF Educa): el plazo mínimo de pago de intereses/reajustes no puede ser inferior a 7 días en depósitos no reajustables y a 90 días en depósitos reajustables.
 

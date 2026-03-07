@@ -1,9 +1,11 @@
 ---
 title: "Informe de deudas CMF: cómo sacarlo, qué dice y por qué no es lo mismo que DICOM"
-author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-24T11:00:00Z
+author: "Equipo Monedario"
+pubDate: 2026-02-24T11:00:00Z
+updatedDate: 2026-03-04T12:00:00Z
 slug: informe-deudas-cmf-vs-dicom
 featured: true
+lang: es-CL
 draft: false
 tags:
   - deudas
@@ -11,10 +13,13 @@ tags:
   - cmf
   - dicom
   - historial-crediticio
+category: deuda-credito
+cluster: deuda-credito
 description: "Guía práctica sobre el Informe de Deudas CMF: cómo descargarlo gratis, qué incluye, qué no incluye y en qué se diferencia del DICOM y el Boletín Comercial."
+heroImage: /images/hero/informe-deudas-cmf-vs-dicom.avif
 ---
 
-"Estoy en DICOM" es una de las frases más usadas en Chile para hablar de deudas. El problema es que DICOM como tal dejó de existir hace años, y la mayoría de las personas no sabe exactamente qué información tiene sobre ellas ni dónde está. Esta guía lo aclara de una vez.
+"Estoy en DICOM" es una de las frases más usadas en Chile para hablar de deudas. El problema es que DICOM como tal dejó de existir hace años, y la mayoría de las personas no sabe exactamente qué información tiene sobre ellas ni dónde está. Esta guía lo aclara de una vez, y si quieres ver el mapa completo del tema puedes partir por la [guía del cluster Deuda y Crédito](/guias/deuda-credito/).
 
 ## Tabla de contenidos
 
@@ -101,7 +106,7 @@ Esta es otra pregunta frecuente y la respuesta no es única — depende del tipo
 
 **Informe CMF:** Las deudas aparecen mientras están vigentes. Una vez pagadas, dejan de aparecer como deudas activas. No hay un plazo fijo de "borrado" porque el informe muestra el estado actual, no el historial.
 
-**Boletín Comercial (protestos):** Un protesto de cheque o pagaré permanece hasta que sea aclarado (pagado o con acuerdo). La Ley 20.575 establece que tienes derecho a pedir la eliminación del registro del Boletín Comercial una vez que acredites el pago.
+**Boletín Comercial (protestos):** Un protesto de cheque o pagaré permanece hasta que sea aclarado (pagado o con acuerdo). La **[Ley 20.575](/leyes/ley-20575-datos-comerciales/)** establece que tienes derecho a pedir la eliminación del registro del Boletín Comercial una vez que acredites el pago.
 
 **Prescripción de deudas:** En Chile, la prescripción de una deuda civil es generalmente de 5 años para obligaciones ordinarias (Código Civil, art. 2515). Esto significa que después de ese plazo el acreedor no puede perseguirte judicialmente — pero el plazo corre desde la última gestión de cobro o reconocimiento de la deuda, no desde que dejaste de pagar.
 
@@ -164,4 +169,4 @@ El primer paso es tener el informe CMF completo y saber exactamente cuánto debe
 
 ---
 
-_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para más información visita la [CMF](https://www.cmfchile.cl) o el [Boletín Comercial](https://www.boletincomercial.cl/)._
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a marzo de 2026. Para más información visita la [CMF](https://www.cmfchile.cl) o el [Boletín Comercial](https://www.boletincomercial.cl/)._

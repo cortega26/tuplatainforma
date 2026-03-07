@@ -1,6 +1,8 @@
 ---
 title: "Cómo invertir en ETFs desde Chile: comisiones, custodia e impuestos"
 description: "Paso a paso para invertir en ETFs desde Chile comparando comisión, spread, custodia, riesgo regulatorio y criterios tributarios básicos."
+slug: como-invertir-en-etfs-desde-chile
+author: "Equipo Monedario"
 pubDate: 2026-02-28T16:30:00Z
 updatedDate: 2026-02-28T16:30:00Z
 tags:
@@ -8,8 +10,12 @@ tags:
   - inversiones
   - corredoras
   - impuestos
+category: ahorro-inversion
+cluster: ahorro-e-inversion
 lang: es-CL
+featured: false
 draft: false
+heroImage: /images/hero/como-invertir-en-etfs-desde-chile.avif
 ---
 
 <!-- META: keyword_primary="como invertir en etf desde chile" | intent="guia-procedimental" | cluster="ahorro-inversion" -->
@@ -35,13 +41,13 @@ Si quieres invertir en ETFs desde Chile, esta guía te ordena el proceso de sele
 
 ## Cómo comparar plataforma/corredora
 
-| Criterio | Qué revisar | Riesgo de ignorarlo |
-| --- | --- | --- |
-| Comisión por operación | Cargo fijo o porcentual por compra/venta | Comer rentabilidad neta |
-| Costos transaccionales adicionales | Derechos de bolsa, IVA, cargos administrativos | Subestimar costo total |
-| Custodia | Dónde y cómo se registran tus valores | Riesgo operativo/documental |
-| Regulación y supervisión | Inscripción y fiscalización CMF (si aplica) | Operar sin marco local claro |
-| Acceso a mercados extranjeros | Si depende de intermediario extranjero y bajo qué condiciones | Riesgo regulatorio adicional |
+| Criterio                           | Qué revisar                                                   | Riesgo de ignorarlo          |
+| ---------------------------------- | ------------------------------------------------------------- | ---------------------------- |
+| Comisión por operación             | Cargo fijo o porcentual por compra/venta                      | Comer rentabilidad neta      |
+| Costos transaccionales adicionales | Derechos de bolsa, IVA, cargos administrativos                | Subestimar costo total       |
+| Custodia                           | Dónde y cómo se registran tus valores                         | Riesgo operativo/documental  |
+| Regulación y supervisión           | Inscripción y fiscalización CMF (si aplica)                   | Operar sin marco local claro |
+| Acceso a mercados extranjeros      | Si depende de intermediario extranjero y bajo qué condiciones | Riesgo regulatorio adicional |
 
 Dato CMF relevante: en intermediación bursátil pueden existir cobros por comisión, derechos de bolsa, IVA, custodia y otros costos.
 
@@ -56,7 +62,7 @@ Dato CMF relevante: en intermediación bursátil pueden existir cobros por comis
 - SII señala que personas naturales deben declarar rentas de inversiones, con excepciones legales.
 - SII dispone asistentes e instrucciones de apoyo para determinación de mayor valor en ciertas enajenaciones/rescates.
 
-`TODO: FUENTE` para tasas específicas por tipo de ETF/mercado y casos de doble tributación internacional; esto requiere revisión normativa detallada y vigente por caso.
+Para tasas específicas según tipo de ETF o mercado, y para casos de doble tributación internacional, consulta las instrucciones vigentes del SII para el año tributario correspondiente y, de ser necesario, asesoría tributaria profesional.
 
 ## Casos por perfil
 

@@ -1,9 +1,11 @@
 ---
 title: "Renegociación Superir: qué es, quién puede pedir y cómo hacerlo sin abogado"
-author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-24T14:00:00Z
+author: "Equipo Monedario"
+pubDate: 2026-02-24T14:00:00Z
+updatedDate: 2026-03-04T12:00:00Z
 slug: renegociacion-superir
 featured: false
+lang: es-CL
 draft: false
 tags:
   - deudas
@@ -11,12 +13,15 @@ tags:
   - superir
   - sobreendeudamiento
   - credito
+category: deuda-credito
+cluster: deuda-credito
 description: "Guía práctica sobre la renegociación de deudas a través de la Superir: requisitos exactos, documentos necesarios, errores que te rechazan la solicitud y qué esperar en las audiencias."
+heroImage: /images/hero/renegociacion-superir.avif
 ---
 
-Tienes deudas con varios acreedores, estás en mora hace meses y no ves cómo salir. Antes de contratar a un abogado o resignarte a que te sigan cobrando, existe una herramienta estatal gratuita que muy poca gente conoce: la **renegociación de deudas a través de la Superir**.
+Tienes deudas con varios acreedores, estás en mora hace meses y no ves cómo salir. Antes de contratar a un abogado o resignarte a que te sigan cobrando, existe una herramienta estatal gratuita que muy poca gente conoce: la **renegociación de deudas a través de la Superir**. Si estás ordenando este tema desde cero, también te sirve revisar la [guía del cluster Deuda y Crédito](/guias/deuda-credito/).
 
-Más del 93% de los deudores que la usan llegan a un acuerdo con sus acreedores. Y no necesitas abogado.
+Según datos de la Superir, la gran mayoría de los deudores que usan este mecanismo llegan a un acuerdo con sus acreedores. Y no necesitas abogado.
 
 ## Tabla de contenidos
 
@@ -142,7 +147,7 @@ Si aceptan tu solicitud, el proceso continúa con audiencias telemáticas donde 
 
 **Audiencia de renegociación:** Aquí presentas tu propuesta de pago y los acreedores votan. Si la mayoría acepta, se firma el acuerdo con las nuevas condiciones: cuota menor, más plazo, menos interés, meses de gracia, o una combinación de todo.
 
-**Audiencia de ejecución** (solo si no hay acuerdo): Si no se llega a acuerdo de pago, se discute la venta de bienes para pagar a los acreedores. Esta es la alternativa que la mayoría quiere evitar — y que el 93% de los casos evita.
+**Audiencia de ejecución** (solo si no hay acuerdo): Si no se llega a acuerdo de pago, se discute la venta de bienes para pagar a los acreedores. Esta es la alternativa que la mayoría quiere evitar — y que, según datos históricos de la Superir, la gran mayoría de los procesos logra evitar llegando a acuerdo en la audiencia de renegociación. Para estadísticas actualizadas consulta el [sitio oficial de la Superir](https://www.superir.gob.cl).
 
 ### Paso 5 — Después del acuerdo
 
@@ -208,4 +213,4 @@ Antes de presentar la solicitud, estima tu escenario con el [simulador de renego
 
 ---
 
-_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para iniciar el trámite visita [superir.gob.cl](https://www.superir.gob.cl/perfil-deudor-requisito-renegociacion/) o [ChileAtiende](https://www.chileatiende.gob.cl/fichas/37401-renegociacion-de-las-deudas-de-una-persona). Para asesoría gratuita contacta la [Corporación de Asistencia Judicial](https://www.cajmetro.cl/)._
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a marzo de 2026. Para iniciar el trámite visita [superir.gob.cl](https://www.superir.gob.cl/perfil-deudor-requisito-renegociacion/) o [ChileAtiende](https://www.chileatiende.gob.cl/fichas/37401-renegociacion-de-las-deudas-de-una-persona). Para asesoría gratuita contacta la [Corporación de Asistencia Judicial](https://www.cajmetro.cl/)._

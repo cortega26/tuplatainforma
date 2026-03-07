@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@/utils/slugify";
-import { getPath, getPostPath } from "@/utils/getPath";
+import { getCanonicalPathFromSlug } from "@/domain/content/path";
 import { getReadingTime } from "@/utils/readingTime";
 import Datetime from "./Datetime.astro";
 import ArticlePlaceholder from "./ArticlePlaceholder.astro";
@@ -10,9 +10,9 @@ type Props = {
   variant?: "h2" | "h3";
 } & CollectionEntry<"blog">;
 
-const { variant: Heading = "h2", id, data, filePath, body } = Astro.props;
+const { variant: Heading = "h2", data, body } = Astro.props;
 const { title, description, tags, ogImage, ...props } = data;
-const href = getPath(`${getPostPath(id, filePath)}/`);
+const href = getCanonicalPathFromSlug(data.slug);
 const firstTag = tags?.[0] ?? "";
 const imageSrc = typeof ogImage === "string" ? ogImage : ogImage?.src;
 const readingTime = getReadingTime(body ?? "");

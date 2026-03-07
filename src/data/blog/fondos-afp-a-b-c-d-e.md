@@ -1,21 +1,46 @@
 ---
 title: "Fondos AFP A, B, C, D y E: diferencias, riesgo y cuál te conviene"
-author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-23T11:00:00Z
+author: "Equipo Monedario"
+pubDate: 2026-02-23T11:00:00Z
+updatedDate: 2026-03-02T19:30:00Z
 slug: fondos-afp-a-b-c-d-e
 featured: true
+lang: es-CL
 draft: false
 tags:
   - afp
   - fondos
   - pensiones
   - inversiones
+category: prevision
+cluster: pensiones-afp
 description: "Explicación clara de los fondos AFP A, B, C, D y E: en qué invierte cada uno, cuánto riesgo tienen y cuál conviene según tu edad y perfil."
+heroImage: /images/hero/fondos-afp-a-b-c-d-e.avif
 ---
 
 Cuando te afilias a una AFP, tu dinero no queda guardado en una caja fuerte — se invierte en uno de cinco fondos disponibles. Elegir bien puede significar una pensión significativamente mayor. Elegir mal, también puede significar lo contrario.
 
-Aquí te explicamos qué es cada fondo, sin tecnicismos.
+Aquí te explicamos qué es cada fondo, sin tecnicismos. Para integrar esta decisión en una estrategia previsional mayor, mira la [guía central de pensiones y AFP](/guias/pensiones-afp/).
+
+## Qué cambia entre 2025 y 2027
+
+Este artículo mantiene la explicación histórica de multifondos A-E, pero debes separar contexto actual vs transición aprobada:
+
+- **Qué cambia hoy (2026):**
+  - Los multifondos **A, B, C, D y E siguen vigentes** y puedes elegir/cambiar fondo como hasta ahora.
+  - La cotización adicional del empleador ya comenzó en **1%** (agosto 2025), sin descuento adicional a tu sueldo líquido.
+- **Qué cambia después (2027 en adelante):**
+  - Desde **abril de 2027** empieza el paso a **fondos generacionales**. [Lee la guía completa de la reforma previsional 2025](/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/) para entender el cronograma y el impacto del 7% del empleador.
+  - En paralelo, desde **agosto de 2027** el aporte adicional del empleador sube a **3,5%**, dentro del calendario que llega a 7%.
+
+Calendario resumido:
+
+| Hito                                  | Fecha           | Efecto práctico                                    |
+| ------------------------------------- | --------------- | -------------------------------------------------- |
+| Inicio aporte adicional del empleador | Agosto 2025     | +1% de cargo empleador.                            |
+| Vigencia general de la reforma        | Septiembre 2025 | Comienza implementación por etapas.                |
+| Inicio fondos generacionales          | Abril 2027      | Transición desde A-E a nuevo esquema por cohortes. |
+| Siguiente alza aporte empleador       | Agosto 2027     | Aporte adicional sube a 3,5%.                      |
 
 ## Tabla de contenidos
 
@@ -141,6 +166,12 @@ Generalmente no. Si cambias durante una caída, conviertes una pérdida temporal
 El Fondo C concentra la mayor parte de los afiliados, en parte porque es el fondo por defecto para muchos rangos de edad.
 
 Para convertir esta elección en una decisión completa, cruza esta guía con [cómo cambiarte de AFP](/posts/como-cambiarse-de-afp/) y con el desglose de [cuánto descuenta la AFP de tu sueldo](/posts/cuanto-descuenta-la-afp-de-tu-sueldo/).
+
+### Fuentes oficiales para el bloque 2025-2027
+
+- ChileAtiende, principales fechas de la reforma de pensiones: https://www.chileatiende.gob.cl/fichas/134983-conoce-las-principales-fechas-clave-de-la-reforma-de-pensiones
+- Superintendencia de Pensiones, inicio de fondos generacionales (abril 2027): https://www.spensiones.cl/portal/institucional/594/w3-article-17026.html
+- BCN, Ley N° 21.735: https://www.bcn.cl/leychile/navegar?idNorma=1212060
 
 ---
 

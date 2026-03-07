@@ -1,0 +1,91 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import SectionDivider from "@/components/SectionDivider.astro";
+import { getCollection } from "astro:content";
+import { getPath } from "@/utils/getPath";
+
+const glossaryEntries = await getCollection("glossary", ({ data }) => {
+  return !data.draft;
+});
+
+// Ordenar alfabéticamente por el término (ignorando mayúsculas/minúsculas)
+glossaryEntries.sort((a, b) => a.data.term.localeCompare(b.data.term, "es"));
+
+// Agrupar por la primera letra
+const groupedEntries = glossaryEntries.reduce(
+  (acc, entry) => {
+    const firstLetter = entry.data.term.charAt(0).toUpperCase();
+    if (!acc[firstLetter]) {
+      acc[firstLetter] = [];
+    }
+    acc[firstLetter].push(entry);
+    return acc;
+  },
+  {} as Record<string, typeof glossaryEntries>
+);
+
+const letters = Object.keys(groupedEntries).sort();
+---
+
+<Layout
+  title="Glosario Financiero | Monedario"
+  description="Diccionario de términos financieros, económicos y previsionales de Chile. Encuentra definiciones claras de UF, UTM, CAE, TMC y más."
+>
+  <Header />
+
+  <main id="main-content" class="app-layout">
+    <section class="max-w-3xl pt-12 pb-6">
+      <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
+        Glosario Financiero
+      </h1>
+      <p class="mt-4 text-lg text-secondary">
+        Entiende la jerga económica de Chile. Encuentra explicaciones sencillas
+        y ejemplos para los términos, siglas e indicadores financieros más
+        utilizados.
+      </p>
+    </section>
+
+    <SectionDivider />
+
+    <section class="py-8">
+      {
+        letters.length > 0 ? (
+          <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+            {letters.map(letter => (
+              <div>
+                <h2 class="mb-4 inline-block border-b-2 border-accent pb-1 text-2xl font-bold text-accent">
+                  {letter}
+                </h2>
+                <ul class="flex flex-col gap-3">
+                  {groupedEntries[letter].map(entry => (
+                    <li class="group">
+                      <a
+                        href={getPath(`/glosario/${entry.id}/`)}
+                        class="block rounded-lg border border-transparent p-3 transition-colors hover:border-border hover:bg-accent/5 focus:border-border focus:bg-accent/5 focus:outline-none"
+                      >
+                        <h3 class="font-semibold transition-colors group-hover:text-accent">
+                          {entry.data.term}
+                        </h3>
+                        <p class="mt-1 line-clamp-2 text-sm text-secondary">
+                          {entry.data.shortDefinition}
+                        </p>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p class="py-12 text-center text-lg text-secondary">
+            No hay términos definidos en el glosario aún.
+          </p>
+        )
+      }
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,9 +1,11 @@
 ---
 title: "Seguro de cesantía: cómo saber tu saldo, cuándo puedes cobrar y cuánto te pagan"
-author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-25T10:00:00Z
+author: "Equipo Monedario"
+pubDate: 2026-02-25T10:00:00Z
+updatedDate: 2026-03-04T12:00:00Z
 slug: seguro-de-cesantia
 featured: false
+lang: es-CL
 draft: false
 tags:
   - cesantia
@@ -11,10 +13,13 @@ tags:
   - desempleo
   - proteccion-social
   - trabajo
+category: empleo-ingresos
+cluster: empleo-ingresos
 description: "Guía completa del Seguro de Cesantía en Chile: qué es la CIC y el FCS, cómo consultar tu saldo, cuándo y cómo cobrar, y cuánto te pagan según tu tipo de contrato."
+heroImage: /images/hero/seguro-de-cesantia.avif
 ---
 
-Quedaste sin trabajo — sea porque te despidieron, se venció tu contrato o renunciaste. Lo primero que muchos no saben es que tienen plata acumulada en la AFC esperando ser cobrada. Esta guía te explica exactamente qué es, cuánto tienes y cómo cobrarlo.
+Quedaste sin trabajo — sea porque te despidieron, se venció tu contrato o renunciaste. Lo primero que muchos no saben es que tienen plata acumulada en la AFC esperando ser cobrada. Esta guía te explica exactamente qué es, cuánto tienes y cómo cobrarlo, y se complementa con la [guía del cluster Empleo e Ingresos](/guias/empleo-ingresos/).
 
 ## Tabla de contenidos
 
@@ -40,7 +45,7 @@ El aporte mensual al seguro varía según el tipo de contrato:
 
 Si tienes contrato a plazo fijo, **no te descuentan nada del sueldo** para el seguro — pero igual acumulas, porque el empleador pone el 3% completo.
 
-El tope imponible para el cálculo fue de **131,9 UF** durante 2025. Si ganas más que eso, los aportes se calculan solo sobre ese tope.
+El **tope imponible** para el cálculo se actualiza anualmente. Si ganas más que ese tope, los aportes se calculan solo sobre ese límite — no sobre tu sueldo completo. Para el valor vigente del año en curso consulta directamente en [afc.cl](https://www.afc.cl).
 
 ---
 
@@ -183,8 +188,8 @@ Al pensionarte puedes retirar el saldo de tu CIC en un solo giro sin pagar impue
 **¿El seguro de cesantía es lo mismo que el subsidio de cesantía?**
 No. El **seguro de cesantía** es el que administra la AFC y es para trabajadores con contrato. El **subsidio de cesantía** lo paga el IPS (ex INP) o las cajas de compensación para trabajadores que no cumplen los requisitos del seguro — es un beneficio distinto y con condiciones diferentes.
 
-Si quieres estimar cobertura con tus datos, usa la [calculadora de seguro de cesantía](/calculadoras/seguro-cesantia/). Y para ver el impacto del descuento en tu pago mensual, revisa la guía de [sueldo líquido en Chile](/posts/como-calcular-sueldo-liquido/).
+Si quieres estimar cobertura con tus datos, usa la [calculadora de seguro de cesantía](/calculadoras/seguro-cesantia/). Si tu caso incluye licencia activa o rechazo de pago, revisa [licencia médica: desde qué día pagan](/posts/licencia-medica-desde-que-dia-pagan/). Y si estás cerrando contrato, valida montos con [finiquito e indemnizaciones en Chile](/posts/finiquito-e-indemnizaciones-en-chile/).
 
 ---
 
-_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para consultar tu saldo y cobrar visita [afc.cl](https://www.afc.cl). Los montos y porcentajes del FCS se actualizan anualmente — verifica los valores vigentes en el sitio de la AFC._
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a marzo de 2026. Para consultar tu saldo y cobrar visita [afc.cl](https://www.afc.cl). Los montos y porcentajes del FCS se actualizan anualmente — verifica los valores vigentes en el sitio de la AFC._

@@ -1,7 +1,8 @@
-/* eslint-disable no-console */
+ 
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import yaml from "js-yaml";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,6 +29,18 @@ const ALLOWED_CATEGORIES = new Set([
   "general",
 ]);
 
+const CLUSTERS_TS_PATH = path.join(REPO_ROOT, "src", "config", "clusters.ts");
+const clustersSource = readFileSync(CLUSTERS_TS_PATH, "utf8");
+const clustersMatch = clustersSource.match(/export const CLUSTERS = \[\s*([\s\S]*?)\s*\]/);
+const ALLOWED_CLUSTERS = new Set(
+  clustersMatch[1]
+    .split(",")
+    .map(s => s.trim().replace(/^["']|["']$/g, ""))
+    .filter(Boolean)
+);
+
+const REQUIRED_LANG = "es-CL";
+
 function listContentFiles(dirPath) {
   const result = [];
   const entries = readdirSync(dirPath, { withFileTypes: true }).sort((a, b) =>
@@ -53,78 +66,7 @@ function extractFrontmatter(filePath) {
   return match ? match[1] : null;
 }
 
-function stripQuotes(value) {
-  return value.replace(/^['"]|['"]$/g, "");
-}
 
-function parseInlineArray(rawValue) {
-  const trimmed = rawValue.trim();
-  if (!trimmed.startsWith("[") || !trimmed.endsWith("]")) return null;
-  const inside = trimmed.slice(1, -1).trim();
-  if (!inside) return [];
-  return inside
-    .split(",")
-    .map(item => stripQuotes(item.trim()))
-    .filter(Boolean);
-}
-
-function parseScalar(rawValue) {
-  const value = rawValue.trim();
-  if (value === "true") return true;
-  if (value === "false") return false;
-  if (value === "null") return null;
-  const inlineArray = parseInlineArray(value);
-  if (inlineArray) return inlineArray;
-  return stripQuotes(value);
-}
-
-function parseFrontmatterBlock(block) {
-  const lines = block.split(/\r?\n/);
-  const parsed = {};
-
-  for (let i = 0; i < lines.length; i += 1) {
-    const line = lines[i];
-    if (!line.trim() || line.trim().startsWith("#")) continue;
-    if (/^\s/.test(line)) continue;
-
-    const separatorIndex = line.indexOf(":");
-    if (separatorIndex < 0) continue;
-
-    const key = line.slice(0, separatorIndex).trim();
-    const rawValue = line.slice(separatorIndex + 1).trim();
-
-    if (rawValue.length > 0) {
-      parsed[key] = parseScalar(rawValue);
-      continue;
-    }
-
-    const listValues = [];
-    let cursor = i + 1;
-    while (cursor < lines.length) {
-      const child = lines[cursor];
-      if (/^\s*-\s+/.test(child)) {
-        listValues.push(stripQuotes(child.replace(/^\s*-\s+/, "").trim()));
-        cursor += 1;
-        continue;
-      }
-      if (/^\s+$/.test(child) || child.trim() === "") {
-        cursor += 1;
-        continue;
-      }
-      break;
-    }
-
-    if (listValues.length > 0) {
-      parsed[key] = listValues;
-      i = cursor - 1;
-      continue;
-    }
-
-    parsed[key] = "";
-  }
-
-  return parsed;
-}
 
 function parseDate(value) {
   if (value instanceof Date) return value;
@@ -137,10 +79,6 @@ function parseDate(value) {
 function hasExplicitTimezone(value) {
   if (typeof value !== "string") return false;
   return /(?:Z|[+-]\d{2}:\d{2})$/.test(value);
-}
-
-function deriveSlugFromPath(filePath) {
-  return path.basename(filePath).replace(/\.(md|mdx)$/i, "");
 }
 
 function toHttpsUrlOrNull(value) {
@@ -166,8 +104,8 @@ const deprecationCounters = new Map(
   DEPRECATED_FIELDS.map(field => [field, 0])
 );
 const defaultCounters = new Map([
-  ["slug_derived", 0],
-  ["category_defaulted", 0],
+  ["slug_missing", 0],
+  ["category_missing", 0],
 ]);
 const qualityCounters = new Map([
   ["title_range", 0],
@@ -185,7 +123,14 @@ for (const filePath of files) {
     continue;
   }
 
-  const frontmatter = parseFrontmatterBlock(frontmatterBlock);
+  let frontmatter;
+  try {
+    const parsed = yaml.load(frontmatterBlock, { schema: yaml.JSON_SCHEMA }) || {};
+    frontmatter = typeof parsed === "object" ? parsed : {};
+  } catch (err) {
+    pushIssue(errors, relativeFilePath, `Invalid YAML format: ${err.message}`);
+    continue;
+  }
   for (const deprecatedField of DEPRECATED_FIELDS) {
     if (deprecatedField in frontmatter) {
       deprecationCounters.set(
@@ -193,9 +138,9 @@ for (const filePath of files) {
         (deprecationCounters.get(deprecatedField) ?? 0) + 1
       );
       pushIssue(
-        warnings,
+        errors,
         relativeFilePath,
-        `Deprecated field "${deprecatedField}" detected (allowed in Phase 3, migrate in Phase 4).`
+        `Deprecated field "${deprecatedField}" is not allowed.`
       );
     }
   }
@@ -216,17 +161,13 @@ for (const filePath of files) {
   }
 
   const explicitSlug =
-    typeof frontmatter.slug === "string" ? frontmatter.slug.trim() : "";
-  const slug = explicitSlug || deriveSlugFromPath(filePath);
+    typeof frontmatter.slug === "string" ? frontmatter.slug.trim().toLowerCase() : "";
+  const slug = explicitSlug;
   if (!explicitSlug) {
-    defaultCounters.set(
-      "slug_derived",
-      (defaultCounters.get("slug_derived") ?? 0) + 1
-    );
     pushIssue(
-      warnings,
+      errors,
       relativeFilePath,
-      `Missing explicit "slug"; derived slug "${slug}" from filename.`
+      'Missing required explicit field "slug".'
     );
   }
 
@@ -243,26 +184,31 @@ for (const filePath of files) {
     pushIssue(errors, relativeFilePath, 'Field "draft" must be boolean.');
   }
 
+  const unlisted = frontmatter.unlisted ?? false;
+  if (typeof unlisted !== "boolean") {
+    pushIssue(errors, relativeFilePath, 'Field "unlisted" must be boolean.');
+  }
+
   const featured = frontmatter.featured ?? false;
   if (typeof featured !== "boolean") {
     pushIssue(errors, relativeFilePath, 'Field "featured" must be boolean.');
   }
 
-  const category = frontmatter.category ?? "general";
+  const category = frontmatter.category;
   if (!Object.hasOwn(frontmatter, "category")) {
     defaultCounters.set(
-      "category_defaulted",
-      (defaultCounters.get("category_defaulted") ?? 0) + 1
+      "category_missing",
+      (defaultCounters.get("category_missing") ?? 0) + 1
     );
     pushIssue(
-      warnings,
+      errors,
       relativeFilePath,
-      'Missing "category"; default "general" applied for transition.'
+      'Missing required explicit field "category".'
     );
   }
-  if (typeof category !== "string" || category.trim() === "") {
+  if (category != null && (typeof category !== "string" || category.trim() === "")) {
     pushIssue(errors, relativeFilePath, 'Field "category" must be a non-empty string.');
-  } else if (!ALLOWED_CATEGORIES.has(category)) {
+  } else if (typeof category === "string" && !ALLOWED_CATEGORIES.has(category)) {
     pushIssue(
       errors,
       relativeFilePath,
@@ -270,13 +216,41 @@ for (const filePath of files) {
     );
   }
 
-  const pubDateRaw = frontmatter.pubDate ?? frontmatter.pubDatetime;
+  // author — required non-empty string
+  const author = frontmatter.author;
+  if (!Object.hasOwn(frontmatter, "author") || typeof author !== "string" || author.trim() === "") {
+    pushIssue(errors, relativeFilePath, 'Missing or empty required field "author".');
+  }
+
+  // lang — must be "es-CL"
+  const lang = frontmatter.lang;
+  if (!Object.hasOwn(frontmatter, "lang")) {
+    pushIssue(errors, relativeFilePath, 'Missing required field "lang" (expected "es-CL").');
+  } else if (lang !== REQUIRED_LANG) {
+    pushIssue(errors, relativeFilePath, `Field "lang" must be "${REQUIRED_LANG}", got "${lang}".`);
+  }
+
+  // cluster — required, must be one of ALLOWED_CLUSTERS
+  const cluster = frontmatter.cluster;
+  if (!Object.hasOwn(frontmatter, "cluster")) {
+    pushIssue(errors, relativeFilePath, 'Missing required field "cluster".');
+  } else if (typeof cluster !== "string" || cluster.trim() === "") {
+    pushIssue(errors, relativeFilePath, 'Field "cluster" must be a non-empty string.');
+  } else if (!ALLOWED_CLUSTERS.has(cluster)) {
+    pushIssue(
+      errors,
+      relativeFilePath,
+      `Field "cluster" must be one of: ${Array.from(ALLOWED_CLUSTERS).join(", ")}.`
+    );
+  }
+
+  const pubDateRaw = frontmatter.pubDate;
   const pubDate = parseDate(pubDateRaw);
   if (!pubDateRaw) {
     pushIssue(
       errors,
       relativeFilePath,
-      'Missing publication date: define "pubDate" (preferred) or "pubDatetime" (legacy).'
+      'Missing publication date: define "pubDate".'
     );
   } else if (!pubDate) {
     pushIssue(errors, relativeFilePath, 'Publication date is not parseable.');
@@ -288,7 +262,7 @@ for (const filePath of files) {
     );
   }
 
-  const updatedDateRaw = frontmatter.updatedDate ?? frontmatter.modDatetime ?? null;
+  const updatedDateRaw = frontmatter.updatedDate ?? null;
   const updatedDate = updatedDateRaw ? parseDate(updatedDateRaw) : null;
   if (updatedDateRaw && !updatedDate) {
     pushIssue(errors, relativeFilePath, 'Field "updatedDate" is not parseable.');
@@ -312,7 +286,7 @@ for (const filePath of files) {
     );
   }
 
-  const canonicalRaw = frontmatter.canonical ?? frontmatter.canonicalURL;
+  const canonicalRaw = frontmatter.canonical;
   if (canonicalRaw) {
     const canonical = toHttpsUrlOrNull(canonicalRaw);
     if (!canonical) {

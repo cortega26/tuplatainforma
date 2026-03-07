@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-02-28T14:41:45.098Z",
-  "total": 18,
+  "generatedAt": "2026-03-06T20:55:34.010Z",
+  "total": 28,
   "routes": [
     {
       "file": "ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.md",
@@ -11,12 +11,20 @@
       "route": "/posts/boleta-honorarios-2026-retencion-cobertura/"
     },
     {
+      "file": "cae-costo-real-credito-chile.md",
+      "route": "/posts/cae-costo-real-credito-chile/"
+    },
+    {
       "file": "como-calcular-sueldo-liquido.md",
       "route": "/posts/como-calcular-sueldo-liquido/"
     },
     {
       "file": "como-cambiarse-de-afp.md",
       "route": "/posts/como-cambiarse-de-afp/"
+    },
+    {
+      "file": "como-hacer-presupuesto-mensual-chile.md",
+      "route": "/posts/como-hacer-presupuesto-mensual-chile/"
     },
     {
       "file": "como-invertir-en-etfs-desde-chile.md",
@@ -35,6 +43,18 @@
       "route": "/posts/devolucion-impuestos-fechas-compensaciones/"
     },
     {
+      "file": "el-poder-del-interes-compuesto.md",
+      "route": "/posts/el-poder-del-interes-compuesto/"
+    },
+    {
+      "file": "estafas-financieras-chile-vishing-smishing-marketplace.md",
+      "route": "/posts/estafas-financieras-chile-vishing-smishing-marketplace/"
+    },
+    {
+      "file": "finiquito-e-indemnizaciones-en-chile.md",
+      "route": "/posts/finiquito-e-indemnizaciones-en-chile/"
+    },
+    {
       "file": "fondos-afp-a-b-c-d-e.md",
       "route": "/posts/fondos-afp-a-b-c-d-e/"
     },
@@ -51,12 +71,24 @@
       "route": "/posts/informe-deudas-cmf-vs-dicom/"
     },
     {
+      "file": "interes-compuesto-nota-metodologica.md",
+      "route": "/posts/interes-compuesto-nota-metodologica/"
+    },
+    {
+      "file": "licencia-medica-desde-que-dia-pagan.md",
+      "route": "/posts/licencia-medica-desde-que-dia-pagan/"
+    },
+    {
       "file": "operacion-renta-f22-checklist.md",
       "route": "/posts/operacion-renta-f22-checklist/"
     },
     {
       "file": "que-es-el-apv.mdx",
       "route": "/posts/que-es-el-apv/"
+    },
+    {
+      "file": "que-es-el-ipc-chile-como-se-calcula.md",
+      "route": "/posts/que-es-el-ipc-chile-como-se-calcula/"
     },
     {
       "file": "que-es-la-cuenta-2-afp.md",
@@ -67,12 +99,20 @@
       "route": "/posts/que-es-la-uf/"
     },
     {
+      "file": "reforma-previsional-2025-que-cambia-y-como-te-afecta.md",
+      "route": "/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/"
+    },
+    {
       "file": "renegociacion-superir.md",
       "route": "/posts/renegociacion-superir/"
     },
     {
       "file": "seguro-de-cesantia.md",
       "route": "/posts/seguro-de-cesantia/"
+    },
+    {
+      "file": "suplantacion-identidad-creditos-no-reconocidos.md",
+      "route": "/posts/suplantacion-identidad-creditos-no-reconocidos/"
     }
   ]
 }

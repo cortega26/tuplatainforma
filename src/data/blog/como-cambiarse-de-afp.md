@@ -1,19 +1,24 @@
 ---
 title: "¿Puedo cambiarme de AFP? Cómo hacerlo y qué considerar en 2026"
-author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-23T13:00:00Z
+author: "Equipo Monedario"
+pubDate: 2026-02-23T13:00:00Z
+updatedDate: 2026-02-23T13:00:00Z
 slug: como-cambiarse-de-afp
 featured: false
+lang: es-CL
 draft: false
 tags:
   - afp
   - pensiones
   - cambio-afp
   - reforma-pensiones
+category: prevision
+cluster: pensiones-afp
 description: "Guía actualizada 2026 para cambiarse de AFP en Chile: requisitos, pasos, qué evaluar y los cambios que trae la Reforma de Pensiones (Ley 21.735)."
+heroImage: /images/hero/como-cambiarse-de-afp.avif
 ---
 
-Cambiarse de AFP es uno de los trámites más simples que puedes hacer para mejorar tu situación previsional, y sin embargo la mayoría de las personas nunca lo hace. En esta guía te explicamos cómo funciona el proceso, qué debes evaluar y qué cambia con la Reforma de Pensiones aprobada en 2025.
+Cambiarse de AFP es uno de los trámites más simples que puedes hacer para mejorar tu situación previsional, y sin embargo la mayoría de las personas nunca lo hace. En esta guía te explicamos cómo funciona el proceso, qué debes evaluar y qué cambia con la Reforma de Pensiones aprobada en 2025. Para ver el panorama completo, revisa también la [guía central de pensiones y AFP](/guias/pensiones-afp/).
 
 ## Tabla de contenidos
 
@@ -52,9 +57,9 @@ El error más común es fijarse solo en la comisión. Aunque es importante, no e
 La comisión es el porcentaje que cobra la AFP por administrar tu fondo. A menor comisión, más dinero queda en tu cuenta cada mes. Las comisiones vigentes al inicio de 2026 son:
 
 | AFP       | Comisión |
-| --------- | -------- | --- |
+| --------- | -------- |
 | Uno       | 0.46%    |
-| PlanVital | 0.49%    | \*  |
+| PlanVital | 0.49%    |
 | Modelo    | 0.58%    |
 | Capital   | 0.58%    |
 | Cuprum    | 0.65%    |

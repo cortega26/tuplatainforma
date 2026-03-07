@@ -32,4 +32,15 @@ pnpm-debug.log*
 
 public/pagefind
 internal-docs/
-context/
+
+# context layer (versioned)
+!context/
+context/.cache/
+context/tmp/
+context/**/*.generated.*
+
+# generated report snapshots
+docs/reports/rss_snapshot_after.json
+
+# urlcheck generated artifacts
+scripts/urlcheck/artifacts/**

@@ -1,33 +1,58 @@
 ---
 title: "¿Cuánto descuenta la AFP de tu sueldo y para qué sirve ese dinero?"
-author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-23T10:00:00Z
+author: "Equipo Monedario"
+pubDate: 2026-02-23T10:00:00Z
+updatedDate: 2026-03-02T19:30:00Z
 slug: cuanto-descuenta-la-afp-de-tu-sueldo
 featured: true
+lang: es-CL
 draft: false
 tags:
   - afp
   - pensiones
   - descuentos
   - sueldo
+category: prevision
+cluster: pensiones-afp
 description: "Desglose claro de cuánto descuenta la AFP de tu sueldo mensual, para qué sirve cada peso descontado y cómo calcularlo tú mismo."
+heroImage: /images/hero/cuanto-descuenta-la-afp-de-tu-sueldo.avif
 ---
 
 Cada mes ves en tu liquidación de sueldo una línea que dice "AFP" y un número que te descuentan. Pero, ¿sabes exactamente para qué sirve ese dinero y si lo estás aprovechando bien?
 
-En esta guía te explicamos todo de forma simple.
+En esta guía te explicamos todo de forma simple. Si quieres el contexto completo de decisiones previsionales, revisa la [guía central de pensiones y AFP](/guias/pensiones-afp/).
+
+## Qué cambia entre 2025 y 2027
+
+Este bloque separa lo vigente hoy de los cambios ya aprobados por la reforma previsional (Ley N° 21.735):
+
+- **Qué cambia hoy (2026):**
+  - En tu liquidación, el descuento del trabajador sigue siendo **10% de cotización obligatoria + comisión AFP**.
+  - Desde agosto de 2025 existe una **cotización adicional del empleador de 1%**, pero no se descuenta de tu sueldo líquido.
+- **Qué cambia después (2027 en adelante):**
+  - Desde **abril de 2027** comienza la implementación de **fondos generacionales**, reemplazando progresivamente los multifondos A, B, C, D y E.
+  - Desde **agosto de 2027** la cotización adicional del empleador sube a **3,5%** (con alzas posteriores hasta 7%).
+
+Calendario resumido de implementación:
+
+| Hito                             | Fecha           | Impacto práctico                                        |
+| -------------------------------- | --------------- | ------------------------------------------------------- |
+| Inicio cotización empleador      | Agosto 2025     | +1% de cargo del empleador (no descuenta de tu sueldo). |
+| Vigencia general de reforma      | Septiembre 2025 | Comienza entrada en régimen por etapas.                 |
+| Fondos generacionales            | Abril 2027      | Transición desde multifondos A-E a nuevo esquema.       |
+| Nueva etapa cotización empleador | Agosto 2027     | Aporte adicional sube a 3,5%.                           |
 
 ## Tabla de contenidos
 
 ## ¿Cuánto descuenta la AFP?
 
-El descuento total de AFP varía entre **10.49% y 10.77%** de tu sueldo bruto, dependiendo de la AFP en la que estés afiliado. Este porcentaje se divide en dos partes:
+Si hablamos del descuento que sale desde tu remuneración imponible como trabajador, el total varía entre **10.46% y 10.77%** según tu AFP. Este porcentaje se divide en dos partes:
 
 **1. Cotización obligatoria: 10%**
 
 Este es el porcentaje fijo que va directamente a tu cuenta de capitalización individual. Es tuyo, se invierte en el fondo que elegiste (A, B, C, D o E) y acumula rentabilidad hasta que te jubiles.
 
-**2. Comisión de la AFP: entre 0.49% y 0.77%**
+**2. Comisión de la AFP: entre 0.46% y 0.77%**
 
 Este porcentaje es el cobro que hace la AFP por administrar tu fondo. A diferencia del 10%, este dinero no va a tu cuenta — es el costo del servicio.
 
@@ -41,9 +66,9 @@ Este porcentaje es el cobro que hace la AFP por administrar tu fondo. A diferenc
 | Modelo    | 10%        | 0.58%    | 10.58%          |
 | PlanVital | 10%        | 0.49%    | 10.49%          |
 | ProVida   | 10%        | 0.69%    | 10.69%          |
-| Uno       | 10%        | 0.75%    | 10.75%          |
+| Uno       | 10%        | 0.46%    | 10.46%          |
 
-> 💡 **Dato importante:** La AFP con menor comisión actualmente es PlanVital (0.49%), seguida de Modelo y Capital (0.58%).
+> 💡 **Dato importante:** La AFP con menor comisión actualmente es **Uno (0.46%)**, seguida de PlanVital (0.49%) y Modelo/Capital (0.58%).
 
 ## ¿Para qué sirve cada peso descontado?
 
@@ -110,6 +135,12 @@ Solo en casos excepcionales permitidos por ley. Los retiros extraordinarios que 
 No. El saldo acumulado en tu cuenta individual pasa a tus herederos o beneficiarios legales como herencia.
 
 Si estás comparando alternativas, te conviene revisar [cómo cambiarte de AFP paso a paso](/posts/como-cambiarse-de-afp/) y la guía de [fondos AFP A, B, C, D y E](/posts/fondos-afp-a-b-c-d-e/).
+
+### Fuentes oficiales para el bloque 2025-2027
+
+- ChileAtiende, principales fechas de la reforma de pensiones: https://www.chileatiende.gob.cl/fichas/134983-conoce-las-principales-fechas-clave-de-la-reforma-de-pensiones
+- Superintendencia de Pensiones, inicio de fondos generacionales (abril 2027): https://www.spensiones.cl/portal/institucional/594/w3-article-17026.html
+- BCN, Ley N° 21.735: https://www.bcn.cl/leychile/navegar?idNorma=1212060
 
 ---
 

@@ -6,7 +6,11 @@ const postFilter = (post: CollectionEntry<"blog">) => {
   const article = toArticleView(post);
   const isPublishTimePassed =
     Date.now() > article.pubDate.getTime() - SITE.scheduledPostMargin;
-  return !article.draft && (import.meta.env.DEV || isPublishTimePassed);
+  return (
+    !article.draft &&
+    !article.unlisted &&
+    (import.meta.env.DEV || isPublishTimePassed)
+  );
 };
 
 export default postFilter;

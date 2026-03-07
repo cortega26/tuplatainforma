@@ -1,21 +1,25 @@
 ---
 title: "¿Qué es la Cuenta 2 de la AFP y cuándo conviene usarla?"
-author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-23T12:00:00Z
+author: "Equipo Monedario"
+pubDate: 2026-02-23T12:00:00Z
 slug: que-es-la-cuenta-2-afp
 featured: false
+lang: es-CL
 draft: false
 tags:
   - afp
   - ahorro
   - cuenta-2
   - pensiones
+category: prevision
+cluster: pensiones-afp
 description: "Todo lo que necesitas saber sobre la Cuenta 2 de la AFP: qué es, cómo funciona, cuánto puedes retirar, qué impuestos pagas y cuándo conviene usarla."
+heroImage: /images/hero/que-es-la-cuenta-2-afp.avif
 ---
 
 Cuando la gente habla de su AFP, casi siempre se refiere a la cuenta obligatoria donde va el 10% del sueldo. Pero existe una segunda cuenta, voluntaria y mucho más flexible, que muy poca gente conoce bien: la **Cuenta 2**, también llamada Cuenta de Ahorro Voluntario (CAV).
 
-En esta guía te explicamos todo lo que necesitas saber para decidir si te conviene usarla.
+En esta guía te explicamos todo lo que necesitas saber para decidir si te conviene usarla. Para entender cómo encaja dentro del mapa completo, revisa la [guía central de pensiones y AFP](/guias/pensiones-afp/).
 
 ## Tabla de contenidos
 
@@ -33,7 +37,7 @@ Puedes depositar dinero de dos formas: directamente cuando quieras desde el siti
 
 ## ¿Cuánto cobra la AFP por administrar la Cuenta 2?
 
-Las AFP cobran una comisión anual sobre el saldo que tengas en la cuenta. Esta comisión varía según la AFP y se aplica solo si tienes saldo — si la cuenta está vacía, no te cobran nada. A modo de referencia, las comisiones vigentes en 2025 oscilan entre 0.2% y 0.96% anual sobre el saldo administrado. Puedes consultar las comisiones exactas de cada AFP en el sitio de la [Superintendencia de Pensiones](https://www.spensiones.cl/infoydec).
+Las AFP cobran una comisión anual sobre el saldo que tengas en la cuenta. Esta comisión varía según la AFP y se aplica solo si tienes saldo — si la cuenta está vacía, no te cobran nada. Las comisiones oscilan típicamente entre 0.2% y 0.96% anual sobre el saldo administrado, pero pueden cambiar. Puedes consultar las comisiones exactas y vigentes de cada AFP en el sitio de la [Superintendencia de Pensiones](https://www.spensiones.cl/infoydec).
 
 La apertura de la cuenta es siempre gratuita.
 
@@ -43,7 +47,7 @@ Aquí está la parte más importante y también la más mal entendida. La Cuenta
 
 - El dinero que depositaste originalmente **no paga impuestos al retirarlo**, porque ya tributó cuando lo recibiste como sueldo.
 - Lo que sí tributa es la **rentabilidad real** que generó ese dinero.
-- Si la rentabilidad real de todos tus retiros durante el año es **menor a 30 UTM** (aproximadamente $2.022.870 a enero 2025), quedas **exento de impuestos**.
+- Si la rentabilidad real de todos tus retiros durante el año es **menor a 30 UTM** (consulta el valor vigente de la UTM en [sii.cl](https://www.sii.cl/valores_y_fechas/utm/)), quedas **exento de impuestos**.
 - Si la rentabilidad supera ese umbral, pagas impuesto por el total retirado según tu tramo del Impuesto Global Complementario.
 
 En la práctica, para la mayoría de los ahorrantes con montos moderados, los retiros quedan exentos de impuestos porque la rentabilidad anual raramente supera las 30 UTM.
@@ -104,4 +108,4 @@ Si tu foco es bajar impuestos al ahorrar, revisa [qué es el APV y cómo funcion
 
 ---
 
-_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2025. Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl)._
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl)._

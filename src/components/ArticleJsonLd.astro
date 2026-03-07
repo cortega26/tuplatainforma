@@ -1,0 +1,170 @@
+---
+/**
+ * ArticleJsonLd.astro
+ *
+ * Emits complete JSON-LD structured data for a blog post:
+ *   1. BlogPosting (Article) — full E-E-A-T compliant
+ *   2. FAQPage — auto-extracted when the post contains a ## Preguntas frecuentes section
+ *   3. BreadcrumbList — Inicio → Artículos → Article title
+ *
+ * Usage: <ArticleJsonLd {post} canonicalUrl={...} ogImageUrl={...} />
+ */
+import type { CollectionEntry } from "astro:content";
+import { SITE } from "@/config";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+  canonicalUrl: string;
+  ogImageUrl?: string;
+}
+
+const { post, canonicalUrl, ogImageUrl } = Astro.props;
+const { title, description, pubDate, updatedDate, author } = post.data;
+
+const AUTHOR_NAME = "Carlos Ortega González";
+const AUTHOR_URL = new URL("/autor/", Astro.site ?? Astro.url.origin).href;
+const AUTHOR_IMAGE_URL = new URL(
+  SITE.authorImage,
+  Astro.site ?? Astro.url.origin
+).href;
+const SITE_URL = (Astro.site ?? new URL(Astro.url.origin)).href.replace(
+  /\/$/,
+  ""
+);
+
+// ── BlogPosting ──────────────────────────────────────────────────────────────
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": canonicalUrl,
+  headline: title,
+  description: description ?? "",
+  url: canonicalUrl,
+  ...(ogImageUrl ? { image: ogImageUrl } : {}),
+  datePublished: pubDate?.toISOString(),
+  ...(updatedDate ? { dateModified: updatedDate.toISOString() } : {}),
+  inLanguage: "es-CL",
+  author: {
+    "@type": "Person",
+    name: author ?? SITE.authorFullName ?? AUTHOR_NAME,
+    url: AUTHOR_URL,
+    image: AUTHOR_IMAGE_URL,
+    sameAs: [SITE.authorLinkedIn, SITE.profile],
+  },
+  publisher: {
+    "@type": "Organization",
+    name: SITE.title,
+    url: SITE_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/favicon.svg`,
+    },
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": canonicalUrl,
+  },
+};
+
+// ── BreadcrumbList ───────────────────────────────────────────────────────────
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Inicio",
+      item: SITE_URL + "/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Artículos",
+      item: SITE_URL + "/posts/",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: title,
+      item: canonicalUrl,
+    },
+  ],
+};
+
+// ── FAQPage — auto-extracted ─────────────────────────────────────────────────
+/**
+ * Extract Q&A pairs from the raw markdown body.
+ * Looks for an H2 "Preguntas frecuentes" section and collects
+ * H3 questions with the paragraph text that follows each one.
+ */
+function extractFaqItems(body: string): { question: string; answer: string }[] {
+  if (!body) return [];
+
+  const faqSectionMatch = body.match(
+    /##\s+Preguntas\s+frecuentes\s*([\s\S]*?)(?=\n##\s|\n---|\s*$)/i
+  );
+  if (!faqSectionMatch) return [];
+
+  const faqSection = faqSectionMatch[1];
+  const questionBlocks = faqSection.split(/\n###\s+/).slice(1);
+
+  return questionBlocks
+    .map(block => {
+      const lines = block.trim().split("\n");
+      const question = lines[0]?.replace(/\*\*/g, "").trim() ?? "";
+      // Answer: all non-empty non-heading lines until the next question
+      const answerLines = lines
+        .slice(1)
+        .filter(l => l.trim() && !l.startsWith("###"))
+        .map(l =>
+          l
+            .replace(/^\*\*|\*\*$/g, "")
+            .replace(/\*\*/g, "")
+            .trim()
+        );
+      const answer = answerLines.join(" ").substring(0, 1000); // cap for schema
+      return question && answer ? { question, answer } : null;
+    })
+    .filter(
+      (item): item is { question: string; answer: string } => item !== null
+    );
+}
+
+const faqItems = extractFaqItems(post.body ?? "");
+const faqSchema =
+  faqItems.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqItems.map(({ question, answer }) => ({
+          "@type": "Question",
+          name: question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: answer,
+          },
+        })),
+      }
+    : null;
+---
+
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(articleSchema)}
+/>
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(breadcrumbSchema)}
+/>
+{
+  faqSchema && (
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(faqSchema)}
+    />
+  )
+}

@@ -1,0 +1,55 @@
+--> SCRIPT STARTING
+--> MKDIR DONE
+Processing start: ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.md
+Updated ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.md -> heroImage: ../../../assets/images/blog/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.avif (1.1KB)
+Processing start: boleta-honorarios-2026-retencion-cobertura.md
+Updated boleta-honorarios-2026-retencion-cobertura.md -> heroImage: ../../../assets/images/blog/boleta-honorarios-2026-retencion-cobertura.avif (1.1KB)
+Processing start: cae-costo-real-credito-chile.md
+Updated cae-costo-real-credito-chile.md -> heroImage: ../../../assets/images/blog/cae-costo-real-credito-chile.avif (1.1KB)
+Processing start: como-calcular-sueldo-liquido.md
+Updated como-calcular-sueldo-liquido.md -> heroImage: ../../../assets/images/blog/como-calcular-sueldo-liquido.avif (1.1KB)
+Processing start: como-cambiarse-de-afp.md
+Updated como-cambiarse-de-afp.md -> heroImage: ../../../assets/images/blog/como-cambiarse-de-afp.avif (1.1KB)
+Processing start: como-hacer-presupuesto-mensual-chile.md
+Updated como-hacer-presupuesto-mensual-chile.md -> heroImage: ../../../assets/images/blog/como-hacer-presupuesto-mensual-chile.avif (1.1KB)
+Processing start: como-invertir-en-etfs-desde-chile.md
+Updated como-invertir-en-etfs-desde-chile.md -> heroImage: ../../../assets/images/blog/como-invertir-en-etfs-desde-chile.avif (1.1KB)
+Processing start: cuanto-descuenta-la-afp-de-tu-sueldo.md
+Updated cuanto-descuenta-la-afp-de-tu-sueldo.md -> heroImage: ../../../assets/images/blog/cuanto-descuenta-la-afp-de-tu-sueldo.avif (1.1KB)
+Processing start: deposito-a-plazo-uf-vs-pesos.md
+Updated deposito-a-plazo-uf-vs-pesos.md -> heroImage: ../../../assets/images/blog/deposito-a-plazo-uf-vs-pesos.avif (1.1KB)
+Processing start: devolucion-impuestos-fechas-compensaciones.md
+Updated devolucion-impuestos-fechas-compensaciones.md -> heroImage: ../../../assets/images/blog/devolucion-impuestos-fechas-compensaciones.avif (1.1KB)
+Processing start: estafas-financieras-chile-vishing-smishing-marketplace.md
+Updated estafas-financieras-chile-vishing-smishing-marketplace.md -> heroImage: ../../../assets/images/blog/estafas-financieras-chile-vishing-smishing-marketplace.avif (1.1KB)
+Processing start: finiquito-e-indemnizaciones-en-chile.md
+Updated finiquito-e-indemnizaciones-en-chile.md -> heroImage: ../../../assets/images/blog/finiquito-e-indemnizaciones-en-chile.avif (1.1KB)
+Processing start: fondos-afp-a-b-c-d-e.md
+Updated fondos-afp-a-b-c-d-e.md -> heroImage: ../../../assets/images/blog/fondos-afp-a-b-c-d-e.avif (1.1KB)
+Processing start: fondos-mutuos-comisiones-rescate-impuestos.md
+Updated fondos-mutuos-comisiones-rescate-impuestos.md -> heroImage: ../../../assets/images/blog/fondos-mutuos-comisiones-rescate-impuestos.avif (1.1KB)
+Processing start: fraude-tarjeta-que-hacer.md
+Updated fraude-tarjeta-que-hacer.md -> heroImage: ../../../assets/images/blog/fraude-tarjeta-que-hacer.avif (1.1KB)
+Processing start: informe-deudas-cmf-vs-dicom.md
+Updated informe-deudas-cmf-vs-dicom.md -> heroImage: ../../../assets/images/blog/informe-deudas-cmf-vs-dicom.avif (1.1KB)
+Processing start: licencia-medica-desde-que-dia-pagan.md
+Updated licencia-medica-desde-que-dia-pagan.md -> heroImage: ../../../assets/images/blog/licencia-medica-desde-que-dia-pagan.avif (1.1KB)
+Processing start: operacion-renta-f22-checklist.md
+Updated operacion-renta-f22-checklist.md -> heroImage: ../../../assets/images/blog/operacion-renta-f22-checklist.avif (1.1KB)
+Processing start: que-es-el-apv.mdx
+Updated que-es-el-apv.mdx -> heroImage: ../../../assets/images/blog/que-es-el-apv.avif (1.1KB)
+Processing start: que-es-el-ipc-chile-como-se-calcula.md
+Updated que-es-el-ipc-chile-como-se-calcula.md -> heroImage: ../../../assets/images/blog/que-es-el-ipc-chile-como-se-calcula.avif (1.1KB)
+Processing start: que-es-la-cuenta-2-afp.md
+Updated que-es-la-cuenta-2-afp.md -> heroImage: ../../../assets/images/blog/que-es-la-cuenta-2-afp.avif (1.1KB)
+Processing start: que-es-la-uf.md
+Updated que-es-la-uf.md -> heroImage: ../../../assets/images/blog/que-es-la-uf.avif (1.1KB)
+Processing start: reforma-previsional-2025-que-cambia-y-como-te-afecta.md
+Updated reforma-previsional-2025-que-cambia-y-como-te-afecta.md -> heroImage: ../../../assets/images/blog/reforma-previsional-2025-que-cambia-y-como-te-afecta.avif (1.1KB)
+Processing start: renegociacion-superir.md
+Updated renegociacion-superir.md -> heroImage: ../../../assets/images/blog/renegociacion-superir.avif (1.1KB)
+Processing start: seguro-de-cesantia.md
+Updated seguro-de-cesantia.md -> heroImage: ../../../assets/images/blog/seguro-de-cesantia.avif (1.1KB)
+Processing start: suplantacion-identidad-creditos-no-reconocidos.md
+Updated suplantacion-identidad-creditos-no-reconocidos.md -> heroImage: ../../../assets/images/blog/suplantacion-identidad-creditos-no-reconocidos.avif (1.1KB)
+Migration complete. Report written to docs/FEATURED_IMAGE_MIGRATION_REPORT.md

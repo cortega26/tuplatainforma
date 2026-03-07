@@ -1,0 +1,176 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { getPath } from "@/utils/getPath";
+
+type CapaId =
+  | "ingresos"
+  | "prevision"
+  | "ahorro-inversion"
+  | "impuestos"
+  | "deuda"
+  | "otros";
+
+type HubInfo = {
+  slug: string;
+  nombre: string;
+  descripcion: string;
+  capa: CapaId;
+};
+
+const capas = [
+  {
+    id: "ingresos" as const,
+    titulo: "Ganar y gestionar ingresos",
+    resumen:
+      "Clústeres para ordenar decisiones sobre ingreso líquido, estabilidad laboral y gestión de flujo mensual.",
+  },
+  {
+    id: "prevision" as const,
+    titulo: "Previsión obligatoria",
+    resumen:
+      "Contenido para entender cotizaciones, fondos y decisiones previsionales que impactan el largo plazo.",
+  },
+  {
+    id: "ahorro-inversion" as const,
+    titulo: "Ahorro voluntario e inversión",
+    resumen:
+      "Rutas para elegir instrumentos, controlar costos y alinear riesgo con horizonte y objetivos.",
+  },
+  {
+    id: "impuestos" as const,
+    titulo: "Impuestos personales",
+    resumen:
+      "Guías prácticas para declaración, seguimiento de devolución y obligaciones tributarias frecuentes.",
+  },
+  {
+    id: "deuda" as const,
+    titulo: "Deuda y crédito",
+    resumen:
+      "Material para evaluar costo total de financiamiento y reducir riesgo de sobreendeudamiento.",
+  },
+  {
+    id: "otros" as const,
+    titulo: "Otros clústeres",
+    resumen: "Temas adicionales detectados en la arquitectura de guías.",
+  },
+];
+
+const catalogoHubs: Record<string, Omit<HubInfo, "slug">> = {
+  "pensiones-afp": {
+    nombre: "Pensiones y AFP",
+    descripcion:
+      "Sección sobre previsión obligatoria en Chile: cotización, fondos y decisiones que afectan tu pensión futura.",
+    capa: "prevision",
+  },
+  "ahorro-e-inversion": {
+    nombre: "Ahorro e inversión",
+    descripcion:
+      "Sección para estructurar ahorro e inversión con foco en instrumentos, costos, impuestos y horizonte de uso.",
+    capa: "ahorro-inversion",
+  },
+  "impuestos-personas": {
+    nombre: "Impuestos para personas",
+    descripcion:
+      "Sección operativo para declarar renta, seguir devoluciones y resolver dudas tributarias de personas naturales.",
+    capa: "impuestos",
+  },
+  "deuda-credito": {
+    nombre: "Deuda y crédito",
+    descripcion:
+      "Sección para comparar productos de crédito, entender CAE/costo total y tomar decisiones de endeudamiento.",
+    capa: "deuda",
+  },
+  "empleo-ingresos": {
+    nombre: "Empleo e ingresos",
+    descripcion:
+      "Sección orientado a ingresos laborales, liquidación de sueldo y gestión financiera desde el flujo mensual.",
+    capa: "ingresos",
+  },
+};
+
+const hubsDetectados = Object.keys(import.meta.glob("./*/index.astro"))
+  .map(path => path.match(/^\.\/([^/]+)\/index\.astro$/)?.[1])
+  .filter((slug): slug is string => Boolean(slug));
+
+const hubs = hubsDetectados
+  .map(slug => {
+    const hub = catalogoHubs[slug];
+    if (hub) return { slug, ...hub };
+
+    return {
+      slug,
+      nombre: slug
+        .split("-")
+        .filter(Boolean)
+        .map(parte => parte.charAt(0).toUpperCase() + parte.slice(1))
+        .join(" "),
+      descripcion:
+        "Sección temático de finanzas personales incluido en el mapa global de guías.",
+      capa: "otros" as const,
+    };
+  })
+  .sort((a, b) => a.nombre.localeCompare(b.nombre, "es-CL"));
+
+const capasConHubs = capas
+  .map(capa => ({
+    ...capa,
+    hubs: hubs.filter(hub => hub.capa === capa.id),
+  }))
+  .filter(capa => capa.hubs.length > 0);
+---
+
+<Layout
+  title="Guías de Finanzas Personales en Chile | Monedario"
+  description="Mapa completo de temas financieros en Chile: AFP, ahorro, inversión, impuestos y deuda para elegir la guía correcta en cada etapa."
+>
+  <Header />
+
+  <main id="main-content" class="app-layout">
+    <section class="border-b border-border py-8">
+      <p
+        class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase"
+      >
+        Mapa temático
+      </p>
+      <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
+        Guías de Finanzas Personales en Chile
+      </h1>
+      <p class="max-w-3xl text-secondary">
+        Este hub maestro reúne todos las secciones de Monedario en una sola
+        vista. Úsalo para encontrar la ruta de lectura según tu momento
+        financiero y conectar temas relacionados.
+      </p>
+    </section>
+
+    {
+      capasConHubs.map(capa => (
+        <section class="border-b border-border py-8 last:border-b-0">
+          <h2 class="mb-2 text-2xl font-bold">{capa.titulo}</h2>
+          <p class="mb-5 max-w-3xl text-secondary">{capa.resumen}</p>
+
+          <ul class="grid gap-4 sm:grid-cols-2">
+            {capa.hubs.map(hub => (
+              <li class="rounded-xl border border-border p-5">
+                <p class="mb-2 inline-flex rounded-full border border-accent/30 bg-accent/5 px-2 py-1 text-xs font-semibold tracking-wide text-accent uppercase">
+                  Clúster
+                </p>
+                <h3 class="mb-2 text-lg font-semibold">{hub.nombre}</h3>
+                <p class="mb-3 text-sm text-secondary">{hub.descripcion}</p>
+                <a
+                  href={getPath(`/guias/${hub.slug}/`)}
+                  class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+                >
+                  Ir a la sección
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,9 +1,11 @@
 ---
 title: "Sueldo líquido en Chile: qué te descuentan, por qué y cómo calcularlo tú mismo"
-author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-24T10:00:00Z
+author: "Equipo Monedario"
+pubDate: 2026-02-24T10:00:00Z
+updatedDate: 2026-03-04T12:00:00Z
 slug: como-calcular-sueldo-liquido
 featured: true
+lang: es-CL
 draft: false
 tags:
   - sueldo
@@ -11,10 +13,13 @@ tags:
   - afp
   - impuestos
   - liquidacion
+category: empleo-ingresos
+cluster: empleo-ingresos
 description: "Guía completa para entender tu liquidación de sueldo en Chile: qué descuentos son obligatorios, cómo se calculan y por qué a veces tu líquido baja aunque tu bruto sube."
+heroImage: /images/hero/como-calcular-sueldo-liquido.avif
 ---
 
-Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí.
+Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí, y puedes complementar con la [guía central de ahorro e inversión](/guias/ahorro-e-inversion/) para conectar este cálculo con decisiones de mediano plazo.
 
 ## Tabla de contenidos
 
@@ -206,4 +211,4 @@ Si quieres probar tus números exactos, usa la [calculadora de sueldo líquido](
 
 ---
 
-_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Los tramos del impuesto único se actualizan mensualmente en el [sitio del SII](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm). Para asesoría personalizada consulta con un profesional._
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente a marzo de 2026. Los tramos del impuesto único se actualizan mensualmente en el [sitio del SII](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm). Para asesoría personalizada consulta con un profesional._

@@ -6,8 +6,37 @@ import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
+import Dropdown from "./Dropdown.astro";
+import type { DropdownItem } from "./Dropdown.astro";
 import { SITE } from "@/config";
 import { getPath } from "@/utils/getPath";
+
+const guiasDropdown: DropdownItem[] = [
+  {
+    href: getPath("/guias/ahorro-e-inversion/"),
+    label: "Ahorro e Inversión",
+  },
+  {
+    href: getPath("/guias/deuda-credito/"),
+    label: "Deuda y Crédito",
+  },
+  {
+    href: getPath("/guias/empleo-ingresos/"),
+    label: "Empleo e Ingresos",
+  },
+  {
+    href: getPath("/guias/impuestos-personas/"),
+    label: "Impuestos",
+  },
+  {
+    href: getPath("/guias/pensiones-afp/"),
+    label: "Pensiones y AFP",
+  },
+  {
+    href: getPath("/guias/seguridad-financiera/"),
+    label: "Seguridad Financiera",
+  },
+];
 
 const { pathname } = Astro.url;
 const basePath = getPath("/").replace(/\/$/, "");
@@ -39,7 +68,7 @@ const isActive = (path: string) => {
 </a>
 
 <header
-  class="app-layout flex flex-col items-center justify-between sm:flex-row"
+  class="relative z-50 app-layout flex flex-col items-center justify-between sm:flex-row"
 >
   <div
     id="top-nav-wrap"
@@ -74,32 +103,56 @@ const isActive = (path: string) => {
       <ul
         id="menu-items"
         class:list={[
-          "mt-4 grid w-44 grid-cols-2 place-content-center gap-2",
+          "mt-4 flex w-full flex-col gap-2",
           "[&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-3 [&>li>a]:text-center [&>li>a]:font-medium [&>li>a]:hover:text-accent sm:[&>li>a]:px-2 sm:[&>li>a]:py-1",
           "hidden",
-          "sm:mt-0 sm:flex sm:w-auto sm:gap-x-5 sm:gap-y-0",
+          "sm:mt-0 sm:flex sm:w-auto sm:flex-row sm:items-center sm:gap-x-5 sm:gap-y-0",
         ]}
       >
         <li class="col-span-2">
-          <a
-            href={getPath("/posts/")}
-            class:list={{ "active-nav": isActive("/posts") }}
-          >
-            Artículos
-          </a>
+          <Dropdown
+            id="guias-dropdown"
+            label="Guías"
+            items={guiasDropdown.map(i => ({
+              ...i,
+              isActive: isActive(i.href),
+            }))}
+            isActive={isActive("/guias")}
+          />
         </li>
+        <!-- La sección Actualidad está omitida por ser una sección futura sin contenido de noticias -->
         <li class="col-span-2">
           <a
             href={getPath("/calculadoras/")}
-            class:list={{ "active-nav": isActive("/calculadoras") }}
+            class:list={[
+              "block px-4 py-3 text-center sm:px-2 sm:py-1",
+              "font-medium transition-colors hover:text-accent",
+              { "active-nav": isActive("/calculadoras") },
+            ]}
           >
             Calculadoras
           </a>
         </li>
         <li class="col-span-2">
           <a
+            href={getPath("/leyes/")}
+            class:list={[
+              "block px-4 py-3 text-center sm:px-2 sm:py-1",
+              "font-medium transition-colors hover:text-accent",
+              { "active-nav": isActive("/leyes") },
+            ]}
+          >
+            Marco Legal
+          </a>
+        </li>
+        <li class="col-span-2">
+          <a
             href={getPath("/about/")}
-            class:list={{ "active-nav": isActive("/about") }}
+            class:list={[
+              "block px-4 py-3 text-center sm:px-2 sm:py-1",
+              "font-medium transition-colors hover:text-accent",
+              { "active-nav": isActive("/about") },
+            ]}
           >
             Nosotros
           </a>

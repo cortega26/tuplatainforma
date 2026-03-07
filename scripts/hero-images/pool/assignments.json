@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "sourcePoolManifest": "scripts/hero-images/pool/manifest.json",
+  "count": 1,
+  "assignments": [
+    {
+      "slug": "reforma-previsional-2025-que-cambia-y-como-te-afecta",
+      "template": "A",
+      "approvedModelId": "ahorro",
+      "sceneId": "A:ahorro",
+      "palette": {
+        "category": "Ahorro activo / Metas / Logros",
+        "hex": "#059669"
+      },
+      "poolId": "a--ahorro--059669",
+      "filePath": "scripts/hero-images/pool/assets/a--ahorro--059669/a--ahorro--059669--v1.avif",
+      "ext": ".avif"
+    }
+  ]
+}

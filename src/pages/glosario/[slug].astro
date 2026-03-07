@@ -1,0 +1,82 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import { getPath } from "@/utils/getPath";
+
+export async function getStaticPaths() {
+  const glossaryEntries = await getCollection(
+    "glossary",
+    ({ data }) => !data.draft
+  );
+
+  return glossaryEntries.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { term, shortDefinition, relatedTerms } = entry.data;
+
+const { Content } = await render(entry);
+
+// Fetch related terms metadata
+let relatedTermsData: CollectionEntry<"glossary">[] = [];
+if (relatedTerms.length > 0) {
+  const allEntries = await getCollection("glossary");
+  relatedTermsData = allEntries.filter(
+    e => relatedTerms.includes(e.id) && !e.data.draft
+  );
+}
+---
+
+<Layout title={`${term} | Glosario Financiero`} description={shortDefinition}>
+  <Header />
+  <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
+    <Breadcrumb />
+  </div>
+
+  <main id="main-content" class="app-layout">
+    <article class="mx-auto max-w-3xl pt-8 pb-12">
+      <h1 class="text-3xl font-bold tracking-tight text-accent sm:text-4xl">
+        {term}
+      </h1>
+
+      <div
+        class="mt-8 mb-4 border-l-4 border-accent/30 bg-accent/5 p-4 text-lg font-medium text-secondary"
+      >
+        {shortDefinition}
+      </div>
+
+      <div class="app-prose content-layer mt-8 text-base leading-relaxed">
+        <Content />
+      </div>
+
+      {
+        relatedTermsData.length > 0 && (
+          <div class="bg-surface mt-12 rounded-xl border border-border p-6">
+            <h2 class="mb-4 text-xl font-bold">Términos relacionados</h2>
+            <ul class="flex flex-wrap gap-2">
+              {relatedTermsData.map(relatedEntry => (
+                <li>
+                  <a
+                    href={getPath(`/glosario/${relatedEntry.id}/`)}
+                    class="inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium transition-colors hover:bg-accent hover:text-background"
+                  >
+                    {relatedEntry.data.term}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </article>
+  </main>
+
+  <Footer />
+</Layout>

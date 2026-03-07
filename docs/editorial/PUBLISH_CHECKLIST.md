@@ -1,3 +1,13 @@
+## Cláusula de precedencia normativa
+
+Este checklist es una proyección operativa de
+`docs/editorial/NORMA_YMYL.md`.
+
+En caso de conflicto, ambigüedad o divergencia interpretativa, la
+versión vigente de `NORMA_YMYL.md` prevalece.
+
+El checklist no puede introducir reglas que contradigan la norma.
+
 # Publish Checklist (Editorial Gate)
 
 ## 1) Gate automático (obligatorio)
@@ -26,14 +36,23 @@ pnpm run lint
 
 - Frontmatter alineado con `docs/editorial/FRONTMATTER_SCHEMA.md`.
 - Política pilar/tool respetada según `docs/editorial/SEO_ARCHITECTURE.md`.
+- Cumplimiento de `docs/editorial/NORMA_YMYL.md` (todos los MUST, máximo 1 SHOULD fallido).
 - Interlinking mínimo:
   - pilar -> tool
   - tool -> pilar
   - anchor explícito
 
-## 3) Criterios de bloqueo (NO PUBLICAR)
+## 3) Gate YMYL (obligatorio para contenido YMYL)
+
+- Completar checklist de la sección 6 de `docs/editorial/NORMA_YMYL.md`.
+- Incluir scorecard (sección 7) en el PR con ponderación explícita.
+- Puntaje mínimo exigido para publicar: `>= 9.5/10`.
+
+## 4) Criterios de bloqueo (NO PUBLICAR)
 
 - Falla cualquier comando de gate (`build` o `lint`).
 - Hay `table of contents` visible.
 - Se detecta más de un `H1` en una pieza.
 - Falta enlace pilar/tool en clusters con herramienta publicada.
+- Falta checklist YMYL o scorecard en PR para piezas YMYL.
+- Scorecard YMYL `< 9.5/10`.

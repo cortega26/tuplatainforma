@@ -1,24 +1,39 @@
 ---
 title: "Boleta de honorarios 2026: retención 15,25%, líquido recibido y cobertura anual"
 description: "Explicación práctica de la retención 2026 en boletas de honorarios, cuánto recibes líquido y cómo se conecta con la cobertura previsional anual."
+slug: boleta-honorarios-2026-retencion-cobertura
+author: "Equipo Monedario"
 pubDate: 2026-02-28T15:20:00Z
-updatedDate: 2026-02-28T15:20:00Z
+updatedDate: 2026-03-03T22:00:00Z
 tags:
   - boletas
   - honorarios
   - retencion
   - seguridad-social
+category: impuestos
+cluster: impuestos-personas
 lang: es-CL
+featured: false
 draft: false
+heroImage: /images/hero/boleta-honorarios-2026-retencion-cobertura.avif
 ---
 
 Si emites boletas y quieres saber cuánto te llega líquido en 2026, esta guía separa tres cosas que suelen confundirse: retención mensual, cálculo de cotizaciones en Operación Renta y cobertura anual efectiva.
 
 ## Qué cambia y qué resuelve esta guía
 
-Desde el 1 de enero de 2026, la retención de boletas sube a **15,25%**. Este aumento forma parte del escalamiento establecido por la Ley N° 21.133, que continúa hasta llegar a 17% en 2028.
+Desde el 1 de enero de 2026, la retención de boletas sube a **15,25%**. Este aumento forma parte del escalamiento gradual establecido por la **[Ley N° 21.133](/leyes/ley-21133-honorarios-retencion/)**, cuyo cronograma completo hasta 2028 es:
 
-Ejemplo simple oficial (SII):
+| Año      | Retención sobre bruto boleteado |
+| -------- | ------------------------------- |
+| 2025     | 14,5%                           |
+| **2026** | **15,25%** ← vigente            |
+| 2027     | 16,0%                           |
+| 2028     | 17,0%                           |
+
+El porcentaje de 2028 es el nivel de régimen permanente. Fuente: [SII — Aumento gradual de retención](https://www.sii.cl/destacados/boletas_honorarios/aumento_gradual.html).
+
+Ejemplo simple oficial (SII) con la tasa 2026:
 
 - Boleta por $100.000.
 - Retención 15,25% = $15.250.
@@ -46,12 +61,12 @@ Si además quieres revisar tu declaración anual completa, complementa con el [c
 
 ## Tabla de escenarios por perfil
 
-| Perfil | ¿Retención mensual 2026? | ¿Cotiza en Operación Renta 2026? | Efecto típico |
-| --- | --- | --- | --- |
-| Independiente con boletas regulares y monto anual sobre 5 IMM | Sí, 15,25% | Sí | Menor líquido mensual, pero acceso a cobertura anual según reglas vigentes. |
-| Independiente con boletas anuales bajo 5 IMM | Sí, 15,25% al emitir | Puede quedar eximido de cotización obligatoria en OR 2026 | Mantiene retención mensual, pero la obligación previsional anual cambia según tope y normas. |
-| Pensionado (salvo invalidez parcial) | Sí, 15,25% al emitir | Puede estar eximido por norma específica | Revisar condición previsional antes de asumir cobertura nueva. |
-| Trabajador intermitente a honorarios | Sí, 15,25% en meses con boleta | Depende del total anual y reglas de cobertura | Puede tener meses sin ingresos, pero evaluación anual igual aplica. |
+| Perfil                                                        | ¿Retención mensual 2026?       | ¿Cotiza en Operación Renta 2026?                          | Efecto típico                                                                                |
+| ------------------------------------------------------------- | ------------------------------ | --------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Independiente con boletas regulares y monto anual sobre 5 IMM | Sí, 15,25%                     | Sí                                                        | Menor líquido mensual, pero acceso a cobertura anual según reglas vigentes.                  |
+| Independiente con boletas anuales bajo 5 IMM                  | Sí, 15,25% al emitir           | Puede quedar eximido de cotización obligatoria en OR 2026 | Mantiene retención mensual, pero la obligación previsional anual cambia según tope y normas. |
+| Pensionado (salvo invalidez parcial)                          | Sí, 15,25% al emitir           | Puede estar eximido por norma específica                  | Revisar condición previsional antes de asumir cobertura nueva.                               |
+| Trabajador intermitente a honorarios                          | Sí, 15,25% en meses con boleta | Depende del total anual y reglas de cobertura             | Puede tener meses sin ingresos, pero evaluación anual igual aplica.                          |
 
 ## Si te pasa X, haz Y (árbol de decisión)
 
@@ -88,7 +103,12 @@ SII informa aumento gradual hasta llegar a 17% en 2028.
 Las fuentes oficiales indican cobertura desde el 1 de julio de cada año hasta el 30 de junio del siguiente, una vez procesada la Operación Renta.
 
 **6) ¿Qué pasa si emití boletas por menos de cinco ingresos mínimos mensuales en el año base?**
-ChileAtiende informa que ese es un criterio relevante para exención de cotización obligatoria en la operación correspondiente.
+Para Operación Renta 2026 (rentas 2025), si tu renta bruta anual por boletas fue **inferior a 5 ingresos mínimos mensuales**, quedas **eximido de cotizar obligatoriamente** para pensión y salud en ese proceso.\
+Condiciones y matices relevantes:
+
+- La exención por monto anual no elimina la retención al emitir boletas (15,25% en 2026).
+- Puedes cotizar de forma voluntaria si quieres cobertura/cotización previsional.
+- También existen exenciones por causal legal específica (por ejemplo, pensionados y grupos con regla transitoria de edad definidos en la normativa).
 
 **7) ¿La base de cotización es el 100% de lo boleteado?**
 ChileAtiende indica que la renta imponible anual para este cálculo corresponde al 80% del total bruto de boletas del año base.
@@ -100,12 +120,12 @@ En tu declaración de renta y en la información previsional asociada al proceso
 
 - SII, retención 2026 de boletas (15,25%) y progresión a 2028: https://www.sii.cl/noticias/2025/261225noti01smn.htm
 - ChileAtiende, cotización de trabajadores que emiten boletas (OR 2026, umbral 5 IMM, coberturas y exenciones): https://www.chileatiende.gob.cl/fichas/12016-cotizacion-de-trabajadores-que-emiten-boletas-de-honorarios
-- Ley N° 21.133 (BCN): https://www.bcn.cl/leychile/navegar?idNorma=1129870
+- Ley N° 21.133 (BCN): https://www.bcn.cl/leychile/navegar?idNorma=1128420
 - SII, Operación Renta Personas (flujo anual de declaración): https://www.sii.cl/destacados/renta/2025/index_personas2025.html
 
 ## Última revisión
 
-- Revisado el: 2026-02-28.
+- Revisado el: 2026-03-02.
 - Gatilla actualización: cambios en porcentaje de retención, ajustes a cobertura anual o modificaciones legales/publicación de nuevas instrucciones SII.
 
 Este contenido es informativo y no reemplaza asesoría tributaria profesional para casos complejos.

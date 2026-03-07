@@ -1,6 +1,6 @@
 ---
 name: "\U0001F41E Bug report"
-about: Report a bug or unexpected behavior in Tu Plata Informa
+about: Report a bug or unexpected behavior in Monedario
 title: "[BUG]: "
 labels: bug
 assignees: ""

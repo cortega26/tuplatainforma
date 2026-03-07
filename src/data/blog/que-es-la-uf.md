@@ -1,9 +1,11 @@
 ---
 title: "UF en simple: qué es, por qué sube todos los días y cómo te afecta"
-author: "Equipo TuPlataInforma"
-pubDatetime: 2026-02-24T12:00:00Z
+author: "Equipo Monedario"
+pubDate: 2026-02-24T12:00:00Z
+updatedDate: 2026-03-04T12:00:00Z
 slug: que-es-la-uf
 featured: false
+lang: es-CL
 draft: false
 tags:
   - uf
@@ -11,10 +13,13 @@ tags:
   - ipc
   - arriendos
   - creditos
+category: deuda-credito
+cluster: deuda-credito
 description: "Explicación práctica de la Unidad de Fomento (UF): qué es, cómo se calcula, por qué cambia cada día y cómo impacta tu arriendo, dividendo y deudas en Chile."
+heroImage: /images/hero/que-es-la-uf.avif
 ---
 
-Tu arriendo sube todos los años "por la UF" y tu dividendo también. Pero casi nadie sabe exactamente qué es la UF ni por qué cambia todos los días. Acá te explicamos de verdad — con números y sin fórmulas intimidantes.
+Tu arriendo sube todos los años "por la UF" y tu dividendo también. Pero casi nadie sabe exactamente qué es la UF ni por qué cambia todos los días. Acá te explicamos de verdad — con números y sin fórmulas intimidantes. Si lo estás viendo desde la lógica de deudas y financiamiento, puedes complementar con la [guía del cluster Deuda y Crédito](/guias/deuda-credito/).
 
 ## Tabla de contenidos
 
@@ -77,10 +82,24 @@ Esto significa que si hay inflación, tu arriendo **sube automáticamente** sin 
 
 Por eso es importante saber el valor en UF de tu arriendo, no solo el valor en pesos del mes en que firmaste.
 
-**Ejemplo:**
-Firmaste un contrato de arriendo en enero de 2023 a 12 UF cuando la UF valía $35.000 → pagabas $420.000.
-Hoy la UF vale $44.500 → pagas $534.000.
-El contrato no cambió. Solo cambió la UF.
+**Ejemplo paso a paso:**
+
+Firmaste un contrato de arriendo en enero de 2023 a **12 UF** cuando la UF valía $35.000 → pagabas **$420.000/mes**.
+
+La UF fue subiendo con la inflación. Hoy la UF vale $44.500 → pagas **$534.000/mes**. El contrato no cambió ni una coma. Solo cambió la UF.
+
+**¿Cómo se calcula el reajuste mes a mes?**
+
+Supón que el IPC de enero fue **0,5%**. Eso significa que la UF sube aproximadamente 0,5% desde el 10 de febrero al 9 de marzo. Si tu arriendo es 12 UF:
+
+| Situación                        | Valor UF | Arriendo en pesos |
+| -------------------------------- | -------- | ----------------- |
+| Antes del reajuste               | $44.500  | $534.000          |
+| Después del reajuste (+0,5%)     | $44.723  | $536.676          |
+| Diferencia mensual               |          | **+$2.676**       |
+| Impacto acumulado anual (aprox.) |          | **~+$32.000**     |
+
+Este incremento es automático, sin que el arrendador haga nada. Está incorporado en la fórmula de la UF.
 
 ### Crédito hipotecario en UF
 
@@ -90,7 +109,7 @@ Esto es lo que ocurrió entre 2021 y 2023: las cuotas hipotecarias en pesos subi
 
 ### Deudas y multas en UF
 
-Muchas deudas tributarias, multas y obligaciones legales se expresan o reajustan en UF. Dejar una deuda sin pagar en UF es más caro con el tiempo, porque el monto que debes en pesos crece con la inflación.
+Muchas deudas tributarias, multas y obligaciones legales se expresan o reajustan en UF. Dejar una deuda sin pagar en UF es más caro con el tiempo, porque el monto que debes en pesos crece con la inflación. Si necesitas priorizar pagos con datos concretos, parte por revisar tu [Informe de Deudas CMF](/posts/informe-deudas-cmf-vs-dicom/).
 
 ### Sueldos y contratos laborales en UF
 

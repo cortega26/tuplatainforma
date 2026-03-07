@@ -8,7 +8,6 @@ import "@/styles/global.css";
 type Props = {
   title?: string;
   author?: string;
-  profile?: string;
   description?: string;
   ogImage?: string;
   canonicalURL?: string;
@@ -20,10 +19,9 @@ type Props = {
 const {
   title = SITE.title,
   author = SITE.author,
-  profile = SITE.profile,
   description = SITE.desc,
   ogImage = SITE.ogImage ? `/${SITE.ogImage}` : "/og.png",
-  canonicalURL = new URL(Astro.url.pathname, Astro.url),
+  canonicalURL = new URL(Astro.url.pathname, Astro.url).href,
   pubDatetime,
   modDatetime,
   scrollSmooth = false,
@@ -31,21 +29,59 @@ const {
 
 const socialImageURL = new URL(ogImage, Astro.url);
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  headline: `${title}`,
-  image: `${socialImageURL}`,
-  datePublished: `${pubDatetime?.toISOString()}`,
-  ...(modDatetime && { dateModified: modDatetime.toISOString() }),
-  author: [
-    {
-      "@type": "Person",
-      name: `${author}`,
-      ...(profile && { url: profile }),
-    },
-  ],
-};
+const AUTHOR_URL = new URL("/autor/", Astro.site ?? Astro.url.origin).href;
+const SITE_ORIGIN = (Astro.site ?? new URL(Astro.url.origin)).href.replace(
+  /\/+$/,
+  ""
+);
+
+const isArticle = Boolean(pubDatetime);
+
+const structuredData = isArticle
+  ? {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: title,
+      description: description,
+      image: `${socialImageURL}`,
+      url: `${canonicalURL}`,
+      datePublished: pubDatetime?.toISOString(),
+      ...(modDatetime && { dateModified: modDatetime.toISOString() }),
+      inLanguage: "es-CL",
+      author: [
+        {
+          "@type": "Person",
+          name: author,
+          url: AUTHOR_URL,
+          sameAs: [
+            "https://www.linkedin.com/in/cortega26/",
+            "https://github.com/cortega26",
+          ],
+        },
+      ],
+      publisher: {
+        "@type": "Organization",
+        name: SITE.title,
+        url: SITE_ORIGIN,
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE_ORIGIN}/favicon.svg`,
+        },
+      },
+    }
+  : {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: SITE.title,
+      url: SITE_ORIGIN,
+      description: description,
+      inLanguage: "es-CL",
+      publisher: {
+        "@type": "Organization",
+        name: SITE.title,
+        url: SITE_ORIGIN,
+      },
+    };
 ---
 
 <!doctype html>
@@ -137,6 +173,8 @@ const structuredData = {
     }
 
     <ClientRouter />
+
+    <slot name="head" />
 
     <!-- Minimal inline script to prevent FOUC - sets theme immediately -->
     <script is:inline>

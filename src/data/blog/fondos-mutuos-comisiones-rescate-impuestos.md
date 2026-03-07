@@ -1,6 +1,8 @@
 ---
 title: "Fondos mutuos: comisiones, rescate e impuestos (sin letra chica)"
 description: "Guía práctica para entender costos reales, plazos de rescate y tratamiento tributario básico de fondos mutuos en Chile durante 2026."
+slug: fondos-mutuos-comisiones-rescate-impuestos
+author: "Equipo Monedario"
 pubDate: 2026-02-28T16:20:00Z
 updatedDate: 2026-02-28T16:20:00Z
 tags:
@@ -8,8 +10,12 @@ tags:
   - inversiones
   - comisiones
   - impuestos
+category: impuestos
+cluster: ahorro-e-inversion
 lang: es-CL
+featured: false
 draft: false
+heroImage: /images/hero/fondos-mutuos-comisiones-rescate-impuestos.avif
 ---
 
 <!-- META: keyword_primary="comisiones fondos mutuos cuanto cobran" | intent="informacional-transaccional" | cluster="ahorro-inversion" -->
@@ -25,12 +31,12 @@ Si inviertes en fondos mutuos, esta guía te muestra dónde están los costos re
 
 ## Tipos de costos: cómo leer la letra chica
 
-| Costo | Qué significa | Dónde se valida |
-| --- | --- | --- |
-| Remuneración de administración | Cobro periódico por gestionar el fondo | Reglamento interno (CMF) |
-| Comisión de rescate | Cobro al salir, según condiciones/serie/plazo | Reglamento interno + contrato |
-| Comisión de colocación | Cobro al entrar (si aplica) | Folleto + contrato |
-| Otros gastos atribuibles | Costos operativos imputados al fondo | Documentación oficial del fondo |
+| Costo                          | Qué significa                                 | Dónde se valida                 |
+| ------------------------------ | --------------------------------------------- | ------------------------------- |
+| Remuneración de administración | Cobro periódico por gestionar el fondo        | Reglamento interno (CMF)        |
+| Comisión de rescate            | Cobro al salir, según condiciones/serie/plazo | Reglamento interno + contrato   |
+| Comisión de colocación         | Cobro al entrar (si aplica)                   | Folleto + contrato              |
+| Otros gastos atribuibles       | Costos operativos imputados al fondo          | Documentación oficial del fondo |
 
 CMF Educa indica que estas condiciones deben quedar establecidas en el reglamento interno depositado en la CMF.
 
@@ -64,7 +70,7 @@ Según SII (FAQ), en fondos mutuos:
 
 Además, SII dispone el asistente de enajenación para apoyar determinación de mayor valor en acciones/cuotas de fondos mutuos/cuotas de fondos de inversión.
 
-`TODO: FUENTE` para casos avanzados de imputación de créditos y tratamientos especiales por porcentaje de inversión en acciones, ya que requieren revisar instrucciones vigentes del F22 del año tributario correspondiente.
+Para casos avanzados de imputación de créditos y tratamientos especiales según porcentaje de inversión en acciones, consulta las instrucciones vigentes del Suplemento de Renta del SII para el año tributario correspondiente. Para situaciones complejas, conviene asesoría tributaria profesional.
 
 ## Casos por perfil
 

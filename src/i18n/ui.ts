@@ -13,7 +13,9 @@ type SupportedLocale = keyof typeof UI_COPY;
 
 const SUPPORTED_LOCALES = Object.keys(UI_COPY) as SupportedLocale[];
 
-export function getUiCopyForLocale(locale: string | undefined = DEFAULT_LOCALE) {
+export function getUiCopyForLocale(
+  locale: string | undefined = DEFAULT_LOCALE
+) {
   const normalizedLocale = locale?.toLowerCase() ?? DEFAULT_LOCALE;
   const resolvedLocale = normalizedLocale.startsWith("es")
     ? DEFAULT_LOCALE

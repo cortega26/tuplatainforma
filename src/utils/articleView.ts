@@ -10,6 +10,7 @@ export type ArticleView = {
   tags: string[];
   category: string;
   draft: boolean;
+  unlisted: boolean;
   featured: boolean;
   author: string;
   lang: string;
@@ -28,12 +29,12 @@ function normalizeSlug(entry: BlogEntry): {
 } {
   const explicitSlug = entry.data.slug?.trim();
   if (explicitSlug) {
-    return { slug: explicitSlug, slugSource: "frontmatter" };
+    return { slug: explicitSlug.toLowerCase(), slugSource: "frontmatter" };
   }
 
   // Legacy fallback: derive slug from content entry id.
   const derivedSlug = entry.id.split("/").at(-1) ?? entry.id;
-  return { slug: derivedSlug, slugSource: "derived" };
+  return { slug: derivedSlug.toLowerCase(), slugSource: "derived" };
 }
 
 function normalizeDate(input: unknown): Date | null {
@@ -47,7 +48,7 @@ function normalizeDate(input: unknown): Date | null {
 
 export function toArticleView(entry: BlogEntry): ArticleView {
   const { slug, slugSource } = normalizeSlug(entry);
-  const pubDate = normalizeDate(entry.data.pubDate ?? entry.data.pubDatetime);
+  const pubDate = normalizeDate(entry.data.pubDate);
 
   if (!pubDate) {
     throw new Error(
@@ -55,10 +56,8 @@ export function toArticleView(entry: BlogEntry): ArticleView {
     );
   }
 
-  const updatedDate = normalizeDate(
-    entry.data.updatedDate ?? entry.data.modDatetime
-  );
-  const canonical = entry.data.canonical ?? entry.data.canonicalURL;
+  const updatedDate = normalizeDate(entry.data.updatedDate);
+  const canonical = entry.data.canonical;
   const heroImage = entry.data.heroImage ?? entry.data.ogImage;
 
   return {
@@ -70,6 +69,7 @@ export function toArticleView(entry: BlogEntry): ArticleView {
     tags: (entry.data.tags ?? []).map(tag => tag.trim()).filter(Boolean),
     category: entry.data.category ?? "general",
     draft: entry.data.draft ?? false,
+    unlisted: entry.data.unlisted ?? false,
     featured: entry.data.featured ?? false,
     author: entry.data.author ?? SITE.author,
     lang: entry.data.lang ?? "es-CL",
@@ -80,4 +80,3 @@ export function toArticleView(entry: BlogEntry): ArticleView {
     slugSource,
   };
 }
-

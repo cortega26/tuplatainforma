@@ -1,0 +1,54 @@
+name: Refresh Economic Snapshot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 10 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    name: Refresh economic snapshot and open PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: "☁️ Checkout repository"
+        uses: actions/checkout@v6
+
+      - name: "📦 Install pnpm"
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.2
+
+      - name: "🟢 Setup Node.js"
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: "📦 Install dependencies"
+        run: pnpm install --frozen-lockfile
+
+      - name: "🔄 Refresh economic snapshot"
+        run: pnpm run economic:snapshot:refresh
+
+      - name: "📬 Create pull request"
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(economic): refresh economic snapshot"
+          title: "chore(economic): refresh economic snapshot"
+          body: |
+            Automated refresh of `src/infrastructure/economic/economic-parameters.snapshot.json`.
+
+            - Trigger: scheduled workflow (`refresh-economic-snapshot.yml`) or manual dispatch.
+            - Command: `pnpm run economic:snapshot:refresh`.
+            - Source: `https://mindicador.cl/api`.
+          branch: chore/refresh-economic-snapshot
+          delete-branch: true
+          add-paths: |
+            src/infrastructure/economic/economic-parameters.snapshot.json

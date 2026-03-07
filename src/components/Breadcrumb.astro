@@ -1,6 +1,6 @@
 ---
 /**
- * Breadcrumbs robustos para deploy bajo subpath (GitHub Pages) sin duplicar base.
+ * Breadcrumbs robustos para deploy bajo dominio raíz o subpath sin duplicar base.
  * - No usa BASE/RAW_BASE.
  * - Stripea el basePath de Astro.site para el cálculo de segmentos.
  * - Construye hrefs acumulados correctos (no por segmento suelto).
@@ -15,7 +15,7 @@ const SITE_URL = Astro.site ?? new URL("http://localhost");
 // Remove trailing slash from pathname (except keep "/" as "/")
 const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
 
-// basePath: "/tuplatainforma" (GH Pages) o "" / "/" según entorno
+// basePath: "" / "/" en dominio raíz, o "/subpath" si el deploy lo requiere
 const basePath = SITE_URL.pathname.replace(/\/+$/, "");
 
 // Remove basePath from pathname to get the "site-local" path
@@ -36,7 +36,10 @@ const crumbs = segments.map((seg, i) => ({
 const routeLabels: Record<string, string> = {
   about: "Nosotros",
   archives: "Archivo",
+  autor: "Autor",
   calculadoras: "Calculadoras",
+  leyes: "Marco Legal",
+  glosario: "Glosario",
   posts: "Artículos",
   search: "Buscar",
   tags: "Etiquetas",

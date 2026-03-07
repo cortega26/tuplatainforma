@@ -1,4 +1,4 @@
-# Tu Plata Informa
+# Monedario
 
 Proyecto educativo de finanzas personales para Chile. Su objetivo es explicar, con lenguaje claro y sin letra chica, temas como AFP, APV, impuestos, inversiones y herramientas prácticas (calculadoras) para que cualquier persona pueda comprender y tomar mejores decisiones con su dinero.
 
@@ -6,7 +6,7 @@ Este sitio es 100% educativo: no solicita datos personales, no ofrece asesoría 
 
 ## Sitio en producción
 
-- URL: https://cortega26.github.io/tuplatainforma/
+- URL: https://monedario.cl/
 
 ## Tecnologías principales
 
@@ -35,8 +35,9 @@ Este sitio es 100% educativo: no solicita datos personales, no ofrece asesoría 
 ## Documentación de gobernanza
 
 - Backlog técnico versionado: `docs/TECH_DEBT_BACKLOG.md`
-- Reporte de cierre Fase 1: `docs/PHASE1_CLOSURE_REPORT.md`
-- Fronteras de dominio: `docs/DOMAIN_CONTRACT_BOUNDARIES.md`
+- Reporte de cierre Fase 1: `docs/operations/reports/PHASE1_CLOSURE_REPORT.md`
+- Fronteras de dominio: `docs/architecture/DOMAIN_CONTRACT_BOUNDARIES.md`
+- Constitución de ingeniería para agentes IA/humanos: `docs/AI_ENGINEERING_CONSTITUTION.md`
 
 ## Desarrollo local
 
@@ -51,8 +52,16 @@ Requisitos: Node 20
 
 Notas:
 
-- El proyecto utiliza una base de despliegue en subdirectorio (/tuplatainforma). Para evitar enlaces rotos, los componentes generan URLs usando import.meta.env.BASE_URL normalizada con barra final.
+- El proyecto usa dominio raíz (`/`) en producción. Para evitar enlaces rotos, los componentes generan URLs usando `import.meta.env.BASE_URL` normalizada con barra final.
 - La generación de páginas de artículos se basa en contenido Markdown dentro de src/data/blog.
+
+## Editorial Artifact Gate (Phase 1)
+
+- Comando: `pnpm run check:editorial-artifacts`
+- Integración: se ejecuta dentro de `pnpm run check:editorial`.
+- Modo por defecto: `warn-only` (reporta deuda sin romper el pipeline).
+- Modo estricto: `EDITORIAL_ENFORCE=1 pnpm run check:editorial-artifacts` (falla por artefactos/campos obligatorios faltantes).
+- Ubicación canónica de artefactos: `artifacts/editorial/<post_id>/<run-id>/` (según `context/EDITORIAL_AI_PIPELINE.md` y `context/CONTRACTS.md`).
 
 ## Despliegue (GitHub Pages)
 
@@ -63,8 +72,8 @@ El repositorio incluye un workflow (.github/workflows/deploy.yml) que:
 
 Asegúrate de que:
 
-- La configuración de Astro (astro.config.ts) mantiene base: "/tuplatainforma"
-- La constante SITE.website en src/config.ts apunta a la URL pública con el subpath
+- La configuración de Astro (`astro.config.ts`) deriva `base` desde `SITE.website` y debe permanecer alineada con el dominio público.
+- La constante `SITE.website` en `src/config.ts` debe apuntar a `https://monedario.cl/`
 
 ## Economic Data Governance & Fallback Strategy
 
@@ -72,10 +81,12 @@ Fuente única:
 
 - Todas las calculadoras que dependen de UF/UTM/TMC/AFC consumen `getEconomicParameters()` y, por debajo, `src/infrastructure/economic/EconomicParameterProvider.ts`.
 
-Estrategia de fetch y cache:
+Estrategia de datos y cache:
 
-- El provider consulta `https://mindicador.cl/api`.
-- Se memoiza en módulo (`cachedBundlePromise`) para evitar múltiples llamadas externas en un mismo ciclo de ejecución.
+- Fuente principal en build/CI: `src/infrastructure/economic/economic-parameters.snapshot.json` (determinística, sin red).
+- Modo live opcional solo por env: `TPI_ECONOMIC_PROVIDER_MODE=live`.
+- En modo live, el provider intenta `https://mindicador.cl/api` y, si falla, vuelve al snapshot local.
+- Se memoiza en módulo (`cachedBundlePromise`) para evitar múltiples lecturas/fetch en un mismo ciclo de ejecución.
 - Telemetría mínima disponible vía `getEconomicProviderTelemetry()`:
   - `externalFetchCount`
   - `cacheHitCount`
@@ -84,11 +95,16 @@ Estrategia de fetch y cache:
 
 Fallback controlado:
 
-- Si falla la API (timeout/error/status no OK), el provider retorna un bundle con:
+- Si falla el snapshot (archivo inválido/faltante), el provider retorna un bundle con:
   - `parameters.source = "fallback"`
   - `parameters.lastUpdated` en formato `YYYY-MM-DD`
   - `telemetryFlag = "economic_parameters_fallback"`
 - La UI expone la fuente y fecha de datos en calculadoras e indicadores; cuando aplica fallback se muestra explícitamente el modo fallback.
+
+Refresh del snapshot:
+
+- Comando: `pnpm run economic:snapshot:refresh`
+- Este script consulta `mindicador.cl` y actualiza `economic-parameters.snapshot.json` con sello temporal (`capturedAt`).
 
 Validación automatizada:
 
