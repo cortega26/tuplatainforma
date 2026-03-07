@@ -18,7 +18,7 @@ describe("Cluster Source of Truth", () => {
     for (const folder of physicalFolders) {
       // Explicit assertion: The physical folder must exist exactly inside the source of truth
       // as implemented in scripts/check-editorial-structure.mjs
-      expect(CLUSTERS.includes(folder as any)).toBe(true);
+      expect(CLUSTERS.includes(folder as (typeof CLUSTERS)[number])).toBe(true);
     }
   });
 

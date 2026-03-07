@@ -21,6 +21,13 @@ Los riesgos principales están en deuda de mantenibilidad y consistencia operati
 - Se agrega `public/CNAME` para hacer persistente el dominio custom en GitHub Pages.
 - ADR de respaldo: `docs/adr/ADR-20260305-monedario-root-domain.md`.
 
+### Checkpoint 2026-03-06 (Editorial Artifact Gate PR Diff Scope)
+
+- El gate `check-editorial-artifacts` mantiene modo estricto en CI, pero en `pull_request` bloquea solo artículos YMYL tocados en el diff o sus raíces de artefactos.
+- Se agrega resolución de diff contra la rama base para evitar que deuda legacy fuera del scope bloquee PRs de infraestructura o mantenimiento.
+- La deuda remanente del corpus YMYL sin artefactos se registra en `docs/TECH_DEBT_BACKLOG.md` como `TD-0016`.
+- ADR de respaldo: `docs/adr/ADR-20260306-editorial-artifacts-pr-diff-scope.md`.
+
 ## 1. Stack técnico
 
 ### Runtime y package management
