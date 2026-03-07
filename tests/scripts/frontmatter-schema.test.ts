@@ -9,7 +9,9 @@ description: >
   This is a multiline
   block scalar description.
 `;
-    const parsed = yaml.load(yamlString, { schema: yaml.JSON_SCHEMA }) as Record<string, any>;
+    const parsed = yaml.load(yamlString, {
+      schema: yaml.JSON_SCHEMA,
+    }) as Record<string, unknown>;
     expect(parsed.description).toBe("This is a multiline block scalar description.\n");
   });
 
@@ -19,7 +21,9 @@ tags:
   - first parameter
   - second parameter
 `;
-    const parsed = yaml.load(yamlString, { schema: yaml.JSON_SCHEMA }) as Record<string, any>;
+    const parsed = yaml.load(yamlString, {
+      schema: yaml.JSON_SCHEMA,
+    }) as Record<string, unknown>;
     expect(parsed.tags).toEqual(["first parameter", "second parameter"]);
   });
 
@@ -27,7 +31,9 @@ tags:
     const yamlString = `
 pubDate: "2026-03-04T12:00:00Z"
 `;
-    const parsed = yaml.load(yamlString, { schema: yaml.JSON_SCHEMA }) as Record<string, any>;
+    const parsed = yaml.load(yamlString, {
+      schema: yaml.JSON_SCHEMA,
+    }) as Record<string, unknown>;
     expect(parsed.pubDate).toBeTypeOf("string");
     expect(parsed.pubDate).toBe("2026-03-04T12:00:00Z");
   });
