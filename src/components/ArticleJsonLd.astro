@@ -23,6 +23,10 @@ const { title, description, pubDate, updatedDate, author } = post.data;
 
 const AUTHOR_NAME = "Carlos Ortega González";
 const AUTHOR_URL = new URL("/autor/", Astro.site ?? Astro.url.origin).href;
+const AUTHOR_IMAGE_URL = new URL(
+  SITE.authorImage,
+  Astro.site ?? Astro.url.origin
+).href;
 const SITE_URL = (Astro.site ?? new URL(Astro.url.origin)).href.replace(
   /\/$/,
   ""
@@ -42,12 +46,10 @@ const articleSchema = {
   inLanguage: "es-CL",
   author: {
     "@type": "Person",
-    name: author ?? AUTHOR_NAME,
+    name: author ?? SITE.authorFullName ?? AUTHOR_NAME,
     url: AUTHOR_URL,
-    sameAs: [
-      "https://www.linkedin.com/in/cortega26/",
-      "https://github.com/cortega26",
-    ],
+    image: AUTHOR_IMAGE_URL,
+    sameAs: [SITE.authorLinkedIn, SITE.profile],
   },
   publisher: {
     "@type": "Organization",

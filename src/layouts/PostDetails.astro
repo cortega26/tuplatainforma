@@ -152,12 +152,17 @@ const nextPost =
       class="mt-10 flex flex-col gap-4 rounded-xl border border-border bg-surface-muted p-5 sm:flex-row sm:items-start"
       aria-label="Información del autor"
     >
-      <div
-        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-accent/30 bg-accent/10 text-sm font-bold text-accent"
-        aria-hidden="true"
-      >
-        CO
-      </div>
+      <a href={getPath("/autor/")} class="shrink-0">
+        <img
+          src={SITE.authorImage}
+          alt={`Foto de ${SITE.authorFullName}`}
+          width="452"
+          height="461"
+          class="h-12 w-12 rounded-full border border-accent/30 object-cover object-center"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
       <div class="flex-1">
         <p class="text-xs font-semibold tracking-widest text-accent uppercase">
           Autor
@@ -167,7 +172,7 @@ const nextPost =
             href={getPath("/autor/")}
             class="underline-offset-4 transition-colors hover:text-accent hover:underline"
           >
-            Carlos Ortega González
+            {SITE.authorFullName}
           </a>
         </p>
         <p class="mt-1 text-sm leading-relaxed text-secondary">
@@ -179,7 +184,7 @@ const nextPost =
           class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted"
         >
           <a
-            href="https://www.linkedin.com/in/cortega26/"
+            href={SITE.authorLinkedIn}
             target="_blank"
             rel="noopener noreferrer"
             class="transition-colors hover:text-accent"
