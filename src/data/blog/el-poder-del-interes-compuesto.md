@@ -79,7 +79,7 @@ Este es probablemente el punto más importante del ejercicio. El período 1990-2
 
 En todos esos escenarios, quien mantuvo el plan salió adelante. No porque no hubiera riesgo, sino porque el tiempo y la disciplina compensaron los períodos malos. También conviene decir algo incómodo: el número final cambia un poco si mueves la ubicación exacta de los 24 meses sin aporte. No cambia la lógica del ejercicio, pero sí el resultado puntual.
 
-![Simulación del interés compuesto con sueldo mínimo y NASDAQ-100 entre 1990 y 2025](/images/posts/el-poder-del-interes-compuesto/interes-compuesto-nasdaq.avif)
+![Grafico corregido de la simulacion del interes compuesto con sueldo minimo y NASDAQ-100 entre 1990 y 2025](/images/posts/el-poder-del-interes-compuesto/interes-compuesto-nasdaq-2025.svg)
 
 _La curva verde muestra el valor de la cartera en USD. Las líneas rojas punteadas marcan las principales crisis. El panel inferior muestra los aportes mensuales en amarillo; los espacios vacíos son los 24 meses sin cotización._
 

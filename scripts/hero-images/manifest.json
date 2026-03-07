@@ -340,7 +340,7 @@
     },
     {
       "slug": "el-poder-del-interes-compuesto",
-      "title": "El poder del interés compuesto: cómo el 10% del sueldo mínimo se convierte en más de $100 millones",
+      "title": "El poder del interés compuesto: cómo el 10% del sueldo mínimo se convierte en más de $125 millones",
       "tags": [
         "ahorro",
         "inversion",
@@ -357,7 +357,7 @@
       "leadParagraphs": [
         "<!-- META: keyword_primary=\"interes compuesto\" | intent=\"informacional-ejemplo\" | cluster=\"ahorro-inversion\" -->",
         "Imagina a alguien que nunca ganó más que el sueldo mínimo. Sin bonos, sin ascensos, sin herencias. Solo su sueldo de cada mes y la disciplina de apartar el 10% de su salario neto para invertirlo. Durante 36 años tuvo 24 meses sin trabajo, lagunas reales como las que le pueden pasar a cualquier trabajador chileno. El resto del tiempo, invirtió ese 10% en el NASDAQ-100. Para el mapa completo del tema, revisa también la [guía central de ahorro e inversión](/guias/ahorro-e-inversion/).",
-        "**Resultado del ejercicio:** si alguien hubiera invertido el 10% de su sueldo líquido entre enero de 1990 y diciembre de 2025, la cartera cerraría cerca de **USD 104.018**, equivalentes a **$100,9 millones CLP** al tipo de cambio de cierre usado en la simulación."
+        "**Resultado del ejercicio:** si alguien hubiera invertido el 10% de su sueldo líquido entre enero de 1990 y diciembre de 2025, la cartera cerraría cerca de **USD 129.495**, equivalentes a **$125,6 millones CLP** al tipo de cambio de cierre usado en la simulación."
       ],
       "headings": [
         "Respuesta rápida",
@@ -365,11 +365,11 @@
         "Lo que habría pasado, década a década",
         "Las crisis no lo destruyeron",
         "El multiplicador que pocos intuyen",
-        "¿Y con esos $100 millones, cuánto se puede retirar por mes?",
+        "¿Y con esos $125 millones, cuánto se puede retirar por mes?",
         "Lo que esto no es",
         "Una imagen concreta: el departamento propio"
       ],
-      "bodyExcerpt": "Imagina a alguien que nunca ganó más que el sueldo mínimo. Sin bonos, sin ascensos, sin herencias. Solo su sueldo de cada mes y la disciplina de apartar el 10% de su salario neto para invertirlo. Durante 36 años tuvo 24 meses sin trabajo, lagunas reales como las que le pueden pasar a cualquier trabajador chileno. El resto del tiempo, invirtió ese 10% en el NASDAQ-100. Para el mapa completo del tema, revisa también la . ## Respuesta rápida **Resultado del ejercicio:** si alguien hubiera invertido el 10% de su sueldo líquido entre enero de 1990 y diciembre de 2025, la cartera cerraría cerca de **USD 104.018**, equivalentes a **$100,9 millones CLP** al tipo de cambio de cierre usado en la simulación. **Aporte total estimado:** alrededor de **$6.183.108 CLP** de bolsillo, equivalentes a unos **USD 9.453** al tipo de cambio histórico de cada aporte. **Qué significa en simple:** el capital final sería aproximadamente **11,0 veces** lo efectivamente aportado. **Fecha de corte del ejercicio:** **2025-12-31**. **Importante:** esto es una **simulación educativa y contrafactual**, no una promesa de rentabilidad futura ni una recomendación personalizada de inversión. **Fuentes base:** Banco Ce",
+      "bodyExcerpt": "Imagina a alguien que nunca ganó más que el sueldo mínimo. Sin bonos, sin ascensos, sin herencias. Solo su sueldo de cada mes y la disciplina de apartar el 10% de su salario neto para invertirlo. Durante 36 años tuvo 24 meses sin trabajo, lagunas reales como las que le pueden pasar a cualquier trabajador chileno. El resto del tiempo, invirtió ese 10% en el NASDAQ-100. Para el mapa completo del tema, revisa también la . ## Respuesta rápida **Resultado del ejercicio:** si alguien hubiera invertido el 10% de su sueldo líquido entre enero de 1990 y diciembre de 2025, la cartera cerraría cerca de **USD 129.495**, equivalentes a **$125,6 millones CLP** al tipo de cambio de cierre usado en la simulación. **Aporte total estimado:** alrededor de **$6.183.108 CLP** de bolsillo, equivalentes a unos **USD 9.453** al tipo de cambio histórico de cada aporte. **Qué significa en simple:** el capital final sería aproximadamente **13,7 veces** lo efectivamente aportado. **Fecha de corte del ejercicio:** **2025-12-31**. **Importante:** esto es una **simulación educativa y contrafactual**, no una promesa de rentabilidad futura ni una recomendación personalizada de inversión. **Fuentes base:** Banco Ce",
       "wordCount": 1391,
       "sourceFile": "el-poder-del-interes-compuesto.md"
     },
@@ -591,7 +591,7 @@
       "heroImage": "/images/hero/interes-compuesto-nota-metodologica.avif",
       "summary": "Este documento detalla los supuestos, fuentes de datos y fórmulas utilizados en el artículo . El objetivo es que cualquier persona pueda replicar o cuestionar los resultados. Fecha de corte del ejercicio: 2025 12 31 . 1. Período y estructura de la simulación Período: enero de 199...",
       "leadParagraphs": [
-        "Este documento detalla los supuestos, fuentes de datos y fórmulas utilizados en el artículo [El poder del interés compuesto: cómo el 10% del sueldo mínimo se convierte en más de $100 millones](/posts/el-poder-del-interes-compuesto/). El objetivo es que cualquier persona pueda replicar o cuestionar los resultados.",
+        "Este documento detalla los supuestos, fuentes de datos y fórmulas utilizados en el artículo [El poder del interés compuesto: cómo el 10% del sueldo mínimo se convierte en más de $125 millones](/posts/el-poder-del-interes-compuesto/). El objetivo es que cualquier persona pueda replicar o cuestionar los resultados.",
         "**Fecha de corte del ejercicio:** **2025-12-31**.",
         "Se usaron valores del sueldo mínimo bruto chileno como puntos de control. Entre reajustes, el sueldo mínimo permanece constante; no se interpola linealmente, sino que se trata como **función escalón**."
       ],
