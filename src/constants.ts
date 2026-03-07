@@ -24,13 +24,13 @@ export const SOCIALS: Social[] = [
   },
   {
     name: "X",
-    href: "https://x.com/TuPlataInforma",
+    href: "https://x.com/monedario_cl",
     linkTitle: `${SITE.title} en X`,
     icon: IconBrandX,
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/tuplatainforma/",
+    href: "https://www.linkedin.com/company/monedario",
     linkTitle: `${SITE.title} en LinkedIn`,
     icon: IconLinkedin,
   },
