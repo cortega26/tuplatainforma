@@ -40,6 +40,7 @@ const ALLOWED_CLUSTERS = new Set(
 );
 
 const REQUIRED_LANG = "es-CL";
+const INLINE_IMAGE_EXCEPTION_MIN_REASON_LENGTH = 12;
 
 function listContentFiles(dirPath) {
   const result = [];
@@ -91,6 +92,10 @@ function toHttpsUrlOrNull(value) {
   } catch {
     return null;
   }
+}
+
+function isPlainObject(value) {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
 
 function pushIssue(collection, filePath, message) {
@@ -295,6 +300,84 @@ for (const filePath of files) {
         relativeFilePath,
         'Field "canonical" must be an absolute HTTPS URL.'
       );
+    }
+  }
+
+  const inlineImageExceptions = frontmatter.inlineImageExceptions;
+  if (inlineImageExceptions != null) {
+    if (!Array.isArray(inlineImageExceptions)) {
+      pushIssue(
+        errors,
+        relativeFilePath,
+        'Field "inlineImageExceptions" must be an array of objects.'
+      );
+    } else {
+      const seenInlineExceptionSrc = new Set();
+      inlineImageExceptions.forEach((entry, index) => {
+        const entryLabel = `inlineImageExceptions[${index}]`;
+        if (!isPlainObject(entry)) {
+          pushIssue(
+            errors,
+            relativeFilePath,
+            `Field "${entryLabel}" must be an object with "src" and "reason".`
+          );
+          return;
+        }
+
+        const { src, reason } = entry;
+        if (typeof src !== "string" || src.trim() === "") {
+          pushIssue(
+            errors,
+            relativeFilePath,
+            `Field "${entryLabel}.src" must be a non-empty string.`
+          );
+        } else {
+          const normalizedSrc = src.trim();
+          if (seenInlineExceptionSrc.has(normalizedSrc)) {
+            pushIssue(
+              errors,
+              relativeFilePath,
+              `Field "inlineImageExceptions" contains duplicate src "${normalizedSrc}".`
+            );
+          }
+          seenInlineExceptionSrc.add(normalizedSrc);
+
+          if (/\.avif(?:[?#].*)?$/i.test(normalizedSrc)) {
+            pushIssue(
+              errors,
+              relativeFilePath,
+              `Field "${entryLabel}.src" must not allowlist AVIF images; remove unnecessary exception "${normalizedSrc}".`
+            );
+          }
+        }
+
+        if (typeof reason !== "string" || reason.trim() === "") {
+          pushIssue(
+            errors,
+            relativeFilePath,
+            `Field "${entryLabel}.reason" must be a non-empty string.`
+          );
+        } else if (
+          reason.trim().length < INLINE_IMAGE_EXCEPTION_MIN_REASON_LENGTH
+        ) {
+          pushIssue(
+            errors,
+            relativeFilePath,
+            `Field "${entryLabel}.reason" must be at least ${INLINE_IMAGE_EXCEPTION_MIN_REASON_LENGTH} characters to justify the exception.`
+          );
+        }
+
+        const extraKeys = Object.keys(entry).filter(
+          key => key !== "src" && key !== "reason"
+        );
+        if (extraKeys.length > 0) {
+          pushIssue(
+            errors,
+            relativeFilePath,
+            `Field "${entryLabel}" contains unsupported keys: ${extraKeys.join(", ")}.`
+          );
+        }
+      });
     }
   }
 

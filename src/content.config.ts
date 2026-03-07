@@ -41,6 +41,17 @@ const blog = defineCollection({
           })
           .optional(),
         heroImage: z.string().or(image()).optional(),
+        inlineImageExceptions: z
+          .array(
+            z
+              .object({
+                src: z.string().trim().min(1),
+                reason: z.string().trim().min(12),
+              })
+              .strict()
+          )
+          .optional()
+          .default([]),
         series: z.string().trim().min(1).optional(),
         timezone: z.string().optional(),
         hideEditPost: z.boolean().optional(),

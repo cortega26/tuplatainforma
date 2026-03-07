@@ -36,6 +36,7 @@ Change log:
 - 2026-03-05: added hero image pipeline contract for deterministic prompt generation and published-asset enforcement.
 - 2026-03-05: hardened hero image pipeline contract to require article-reading-based semantic selection.
 - 2026-03-06: scoped strict editorial artifact enforcement in PR CI to changed YMYL posts/artifact roots; legacy corpus debt remains explicit in backlog.
+- 2026-03-07: added inline article image format contract and justified exception allowlist semantics.
 
 ## 2. Contracts
 
@@ -231,6 +232,26 @@ Change log:
   - `node scripts/check-hero-prompts.mjs`
   - `node scripts/check-hero-images.mjs`
   - Artifact/manual review for final text-to-scene quality until deeper semantic checks are automated
+
+### `CONTRACT.EDITORIAL.INLINE_IMAGE_FORMAT`
+
+- Scope: Inline images referenced from article bodies in `src/data/blog/**/*.md(x)`.
+- Source of truth:
+  - Gate logic: `scripts/check-images.mjs`
+  - Frontmatter schema: `src/content.config.ts`
+  - Governance decision: `docs/adr/ADR-20260307-inline-article-image-avif-gate.md`
+- Baseline expectations:
+  - Inline article images use `.avif` by default.
+  - Non-AVIF inline images require frontmatter `inlineImageExceptions`.
+  - Each exception entry is an object with exact-match `src` and non-empty explanatory `reason`.
+  - Unused or unnecessary exceptions are invalid.
+  - Local inline image paths must resolve to an existing file.
+- Backward-compat expectations:
+  - Existing AVIF inline images remain valid with no frontmatter changes.
+  - Legacy non-AVIF inline images must be converted or explicitly allowlisted before merge.
+  - Future expansion of allowed inline formats requires an ADR because it changes gate semantics.
+- Enforcement:
+  - `pnpm run check:images`
 
 ### `CONTRACT.EDITORIAL.INTERNAL_LINKING`
 

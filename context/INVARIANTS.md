@@ -37,6 +37,7 @@ Change log:
 - 2026-03-03: added editorial AI pipeline invariants (cut-off date, source traceability, separation of duties, math/compliance mandatory triggers).
 - 2026-03-05: added hero-image publication invariant (published article requires resolvable hero image + canonical public asset).
 - 2026-03-05: added hero-image semantic selection invariant (image choice must derive from article reading, not metadata-only matching).
+- 2026-03-07: added inline article image format invariant (AVIF by default with justified exception allowlist).
 
 ## 2. Invariant Index
 
@@ -72,6 +73,7 @@ Change log:
 | `INVARIANT.EDITORIAL.NO_DUPLICATE_SLUGS` | Duplicate filename-derived slugs are forbidden | Active | `pnpm run check:editorial-structure` |
 | `INVARIANT.EDITORIAL.HERO_IMAGE_PUBLISHED_REQUIRED` | Published article must have resolvable hero image and canonical public hero asset | Active | `node scripts/check-hero-images.mjs` |
 | `INVARIANT.EDITORIAL.HERO_IMAGE_TEXT_MATCH_REQUIRED` | Hero image selection must derive from article text and preserve situation-level match | Active | `node scripts/check-hero-prompts.mjs` + artifact review |
+| `INVARIANT.EDITORIAL.INLINE_IMAGE_AVIF_REQUIRED` | Inline article images must use AVIF unless explicitly justified | Active | `pnpm run check:images` |
 
 ## 3. Invariants
 
@@ -244,6 +246,24 @@ Change log:
 - Examples:
   - Compliant: artículo con link markdown interno relativo (por ejemplo, `/ruta`, `./ruta`, `../ruta`).
   - Warning: artículo sin links internos y sin escape hatch.
+
+### `INVARIANT.EDITORIAL.INLINE_IMAGE_AVIF_REQUIRED`
+
+- Statement: Inline images embedded in article bodies must use `.avif` by default; non-AVIF formats are allowed only through an explicit justified exception declared in frontmatter.
+- Canonical source: `scripts/check-images.mjs`, `src/content.config.ts`, `docs/adr/ADR-20260307-inline-article-image-avif-gate.md`.
+- Rationale:
+  - Prevents stale or ad-hoc image formats from bypassing editorial/media guardrails.
+  - Keeps article-body media policy deterministic and reviewable.
+  - Forces exceptions to be documented instead of silently tolerated.
+- Enforcement: `pnpm run check:images`.
+- Detection:
+  - Blocking output includes: `inline image "<src>" must use .avif`.
+  - Blocking output includes unresolved local paths and unused exception entries.
+  - Passing output includes: `[check:images] ✅ All blog images pass format and size constraints.`
+- Examples:
+  - Compliant: `![Grafico](/images/posts/demo/chart.avif)`
+  - Compliant exception: frontmatter `inlineImageExceptions` entry for `/images/posts/demo/legacy-chart.webp` with a concrete `reason`.
+  - Violation: inline `.webp`, `.png`, remote image, or missing local image without matching justified exception.
 
 ### `INVARIANT.EDITORIAL.CLUSTER_DECLARED`
 
