@@ -5,11 +5,14 @@ import IconSearch from "@/assets/icons/IconSearch.svg";
 import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
+import generalSans600 from "@/assets/fonts/general-sans-600.woff2";
 import LinkButton from "./LinkButton.astro";
 import Dropdown from "./Dropdown.astro";
 import type { DropdownItem } from "./Dropdown.astro";
 import { SITE } from "@/config";
 import { getPath } from "@/utils/getPath";
+
+const generalSans600Src = `url("${generalSans600}") format("woff2")`;
 
 const guiasDropdown: DropdownItem[] = [
   {
@@ -81,8 +84,8 @@ const isActive = (path: string) => {
   >
     <a
       href={getPath("/")}
-      class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
-      style="font-family: var(--font-display); letter-spacing: -0.02em;"
+      class="brand-mark absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
+      style="letter-spacing: -0.02em;"
     >
       {SITE.title}
     </a>
@@ -211,6 +214,21 @@ const isActive = (path: string) => {
     </nav>
   </div>
 </header>
+
+<style is:global define:vars={{ generalSans600Src }}>
+  @font-face {
+    font-family: "General Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: var(--generalSans600Src);
+  }
+
+  .brand-mark {
+    font-family: "General Sans", var(--font-body);
+    font-weight: 600;
+  }
+</style>
 
 <script>
   function toggleNav() {
