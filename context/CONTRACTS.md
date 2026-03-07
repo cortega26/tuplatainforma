@@ -35,6 +35,7 @@ Change log:
 - 2026-03-03: added editorial AI artifact contracts (`CONTRACT.EDITORIAL.*`) for quality-first YMYL pipeline enforcement.
 - 2026-03-05: added hero image pipeline contract for deterministic prompt generation and published-asset enforcement.
 - 2026-03-05: hardened hero image pipeline contract to require article-reading-based semantic selection.
+- 2026-03-06: scoped strict editorial artifact enforcement in PR CI to changed YMYL posts/artifact roots; legacy corpus debt remains explicit in backlog.
 
 ## 2. Contracts
 
@@ -423,6 +424,28 @@ Change log:
   - Confirms `DraftAgent != MathAuditAgent != ComplianceAgent`.
   - Confirms unresolved `TODO:SOURCE=0` for publish-ready state.
   - Includes command evidence for `check:frontmatter` and `check:editorial`.
+
+### `CONTRACT.EDITORIAL.ARTIFACT_GATE`
+
+- Scope: Automated artifact completeness validation for YMYL publication workflow.
+- Source of truth:
+  - `scripts/check-editorial-artifacts.mjs`
+  - `.github/workflows/ci.yml`
+  - `docs/adr/ADR-20260303-editorial-artifacts-gate-phase1.md`
+  - `docs/adr/ADR-20260306-editorial-artifacts-pr-diff-scope.md`
+- Baseline expectations:
+  - Default repository-wide mode stays warn-only unless `EDITORIAL_ENFORCE=1`.
+  - Strict mode is allowed for CI, but in `pull_request` context it scopes blocking evaluation to changed YMYL blog entries or their artifact roots.
+  - Unchanged legacy YMYL debt remains visible through warn-only/full-corpus runs and must be tracked in `docs/TECH_DEBT_BACKLOG.md`.
+- Backward-compat expectations:
+  - Artifact contracts remain unchanged for any YMYL post that is added or substantively refreshed.
+  - Unrelated PRs must not fail on pre-existing artifact debt outside the diff.
+- Enforcement:
+  - `pnpm run check:editorial-artifacts`
+  - `pnpm run check:editorial`
+- Detection:
+  - Passing output includes `scope=changed` or `scope=all`.
+  - Strict PR failures report only changed YMYL targets with missing artifact requirements.
 
 ## CONTRACT.YMYL_RESPONSE_STRUCTURE
 

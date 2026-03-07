@@ -1,4 +1,4 @@
- 
+import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -24,6 +24,8 @@ const YMYL_ALLOWLIST_PATH = path.join(
 const STRICT_MODE = process.env.EDITORIAL_ENFORCE === "1";
 const MODE_LABEL = STRICT_MODE ? "strict" : "warn-only";
 const MIN_SOURCES = parsePositiveInt(process.env.EDITORIAL_MIN_SOURCES, 1);
+const EDITORIAL_SCOPE = normalizeToken(process.env.EDITORIAL_SCOPE || "all");
+const EDITORIAL_DIFF_BASE_REF = String(process.env.EDITORIAL_DIFF_BASE_REF ?? "").trim();
 
 const YMYL_CATEGORIES = new Set([
   "ahorro-inversion",
@@ -98,6 +100,91 @@ function listContentFiles(baseDir) {
   }
 
   return files.sort();
+}
+
+function runGit(args) {
+  try {
+    return execFileSync("git", args, {
+      cwd: REPO_ROOT,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+  } catch {
+    return null;
+  }
+}
+
+function collectChangedEditorialTargets() {
+  if (EDITORIAL_SCOPE !== "changed") {
+    return {
+      scope: "all",
+      diffRange: "",
+      changedPaths: new Set(),
+      changedPostIds: new Set(),
+    };
+  }
+
+  const candidateRanges = [];
+  if (EDITORIAL_DIFF_BASE_REF) {
+    candidateRanges.push(`origin/${EDITORIAL_DIFF_BASE_REF}...HEAD`);
+    candidateRanges.push(`${EDITORIAL_DIFF_BASE_REF}...HEAD`);
+  }
+  candidateRanges.push("HEAD^1...HEAD");
+  candidateRanges.push("HEAD^...HEAD");
+
+  for (const diffRange of candidateRanges) {
+    const output = runGit([
+      "diff",
+      "--name-only",
+      "--diff-filter=ACMR",
+      diffRange,
+      "--",
+      "src/data/blog",
+      "artifacts/editorial",
+      "context/editorial/artifacts",
+    ]);
+    if (output === null) continue;
+
+    const changedPaths = new Set(
+      output
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(Boolean)
+    );
+    const changedPostIds = new Set();
+
+    for (const changedPath of changedPaths) {
+      if (/^src\/data\/blog\/.+\.(md|mdx)$/i.test(changedPath)) {
+        changedPostIds.add(path.basename(changedPath, path.extname(changedPath)));
+        continue;
+      }
+
+      const canonicalMatch = changedPath.match(/^artifacts\/editorial\/([^/]+)\//);
+      if (canonicalMatch?.[1]) {
+        changedPostIds.add(canonicalMatch[1]);
+        continue;
+      }
+
+      const fallbackMatch = changedPath.match(/^context\/editorial\/artifacts\/([^/]+)\//);
+      if (fallbackMatch?.[1]) {
+        changedPostIds.add(fallbackMatch[1]);
+      }
+    }
+
+    return {
+      scope: "changed",
+      diffRange,
+      changedPaths,
+      changedPostIds,
+    };
+  }
+
+  return {
+    scope: "all",
+    diffRange: "",
+    changedPaths: new Set(),
+    changedPostIds: new Set(),
+  };
 }
 
 function extractFrontmatter(source) {
@@ -568,7 +655,16 @@ function run() {
 
   const allowlist = loadAllowlist(YMYL_ALLOWLIST_PATH);
   const files = listContentFiles(BLOG_DIR);
-  const results = files.map(filePath => evaluatePost(filePath, allowlist));
+  const editorialTargets = collectChangedEditorialTargets();
+  const results = files
+    .map(filePath => evaluatePost(filePath, allowlist))
+    .filter(result => {
+      if (editorialTargets.scope !== "changed") return true;
+      return (
+        editorialTargets.changedPaths.has(result.postPath) ||
+        editorialTargets.changedPostIds.has(result.postId)
+      );
+    });
   const ymyResults = results.filter(result => result.isYmy);
   const nonCompliant = ymyResults.filter(result => result.nonCompliant);
   const compliant = ymyResults.length - nonCompliant.length;
@@ -576,7 +672,9 @@ function run() {
   console.log(
     `[check-editorial-artifacts] mode=${MODE_LABEL} enforce=${
       STRICT_MODE ? "1" : "0"
-    } min_sources=${MIN_SOURCES} allowlist_entries=${allowlist.size}`
+    } min_sources=${MIN_SOURCES} allowlist_entries=${allowlist.size} scope=${
+      editorialTargets.scope
+    }${editorialTargets.diffRange ? ` diff_range=${editorialTargets.diffRange}` : ""}`
   );
 
   for (const result of nonCompliant) {

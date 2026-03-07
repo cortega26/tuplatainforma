@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: "☁️ Checkout repository"
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: "📦 Install pnpm"
         uses: pnpm/action-setup@v4
@@ -85,6 +87,8 @@ jobs:
         run: pnpm run check:editorial
         env:
           EDITORIAL_ENFORCE: "1"
+          EDITORIAL_SCOPE: ${{ github.event_name == 'pull_request' && 'changed' || 'all' }}
+          EDITORIAL_DIFF_BASE_REF: ${{ github.base_ref }}
 
       - name: "🚫 Guard against post.id URL regressions"
         run: pnpm run check:no-postid-urls
