@@ -6,20 +6,21 @@ Fecha de corte: 2026-03-04
 
 ### Total de items por urgencia
 - **P0:** 1
-- **P1:** 5
+- **P1:** 6
 - **P2:** 8
 - **P3:** 1
 
-### Estado de avance (2026-03-02)
+### Estado de avance (2026-03-06)
 - **Completados:** 12 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0013`, `TD-0014`)
 - **En progreso:** 1 (`TD-0012`)
-- **Backlog sin iniciar:** 2 (`TD-0011`, `TD-0015`)
+- **Backlog sin iniciar:** 3 (`TD-0011`, `TD-0015`, `TD-0016`)
 
 ### Top 5 riesgos
 | Ranking | ID | Riesgo | Motivo principal |
 |---|---|---|---|
 | 1 | TD-0012 | Medio | Artículos del batch original sin `updatedDate` reducen señal de frescura editorial y aumentan riesgo YMYL percibido. |
-| 2 | TD-0011 | Bajo-medio | Falta de pilar CAE/costo real deja hueco de cobertura en cluster deuda-crédito. |
+| 2 | TD-0016 | Alto | 24 artículos YMYL legacy no tienen paquete de artefactos editorial y bloquean endurecimiento global del gate. |
+| 3 | TD-0011 | Bajo-medio | Falta de pilar CAE/costo real deja hueco de cobertura en cluster deuda-crédito. |
 
 ### Quick wins (alto impacto / bajo esfuerzo)
 - [x] `TD-0007` Corregir email placeholder en enlaces sociales.
@@ -106,6 +107,26 @@ Fecha de corte: 2026-03-04
 - **Estado:** Backlog sin iniciar
 - **Fecha de creación:** 2026-03-04
 - **Última actualización:** 2026-03-04
+
+## TD-0016 — Corpus YMYL legacy sin paquetes de artefactos editoriales
+- **ID:** TD-0016
+- **Título corto:** Backfill de artefactos YMYL legacy
+- **Descripción:** El corpus histórico YMYL tiene 24 artículos sin `artifacts/editorial/<slug>/<run-id>/` mínimos (`01-brief.yaml`, `02-dossier.md`, `fecha_corte`, `sources`), lo que impide endurecer el gate en modo repo-wide sin bloquear PRs no editoriales.
+- **Evidencia (actualizada):** `EDITORIAL_ENFORCE=1 pnpm run check:editorial` reporta `ymyl_posts=25 compliant=1 non_compliant=24`; ejemplos: `como-calcular-sueldo-liquido`, `seguro-de-cesantia`, `reforma-previsional-2025-que-cambia-y-como-te-afecta`.
+- **Impacto:** Riesgo alto de deuda editorial invisible y de falsos bloqueos en CI cuando el gate se aplica fuera del diff tocado.
+- **Riesgo:** alto
+- **Severidad (1-5):** 4
+- **Urgencia:** P1
+- **Esfuerzo estimado:** L
+- **Propuesta de solución:** Backfill por cluster de los paquetes editoriales mínimos para cada artículo YMYL legacy y mantener la enforcement estricta de PR limitada al diff hasta cerrar la deuda.
+- **Criterios de cierre (checklist verificable):**
+- [ ] `EDITORIAL_ENFORCE=1 pnpm run check:editorial` pasa sobre todo el corpus.
+- [ ] Cada artículo YMYL publicado tiene `01-brief.yaml` y `02-dossier.md` con `fecha_corte` y `sources` válidos.
+- [ ] El backlog editorial deja de requerir scoping por diff para evitar bloqueos ajenos al cambio.
+- **Owner:** TBD
+- **Estado:** Backlog sin iniciar
+- **Fecha de creación:** 2026-03-06
+- **Última actualización:** 2026-03-06
 
 ## TD-0013 — Respuestas YMYL abstractas en licencia/finiquito
 - **ID:** TD-0013
