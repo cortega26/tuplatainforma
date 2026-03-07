@@ -62,6 +62,10 @@ Usar este registro para cada cambio sustantivo de contenido (regla, numero, vige
 
 | Fecha | URL/slug | Que cambio | Por que | Fuente(s) oficial(es) |
 |---|---|---|---|---|
+| 2026-03-07 | `/posts/el-poder-del-interes-compuesto/` | Se agregaron críticas razonables, advertencias metodológicas y límites de interpretación; `updatedDate` actualizado | El artículo necesitaba explicitar objeciones plausibles para evitar una lectura excesivamente optimista del ejercicio | Nasdaq, Banco Central de Chile, INE, nota metodológica interna |
+| 2026-03-07 | `/posts/interes-compuesto-nota-metodologica/` | Se agregó sección de críticas razonables y lectura correcta del resultado; `updatedDate` actualizado | La nota metodológica debía alinearse con el refuerzo editorial del artículo principal | Nasdaq, Banco Central de Chile, nota metodológica interna |
+| 2026-03-07 | `/posts/el-poder-del-interes-compuesto/` | Corrección de cifras finales, mensualidades de retiro y analogía en UF; `updatedDate` actualizado | La versión anterior usaba un dato parcial conservador para la serie 2025 del NASDAQ-100 y subestimaba el cierre del ejercicio | Nasdaq (scorecard diciembre 2025), Banco Central de Chile, Dirección del Trabajo, INE |
+| 2026-03-07 | `/posts/interes-compuesto-nota-metodologica/` | Corrección de la serie 2025 del NASDAQ-100, resultados acumulados y supuestos de retiro; `updatedDate` actualizado | Se alineó la nota metodológica con la corrección numérica que afecta el artículo principal | Nasdaq (scorecard diciembre 2025), Banco Central de Chile, Dirección del Trabajo |
 | 2026-03-04 | `/posts/como-calcular-sueldo-liquido/` | Corrección de `cluster` (ahorro-e-inversion → empleo-ingresos), `category` (prevision → empleo-ingresos), y `updatedDate` agregado | Metadatos de cluster/category eran incorrectos; revisión de REFRESH batch | N/A (metadatos editoriales) |
 | 2026-03-04 | `/posts/que-es-la-uf/` | `updatedDate` agregado; pie de página actualizado a marzo 2026 | Revisión REFRESH batch | N/A |
 | 2026-03-04 | `/posts/fraude-tarjeta-que-hacer/` | `updatedDate` agregado; pie de página actualizado a marzo 2026 | Revisión REFRESH batch | Ley N° 20.009 |

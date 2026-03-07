@@ -1,10 +1,10 @@
 ---
 title: "Nota metodológica: simulación de interés compuesto 1990-2025"
-description: "Supuestos, fórmulas, fuentes y cálculos del ejercicio sobre invertir el 10% del sueldo mínimo en el NASDAQ-100 entre 1990 y 2025."
+description: "Supuestos, fórmulas, fuentes y cálculos corregidos del ejercicio sobre invertir el 10% del sueldo mínimo en el NASDAQ-100 entre 1990 y 2025."
 slug: interes-compuesto-nota-metodologica
 author: "Equipo Monedario"
 pubDate: 2026-03-06T15:00:00Z
-updatedDate: 2026-03-06T18:30:00Z
+updatedDate: 2026-03-07T13:09:35Z
 tags:
   - ahorro
   - interes-compuesto
@@ -18,15 +18,17 @@ draft: false
 heroImage: /images/hero/interes-compuesto-nota-metodologica.avif
 ---
 
-Este documento detalla los supuestos, fuentes de datos y fórmulas utilizados en el artículo [El poder del interés compuesto: cómo el 10% del sueldo mínimo se convierte en más de $100 millones](/posts/el-poder-del-interes-compuesto/). El objetivo es que cualquier persona pueda replicar o cuestionar los resultados.
+Este documento detalla los supuestos, fuentes de datos y fórmulas utilizados en el artículo [El poder del interés compuesto: cómo el 10% del sueldo mínimo se convierte en más de $125 millones](/posts/el-poder-del-interes-compuesto/). El objetivo es que cualquier persona pueda replicar o cuestionar los resultados.
 
 **Fecha de corte del ejercicio:** **2025-12-31**.
+
+**Corrección aplicada en esta revisión:** la serie 2025 del NASDAQ-100 dejó de usar un dato parcial conservador y pasó a usar el cierre anual reportado para 2025. Ese ajuste cambia el resultado final del ejercicio de **USD 104.018 / CLP 100,9 millones** a **USD 129.495 / CLP 125,6 millones**.
 
 ## 1. Período y estructura de la simulación
 
 - **Período:** enero de 1990 a diciembre de 2025 (**432 meses = 36 años**).
 - **Meses con aporte:** **408**.
-- **Meses sin aporte (lagunas):** **24**, distribuidos aleatoriamente con semilla fija.
+- **Meses sin aporte (lagunas):** **24**, distribuidos aleatoriamente con semilla fija (`numpy.random.seed(42)`).
 - **Edad de inicio laboral asumida:** **18 años**.
 - **Edad de retiro al final de la fase de acumulación:** **54 años**.
 
@@ -117,44 +119,46 @@ retorno_mensual = (1 + retorno_anual)^(1/12) - 1
 
 Serie anual usada:
 
-| Año  | Retorno anual                                |
-| ---- | -------------------------------------------- |
-| 1990 | -6,5%                                        |
-| 1991 | +70,0%                                       |
-| 1992 | +15,5%                                       |
-| 1993 | +13,0%                                       |
-| 1994 | +3,0%                                        |
-| 1995 | +42,5%                                       |
-| 1996 | +43,0%                                       |
-| 1997 | +21,0%                                       |
-| 1998 | +85,5%                                       |
-| 1999 | +102,5%                                      |
-| 2000 | -37,0%                                       |
-| 2001 | -32,5%                                       |
-| 2002 | -37,8%                                       |
-| 2003 | +50,2%                                       |
-| 2004 | +10,7%                                       |
-| 2005 | +2,5%                                        |
-| 2006 | +7,2%                                        |
-| 2007 | +19,0%                                       |
-| 2008 | -41,9%                                       |
-| 2009 | +54,1%                                       |
-| 2010 | +20,1%                                       |
-| 2011 | +2,8%                                        |
-| 2012 | +18,2%                                       |
-| 2013 | +37,1%                                       |
-| 2014 | +19,1%                                       |
-| 2015 | +9,4%                                        |
-| 2016 | +7,1%                                        |
-| 2017 | +33,1%                                       |
-| 2018 | -1,0%                                        |
-| 2019 | +38,6%                                       |
-| 2020 | +48,9%                                       |
-| 2021 | +27,3%                                       |
-| 2022 | -32,6%                                       |
-| 2023 | +54,9%                                       |
-| 2024 | +25,6%                                       |
-| 2025 | -3,5% _(estimado conservador, dato parcial)_ |
+| Año  | Retorno anual                                     |
+| ---- | ------------------------------------------------- |
+| 1990 | -6,5%                                             |
+| 1991 | +70,0%                                            |
+| 1992 | +15,5%                                            |
+| 1993 | +13,0%                                            |
+| 1994 | +3,0%                                             |
+| 1995 | +42,5%                                            |
+| 1996 | +43,0%                                            |
+| 1997 | +21,0%                                            |
+| 1998 | +85,5%                                            |
+| 1999 | +102,5%                                           |
+| 2000 | -37,0%                                            |
+| 2001 | -32,5%                                            |
+| 2002 | -37,8%                                            |
+| 2003 | +50,2%                                            |
+| 2004 | +10,7%                                            |
+| 2005 | +2,5%                                             |
+| 2006 | +7,2%                                             |
+| 2007 | +19,0%                                            |
+| 2008 | -41,9%                                            |
+| 2009 | +54,1%                                            |
+| 2010 | +20,1%                                            |
+| 2011 | +2,8%                                             |
+| 2012 | +18,2%                                            |
+| 2013 | +37,1%                                            |
+| 2014 | +19,1%                                            |
+| 2015 | +9,4%                                             |
+| 2016 | +7,1%                                             |
+| 2017 | +33,1%                                            |
+| 2018 | -1,0%                                             |
+| 2019 | +38,6%                                            |
+| 2020 | +48,9%                                            |
+| 2021 | +27,3%                                            |
+| 2022 | -32,6%                                            |
+| 2023 | +54,9%                                            |
+| 2024 | +25,6%                                            |
+| 2025 | +20,2% _(cierre anual 2025 usado en la revisión)_ |
+
+**Fuente declarada por el ejercicio:** Nasdaq (histórico NDX y scorecard de diciembre de 2025).
 
 ## 6. Mecánica de la simulación mes a mes
 
@@ -179,17 +183,17 @@ si i no pertenece al set de lagunas:
 | ------------------------------------------------- | ----------------------- |
 | Total aportado (CLP)                              | $6.183.108              |
 | Total aportado (USD, al TC histórico de cada mes) | $9.453                  |
-| Valor final del portafolio (dic 2025, USD)        | $104.018                |
-| Valor final del portafolio (dic 2025, CLP a 970)  | $100.897.701 (~$100,9M) |
-| Multiplicador sobre lo aportado                   | 11,0x                   |
+| Valor final del portafolio (dic 2025, USD)        | $129.495                |
+| Valor final del portafolio (dic 2025, CLP a 970)  | $125.610.531 (~$125,6M) |
+| Multiplicador sobre lo aportado                   | 13,7x                   |
 
 ## 8. Cálculo de la mensualidad de retiro
 
 Se usa una anualidad ordinaria con capital decreciente, asumiendo:
 
 - **Tasa de retorno durante el retiro:** 6% anual nominal.
-- **Colchón final:** 10% del capital original (~$10.402 USD / ~$10,1M CLP).
-- **Horizonte:** escenarios de 301, 333 y 366 meses según expectativa de vida referencial.
+- **Colchón final:** 10% del capital original (~$12.950 USD / ~$12,6M CLP).
+- **Horizonte:** escenarios de 301, 333 y 366 meses según expectativa de vida referencial usada en el ejercicio.
 
 Fórmula:
 
@@ -202,9 +206,9 @@ Resultados:
 
 | Escenario           | Meses | Mensualidad (USD) | Mensualidad (CLP) |
 | ------------------- | ----- | ----------------- | ----------------- |
-| Hombre (~79 años)   | 301   | $644              | ~$625.000         |
-| Promedio (~82 años) | 333   | $619              | ~$601.000         |
-| Mujer (~84 años)    | 366   | $599              | ~$581.000         |
+| Hombre (~79 años)   | 301   | $802              | ~$778.000         |
+| Promedio (~82 años) | 333   | $771              | ~$748.000         |
+| Mujer (~84 años)    | 366   | $746              | ~$723.000         |
 
 ## 9. Lo que esta simulación no modela
 
@@ -214,7 +218,19 @@ Resultados:
 - **Accesibilidad histórica:** en 1990 un trabajador chileno de sueldo mínimo no tenía acceso práctico al NASDAQ-100.
 - **Tipo de cambio durante el retiro:** el modelo congela la conversión final en diciembre de 2025.
 
-## 10. Datos inmobiliarios usados como referencia
+## 10. Críticas razonables y cómo leer el resultado
+
+Estas son objeciones válidas al ejercicio y conviene dejarlas por escrito:
+
+- **Benchmark optimista:** el NASDAQ-100 fue uno de los índices más ganadores del período y además es más concentrado que un índice amplio. Eso sesga el ejemplo hacia un resultado alto.
+- **Efecto cambiario mezclado con retorno financiero:** el resultado final en CLP recoge tanto la evolución del índice como la depreciación del peso frente al dólar.
+- **Lagunas simplificadas:** asumir 24 meses aleatorios sirve para ilustrar, pero no replica trayectorias laborales reales, donde la cesantía tiende a concentrarse en crisis o etapas de mayor estrés.
+- **Magnitudes nominales:** el valor final y las mensualidades no están expresados en poder adquisitivo constante.
+- **Retiro suavizado:** la etapa de jubilación usa una tasa promedio fija, por lo que no modela bien el daño potencial de una mala secuencia de retornos al inicio del retiro.
+
+La lectura correcta no es "este será tu resultado", sino "esta es la escala que puede alcanzar un ahorro persistente bajo un escenario favorable de mercado y disciplina".
+
+## 11. Datos inmobiliarios usados como referencia
 
 Para la imagen mental del departamento se usaron rangos de mercado de 2025:
 
@@ -226,7 +242,7 @@ Para la imagen mental del departamento se usaron rangos de mercado de 2025:
 | Santiago Centro  | ~3.100 UF                            | BDO Chile / BioBioChile |
 | Estación Central | ~2.600 UF                            | BDO Chile / BioBioChile |
 
-El capital final de **$100,9 millones CLP** equivale aproximadamente a **2.621 UF**, usando una UF cercana a $38.500 en diciembre de 2025. En esa lógica, el resultado permite comprar al contado una unidad en el rango inferior de las comunas listadas o una propiedad de mayor estándar en varias ciudades regionales.
+El capital final de **$125,6 millones CLP** equivale aproximadamente a **3.263 UF**, usando una UF cercana a $38.500 en diciembre de 2025. En esa lógica, el resultado permite comprar al contado una unidad en el rango inferior de las comunas listadas o una propiedad de mayor estándar en varias ciudades regionales.
 
 Los rangos de arriendo referenciales de **$350.000 a $500.000 mensuales** para departamentos de 2 dormitorios en comunas intermedias de Santiago se atribuyen en el documento corregido a datos publicados por TocToc y HDI Seguros para 2025.
 

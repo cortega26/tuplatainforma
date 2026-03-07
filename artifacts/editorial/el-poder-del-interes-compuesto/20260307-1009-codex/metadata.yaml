@@ -1,0 +1,4 @@
+cut_off_date: 2025-12-31
+draft_agent: "codex-draft-local"
+math_audit_agent: "gpt5-math-audit-canonical-role"
+compliance_agent: "gemini-compliance-canonical-role"
