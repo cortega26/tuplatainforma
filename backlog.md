@@ -14,14 +14,14 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Dependencies:** None
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
-### MB-002 - Validate Search Console and submit sitemap
-- **Description:** With founder-confirmed ownership already in place, use authenticated Google Search Console and Bing Webmaster access to submit `sitemap-index.xml`, inspect coverage issues, and document indexation anomalies with real platform data. Sprint 2C verified a working Google Search Console path through a copied persistent Chrome profile, but the full task remains incomplete because Bing Webmaster authenticated access and the actual submission/validation run were not completed.
+### MB-002 - Search platform validation umbrella
+- **Description:** Umbrella task for real search-platform execution. Platform-specific operational work is split into `MB-036` for Google Search Console and `MB-037` for Bing Webmaster so backlog truth can reflect platform-specific progress instead of an all-or-nothing fiction. Sprint 2E restored a reusable authenticated automation path by signing in inside the dedicated persistent profile `output/playwright/search-platform-profile-2e`, exporting `output/playwright/search-platform-state-2e-authenticated.json`, and reloading that state in a fresh browser session. Both platform-specific execution tasks were then completed with real authenticated dashboard access and real sitemap submission evidence.
 - **Impact:** 5
 - **Effort:** 2
 - **Confidence:** 5
 - **Priority Score:** 12.5
-- **Status:** TODO
-- **Dependencies:** MB-001, MB-032
+- **Status:** DONE
+- **Dependencies:** MB-036, MB-037
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
 ### MB-031 - Obtain Search Console and Bing access prerequisites
@@ -35,13 +35,33 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
 ### MB-032 - Obtain authenticated agent-side Search Console and Bing access
-- **Description:** Secure authenticated operational access for the execution environment so future work can submit sitemaps, inspect coverage, and read platform diagnostics directly without relying on founder-side confirmation only. Sprint 2C verified that Google Search Console can be reached for `sc-domain:monedario.cl` through a copied persistent Chrome profile, but Bing Webmaster access still lacks a reusable authenticated session and the live Chrome user-data-dir cannot be attached directly while Chrome is running.
+- **Description:** Secure reusable authenticated operational access for the execution environment so future work can submit sitemaps, inspect coverage, and read platform diagnostics directly without relying on founder-side confirmation only. Sprint 2E created a dedicated persistent automation profile at `output/playwright/search-platform-profile-2e`, the founder signed in manually inside that exact profile for both Google and Microsoft, and the session was exported to `output/playwright/search-platform-state-2e-authenticated.json`. That saved state was then loaded into a fresh browser session, which reopened the authenticated Google Search Console property `sc-domain:monedario.cl` and the authenticated Bing Webmaster site `https://monedario.cl/` without manual re-login. Reusable authenticated agent-side access is now restored.
 - **Impact:** 4
 - **Effort:** 2
-- **Confidence:** 5
-- **Priority Score:** 10.0
-- **Status:** IN_PROGRESS
+- **Confidence:** 4
+- **Priority Score:** 8.0
+- **Status:** DONE
 - **Dependencies:** MB-031
+- **Roadmap Phase:** Phase 1 - Acquisition Engine
+
+### MB-036 - Execute Google Search Console validation and sitemap submission
+- **Description:** Using a reusable authenticated Google Search Console session for `sc-domain:monedario.cl`, reach the property, inspect the sitemap state, submit or resubmit `https://monedario.cl/sitemap-index.xml` if needed, and document verified coverage/indexing observations in the Google runbook. Sprint 2E executed this from the restored authenticated state: the Search Console sitemap table initially showed `0-0 de 0`, `https://monedario.cl/sitemap-index.xml` was submitted successfully, and the post-submit row now shows the sitemap entry dated `8 mar 2026` with status `No se ha podido obtener`, `0` discovered pages, and `0` discovered videos while the indexation reports are still processing.
+- **Impact:** 5
+- **Effort:** 2
+- **Confidence:** 4
+- **Priority Score:** 10.0
+- **Status:** DONE
+- **Dependencies:** MB-001, MB-032
+- **Roadmap Phase:** Phase 1 - Acquisition Engine
+
+### MB-037 - Execute Bing Webmaster validation and sitemap submission
+- **Description:** Using a reusable authenticated Bing Webmaster session for Monedario, reach the site dashboard, inspect sitemap and validation state, submit or resubmit `https://monedario.cl/sitemap-index.xml` if needed, and document verified platform observations in the Bing report. Sprint 2E executed this from the restored authenticated state: the Bing `Sitemaps` page for `https://monedario.cl/` initially showed no known sitemaps and `0 rows`, `https://monedario.cl/sitemap-index.xml` was submitted successfully, and the post-submit row now shows `Submitted` on `3/8/2026` with status `Processing`.
+- **Impact:** 4
+- **Effort:** 2
+- **Confidence:** 4
+- **Priority Score:** 8.0
+- **Status:** DONE
+- **Dependencies:** MB-001, MB-032
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
 ### MB-003 - Configure analytics events for content and calculator journeys

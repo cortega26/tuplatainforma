@@ -6,7 +6,9 @@ dist/
 .cache/
 .vscode/
 .qodo/
-.continue
+.playwright-cli/
+artifacts/
+output/
 
 
 # dependencies

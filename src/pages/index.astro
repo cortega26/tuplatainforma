@@ -25,17 +25,30 @@ const secondaryPosts = sortedPosts
   .map(post => ({ post, article: toArticleView(post) }));
 const remainingPosts = sortedPosts.slice(3, 3 + SITE.postPerIndex);
 const homePath = getPath("/");
+const homeTitle =
+  "Monedario | Calculadoras y guías para decisiones financieras en Chile";
+const homeDescription =
+  "Calculadoras y guías para entender sueldo líquido, AFP, impuestos, crédito, UF y presupuesto con información clara y práctica para Chile.";
+const heroTitle = "Calculadoras y guías sobre tu plata en Chile";
+const heroDescription =
+  "Sueldo líquido, AFP, impuestos, crédito, UF y presupuesto en lenguaje claro.";
 ---
 
-<Layout>
+<Layout title={homeTitle} description={homeDescription}>
   <Header />
   <main id="main-content" data-layout="index" class="app-layout">
-    <!-- GRID EDITORIAL -->
+    <!-- CONTENIDO DESTACADO -->
     {
       heroPost && heroArticle && (
         <RevealOnScroll initialVisible={true}>
           <section class="grid gap-6 border-b border-border py-8 lg:grid-cols-3">
             <article class="lg:col-span-2">
+              <h1 class="mb-3 max-w-3xl font-app text-2xl leading-tight font-bold sm:text-4xl">
+                {heroTitle}
+              </h1>
+              <p class="mb-6 max-w-3xl text-base leading-relaxed text-secondary">
+                {heroDescription}
+              </p>
               <a
                 href={getCanonicalPathFromSlug(heroArticle.slug)}
                 class="group block"
@@ -62,11 +75,11 @@ const homePath = getPath("/");
                   })()}
                 </div>
                 <span class="mb-3 inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold tracking-widest text-accent uppercase">
-                  Destacado
+                  Última actualización
                 </span>
-                <h1 class="mb-3 text-2xl leading-tight font-bold transition-colors group-hover:text-accent sm:text-4xl">
+                <h2 class="mb-3 text-2xl leading-tight font-bold transition-colors group-hover:text-accent sm:text-4xl">
                   {heroPost.data.title}
-                </h1>
+                </h2>
                 <p class="mb-4 max-w-3xl text-base leading-relaxed text-secondary">
                   {heroPost.data.description}
                 </p>

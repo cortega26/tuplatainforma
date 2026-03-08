@@ -98,3 +98,23 @@ Observed impact: the sueldo cluster now answers the broader `descuentos sueldo` 
 MB-035
 Dedicated liquidación de sueldo explainer published with field-by-field reading guidance and wired into the sueldo hub, calculator, and related salary articles.
 Observed impact: the sueldo cluster now covers the document-reading intent directly instead of treating liquidación only as a subsection inside the pilar guide.
+
+2026-03-08
+MB-032
+Reusable authenticated automation was restored through the dedicated search-platform profile and a saved authenticated storage-state file that reopened both Google Search Console and Bing Webmaster in a fresh session.
+Observed impact: a fresh browser session reached `sc-domain:monedario.cl` in Google Search Console and `https://monedario.cl/` in Bing Webmaster without manual re-login.
+
+2026-03-08
+MB-036
+Google Search Console validation was executed for `sc-domain:monedario.cl` and `https://monedario.cl/sitemap-index.xml` was submitted from the authenticated Sitemaps screen.
+Observed impact: Search Console now lists `https://monedario.cl/sitemap-index.xml` as submitted on `8 mar 2026`; indexation reports are still processing and the sitemap row currently shows `No se ha podido obtener`.
+
+2026-03-08
+MB-037
+Bing Webmaster validation was executed for `https://monedario.cl/` and `https://monedario.cl/sitemap-index.xml` was submitted from the authenticated Sitemaps screen.
+Observed impact: Bing Webmaster now lists `https://monedario.cl/sitemap-index.xml` as submitted on `3/8/2026` with status `Processing`.
+
+2026-03-08
+MB-002
+The search-platform umbrella closed after the reusable authenticated automation path was restored and both Google Search Console and Bing Webmaster execution tasks were completed with real dashboard access.
+Observed impact: both search platforms now have authenticated execution evidence and a submitted Monedario sitemap entry.
