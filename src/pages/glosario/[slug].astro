@@ -21,6 +21,25 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { term, shortDefinition, relatedTerms } = entry.data;
+const canonicalUrl = new URL(
+  getPath(`/glosario/${entry.id}/`),
+  Astro.site ?? Astro.url.origin
+).href;
+const glossaryIndexUrl = new URL(
+  getPath("/glosario/"),
+  Astro.site ?? Astro.url.origin
+).href;
+
+const definedTermSchema = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "@id": canonicalUrl,
+  name: term,
+  description: shortDefinition,
+  url: canonicalUrl,
+  inDefinedTermSet: glossaryIndexUrl,
+  inLanguage: "es-CL",
+};
 
 const { Content } = await render(entry);
 
@@ -34,7 +53,16 @@ if (relatedTerms.length > 0) {
 }
 ---
 
-<Layout title={`${term} | Glosario Financiero`} description={shortDefinition}>
+<Layout
+  title={`${term} | Glosario Financiero`}
+  description={shortDefinition}
+  canonicalURL={canonicalUrl}
+>
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(definedTermSchema)}
+  />
   <Header />
   <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
     <Breadcrumb />

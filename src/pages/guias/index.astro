@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
 import { getPath } from "@/utils/getPath";
 
 type CapaId =
@@ -126,6 +127,7 @@ const capasConHubs = capas
   description="Mapa completo de temas financieros en Chile: AFP, ahorro, inversión, impuestos y deuda para elegir la guía correcta en cada etapa."
 >
   <Header />
+  <Breadcrumb />
 
   <main id="main-content" class="app-layout">
     <section class="border-b border-border py-8">

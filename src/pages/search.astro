@@ -10,7 +10,11 @@ import { getPath } from "@/utils/getPath";
 const backUrl = SITE.showBackButton ? `${Astro.url.pathname}` : getPath("/");
 ---
 
-<Layout title={`Buscar | ${SITE.title}`}>
+<Layout
+  title={`Buscar | ${SITE.title}`}
+  description="Buscador interno de Monedario para encontrar artículos y guías. Página utilitaria excluida del objetivo de indexación orgánica."
+>
+  <meta name="robots" content="noindex,follow" slot="head" />
   <Header />
   <Main pageTitle="Buscar" pageDesc="Busca cualquier artículo ...">
     <div id="pagefind-search" transition:persist data-backurl={backUrl}></div>

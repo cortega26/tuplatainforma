@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
 import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
 
 const { parameters: economicParameters } = await getEconomicParameters();
@@ -16,6 +17,7 @@ const economicSourceLabel =
   description="Calcula el reajuste de arriendo según variación de UF o IPC y estima tu nuevo canon mensual."
 >
   <Header />
+  <Breadcrumb />
   <main id="main-content" class="app-layout">
     <section class="border-b border-border pt-8 pb-6">
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">

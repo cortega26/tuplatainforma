@@ -51,7 +51,7 @@ Toda institución financiera que ofrezca un crédito de consumo, hipotecario o t
 
 Texto completo: [BCN — Ley 20.555](https://www.bcn.cl/leychile/navegar?idNorma=1032865)
 
-Reclamos financieros: [SERNAC — Canal Financiero](https://www.sernac.cl/portal/604/w3-propertyname-3780.html)
+Reclamos financieros: [SERNAC — Consumidor financiero](https://www.sernac.cl/proteccion-al-consumidor/consumidor-financiero)
 
 ---
 

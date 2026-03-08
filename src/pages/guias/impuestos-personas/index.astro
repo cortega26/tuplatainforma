@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
 import { getPath } from "@/utils/getPath";
 
 const articulosSeccion = [
@@ -37,6 +38,7 @@ const articulosSeccion = [
   description="Página índice de la sección Impuestos Personas: orden de lectura, artículos clave y errores frecuentes para declarar renta con menos fricción."
 >
   <Header />
+  <Breadcrumb />
 
   <main id="main-content" class="app-layout">
     <section class="border-b border-border py-8">

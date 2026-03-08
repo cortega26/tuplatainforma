@@ -13,7 +13,11 @@ const posts = await getCollection("blog");
 const tags = getUniqueTagsWithCount(posts);
 ---
 
-<Layout title={`Etiquetas | ${SITE.title}`}>
+<Layout
+  title={`Etiquetas | ${SITE.title}`}
+  description="Índice interno de etiquetas usadas para navegación temática dentro de Monedario. Página excluida del objetivo de indexación orgánica."
+>
+  <meta name="robots" content="noindex,follow" slot="head" />
   <Header />
   <Main
     pageTitle="Etiquetas"

@@ -12,8 +12,8 @@ Allow: /
 Disallow: ${BASE}/og.png
 Disallow: ${BASE}/pagefind/
 
-# Evitar indexar paginación de etiquetas (contenido duplicado de baja prioridad)
-Disallow: ${BASE}/tags/*/
+# /search/ y /tags/ quedan crawlables para que los bots vean el noindex
+# pero se excluyen del sitemap y de los objetivos de indexación.
 
 # La URL canónica del sitio está en el sitemap
 Sitemap: ${sitemapURL.href}

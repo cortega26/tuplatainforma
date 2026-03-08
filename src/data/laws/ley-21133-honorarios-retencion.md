@@ -58,7 +58,7 @@ Sí. Si la retención acumulada del año supera las cotizaciones efectivamente a
 
 Texto completo: [BCN — Ley 21.133](https://www.bcn.cl/leychile/navegar?idNorma=1128420)
 
-Tabla de retenciones vigentes: [SII — Trabajadores independientes](https://www.sii.cl/destacados/trabajadores_independientes/)
+Tabla de retenciones vigentes: [SII — Boletas de honorarios](https://www.sii.cl/destacados/boletas_honorarios/)
 
 ---
 

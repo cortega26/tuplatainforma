@@ -25,9 +25,16 @@ const tocHeadingPattern = tocUi.toc.title;
 const tocHeadingRegex = new RegExp(`^${escapeRegExp(tocHeadingPattern)}$`, "i");
 const SITE_BASE = new URL(SITE.website).pathname.replace(/\/$/, "") || "/";
 const HOME_PATH = SITE_BASE === "/" ? "/" : `${SITE_BASE}/`;
+const withBasePath = (path: string) =>
+  SITE_BASE === "/" ? path : `${SITE_BASE}${path}`;
 const SITEMAP_EXCLUDED_PATHS = new Set([
-  `${SITE_BASE === "/" ? "" : SITE_BASE}/posts/interes-compuesto-nota-metodologica/`,
+  withBasePath("/posts/interes-compuesto-nota-metodologica/"),
 ]);
+const TAGS_ROOT_PATH = withBasePath("/tags/");
+const SEARCH_PATH = withBasePath("/search/");
+const PAGINATED_POSTS_PATTERN = new RegExp(
+  `^${escapeRegExp(withBasePath("/posts/"))}\\d+/$`
+);
 
 // https://astro.build/config
 export default defineConfig({
@@ -39,6 +46,14 @@ export default defineConfig({
       filter: page => {
         const pathname = new URL(page).pathname;
         if (SITEMAP_EXCLUDED_PATHS.has(pathname)) return false;
+        if (pathname === SEARCH_PATH) return false;
+        if (
+          pathname === TAGS_ROOT_PATH ||
+          pathname.startsWith(TAGS_ROOT_PATH)
+        ) {
+          return false;
+        }
+        if (PAGINATED_POSTS_PATTERN.test(pathname)) return false;
         return SITE.showArchives || !page.endsWith("/archives/");
       },
       serialize(item) {

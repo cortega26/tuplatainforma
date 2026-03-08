@@ -63,7 +63,7 @@ if (!ogImageUrl && SITE.dynamicOgImage) {
 
 // Resolve OG image URL (or fallback to SITE.ogImage / default `og.png`)
 const ogImage = ogImageUrl
-  ? new URL(ogImageUrl, Astro.url.origin).href
+  ? new URL(ogImageUrl, Astro.site ?? Astro.url.origin).href
   : undefined;
 
 const layoutProps = {
@@ -72,7 +72,10 @@ const layoutProps = {
   description,
   pubDatetime,
   modDatetime,
-  canonicalURL: canonicalURL ?? getCanonicalPathFromSlug(article.slug),
+  canonicalURL: new URL(
+    canonicalURL ?? getCanonicalPathFromSlug(article.slug),
+    Astro.site ?? Astro.url.origin
+  ).href,
   ogImage,
   scrollSmooth: true,
 };

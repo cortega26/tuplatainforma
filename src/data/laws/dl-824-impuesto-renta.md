@@ -26,7 +26,7 @@ El DL 824 es la norma base que rige cómo se gravan los ingresos en Chile. Para 
 
 Se aplica mensualmente sobre el sueldo bruto. Es progresivo: sobre el mínimo exento no se paga nada, y el porcentaje sube por tramo hasta el 40% para rentas muy altas. El empleador lo retiene y entera al SII directamente.
 
-Los tramos se actualizan mensualmente y los puedes ver en el [SII — Impuesto 2da Categoría](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/).
+Los tramos se actualizan mensualmente y los puedes ver en el [SII — Impuesto 2da Categoría](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm).
 
 ### Impuesto Global Complementario (Operación Renta)
 
@@ -57,7 +57,7 @@ La venta de instrumentos financieros (acciones, fondos mutuos, ETFs) puede gener
 
 Texto completo: [BCN — DL 824](https://www.bcn.cl/leychile/navegar?idNorma=6368)
 
-Tramos vigentes: [SII — Impuesto de Segunda Categoría](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/)
+Tramos vigentes: [SII — Impuesto de Segunda Categoría](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm)
 
 ---
 

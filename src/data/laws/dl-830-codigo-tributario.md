@@ -70,7 +70,7 @@ Si recibes una liquidación del SII y no estás de acuerdo:
 
 Texto completo: [BCN — DL 830 Código Tributario](https://www.bcn.cl/leychile/navegar?idNorma=6236)
 
-Reclamaciones: [SII — Tribunal Tributario y Aduanero](https://www.sii.cl/contribuyentes/atencion_contribuyentes/tribunal_tributario/)
+Reclamaciones: [Tribunales Tributarios y Aduaneros](https://www.tta.cl/)
 
 ---
 

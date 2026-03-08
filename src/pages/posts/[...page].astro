@@ -18,9 +18,22 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
+const currentPage = page.currentPage;
+const isPaginatedArchive = currentPage > 1;
+const pageTitle = isPaginatedArchive
+  ? `Artículos página ${currentPage} | ${SITE.title}`
+  : `Artículos | ${SITE.title}`;
+const pageDescription = isPaginatedArchive
+  ? `Página ${currentPage} del archivo principal de artículos de Monedario. Navega artículos publicados por fecha y tema.`
+  : "Todos los artículos publicados en Monedario, ordenados por fecha y enfocados en finanzas personales para Chile.";
 ---
 
-<Layout title={`Artículos | ${SITE.title}`}>
+<Layout title={pageTitle} description={pageDescription}>
+  {
+    isPaginatedArchive && (
+      <meta name="robots" content="noindex,follow" slot="head" />
+    )
+  }
   <Header />
   <Main pageTitle="Artículos" pageDesc="Todos los artículos publicados.">
     <ul>

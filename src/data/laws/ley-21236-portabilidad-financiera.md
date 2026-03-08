@@ -66,7 +66,7 @@ La institución **no puede cobrar** comisiones ni penalidades por el solo hecho 
 
 Texto completo: [BCN — Ley 21.236](https://www.bcn.cl/leychile/navegar?idNorma=1146340)
 
-Guía CMF: [CMF — Portabilidad Financiera](https://www.cmfchile.cl/portal/principal/613/w3-article-27329.html)
+Guía CMF: [CMF — Portabilidad Financiera](https://www.cmfchile.cl/portal/principal/613/w3-propertyvalue-43999.html)
 
 ---
 

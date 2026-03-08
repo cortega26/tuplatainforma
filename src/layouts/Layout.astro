@@ -27,49 +27,17 @@ const {
   scrollSmooth = false,
 } = Astro.props;
 
-const socialImageURL = new URL(ogImage, Astro.url);
+const siteContext = Astro.site ?? Astro.url;
+const resolvedCanonicalURL = new URL(canonicalURL, siteContext).href;
+const socialImageURL = new URL(ogImage, siteContext);
 
-const AUTHOR_URL = new URL("/autor/", Astro.site ?? Astro.url.origin).href;
 const SITE_ORIGIN = (Astro.site ?? new URL(Astro.url.origin)).href.replace(
   /\/+$/,
   ""
 );
 
-const isArticle = Boolean(pubDatetime);
-
-const structuredData = isArticle
+const structuredData = !pubDatetime
   ? {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      headline: title,
-      description: description,
-      image: `${socialImageURL}`,
-      url: `${canonicalURL}`,
-      datePublished: pubDatetime?.toISOString(),
-      ...(modDatetime && { dateModified: modDatetime.toISOString() }),
-      inLanguage: "es-CL",
-      author: [
-        {
-          "@type": "Person",
-          name: author,
-          url: AUTHOR_URL,
-          sameAs: [
-            "https://www.linkedin.com/in/cortega26/",
-            "https://github.com/cortega26",
-          ],
-        },
-      ],
-      publisher: {
-        "@type": "Organization",
-        name: SITE.title,
-        url: SITE_ORIGIN,
-        logo: {
-          "@type": "ImageObject",
-          url: `${SITE_ORIGIN}/favicon.svg`,
-        },
-      },
-    }
-  : {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: SITE.title,
@@ -81,7 +49,8 @@ const structuredData = isArticle
         name: SITE.title,
         url: SITE_ORIGIN,
       },
-    };
+    }
+  : null;
 ---
 
 <!doctype html>
@@ -101,7 +70,7 @@ const structuredData = isArticle
       crossorigin
     />
     <link rel="icon" type="image/svg+xml" href={getPath("/favicon.svg")} />
-    <link rel="canonical" href={canonicalURL} />
+    <link rel="canonical" href={resolvedCanonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
     <!-- General Meta Tags -->
@@ -114,7 +83,7 @@ const structuredData = isArticle
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:url" content={resolvedCanonicalURL} />
     <meta property="og:image" content={socialImageURL} />
 
     <!-- Article Published/Modified time -->
@@ -136,18 +105,22 @@ const structuredData = isArticle
     }
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={socialImageURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={resolvedCanonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
 
     <!-- Google JSON-LD Structured data -->
-    <script
-      type="application/ld+json"
-      is:inline
-      set:html={JSON.stringify(structuredData)}
-    />
+    {
+      structuredData && (
+        <script
+          type="application/ld+json"
+          is:inline
+          set:html={JSON.stringify(structuredData)}
+        />
+      )
+    }
 
     <!-- Enable RSS feed auto-discovery  -->
     <!-- https://docs.astro.build/en/recipes/rss/#enabling-rss-feed-auto-discovery -->
@@ -155,7 +128,7 @@ const structuredData = isArticle
       rel="alternate"
       type="application/rss+xml"
       title={SITE.title}
-      href={new URL("rss.xml", Astro.site)}
+      href={new URL("rss.xml", siteContext).href}
     />
 
     <meta name="theme-color" content="" />

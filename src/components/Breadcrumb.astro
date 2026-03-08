@@ -67,8 +67,36 @@ if (segments[0] === "tags" && !isNaN(Number(segments[2]))) {
     `${segments[1]} ${page === 1 ? "" : `(página ${segments[2]})`}`.trim()
   );
 }
+
+const breadcrumbItems = [
+  {
+    "@type": "ListItem",
+    position: 1,
+    name: "Inicio",
+    item: new URL(getPath("/"), Astro.site ?? Astro.url.origin).href,
+  },
+  ...crumbs.map((crumb, index) => ({
+    "@type": "ListItem",
+    position: index + 2,
+    name: labels[index],
+    item: new URL(getPath(crumb.href), Astro.site ?? Astro.url.origin).href,
+  })),
+];
 ---
 
+{
+  breadcrumbItems.length > 1 && (
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: breadcrumbItems,
+      })}
+    />
+  )
+}
 <nav class="app-layout mt-8 mb-1" aria-label="Migas de pan">
   <ul
     class="font-light [&>li]:inline [&>li:not(:last-child)>a]:hover:opacity-100"

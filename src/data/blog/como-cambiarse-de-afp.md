@@ -74,7 +74,7 @@ La diferencia entre la comisión más baja (0.46%) y la más alta (0.77%) puede 
 
 La rentabilidad es lo que realmente determina el tamaño de tu pensión. Una AFP con menor comisión pero peor rentabilidad puede terminar siendo peor opción a largo plazo.
 
-Compara la rentabilidad de los últimos 36 meses en el fondo en el que estás (A, B, C, D o E). Puedes ver estos datos actualizados mensualmente en el sitio de la [Superintendencia de Pensiones](https://www.spensiones.cl/apps/rentabilidad/genRentabilidad.php).
+Compara la rentabilidad de los últimos 36 meses en el fondo en el que estás (A, B, C, D o E). Puedes ver estos datos actualizados mensualmente en el sitio de la [Superintendencia de Pensiones](https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-9585.html).
 
 ### Calidad de servicio y herramientas digitales
 

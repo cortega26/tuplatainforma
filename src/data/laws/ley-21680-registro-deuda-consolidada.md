@@ -55,7 +55,7 @@ Sí. Si el RDC contiene información incorrecta sobre tus deudas, tienes derecho
 
 Texto completo: [BCN — Ley 21.680](https://www.bcn.cl/leychile/navegar?idNorma=1204681)
 
-Informe de deudas vigente: [CMF — Portal del Consumidor Financiero](https://www.cmfchile.cl/portal/principal/613/w3-propertyname-833.html)
+Informe de deudas vigente: [CMF — Informe de Deudas del Sistema Financiero](https://www.cmfchile.cl/portal/principal/613/w3-article-95399.html)
 
 ---
 

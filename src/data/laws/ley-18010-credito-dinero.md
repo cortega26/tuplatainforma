@@ -55,7 +55,7 @@ La CMF publica mensualmente la TMC vigente en [cmfchile.cl](https://www.cmfchile
 
 Texto completo y modificaciones: [BCN — Ley 18.010](https://www.bcn.cl/leychile/navegar?idNorma=29438)
 
-Tasas vigentes: [CMF — Tasas de interés](https://www.cmfchile.cl/portal/estadisticas/606/w3-propertyvalue-17636.html)
+Tasas vigentes: [CMF — Tasa Máxima Convencional e interés corriente](https://www.cmfchile.cl/portal/estadisticas/617/w3-propertyvalue-43345.html?indice=15.1)
 
 ---
 

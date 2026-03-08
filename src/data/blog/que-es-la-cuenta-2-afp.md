@@ -47,7 +47,7 @@ Aquí está la parte más importante y también la más mal entendida. La Cuenta
 
 - El dinero que depositaste originalmente **no paga impuestos al retirarlo**, porque ya tributó cuando lo recibiste como sueldo.
 - Lo que sí tributa es la **rentabilidad real** que generó ese dinero.
-- Si la rentabilidad real de todos tus retiros durante el año es **menor a 30 UTM** (consulta el valor vigente de la UTM en [sii.cl](https://www.sii.cl/valores_y_fechas/utm/)), quedas **exento de impuestos**.
+- Si la rentabilidad real de todos tus retiros durante el año es **menor a 30 UTM** (consulta el valor vigente de la UTM en [sii.cl](https://www.sii.cl/valores_y_fechas/utm/utm2026.htm)), quedas **exento de impuestos**.
 - Si la rentabilidad supera ese umbral, pagas impuesto por el total retirado según tu tramo del Impuesto Global Complementario.
 
 En la práctica, para la mayoría de los ahorrantes con montos moderados, los retiros quedan exentos de impuestos porque la rentabilidad anual raramente supera las 30 UTM.

@@ -93,7 +93,7 @@ La CMF publica la TMC mensualmente según el tipo y monto del crédito. Los segm
 
 Si un crédito tiene CAE superior a la TMC vigente en su segmento en el mes de contratación, la diferencia se reduce automáticamente por ley al máximo permitido (**[Ley N° 18.010](/leyes/ley-18010-credito-dinero/)**). Puedes reclamar la diferencia si ya firmaste.
 
-Para verificar la TMC vigente, la CMF publica los valores actualizados mensualmente: [cmfchile.cl](https://www.cmfchile.cl/portal/estadisticas/606/w3-propertyvalue-17008.html)
+Para verificar la TMC vigente, la CMF publica los valores actualizados mensualmente: [cmfchile.cl](https://www.cmfchile.cl/portal/estadisticas/617/w3-propertyvalue-43345.html?indice=15.1)
 
 ## Cómo se calcula el CAE paso a paso
 
@@ -161,7 +161,7 @@ En hipotecarios el CAE incluye seguros de incendio y desgravamen. También puede
 
 1. **Lee el CAE, no solo la tasa mensual.** Ambos deben estar en la oferta escrita.
 2. **Pregunta qué incluye el CAE** — especialmente si hay seguros y su costo mensual.
-3. **Verifica que la tasa no supere la TMC vigente** en [cmfchile.cl](https://www.cmfchile.cl/portal/estadisticas/606/w3-propertyvalue-17008.html).
+3. **Verifica que la tasa no supere la TMC vigente** en [cmfchile.cl](https://www.cmfchile.cl/portal/estadisticas/617/w3-propertyvalue-43345.html?indice=15.1).
 4. **Pide el cuadro de amortización completo** (todas las cuotas, con capital e interés desglosados).
 5. **Calcula el total pagado:** cuota × número de cuotas. Ese número real, no la tasa, es lo que te cuesta el crédito.
 6. **Averigua el costo de prepago** si crees que podrías pagar anticipado.
@@ -212,10 +212,10 @@ Puedes usar la [calculadora de crédito de consumo](/calculadoras/credito-consum
 
 La información de esta guía se basa en la normativa vigente a marzo de 2026. Los valores de TMC cambian mensualmente y deben verificarse directamente en las fuentes:
 
-- **CMF — Tasa Máxima Convencional:** [cmfchile.cl](https://www.cmfchile.cl/portal/estadisticas/606/w3-propertyvalue-17008.html)
+- **CMF — Tasa Máxima Convencional:** [cmfchile.cl](https://www.cmfchile.cl/portal/estadisticas/617/w3-propertyvalue-43345.html?indice=15.1)
 - **SERNAC — Derechos del consumidor financiero, simulador de créditos y denuncias:** [sernac.cl](https://www.sernac.cl)
 - **Ley N° 18.010 — Operaciones de crédito de dinero (prepago, tasa, TMC):** [bcn.cl](https://www.bcn.cl/leychile/navegar?idNorma=29438)
-- **CMF Educa — Cómo comparar créditos y Hoja de Información Precontractual:** [cmfchile.cl/educa](https://www.cmfchile.cl/educa/621/w3-article-29903.html)
+- **CMF Educa — Crédito de consumo y Hoja de Información Precontractual:** [cmfchile.cl/educa](https://www.cmfchile.cl/educa/621/w3-propertyvalue-43579.html)
 
 _Esta guía es educativa y no reemplaza la revisión de tu contrato específico ni asesoría profesional cuando el monto o la complejidad del crédito lo requieran._
 

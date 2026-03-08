@@ -29,9 +29,19 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 const params = Astro.params;
 const { tag } = params;
 const { page, tagName } = Astro.props;
+const currentPage = page.currentPage;
+const pageTitle =
+  currentPage > 1
+    ? `Etiqueta: ${tagName} página ${currentPage} | ${SITE.title}`
+    : `Etiqueta: ${tagName} | ${SITE.title}`;
+const pageDescription =
+  currentPage > 1
+    ? `Página ${currentPage} del listado interno de artículos etiquetados con "${tagName}" en Monedario.`
+    : `Listado interno de artículos etiquetados con "${tagName}" en Monedario. Página de navegación excluida del objetivo de indexación orgánica.`;
 ---
 
-<Layout title={`Etiqueta: ${tagName} | ${SITE.title}`}>
+<Layout title={pageTitle} description={pageDescription}>
+  <meta name="robots" content="noindex,follow" slot="head" />
   <Header />
   <Main
     pageTitle={["Etiqueta:", `${tagName}`]}
