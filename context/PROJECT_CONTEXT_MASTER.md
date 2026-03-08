@@ -28,6 +28,13 @@ Los riesgos principales están en deuda de mantenibilidad y consistencia operati
 - La deuda remanente del corpus YMYL sin artefactos se registra en `docs/TECH_DEBT_BACKLOG.md` como `TD-0016`.
 - ADR de respaldo: `docs/adr/ADR-20260306-editorial-artifacts-pr-diff-scope.md`.
 
+### Checkpoint 2026-03-08 (Sprint 2B Cluster Taxonomy Realignment)
+
+- Se preserva la estrategia pública de hubs bajo `/guias/<cluster>/`; no hubo cambio de estrategia canónica ni ADR de routing porque el patrón existente se mantuvo.
+- Se incorpora el clúster editorial `sueldo-remuneraciones` con hub propio en `src/pages/guias/sueldo-remuneraciones/index.astro`.
+- `empleo-ingresos` queda reposicionado como clúster de contingencias laborales, mientras `pensiones-afp` deja de absorber la intención de sueldo líquido/remuneraciones.
+- Se agregan módulos reutilizables de linking contextual para el clúster sueldo (`src/components/ContextLinkSection.astro` + `src/config/sueldoClusterLinks.ts`) y se conectan a artículos y calculadora.
+
 ## 1. Stack técnico
 
 ### Runtime y package management

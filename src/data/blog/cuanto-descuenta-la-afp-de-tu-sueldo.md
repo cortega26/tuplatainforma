@@ -12,15 +12,15 @@ tags:
   - pensiones
   - descuentos
   - sueldo
-category: prevision
-cluster: pensiones-afp
+category: empleo-ingresos
+cluster: sueldo-remuneraciones
 description: "Desglose claro de cuánto descuenta la AFP de tu sueldo mensual, para qué sirve cada peso descontado y cómo calcularlo tú mismo."
 heroImage: /images/hero/cuanto-descuenta-la-afp-de-tu-sueldo.avif
 ---
 
 Cada mes ves en tu liquidación de sueldo una línea que dice "AFP" y un número que te descuentan. Pero, ¿sabes exactamente para qué sirve ese dinero y si lo estás aprovechando bien?
 
-En esta guía te explicamos todo de forma simple. Si quieres el contexto completo de decisiones previsionales, revisa la [guía central de pensiones y AFP](/guias/pensiones-afp/).
+En esta guía te explicamos todo de forma simple. Si quieres ver cómo este descuento conversa con salud, cesantía e impuesto único, parte por el [hub de sueldo y remuneraciones](/guias/sueldo-remuneraciones/) y luego cruza con la guía de [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/).
 
 ## Qué cambia entre 2025 y 2027
 

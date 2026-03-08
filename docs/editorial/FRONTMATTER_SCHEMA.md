@@ -27,7 +27,8 @@ Usados para taxonomía, navegación y agrupación. Deben coincidir con los slugs
 | `category` | `cluster` | Descripción |
 |---|---|---|
 | `prevision` | `pensiones-afp` | AFP, fondos, cuenta 2, APV, pensiones |
-| `empleo-ingresos` | `empleo-ingresos` | Sueldo, seguro cesantía, licencia, finiquito |
+| `empleo-ingresos` | `sueldo-remuneraciones` | Sueldo líquido, liquidación, descuentos, impuesto único y remuneraciones mensuales |
+| `empleo-ingresos` | `empleo-ingresos` | Cesantía, licencia médica, finiquito e interrupción del ingreso laboral |
 | `impuestos` | `impuestos-personas` | Operación renta, F22, boletas honorarios, devolución |
 | `ahorro-inversion` | `ahorro-e-inversion` | DAP, fondos mutuos, ETFs, APV, Cuenta 2 |
 | `deuda-credito` | `deuda-credito` | CMF, DICOM, renegociación Superir, UF |

@@ -20,8 +20,10 @@ import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
 import RelatedPosts from "@/components/RelatedPosts.astro";
 import ArticleJsonLd from "@/components/ArticleJsonLd.astro";
+import ContextLinkSection from "@/components/ContextLinkSection.astro";
 import { getPath } from "@/utils/getPath";
 import { SITE } from "@/config";
+import { getSueldoArticleSections } from "@/config/sueldoClusterLinks";
 
 type Props = {
   post: CollectionEntry<"blog">;
@@ -91,6 +93,7 @@ const allPosts = posts.map(entry => {
 });
 
 const currentPostIndex = allPosts.findIndex(a => a.slug === article.slug);
+const contextualSections = getSueldoArticleSections(article.slug);
 
 const prevPost = currentPostIndex > 0 ? allPosts[currentPostIndex - 1] : null;
 const nextPost =
@@ -149,6 +152,8 @@ const nextPost =
     >
       <Content />
     </article>
+
+    {contextualSections.map(section => <ContextLinkSection {...section} />)}
 
     <!-- Author Card -->
     <aside

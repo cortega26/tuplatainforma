@@ -15,7 +15,7 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
 ### MB-002 - Validate Search Console and submit sitemap
-- **Description:** With founder-confirmed ownership already in place, use authenticated Google Search Console and Bing Webmaster access to submit `sitemap-index.xml`, inspect coverage issues, and document indexation anomalies with real platform data.
+- **Description:** With founder-confirmed ownership already in place, use authenticated Google Search Console and Bing Webmaster access to submit `sitemap-index.xml`, inspect coverage issues, and document indexation anomalies with real platform data. Playwright execution was verified in Sprint 2B, but the available browser path still opens an in-memory profile without the founder's signed-in sessions.
 - **Impact:** 5
 - **Effort:** 2
 - **Confidence:** 5
@@ -35,7 +35,7 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
 ### MB-032 - Obtain authenticated agent-side Search Console and Bing access
-- **Description:** Secure authenticated operational access for the execution environment so future work can submit sitemaps, inspect coverage, and read platform diagnostics directly without relying on founder-side confirmation only.
+- **Description:** Secure authenticated operational access for the execution environment so future work can submit sitemaps, inspect coverage, and read platform diagnostics directly without relying on founder-side confirmation only. Sprint 2B confirmed Playwright/browser automation works, but the current CLI path launches Chrome with an in-memory profile and therefore does not inherit local authenticated sessions yet.
 - **Impact:** 4
 - **Effort:** 2
 - **Confidence:** 5
@@ -155,12 +155,12 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
 ### MB-033 - Resolve semantic cluster taxonomy before cluster build
-- **Description:** Define the canonical cluster ownership and future hub URL strategy for `sueldo liquido y remuneraciones`, `cesantia y proteccion social`, `UF / inflacion / costo de vida`, and `presupuesto / control financiero`, while deciding how APV relates to pensions vs ahorro. If URL strategy changes are required, prepare the change as an ADR-backed routing decision before implementation.
+- **Description:** Define the canonical cluster ownership and future hub URL strategy for `sueldo liquido y remuneraciones`, `cesantia y proteccion social`, `UF / inflacion / costo de vida`, and `presupuesto / control financiero`, while deciding how APV relates to pensions vs ahorro. Sprint 2B resolved this by keeping the `/guias/<cluster>/` strategy, introducing `sueldo-remuneraciones` as a dedicated canonical cluster, and clarifying that `empleo-ingresos` remains the labor-contingency cluster.
 - **Impact:** 5
 - **Effort:** 3
 - **Confidence:** 4
 - **Priority Score:** 6.7
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-004, MB-028
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
@@ -177,12 +177,12 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 2 - Authority Building
 
 ### MB-009 - Create cluster hub for sueldo liquido y remuneraciones
-- **Description:** Build a hub page that consolidates sueldo líquido, descuentos, liquidación, impuesto único, and related calculator entry points into one authoritative cluster.
+- **Description:** Build a hub page that consolidates sueldo líquido, descuentos, liquidación, impuesto único, and related calculator entry points into one authoritative cluster. Sprint 2B shipped the production hub at `/guias/sueldo-remuneraciones/` and connected it to the sueldo guide, calculator, glossary/legal supports, and the AFP discount article.
 - **Impact:** 5
 - **Effort:** 3
 - **Confidence:** 4
 - **Priority Score:** 6.7
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-006, MB-026
 - **Roadmap Phase:** Phase 2 - Authority Building
 
@@ -247,23 +247,43 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 2 - Authority Building
 
 ### MB-016 - Add article-to-calculator internal link modules
-- **Description:** Add structured modules that connect relevant articles to the matching calculator, prioritizing sueldo, APV, crédito, cesantía, UF, and arriendo paths.
+- **Description:** Implement v1 of the structured article-to-calculator module pattern for the sueldo/remuneraciones cluster, connecting sueldo-related articles to the matching calculator and documenting the reusable pattern for later AFP/APV, crédito, cesantía, UF, and arriendo rollouts.
 - **Impact:** 5
 - **Effort:** 3
 - **Confidence:** 5
 - **Priority Score:** 8.3
-- **Status:** TODO
-- **Dependencies:** MB-006, MB-009, MB-010, MB-011, MB-012, MB-013, MB-014
+- **Status:** DONE
+- **Dependencies:** MB-009
 - **Roadmap Phase:** Phase 2 - Authority Building
 
 ### MB-017 - Add contextual glossary and legal explainer link blocks
-- **Description:** Insert standardized blocks on relevant pages that route users to glossary definitions and legal explainers when a concept has regulatory or technical friction.
+- **Description:** Implement v1 of the contextual glossary/legal support block pattern for the sueldo/remuneraciones cluster, adding standardized support modules on sueldo pages and documenting how the same pattern should roll out to later clusters.
+- **Impact:** 4
+- **Effort:** 2
+- **Confidence:** 4
+- **Priority Score:** 8.0
+- **Status:** DONE
+- **Dependencies:** MB-009
+- **Roadmap Phase:** Phase 2 - Authority Building
+
+### MB-034 - Create supporting article for descuentos de sueldo obligatorios
+- **Description:** Publish a dedicated supporting article for `descuentos sueldo` / descuentos obligatorios, positioned under the `sueldo-remuneraciones` hub so the cluster no longer depends on AFP-only wording to answer that intent.
 - **Impact:** 4
 - **Effort:** 2
 - **Confidence:** 4
 - **Priority Score:** 8.0
 - **Status:** TODO
-- **Dependencies:** MB-009, MB-010, MB-011, MB-012, MB-013, MB-014, MB-015
+- **Dependencies:** MB-009, MB-016, MB-017
+- **Roadmap Phase:** Phase 2 - Authority Building
+
+### MB-035 - Create supporting explainer for liquidación de sueldo
+- **Description:** Publish a dedicated explainer focused on `liquidación de sueldo`, including field-by-field reading guidance and explicit links back to the sueldo hub and calculator.
+- **Impact:** 4
+- **Effort:** 2
+- **Confidence:** 4
+- **Priority Score:** 8.0
+- **Status:** TODO
+- **Dependencies:** MB-009, MB-016, MB-017
 - **Roadmap Phase:** Phase 2 - Authority Building
 
 ### MB-018 - Refresh top high-intent evergreen articles

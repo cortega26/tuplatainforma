@@ -68,3 +68,23 @@ Observed impact: the next sprint can now prioritize sueldo liquido/remuneracione
 MB-031
 Founder-confirmed manual ownership verification for Google Search Console and Bing Webmaster was recorded as satisfying the prerequisite-validation step; remaining agent-side authenticated access needs were split into a separate follow-up.
 Observed impact: stale blocker logic was removed from the backlog, allowing MB-002 to move out of prerequisite blockage without falsely claiming direct platform access in this environment.
+
+2026-03-08
+MB-033
+Canonical cluster taxonomy and hub URL strategy were resolved by preserving the `/guias/<cluster>/` pattern, creating the dedicated `sueldo-remuneraciones` cluster, and separating it from `empleo-ingresos` and `pensiones-afp`.
+Observed impact: new sueldo/remuneraciones hub shipped without changing the public guide URL strategy or violating the slug-based URL invariant.
+
+2026-03-08
+MB-009
+The first production cluster was built around sueldo líquido/remuneraciones with a live hub, connected calculator path, supporting salary articles, and contextual glossary/legal support.
+Observed impact: `/guias/sueldo-remuneraciones/` now provides a coherent navigation path from explanation to calculation to support assets.
+
+2026-03-08
+MB-016
+Reusable article-to-calculator modules were implemented for sueldo/remuneraciones pages and connected to the live sueldo líquido calculator.
+Observed impact: the sueldo article surfaces now expose structured calculator CTAs instead of relying only on inline links.
+
+2026-03-08
+MB-017
+Reusable glossary/legal support blocks were implemented for sueldo/remuneraciones pages using glossary and legal explainer assets already published in the repository.
+Observed impact: sueldo-cluster pages now route readers to AFP/AFC definitions and payroll-relevant legal explainers without adding noisy sitewide blocks.

@@ -3,8 +3,10 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import ContextLinkSection from "@/components/ContextLinkSection.astro";
 import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
 import { getPath } from "@/utils/getPath";
+import { sueldoCalculatorSections } from "@/config/sueldoClusterLinks";
 
 const { parameters: economicParameters } = await getEconomicParameters();
 const salaryGuidePath = getPath("/posts/como-calcular-sueldo-liquido/");
@@ -208,6 +210,12 @@ const economicSourceLabel =
         >.
       </p>
     </section>
+
+    {
+      sueldoCalculatorSections.map(section => (
+        <ContextLinkSection {...section} />
+      ))
+    }
   </main>
   <Footer />
 </Layout>

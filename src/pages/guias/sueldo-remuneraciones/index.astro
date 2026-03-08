@@ -1,0 +1,120 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import ContextLinkSection from "@/components/ContextLinkSection.astro";
+import { getPath } from "@/utils/getPath";
+import {
+  sueldoClusterHubPrimaryCards,
+  sueldoClusterHubSupportCards,
+} from "@/config/sueldoClusterLinks";
+
+const adjacentRoutes = [
+  {
+    title: "Contingencias de empleo e ingresos",
+    description:
+      "Úsalo cuando el problema ya no es la liquidación mensual sino cesantía, licencia médica o finiquito.",
+    href: getPath("/guias/empleo-ingresos/"),
+  },
+  {
+    title: "Pensiones y AFP",
+    description:
+      "Úsalo cuando la decisión principal pasa a ser cambio de AFP, fondos, APV o planificación previsional.",
+    href: getPath("/guias/pensiones-afp/"),
+  },
+];
+---
+
+<Layout
+  title="Sueldo Líquido y Remuneraciones en Chile | Monedario"
+  description="Hub para ordenar sueldo líquido, liquidación, descuentos previsionales, impuesto único y herramientas de cálculo en Chile."
+>
+  <Header />
+  <Breadcrumb />
+
+  <main id="main-content" class="app-layout">
+    <section class="border-b border-border py-8">
+      <p
+        class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase"
+      >
+        Hub del cluster
+      </p>
+      <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
+        Sueldo líquido y remuneraciones en Chile
+      </h1>
+      <p class="max-w-3xl text-secondary">
+        Este hub concentra la ruta práctica para entender cuánto te descuentan,
+        por qué tu líquido cambia y qué hacer cuando necesitas pasar de una
+        explicación general a un cálculo exacto. No reemplaza la calculadora ni
+        el artículo pilar: ordena cuál abrir primero según tu duda.
+      </p>
+    </section>
+
+    <ContextLinkSection
+      eyebrow="Ruta principal"
+      title="Empieza por la pieza que resuelve tu intención"
+      description="La guía responde el cómo funciona, la calculadora ejecuta el número y el satélite AFP separa el descuento previsional del resto de la liquidación."
+      items={sueldoClusterHubPrimaryCards}
+    />
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">Qué cubre este hub</h2>
+      <ul class="list-disc space-y-2 pl-6 text-secondary">
+        <li>Diferencia entre sueldo bruto, imponible y sueldo líquido.</li>
+        <li>
+          Descuentos obligatorios que salen de la remuneración: AFP, salud,
+          cesantía e impuesto único.
+        </li>
+        <li>
+          Lectura de la liquidación de sueldo y conexión directa con la
+          calculadora para validar montos.
+        </li>
+      </ul>
+    </section>
+
+    <ContextLinkSection
+      eyebrow="Glosario y marco legal"
+      title="Conceptos y reglas que más frenan la lectura de una liquidación"
+      description="Estos apoyos existen para responder dudas de definición o respaldo normativo sin abrir un artículo competidor contra la guía principal."
+      items={sueldoClusterHubSupportCards}
+    />
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">
+        Sal del cluster cuando tu problema cambie
+      </h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        {
+          adjacentRoutes.map(route => (
+            <article class="rounded-xl border border-border p-5">
+              <h3 class="text-lg font-semibold">{route.title}</h3>
+              <p class="mt-2 text-sm text-secondary">{route.description}</p>
+              <a
+                href={route.href}
+                class="mt-4 inline-flex text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+              >
+                Ir a esa sección
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="py-8">
+      <div class="rounded-xl border border-accent/20 bg-accent/5 p-6">
+        <h2 class="mb-2 text-xl font-bold">
+          Última actualización de la sección
+        </h2>
+        <p class="text-sm text-secondary">
+          Actualizado: 2026-03-08. Este hub se revisa cuando cambian porcentajes
+          de descuento, reglas de impuesto único, estructura de liquidación o
+          los activos que resuelven la intención principal del cluster.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

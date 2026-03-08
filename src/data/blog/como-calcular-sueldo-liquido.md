@@ -14,12 +14,12 @@ tags:
   - impuestos
   - liquidacion
 category: empleo-ingresos
-cluster: empleo-ingresos
+cluster: sueldo-remuneraciones
 description: "Guía completa para entender tu liquidación de sueldo en Chile: qué descuentos son obligatorios, cómo se calculan y por qué a veces tu líquido baja aunque tu bruto sube."
 heroImage: /images/hero/como-calcular-sueldo-liquido.avif
 ---
 
-Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí, y puedes complementar con la [guía central de ahorro e inversión](/guias/ahorro-e-inversion/) para conectar este cálculo con decisiones de mediano plazo.
+Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí, y puedes usar el [hub de sueldo y remuneraciones](/guias/sueldo-remuneraciones/) para moverte entre la explicación completa, la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/) y el desglose específico de [cuánto descuenta la AFP de tu sueldo](/posts/cuanto-descuenta-la-afp-de-tu-sueldo/).
 
 ## Tabla de contenidos
 

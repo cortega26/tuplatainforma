@@ -4,6 +4,7 @@ export const CLUSTERS = [
   "pensiones-afp",
   "deuda-credito",
   "seguridad-financiera",
+  "sueldo-remuneraciones",
   "empleo-ingresos",
   "general",
 ] as const;
