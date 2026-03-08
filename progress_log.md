@@ -118,3 +118,8 @@ Observed impact: Bing Webmaster now lists `https://monedario.cl/sitemap-index.xm
 MB-002
 The search-platform umbrella closed after the reusable authenticated automation path was restored and both Google Search Console and Bing Webmaster execution tasks were completed with real dashboard access.
 Observed impact: both search platforms now have authenticated execution evidence and a submitted Monedario sitemap entry.
+
+2026-03-08
+MB-005
+Homepage metadata and hero positioning rewrite closed after a homepage-only font/LCP cleanup removed the remaining display-font dependency from the mobile render path.
+Observed impact: binding local mobile Lighthouse now passes at Performance 100, LCP 1.5s, Speed Index 0.9s, CLS 0, and TBT 0ms.
