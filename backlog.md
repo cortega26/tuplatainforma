@@ -15,23 +15,33 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
 ### MB-002 - Validate Search Console and submit sitemap
-- **Description:** Confirm Google Search Console and Bing Webmaster ownership, submit `sitemap-index.xml`, inspect coverage issues, and document any indexation anomalies.
+- **Description:** With founder-confirmed ownership already in place, use authenticated Google Search Console and Bing Webmaster access to submit `sitemap-index.xml`, inspect coverage issues, and document indexation anomalies with real platform data.
 - **Impact:** 5
 - **Effort:** 2
 - **Confidence:** 5
 - **Priority Score:** 12.5
-- **Status:** BLOCKED
-- **Dependencies:** MB-001, MB-031
+- **Status:** TODO
+- **Dependencies:** MB-001, MB-032
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
 ### MB-031 - Obtain Search Console and Bing access prerequisites
-- **Description:** Obtain authenticated Google Search Console and Bing Webmaster access, or complete the domain/site ownership validation steps required so MB-002 can verify submission and coverage with real platform data.
+- **Description:** Obtain authenticated Google Search Console and Bing Webmaster access, or complete the domain/site ownership validation steps required so MB-002 can verify submission and coverage with real platform data. Founder-confirmed manual ownership verification satisfied the prerequisite-validation requirement; any remaining missing agent-side access is tracked separately.
 - **Impact:** 5
 - **Effort:** 2
 - **Confidence:** 4
 - **Priority Score:** 10.0
-- **Status:** BLOCKED
+- **Status:** DONE
 - **Dependencies:** None
+- **Roadmap Phase:** Phase 1 - Acquisition Engine
+
+### MB-032 - Obtain authenticated agent-side Search Console and Bing access
+- **Description:** Secure authenticated operational access for the execution environment so future work can submit sitemaps, inspect coverage, and read platform diagnostics directly without relying on founder-side confirmation only.
+- **Impact:** 4
+- **Effort:** 2
+- **Confidence:** 5
+- **Priority Score:** 10.0
+- **Status:** TODO
+- **Dependencies:** MB-031
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
 ### MB-003 - Configure analytics events for content and calculator journeys
@@ -50,7 +60,7 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Effort:** 3
 - **Confidence:** 5
 - **Priority Score:** 8.3
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-001
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
@@ -140,8 +150,18 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Effort:** 3
 - **Confidence:** 4
 - **Priority Score:** 6.7
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-004
+- **Roadmap Phase:** Phase 1 - Acquisition Engine
+
+### MB-033 - Resolve semantic cluster taxonomy before cluster build
+- **Description:** Define the canonical cluster ownership and future hub URL strategy for `sueldo liquido y remuneraciones`, `cesantia y proteccion social`, `UF / inflacion / costo de vida`, and `presupuesto / control financiero`, while deciding how APV relates to pensions vs ahorro. If URL strategy changes are required, prepare the change as an ADR-backed routing decision before implementation.
+- **Impact:** 5
+- **Effort:** 3
+- **Confidence:** 4
+- **Priority Score:** 6.7
+- **Status:** TODO
+- **Dependencies:** MB-004, MB-028
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
 ## Phase 2 - Authority Building

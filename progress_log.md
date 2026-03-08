@@ -53,3 +53,18 @@ Observed impact: external audit no longer reports official-source 404s; remainin
 MB-030
 Duplicate article `BlogPosting` schema was removed, article/schema URL fields were normalized to absolute values, and breadcrumb/DefinedTerm schema coverage was extended across supported glossary, calculator, and hub templates.
 Observed impact: sampled article build output now contains exactly one `BlogPosting` and one `BreadcrumbList`; glossary detail pages emit `DefinedTerm`.
+
+2026-03-08
+MB-004
+Keyword universe and keyword-to-URL map completed for Monedario's priority Chile finance clusters, with current URL ownership, gaps, and cannibalization risks documented.
+Observed impact: semantic coverage is now mapped across sueldo, AFP/APV, deuda, cesantia, UF/IPC, impuestos, and presupuesto using the cleaned post/calculator/guide inventory.
+
+2026-03-08
+MB-028
+Live SERP intent analysis completed for priority clusters, including dominant page types, calculator viability, official-source pressure, and explicit architectural decisions per cluster.
+Observed impact: the next sprint can now prioritize sueldo liquido/remuneraciones first and avoid broad cluster builds where official results dominate or intent is structurally split.
+
+2026-03-08
+MB-031
+Founder-confirmed manual ownership verification for Google Search Console and Bing Webmaster was recorded as satisfying the prerequisite-validation step; remaining agent-side authenticated access needs were split into a separate follow-up.
+Observed impact: stale blocker logic was removed from the backlog, allowing MB-002 to move out of prerequisite blockage without falsely claiming direct platform access in this environment.
