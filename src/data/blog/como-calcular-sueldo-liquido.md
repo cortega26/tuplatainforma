@@ -2,7 +2,7 @@
 title: "Sueldo líquido en Chile: qué te descuentan, por qué y cómo calcularlo tú mismo"
 author: "Equipo Monedario"
 pubDate: 2026-02-24T10:00:00Z
-updatedDate: 2026-03-04T12:00:00Z
+updatedDate: 2026-03-08T18:30:00Z
 slug: como-calcular-sueldo-liquido
 featured: true
 lang: es-CL
@@ -19,7 +19,7 @@ description: "Guía completa para entender tu liquidación de sueldo en Chile: q
 heroImage: /images/hero/como-calcular-sueldo-liquido.avif
 ---
 
-Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí, y puedes usar el [hub de sueldo y remuneraciones](/guias/sueldo-remuneraciones/) para moverte entre la explicación completa, la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/) y el desglose específico de [cuánto descuenta la AFP de tu sueldo](/posts/cuanto-descuenta-la-afp-de-tu-sueldo/).
+Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí, y puedes usar el [hub de sueldo y remuneraciones](/guias/sueldo-remuneraciones/) para moverte entre la explicación completa, la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/), la guía de [descuentos de sueldo](/posts/descuentos-de-sueldo/), la lectura de [liquidación de sueldo](/posts/liquidacion-de-sueldo/) y el desglose específico de [cuánto descuenta la AFP de tu sueldo](/posts/cuanto-descuenta-la-afp-de-tu-sueldo/).
 
 ## Tabla de contenidos
 
@@ -32,7 +32,7 @@ Para un trabajador dependiente con contrato indefinido, los descuentos típicos 
 | Descuento                   | Porcentaje    | Va a...                |
 | --------------------------- | ------------- | ---------------------- |
 | AFP (cotización)            | 10%           | Tu cuenta de pensión   |
-| AFP (comisión)              | 0.46% – 0.77% | La AFP por administrar |
+| AFP (comisión)              | 0.49% – 1.45% | La AFP por administrar |
 | Salud (Fonasa o Isapre)     | 7% mínimo     | Tu cobertura médica    |
 | Seguro de cesantía          | 0.6%          | Tu fondo de cesantía   |
 | Impuesto único 2ª categoría | Variable      | El Fisco               |
@@ -54,7 +54,7 @@ El sueldo imponible es la parte de tu remuneración sobre la que se aplican las 
 
 Si tu liquidación dice "sueldo bruto $1.200.000" pero el imponible es $1.050.000, los porcentajes de AFP, salud y cesantía se calculan sobre los $1.050.000, no sobre $1.200.000.
 
-Esto también tiene un límite superior: existe un **tope imponible** para las cotizaciones previsionales. En 2026 ese tope es de **81,6 UF mensuales** (aproximadamente $3.400.000). Si ganas más que eso, AFP y cesantía se calculan solo hasta ese tope. El impuesto único, en cambio, sí se aplica sobre el total.
+Esto también tiene un límite superior: existe un **tope imponible** para las cotizaciones previsionales. En 2026, la Superintendencia de Pensiones informa **87,8 UF** para AFP y salud, mientras la AFC informa **135,2 UF** para seguro de cesantía. Si ganas más que esos topes, esas cotizaciones se calculan solo hasta el límite respectivo. El impuesto único, en cambio, usa su propia tabla mensual del SII.
 
 ---
 
@@ -66,15 +66,15 @@ El 10% de cotización obligatoria va íntegro a tu cuenta de capitalización ind
 
 | AFP       | Comisión 2026 |
 | --------- | ------------- |
-| Uno       | 0.46%         |
-| PlanVital | 0.49%         |
+| Uno       | 0.49%         |
 | Modelo    | 0.58%         |
-| Capital   | 0.58%         |
-| Cuprum    | 0.65%         |
-| ProVida   | 0.69%         |
-| Habitat   | 0.77%         |
+| PlanVital | 1.16%         |
+| Habitat   | 1.27%         |
+| Capital   | 1.44%         |
+| Cuprum    | 1.44%         |
+| ProVida   | 1.45%         |
 
-En un imponible de $1.000.000, la diferencia entre la AFP más barata y la más cara es $3.100 al mes — cerca de $37.000 al año. No es fortuna, pero es tuyo.
+En un imponible de $1.000.000, la diferencia entre la AFP más barata y la más cara hoy es de **$9.600 al mes**, o cerca de **$115.200 al año**. No define toda tu jubilación, pero sí cambia tu descuento mensual real.
 
 Fuente: [Superintendencia de Pensiones](https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-9908.html)
 
@@ -105,18 +105,9 @@ Fuente: [Dirección del Trabajo](https://www.dt.gob.cl/portal/1628/w3-article-95
 
 Este es el más variable y el que más confusión genera. Es el equivalente al impuesto a la renta para trabajadores dependientes, y se paga mensualmente directo en tu liquidación — no en abril como en la Operación Renta.
 
-Se calcula aplicando una tabla progresiva sobre tu **renta imponible mensual** (tu imponible menos AFP y salud). Los tramos vigentes en 2026:
+Se calcula aplicando una tabla progresiva sobre tu **renta tributable mensual**. El SII actualiza los valores cada mes. Como referencia, en **marzo de 2026** el primer tramo exento llega hasta **$943.501,50**. Sobre ese monto empiezan a correr los tramos y la rebaja correspondiente.
 
-| Renta imponible mensual    | Tasa        |
-| -------------------------- | ----------- |
-| Hasta ~$893.000 (13,5 UTM) | Exento      |
-| ~$893.001 a ~$1.985.000    | 4%          |
-| ~$1.985.001 a ~$3.309.000  | 8%          |
-| ~$3.309.001 a ~$4.633.000  | 13.5%       |
-| ~$4.633.001 a ~$5.957.000  | 23%         |
-| Más de ~$5.957.000         | 30.4% y más |
-
-_(Los montos exactos los publica el SII mensualmente: [tabla vigente](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm))_
+_(Los montos exactos del mes los publica el SII en su [tabla vigente](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm))._
 
 El impuesto es **marginal**: solo el tramo que supera el umbral paga la tasa más alta, no todo tu sueldo.
 
@@ -127,7 +118,7 @@ El impuesto es **marginal**: solo el tramo que supera el umbral paga la tasa má
 Esto pasa más seguido de lo que crees, y tiene dos causas principales:
 
 **Causa 1: Cruzaste un tramo del impuesto único.**
-Si tu renta imponible pasó de $1.900.000 a $2.100.000, la parte que cruza los ~$1.985.000 ahora paga 8% en lugar de 4%. El impuesto aumenta de forma desproporcionada respecto al aumento de sueldo, y en algunos casos el alza de impuesto puede superar el alza de sueldo.
+Si tu renta tributable pasó de $2.000.000 a $2.150.000, la parte que cruza los **$2.096.670** (referencia marzo 2026) ya entra al tramo siguiente. El impuesto aumenta más rápido que antes, y en algunos casos el alza efectiva del líquido se siente menor a lo esperado.
 
 **Causa 2: Te cambiaste a Isapre o subió tu plan.**
 Si antes estabas en Fonasa (7% fijo) y te cambiaste a una Isapre con un plan de 10%, ese 3% extra de diferencia puede comerse parte del aumento.
@@ -136,20 +127,20 @@ Si antes estabas en Fonasa (7% fijo) y te cambiaste a una Isapre con un plan de 
 
 ## Ejemplo completo: de bruto a líquido
 
-**Supuesto:** Trabajador con contrato indefinido, sueldo bruto $1.500.000, imponible $1.350.000 (incluye colación no imponible de $150.000), afiliado a Capital AFP (0.58%) y Fonasa.
+**Supuesto:** Trabajador con contrato indefinido, sueldo bruto $1.500.000, imponible $1.350.000 (incluye colación no imponible de $150.000), afiliado a Capital AFP (1.44%) y Fonasa.
 
-| Concepto                        | Cálculo                   | Monto           |
-| ------------------------------- | ------------------------- | --------------- |
-| Sueldo bruto                    | —                         | $1.500.000      |
-| (-) AFP cotización 10%          | $1.350.000 × 10%          | -$135.000       |
-| (-) AFP comisión 0.58%          | $1.350.000 × 0.58%        | -$7.830         |
-| (-) Salud Fonasa 7%             | $1.350.000 × 7%           | -$94.500        |
-| (-) Seguro cesantía 0.6%        | $1.350.000 × 0.6%         | -$8.100         |
-| = Renta imponible para impuesto | $1.350.000 - $237.330     | $1.112.670      |
-| (-) Impuesto único 2ª categoría | ~4% s/exceso de ~$893.000 | -$8.786         |
-| **= Sueldo líquido**            |                           | **~$1.245.784** |
+| Concepto                         | Cálculo               | Monto           |
+| -------------------------------- | --------------------- | --------------- |
+| Sueldo bruto                     | —                     | $1.500.000      |
+| (-) AFP cotización 10%           | $1.350.000 × 10%      | -$135.000       |
+| (-) AFP comisión 1.44%           | $1.350.000 × 1.44%    | -$19.440        |
+| (-) Salud Fonasa 7%              | $1.350.000 × 7%       | -$94.500        |
+| (-) Seguro cesantía 0.6%         | $1.350.000 × 0.6%     | -$8.100         |
+| = Renta tributable para impuesto | $1.350.000 - $257.040 | $1.092.960      |
+| (-) Impuesto único 2ª categoría  | Tramo 4% marzo 2026   | -$5.978         |
+| **= Sueldo líquido**             |                       | **~$1.087.000** |
 
-De $1.500.000 brutos a ~$1.245.000 líquidos. La diferencia de ~$254.000 se explica así: $237.330 en cotizaciones (AFP + salud + cesantía) y ~$8.786 en impuesto. El resto es el imponible vs bruto.
+De $1.500.000 brutos a **~$1.087.000 líquidos**. La diferencia se explica por tres cosas distintas: la parte no imponible que no entra al cálculo previsional, las cotizaciones legales por **$257.040** y el impuesto único del mes por **~$5.978**.
 
 ---
 
@@ -185,10 +176,10 @@ El **total haberes menos total descuentos** es tu líquido. Si los números no c
 Cada empleador descuenta AFP y salud por separado, como si fuera tu único trabajo. Al momento de la Operación Renta anual, el SII consolida ambos ingresos y puede resultar en impuesto adicional a pagar — o en devolución, si hubo sobrepago.
 
 **¿El tope imponible aplica a todos los descuentos?**
-No a todos. El tope de 81,6 UF aplica a AFP y seguro de cesantía. El impuesto único no tiene tope superior.
+No a todos. Como referencia 2026, AFP y salud usan 87,8 UF y el seguro de cesantía usa 135,2 UF. El impuesto único opera con su propia tabla mensual y no con esos topes previsionales.
 
 **¿Tengo que pagar impuesto si gano el mínimo?**
-No. El primer tramo exento en 2026 cubre hasta ~$893.000 de renta imponible mensual (después de descontar AFP y salud). Si tu sueldo está bajo ese nivel, no pagas impuesto único.
+No, en el escenario habitual. Como referencia, en marzo de 2026 el primer tramo exento llega hasta $943.501,50 de renta tributable mensual. Si quedas bajo ese nivel, no pagas impuesto único ese mes.
 
 **¿Puedo reducir legalmente lo que pago de impuesto?**
 Sí. El APV en Régimen B reduce tu base imponible mensual, lo que baja el impuesto. Si cotizas $200.000 al mes en APV Régimen B y tu tasa marginal es 8%, pagas $16.000 menos de impuesto ese mes. [Más sobre el APV aquí](/posts/que-es-el-apv/).
@@ -201,14 +192,14 @@ El SII publica la tabla mensual del Impuesto Único de Segunda Categoría en su 
 ## Resumen: lo que debes recordar
 
 - Los descuentos van sobre el **imponible**, no sobre el bruto total.
-- El **10% AFP** es tuyo; la comisión adicional (0.46%–0.77%) es el costo del servicio.
+- El **10% AFP** es tuyo; la comisión adicional depende de tu administradora y hoy puede mover bastante el descuento total.
 - El **7% de salud** es el mínimo; si tienes Isapre puede ser más.
 - El **impuesto único** es progresivo y se recalcula cada mes — un bono puede subirte el impuesto más de lo que esperabas.
 - Si te subieron el sueldo y te bajó el líquido, probablemente cruzaste un tramo de impuesto.
 - Puedes reducir legalmente tu impuesto mensual ahorrando en **APV Régimen B**.
 
-Si quieres probar tus números exactos, usa la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/). Y si necesitas desglosar mejor el componente previsional, revisa también la guía de [seguro de cesantía](/posts/seguro-de-cesantia/).
+Si quieres probar tus números exactos, usa la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/). Y si necesitas desglosar mejor el componente previsional o la liquidación, revisa también [descuentos de sueldo](/posts/descuentos-de-sueldo/), [liquidación de sueldo](/posts/liquidacion-de-sueldo/) y la guía de [seguro de cesantía](/posts/seguro-de-cesantia/).
 
 ---
 
-_La información de este artículo es de carácter educativo y está basada en la normativa vigente a marzo de 2026. Los tramos del impuesto único se actualizan mensualmente en el [sitio del SII](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm). Para asesoría personalizada consulta con un profesional._
+_La información de este artículo es de carácter educativo y está basada en la normativa vigente con fecha de corte 2026-03-08. Los topes previsionales, comisiones AFP y tramos del impuesto único pueden cambiar; confirma el dato vigente en la fuente oficial antes de tomar decisiones._

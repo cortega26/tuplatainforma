@@ -88,3 +88,13 @@ Observed impact: the sueldo article surfaces now expose structured calculator CT
 MB-017
 Reusable glossary/legal support blocks were implemented for sueldo/remuneraciones pages using glossary and legal explainer assets already published in the repository.
 Observed impact: sueldo-cluster pages now route readers to AFP/AFC definitions and payroll-relevant legal explainers without adding noisy sitewide blocks.
+
+2026-03-08
+MB-034
+Dedicated descuentos de sueldo satellite published and connected to the sueldo hub, calculator, pilar guide, liquidación explainer, and glossary/legal support assets.
+Observed impact: the sueldo cluster now answers the broader `descuentos sueldo` intent without forcing readers through an AFP-only article.
+
+2026-03-08
+MB-035
+Dedicated liquidación de sueldo explainer published with field-by-field reading guidance and wired into the sueldo hub, calculator, and related salary articles.
+Observed impact: the sueldo cluster now covers the document-reading intent directly instead of treating liquidación only as a subsection inside the pilar guide.

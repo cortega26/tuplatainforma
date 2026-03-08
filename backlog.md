@@ -15,7 +15,7 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
 ### MB-002 - Validate Search Console and submit sitemap
-- **Description:** With founder-confirmed ownership already in place, use authenticated Google Search Console and Bing Webmaster access to submit `sitemap-index.xml`, inspect coverage issues, and document indexation anomalies with real platform data. Playwright execution was verified in Sprint 2B, but the available browser path still opens an in-memory profile without the founder's signed-in sessions.
+- **Description:** With founder-confirmed ownership already in place, use authenticated Google Search Console and Bing Webmaster access to submit `sitemap-index.xml`, inspect coverage issues, and document indexation anomalies with real platform data. Sprint 2C verified a working Google Search Console path through a copied persistent Chrome profile, but the full task remains incomplete because Bing Webmaster authenticated access and the actual submission/validation run were not completed.
 - **Impact:** 5
 - **Effort:** 2
 - **Confidence:** 5
@@ -35,12 +35,12 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
 ### MB-032 - Obtain authenticated agent-side Search Console and Bing access
-- **Description:** Secure authenticated operational access for the execution environment so future work can submit sitemaps, inspect coverage, and read platform diagnostics directly without relying on founder-side confirmation only. Sprint 2B confirmed Playwright/browser automation works, but the current CLI path launches Chrome with an in-memory profile and therefore does not inherit local authenticated sessions yet.
+- **Description:** Secure authenticated operational access for the execution environment so future work can submit sitemaps, inspect coverage, and read platform diagnostics directly without relying on founder-side confirmation only. Sprint 2C verified that Google Search Console can be reached for `sc-domain:monedario.cl` through a copied persistent Chrome profile, but Bing Webmaster access still lacks a reusable authenticated session and the live Chrome user-data-dir cannot be attached directly while Chrome is running.
 - **Impact:** 4
 - **Effort:** 2
 - **Confidence:** 5
 - **Priority Score:** 10.0
-- **Status:** TODO
+- **Status:** IN_PROGRESS
 - **Dependencies:** MB-031
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
@@ -267,22 +267,22 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 2 - Authority Building
 
 ### MB-034 - Create supporting article for descuentos de sueldo obligatorios
-- **Description:** Publish a dedicated supporting article for `descuentos sueldo` / descuentos obligatorios, positioned under the `sueldo-remuneraciones` hub so the cluster no longer depends on AFP-only wording to answer that intent.
+- **Description:** Publish a dedicated supporting article for `descuentos sueldo` / descuentos obligatorios, positioned under the `sueldo-remuneraciones` hub so the cluster no longer depends on AFP-only wording to answer that intent. Sprint 2C shipped `/posts/descuentos-de-sueldo/`, connected it to the hub, calculator, sueldo pilar, liquidación explainer, glossary/legal support, and refreshed related sueldo-cluster links.
 - **Impact:** 4
 - **Effort:** 2
 - **Confidence:** 4
 - **Priority Score:** 8.0
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-009, MB-016, MB-017
 - **Roadmap Phase:** Phase 2 - Authority Building
 
 ### MB-035 - Create supporting explainer for liquidación de sueldo
-- **Description:** Publish a dedicated explainer focused on `liquidación de sueldo`, including field-by-field reading guidance and explicit links back to the sueldo hub and calculator.
+- **Description:** Publish a dedicated explainer focused on `liquidación de sueldo`, including field-by-field reading guidance and explicit links back to the sueldo hub and calculator. Sprint 2C shipped `/posts/liquidacion-de-sueldo/`, wired it into the sueldo cluster, and added supporting links from the hub and related sueldo pages.
 - **Impact:** 4
 - **Effort:** 2
 - **Confidence:** 4
 - **Priority Score:** 8.0
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-009, MB-016, MB-017
 - **Roadmap Phase:** Phase 2 - Authority Building
 

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-03-06T20:55:34.010Z",
-  "total": 28,
+  "generatedAt": "2026-03-08T17:41:17.280Z",
+  "total": 30,
   "routes": [
     {
       "file": "ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.md",
@@ -37,6 +37,10 @@
     {
       "file": "deposito-a-plazo-uf-vs-pesos.md",
       "route": "/posts/deposito-a-plazo-uf-vs-pesos/"
+    },
+    {
+      "file": "descuentos-de-sueldo.md",
+      "route": "/posts/descuentos-de-sueldo/"
     },
     {
       "file": "devolucion-impuestos-fechas-compensaciones.md",
@@ -77,6 +81,10 @@
     {
       "file": "licencia-medica-desde-que-dia-pagan.md",
       "route": "/posts/licencia-medica-desde-que-dia-pagan/"
+    },
+    {
+      "file": "liquidacion-de-sueldo.md",
+      "route": "/posts/liquidacion-de-sueldo/"
     },
     {
       "file": "operacion-renta-f22-checklist.md",
