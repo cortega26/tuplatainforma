@@ -17,7 +17,7 @@ description: "Explicación práctica de la liquidación de sueldo en Chile: qué
 heroImage: /images/hero/liquidacion-de-sueldo.avif
 ---
 
-La liquidación de sueldo es el documento donde realmente se cruzan tu contrato, tus horas, tus bonos y tus descuentos. Si hoy solo quieres entender el cluster completo, parte por el [hub de sueldo y remuneraciones](/guias/sueldo-remuneraciones/). Si ya tienes un monto y quieres probarlo, usa la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/). Y si la duda es qué líneas te pueden descontar, complementa con [descuentos de sueldo en Chile](/posts/descuentos-de-sueldo/).
+La liquidación de sueldo es el documento donde realmente se cruzan tu contrato, tus horas, tus bonos y tus descuentos. Si quieres ver todas las ayudas relacionadas, parte por la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/). Si ya tienes un monto y quieres probarlo, usa la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/). Y si la duda es qué líneas te pueden descontar, complementa con [descuentos de sueldo en Chile](/posts/descuentos-de-sueldo/).
 
 ## Tabla de contenidos
 
@@ -116,7 +116,7 @@ La Dirección del Trabajo exige un comprobante junto con el pago de remuneracion
 No. Cambia el diseño, pero no cambia la obligación de transparentar monto, forma de cálculo y deducciones.
 
 **¿Qué pasa si trabajo con comisiones?**  
-El artículo 54 bis exige un anexo con el detalle de cálculo de comisiones, primas o tratos. Si no existe, te faltará una pieza central para revisar el pago.
+El artículo 54 bis exige un anexo con el detalle de cálculo de comisiones, primas o tratos. Si no existe, te faltará un documento clave para revisar el pago.
 
 ## Resumen
 

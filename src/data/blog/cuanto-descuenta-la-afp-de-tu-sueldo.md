@@ -20,7 +20,7 @@ heroImage: /images/hero/cuanto-descuenta-la-afp-de-tu-sueldo.avif
 
 Cada mes ves en tu liquidación de sueldo una línea que dice "AFP" y un número que te descuentan. Pero, ¿sabes exactamente para qué sirve ese dinero y si lo estás aprovechando bien?
 
-En esta guía te explicamos todo de forma simple. Si quieres ver cómo este descuento conversa con salud, cesantía e impuesto único, parte por el [hub de sueldo y remuneraciones](/guias/sueldo-remuneraciones/), cruza con la guía de [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/) y usa también [descuentos de sueldo](/posts/descuentos-de-sueldo/) o [liquidación de sueldo](/posts/liquidacion-de-sueldo/) cuando necesites mirar el resto de la liquidación.
+En esta guía te explicamos todo de forma simple. Si quieres ver cómo este descuento se suma a salud, cesantía e impuesto único, parte por la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/), cruza con la guía de [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/) y usa también [descuentos de sueldo](/posts/descuentos-de-sueldo/) o [liquidación de sueldo](/posts/liquidacion-de-sueldo/) cuando necesites mirar el resto de la liquidación.
 
 ## Qué cambia entre 2025 y 2027
 

@@ -18,11 +18,11 @@ draft: false
 heroImage: /images/hero/operacion-renta-f22-checklist.avif
 ---
 
-Si vas a declarar renta como persona, este flujo te ayuda a revisar tu propuesta del SII antes de enviar el F22 y a reaccionar rápido si aparecen observaciones. Está pensado para quienes quieren evitar correcciones tardías y atrasos en devolución.
+Si vas a declarar renta como persona, esta guía te ayuda a revisar tu propuesta del SII antes de enviar el F22 y a reaccionar rápido si aparecen observaciones. Está pensada para quienes quieren evitar correcciones tardías y atrasos en devolución.
 
 ## Qué cambia y qué resuelve esta guía
 
-Según el portal de Operación Renta Personas del SII, el flujo parte con **revisar información y luego declarar**. También indica que la propuesta se usa desde el inicio del proceso (abril) y que la declaración se realiza en el entorno de Renta del SII.
+Según el portal de Operación Renta Personas del SII, el proceso parte con **revisar información y luego declarar**. También indica que la propuesta se usa desde el inicio del proceso (abril) y que la declaración se realiza en el entorno de Renta del SII.
 
 Esta guía separa tres momentos que suelen mezclarse:
 

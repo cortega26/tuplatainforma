@@ -20,7 +20,7 @@ heroImage: /images/hero/fondos-afp-a-b-c-d-e.avif
 
 Cuando te afilias a una AFP, tu dinero no queda guardado en una caja fuerte — se invierte en uno de cinco fondos disponibles. Elegir bien puede significar una pensión significativamente mayor. Elegir mal, también puede significar lo contrario.
 
-Aquí te explicamos qué es cada fondo, sin tecnicismos. Para integrar esta decisión en una estrategia previsional mayor, mira la [guía central de pensiones y AFP](/guias/pensiones-afp/).
+Aquí te explicamos qué es cada fondo, sin tecnicismos. Si quieres revisar más temas relacionados, mira también la [sección de pensiones y AFP](/guias/pensiones-afp/).
 
 ## Qué cambia entre 2025 y 2027
 

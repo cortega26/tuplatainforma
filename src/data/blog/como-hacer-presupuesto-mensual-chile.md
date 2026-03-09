@@ -77,7 +77,7 @@ No puedes presupuestar lo que no conoces. Antes de cortar o reasignar, pasa un m
 - Guarda tickets o activa notificaciones de pago.
 - Incluye gastos con tarjeta, transferencias Y efectivo.
 
-Al cabo de 30 días tendrás un mapa real. Probablemente te sorprenderás.
+Al cabo de 30 días tendrás una foto real de tus gastos. Probablemente te sorprenderás.
 
 ---
 

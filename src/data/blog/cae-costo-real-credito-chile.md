@@ -21,7 +21,7 @@ heroImage: /images/hero/cae-costo-real-credito-chile.avif
 
 <!-- META: keyword_primary="qué es la CAE de un crédito" | intent="informacional-pilar" | cluster="deuda-credito" -->
 
-Cuando comparas créditos, el número que más te muestran es la tasa de interés mensual. El problema es que esa tasa no incluye seguros, gastos operacionales ni comisiones. El CAE sí los incluye, y por eso es el único número que permite comparar productos distintos en igualdad de condiciones. Esta guía forma parte del mapa de [Deuda y Crédito en Chile](/guias/deuda-credito/).
+Cuando comparas créditos, el número que más te muestran es la tasa de interés mensual. El problema es que esa tasa no incluye seguros, gastos operacionales ni comisiones. El CAE sí los incluye, y por eso es el único número que permite comparar productos distintos en igualdad de condiciones. Si quieres revisar más temas relacionados, entra a [Deuda y Crédito en Chile](/guias/deuda-credito/).
 
 ## Dos CAE que no tienen nada que ver entre sí
 
@@ -131,7 +131,7 @@ Cada cuota de un crédito de consumo se divide en dos partes:
 
 Al inicio del crédito, la mayor parte de la cuota son intereses. Con el tiempo, la proporción se invierte y cada vez más de tu cuota paga capital. Esto se llama **sistema de amortización francés** (cuota fija) y es el más común en Chile para créditos de consumo.
 
-**Consecuencia práctica:** si tienes la intención de pagar anticipado, conviene hacerlo lo antes posible. Prepagar al final del crédito ahorra relativamente poco en intereses.
+**Consecuencia práctica:** si quieres pagar anticipado, conviene hacerlo lo antes posible. Prepagar al final del crédito ahorra relativamente poco en intereses.
 
 ## Prepago anticipado: tu derecho y cuándo conviene
 

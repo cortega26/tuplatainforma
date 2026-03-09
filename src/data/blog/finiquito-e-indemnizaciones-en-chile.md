@@ -21,7 +21,7 @@ heroImage: /images/hero/finiquito-e-indemnizaciones-en-chile.avif
 
 Te llega el finiquito, el empleador te apura para firmarlo ese mismo día, y tú no sabes si lo que dice es correcto. Es una situación más común de lo que parece — y firmar sin revisar puede costarte el equivalente a varios meses de sueldo.
 
-Esta guía te ayuda a entender qué debe incluir un finiquito, cómo validar cada monto y cómo actuar si los números no cuadran. Es parte del mapa de [Empleo e Ingresos](/guias/empleo-ingresos/).
+Esta guía te ayuda a entender qué debe incluir un finiquito, cómo validar cada monto y cómo actuar si los números no cuadran. Si necesitas ver más temas relacionados, revisa la [sección Empleo e Ingresos](/guias/empleo-ingresos/).
 
 ## Qué incluye normalmente un finiquito
 
@@ -123,7 +123,7 @@ Descubrir el error antes de firmar es muy diferente a descubrirlo después. En a
 3. Solicita corrección formal al empleador con respaldo de cálculo.
 4. Si no hay ajuste, presenta denuncia en la Inspección del Trabajo o inicia acción legal.
 
-Si en paralelo tienes una incapacidad laboral en curso, revisa el flujo de [licencia médica y plazos de pago](/posts/licencia-medica-desde-que-dia-pagan/).
+Si en paralelo tienes una incapacidad laboral en curso, revisa la guía de [licencia médica y plazos de pago](/posts/licencia-medica-desde-que-dia-pagan/).
 
 ## Errores comunes
 

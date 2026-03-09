@@ -21,7 +21,7 @@ heroImage: /images/hero/estafas-financieras-chile-vishing-smishing-marketplace.a
 
 La mayoría de las estafas financieras no empieza con un hackeo sofisticado. Empieza con una llamada que suena completamente normal, de alguien que sabe tu nombre, menciona tu banco y habla en un tono que mezcla urgencia con profesionalismo. Para cuando te das cuenta de lo que ocurrió, ya autorizaste una transferencia.
 
-Esta guía funciona como mapa preventivo del tema. Explica cómo operan los métodos más frecuentes, qué señales distinguen cada uno y qué hacer si ya caíste. Se complementa con la [guía del cluster Seguridad Financiera](/guias/seguridad-financiera/).
+Esta guía te ayuda a prevenir estafas financieras. Explica cómo operan los métodos más frecuentes, qué señales distinguen cada uno y qué hacer si ya caíste. Si quieres revisar más casos relacionados, entra a la [sección Seguridad Financiera](/guias/seguridad-financiera/).
 
 ## Cómo operan las estafas financieras: la anatomía del engaño
 
@@ -87,7 +87,7 @@ Si crees que fuiste víctima de una estafa financiera, cada hora cuenta:
 7. **Denuncia** en PDI, Carabineros o Fiscalía.
 8. **Monitorea posibles deudas** no reconocidas en los sistemas oficiales de crédito.
 
-Si además sospechas suplantación de identidad con créditos a tu nombre, sigue el flujo completo de [suplantación y créditos no reconocidos](/posts/suplantacion-identidad-creditos-no-reconocidos/).
+Si además sospechas suplantación de identidad con créditos a tu nombre, revisa la guía completa de [suplantación y créditos no reconocidos](/posts/suplantacion-identidad-creditos-no-reconocidos/).
 
 ## Dónde denunciar y cómo escalar
 

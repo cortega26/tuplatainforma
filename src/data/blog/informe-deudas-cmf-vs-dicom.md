@@ -19,7 +19,7 @@ description: "Guía práctica sobre el Informe de Deudas CMF: cómo descargarlo 
 heroImage: /images/hero/informe-deudas-cmf-vs-dicom.avif
 ---
 
-"Estoy en DICOM" es una de las frases más usadas en Chile para hablar de deudas. El problema es que DICOM como tal dejó de existir hace años, y la mayoría de las personas no sabe exactamente qué información tiene sobre ellas ni dónde está. Esta guía lo aclara de una vez, y si quieres ver el mapa completo del tema puedes partir por la [guía del cluster Deuda y Crédito](/guias/deuda-credito/).
+"Estoy en DICOM" es una de las frases más usadas en Chile para hablar de deudas. El problema es que DICOM como tal dejó de existir hace años, y la mayoría de las personas no sabe exactamente qué información tiene sobre ellas ni dónde está. Esta guía lo aclara de una vez, y si quieres revisar más temas relacionados puedes partir por la [sección Deuda y Crédito](/guias/deuda-credito/).
 
 ## Tabla de contenidos
 
@@ -144,7 +144,7 @@ El informe no es solo para saber si "estás en DICOM". Tiene usos prácticos con
 
 **Antes de arrendar:** Muchos arrendadores piden el informe CMF. Tener uno limpio o poder explicar las deudas que aparecen marca la diferencia.
 
-**Para ordenar tus deudas:** Si tienes varios créditos, el informe te muestra el mapa completo: a quién le debes, cuánto y en qué estado está cada deuda. Es el punto de partida para cualquier estrategia de pago o renegociación.
+**Para ordenar tus deudas:** Si tienes varios créditos, el informe te muestra el panorama completo: a quién le debes, cuánto y en qué estado está cada deuda. Es el punto de partida para cualquier estrategia de pago o renegociación.
 
 **Para detectar errores o fraudes:** Revisar el informe periódicamente te permite detectar deudas que no contrajiste antes de que se conviertan en un problema mayor.
 

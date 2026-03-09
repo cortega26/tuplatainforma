@@ -19,7 +19,7 @@ description: "Guía completa para entender tu liquidación de sueldo en Chile: q
 heroImage: /images/hero/como-calcular-sueldo-liquido.avif
 ---
 
-Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí, y puedes usar el [hub de sueldo y remuneraciones](/guias/sueldo-remuneraciones/) para moverte entre la explicación completa, la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/), la guía de [descuentos de sueldo](/posts/descuentos-de-sueldo/), la lectura de [liquidación de sueldo](/posts/liquidacion-de-sueldo/) y el desglose específico de [cuánto descuenta la AFP de tu sueldo](/posts/cuanto-descuenta-la-afp-de-tu-sueldo/).
+Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí. Además, puedes usar la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/) para ir a la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/), la guía de [descuentos de sueldo](/posts/descuentos-de-sueldo/), la lectura de [liquidación de sueldo](/posts/liquidacion-de-sueldo/) y el desglose específico de [cuánto descuenta la AFP de tu sueldo](/posts/cuanto-descuenta-la-afp-de-tu-sueldo/).
 
 ## Tabla de contenidos
 

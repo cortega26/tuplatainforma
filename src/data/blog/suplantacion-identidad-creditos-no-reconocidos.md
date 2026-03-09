@@ -23,7 +23,7 @@ Recibes un correo que dice "tu crédito ha sido aprobado". El problema es que t�
 
 La suplantación de identidad financiera ocurre cuando una tercera persona contrata productos de crédito —préstamos, tarjetas, líneas de crédito— usando tu RUT, tus datos personales o una copia falsa de tu documentación. Tú no firmaste nada, pero el sistema te registra como deudor.
 
-Esta guía te entrega el protocolo operativo para actuar con rapidez y sin cometer los errores que más frenan la resolución. Se integra con la [guía del cluster Seguridad Financiera](/guias/seguridad-financiera/).
+Esta guía te entrega el protocolo operativo para actuar con rapidez y sin cometer los errores que más frenan la resolución. Si quieres revisar más temas relacionados, entra a la [sección Seguridad Financiera](/guias/seguridad-financiera/).
 
 ## Cómo detectar la suplantación antes de que escale
 

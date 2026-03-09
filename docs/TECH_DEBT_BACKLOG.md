@@ -50,6 +50,26 @@ Fecha de corte: 2026-03-04
 - **Fecha de creación:** 2026-02-26
 - **Última actualización:** 2026-02-27
 
+## TD-0018 — `astro check` reporta IDs duplicados en artículos del blog
+- **ID:** TD-0018
+- **Título corto:** Investigar IDs duplicados en loader de contenido
+- **Descripción:** `astro check` muestra avisos de `Duplicate id` para varios artículos en `src/data/blog/**` durante el sync de contenido. Aunque el chequeo termina con `0 errors`, el loader indica que entradas posteriores sobreescriben a las anteriores.
+- **Evidencia (actualizada):** `pnpm run astro check` (2026-03-09) reporta `Duplicate id` para slugs como `como-cambiarse-de-afp`, `como-hacer-presupuesto-mensual-chile`, `el-poder-del-interes-compuesto`, `fondos-afp-a-b-c-d-e` e `informe-deudas-cmf-vs-dicom`.
+- **Impacto:** Riesgo de sobrescritura silenciosa de contenido, resultados ambiguos en `getCollection()` y diagnósticos menos confiables en validaciones editoriales.
+- **Riesgo:** medio
+- **Severidad (1-5):** 3
+- **Urgencia:** P2
+- **Esfuerzo estimado:** M
+- **Propuesta de solución:** identificar por qué el loader detecta duplicados para archivos únicos, revisar configuración de colecciones/globs y confirmar si existe duplicación física, alias de carga o colisión de IDs derivadas.
+- **Criterios de cierre (checklist verificable):**
+- [ ] `pnpm run astro check` no reporta `Duplicate id` para `src/data/blog/**`.
+- [ ] Se documenta la causa raíz y la corrección aplicada.
+- [ ] `getCollection("blog")` devuelve un conjunto sin colisiones de ID.
+- **Owner:** TBD
+- **Estado:** Backlog sin iniciar
+- **Fecha de creación:** 2026-03-09
+- **Última actualización:** 2026-03-09
+
 ## TD-0011 — Pilar CAE/costo real sin artículo editorial
 - **ID:** TD-0011
 - **Título corto:** Cubrir pilar faltante CAE/costo real

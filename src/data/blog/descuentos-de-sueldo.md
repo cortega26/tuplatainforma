@@ -18,7 +18,7 @@ description: "Guía práctica para distinguir descuentos obligatorios, voluntari
 heroImage: /images/hero/descuentos-de-sueldo.avif
 ---
 
-Si quieres entender por qué tu depósito final no coincide con el bruto pactado, este artículo separa qué descuentos son legales, cuáles dependen de tu caso y cuáles no te los pueden cargar sin respaldo. Para ver el mapa completo del tema, parte por el [hub de sueldo y remuneraciones](/guias/sueldo-remuneraciones/), cruza con la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/) y usa la guía de [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/) cuando necesites rehacer el número completo.
+Si quieres entender por qué tu depósito final no coincide con el bruto pactado, este artículo separa qué descuentos son legales, cuáles dependen de tu caso y cuáles no te los pueden cargar sin respaldo. Si quieres revisar más temas relacionados, parte por la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/), cruza con la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/) y usa la guía de [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/) cuando necesites rehacer el número completo.
 
 ## Tabla de contenidos
 

@@ -20,7 +20,7 @@ heroImage: /images/hero/como-invertir-en-etfs-desde-chile.avif
 
 <!-- META: keyword_primary="como invertir en etf desde chile" | intent="guia-procedimental" | cluster="ahorro-inversion" -->
 
-Si quieres invertir en ETFs desde Chile, esta guía te ordena el proceso de selección de intermediario, control de costos, custodia y revisión tributaria básica antes de ejecutar tu primera orden. Para la vista completa del cluster, revisa [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
+Si quieres invertir en ETFs desde Chile, esta guía te ordena el proceso de selección de intermediario, control de costos, custodia y revisión tributaria básica antes de ejecutar tu primera orden. Para una mirada más amplia, revisa [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
 
 ## Qué necesitas antes de invertir
 
@@ -118,7 +118,7 @@ No. Es guía educativa; para casos complejos conviene asesoría profesional.
 
 ## Cierre y siguiente lectura
 
-Para conectar esta ejecución con la arquitectura completa de instrumentos y objetivos, vuelve al pilar: [Ahorro e inversión en Chile: instrumentos, costos e impuestos (guía 2026)](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
+Para conectar esta decisión con una estrategia más amplia de instrumentos y objetivos, vuelve a la guía general: [Ahorro e inversión en Chile: instrumentos, costos e impuestos (guía 2026)](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
 
 ## Fuentes y referencias primarias
 

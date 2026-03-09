@@ -30,7 +30,7 @@ Si quieres ordenar tus finanzas para invertir sin improvisar, esta guía te ayud
 - Vas a comparar costos reales (no solo rentabilidad histórica).
 - Revisarás la tributación antes de ejecutar rescates o ventas.
 
-## Mapa rápido de instrumentos
+## Resumen rápido de instrumentos
 
 | Instrumento      | Para qué sirve mejor                         | Riesgo relativo           | Liquidez típica                                      |
 | ---------------- | -------------------------------------------- | ------------------------- | ---------------------------------------------------- |
@@ -38,7 +38,7 @@ Si quieres ordenar tus finanzas para invertir sin improvisar, esta guía te ayud
 | Fondo mutuo      | Diversificar sin comprar activo por activo   | Bajo a alto (según fondo) | Rescate según reglamento (fondos mutuos: <= 10 días) |
 | ETF              | Exposición diversificada con lógica bursátil | Medio a alto              | Depende de mercado y ejecución vía intermediario     |
 
-Para profundizar por intención específica, revisa:
+Si quieres ir directo a un tema específico, revisa:
 
 - [Depósito a plazo en UF vs pesos: qué conviene y cuándo](/posts/deposito-a-plazo-uf-vs-pesos/)
 - [Fondos mutuos: comisiones, rescate e impuestos (sin letra chica)](/posts/fondos-mutuos-comisiones-rescate-impuestos/)
@@ -81,7 +81,7 @@ Ejemplo numérico rápido: si inviertes $3.000.000 para una meta a 8 meses y com
 - En intermediación bursátil, CMF informa que el costo puede incluir comisión, derechos de bolsa, IVA, custodia y otros cargos.
 - En tributación, SII indica que personas naturales deben declarar rentas por inversiones (con las excepciones que establece la ley).
 
-Si tu decisión ya está acotada por instrumento, usa las guías satélite de este cluster para resolver ejecución:
+Si tu decisión ya está acotada por instrumento, usa estas guías para resolver el siguiente paso:
 
 - [Guía DAP UF vs pesos](/posts/deposito-a-plazo-uf-vs-pesos/)
 - [Guía de fondos mutuos](/posts/fondos-mutuos-comisiones-rescate-impuestos/)

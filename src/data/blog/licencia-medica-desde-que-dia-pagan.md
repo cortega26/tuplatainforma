@@ -21,7 +21,7 @@ heroImage: /images/hero/licencia-medica-desde-que-dia-pagan.avif
 
 Enfermarse siempre trae preocupaciones, pero cuando es por varios días, la pregunta que aparece junto al diagnóstico médico es casi inevitable: ¿desde cuándo me pagan y cuánto me llega? El sistema chileno de licencias médicas tiene reglas que dependen de la duración de la licencia, de quién eres afiliados y de quién la paga — y entenderlas bien puede significar la diferencia entre recibir el subsidio completo o terminar apelando un rechazo.
 
-Esta guía responde las preguntas principales y te da el protocolo para actuar si algo sale mal. Se coordina con la [guía del cluster Empleo e Ingresos](/guias/empleo-ingresos/).
+Esta guía responde las preguntas principales y te da el protocolo para actuar si algo sale mal. Si quieres revisar más temas relacionados, entra a la [sección Empleo e Ingresos](/guias/empleo-ingresos/).
 
 ## La regla fundamental: qué determina desde cuándo pagan
 
@@ -117,7 +117,7 @@ En el canal oficial de tu entidad pagadora: la página web de tu Isapre si está
 
 ### ¿Qué hago si mi ingreso mensual quedó muy afectado?
 
-Si la licencia se suma a un término de contrato, revisa en paralelo la guía de [finiquito e indemnizaciones](/posts/finiquito-e-indemnizaciones-en-chile/) y evalúa el acceso al [seguro de cesantía](/posts/seguro-de-cesantia/) si corresponde. Son flujos distintos que se pueden activar simultáneamente.
+Si la licencia se suma a un término de contrato, revisa en paralelo la guía de [finiquito e indemnizaciones](/posts/finiquito-e-indemnizaciones-en-chile/) y evalúa el acceso al [seguro de cesantía](/posts/seguro-de-cesantia/) si corresponde. Son trámites distintos que se pueden activar al mismo tiempo.
 
 ### ¿Puede mi empleador descontarme por los días de licencia?
 

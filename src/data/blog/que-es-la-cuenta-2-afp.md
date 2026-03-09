@@ -19,7 +19,7 @@ heroImage: /images/hero/que-es-la-cuenta-2-afp.avif
 
 Cuando la gente habla de su AFP, casi siempre se refiere a la cuenta obligatoria donde va el 10% del sueldo. Pero existe una segunda cuenta, voluntaria y mucho más flexible, que muy poca gente conoce bien: la **Cuenta 2**, también llamada Cuenta de Ahorro Voluntario (CAV).
 
-En esta guía te explicamos todo lo que necesitas saber para decidir si te conviene usarla. Para entender cómo encaja dentro del mapa completo, revisa la [guía central de pensiones y AFP](/guias/pensiones-afp/).
+En esta guía te explicamos todo lo que necesitas saber para decidir si te conviene usarla. Si quieres ver más temas relacionados, revisa la [sección de pensiones y AFP](/guias/pensiones-afp/).
 
 ## Tabla de contenidos
 

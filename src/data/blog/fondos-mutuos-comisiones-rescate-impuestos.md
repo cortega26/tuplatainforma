@@ -20,7 +20,7 @@ heroImage: /images/hero/fondos-mutuos-comisiones-rescate-impuestos.avif
 
 <!-- META: keyword_primary="comisiones fondos mutuos cuanto cobran" | intent="informacional-transaccional" | cluster="ahorro-inversion" -->
 
-Si inviertes en fondos mutuos, esta guía te muestra dónde están los costos reales, cómo funciona el rescate y qué mirar en impuestos para evitar sorpresas. Para el mapa general del cluster, parte por [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
+Si inviertes en fondos mutuos, esta guía te muestra dónde están los costos reales, cómo funciona el rescate y qué mirar en impuestos para evitar sorpresas. Para una mirada más amplia, parte por [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
 
 ## Requisitos y supuestos
 
@@ -126,7 +126,7 @@ No. Es una guía educativa y no reemplaza asesoría profesional para tu caso.
 
 ## Cierre y siguiente lectura
 
-Para decidir cómo encaja fondos mutuos dentro de una estrategia integral de ahorro e inversión, vuelve al pilar: [Ahorro e inversión en Chile: instrumentos, costos e impuestos (guía 2026)](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
+Para decidir cómo encajan los fondos mutuos dentro de una estrategia integral de ahorro e inversión, vuelve a la guía general: [Ahorro e inversión en Chile: instrumentos, costos e impuestos (guía 2026)](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
 
 ## Fuentes y referencias primarias
 

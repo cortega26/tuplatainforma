@@ -22,7 +22,7 @@ heroImage: /images/hero/el-poder-del-interes-compuesto.avif
 
 <!-- META: keyword_primary="interes compuesto" | intent="informacional-ejemplo" | cluster="ahorro-inversion" -->
 
-Imagina a alguien que nunca ganó más que el sueldo mínimo. Sin bonos, sin ascensos, sin herencias. Solo su sueldo de cada mes y la disciplina de apartar el 10% de su salario neto para invertirlo. Durante 36 años tuvo 24 meses sin trabajo, lagunas reales como las que le pueden pasar a cualquier trabajador chileno. El resto del tiempo, invirtió ese 10% en el NASDAQ-100. Para el mapa completo del tema, revisa también la [guía central de ahorro e inversión](/guias/ahorro-e-inversion/).
+Imagina a alguien que nunca ganó más que el sueldo mínimo. Sin bonos, sin ascensos, sin herencias. Solo su sueldo de cada mes y la disciplina de apartar el 10% de su salario neto para invertirlo. Durante 36 años tuvo 24 meses sin trabajo, lagunas reales como las que le pueden pasar a cualquier trabajador chileno. El resto del tiempo, invirtió ese 10% en el NASDAQ-100. Si quieres revisar más temas relacionados, mira también la [sección de ahorro e inversión](/guias/ahorro-e-inversion/).
 
 ## Respuesta rápida
 
@@ -148,7 +148,7 @@ Una vez comprado, ese departamento se podría arrendar. En comunas intermedias d
 
 - Abre la [nota metodológica](/posts/interes-compuesto-nota-metodologica/), donde están los supuestos, fórmulas y fuentes.
 - Revisa [cómo invertir en ETFs desde Chile](/posts/como-invertir-en-etfs-desde-chile/) si quieres aterrizar el vehículo.
-- Vuelve a la [guía central de ahorro e inversión](/guias/ahorro-e-inversion/) para ver cómo encaja este ejemplo en una estrategia más amplia.
+- Vuelve a la [sección de ahorro e inversión](/guias/ahorro-e-inversion/) para ver cómo encaja este ejemplo en una estrategia más amplia.
 
 ## Fuentes y trazabilidad
 
