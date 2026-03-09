@@ -3,27 +3,17 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import Card from "@/components/Card.astro";
-import Datetime from "@/components/Datetime.astro";
 import LinkButton from "@/components/LinkButton.astro";
-import ArticlePlaceholder from "@/components/ArticlePlaceholder.astro";
-import RevealOnScroll from "@/components/RevealOnScroll.astro";
 import SectionDivider from "@/components/SectionDivider.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
-import { getPath } from "@/utils/getPath";
 import { getCanonicalPathFromSlug } from "@/domain/content/path";
-import { toArticleView } from "@/utils/articleView";
+import { getPath } from "@/utils/getPath";
 
 const posts = await getCollection("blog");
 const sortedPosts = getSortedPosts(posts);
-const heroPost = sortedPosts[0];
-const heroArticle = heroPost ? toArticleView(heroPost) : null;
-const secondaryPosts = sortedPosts
-  .slice(1, 3)
-  .map(post => ({ post, article: toArticleView(post) }));
-const remainingPosts = sortedPosts.slice(3, 3 + SITE.postPerIndex);
+const recentPosts = sortedPosts.slice(0, SITE.postPerIndex);
 const homePath = getPath("/");
 const homeTitle =
   "Monedario | Calculadoras y guías para decisiones financieras en Chile";
@@ -31,157 +21,179 @@ const homeDescription =
   "Calculadoras y guías para entender sueldo líquido, AFP, impuestos, crédito, UF y presupuesto con información clara y práctica para Chile.";
 const heroTitle = "Calculadoras y guías sobre tu plata en Chile";
 const heroDescription =
-  "Sueldo líquido, AFP, impuestos, crédito, UF y presupuesto en lenguaje claro.";
+  "Sueldo líquido, AFP, impuestos, crédito, UF y presupuesto en lenguaje claro. Empieza por el problema que quieres resolver.";
+const problemEntryPoints = [
+  {
+    eyebrow: "Sueldo",
+    title: "Sueldo líquido y liquidación",
+    description: "Descuentos, impuesto único y lectura del pago mensual.",
+    href: getPath("/guias/sueldo-remuneraciones/"),
+    cta: "Ir a sueldo y remuneraciones",
+  },
+  {
+    eyebrow: "AFP / APV",
+    title: "AFP, APV y cambio de administradora",
+    description: "Fondos, Cuenta 2 y ahorro tributario.",
+    href: getPath("/guias/pensiones-afp/"),
+    cta: "Ir a pensiones y AFP",
+  },
+  {
+    eyebrow: "Crédito",
+    title: "Deuda, CAE y costo real del crédito",
+    description: "Diagnóstico CMF y alternativas de salida.",
+    href: getPath("/guias/deuda-credito/"),
+    cta: "Ir a deuda y crédito",
+  },
+  {
+    eyebrow: "Cesantía",
+    title: "Cesantía, licencia y finiquito",
+    description: "Continuidad de ingresos cuando el trabajo se interrumpe.",
+    href: getPath("/guias/empleo-ingresos/"),
+    cta: "Ir a empleo e ingresos",
+  },
+  {
+    eyebrow: "Impuestos",
+    title: "Operación Renta y devoluciones",
+    description: "F22, honorarios y seguimiento tributario.",
+    href: getPath("/guias/impuestos-personas/"),
+    cta: "Ir a impuestos para personas",
+  },
+  {
+    eyebrow: "Presupuesto",
+    title: "Presupuesto mensual",
+    description: "Ordena ingresos, gastos y fugas antes de decidir.",
+    href: getPath("/posts/como-hacer-presupuesto-mensual-chile/"),
+    cta: "Ir a presupuesto mensual",
+  },
+];
 ---
 
-<Layout title={homeTitle} description={homeDescription}>
+<Layout
+  title={homeTitle}
+  description={homeDescription}
+  enableClientRouter={false}
+>
   <Header />
   <main id="main-content" data-layout="index" class="app-layout">
-    <!-- CONTENIDO DESTACADO -->
-    {
-      heroPost && heroArticle && (
-        <RevealOnScroll initialVisible={true}>
-          <section class="grid gap-6 border-b border-border py-8 lg:grid-cols-3">
-            <article class="lg:col-span-2">
-              <h1 class="mb-3 max-w-3xl font-app text-2xl leading-tight font-bold sm:text-4xl">
-                {heroTitle}
-              </h1>
-              <p class="mb-6 max-w-3xl text-base leading-relaxed text-secondary">
-                {heroDescription}
-              </p>
-              <a
-                href={getCanonicalPathFromSlug(heroArticle.slug)}
-                class="group block"
-              >
-                <div class="mb-4 overflow-hidden rounded-xl">
-                  {(() => {
-                    const heroImage =
-                      typeof heroPost.data.ogImage === "string"
-                        ? heroPost.data.ogImage
-                        : heroPost.data.ogImage?.src;
-                    return heroImage ? (
-                      <img
-                        src={heroImage}
-                        alt={`Portada de ${heroPost.data.title}`}
-                        width="1200"
-                        height="675"
-                        class="aspect-video w-full object-cover"
-                        loading="eager"
-                        fetchpriority="high"
-                      />
-                    ) : (
-                      <ArticlePlaceholder tag={heroPost.data.tags?.[0]} />
-                    );
-                  })()}
-                </div>
-                <span class="mb-3 inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold tracking-widest text-accent uppercase">
-                  Última actualización
-                </span>
-                <h2 class="mb-3 font-app text-2xl leading-tight font-bold transition-colors group-hover:text-accent sm:text-4xl">
-                  {heroPost.data.title}
-                </h2>
-                <p class="mb-4 max-w-3xl text-base leading-relaxed text-secondary">
-                  {heroPost.data.description}
-                </p>
-                <div class="mb-4">
-                  <Datetime
-                    pubDatetime={heroArticle.pubDate}
-                    modDatetime={heroArticle.updatedDate}
-                    timezone={heroPost.data.timezone}
-                  />
-                </div>
-                <span class="inline-flex items-center gap-1 text-sm font-semibold text-accent">
-                  Leer artículo <IconArrowRight class="inline-block" />
-                </span>
-              </a>
-            </article>
-
-            <div class="grid gap-6 lg:col-span-1">
-              {secondaryPosts.map(({ post, article }) => {
-                const secondaryImage =
-                  typeof post.data.ogImage === "string"
-                    ? post.data.ogImage
-                    : post.data.ogImage?.src;
-                return (
-                  <article class="rounded-xl border border-border p-4">
-                    <a
-                      href={getCanonicalPathFromSlug(article.slug)}
-                      class="group block transition-colors"
-                    >
-                      <div class="mb-3 overflow-hidden rounded-lg">
-                        {secondaryImage ? (
-                          <img
-                            src={secondaryImage}
-                            alt={`Portada de ${post.data.title}`}
-                            width="1200"
-                            height="675"
-                            class="aspect-video w-full object-cover"
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        ) : (
-                          <ArticlePlaceholder tag={post.data.tags?.[0]} />
-                        )}
-                      </div>
-                      <h2 class="mb-2 font-app text-lg leading-snug font-semibold transition-colors group-hover:text-accent">
-                        {post.data.title}
-                      </h2>
-                      <Datetime
-                        pubDatetime={article.pubDate}
-                        modDatetime={article.updatedDate}
-                        timezone={post.data.timezone}
-                      />
-                    </a>
-                  </article>
-                );
-              })}
-            </div>
-          </section>
-        </RevealOnScroll>
-      )
-    }
-
-    <SectionDivider />
-
-    <!-- ARTÍCULOS RECIENTES -->
-    {
-      remainingPosts.length > 0 && (
-        <RevealOnScroll delay={100}>
-          <section class="py-8">
-            <h2 class="homepage-body-heading mb-6 text-xl font-semibold tracking-wide">
-              Actualidad Reciente
-            </h2>
-            <ul class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {remainingPosts.map(data => (
-                <Card variant="h3" {...data} />
-              ))}
-            </ul>
-          </section>
-        </RevealOnScroll>
-      )
-    }
-
-    <SectionDivider />
-
-    <!-- CALCULADORAS CTA -->
-    <RevealOnScroll delay={200}>
-      <section
-        class="mb-8 rounded-xl border border-accent/20 bg-accent/5 px-6 py-6"
+    <section class="border-b border-border py-8">
+      <p
+        class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase"
       >
-        <h2 class="homepage-body-heading mb-1 text-lg font-semibold">
-          🧮 Calculadoras financieras
-        </h2>
-        <p class="mb-4 text-sm text-secondary">
-          Calcula tu sueldo líquido, AFP y más con parámetros económicos
-          vigentes.
-        </p>
+        Punto de entrada
+      </p>
+      <h1 class="mb-3 max-w-3xl text-2xl leading-tight font-bold sm:text-4xl">
+        {heroTitle}
+      </h1>
+      <p class="mb-6 max-w-3xl text-base leading-relaxed text-secondary">
+        {heroDescription}
+      </p>
+      <div class="flex flex-wrap gap-4 text-sm font-semibold">
+        <LinkButton href={getPath("/guias/")}>
+          Ver rutas por tema <IconArrowRight
+            class="inline-block rtl:-rotate-180"
+          />
+        </LinkButton>
         <LinkButton href={getPath("/calculadoras/")}>
           Ver calculadoras <IconArrowRight
             class="inline-block rtl:-rotate-180"
           />
         </LinkButton>
-      </section>
-    </RevealOnScroll>
+      </div>
+    </section>
+
+    <SectionDivider />
+
+    <section class="py-8">
+      <p
+        class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase"
+      >
+        Empieza por tu problema
+      </p>
+      <h2
+        class="homepage-body-heading mb-6 text-xl font-semibold tracking-wide"
+      >
+        Entradas por intención, no por fecha
+      </h2>
+
+      <ul class="grid gap-4 sm:grid-cols-2">
+        {
+          problemEntryPoints.map(entry => (
+            <li class="rounded-xl border border-border p-4">
+              <p class="mb-2 text-xs font-semibold tracking-wide text-accent uppercase">
+                {entry.eyebrow}
+              </p>
+              <h3 class="homepage-body-heading mb-1 text-lg leading-snug font-semibold">
+                {entry.title}
+              </h3>
+              <p class="mb-3 text-sm text-secondary">{entry.description}</p>
+              <a
+                href={entry.href}
+                class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:opacity-80"
+              >
+                {entry.cta}
+                <IconArrowRight class="inline-block rtl:-rotate-180" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <SectionDivider />
+
+    <!-- CALCULADORAS CTA -->
+    <section class="rounded-xl border border-accent/20 bg-accent/5 px-6 py-6">
+      <h2 class="homepage-body-heading mb-1 text-lg font-semibold">
+        🧮 Calculadoras financieras
+      </h2>
+      <p class="mb-4 text-sm text-secondary">
+        Si ya tienes tus datos y quieres ejecutar el número, entra directo a las
+        herramientas.
+      </p>
+      <LinkButton href={getPath("/calculadoras/")}>
+        Ver calculadoras <IconArrowRight class="inline-block rtl:-rotate-180" />
+      </LinkButton>
+    </section>
+
+    <SectionDivider />
+
+    <!-- ARTÍCULOS RECIENTES -->
+    {
+      recentPosts.length > 0 && (
+        <section class="py-8">
+          <div class="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase">
+                Reciente
+              </p>
+              <h2 class="homepage-body-heading text-xl font-semibold tracking-wide">
+                Actualizaciones recientes
+              </h2>
+            </div>
+            <p class="max-w-2xl text-sm text-secondary">
+              La actualidad sigue disponible, pero ya no define la ruta
+              principal de entrada.
+            </p>
+          </div>
+
+          <ul class="grid gap-3 md:grid-cols-2">
+            {recentPosts.map(post => (
+              <li class="rounded-xl border border-border px-4 py-3">
+                <a
+                  href={getCanonicalPathFromSlug(post.data.slug)}
+                  class="group flex items-start justify-between gap-3"
+                >
+                  <span class="homepage-body-heading text-base leading-snug font-semibold text-foreground transition-colors group-hover:text-accent">
+                    {post.data.title}
+                  </span>
+                  <IconArrowRight class="mt-1 shrink-0 rtl:-rotate-180" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
 
     <!-- VER TODOS -->
     <div class="mb-10 text-center">
@@ -195,6 +207,7 @@ const heroDescription =
 </Layout>
 
 <style is:global>
+  [data-layout="index"] h1,
   [data-layout="index"] .homepage-body-heading,
   [data-layout="index"] .card h3 {
     font-family: var(--font-body) !important;
@@ -202,7 +215,5 @@ const heroDescription =
 </style>
 
 <script is:inline define:vars={{ homePath }}>
-  document.addEventListener("astro:page-load", () => {
-    sessionStorage.setItem("backUrl", homePath);
-  });
+  sessionStorage.setItem("backUrl", homePath);
 </script>

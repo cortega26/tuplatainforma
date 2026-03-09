@@ -119,6 +119,11 @@ MB-002
 The search-platform umbrella closed after the reusable authenticated automation path was restored and both Google Search Console and Bing Webmaster execution tasks were completed with real dashboard access.
 Observed impact: both search platforms now have authenticated execution evidence and a submitted Monedario sitemap entry.
 
+2026-03-09
+MB-006
+Homepage entry flow was restructured around problem-based paths and the final homepage-only performance recovery pass removed Astro view-transition runtime from `/`.
+Observed impact: binding Lighthouse mobile rerun improved homepage metrics from Performance `99` / LCP `1.8s` / Speed Index `1.5s` to Performance `100` / LCP `1.2s` / Speed Index `0.8s`, while request count dropped from `5` to `4`.
+
 2026-03-08
 MB-005
 Homepage metadata and hero positioning rewrite closed after a homepage-only font/LCP cleanup removed the remaining display-font dependency from the mobile render path.
