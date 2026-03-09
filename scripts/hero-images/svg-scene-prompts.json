@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "scripts/hero-images/export-svg-scene-prompts.mjs",
+  "sceneCount": 3,
+  "entries": [
+    {
+      "sceneId": "ahorro",
+      "approvedModelId": "ahorro",
+      "label": "Ahorro",
+      "template": "A",
+      "background": "#0d9488",
+      "reactInputs": {
+        "posture": "standing, reaching forward",
+        "objects": "glass jar with coins",
+        "icon": ""
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #0d9488.\n\nScene: one geometric human figure standing, reaching forward, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near glass jar with coins. All objects are flat geometric shapes, same illustration style.\n\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nColor palette: 3 colors maximum, all flat fills.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy. Do not add extra objects beyond the named scene props."
+    },
+    {
+      "sceneId": "cesantia",
+      "approvedModelId": "cesantia",
+      "label": "Cesantia",
+      "template": "A",
+      "background": "#d97706",
+      "reactInputs": {
+        "posture": "seated on a chair, slouched, head slightly down",
+        "objects": "closed laptop, empty cup",
+        "icon": ""
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure seated on a chair, slouched, head slightly down, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near closed laptop, empty cup. All objects are flat geometric shapes, same illustration style.\n\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nColor palette: 3 colors maximum, all flat fills.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy. Do not add extra objects beyond the named scene props."
+    },
+    {
+      "sceneId": "deuda-credito",
+      "approvedModelId": "deuda-credito",
+      "label": "Deuda / Credito",
+      "template": "A",
+      "background": "#d97706",
+      "reactInputs": {
+        "posture": "standing, one hand raised to head",
+        "objects": "pile of documents, credit card shape",
+        "icon": ""
+      },
+      "prompt": "Create a flat vector editorial illustration for a personal finance website. 2D flat design, geometric shapes only, no gradients, no photorealism, no 3D rendering.\n\nBackground: solid color #d97706.\n\nScene: one geometric human figure standing, one hand raised to head, shown from behind or as a faceless silhouette - simple circle for head, basic rectangles for body. The figure is near pile of documents, credit card shape. All objects are flat geometric shapes, same illustration style.\n\nLighting: none. Flat uniform background only. No shadows, no highlights, no depth.\nColor palette: 3 colors maximum, all flat fills.\nComposition: all elements within the central 80% of the canvas.\nCanvas: 1200x630 pixels, landscape.\n\nDo not include text, letters, numbers, logos, or watermarks. Do not add photorealistic details, skin texture, hair texture, or facial features. Do not add depth of field, bokeh, rim lighting, volumetric light, lens flare, drop shadows, gradients, glows, or neon colors. Do not use 3D rendering or CGI. No cinematic lighting. No realistic anatomy. Do not add extra objects beyond the named scene props."
+    }
+  ]
+}
