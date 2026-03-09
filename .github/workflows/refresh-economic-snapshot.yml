@@ -37,7 +37,7 @@ jobs:
         run: pnpm run economic:snapshot:refresh
 
       - name: "📬 Create pull request"
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore(economic): refresh economic snapshot"
