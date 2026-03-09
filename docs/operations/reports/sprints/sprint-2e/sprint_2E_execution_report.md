@@ -64,25 +64,25 @@
 
 ## Deliverables created
 
-- `docs/operations/reports/sprint-2e/auth_restoration_runbook.md`
-- `docs/operations/reports/sprint-2e/google_execution_report.md`
-- `docs/operations/reports/sprint-2e/bing_execution_report.md`
-- `docs/operations/reports/sprint-2e/founder_next_steps_for_auth.md`
-- `docs/operations/reports/sprint-2e/sprint_2E_execution_report.md`
+- `docs/operations/reports/sprints/sprint-2e/auth_restoration_runbook.md`
+- `docs/operations/reports/sprints/sprint-2e/google_execution_report.md`
+- `docs/operations/reports/sprints/sprint-2e/bing_execution_report.md`
+- `docs/operations/reports/sprints/sprint-2e/founder_next_steps_for_auth.md`
+- `docs/operations/reports/sprints/sprint-2e/sprint_2E_execution_report.md`
 
 ## Files changed
 
-- `backlog.md`
-- `docs/operations/reports/sprint-2e/auth_restoration_runbook.md`
-- `docs/operations/reports/sprint-2e/google_execution_report.md`
-- `docs/operations/reports/sprint-2e/bing_execution_report.md`
-- `docs/operations/reports/sprint-2e/founder_next_steps_for_auth.md`
-- `docs/operations/reports/sprint-2e/sprint_2E_execution_report.md`
-- `progress_log.md`
+- `docs/development/backlog.md`
+- `docs/operations/reports/sprints/sprint-2e/auth_restoration_runbook.md`
+- `docs/operations/reports/sprints/sprint-2e/google_execution_report.md`
+- `docs/operations/reports/sprints/sprint-2e/bing_execution_report.md`
+- `docs/operations/reports/sprints/sprint-2e/founder_next_steps_for_auth.md`
+- `docs/operations/reports/sprints/sprint-2e/sprint_2E_execution_report.md`
+- `docs/operations/logs/progress_log.md`
 
 ## Progress log impact
 
-- `progress_log.md` was updated for:
+- `docs/operations/logs/progress_log.md` was updated for:
   - `MB-032`
   - `MB-036`
   - `MB-037`
@@ -96,18 +96,18 @@
 ## Change Control Record
 
 1. Scope declaration
-- In scope: `backlog.md`, `progress_log.md`, `docs/operations/reports/sprint-2e/*.md`, repo-local Playwright auth diagnostics under `output/playwright/search-platform-profile-2e`, `output/playwright/search-platform-state-2e.json`, and `output/playwright/search-platform-state-2e-authenticated.json`
+- In scope: `docs/development/backlog.md`, `docs/operations/logs/progress_log.md`, `docs/operations/reports/sprints/sprint-2e/*.md`, repo-local Playwright auth diagnostics under `output/playwright/search-platform-profile-2e`, `output/playwright/search-platform-state-2e.json`, and `output/playwright/search-platform-state-2e-authenticated.json`
 - Out of scope: `src/**`, routes, RSS, sitemap generation, content clusters, homepage implementation
 
 2. Impacted modules
 - Paths:
-  - `backlog.md`
-  - `progress_log.md`
-  - `docs/operations/reports/sprint-2e/auth_restoration_runbook.md`
-  - `docs/operations/reports/sprint-2e/google_execution_report.md`
-  - `docs/operations/reports/sprint-2e/bing_execution_report.md`
-  - `docs/operations/reports/sprint-2e/founder_next_steps_for_auth.md`
-  - `docs/operations/reports/sprint-2e/sprint_2E_execution_report.md`
+  - `docs/development/backlog.md`
+  - `docs/operations/logs/progress_log.md`
+  - `docs/operations/reports/sprints/sprint-2e/auth_restoration_runbook.md`
+  - `docs/operations/reports/sprints/sprint-2e/google_execution_report.md`
+  - `docs/operations/reports/sprints/sprint-2e/bing_execution_report.md`
+  - `docs/operations/reports/sprints/sprint-2e/founder_next_steps_for_auth.md`
+  - `docs/operations/reports/sprints/sprint-2e/sprint_2E_execution_report.md`
 - Reason for each path:
   - backlog truth update
   - truthful completion log

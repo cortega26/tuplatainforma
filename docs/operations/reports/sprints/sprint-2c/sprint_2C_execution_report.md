@@ -20,9 +20,9 @@
   - `src/data/blog/**` files directly tied to the sueldo cluster
   - `src/config/sueldoClusterLinks.ts`
   - `src/pages/guias/sueldo-remuneraciones/index.astro`
-  - `backlog.md`
-  - `progress_log.md`
-  - `docs/operations/reports/sprint-2c/**`
+  - `docs/development/backlog.md`
+  - `docs/operations/logs/progress_log.md`
+  - `docs/operations/reports/sprints/sprint-2c/**`
   - `artifacts/editorial/**` for the two new YMYL pages
 - Out of scope:
   - homepage
@@ -37,9 +37,9 @@
   - `src/data/blog/cuanto-descuenta-la-afp-de-tu-sueldo.md`
   - `src/config/sueldoClusterLinks.ts`
   - `src/pages/guias/sueldo-remuneraciones/index.astro`
-  - `backlog.md`
-  - `progress_log.md`
-  - `docs/operations/reports/sprint-2c/**`
+  - `docs/development/backlog.md`
+  - `docs/operations/logs/progress_log.md`
+  - `docs/operations/reports/sprints/sprint-2c/**`
   - `artifacts/editorial/**`
 - Reason for each path:
   - publish missing satellites
@@ -106,13 +106,13 @@
 - `src/data/blog/cuanto-descuenta-la-afp-de-tu-sueldo.md`
 - `src/config/sueldoClusterLinks.ts`
 - `src/pages/guias/sueldo-remuneraciones/index.astro`
-- `backlog.md`
-- `progress_log.md`
-- `docs/operations/reports/sprint-2c/descuentos_sueldo_build_report.md`
-- `docs/operations/reports/sprint-2c/liquidacion_sueldo_build_report.md`
-- `docs/operations/reports/sprint-2c/sueldo_cluster_closure_report.md`
-- `docs/operations/reports/sprint-2c/search_access_diagnostic.md`
-- `docs/operations/reports/sprint-2c/sprint_2C_execution_report.md`
+- `docs/development/backlog.md`
+- `docs/operations/logs/progress_log.md`
+- `docs/operations/reports/sprints/sprint-2c/descuentos_sueldo_build_report.md`
+- `docs/operations/reports/sprints/sprint-2c/liquidacion_sueldo_build_report.md`
+- `docs/operations/reports/sprints/sprint-2c/sueldo_cluster_closure_report.md`
+- `docs/operations/reports/sprints/sprint-2c/search_access_diagnostic.md`
+- `docs/operations/reports/sprints/sprint-2c/sprint_2C_execution_report.md`
 - `artifacts/editorial/descuentos-de-sueldo/20260308-1810-codex/*`
 - `artifacts/editorial/liquidacion-de-sueldo/20260308-1820-codex/*`
 

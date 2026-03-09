@@ -8,19 +8,19 @@
 
 ## Repo-truth findings
 
-1. Previous completed task marked `DONE` in `backlog.md`: yes, `MB-003`.
-2. `progress_log.md` consistent with that completion: yes, there is a matching `2026-03-09` entry for `MB-003`.
+1. Previous completed task marked `DONE` in `docs/development/backlog.md`: yes, `MB-003`.
+2. `docs/operations/logs/progress_log.md` consistent with that completion: yes, there is a matching `2026-03-09` entry for `MB-003`.
 3. Next unfinished backlog task in order before this sprint: `MB-026`.
-4. `roadmap.md` phase alignment: yes, `MB-026` belongs to `Phase 2 - Authority Building`.
+4. `docs/development/roadmap.md` phase alignment: yes, `MB-026` belongs to `Phase 2 - Authority Building`.
 5. Still meaningful: yes, but only as a canonical architecture map. The repo had cluster-specific linking notes for sueldo, not a single cross-cluster map.
 
 ## Relevance check
 
 | Dimension | Evidence | Conclusion |
 |---|---|---|
-| Task statement | `backlog.md` defines `MB-026` as a map/design task, not a sitewide rollout task. | Documentation can satisfy the task truthfully. |
+| Task statement | `docs/development/backlog.md` defines `MB-026` as a map/design task, not a sitewide rollout task. | Documentation can satisfy the task truthfully. |
 | Intended outcome | Phase 2 roadmap calls for tighter internal linking and clearer cluster navigation. | A canonical map is a prerequisite artifact for later hub builds. |
-| Existing implementation or coverage | `docs/operations/reports/sprint-2b/internal_link_pattern_notes.md` documents only the sueldo pattern. | Coverage was partial and cluster-specific. |
+| Existing implementation or coverage | `docs/operations/reports/sprints/sprint-2b/internal_link_pattern_notes.md` documents only the sueldo pattern. | Coverage was partial and cluster-specific. |
 | External/platform overlap | Cloudflare analytics does not overlap with site information architecture. | No redundancy issue. |
 | Still necessary? | Yes. No repo-wide internal-link architecture map existed before this sprint. | `MB-026` remained open legitimately. |
 | Exact gap that remained | Missing source of truth for live/future clusters, support assets, cross-cluster exits, and unresolved taxonomy splits. | Closed by `internal_linking_architecture_map.md`. |
@@ -29,9 +29,9 @@
 
 1. Scope declaration
 - In scope:
-  - `docs/operations/reports/sprint-2f/**`
-  - `backlog.md`
-  - `progress_log.md`
+  - `docs/operations/reports/sprints/sprint-2f/**`
+  - `docs/development/backlog.md`
+  - `docs/operations/logs/progress_log.md`
   - `context/PROJECT_CONTEXT_MASTER.md`
 - Out of scope:
   - `src/**`
@@ -41,10 +41,10 @@
 
 2. Impacted modules
 - Paths:
-  - `docs/operations/reports/sprint-2f/internal_linking_architecture_map.md`
-  - `docs/operations/reports/sprint-2f/sprint_2F_execution_report.md`
-  - `backlog.md`
-  - `progress_log.md`
+  - `docs/operations/reports/sprints/sprint-2f/internal_linking_architecture_map.md`
+  - `docs/operations/reports/sprints/sprint-2f/sprint_2F_execution_report.md`
+  - `docs/development/backlog.md`
+  - `docs/operations/logs/progress_log.md`
   - `context/PROJECT_CONTEXT_MASTER.md`
 - Reason for each path:
   - canonical architecture artifact
@@ -97,10 +97,10 @@
 
 ## Files changed
 
-- `docs/operations/reports/sprint-2f/internal_linking_architecture_map.md`
-- `docs/operations/reports/sprint-2f/sprint_2F_execution_report.md`
-- `backlog.md`
-- `progress_log.md`
+- `docs/operations/reports/sprints/sprint-2f/internal_linking_architecture_map.md`
+- `docs/operations/reports/sprints/sprint-2f/sprint_2F_execution_report.md`
+- `docs/development/backlog.md`
+- `docs/operations/logs/progress_log.md`
 - `context/PROJECT_CONTEXT_MASTER.md`
 
 ## Validation plan

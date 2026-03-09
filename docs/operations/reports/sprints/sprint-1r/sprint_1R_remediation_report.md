@@ -118,11 +118,11 @@
 
 ### Operational records
 
-- [`backlog.md`](/home/carlos/VS_Code_Projects/tuplatainforma/backlog.md)
-- [`progress_log.md`](/home/carlos/VS_Code_Projects/tuplatainforma/progress_log.md)
-- [`indexation_policy.md`](/home/carlos/VS_Code_Projects/tuplatainforma/indexation_policy.md)
-- [`schema_remediation_notes.md`](/home/carlos/VS_Code_Projects/tuplatainforma/schema_remediation_notes.md)
-- [`link_remediation_log.md`](/home/carlos/VS_Code_Projects/tuplatainforma/link_remediation_log.md)
+- [`backlog.md`](/home/carlos/VS_Code_Projects/tuplatainforma/docs/development/backlog.md)
+- [`progress_log.md`](/home/carlos/VS_Code_Projects/tuplatainforma/docs/operations/logs/progress_log.md)
+- [`indexation_policy.md`](/home/carlos/VS_Code_Projects/tuplatainforma/docs/operations/reports/sprints/sprint-1r/indexation_policy.md)
+- [`schema_remediation_notes.md`](/home/carlos/VS_Code_Projects/tuplatainforma/docs/operations/reports/sprints/sprint-1r/schema_remediation_notes.md)
+- [`link_remediation_log.md`](/home/carlos/VS_Code_Projects/tuplatainforma/docs/operations/reports/sprints/sprint-1r/link_remediation_log.md)
 
 ## New Backlog Tasks Created
 
@@ -159,7 +159,7 @@
   - routing/indexation: `src/pages/search.astro`, `src/pages/tags/**`, `src/pages/posts/[...page].astro`, `src/pages/robots.txt.ts`
   - structured data rollout: `src/pages/glosario/[slug].astro`, `src/pages/leyes/[slug].astro`, `src/pages/calculadoras/**`, `src/pages/guias/**`
   - citations: targeted `src/data/blog/**` and `src/data/laws/**`
-  - ops records: `backlog.md`, `progress_log.md`, Sprint 1R markdown artifacts
+  - ops records: `docs/development/backlog.md`, `docs/operations/logs/progress_log.md`, Sprint 1R markdown artifacts
 - Reason for each path:
   - metadata/schema defects
   - sitemap/indexation hygiene

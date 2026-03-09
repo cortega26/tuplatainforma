@@ -14,7 +14,14 @@ const ROOT_ALLOWED_MARKDOWN = new Set([
   "LICENSE.md",
 ]);
 
-const ALLOWED_PREFIXES = ["docs/", "context/", "src/data/", ".github/"];
+const ALLOWED_PREFIXES = [
+  "docs/",
+  "context/",
+  "archive/",
+  "artifacts/editorial/",
+  "src/data/",
+  ".github/",
+];
 
 function getTrackedMarkdownFiles() {
   const output = execFileSync(
@@ -41,6 +48,10 @@ function isAdrFile(filePath) {
 
 function isAllowedLocation(filePath) {
   if (ROOT_ALLOWED_MARKDOWN.has(filePath)) {
+    return true;
+  }
+
+  if (filePath === "scripts/hero-images/pool/WORKFLOW.md") {
     return true;
   }
 

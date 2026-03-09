@@ -373,11 +373,11 @@ tuplatainforma/
 ├── debug.txt
 ├── docker-compose.yml
 ├── eslint.config.js
-├── generate_hero.mjs
-├── git_audit_export.py
+├── scripts/hero-images/generate_hero.mjs
+├── scripts/repo/git_audit_export.py
 ├── package.json
 ├── pnpm-lock.yaml
-├── project_structure.py
+├── scripts/repo/project_structure.py
 ├── test-sharp.mjs
 ├── test-svg.avif
 ├── test-svg.mjs

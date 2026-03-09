@@ -11,7 +11,7 @@
 **git status (short):**
 
 ```text
-?? git_audit_export.py
+?? scripts/repo/git_audit_export.py
 ```
 **Recent history (top 30):**
 

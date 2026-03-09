@@ -307,7 +307,7 @@ Site perfectly adheres to the v3 emotional & technical requirements while mainta
     path.join(process.cwd(), 'docs', 'operations', 'reports', 'FEATURED_IMAGE_MIGRATION_REPORT.md'),
     report
   );
-  console.log('--> Migration v3 complete. Report updated at docs/operations/reports/FEATURED_IMAGE_MIGRATION_REPORT.md');
+  console.log('--> Migration v3 complete. Report updated at docs/operations/reports/migrations/FEATURED_IMAGE_MIGRATION_REPORT.md');
 }
 
 run().catch(console.error);

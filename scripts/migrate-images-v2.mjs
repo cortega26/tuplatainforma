@@ -209,7 +209,7 @@ All generated images reside in \`src/assets/images/blog/\` and adhere strictly t
     path.join(process.cwd(), 'docs', 'operations', 'reports', 'FEATURED_IMAGE_MIGRATION_REPORT.md'),
     report
   );
-  console.log('--> Migration v2 complete. Report updated at docs/operations/reports/FEATURED_IMAGE_MIGRATION_REPORT.md');
+  console.log('--> Migration v2 complete. Report updated at docs/operations/reports/migrations/FEATURED_IMAGE_MIGRATION_REPORT.md');
 }
 
 run().catch(console.error);

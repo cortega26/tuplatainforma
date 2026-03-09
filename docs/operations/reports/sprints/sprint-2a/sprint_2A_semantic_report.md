@@ -5,9 +5,9 @@ Sprint: `Sprint 2A - Keyword Universe and SERP Intent Architecture`
 
 ## What was produced
 
-- `keyword_universe.md`
-- `keyword_url_map.md`
-- `serp_intent_analysis.md`
+- `docs/research/seo/strategy/keyword_universe.md`
+- `docs/research/seo/strategy/keyword_url_map.md`
+- `docs/research/seo/strategy/serp_intent_analysis.md`
 - Backlog and progress-log updates reflecting:
   - MB-004 complete
   - MB-028 complete

@@ -15,7 +15,7 @@ export default [
   },
   { rules: { "no-console": "error" } },
   {
-    files: ["scripts/**/*.mjs", "generate_hero.mjs", "test-*.mjs"],
+    files: ["scripts/**/*.mjs", "test-*.mjs"],
     rules: {
       "no-console": "off",
     },

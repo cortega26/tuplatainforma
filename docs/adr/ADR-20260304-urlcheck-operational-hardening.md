@@ -29,7 +29,7 @@ This change alters CI execution semantics and operational workflow, which requir
 5. Add CI workflow hardening:
    - always upload URL artifacts (with placeholders if needed)
    - nightly non-blocking external audit job.
-6. Document operational procedures in `docs/operations/urlcheck-runbook.md`.
+6. Document operational procedures in `docs/operations/runbooks/urlcheck-runbook.md`.
 
 ## Consequences
 

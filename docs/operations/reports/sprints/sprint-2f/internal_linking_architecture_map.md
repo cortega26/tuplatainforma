@@ -9,10 +9,10 @@ Create one canonical map for the Phase 2 cluster-linking architecture using repo
 
 ## Canonical inputs
 
-- `backlog.md` (`MB-026`, `MB-010` to `MB-015`)
-- `roadmap.md` (Phase 2 - Authority Building)
-- `docs/operations/reports/sprint-2b/taxonomy_and_hub_strategy.md`
-- `docs/operations/reports/sprint-2b/internal_link_pattern_notes.md`
+- `docs/development/backlog.md` (`MB-026`, `MB-010` to `MB-015`)
+- `docs/development/roadmap.md` (Phase 2 - Authority Building)
+- `docs/operations/reports/sprints/sprint-2b/taxonomy_and_hub_strategy.md`
+- `docs/operations/reports/sprints/sprint-2b/internal_link_pattern_notes.md`
 - `src/pages/guias/**`
 - `src/data/blog/**`
 - `src/pages/calculadoras/**`

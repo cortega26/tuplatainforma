@@ -10,7 +10,7 @@ Definir el orden de ataque de los próximos pasos de Monedario para maximizar co
 
 - `docs/TECH_DEBT_BACKLOG.md`
 - `docs/development/BACKLOG_EDITORIAL.md`
-- `docs/operations/audits/2026-02-27_gap-audit_v1_summary.md`
+- `docs/operations/audits/closed/2026/2026-02-27_gap-audit_v1_summary.md`
 - `context/CURRENT_STATE.md`
 
 ## Invariantes y contratos a preservar

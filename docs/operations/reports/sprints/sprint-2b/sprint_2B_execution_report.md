@@ -32,8 +32,8 @@ Sprint 2B - Taxonomy Realignment and First Cluster Build
   - `src/data/blog/como-calcular-sueldo-liquido.md`
   - `src/data/blog/cuanto-descuenta-la-afp-de-tu-sueldo.md`
   - `tests/integration/cluster-source-of-truth.test.ts`
-  - `backlog.md`
-  - `progress_log.md`
+  - `docs/development/backlog.md`
+  - `docs/operations/logs/progress_log.md`
   - `docs/editorial/FRONTMATTER_SCHEMA.md`
   - `context/PROJECT_CONTEXT_MASTER.md`
 - Reason for each path:
@@ -109,11 +109,11 @@ Sprint 2B - Taxonomy Realignment and First Cluster Build
   - `src/data/blog/cuanto-descuenta-la-afp-de-tu-sueldo.md`
   - `tests/integration/cluster-source-of-truth.test.ts`
 - Operational/docs:
-  - `backlog.md`
-  - `progress_log.md`
+  - `docs/development/backlog.md`
+  - `docs/operations/logs/progress_log.md`
   - `docs/editorial/FRONTMATTER_SCHEMA.md`
   - `context/PROJECT_CONTEXT_MASTER.md`
-  - `docs/operations/reports/sprint-2b/*`
+  - `docs/operations/reports/sprints/sprint-2b/*`
 
 ## Verification
 

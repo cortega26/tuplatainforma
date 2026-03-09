@@ -132,7 +132,7 @@ Expected work for the next iteration:
 
 ### Canonical docs
 - [context/EDITORIAL_IMAGE_SYSTEM.md](/home/carlos/VS_Code_Projects/tuplatainforma/context/EDITORIAL_IMAGE_SYSTEM.md)
-- [context/HANDOFF_HERO_IMAGES_SVG_20260305.md](/home/carlos/VS_Code_Projects/tuplatainforma/context/HANDOFF_HERO_IMAGES_SVG_20260305.md)
+- [context/handoffs/HANDOFF_HERO_IMAGES_SVG_20260305.md](/home/carlos/VS_Code_Projects/tuplatainforma/context/handoffs/HANDOFF_HERO_IMAGES_SVG_20260305.md)
 
 ### Classification / approved model selection
 - [scripts/hero-images/config.mjs](/home/carlos/VS_Code_Projects/tuplatainforma/scripts/hero-images/config.mjs)
@@ -213,7 +213,7 @@ Read these first:
 - docs/AI_ENGINEERING_CONSTITUTION.md
 - AGENTS.md
 - context/EDITORIAL_IMAGE_SYSTEM.md
-- context/HANDOFF_HERO_IMAGES_SVG_20260305.md
+- context/handoffs/HANDOFF_HERO_IMAGES_SVG_20260305.md
 
 Task:
 - Continue the deterministic SVG hero image system.
@@ -227,6 +227,6 @@ Required checks:
 - pnpm run format:check
 - pnpm run check:boundaries
 
-path: context/HANDOFF_HERO_IMAGES_SVG_20260305.md
+path: context/handoffs/HANDOFF_HERO_IMAGES_SVG_20260305.md
 ```
 

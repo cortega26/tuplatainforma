@@ -64,15 +64,15 @@
 
 ## Files changed
 
-- `backlog.md`
-- `docs/operations/reports/sprint-2d/google_search_console_runbook.md`
-- `docs/operations/reports/sprint-2d/bing_access_and_submission_report.md`
-- `docs/operations/reports/sprint-2d/platform_task_granularity_decision.md`
-- `docs/operations/reports/sprint-2d/sprint_2D_execution_report.md`
+- `docs/development/backlog.md`
+- `docs/operations/reports/sprints/sprint-2d/google_search_console_runbook.md`
+- `docs/operations/reports/sprints/sprint-2d/bing_access_and_submission_report.md`
+- `docs/operations/reports/sprints/sprint-2d/platform_task_granularity_decision.md`
+- `docs/operations/reports/sprints/sprint-2d/sprint_2D_execution_report.md`
 
 ## Progress log impact
 
-- `progress_log.md` was intentionally not updated.
+- `docs/operations/logs/progress_log.md` was intentionally not updated.
 - Reason: no backlog task reached a truthful `DONE` state in Sprint 2D.
 
 ## Verification
@@ -101,13 +101,13 @@
 ## Change Control Record
 
 1. Scope declaration
-- In scope: `backlog.md`, Sprint 2D operational reports, repo-local browser artifacts used to test platform access
+- In scope: `docs/development/backlog.md`, Sprint 2D operational reports, repo-local browser artifacts used to test platform access
 - Out of scope: `src/**`, routes, sitemap generation logic, content expansion
 
 2. Impacted modules
 - Paths:
-  - `backlog.md`
-  - `docs/operations/reports/sprint-2d/*.md`
+  - `docs/development/backlog.md`
+  - `docs/operations/reports/sprints/sprint-2d/*.md`
 - Reason for each path:
   - backlog truth correction
   - Sprint 2D execution evidence and operational handoff

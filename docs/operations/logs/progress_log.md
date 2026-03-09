@@ -4,8 +4,8 @@ Backlog completions recorded below.
 
 ## Logging Rules
 - Add one entry per completed backlog task.
-- Always reference the backlog task ID exactly as written in `backlog.md`.
-- If a task is partially advanced but not finished, update its status in `backlog.md` instead of adding a completion entry here.
+- Always reference the backlog task ID exactly as written in `docs/development/backlog.md`.
+- If a task is partially advanced but not finished, update its status in `docs/development/backlog.md` instead of adding a completion entry here.
 - Record measurable impact only when there is observable evidence.
 
 ## Entry Template

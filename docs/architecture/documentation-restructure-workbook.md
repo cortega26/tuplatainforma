@@ -26,9 +26,9 @@ Markdown files discovered (excluding build/dependency artifacts): **114**.
 | INTER_CLUSTER_LINKING.md | `context/INTER_CLUSTER_LINKING.md` | Inter-Cluster Linking Policy (Canonical) | General documentation | Informational |
 | INVARIANTS.md | `context/INVARIANTS.md` | Context Invariants Registry | Context registry/policy | Governance |
 | MODULE_INDEX.md | `context/MODULE_INDEX.md` | Module Index (Agent Quick Map) | Context registry/policy | Governance |
-| PHASE1_CLOSURE_REPORT.md | `context/PHASE1_CLOSURE_REPORT.md` | PHASE 1 CLOSURE REPORT | Closure/performance report | Operational |
+| PHASE1_CLOSURE_REPORT.md | `archive/context/PHASE1_CLOSURE_REPORT.md` | PHASE 1 CLOSURE REPORT | Closure/performance report | Operational |
 | PROJECT_CONTEXT_MASTER.md | `context/PROJECT_CONTEXT_MASTER.md` | PROJECT_CONTEXT_MASTER | Context registry/policy | Governance |
-| TECH_DEBT_BACKLOG.md | `context/TECH_DEBT_BACKLOG.md` | TECH_DEBT_BACKLOG | Technical debt snapshot (context) | Operational |
+| TECH_DEBT_BACKLOG.md | `archive/context/TECH_DEBT_BACKLOG.md` | TECH_DEBT_BACKLOG | Technical debt snapshot (context) | Operational |
 | AI_ENGINEERING_CONSTITUTION.md | `docs/AI_ENGINEERING_CONSTITUTION.md` | AI-Optimized Engineering Constitution | Constitution | Constitutional |
 | README.md | `docs/README.md` | Documentation System | Repository overview | Informational |
 | TECH_DEBT_BACKLOG.md | `docs/TECH_DEBT_BACKLOG.md` | TECH_DEBT_BACKLOG | Technical debt ledger (canonical) | Governance |
@@ -51,9 +51,9 @@ Markdown files discovered (excluding build/dependency artifacts): **114**.
 | SEO_ARCHITECTURE.md | `docs/editorial/SEO_ARCHITECTURE.md` | SEO Architecture: Pilar + Tool | Editorial process artifact | Operational |
 | README.md | `docs/governance/README.md` | Governance Index | Documentation index | Governance |
 | README.md | `docs/operations/README.md` | Operations Docs | Documentation index | Governance |
-| 2026-02-27_gap-audit_v1.md | `docs/operations/audits/2026-02-27_gap-audit_v1.md` | 2026-02-27_gap-audit_v1 | Audit report | Operational |
-| 2026-02-27_gap-audit_v1_summary.md | `docs/operations/audits/2026-02-27_gap-audit_v1_summary.md` | Gap Audit v1 — Decision Summary (2026-02-27) | Audit report | Operational |
-| repo-audit-export.md | `docs/operations/audits/repo-audit-export.md` | Repo audit export | Audit report | Operational |
+| 2026-02-27_gap-audit_v1.md | `docs/operations/audits/closed/2026/2026-02-27_gap-audit_v1.md` | 2026-02-27_gap-audit_v1 | Audit report | Operational |
+| 2026-02-27_gap-audit_v1_summary.md | `docs/operations/audits/closed/2026/2026-02-27_gap-audit_v1_summary.md` | Gap Audit v1 — Decision Summary (2026-02-27) | Audit report | Operational |
+| repo-audit-export.md | `docs/operations/audits/closed/2026/repo-audit-export.md` | Repo audit export | Audit report | Operational |
 | ISSUE-001_devolucion-impuestos-fechas-compensaciones.md | `docs/operations/issues/ISSUE-001_devolucion-impuestos-fechas-compensaciones.md` | ISSUE-001 — Devolución de impuestos: fechas y compensaciones | Editorial issue execution record | Operational |
 | ISSUE-002_operacion-renta-f22-checklist.md | `docs/operations/issues/ISSUE-002_operacion-renta-f22-checklist.md` | ISSUE-002 — Operación Renta F22: checklist de revisión y envío | Editorial issue execution record | Operational |
 | ISSUE-003_boleta-honorarios-2026-retencion-cobertura.md | `docs/operations/issues/ISSUE-003_boleta-honorarios-2026-retencion-cobertura.md` | ISSUE-003 — Boleta honorarios 2026: retención y cobertura | Editorial issue execution record | Operational |
@@ -62,10 +62,10 @@ Markdown files discovered (excluding build/dependency artifacts): **114**.
 | ISSUE-006_fondos-mutuos-comisiones-rescate-impuestos.md | `docs/operations/issues/ISSUE-006_fondos-mutuos-comisiones-rescate-impuestos.md` | ISSUE-006 — Fondos mutuos: comisiones, rescate e impuestos | Editorial issue execution record | Operational |
 | ISSUE-007_etf-desde-chile-comisiones-custodia-impuestos.md | `docs/operations/issues/ISSUE-007_etf-desde-chile-comisiones-custodia-impuestos.md` | ISSUE-007 — ETFs desde Chile: comisiones, custodia e impuestos | Editorial issue execution record | Operational |
 | ISSUE-008_estafas-chile-vishing-portabilidad-falsas-inversiones.md | `docs/operations/issues/ISSUE-008_estafas-chile-vishing-portabilidad-falsas-inversiones.md` | ISSUE-008 — Estafas en Chile: checklist preventivo multicanal | Editorial issue execution record | Operational |
-| FEATURED_IMAGE_MIGRATION_REPORT.md | `docs/operations/reports/FEATURED_IMAGE_MIGRATION_REPORT.md` | Featured Image Migration Report (v3) | Closure/performance report | Operational |
-| PERFORMANCE_HARDENING_MOBILE_REPORT.md | `docs/operations/reports/PERFORMANCE_HARDENING_MOBILE_REPORT.md` | Mobile Performance Hardening Report (Astro / GitHub Pages) | Closure/performance report | Operational |
-| PERFORMANCE_REMOTE_CLOSURE_REPORT.md | `docs/operations/reports/PERFORMANCE_REMOTE_CLOSURE_REPORT.md` | Remote Performance Closure Report | Closure/performance report | Operational |
-| PHASE1_CLOSURE_REPORT.md | `docs/operations/reports/PHASE1_CLOSURE_REPORT.md` | PHASE 1 CLOSURE REPORT | Closure/performance report | Operational |
+| FEATURED_IMAGE_MIGRATION_REPORT.md | `docs/operations/reports/migrations/FEATURED_IMAGE_MIGRATION_REPORT.md` | Featured Image Migration Report (v3) | Closure/performance report | Operational |
+| PERFORMANCE_HARDENING_MOBILE_REPORT.md | `docs/operations/reports/performance/PERFORMANCE_HARDENING_MOBILE_REPORT.md` | Mobile Performance Hardening Report (Astro / GitHub Pages) | Closure/performance report | Operational |
+| PERFORMANCE_REMOTE_CLOSURE_REPORT.md | `docs/operations/reports/performance/PERFORMANCE_REMOTE_CLOSURE_REPORT.md` | Remote Performance Closure Report | Closure/performance report | Operational |
+| PHASE1_CLOSURE_REPORT.md | `docs/operations/reports/closures/PHASE1_CLOSURE_REPORT.md` | PHASE 1 CLOSURE REPORT | Closure/performance report | Operational |
 | README.md | `docs/research/README.md` | Research Docs | Documentation index | Governance |
 | deep-research-report.md | `docs/research/deep-research-report.md` | Estrategia de Contenido SEO para Tu Plata Informa | Research dossier | Informational |
 | tuplatainforma-contexto.md | `internal-docs/tuplatainforma-contexto.md` | Contexto Maestro — tuplatainforma | Internal context notes | Informational |
@@ -138,8 +138,8 @@ Internal markdown reference edges: **20**.
 | Document | Inbound refs |
 |---|---:|
 | `docs/editorial/DEFINITION_OF_DONE.md` | 9 |
-| `context/TECH_DEBT_BACKLOG.md` | 1 |
-| `docs/operations/audits/2026-02-27_gap-audit_v1.md` | 1 |
+| `archive/context/TECH_DEBT_BACKLOG.md` | 1 |
+| `docs/operations/audits/closed/2026/2026-02-27_gap-audit_v1.md` | 1 |
 | `docs/operations/issues/ISSUE-001_devolucion-impuestos-fechas-compensaciones.md` | 1 |
 | `docs/operations/issues/ISSUE-002_operacion-renta-f22-checklist.md` | 1 |
 | `docs/operations/issues/ISSUE-003_boleta-honorarios-2026-retencion-cobertura.md` | 1 |
@@ -189,12 +189,12 @@ Why this improves maintainability:
 | File | Old Path | New Path | Action |
 |---|---|---|---|
 | BACKLOG_EDITORIAL.md | `BACKLOG_EDITORIAL.md` | `docs/development/BACKLOG_EDITORIAL.md` | move |
-| audit.md | `audit.md` | `docs/operations/audits/repo-audit-export.md` | move+rename |
+| audit.md | `audit.md` | `docs/operations/audits/closed/2026/repo-audit-export.md` | move+rename |
 | project_structure.md | `project_structure.md` | `docs/architecture/project-structure.md` | move |
 | DOMAIN_CONTRACT_BOUNDARIES.md | `docs/DOMAIN_CONTRACT_BOUNDARIES.md` | `docs/architecture/DOMAIN_CONTRACT_BOUNDARIES.md` | move |
 | deep-research-report.md | `docs/deep-research-report.md` | `docs/research/deep-research-report.md` | move |
-| 2026-02-27_gap-audit_v1.md | `docs/audits/2026-02-27_gap-audit_v1.md` | `docs/operations/audits/2026-02-27_gap-audit_v1.md` | move |
-| 2026-02-27_gap-audit_v1_summary.md | `docs/audits/2026-02-27_gap-audit_v1_summary.md` | `docs/operations/audits/2026-02-27_gap-audit_v1_summary.md` | move |
+| 2026-02-27_gap-audit_v1.md | `docs/audits/2026-02-27_gap-audit_v1.md` | `docs/operations/audits/closed/2026/2026-02-27_gap-audit_v1.md` | move |
+| 2026-02-27_gap-audit_v1_summary.md | `docs/audits/2026-02-27_gap-audit_v1_summary.md` | `docs/operations/audits/closed/2026/2026-02-27_gap-audit_v1_summary.md` | move |
 | ISSUE-001_devolucion-impuestos-fechas-compensaciones.md | `docs/issues/ISSUE-001_devolucion-impuestos-fechas-compensaciones.md` | `docs/operations/issues/ISSUE-001_devolucion-impuestos-fechas-compensaciones.md` | move |
 | ISSUE-002_operacion-renta-f22-checklist.md | `docs/issues/ISSUE-002_operacion-renta-f22-checklist.md` | `docs/operations/issues/ISSUE-002_operacion-renta-f22-checklist.md` | move |
 | ISSUE-003_boleta-honorarios-2026-retencion-cobertura.md | `docs/issues/ISSUE-003_boleta-honorarios-2026-retencion-cobertura.md` | `docs/operations/issues/ISSUE-003_boleta-honorarios-2026-retencion-cobertura.md` | move |
@@ -203,10 +203,10 @@ Why this improves maintainability:
 | ISSUE-006_fondos-mutuos-comisiones-rescate-impuestos.md | `docs/issues/ISSUE-006_fondos-mutuos-comisiones-rescate-impuestos.md` | `docs/operations/issues/ISSUE-006_fondos-mutuos-comisiones-rescate-impuestos.md` | move |
 | ISSUE-007_etf-desde-chile-comisiones-custodia-impuestos.md | `docs/issues/ISSUE-007_etf-desde-chile-comisiones-custodia-impuestos.md` | `docs/operations/issues/ISSUE-007_etf-desde-chile-comisiones-custodia-impuestos.md` | move |
 | ISSUE-008_estafas-chile-vishing-portabilidad-falsas-inversiones.md | `docs/issues/ISSUE-008_estafas-chile-vishing-portabilidad-falsas-inversiones.md` | `docs/operations/issues/ISSUE-008_estafas-chile-vishing-portabilidad-falsas-inversiones.md` | move |
-| FEATURED_IMAGE_MIGRATION_REPORT.md | `docs/FEATURED_IMAGE_MIGRATION_REPORT.md` | `docs/operations/reports/FEATURED_IMAGE_MIGRATION_REPORT.md` | move |
-| PERFORMANCE_HARDENING_MOBILE_REPORT.md | `docs/PERFORMANCE_HARDENING_MOBILE_REPORT.md` | `docs/operations/reports/PERFORMANCE_HARDENING_MOBILE_REPORT.md` | move |
-| PERFORMANCE_REMOTE_CLOSURE_REPORT.md | `docs/PERFORMANCE_REMOTE_CLOSURE_REPORT.md` | `docs/operations/reports/PERFORMANCE_REMOTE_CLOSURE_REPORT.md` | move |
-| PHASE1_CLOSURE_REPORT.md | `docs/PHASE1_CLOSURE_REPORT.md` | `docs/operations/reports/PHASE1_CLOSURE_REPORT.md` | move |
+| FEATURED_IMAGE_MIGRATION_REPORT.md | `docs/FEATURED_IMAGE_MIGRATION_REPORT.md` | `docs/operations/reports/migrations/FEATURED_IMAGE_MIGRATION_REPORT.md` | move |
+| PERFORMANCE_HARDENING_MOBILE_REPORT.md | `docs/PERFORMANCE_HARDENING_MOBILE_REPORT.md` | `docs/operations/reports/performance/PERFORMANCE_HARDENING_MOBILE_REPORT.md` | move |
+| PERFORMANCE_REMOTE_CLOSURE_REPORT.md | `docs/PERFORMANCE_REMOTE_CLOSURE_REPORT.md` | `docs/operations/reports/performance/PERFORMANCE_REMOTE_CLOSURE_REPORT.md` | move |
+| PHASE1_CLOSURE_REPORT.md | `docs/PHASE1_CLOSURE_REPORT.md` | `docs/operations/reports/closures/PHASE1_CLOSURE_REPORT.md` | move |
 
 ## Stage 6 - Migration Execution
 

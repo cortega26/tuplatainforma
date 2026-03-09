@@ -37,7 +37,7 @@ Los riesgos principales están en deuda de mantenibilidad y consistencia operati
 
 ### Checkpoint 2026-03-09 (Sprint 2F Internal Linking Architecture Map)
 
-- `MB-026` quedó cerrado mediante un artefacto canónico de arquitectura de enlaces internos en `docs/operations/reports/sprint-2f/internal_linking_architecture_map.md`.
+- `MB-026` quedó cerrado mediante un artefacto canónico de arquitectura de enlaces internos en `docs/operations/reports/sprints/sprint-2f/internal_linking_architecture_map.md`.
 - El mapa consolida los activos vivos y futuros de Phase 2 sin cambiar URLs públicas ni introducir rollout runtime adicional.
 - Quedan explicitadas dos separaciones futuras ya decididas semánticamente: `uf-costo-de-vida` y `presupuesto-control-financiero`, ambas aún sin hub productivo.
 - Se documenta que `empleo-ingresos` sigue siendo el contenedor operativo para cesantía/protección social mientras no exista evidencia suficiente para abrir un hub separado.
@@ -294,7 +294,7 @@ No hay snapshot del upstream dentro del repo para diff directo; por lo tanto est
   - Config experimental adicional en `astro.config.ts` (`Inter`, `Playfair Display`).
 
 ## 8. Deuda técnica (resumen)
-Ver backlog vivo: [context/TECH_DEBT_BACKLOG.md](./TECH_DEBT_BACKLOG.md)
+Ver backlog vivo: [docs/TECH_DEBT_BACKLOG.md](../docs/TECH_DEBT_BACKLOG.md)
 
 Top 5 por urgencia/riesgo:
 - `TD-0002` Valores financieros hardcodeados y fechas fijas en calculadoras.
