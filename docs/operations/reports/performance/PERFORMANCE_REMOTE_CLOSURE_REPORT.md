@@ -30,18 +30,18 @@ Configuration used in all 3 runs:
 
 Artifacts per run:
 
-1. `artifacts/lighthouse-remote-mobile-run1.report.json`
-2. `artifacts/lighthouse-remote-mobile-run1.report.html`
-3. `artifacts/lighthouse-remote-mobile-run2.report.json`
-4. `artifacts/lighthouse-remote-mobile-run2.report.html`
-5. `artifacts/lighthouse-remote-mobile-run3.report.json`
-6. `artifacts/lighthouse-remote-mobile-run3.report.html`
+1. `output/performance/lighthouse/lighthouse-remote-mobile-run1.report.json`
+2. `output/performance/lighthouse/lighthouse-remote-mobile-run1.report.html`
+3. `output/performance/lighthouse/lighthouse-remote-mobile-run2.report.json`
+4. `output/performance/lighthouse/lighthouse-remote-mobile-run2.report.html`
+5. `output/performance/lighthouse/lighthouse-remote-mobile-run3.report.json`
+6. `output/performance/lighthouse/lighthouse-remote-mobile-run3.report.html`
 
 Filmstrip captures:
 
-1. `artifacts/filmstrip-remote-run1/`
-2. `artifacts/filmstrip-remote-run2/`
-3. `artifacts/filmstrip-remote-run3/`
+1. `output/performance/filmstrips/filmstrip-remote-run1/`
+2. `output/performance/filmstrips/filmstrip-remote-run2/`
+3. `output/performance/filmstrips/filmstrip-remote-run3/`
 
 ## Step 3: Median aggregation
 
@@ -54,12 +54,12 @@ Filmstrip captures:
 | CLS | 0 | 0 | 0 | 0 |
 | TBT | 0ms | 0ms | 0ms | 0ms |
 
-Source: `artifacts/remote-lighthouse-summary.json`
+Source: `output/performance/lighthouse/remote-lighthouse-summary.json`
 
 ## Step 4: PageSpeed Insights validation
 
 - PSI API status: blocked by quota (`429 RESOURCE_EXHAUSTED`)
-- Evidence: `artifacts/psi-mobile-final-closure.json`
+- Evidence: `output/performance/psi/psi-mobile-final-closure.json`
 - Manual PSI UI screenshot is still required from a browser session.
 
 ## Step 5: Regression verification

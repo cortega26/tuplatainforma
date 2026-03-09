@@ -68,7 +68,7 @@ Markdown files discovered (excluding build/dependency artifacts): **114**.
 | PHASE1_CLOSURE_REPORT.md | `docs/operations/reports/closures/PHASE1_CLOSURE_REPORT.md` | PHASE 1 CLOSURE REPORT | Closure/performance report | Operational |
 | README.md | `docs/research/README.md` | Research Docs | Documentation index | Governance |
 | deep-research-report.md | `docs/research/deep-research-report.md` | Estrategia de Contenido SEO para Tu Plata Informa | Research dossier | Informational |
-| tuplatainforma-contexto.md | `internal-docs/tuplatainforma-contexto.md` | Contexto Maestro — tuplatainforma | Internal context notes | Informational |
+| tuplatainforma-contexto.md | `docs/archive/internal-docs/tuplatainforma-contexto.md` | Contexto Maestro — tuplatainforma | Archived historical local context note (non-canonical) | Informational |
 | ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.md | `src/data/blog/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.md` | ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026 | Published article content | Informational |
 | boleta-honorarios-2026-retencion-cobertura.md | `src/data/blog/boleta-honorarios-2026-retencion-cobertura.md` | boleta-honorarios-2026-retencion-cobertura | Published article content | Informational |
 | cae-costo-real-credito-chile.md | `src/data/blog/cae-costo-real-credito-chile.md` | cae-costo-real-credito-chile | Published article content | Informational |

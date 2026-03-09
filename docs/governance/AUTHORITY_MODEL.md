@@ -46,9 +46,22 @@ auditable, and non-contradictory.
 5. Scope discipline for docs changes.
 - Documentation-only changes must not modify runtime behavior in `src/**`.
 
-## Current conflict flags (Option A)
+## Current cross-reference policy
 
-As of 2026-03-04, `context/*.md` still references `docs/*` in multiple places
-(e.g., constitution/editorial policy/report paths). Under strict Option A, this
-is a known conflict and should be resolved in a dedicated follow-up migration
-that updates context references without breaking governance semantics.
+Cross-references from `context/*.md` into canonical `docs/**` anchors are
+allowed when they point to higher-authority or canonical supporting material,
+for example:
+
+- `docs/AI_ENGINEERING_CONSTITUTION.md`
+- `docs/editorial/NORMA_YMYL.md`
+- `docs/domain/**`
+- `docs/adr/**`
+- `docs/reports/*.json`
+- selected operational reports cited as checkpoint evidence
+
+What is not allowed is residual linkage to deprecated pre-restructure paths
+such as `docs/audits/`, `docs/issues/`, root-level report files, or
+`internal-docs/` as an active canonical location.
+
+`pnpm run check:docs` enforces this narrower rule so the warning channel stays
+actionable instead of flagging legitimate canonical references.

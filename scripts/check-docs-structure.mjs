@@ -23,6 +23,40 @@ const ALLOWED_PREFIXES = [
   ".github/",
 ];
 
+const CONTEXT_LEGACY_DOC_PATTERNS = [
+  { label: "legacy audits path", regex: /(?:^|[^a-zA-Z0-9_])docs\/audits\// },
+  { label: "legacy issues path", regex: /(?:^|[^a-zA-Z0-9_])docs\/issues\// },
+  {
+    label: "legacy root report path",
+    regex:
+      /(?:^|[^a-zA-Z0-9_])docs\/(?:FEATURED_IMAGE_MIGRATION_REPORT|PERFORMANCE_HARDENING_MOBILE_REPORT|PERFORMANCE_REMOTE_CLOSURE_REPORT|PHASE1_CLOSURE_REPORT)\.md/,
+  },
+  {
+    label: "legacy root architecture path",
+    regex: /(?:^|[^a-zA-Z0-9_])docs\/DOMAIN_CONTRACT_BOUNDARIES\.md/,
+  },
+  {
+    label: "legacy root research path",
+    regex: /(?:^|[^a-zA-Z0-9_])docs\/deep-research-report\.md/,
+  },
+  {
+    label: "legacy root backlog path",
+    regex: /(?:^|[^a-zA-Z0-9_])BACKLOG_EDITORIAL\.md/,
+  },
+  {
+    label: "legacy root audit path",
+    regex: /(?:^|[\s`(])audit\.md(?:$|[\s`),.:])/,
+  },
+  {
+    label: "legacy root project structure path",
+    regex: /(?:^|[^a-zA-Z0-9_])project_structure\.md/,
+  },
+  {
+    label: "legacy internal-docs root path",
+    regex: /(?:^|[^a-zA-Z0-9_])internal-docs\//,
+  },
+];
+
 function getTrackedMarkdownFiles() {
   const output = execFileSync(
     "git",
@@ -58,7 +92,7 @@ function isAllowedLocation(filePath) {
   return ALLOWED_PREFIXES.some((prefix) => filePath.startsWith(prefix));
 }
 
-function findContextToDocsReferences(files) {
+function findContextLegacyDocReferences(files) {
   const offenders = [];
 
   for (const filePath of files) {
@@ -67,8 +101,11 @@ function findContextToDocsReferences(files) {
     }
 
     const content = readFileSync(path.join(REPO_ROOT, filePath), "utf8");
-    if (/(?:^|[^a-zA-Z0-9_])docs\//.test(content)) {
-      offenders.push(filePath);
+
+    for (const pattern of CONTEXT_LEGACY_DOC_PATTERNS) {
+      if (pattern.regex.test(content)) {
+        offenders.push({ filePath, label: pattern.label });
+      }
     }
   }
 
@@ -128,12 +165,14 @@ function run() {
     process.exit(1);
   }
 
-  const contextDocsRefs = findContextToDocsReferences(files);
-  if (contextDocsRefs.length > 0) {
+  const contextLegacyRefs = findContextLegacyDocReferences(files);
+  if (contextLegacyRefs.length > 0) {
     console.warn(
-      `[check-docs-structure] WARN: ${contextDocsRefs.length} context file(s) reference docs/. ` +
-        "Option A target model expects context to be docs-independent."
+      `[check-docs-structure] WARN: ${contextLegacyRefs.length} legacy context->docs reference(s) found.`
     );
+    for (const offender of contextLegacyRefs) {
+      console.warn(`- ${offender.filePath}: ${offender.label}`);
+    }
   }
 
   console.log(

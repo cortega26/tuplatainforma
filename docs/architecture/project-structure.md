@@ -382,10 +382,6 @@ tuplatainforma/
 ├── package.json
 ├── pnpm-lock.yaml
 ├── scripts/repo/project_structure.py
-├── test-sharp.mjs
-├── test-svg.avif
-├── test-svg.mjs
-├── test.avif
 ├── tsconfig.json
 └── vitest.config.ts
 ```

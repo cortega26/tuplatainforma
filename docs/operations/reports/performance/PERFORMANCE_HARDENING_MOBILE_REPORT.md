@@ -42,11 +42,11 @@ Notes:
 
 ## Filmstrip / No-Flicker Evidence
 
-- Baseline filmstrip frames: `artifacts/filmstrip-baseline/`
-- After filmstrip frames: `artifacts/filmstrip-after/`
+- Baseline filmstrip frames: `output/performance/filmstrips/filmstrip-baseline/`
+- After filmstrip frames: `output/performance/filmstrips/filmstrip-after/`
 - Lighthouse HTML reports:
-  - `artifacts/lighthouse-baseline.report.html`
-  - `artifacts/lighthouse-after.report.html`
+  - `output/performance/lighthouse/lighthouse-baseline.report.html`
+  - `output/performance/lighthouse/lighthouse-after.report.html`
 
 ## Verification notes
 
@@ -89,7 +89,7 @@ Rollback plan:
 
 ### Root cause analysis (what changed vs prior ~100 state)
 
-- Latest deployed mobile run (`artifacts/lighthouse-remote-mobile-before.report.json`) scored **99** with:
+- Latest deployed mobile run (`output/performance/lighthouse/lighthouse-remote-mobile-before.report.json`) scored **99** with:
   - FCP 1.6s
   - LCP 1.7s
   - Speed Index 2.7s
@@ -117,19 +117,19 @@ Rollback plan:
 ### Rejected variant (reverted)
 
 - Tested preloading Fraunces as the single preload.
-- Result: CLS regressed to `0.0082` in throttled local run (`artifacts/lighthouse-local-devtools-after.report.json`).
+- Result: CLS regressed to `0.0082` in throttled local run (`output/performance/lighthouse/lighthouse-local-devtools-after.report.json`).
 - This variant was not kept to preserve the non-negotiable CLS gate.
 
 ### Before/After metrics
 
 - Remote deployed baseline (before this patch):
-  - `artifacts/lighthouse-remote-mobile-before.report.json`
+  - `output/performance/lighthouse/lighthouse-remote-mobile-before.report.json`
   - Perf 99, FCP 1.6s, LCP 1.7s, SI 2.7s, CLS 0, TBT 0ms
 - Local mobile after final patch:
-  - `artifacts/lighthouse-local-mobile-after2.report.json`
+  - `output/performance/lighthouse/lighthouse-local-mobile-after2.report.json`
   - Perf 100, FCP 1.2s, LCP 1.5s, SI 1.2s, CLS 0, TBT 0ms
 - Local desktop after final patch:
-  - `artifacts/lighthouse-local-desktop-after2.report.json`
+  - `output/performance/lighthouse/lighthouse-local-desktop-after2.report.json`
   - Perf 100, FCP 0.3s, LCP 0.4s, SI 0.3s, TBT 0ms
 
 Note: local and deployed environments are not directly comparable; deployed PSI must be rerun after publish to confirm score recovery on GitHub Pages.
@@ -139,11 +139,11 @@ Note: local and deployed environments are not directly comparable; deployed PSI 
 - `pnpm build` passed.
 - `pnpm test` passed (49/49).
 - Lighthouse reports generated:
-  - `artifacts/lighthouse-current-mobile.report.json` (local baseline, simulated mobile)
-  - `artifacts/lighthouse-local-devtools-before.report.json` (local stricter baseline, devtools throttling)
-  - `artifacts/lighthouse-local-devtools-after2.report.json` (final local stricter after)
-  - `artifacts/lighthouse-local-mobile-after2.report.json` (final local mobile)
-  - `artifacts/lighthouse-local-desktop-after2.report.json` (final local desktop)
+  - `output/performance/lighthouse/lighthouse-current-mobile.report.json` (local baseline, simulated mobile)
+  - `output/performance/lighthouse/lighthouse-local-devtools-before.report.json` (local stricter baseline, devtools throttling)
+  - `output/performance/lighthouse/lighthouse-local-devtools-after2.report.json` (final local stricter after)
+  - `output/performance/lighthouse/lighthouse-local-mobile-after2.report.json` (final local mobile)
+  - `output/performance/lighthouse/lighthouse-local-desktop-after2.report.json` (final local desktop)
 
 ### Risk / rollback plan
 
