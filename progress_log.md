@@ -128,3 +128,13 @@ Observed impact: binding Lighthouse mobile rerun improved homepage metrics from 
 MB-005
 Homepage metadata and hero positioning rewrite closed after a homepage-only font/LCP cleanup removed the remaining display-font dependency from the mobile render path.
 Observed impact: binding local mobile Lighthouse now passes at Performance 100, LCP 1.5s, Speed Index 0.9s, CLS 0, and TBT 0ms.
+
+2026-03-09
+MB-003
+Optional GA4-ready analytics instrumentation was added for article scroll depth, official-source outbound clicks, calculator starts/completions, and primary CTA clicks across homepage, article, and calculator journeys.
+Observed impact: build now ships a dedicated analytics client bundle, 10 calculator detail pages emit start/completion hooks, and all required repo validation gates passed with no route removals or internal-link regressions.
+
+2026-03-09
+MB-026
+Canonical internal-link architecture mapping was documented for the live and future Phase 2 clusters, including hub ownership, article/tool/support inventories, cross-cluster exits, and unresolved taxonomy splits that must constrain later hub work.
+Observed impact: the repo now has one source-of-truth map for sueldo, pensiones/APV, deuda, cesantia, UF/costo de vida, impuestos, and presupuesto linking patterns, which narrows the next hub sprint to `MB-010` without widening runtime scope.

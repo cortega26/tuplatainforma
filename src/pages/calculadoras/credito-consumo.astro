@@ -11,7 +11,13 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 >
   <Header />
   <Breadcrumb />
-  <main id="main-content" class="app-layout">
+  <main
+    id="main-content"
+    class="app-layout"
+    data-analytics-page-type="calculator"
+    data-analytics-calculator="credito-consumo"
+    data-analytics-calculator-name="Calculadora de Credito de Consumo"
+  >
     <section class="border-b border-border pt-8 pb-6">
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         🏦 Calculadora de Crédito de Consumo
@@ -213,6 +219,7 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 
 <script>
   import { calculateConsumerCredit } from "@/application/use-cases/CalculateConsumerCredit";
+  import { trackAnalyticsEvent } from "@/utils/analytics";
 
   function fmt(n: number): string {
     return "$" + Math.round(n).toLocaleString("es-CL");
@@ -342,6 +349,12 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
     document
       .getElementById("resultado-contenido")!
       .replaceChildren(headline, ...rows, insight);
+
+    trackAnalyticsEvent("calculator_complete", {
+      calculator_slug: "credito-consumo",
+      calculator_name: "Calculadora de Credito de Consumo",
+      outcome: "success",
+    });
   });
 
   // Cambiar label de tasa según tipo

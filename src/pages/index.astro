@@ -74,7 +74,12 @@ const problemEntryPoints = [
   enableClientRouter={false}
 >
   <Header />
-  <main id="main-content" data-layout="index" class="app-layout">
+  <main
+    id="main-content"
+    data-layout="index"
+    data-analytics-page-type="home"
+    class="app-layout"
+  >
     <section class="border-b border-border py-8">
       <p
         class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase"
@@ -88,12 +93,22 @@ const problemEntryPoints = [
         {heroDescription}
       </p>
       <div class="flex flex-wrap gap-4 text-sm font-semibold">
-        <LinkButton href={getPath("/guias/")}>
+        <LinkButton
+          href={getPath("/guias/")}
+          data-analytics-cta="home-hero"
+          data-analytics-label="Ver rutas por tema"
+          data-analytics-location="home_hero"
+        >
           Ver rutas por tema <IconArrowRight
             class="inline-block rtl:-rotate-180"
           />
         </LinkButton>
-        <LinkButton href={getPath("/calculadoras/")}>
+        <LinkButton
+          href={getPath("/calculadoras/")}
+          data-analytics-cta="home-hero"
+          data-analytics-label="Ver calculadoras"
+          data-analytics-location="home_hero"
+        >
           Ver calculadoras <IconArrowRight
             class="inline-block rtl:-rotate-180"
           />
@@ -129,6 +144,9 @@ const problemEntryPoints = [
               <a
                 href={entry.href}
                 class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:opacity-80"
+                data-analytics-cta="problem-entry"
+                data-analytics-label={entry.title}
+                data-analytics-location={`home_problem_${entry.eyebrow.toLowerCase()}`}
               >
                 {entry.cta}
                 <IconArrowRight class="inline-block rtl:-rotate-180" />
@@ -150,7 +168,12 @@ const problemEntryPoints = [
         Si ya tienes tus datos y quieres ejecutar el número, entra directo a las
         herramientas.
       </p>
-      <LinkButton href={getPath("/calculadoras/")}>
+      <LinkButton
+        href={getPath("/calculadoras/")}
+        data-analytics-cta="home-calculators"
+        data-analytics-label="Ver calculadoras"
+        data-analytics-location="home_calculators"
+      >
         Ver calculadoras <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>
     </section>
@@ -182,6 +205,9 @@ const problemEntryPoints = [
                 <a
                   href={getCanonicalPathFromSlug(post.data.slug)}
                   class="group flex items-start justify-between gap-3"
+                  data-analytics-cta="home-recent"
+                  data-analytics-label={post.data.title}
+                  data-analytics-location="home_recent_posts"
                 >
                   <span class="homepage-body-heading text-base leading-snug font-semibold text-foreground transition-colors group-hover:text-accent">
                     {post.data.title}
@@ -197,7 +223,12 @@ const problemEntryPoints = [
 
     <!-- VER TODOS -->
     <div class="mb-10 text-center">
-      <LinkButton href={getPath("/posts/")}>
+      <LinkButton
+        href={getPath("/posts/")}
+        data-analytics-cta="home-all-posts"
+        data-analytics-label="Ver toda la actualidad"
+        data-analytics-location="home_footer"
+      >
         Ver toda la actualidad
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>

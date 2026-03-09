@@ -70,7 +70,7 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Effort:** 3
 - **Confidence:** 4
 - **Priority Score:** 5.3
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-001
 - **Roadmap Phase:** Phase 1 - Acquisition Engine
 
@@ -192,7 +192,7 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Effort:** 3
 - **Confidence:** 5
 - **Priority Score:** 8.3
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-004, MB-028
 - **Roadmap Phase:** Phase 2 - Authority Building
 

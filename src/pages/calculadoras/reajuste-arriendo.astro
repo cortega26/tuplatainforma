@@ -18,7 +18,13 @@ const economicSourceLabel =
 >
   <Header />
   <Breadcrumb />
-  <main id="main-content" class="app-layout">
+  <main
+    id="main-content"
+    class="app-layout"
+    data-analytics-page-type="calculator"
+    data-analytics-calculator="reajuste-arriendo"
+    data-analytics-calculator-name="Calculadora de Reajuste de Arriendo"
+  >
     <section class="border-b border-border pt-8 pb-6">
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         🏠 Calculadora de Reajuste de Arriendo
@@ -284,6 +290,7 @@ const economicSourceLabel =
     calculateIpcRentAdjustment,
     calculateUfRentAdjustment,
   } from "@/application/use-cases/CalculateRentAdjustment";
+  import { trackAnalyticsEvent } from "@/utils/analytics";
 
   function fmt(n: number) {
     return "$" + Math.round(n).toLocaleString("es-CL");
@@ -362,6 +369,11 @@ const economicSourceLabel =
 
       box.append(title, paragraph1, paragraph2);
       document.getElementById("resultado-contenido")!.replaceChildren(box);
+      trackAnalyticsEvent("calculator_complete", {
+        calculator_slug: "reajuste-arriendo",
+        calculator_name: "Calculadora de Reajuste de Arriendo",
+        outcome: "fixed-pesos",
+      });
       return;
     }
 
@@ -437,6 +449,11 @@ const economicSourceLabel =
           ),
           note
         );
+      trackAnalyticsEvent("calculator_complete", {
+        calculator_slug: "reajuste-arriendo",
+        calculator_name: "Calculadora de Reajuste de Arriendo",
+        outcome: "uf",
+      });
       return;
     }
 
@@ -511,6 +528,11 @@ const economicSourceLabel =
           ),
           note
         );
+      trackAnalyticsEvent("calculator_complete", {
+        calculator_slug: "reajuste-arriendo",
+        calculator_name: "Calculadora de Reajuste de Arriendo",
+        outcome: "ipc",
+      });
     }
   });
 </script>

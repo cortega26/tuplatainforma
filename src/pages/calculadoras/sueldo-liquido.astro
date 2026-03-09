@@ -23,7 +23,13 @@ const economicSourceLabel =
 >
   <Header />
   <Breadcrumb />
-  <main id="main-content" class="app-layout">
+  <main
+    id="main-content"
+    class="app-layout"
+    data-analytics-page-type="calculator"
+    data-analytics-calculator="sueldo-liquido"
+    data-analytics-calculator-name="Calculadora de Sueldo Liquido"
+  >
     <section class="border-b border-border pt-8 pb-6">
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         💰 Calculadora de Sueldo Líquido
@@ -206,7 +212,11 @@ const economicSourceLabel =
       </p>
       <p>
         Si quieres el paso a paso completo de cada descuento, revisa la <a
-          href={salaryGuidePath}>guía de sueldo líquido en Chile</a
+          href={salaryGuidePath}
+          data-analytics-cta="calculator-guide"
+          data-analytics-label="Guia de sueldo liquido en Chile"
+          data-analytics-location="calculator_explainer"
+          >guía de sueldo líquido en Chile</a
         >.
       </p>
     </section>
@@ -222,6 +232,7 @@ const economicSourceLabel =
 
 <script>
   import { calculateNetSalary } from "@/application/use-cases/CalculateNetSalary";
+  import { trackAnalyticsEvent } from "@/utils/analytics";
 
   function fmt(n: number): string {
     return "$" + Math.round(n).toLocaleString("es-CL");
@@ -366,6 +377,12 @@ const economicSourceLabel =
         ),
         totals
       );
+
+    trackAnalyticsEvent("calculator_complete", {
+      calculator_slug: "sueldo-liquido",
+      calculator_name: "Calculadora de Sueldo Liquido",
+      outcome: "success",
+    });
   });
 
   document

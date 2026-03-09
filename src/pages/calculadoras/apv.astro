@@ -24,7 +24,13 @@ const economicSourceLabel =
 >
   <Header />
   <Breadcrumb />
-  <main id="main-content" class="app-layout">
+  <main
+    id="main-content"
+    class="app-layout"
+    data-analytics-page-type="calculator"
+    data-analytics-calculator="apv"
+    data-analytics-calculator-name="Simulador APV"
+  >
     <section class="border-b border-border pt-8 pb-6">
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">📈 Simulador APV</h1>
       <p class="max-w-xl text-secondary">
@@ -217,8 +223,11 @@ const economicSourceLabel =
         > y el <a href="https://www.sii.cl" target="_blank">SII</a>.
       </p>
       <p>
-        Antes de decidir régimen, revisa la <a href={apvGuidePath}
-          >guía completa de APV</a
+        Antes de decidir régimen, revisa la <a
+          href={apvGuidePath}
+          data-analytics-cta="calculator-guide"
+          data-analytics-label="Guia completa de APV"
+          data-analytics-location="calculator_explainer">guía completa de APV</a
         > para entender beneficios, límites y costos de retiro anticipado.
       </p>
     </section>
@@ -228,6 +237,7 @@ const economicSourceLabel =
 
 <script>
   import { calculateApvComparison } from "@/application/use-cases/CalculateApvComparison";
+  import { trackAnalyticsEvent } from "@/utils/analytics";
 
   function fmt(n: number): string {
     return "$" + Math.round(n).toLocaleString("es-CL");
@@ -419,5 +429,11 @@ const economicSourceLabel =
     document
       .getElementById("resultado-contenido")!
       .replaceChildren(summary, regimeACard, regimeBCard, note);
+
+    trackAnalyticsEvent("calculator_complete", {
+      calculator_slug: "apv",
+      calculator_name: "Simulador APV",
+      outcome: "success",
+    });
   });
 </script>

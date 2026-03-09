@@ -78,6 +78,9 @@ const relatedPosts = [...tagMatchedPosts, ...fallbackPosts].slice(0, 3);
               <a
                 href={getCanonicalPathFromSlug(article.slug)}
                 class="group block"
+                data-analytics-cta="related-post"
+                data-analytics-label={article.title}
+                data-analytics-location="related_posts"
               >
                 <div class="mb-3 overflow-hidden rounded-lg">
                   {imageSrc ? (

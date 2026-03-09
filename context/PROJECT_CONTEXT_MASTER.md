@@ -35,6 +35,13 @@ Los riesgos principales están en deuda de mantenibilidad y consistencia operati
 - `empleo-ingresos` queda reposicionado como clúster de contingencias laborales, mientras `pensiones-afp` deja de absorber la intención de sueldo líquido/remuneraciones.
 - Se agregan módulos reutilizables de linking contextual para el clúster sueldo (`src/components/ContextLinkSection.astro` + `src/config/sueldoClusterLinks.ts`) y se conectan a artículos y calculadora.
 
+### Checkpoint 2026-03-09 (Sprint 2F Internal Linking Architecture Map)
+
+- `MB-026` quedó cerrado mediante un artefacto canónico de arquitectura de enlaces internos en `docs/operations/reports/sprint-2f/internal_linking_architecture_map.md`.
+- El mapa consolida los activos vivos y futuros de Phase 2 sin cambiar URLs públicas ni introducir rollout runtime adicional.
+- Quedan explicitadas dos separaciones futuras ya decididas semánticamente: `uf-costo-de-vida` y `presupuesto-control-financiero`, ambas aún sin hub productivo.
+- Se documenta que `empleo-ingresos` sigue siendo el contenedor operativo para cesantía/protección social mientras no exista evidencia suficiente para abrir un hub separado.
+
 ## 1. Stack técnico
 
 ### Runtime y package management

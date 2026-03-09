@@ -20,7 +20,13 @@ const economicSourceLabel =
 >
   <Header />
   <Breadcrumb />
-  <main id="main-content" class="app-layout">
+  <main
+    id="main-content"
+    class="app-layout"
+    data-analytics-page-type="calculator"
+    data-analytics-calculator="simulador-renegociacion"
+    data-analytics-calculator-name="Simulador de Renegociacion Superir"
+  >
     <section class="border-b border-border pt-8 pb-6">
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         ⚖️ Simulador de Renegociación Superir
@@ -211,6 +217,9 @@ const economicSourceLabel =
       <p>
         Antes de iniciar la solicitud, revisa la <a
           href={renegociacionGuidePath}
+          data-analytics-cta="calculator-guide"
+          data-analytics-label="Guia de renegociacion Superir"
+          data-analytics-location="calculator_explainer"
           >guía de renegociación Superir paso a paso</a
         >.
       </p>
@@ -221,6 +230,7 @@ const economicSourceLabel =
 
 <script>
   import { simulateDebtRenegotiation } from "@/application/use-cases/SimulateDebtRenegotiation";
+  import { trackAnalyticsEvent } from "@/utils/analytics";
 
   function fmt(n: number) {
     return "$" + Math.round(n).toLocaleString("es-CL");
@@ -435,6 +445,9 @@ const economicSourceLabel =
     guideLink.href = guideUrl;
     guideLink.className =
       "mt-4 block text-center text-xs text-accent hover:underline";
+    guideLink.dataset.analyticsCta = "calculator-guide";
+    guideLink.dataset.analyticsLabel = "Guia de renegociacion Superir";
+    guideLink.dataset.analyticsLocation = "calculator_result";
     guideLink.textContent = "→ Leer guía completa de la renegociación Superir";
 
     container.replaceChildren(
@@ -445,5 +458,11 @@ const economicSourceLabel =
       advisory,
       guideLink
     );
+
+    trackAnalyticsEvent("calculator_complete", {
+      calculator_slug: "simulador-renegociacion",
+      calculator_name: "Simulador de Renegociacion Superir",
+      outcome: simulacion.qualifies ? "qualifies" : "not-qualified",
+    });
   });
 </script>

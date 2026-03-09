@@ -124,6 +124,11 @@ export default defineConfig({
   },
   env: {
     schema: {
+      PUBLIC_GA_MEASUREMENT_ID: envField.string({
+        access: "public",
+        context: "client",
+        optional: true,
+      }),
       PUBLIC_GOOGLE_SITE_VERIFICATION: envField.string({
         access: "public",
         context: "client",

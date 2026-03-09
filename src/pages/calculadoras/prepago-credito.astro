@@ -11,7 +11,13 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 >
   <Header />
   <Breadcrumb />
-  <main id="main-content" class="app-layout">
+  <main
+    id="main-content"
+    class="app-layout"
+    data-analytics-page-type="calculator"
+    data-analytics-calculator="prepago-credito"
+    data-analytics-calculator-name="Calculadora de Prepago de Credito"
+  >
     <section class="border-b border-border pt-8 pb-6">
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         💡 ¿Me conviene prepagar el crédito?
@@ -235,6 +241,7 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 
 <script>
   import { simulateCreditPrepayment } from "@/application/use-cases/SimulateCreditPrepayment";
+  import { trackAnalyticsEvent } from "@/utils/analytics";
 
   function fmt(n: number) {
     return "$" + Math.round(n).toLocaleString("es-CL");
@@ -441,5 +448,11 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
       investmentBox,
       finalNote
     );
+
+    trackAnalyticsEvent("calculator_complete", {
+      calculator_slug: "prepago-credito",
+      calculator_name: "Calculadora de Prepago de Credito",
+      outcome: "success",
+    });
   });
 </script>

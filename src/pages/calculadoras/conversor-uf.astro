@@ -28,7 +28,13 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
 >
   <Header />
   <Breadcrumb />
-  <main id="main-content" class="app-layout">
+  <main
+    id="main-content"
+    class="app-layout"
+    data-analytics-page-type="calculator"
+    data-analytics-calculator="conversor-uf"
+    data-analytics-calculator-name="Conversor UF a Pesos"
+  >
     <section class="border-b border-border pt-8 pb-6">
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         🔄 Conversor UF ↔ Pesos
@@ -171,7 +177,11 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
       </p>
       <p>
         Para entender por qué la UF cambia todos los días, revisa la <a
-          href={ufGuidePath}>guía explicativa de la UF</a
+          href={ufGuidePath}
+          data-analytics-cta="calculator-guide"
+          data-analytics-label="Guia explicativa de la UF"
+          data-analytics-location="calculator_explainer"
+          >guía explicativa de la UF</a
         >.
       </p>
     </section>
@@ -181,6 +191,7 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
 
 <script>
   import { convertUf } from "@/application/use-cases/ConvertUf";
+  import { trackAnalyticsEvent } from "@/utils/analytics";
 
   function readEconomicContext(): { uf: number; lastUpdated: string } {
     const element = document.getElementById("economic-parameters");
@@ -206,11 +217,20 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
   const resultado = document.getElementById("resultado")!;
   const resultadoTexto = document.getElementById("resultado-texto")!;
   const resultadoSub = document.getElementById("resultado-sub")!;
+  let hasTrackedCompletion = false;
 
   function mostrarResultado(principal: string, sub: string) {
     resultado.classList.remove("hidden");
     resultadoTexto.textContent = principal;
     resultadoSub.textContent = sub;
+    if (!hasTrackedCompletion) {
+      hasTrackedCompletion = true;
+      trackAnalyticsEvent("calculator_complete", {
+        calculator_slug: "conversor-uf",
+        calculator_name: "Conversor UF a Pesos",
+        outcome: "success",
+      });
+    }
   }
 
   ufInput.addEventListener("input", () => {

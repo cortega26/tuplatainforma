@@ -20,7 +20,13 @@ const economicSourceLabel =
 >
   <Header />
   <Breadcrumb />
-  <main id="main-content" class="app-layout">
+  <main
+    id="main-content"
+    class="app-layout"
+    data-analytics-page-type="calculator"
+    data-analytics-calculator="seguro-cesantia"
+    data-analytics-calculator-name="Calculadora de Seguro de Cesantia"
+  >
     <section class="border-b border-border pt-8 pb-6">
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
         🛡️ Calculadora de Seguro de Cesantía
@@ -225,7 +231,11 @@ const economicSourceLabel =
       </p>
       <p>
         Para revisar requisitos legales y causales en detalle, lee la <a
-          href={unemploymentGuidePath}>guía completa del seguro de cesantía</a
+          href={unemploymentGuidePath}
+          data-analytics-cta="calculator-guide"
+          data-analytics-label="Guia completa del seguro de cesantia"
+          data-analytics-location="calculator_explainer"
+          >guía completa del seguro de cesantía</a
         >.
       </p>
     </section>
@@ -236,6 +246,7 @@ const economicSourceLabel =
 <script>
   import { estimateUnemploymentCoverage } from "@/application/use-cases/EstimateUnemploymentCoverage";
   import { animateCount } from "@/utils/animateCount";
+  import { trackAnalyticsEvent } from "@/utils/analytics";
   const currencyFormatter = new Intl.NumberFormat("es-CL", {
     style: "currency",
     currency: "CLP",
@@ -415,6 +426,11 @@ const economicSourceLabel =
 
       warning.append(title, message, missing);
       document.getElementById("resultado-contenido")!.replaceChildren(warning);
+      trackAnalyticsEvent("calculator_complete", {
+        calculator_slug: "seguro-cesantia",
+        calculator_name: "Calculadora de Seguro de Cesantia",
+        outcome: "minimum-not-met",
+      });
     } else {
       const header = document.createElement("div");
       header.className =
@@ -512,6 +528,11 @@ const economicSourceLabel =
           solidarityBox,
           finalNote
         );
+      trackAnalyticsEvent("calculator_complete", {
+        calculator_slug: "seguro-cesantia",
+        calculator_name: "Calculadora de Seguro de Cesantia",
+        outcome: "success",
+      });
     }
     animateResultValues();
   });
