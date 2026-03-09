@@ -14,12 +14,12 @@ export type LinkSection = {
 };
 
 const sueldoHubCard: LinkCard = {
-  kind: "Hub",
-  title: "Hub de sueldo y remuneraciones",
+  kind: "Sección",
+  title: "Sueldo y remuneraciones",
   description:
-    "Ordena la lectura entre guía, calculadora, descuentos y apoyos legales sin mezclar intenciones.",
+    "Reúne la guía, la calculadora y las ayudas clave para entender tu sueldo líquido.",
   href: "/guias/sueldo-remuneraciones/",
-  cta: "Abrir hub",
+  cta: "Ver la sección",
 };
 
 const sueldoCalculatorCard: LinkCard = {
@@ -44,7 +44,7 @@ const afpDiscountCard: LinkCard = {
   kind: "Artículo",
   title: "Cuánto descuenta la AFP de tu sueldo",
   description:
-    "Aísla el 10% obligatorio, la comisión y el efecto previsional dentro del descuento mensual.",
+    "Explica el 10% obligatorio, la comisión y cómo ese descuento afecta tu sueldo líquido.",
   href: "/posts/cuanto-descuenta-la-afp-de-tu-sueldo/",
   cta: "Ver el desglose AFP",
 };
@@ -80,7 +80,7 @@ const glossaryAfcCard: LinkCard = {
   kind: "Glosario",
   title: "Qué es la AFC",
   description:
-    "Sirve para entender por qué aparece el seguro de cesantía en la liquidación y quién lo administra.",
+    "Explica por qué aparece el seguro de cesantía en la liquidación y quién lo administra.",
   href: "/glosario/afc/",
   cta: "Revisar término",
 };
@@ -120,17 +120,17 @@ export const sueldoClusterHubSupportCards: LinkCard[] = [
 
 export const sueldoCalculatorSections: LinkSection[] = [
   {
-    eyebrow: "Ruta del cluster",
+    eyebrow: "Siguiente paso",
     title: "Sigue desde el cálculo a la decisión",
     description:
-      "Usa el hub para elegir si necesitas explicación paso a paso, lectura de la liquidación, un desglose AFP o ambas cosas.",
+      "Desde aquí puedes revisar la guía paso a paso, entender la liquidación o profundizar en los descuentos que afectan tu resultado.",
     items: [sueldoHubCard, sueldoGuideCard, descuentosCard, liquidacionCard],
   },
   {
-    eyebrow: "Soporte",
+    eyebrow: "Aclaraciones",
     title: "Conceptos y reglas que explican el resultado",
     description:
-      "Estos apoyos resuelven las dudas más comunes cuando el líquido no coincide con lo esperado.",
+      "Usa estas ayudas si tu sueldo líquido no coincide con lo esperado o no entiendes un descuento.",
     items: [glossaryAfpCard, glossaryAfcCard, taxLawCard, unemploymentLawCard],
   },
 ];
@@ -141,7 +141,7 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
       eyebrow: "Siguiente paso",
       title: "Lleva la guía a tus números reales",
       description:
-        "Primero calcula tu líquido y luego usa los satélites para bajar al nivel de descuento o lectura de liquidación que te falte.",
+        "Calcula tu sueldo líquido y después revisa descuentos o liquidación si quieres entender de dónde sale cada monto.",
       items: [
         sueldoCalculatorCard,
         descuentosCard,
@@ -150,10 +150,10 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
       ],
     },
     {
-      eyebrow: "Apoyo contextual",
+      eyebrow: "Aclaraciones",
       title: "Conceptos y normas que más traban la lectura de la liquidación",
       description:
-        "Usa este bloque cuando la duda ya no es matemática sino de interpretación del descuento.",
+        "Usa este bloque si el problema no es el cálculo, sino entender qué significa cada descuento.",
       items: [
         glossaryAfpCard,
         glossaryAfcCard,
@@ -167,7 +167,7 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
       eyebrow: "Siguiente paso",
       title: "Conecta el descuento AFP con tu sueldo líquido total",
       description:
-        "La comisión previsional por sí sola no explica el depósito final: aquí tienes la calculadora y las páginas que completan la lectura.",
+        "El descuento de AFP es solo una parte del cálculo. Aquí puedes revisar el sueldo líquido completo y entender el resto de la liquidación.",
       items: [
         sueldoCalculatorCard,
         descuentosCard,
@@ -176,10 +176,10 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
       ],
     },
     {
-      eyebrow: "Apoyo contextual",
+      eyebrow: "Aclaraciones",
       title: "Reglas y definiciones que aclaran el descuento previsional",
       description:
-        "Cuando el lector necesita respaldo legal o una definición rápida, este bloque evita mandar tráfico a páginas genéricas.",
+        "Entra aquí si necesitas una definición rápida o quieres revisar la regla legal detrás del descuento previsional.",
       items: [
         glossaryAfpCard,
         glossaryAfcCard,
@@ -193,7 +193,7 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
       eyebrow: "Siguiente paso",
       title: "Pasa del listado de descuentos al cálculo real",
       description:
-        "Después de distinguir lo obligatorio de lo voluntario, usa estas piezas para reconstruir el monto exacto.",
+        "Después de revisar los descuentos, usa estas ayudas para calcular el monto final y entender cómo aparece en tu liquidación.",
       items: [
         sueldoCalculatorCard,
         sueldoGuideCard,
@@ -202,11 +202,10 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
       ],
     },
     {
-      eyebrow: "Apoyo contextual",
-      title:
-        "Activos del cluster para revisar fundamento y lectura de la liquidación",
+      eyebrow: "Aclaraciones",
+      title: "Descuentos, conceptos y normas para revisar la liquidación",
       description:
-        "Estos enlaces sirven cuando la duda cambia desde el porcentaje al documento o al respaldo legal.",
+        "Úsalos si quieres pasar del porcentaje al detalle de la liquidación o revisar la base legal del descuento.",
       items: [
         afpDiscountCard,
         glossaryAfpCard,
@@ -221,7 +220,7 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
       eyebrow: "Siguiente paso",
       title: "Convierte la liquidación en un cálculo comprobable",
       description:
-        "Si la liquidación te deja dudas, usa estas piezas para separar descuento, cálculo y navegación del cluster.",
+        "Si tu liquidación no te cuadra, revisa el cálculo, los descuentos y la guía paso a paso para detectar la diferencia.",
       items: [
         sueldoCalculatorCard,
         sueldoGuideCard,
@@ -230,10 +229,10 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
       ],
     },
     {
-      eyebrow: "Apoyo contextual",
+      eyebrow: "Aclaraciones",
       title: "Descuentos y soportes que aclaran cada línea",
       description:
-        "Este bloque conecta la lectura del documento con la explicación de AFP, cesantía e impuesto.",
+        "Este bloque te ayuda a entender cada línea de la liquidación con apoyo sobre AFP, cesantía e impuesto.",
       items: [
         afpDiscountCard,
         glossaryAfpCard,

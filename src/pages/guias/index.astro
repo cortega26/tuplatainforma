@@ -53,8 +53,8 @@ const capas = [
   },
   {
     id: "otros" as const,
-    titulo: "Otros clústeres",
-    resumen: "Temas adicionales detectados en la arquitectura de guías.",
+    titulo: "Otras secciones",
+    resumen: "Temas adicionales disponibles en el mapa de guías.",
   },
 ];
 
@@ -74,7 +74,7 @@ const catalogoHubs: Record<string, Omit<HubInfo, "slug">> = {
   "impuestos-personas": {
     nombre: "Impuestos para personas",
     descripcion:
-      "Sección operativo para declarar renta, seguir devoluciones y resolver dudas tributarias de personas naturales.",
+      "Sección para declarar renta, seguir devoluciones y resolver dudas tributarias de personas naturales.",
     capa: "impuestos",
   },
   "deuda-credito": {
@@ -114,7 +114,7 @@ const hubs = hubsDetectados
         .map(parte => parte.charAt(0).toUpperCase() + parte.slice(1))
         .join(" "),
       descripcion:
-        "Sección temático de finanzas personales incluido en el mapa global de guías.",
+        "Sección de finanzas personales incluida en el mapa global de guías.",
       capa: "otros" as const,
     };
   })
@@ -146,9 +146,9 @@ const capasConHubs = capas
         Guías de Finanzas Personales en Chile
       </h1>
       <p class="max-w-3xl text-secondary">
-        Este hub maestro reúne todos las secciones de Monedario en una sola
-        vista. Úsalo para encontrar la ruta de lectura según tu momento
-        financiero y conectar temas relacionados.
+        Esta página reúne todas las secciones de Monedario en una sola vista.
+        Úsala para encontrar el tema que necesitas y pasar de una duda a otra
+        sin perderte.
       </p>
     </section>
 
@@ -162,7 +162,7 @@ const capasConHubs = capas
             {capa.hubs.map(hub => (
               <li class="rounded-xl border border-border p-5">
                 <p class="mb-2 inline-flex rounded-full border border-accent/30 bg-accent/5 px-2 py-1 text-xs font-semibold tracking-wide text-accent uppercase">
-                  Clúster
+                  Sección
                 </p>
                 <h3 class="mb-2 text-lg font-semibold">{hub.nombre}</h3>
                 <p class="mb-3 text-sm text-secondary">{hub.descripcion}</p>

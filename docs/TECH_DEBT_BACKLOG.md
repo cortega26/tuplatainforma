@@ -7,13 +7,13 @@ Fecha de corte: 2026-03-04
 ### Total de items por urgencia
 - **P0:** 1
 - **P1:** 6
-- **P2:** 8
+- **P2:** 9
 - **P3:** 1
 
 ### Estado de avance (2026-03-06)
 - **Completados:** 12 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0013`, `TD-0014`)
 - **En progreso:** 1 (`TD-0012`)
-- **Backlog sin iniciar:** 3 (`TD-0011`, `TD-0015`, `TD-0016`)
+- **Backlog sin iniciar:** 4 (`TD-0011`, `TD-0015`, `TD-0016`, `TD-0017`)
 
 ### Top 5 riesgos
 | Ranking | ID | Riesgo | Motivo principal |
@@ -127,6 +127,26 @@ Fecha de corte: 2026-03-04
 - **Estado:** Backlog sin iniciar
 - **Fecha de creación:** 2026-03-06
 - **Última actualización:** 2026-03-06
+
+## TD-0017 — Fonts con rutas relativas rompen en rutas anidadas
+- **ID:** TD-0017
+- **Título corto:** Corregir carga de tipografías en rutas anidadas
+- **Descripción:** Las reglas `@font-face` en `src/styles/global.css` usan URLs relativas (`../fonts/...`) que en rutas anidadas terminan resolviendo a `/guias/fonts/...` y generan `404`, dejando al navegador en fallback tipográfico.
+- **Evidencia (actualizada):** consola del navegador en `http://127.0.0.1:4322/guias/ahorro-e-inversion/` con `404` para `fonts/source-sans-3-latin-400-600.7a19a702.woff2` y `fonts/fraunces-latin-400-700.7234ed86.woff2`; `pnpm run build` (2026-03-08) reporta warnings de Vite indicando que esas referencias no se resolvieron en build y quedan para resolución en runtime.
+- **Impacto:** Riesgo de tipografías incorrectas en páginas internas, diferencias visuales entre rutas y ruido de consola que dificulta validar otros cambios frontend.
+- **Riesgo:** medio
+- **Severidad (1-5):** 3
+- **Urgencia:** P2
+- **Esfuerzo estimado:** S
+- **Propuesta de solución:** Convertir las URLs de `@font-face` a rutas estables resueltas por Astro/Vite (import de assets o rutas absolutas públicas) y verificar carga correcta en `/` y en rutas anidadas.
+- **Criterios de cierre (checklist verificable):**
+- [ ] No hay `404` de fuentes en rutas anidadas durante navegación local.
+- [ ] `pnpm run build` no emite warnings por esas dos referencias de fuentes.
+- [ ] La carga de fuentes se verifica al menos en `/` y `/guias/ahorro-e-inversion/`.
+- **Owner:** TBD
+- **Estado:** Backlog sin iniciar
+- **Fecha de creación:** 2026-03-08
+- **Última actualización:** 2026-03-08
 
 ## TD-0013 — Respuestas YMYL abstractas en licencia/finiquito
 - **ID:** TD-0013

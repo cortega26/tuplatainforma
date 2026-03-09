@@ -28,7 +28,7 @@ const adjacentRoutes = [
 
 <Layout
   title="Sueldo Líquido y Remuneraciones en Chile | Monedario"
-  description="Hub para ordenar sueldo líquido, liquidación, descuentos previsionales, impuesto único y herramientas de cálculo en Chile."
+  description="Guía de entrada para entender sueldo líquido, liquidación, descuentos previsionales, impuesto único y herramientas de cálculo en Chile."
 >
   <Header />
   <Breadcrumb />
@@ -38,29 +38,28 @@ const adjacentRoutes = [
       <p
         class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase"
       >
-        Hub del cluster
+        Guía de entrada
       </p>
       <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
         Sueldo líquido y remuneraciones en Chile
       </h1>
       <p class="max-w-3xl text-secondary">
-        Este hub concentra la ruta práctica para entender cuánto te descuentan,
-        por qué tu líquido cambia y qué hacer cuando necesitas pasar de una
-        explicación general a un cálculo exacto. No reemplaza la calculadora ni
-        el artículo pilar: ordena cuál abrir primero según tu duda, si lo que
-        necesitas es revisar descuentos o leer la liquidación línea por línea.
+        Aquí puedes entender cuánto te descuentan, por qué tu sueldo líquido
+        cambia y qué leer o calcular según tu duda. Usa esta sección para ir
+        directo a la guía, a la calculadora o a la ayuda específica que
+        necesites.
       </p>
     </section>
 
     <ContextLinkSection
-      eyebrow="Ruta principal"
-      title="Empieza por la pieza que resuelve tu intención"
-      description="La guía responde el cómo funciona, la calculadora ejecuta el número y los satélites separan descuentos, liquidación y AFP para no mezclar intenciones."
+      eyebrow="Empieza aquí"
+      title="Elige la opción que mejor te ayude"
+      description="Lee la guía si quieres entender el tema, usa la calculadora si necesitas sacar tu sueldo líquido y revisa una ayuda específica si tu duda es sobre descuentos, liquidación o AFP."
       items={sueldoClusterHubPrimaryCards}
     />
 
     <section class="border-b border-border py-8">
-      <h2 class="mb-4 text-2xl font-bold">Qué cubre este hub</h2>
+      <h2 class="mb-4 text-2xl font-bold">Qué encontrarás en esta sección</h2>
       <ul class="list-disc space-y-2 pl-6 text-secondary">
         <li>Diferencia entre sueldo bruto, imponible y sueldo líquido.</li>
         <li>
@@ -79,15 +78,15 @@ const adjacentRoutes = [
     </section>
 
     <ContextLinkSection
-      eyebrow="Glosario y marco legal"
-      title="Conceptos y reglas que más frenan la lectura de una liquidación"
-      description="Estos apoyos existen para responder dudas de definición o respaldo normativo sin abrir un artículo competidor contra la guía principal."
+      eyebrow="Aclaraciones útiles"
+      title="Conceptos y normas para resolver dudas puntuales"
+      description="Usa estas ayudas si necesitas entender un término, confirmar una regla o revisar la base legal de un descuento."
       items={sueldoClusterHubSupportCards}
     />
 
     <section class="border-b border-border py-8">
       <h2 class="mb-4 text-2xl font-bold">
-        Sal del cluster cuando tu problema cambie
+        Cambia de sección si tu duda es otra
       </h2>
       <div class="grid gap-4 md:grid-cols-2">
         {
@@ -113,9 +112,9 @@ const adjacentRoutes = [
           Última actualización de la sección
         </h2>
         <p class="text-sm text-secondary">
-          Actualizado: 2026-03-08. Este hub se revisa cuando cambian porcentajes
-          de descuento, reglas de impuesto único, estructura de liquidación o
-          los activos que resuelven la intención principal del cluster.
+          Actualizado: 2026-03-08. Esta sección se revisa cuando cambian
+          porcentajes de descuento, reglas de impuesto único, estructura de la
+          liquidación o ayudas clave para entender estos temas.
         </p>
       </div>
     </section>

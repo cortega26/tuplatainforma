@@ -58,11 +58,24 @@ const currentPath =
     ? normalizedPathname.slice(0, -1)
     : normalizedPathname;
 
-const isActive = (path: string) => {
-  const currentPathArray = currentPath.split("/").filter(p => p.trim());
-  const pathArray = path.split("/").filter(p => p.trim());
+const normalizeNavPath = (path: string) => {
+  const normalizedPath =
+    basePath && path.startsWith(basePath)
+      ? path.slice(basePath.length) || "/"
+      : path;
 
-  return currentPath === path || currentPathArray[0] === pathArray[0];
+  return normalizedPath.endsWith("/") && normalizedPath !== "/"
+    ? normalizedPath.slice(0, -1)
+    : normalizedPath;
+};
+
+const isActive = (path: string) => {
+  const targetPath = normalizeNavPath(path);
+
+  return (
+    currentPath === targetPath ||
+    (targetPath !== "/" && currentPath.startsWith(`${targetPath}/`))
+  );
 };
 ---
 
