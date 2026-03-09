@@ -150,7 +150,7 @@ Una vez comprado, ese departamento se podría arrendar. En comunas intermedias d
 - Revisa [cómo invertir en ETFs desde Chile](/posts/como-invertir-en-etfs-desde-chile/) si quieres aterrizar el vehículo.
 - Vuelve a la [sección de ahorro e inversión](/guias/ahorro-e-inversion/) para ver cómo encaja este ejemplo en una estrategia más amplia.
 
-## Fuentes y trazabilidad
+## Fuentes y respaldo
 
 - [Nota metodológica completa del ejercicio](/posts/interes-compuesto-nota-metodologica/)
 - Dirección del Trabajo, ingreso mínimo mensual vigente y referencia legal: https://www.dt.gob.cl/portal/1628/w3-article-60141.html

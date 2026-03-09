@@ -36,14 +36,14 @@ Si inviertes en fondos mutuos, esta guía te muestra dónde están los costos re
 | Remuneración de administración | Cobro periódico por gestionar el fondo        | Reglamento interno (CMF)        |
 | Comisión de rescate            | Cobro al salir, según condiciones/serie/plazo | Reglamento interno + contrato   |
 | Comisión de colocación         | Cobro al entrar (si aplica)                   | Folleto + contrato              |
-| Otros gastos atribuibles       | Costos operativos imputados al fondo          | Documentación oficial del fondo |
+| Otros gastos atribuibles       | Costos de operación cargados al fondo         | Documentación oficial del fondo |
 
 CMF Educa indica que estas condiciones deben quedar establecidas en el reglamento interno depositado en la CMF.
 
 ## Rescate: plazos, ventanas y fricciones reales
 
 - Un fondo mutuo, por definición CMF, permite rescate total y permanente de cuotas y pago en plazo igual o inferior a 10 días.
-- El plazo exacto operativo depende del reglamento interno y de la serie.
+- El plazo exacto de pago depende del reglamento interno y de la serie.
 - En algunas series hay comisión de rescate que disminuye o desaparece si cumples permanencia mínima.
 
 ### Paso a paso para rescatar sin errores
@@ -95,7 +95,7 @@ Para casos avanzados de imputación de créditos y tratamientos especiales segú
 2. Rescatar sin revisar comisión de salida vigente.
 3. Ignorar plazo efectivo de pago del rescate.
 4. Confundir fondo mutuo con depósito a plazo.
-5. No guardar trazabilidad de aportes y rescates para renta.
+5. No guardar respaldo de aportes y rescates para renta.
 6. Asumir que no hay impuestos por tener saldo aún invertido.
 
 ## Preguntas frecuentes

@@ -110,7 +110,7 @@ Si la respuesta no aclara el problema, guarda la liquidación y evalúa reclamar
 No. La transferencia te dice cuánto llegó; la liquidación explica cómo se llegó a ese monto.
 
 **¿Me pueden pagar sin entregarme liquidación?**  
-La Dirección del Trabajo exige un comprobante junto con el pago de remuneraciones. Si no te entregan nada, te quedas sin la trazabilidad mínima del cálculo.
+La Dirección del Trabajo exige un comprobante junto con el pago de remuneraciones. Si no te entregan nada, te quedas sin una base mínima para revisar el cálculo.
 
 **¿Todas las empresas usan el mismo formato?**  
 No. Cambia el diseño, pero no cambia la obligación de transparentar monto, forma de cálculo y deducciones.

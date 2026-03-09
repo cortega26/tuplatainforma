@@ -1,7 +1,7 @@
 ---
 title: "Finiquito e indemnizaciones en Chile: qué te corresponde y cómo revisarlo"
 author: "Equipo Monedario"
-description: "Guía operativa para revisar finiquito e indemnizaciones en Chile, validar montos y detectar errores antes de firmar o reclamar un pago incompleto."
+description: "Guía para revisar tu finiquito, calcular lo que te corresponde y detectar errores antes de firmar o aceptar montos sin revisar."
 slug: finiquito-e-indemnizaciones-en-chile
 pubDate: 2026-03-02T18:40:00Z
 updatedDate: 2026-03-03T00:00:00Z
@@ -21,7 +21,7 @@ heroImage: /images/hero/finiquito-e-indemnizaciones-en-chile.avif
 
 Te llega el finiquito, el empleador te apura para firmarlo ese mismo día, y tú no sabes si lo que dice es correcto. Es una situación más común de lo que parece — y firmar sin revisar puede costarte el equivalente a varios meses de sueldo.
 
-Esta guía te ayuda a entender qué debe incluir un finiquito, cómo validar cada monto y cómo actuar si los números no cuadran. Si necesitas ver más temas relacionados, revisa la [sección Empleo e Ingresos](/guias/empleo-ingresos/).
+Esta guía te ayuda a entender qué debe incluir un finiquito, cómo revisar cada monto y qué hacer si los números no cuadran. Si necesitas ver más temas relacionados, revisa la [sección Empleo e Ingresos](/guias/empleo-ingresos/).
 
 ## Qué incluye normalmente un finiquito
 
@@ -104,7 +104,7 @@ Tienes derecho a tomarte el tiempo que necesites para revisar. Un empleador que 
 6. **Pide el detalle escrito de cada ítem** si algo no cuadra.
 7. **Guarda copia de todo** lo firmado y de la liquidación final.
 
-Si al terminar el trabajo también quedas sin empleo, evalúa cobertura inmediata con el [seguro de cesantía](/posts/seguro-de-cesantia/).
+Si al terminar el trabajo también quedas sin empleo, revisa si puedes cobrar el [seguro de cesantía](/posts/seguro-de-cesantia/).
 
 ## Qué hacer si detectas un pago incompleto
 
@@ -145,7 +145,7 @@ Contrato, anexos, liquidaciones de los últimos meses, carta de despido y finiqu
 
 ### ¿El finiquito afecta mi acceso a cesantía?
 
-No lo reemplaza. El seguro de cesantía es un fondo independiente que se activa según la situación de término. Conviene gestionar ambos en paralelo, porque los plazos de la AFC son distintos a los del finiquito.
+No lo reemplaza. El seguro de cesantía es un fondo aparte que se activa según la forma en que terminó tu trabajo. Conviene hacer ambos trámites en paralelo, porque los plazos de la AFC son distintos a los del finiquito.
 
 ### ¿Puedo ir directamente a la Inspección del Trabajo?
 

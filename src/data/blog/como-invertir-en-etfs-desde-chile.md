@@ -1,6 +1,6 @@
 ---
 title: "Cómo invertir en ETFs desde Chile: comisiones, custodia e impuestos"
-description: "Paso a paso para invertir en ETFs desde Chile comparando comisión, spread, custodia, riesgo regulatorio y criterios tributarios básicos."
+description: "Paso a paso para invertir en ETFs desde Chile: cómo elegir intermediario, revisar costos, custodia, liquidez e impuestos básicos."
 slug: como-invertir-en-etfs-desde-chile
 author: "Equipo Monedario"
 pubDate: 2026-02-28T16:30:00Z
@@ -20,7 +20,7 @@ heroImage: /images/hero/como-invertir-en-etfs-desde-chile.avif
 
 <!-- META: keyword_primary="como invertir en etf desde chile" | intent="guia-procedimental" | cluster="ahorro-inversion" -->
 
-Si quieres invertir en ETFs desde Chile, esta guía te ordena el proceso de selección de intermediario, control de costos, custodia y revisión tributaria básica antes de ejecutar tu primera orden. Para una mirada más amplia, revisa [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
+Si quieres invertir en ETFs desde Chile, esta guía te ayuda a elegir intermediario, revisar costos, entender la custodia y mirar lo básico de impuestos antes de hacer tu primera compra. Para una mirada más amplia, revisa [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
 
 ## Qué necesitas antes de invertir
 
@@ -30,28 +30,28 @@ Si quieres invertir en ETFs desde Chile, esta guía te ordena el proceso de sele
 - Claridad sobre costos totales de entrada, mantención y salida.
 - Plan de declaración tributaria anual de resultados.
 
-## Paso a paso: due diligence antes de comprar tu primer ETF
+## Paso a paso: qué revisar antes de comprar tu primer ETF
 
 1. Verifica si el intermediario está inscrito en registros CMF (si opera en Chile).
 2. Revisa estructura de cobros: comisión por orden, derechos de bolsa, IVA, custodia y otros.
-3. Evalúa fricción de ejecución (spread y liquidez del instrumento).
+3. Revisa el spread y la liquidez del instrumento.
 4. Define mercado objetivo y moneda de referencia.
 5. Documenta cada operación (fecha, monto, precio, comisión y tipo de cambio si aplica).
 6. Define regla de rebalanceo y de no sobreoperar.
 
 ## Cómo comparar plataforma/corredora
 
-| Criterio                           | Qué revisar                                                   | Riesgo de ignorarlo          |
-| ---------------------------------- | ------------------------------------------------------------- | ---------------------------- |
-| Comisión por operación             | Cargo fijo o porcentual por compra/venta                      | Comer rentabilidad neta      |
-| Costos transaccionales adicionales | Derechos de bolsa, IVA, cargos administrativos                | Subestimar costo total       |
-| Custodia                           | Dónde y cómo se registran tus valores                         | Riesgo operativo/documental  |
-| Regulación y supervisión           | Inscripción y fiscalización CMF (si aplica)                   | Operar sin marco local claro |
-| Acceso a mercados extranjeros      | Si depende de intermediario extranjero y bajo qué condiciones | Riesgo regulatorio adicional |
+| Criterio                           | Qué revisar                                                   | Riesgo de ignorarlo           |
+| ---------------------------------- | ------------------------------------------------------------- | ----------------------------- |
+| Comisión por operación             | Cargo fijo o porcentual por compra/venta                      | Comer rentabilidad neta       |
+| Costos transaccionales adicionales | Derechos de bolsa, IVA, cargos administrativos                | Subestimar costo total        |
+| Custodia                           | Dónde y cómo se registran tus valores                         | Riesgo de custodia o respaldo |
+| Regulación y supervisión           | Inscripción y fiscalización CMF (si aplica)                   | Operar sin marco local claro  |
+| Acceso a mercados extranjeros      | Si depende de intermediario extranjero y bajo qué condiciones | Riesgo regulatorio adicional  |
 
 Dato CMF relevante: en intermediación bursátil pueden existir cobros por comisión, derechos de bolsa, IVA, custodia y otros costos.
 
-## Riesgos operativos y regulatorios
+## Riesgos que conviene mirar
 
 - Custodia: CMF define esta función como inherente al intermediario y exige registro de activos de terceros.
 - En operaciones con intermediarios extranjeros a través de un chileno, CMF advierte que esos intermediarios/valores pueden no estar sujetos a su supervisión directa.
@@ -69,7 +69,7 @@ Para tasas específicas según tipo de ETF o mercado, y para casos de doble trib
 ### Conservador
 
 - Parte con una proporción acotada en ETF.
-- Prioriza bajos costos y proceso simple de custodia/documentación.
+- Prioriza bajos costos, custodia simple y pocos trámites.
 
 ### Balanceado
 
@@ -84,8 +84,8 @@ Para tasas específicas según tipo de ETF o mercado, y para casos de doble trib
 ## Errores comunes
 
 1. Elegir broker solo por publicidad y no por estructura de costos total.
-2. No validar inscripción/regulación cuando corresponde.
-3. Ignorar custodia y trazabilidad documental de operaciones.
+2. No revisar inscripción o regulación cuando corresponde.
+3. Ignorar la custodia y no guardar registro de tus operaciones.
 4. Sobreoperar y pagar comisiones recurrentes innecesarias.
 5. Entrar sin plan de riesgo por moneda y mercado.
 6. Postergar revisión tributaria hasta abril.
@@ -99,7 +99,7 @@ Para operar en mercado bursátil, necesitas intermediación. CMF detalla el rol 
 La suma de costos pequeños: comisión + derechos + IVA + custodia + spread.
 
 **3) ¿La custodia es opcional?**
-No como concepto operativo; es parte del servicio del intermediario y requiere registro de activos mantenidos para terceros.
+No como un costo aparte. Es parte del servicio del intermediario y exige registro de activos mantenidos para terceros.
 
 **4) ¿Puedo invertir en valores extranjeros desde Chile?**
 Sí, pero CMF advierte que intermediarios/valores extranjeros pueden no quedar bajo su supervisión directa.

@@ -86,7 +86,7 @@ const glossaryAfcCard: LinkCard = {
 };
 
 const taxLawCard: LinkCard = {
-  kind: "Marco legal",
+  kind: "Ley",
   title: "Ley de Impuesto a la Renta",
   description:
     "Base legal del impuesto único de segunda categoría y de los tramos que afectan tu líquido.",
@@ -95,10 +95,10 @@ const taxLawCard: LinkCard = {
 };
 
 const unemploymentLawCard: LinkCard = {
-  kind: "Marco legal",
+  kind: "Ley",
   title: "Ley del Seguro de Cesantía",
   description:
-    "Resume quién aporta el 0,6%, cuándo aplica y cómo se financia la cobertura de cesantía.",
+    "Explica quién aporta el 0,6% y cuándo aplica el seguro de cesantía.",
   href: "/leyes/ley-19728-seguro-cesantia/",
   cta: "Ver ficha legal",
 };
@@ -193,7 +193,7 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
       eyebrow: "Siguiente paso",
       title: "Pasa del listado de descuentos al cálculo real",
       description:
-        "Después de revisar los descuentos, usa estas ayudas para calcular el monto final y entender cómo aparece en tu liquidación.",
+        "Después de revisar los descuentos, usa estas ayudas para calcular el resultado final y entender cómo aparece en tu liquidación.",
       items: [
         sueldoCalculatorCard,
         sueldoGuideCard,
@@ -232,7 +232,7 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
       eyebrow: "Aclaraciones",
       title: "Descuentos y soportes que aclaran cada línea",
       description:
-        "Este bloque te ayuda a entender cada línea de la liquidación con explicaciones sobre AFP, cesantía e impuesto.",
+        "Aquí puedes entender cada línea de la liquidación con explicaciones sobre AFP, cesantía e impuesto.",
       items: [
         afpDiscountCard,
         glossaryAfpCard,

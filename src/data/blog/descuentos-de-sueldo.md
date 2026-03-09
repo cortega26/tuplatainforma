@@ -100,7 +100,7 @@ Haz esta revisión rápida antes de dar por buena la liquidación:
 4. **Distingue legal vs voluntario.** Un crédito social o un seguro voluntario no son lo mismo que AFP o salud.
 5. **Revisa si apareció impuesto por un bono.** Un ingreso extraordinario puede mover tu renta tributable a un tramo superior ese mes.
 
-Si quieres validar el líquido completo, usa la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/). Si lo que necesitas es aprender a leer cada línea de la liquidación, sigue con [liquidación de sueldo: cómo leerla y qué revisar](/posts/liquidacion-de-sueldo/).
+Si quieres revisar el líquido completo, usa la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/). Si lo que necesitas es aprender a leer cada línea de la liquidación, sigue con [liquidación de sueldo: cómo leerla y qué revisar](/posts/liquidacion-de-sueldo/).
 
 ## Preguntas frecuentes
 

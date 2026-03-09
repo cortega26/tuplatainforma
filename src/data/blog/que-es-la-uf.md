@@ -151,7 +151,7 @@ Cuando alguien dice "la UF subió 4% este año", está diciendo que la inflació
 El Banco Central de Chile, usando la metodología que establece su Compendio de Normas Financieras. No es una decisión discrecional — es una fórmula matemática aplicada al IPC que publica el INE.
 
 **¿Por qué el período es del 10 al 9 y no del 1 al 31?**
-Porque el INE publica el IPC mensual a más tardar el día 8 del mes siguiente, y el Banco Central necesita ese dato para calcular y publicar los valores diarios a más tardar el día 9. Es un tema de tiempos operativos, no de diseño arbitrario.
+Porque el INE publica el IPC mensual a más tardar el día 8 del mes siguiente, y el Banco Central necesita ese dato para calcular y publicar los valores diarios a más tardar el día 9. Es un tema de tiempos de publicación, no de diseño arbitrario.
 
 **¿La UF es lo mismo en todo Chile?**
 Sí. Hay un único valor de UF para todo el país en cada día. No hay UF regional ni sectorial.

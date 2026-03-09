@@ -70,6 +70,26 @@ Fecha de corte: 2026-03-04
 - **Fecha de creación:** 2026-03-09
 - **Última actualización:** 2026-03-09
 
+## TD-0019 — Snapshot base de rutas quedó desalineado del sitio publicado
+- **ID:** TD-0019
+- **Título corto:** Actualizar baseline de `check:routes`
+- **Descripción:** `pnpm run check:routes` compara contra `docs/reports/routes_snapshot_before.json` y reporta rutas "agregadas" aunque la tarea actual no modificó routing ni slugs. El snapshot base quedó atrasado respecto del contenido ya publicado.
+- **Evidencia (actualizada):** `pnpm run check:routes` (2026-03-09) informa `before=18 after=30` y lista rutas como `/posts/cae-costo-real-credito-chile/`, `/posts/liquidacion-de-sueldo/` y `/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/` como agregadas sin que este cambio haya tocado helpers de URL ni rutas públicas.
+- **Impacto:** Introduce ruido en la verificación de rutas y reduce la capacidad de detectar regresiones reales de URL en cambios futuros.
+- **Riesgo:** medio
+- **Severidad (1-5):** 3
+- **Urgencia:** P2
+- **Esfuerzo estimado:** S
+- **Propuesta de solución:** refrescar `docs/reports/routes_snapshot_before.json` con el estado publicado correcto y documentar el procedimiento para actualizar baseline solo cuando corresponda.
+- **Criterios de cierre (checklist verificable):**
+- [ ] `pnpm run check:routes` no reporta altas espurias cuando no hubo cambios de rutas.
+- [ ] El baseline refleja el estado actual del sitio publicado.
+- [ ] Queda documentado cuándo y cómo se actualiza el snapshot base.
+- **Owner:** TBD
+- **Estado:** Backlog sin iniciar
+- **Fecha de creación:** 2026-03-09
+- **Última actualización:** 2026-03-09
+
 ## TD-0011 — Pilar CAE/costo real sin artículo editorial
 - **ID:** TD-0011
 - **Título corto:** Cubrir pilar faltante CAE/costo real

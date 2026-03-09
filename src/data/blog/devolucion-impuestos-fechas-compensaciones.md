@@ -18,7 +18,7 @@ draft: false
 heroImage: /images/hero/devolucion-impuestos-fechas-compensaciones.avif
 ---
 
-Si ya enviaste tu declaración y tu pregunta es "¿cuándo me depositan?", esta guía te ordena por fechas, estado de trámite y motivos de compensación o retención, con foco operativo.
+Si ya enviaste tu declaración y tu pregunta es "¿cuándo me depositan?", esta guía te ayuda a revisar fechas, estado del trámite y posibles compensaciones o retenciones.
 
 ## Qué cambia y qué debes mirar primero
 
@@ -43,9 +43,9 @@ Si todavía estás en etapa de revisión del F22, parte por este [checklist de O
 2. Revisa el calendario del año tributario vigente en SII/ChileAtiende.
 3. Ingresa a SII > Declaración de Renta > "Consulta y seguimiento" > "Consultar estado de declaración".
 4. Si estado está "aceptada" pero no recibes abono, revisa si hay retención o compensación en TGR.
-5. Valida si hubo error de cuenta bancaria o cuenta no activada.
+5. Revisa si hubo error en la cuenta bancaria o si la cuenta no estaba activa.
 6. Si hay observaciones SII, corrige con rectificatoria cuando corresponda.
-7. Guarda pantallazos/constancias de estado y fechas para trazabilidad.
+7. Guarda pantallazos o constancias de estado y fechas como respaldo.
 
 Caso real típico: declaración aceptada, sin depósito en fecha esperada, y luego TGR informa compensación parcial por deuda. Resultado: llega solo el saldo remanente, no el total solicitado.
 
@@ -65,14 +65,14 @@ Para 2026, usa siempre el calendario oficial que publique SII/TGR para ese año 
 - Si **no aparece depósito** y el estado SII no está aceptado: revisa observaciones y corrige según instrucción de SII.
 - Si **está aceptada** pero sin abono: revisa si TGR aplicó compensación o retención.
 - Si **tienes cuenta mal digitada o inactiva**: revisa modalidad de pago alternativa (caja/cheque) informada por TGR/SII.
-- Si **hubo rectificatoria**: controla nuevo ciclo de autorización y pago.
+- Si **hubo rectificatoria**: revisa el nuevo ciclo de autorización y pago.
 - Si **tu caso es de boletas e impacto en devolución**: revisa [boletas de honorarios 2026: retención, líquido y cobertura](/posts/boleta-honorarios-2026-retencion-cobertura/).
 
 ## Errores comunes
 
 1. Confundir "declaración aceptada" con "devolución pagada".
 2. No revisar "Consulta y seguimiento" después de enviar.
-3. Asumir que el calendario de un año aplica igual al siguiente sin validar.
+3. Asumir que el calendario de un año aplica igual al siguiente sin revisarlo.
 4. Ignorar deudas que pueden activar compensación en TGR.
 5. Ingresar datos bancarios erróneos y esperar depósito normal.
 6. No guardar evidencia de estado y fecha de cada revisión.

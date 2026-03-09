@@ -1,7 +1,7 @@
 ---
 title: "Suplantación de identidad y créditos no reconocidos: cómo detectar, frenar y reclamar"
 author: "Equipo Monedario"
-description: "Protocolo práctico en Chile para detectar suplantación de identidad, frenar créditos no reconocidos y escalar reclamos ante banco, CMF y autoridades."
+description: "Guía práctica en Chile para detectar suplantación de identidad, frenar créditos no reconocidos y reclamar ante banco, CMF y autoridades."
 slug: suplantacion-identidad-creditos-no-reconocidos
 pubDate: 2026-03-02T18:20:00Z
 updatedDate: 2026-03-03T00:00:00Z
@@ -23,7 +23,7 @@ Recibes un correo que dice "tu crédito ha sido aprobado". El problema es que t�
 
 La suplantación de identidad financiera ocurre cuando una tercera persona contrata productos de crédito —préstamos, tarjetas, líneas de crédito— usando tu RUT, tus datos personales o una copia falsa de tu documentación. Tú no firmaste nada, pero el sistema te registra como deudor.
 
-Esta guía te entrega el protocolo operativo para actuar con rapidez y sin cometer los errores que más frenan la resolución. Si quieres revisar más temas relacionados, entra a la [sección Seguridad Financiera](/guias/seguridad-financiera/).
+Esta guía te explica qué hacer para actuar rápido y evitar los errores que más atrasan la solución. Si quieres revisar más temas relacionados, entra a la [sección Seguridad Financiera](/guias/seguridad-financiera/).
 
 ## Cómo detectar la suplantación antes de que escale
 
@@ -35,7 +35,7 @@ Las señales más comunes aparecen antes de que te llegue una carta de cobranza:
 - **Cambios de datos de contacto sin tu autorización.** Si una institución tiene un correo o teléfono distinto al tuyo en su sistema, alguien los modificó.
 - **Alertas de consultas de crédito en tu historial.** Cada vez que alguien pide un crédito usando tu RUT, queda registrado como consulta. Puede aparecer en tu informe CMF.
 
-El diagnóstico objetivo es siempre el primer paso. Antes de discutir montos ni negociar pagos, tienes que saber exactamente qué productos existen a tu nombre y en qué instituciones. El [Informe de Deudas CMF](/posts/informe-deudas-cmf-vs-dicom/) es tu punto de partida: es gratuito, oficial y actualizado.
+Tener claro el problema es siempre el primer paso. Antes de discutir montos o negociar pagos, tienes que saber exactamente qué productos aparecen a tu nombre y en qué instituciones. El [Informe de Deudas CMF](/posts/informe-deudas-cmf-vs-dicom/) es el mejor punto de partida: es gratuito, oficial y actualizado.
 
 ## Los dos tipos de suplantación que debes distinguir
 
@@ -45,9 +45,9 @@ Entender la diferencia te ayuda a anticipar cómo reaccionará cada institución
 
 **Suplantación de datos:** alguien usó tu RUT y tus datos personales reales (obtenidos por filtración, compra ilegal de datos o ingeniería social) para contratar productos en canales digitales. Más frecuente y más rápida de resolver, porque no implica documentación física falsa.
 
-En ambos casos, el protocolo de acción es el mismo. La distinción importa cuando llegas a la etapa penal.
+En ambos casos, los pasos a seguir son los mismos. La diferencia importa sobre todo si el caso llega a la etapa penal.
 
-## Protocolo de acción en 72 horas
+## Qué hacer en las primeras 72 horas
 
 El tiempo importa. Mientras más tardas en actuar, más cuotas se devengan y más complicada se vuelve la resolución.
 
@@ -82,7 +82,7 @@ Guarda el comprobante con número de parte y fecha. Ese documento te lo pedirán
 
 ### Paso 4 — Escala a CMF si la institución no responde
 
-Si la respuesta de la institución es incompleta, fuera de plazo o te niegan el reclamo sin justificación, escala a la [CMF](https://www.cmfchile.cl). La CMF fiscaliza a bancos, cooperativas, emisoras de tarjetas y otras entidades supervisadas. Un reclamo ante la CMF tiene peso regulatorio real.
+Si la respuesta de la institución es incompleta, fuera de plazo o te niegan el reclamo sin justificación, escala a la [CMF](https://www.cmfchile.cl). La CMF fiscaliza a bancos, cooperativas, emisoras de tarjetas y otras entidades supervisadas. Reclamar ante la CMF puede ayudarte a exigir una respuesta formal de una entidad supervisada.
 
 Si la institución no está supervisada por CMF, escala al SERNAC para mediación de consumo.
 
@@ -147,7 +147,7 @@ Tiende a ser más difícil. La primera vía es SERNAC. Si hay delito, la vía pe
 
 ## Qué leer después
 
-Para blindar prevención y respuesta, continúa con la guía de [estafas financieras por canal y checklist de 24 horas](/posts/estafas-financieras-chile-vishing-smishing-marketplace/). Si detectaste cargos en tarjetas o transferencias no autorizadas, sigue también el protocolo de [fraude con tarjeta y Ley 20.009](/posts/fraude-tarjeta-que-hacer/).
+Para complementar esta guía, revisa [estafas financieras por canal y checklist de 24 horas](/posts/estafas-financieras-chile-vishing-smishing-marketplace/). Si detectaste cargos en tarjetas o transferencias no autorizadas, sigue también la guía de [fraude con tarjeta y Ley 20.009](/posts/fraude-tarjeta-que-hacer/).
 
 ---
 

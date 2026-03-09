@@ -31,7 +31,7 @@ const capas = [
     id: "prevision" as const,
     titulo: "Previsión obligatoria",
     resumen:
-      "Contenido para entender cotizaciones, fondos y decisiones previsionales que impactan el largo plazo.",
+      "Temas para entender cotizaciones, fondos y decisiones que afectan tu pensión futura.",
   },
   {
     id: "ahorro-inversion" as const,
@@ -43,13 +43,13 @@ const capas = [
     id: "impuestos" as const,
     titulo: "Impuestos personales",
     resumen:
-      "Guías prácticas para declaración, seguimiento de devolución y obligaciones tributarias frecuentes.",
+      "Temas para declarar renta, revisar devoluciones y resolver dudas tributarias frecuentes.",
   },
   {
     id: "deuda" as const,
     titulo: "Deuda y crédito",
     resumen:
-      "Material para evaluar costo total de financiamiento y reducir riesgo de sobreendeudamiento.",
+      "Temas para entender cuánto cuesta un crédito y cómo ordenar tus deudas.",
   },
   {
     id: "otros" as const,
@@ -68,31 +68,31 @@ const catalogoHubs: Record<string, Omit<HubInfo, "slug">> = {
   "ahorro-e-inversion": {
     nombre: "Ahorro e inversión",
     descripcion:
-      "Sección para estructurar ahorro e inversión con foco en instrumentos, costos, impuestos y horizonte de uso.",
+      "Sección para aprender a ahorrar e invertir según instrumento, costo, impuestos y plazo.",
     capa: "ahorro-inversion",
   },
   "impuestos-personas": {
     nombre: "Impuestos para personas",
     descripcion:
-      "Sección para declarar renta, seguir devoluciones y resolver dudas tributarias de personas naturales.",
+      "Sección para declarar renta, revisar devoluciones y entender tus principales dudas tributarias.",
     capa: "impuestos",
   },
   "deuda-credito": {
     nombre: "Deuda y crédito",
     descripcion:
-      "Sección para comparar productos de crédito, entender CAE/costo total y tomar decisiones de endeudamiento.",
+      "Sección para entender el CAE, revisar tus deudas y tomar mejores decisiones de crédito.",
     capa: "deuda",
   },
   "empleo-ingresos": {
     nombre: "Empleo e ingresos",
     descripcion:
-      "Sección para contingencias del ingreso laboral: cesantía, licencias médicas, finiquito y continuidad de caja.",
+      "Sección para cesantía, licencias médicas, finiquito y otros problemas que afectan tu ingreso laboral.",
     capa: "ingresos",
   },
   "sueldo-remuneraciones": {
     nombre: "Sueldo y remuneraciones",
     descripcion:
-      "Sección para sueldo líquido, liquidación, descuentos obligatorios e interpretación de remuneraciones mensuales.",
+      "Sección para entender tu sueldo líquido, la liquidación y los descuentos de cada mes.",
     capa: "ingresos",
   },
 };
@@ -113,8 +113,7 @@ const hubs = hubsDetectados
         .filter(Boolean)
         .map(parte => parte.charAt(0).toUpperCase() + parte.slice(1))
         .join(" "),
-      descripcion:
-        "Sección de finanzas personales disponible en esta página.",
+      descripcion: "Sección de finanzas personales disponible en esta página.",
       capa: "otros" as const,
     };
   })

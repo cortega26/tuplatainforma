@@ -20,7 +20,7 @@ heroImage: /images/hero/deposito-a-plazo-uf-vs-pesos.avif
 
 <!-- META: keyword_primary="deposito a plazo en uf o pesos que conviene" | intent="comparativa" | cluster="ahorro-inversion" -->
 
-Si estás eligiendo entre depósito a plazo en UF o en pesos, esta guía te ayuda a decidir con criterios concretos de plazo, inflación esperada y necesidad de liquidez. Para una mirada más amplia de instrumentos, revisa primero la guía de [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
+Si estás eligiendo entre depósito a plazo en UF o en pesos, esta guía te ayuda a decidir según plazo, inflación esperada y necesidad de liquidez. Para una mirada más amplia de instrumentos, revisa primero la guía de [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
 
 ## Requisitos y supuestos
 
@@ -45,7 +45,7 @@ Según Banco Central, la UF es una unidad reajustable por IPC y se actualiza dia
 | Plazo corto              | Más flexible según oferta         | Puede no ser viable según plazo mínimo reajustable |
 | Entender resultado final | Más simple (nominal)              | Requiere mirar reajuste + tasa real                |
 
-Dato operativo clave (CMF Educa): el plazo mínimo de pago de intereses/reajustes no puede ser inferior a 7 días en depósitos no reajustables y a 90 días en depósitos reajustables.
+Dato clave (CMF Educa): el plazo mínimo de pago de intereses o reajustes no puede ser inferior a 7 días en depósitos no reajustables y a 90 días en depósitos reajustables.
 
 ## Paso a paso para decidir
 
@@ -79,7 +79,7 @@ Conclusión del ejemplo: con inflación más alta, UF puede superar en resultado
 
 ### Conservador (liquidez y previsibilidad)
 
-- Prefiere claridad de monto final.
+- Prefiere tener claro cuánto recibirá al final.
 - Suele optar por pesos cuando el plazo es corto y la inflación esperada está contenida.
 
 ### Balanceado (protección + flexibilidad)
@@ -116,7 +116,7 @@ Depende de condiciones del contrato y de la institución. La lógica base del DA
 CMF Educa reporta que en depósitos reajustables el plazo mínimo de referencia es 90 días.
 
 **5) ¿Cómo comparo dos tasas con plazos distintos?**
-Llévalas a una misma base temporal y calcula monto final estimado en el mismo horizonte.
+Llévalas a una misma base temporal y calcula el resultado estimado para el mismo plazo.
 
 **6) ¿Qué hago si necesito liquidez en menos de 3 meses?**
 En general conviene priorizar instrumentos de caja de muy corto plazo y alta disponibilidad.

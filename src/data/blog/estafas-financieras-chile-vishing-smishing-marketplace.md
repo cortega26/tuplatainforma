@@ -1,7 +1,7 @@
 ---
 title: "Estafas financieras en Chile: señales por canal y checklist de 24 horas"
 author: "Equipo Monedario"
-description: "Guía preventiva y operativa para detectar estafas financieras en Chile por llamada, SMS, WhatsApp, marketplace y portabilidad, y actuar en 24 horas."
+description: "Guía para detectar estafas financieras en Chile por llamada, SMS, WhatsApp, marketplace y portabilidad, y saber qué hacer en 24 horas."
 slug: estafas-financieras-chile-vishing-smishing-marketplace
 pubDate: 2026-03-02T18:10:00Z
 updatedDate: 2026-03-03T00:00:00Z
@@ -23,7 +23,7 @@ La mayoría de las estafas financieras no empieza con un hackeo sofisticado. Emp
 
 Esta guía te ayuda a prevenir estafas financieras. Explica cómo operan los métodos más frecuentes, qué señales distinguen cada uno y qué hacer si ya caíste. Si quieres revisar más casos relacionados, entra a la [sección Seguridad Financiera](/guias/seguridad-financiera/).
 
-## Cómo operan las estafas financieras: la anatomía del engaño
+## Cómo operan estas estafas
 
 Todos los métodos comparten una estructura común: urgencia, autoridad percibida y poco tiempo para pensar. El estafador crea una situación que te empuja a actuar rápido y sin verificar. Cuando la urgencia se instala, el juicio crítico cede.
 
@@ -112,7 +112,7 @@ Sí. La **Ley N° 20.009** obliga a bancos e instituciones financieras supervisa
 
 ### ¿Cómo diferencio prevención de restitución?
 
-Prevención es evitar la caída antes de que ocurra. Restitución es el proceso legal y operativo para recuperar lo perdido después del fraude. Esta guía cubre la capa preventiva; la guía de fraude en medios de pago cubre la capa de restitución. Tener ambas claras reduce el daño si falla la primera.
+Prevenir es evitar caer antes de que ocurra la estafa. Restitución es intentar recuperar lo perdido después del fraude. Esta guía se enfoca en prevención; la guía de fraude en medios de pago explica qué hacer para reclamar y recuperar tu plata.
 
 ### ¿Cada cuánto conviene revisar señales de riesgo?
 

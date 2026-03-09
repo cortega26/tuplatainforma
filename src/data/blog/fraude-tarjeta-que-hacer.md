@@ -204,7 +204,7 @@ No. El aviso de bloqueo debe ser gratuito. El reclamo al banco es gratuito. La d
 **¿Qué hago si el fraude involucra una cuenta en el extranjero?**
 La Ley 20.009 aplica a instituciones que operen en Chile y estén supervisadas por la CMF. Si el fraude involucra una plataforma extranjera sin presencia regulada en Chile, el camino legal es más complejo.
 
-Si quieres prevenir variantes por canal antes de una nueva caída, revisa [estafas financieras en Chile](/posts/estafas-financieras-chile-vishing-smishing-marketplace/). Si además aparecen créditos o deudas desconocidas, sigue el protocolo de [suplantación y créditos no reconocidos](/posts/suplantacion-identidad-creditos-no-reconocidos/).
+Si quieres prevenir variantes por canal antes de una nueva caída, revisa [estafas financieras en Chile](/posts/estafas-financieras-chile-vishing-smishing-marketplace/). Si además aparecen créditos o deudas desconocidas, revisa la guía de [suplantación y créditos no reconocidos](/posts/suplantacion-identidad-creditos-no-reconocidos/).
 
 ---
 

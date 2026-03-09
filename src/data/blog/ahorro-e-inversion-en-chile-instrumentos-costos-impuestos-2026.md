@@ -73,7 +73,7 @@ Ejemplo numérico rápido: si inviertes $3.000.000 para una meta a 8 meses y com
 
 - Tolera volatilidad y ciclos largos de mercado.
 - Puede usar ETFs y fondos con mayor exposición a renta variable.
-- Necesita disciplina en riesgo operativo, custodia y tributación anual.
+- Necesita disciplina para manejar custodia, impuestos y errores al operar.
 
 ## Costos e impuestos: cómo leerlos antes de invertir
 
@@ -98,7 +98,7 @@ Si tu decisión ya está acotada por instrumento, usa estas guías para resolver
 1. Elegir por rentabilidad pasada sin revisar costo total.
 2. Invertir plata de corto plazo en instrumentos de alta volatilidad.
 3. Ignorar reglas de rescate o vencimiento hasta necesitar liquidez.
-4. No validar si el intermediario está inscrito y supervisado.
+4. No revisar si el intermediario está inscrito y supervisado.
 5. Recién mirar impuestos cuando toca declarar renta.
 6. Copiar cartera de otra persona con objetivo y horizonte distintos.
 
