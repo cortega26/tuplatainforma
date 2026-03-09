@@ -11,6 +11,8 @@ tags:
   - nasdaq-100
 category: general
 cluster: ahorro-e-inversion
+topicRole: reference
+canonicalTopic: interes-compuesto-caso
 lang: es-CL
 unlisted: true
 featured: false

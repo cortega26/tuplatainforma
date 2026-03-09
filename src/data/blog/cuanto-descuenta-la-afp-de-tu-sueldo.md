@@ -1,8 +1,8 @@
 ---
-title: "¿Cuánto descuenta la AFP de tu sueldo y para qué sirve ese dinero?"
+title: "Descuento AFP en tu sueldo: cotización obligatoria, comisión y cómo revisarlo"
 author: "Equipo Monedario"
 pubDate: 2026-02-23T10:00:00Z
-updatedDate: 2026-03-08T18:40:00Z
+updatedDate: 2026-03-09T18:40:00Z
 slug: cuanto-descuenta-la-afp-de-tu-sueldo
 featured: true
 lang: es-CL
@@ -14,13 +14,17 @@ tags:
   - sueldo
 category: empleo-ingresos
 cluster: sueldo-remuneraciones
-description: "Desglose claro de cuánto descuenta la AFP de tu sueldo mensual, para qué sirve cada peso descontado y cómo calcularlo tú mismo."
+topicRole: owner
+canonicalTopic: descuento-afp-trabajador
+description: "Desglose de la línea AFP en tu sueldo: cotización obligatoria, comisión, reforma vigente y cómo revisar ese descuento sin abrir todo el cálculo del líquido."
 heroImage: /images/hero/cuanto-descuenta-la-afp-de-tu-sueldo.avif
 ---
 
-Cada mes ves en tu liquidación de sueldo una línea que dice "AFP" y un número que te descuentan. Pero, ¿sabes exactamente para qué sirve ese dinero y si lo estás aprovechando bien?
+<!-- META: keyword_primary="descuento afp sueldo" | intent="informational-line-item-review" | cluster="sueldo-remuneraciones" -->
 
-En esta guía te explicamos todo de forma simple. Si quieres ver cómo este descuento se suma a salud, cesantía e impuesto único, parte por la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/), cruza con la guía de [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/) y usa también [descuentos de sueldo](/posts/descuentos-de-sueldo/) o [liquidación de sueldo](/posts/liquidacion-de-sueldo/) cuando necesites mirar el resto de la liquidación.
+Cada mes ves en tu liquidación una línea "AFP" y un número que te descuentan. Esta guía se queda en esa línea: cuánto corresponde a cotización obligatoria, cuánto es comisión y cómo revisar si ese cargo calza con tu AFP y tu imponible.
+
+Si quieres ver cómo esta línea se suma a salud, cesantía e impuesto único para llegar al depósito final, parte por [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/). Si tu pregunta es qué descuentos puede hacerte legalmente el empleador, usa [descuentos de sueldo](/posts/descuentos-de-sueldo/). Y si estás auditando el comprobante completo, sigue con [liquidación de sueldo](/posts/liquidacion-de-sueldo/) o la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/).
 
 ## Qué cambia entre 2025 y 2027
 
@@ -44,7 +48,12 @@ Calendario resumido de implementación:
 
 ## Tabla de contenidos
 
-## ¿Cuánto descuenta la AFP?
+## ¿Cuánto te descuenta realmente la línea AFP?
+
+**Respuesta rápida (regla general):** hoy la línea AFP del trabajador dependiente se compone de **10% de cotización obligatoria** más la **comisión de su AFP**, por lo que el descuento total suele moverse entre **10,49% y 11,45%** del imponible según administradora.  
+**Excepciones comunes:** la cotización adicional de la reforma previsional es de cargo del empleador y no baja tu líquido; si tu duda es el total de descuentos de la liquidación, aquí no se cubren salud, cesantía ni el impuesto completo.  
+**Vigencia / fecha de corte:** 2026-03-09.  
+**Fuentes oficiales:** [Superintendencia de Pensiones](https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-9908.html), [ChileAtiende](https://www.chileatiende.gob.cl/fichas/130987-aportes-del-empleador-al-sistema-de-pensiones), [BCN, Ley N° 21.735](https://www.bcn.cl/leychile/navegar?idNorma=1212060).
 
 Si hablamos del descuento que sale desde tu remuneración imponible como trabajador, el total hoy se mueve aproximadamente entre **10.49% y 11.45%** según tu AFP. Este porcentaje se divide en dos partes:
 
@@ -99,17 +108,11 @@ Supongamos que tienes un sueldo imponible de **$1.000.000** y estás en Habitat 
 
 De ese total, **$100.000 son tuyos** y se suman a tu cuenta de pensión. Los **$12.700** restantes corresponden a la comisión vigente del servicio.
 
-## ¿Hay otros descuentos previsionales además de la AFP?
+## ¿Cómo se relaciona esta línea con el resto de tu liquidación?
 
-Sí. El descuento de AFP no es el único. En tu liquidación también verás:
+La línea AFP no vive sola, pero esta URL no intenta explicar toda la liquidación. Salud, cesantía e impuesto único también afectan tu sueldo líquido, pero su owner está en [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/) y en [descuentos de sueldo](/posts/descuentos-de-sueldo/) si quieres revisar la clasificación completa.
 
-- **Salud (7%):** Va a Fonasa o a tu Isapre para cubrir atención médica
-- **Seguro de cesantía (0.6%):** Fondo para periodos de desempleo
-- **Impuesto de segunda categoría:** Solo si tu sueldo supera el primer tramo exento
-
-Todos estos descuentos juntos determinan tu **sueldo líquido** — lo que realmente recibes en tu cuenta.
-
-> 🧮 ¿Quieres saber exactamente cuánto recibirás este mes? Usa nuestra [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/) para obtener el desglose completo en segundos.
+> 🧮 ¿Quieres saber exactamente cuánto recibirás este mes? Usa nuestra [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/) para obtener el desglose total en segundos.
 
 ## ¿Puedo cambiarme de AFP para pagar menos comisión?
 

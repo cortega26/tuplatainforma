@@ -10,15 +10,17 @@ tags:
   - inversiones
   - comisiones
   - impuestos
-category: impuestos
+category: ahorro-inversion
 cluster: ahorro-e-inversion
+topicRole: owner
+canonicalTopic: fondos-mutuos-costos-rescate-impuestos
 lang: es-CL
 featured: false
 draft: false
 heroImage: /images/hero/fondos-mutuos-comisiones-rescate-impuestos.avif
 ---
 
-<!-- META: keyword_primary="comisiones fondos mutuos cuanto cobran" | intent="informacional-transaccional" | cluster="ahorro-inversion" -->
+<!-- META: keyword_primary="comisiones fondos mutuos cuanto cobran" | intent="informacional-transaccional" | cluster="ahorro-e-inversion" -->
 
 Si inviertes en fondos mutuos, esta guía te muestra dónde están los costos reales, cómo funciona el rescate y qué mirar en impuestos para evitar sorpresas. Para una mirada más amplia, parte por [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
 

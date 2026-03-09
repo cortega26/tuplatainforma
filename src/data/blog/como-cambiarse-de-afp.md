@@ -14,6 +14,8 @@ tags:
   - reforma-pensiones
 category: prevision
 cluster: pensiones-afp
+topicRole: owner
+canonicalTopic: cambio-afp
 description: "Guía actualizada 2026 para cambiarse de AFP en Chile: requisitos, pasos, qué evaluar y los cambios que trae la Reforma de Pensiones (Ley 21.735)."
 heroImage: /images/hero/como-cambiarse-de-afp.avif
 ---

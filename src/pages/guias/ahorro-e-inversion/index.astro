@@ -16,6 +16,13 @@ const articulosSeccion = [
     ),
   },
   {
+    titulo:
+      "APV en Chile: beneficio tributario, regímenes A y B, y cuándo conviene",
+    resumen:
+      "Explica cuándo usar APV para ahorrar con beneficio tributario y cómo compararlo con alternativas más líquidas.",
+    href: getPath("/posts/que-es-el-apv/"),
+  },
+  {
     titulo: "Depósito a plazo: UF vs pesos — qué conviene y cuándo",
     resumen:
       "Comparativa para elegir entre tasa nominal y protección por reajuste según inflación esperada.",
@@ -52,8 +59,10 @@ const articulosSeccion = [
       </h1>
       <p class="max-w-3xl text-secondary">
         Esta página te ayuda a elegir qué leer primero según tu objetivo, tu
-        plazo y el nivel de riesgo que estás dispuesto a asumir. Úsala para ir
-        directo a la guía que más te sirva.
+        plazo y el nivel de riesgo que estás dispuesto a asumir. Aquí también
+        viven instrumentos de ahorro con beneficio tributario como el APV. Si tu
+        duda es AFP obligatoria, fondos previsionales o cambio de
+        administradora, te conviene ir a pensiones y AFP.
       </p>
     </section>
 
@@ -80,6 +89,22 @@ const articulosSeccion = [
     <section class="border-b border-border py-8">
       <h2 class="mb-4 text-2xl font-bold">Empieza aquí si...</h2>
       <div class="grid gap-4 sm:grid-cols-2">
+        <article class="rounded-xl border border-border p-5">
+          <h3 class="mb-2 text-lg font-semibold">
+            Quieres ahorrar para jubilación bajando impuesto
+          </h3>
+          <p class="text-sm text-secondary">
+            Parte por APV si estás comparando beneficio tributario, regímenes A
+            y B o cuándo conviene sobre otras alternativas.
+          </p>
+          <a
+            href={getPath("/posts/que-es-el-apv/")}
+            class="mt-3 inline-block text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+          >
+            Ir a guía de APV
+          </a>
+        </article>
+
         <article class="rounded-xl border border-border p-5">
           <h3 class="mb-2 text-lg font-semibold">
             Eres conservador y priorizas preservar capital
@@ -161,6 +186,10 @@ const articulosSeccion = [
           supervisión aplicable.
         </li>
         <li>Postergar revisión tributaria hasta el cierre del año.</li>
+        <li>
+          Confundir una decisión de ahorro con beneficio tributario con una duda
+          operativa sobre AFP obligatoria.
+        </li>
       </ul>
     </section>
 
@@ -170,7 +199,7 @@ const articulosSeccion = [
           Última actualización de la sección
         </h2>
         <p class="text-sm text-secondary">
-          Actualizado: 2026-02-28. Se actualiza cuando cambian reglas
+          Actualizado: 2026-03-09. Se actualiza cuando cambian reglas
           regulatorias CMF, instrucciones tributarias SII o cambios importantes
           en estos instrumentos.
         </p>

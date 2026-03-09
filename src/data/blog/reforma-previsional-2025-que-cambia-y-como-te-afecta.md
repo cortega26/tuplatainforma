@@ -12,6 +12,8 @@ tags:
   - fondos-generacionales
 category: prevision
 cluster: pensiones-afp
+topicRole: owner
+canonicalTopic: reforma-previsional-cambios
 lang: es-CL
 featured: false
 draft: false

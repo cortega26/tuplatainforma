@@ -10,15 +10,17 @@ tags:
   - inversiones
   - impuestos
   - chile
-category: impuestos
+category: ahorro-inversion
 cluster: ahorro-e-inversion
+topicRole: owner
+canonicalTopic: elegir-instrumento-ahorro-inversion
 lang: es-CL
 featured: false
 draft: false
 heroImage: /images/hero/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.avif
 ---
 
-<!-- META: keyword_primary="ahorro e inversión en chile" | intent="informacional-pilar" | cluster="ahorro-inversion" -->
+<!-- META: keyword_primary="ahorro e inversión en chile" | intent="informacional-pilar" | cluster="ahorro-e-inversion" -->
 
 Si quieres ordenar tus finanzas para invertir sin improvisar, esta guía te ayuda a elegir instrumento según plazo, riesgo, costos y tratamiento tributario, con foco práctico para Chile 2026.
 

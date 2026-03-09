@@ -15,6 +15,8 @@ const CATEGORIES = [
   "general",
 ] as const;
 
+const TOPIC_ROLES = ["owner", "support", "reference"] as const;
+
 const blog = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: `./${BLOG_PATH}` }),
   schema: ({ image }) =>
@@ -28,6 +30,15 @@ const blog = defineCollection({
         tags: z.array(z.string().trim()).default([]),
         category: z.enum(CATEGORIES),
         cluster: z.enum(CLUSTERS),
+        topicRole: z.enum(TOPIC_ROLES).optional(),
+        canonicalTopic: z
+          .string()
+          .trim()
+          .min(3)
+          .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
+            message: 'Field "canonicalTopic" must use lowercase kebab-case.',
+          })
+          .optional(),
         lang: z.literal("es-CL").default("es-CL"),
         draft: z.boolean().default(false),
         unlisted: z.boolean().default(false),
@@ -73,6 +84,20 @@ const blog = defineCollection({
           ctx.addIssue({
             code: "custom",
             message: 'Field "slug" must be a non-empty string.',
+          });
+        }
+        if (data.topicRole && !data.canonicalTopic) {
+          ctx.addIssue({
+            code: "custom",
+            message:
+              'Field "canonicalTopic" is required when "topicRole" is present.',
+          });
+        }
+        if (data.canonicalTopic && !data.topicRole) {
+          ctx.addIssue({
+            code: "custom",
+            message:
+              'Field "topicRole" is required when "canonicalTopic" is present.',
           });
         }
       })

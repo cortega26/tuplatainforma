@@ -1,0 +1,341 @@
+import { readFileSync, readdirSync } from "node:fs";
+import path from "node:path";
+import yaml from "js-yaml";
+
+const REPO_ROOT = process.cwd();
+const BLOG_DIR = path.join(REPO_ROOT, "src", "data", "blog");
+
+const STOPWORDS = new Set([
+  "a",
+  "al",
+  "ante",
+  "bajo",
+  "cabe",
+  "como",
+  "con",
+  "contra",
+  "cual",
+  "cuando",
+  "chile",
+  "de",
+  "del",
+  "desde",
+  "donde",
+  "durante",
+  "e",
+  "el",
+  "ella",
+  "en",
+  "entre",
+  "era",
+  "es",
+  "esta",
+  "este",
+  "esto",
+  "fue",
+  "ha",
+  "hasta",
+  "la",
+  "las",
+  "lo",
+  "los",
+  "mas",
+  "me",
+  "mi",
+  "mis",
+  "o",
+  "para",
+  "pero",
+  "por",
+  "que",
+  "se",
+  "segun",
+  "si",
+  "sin",
+  "sobre",
+  "su",
+  "sus",
+  "te",
+  "tras",
+  "tu",
+  "tus",
+  "un",
+  "una",
+  "uno",
+  "y",
+  "2025",
+  "2026",
+  "2027",
+  "2028",
+]);
+
+const CLUSTER_CATEGORY_MAP = new Map([
+  ["pensiones-afp", new Set(["prevision"])],
+  ["sueldo-remuneraciones", new Set(["empleo-ingresos"])],
+  ["empleo-ingresos", new Set(["empleo-ingresos", "general"])],
+  ["impuestos-personas", new Set(["impuestos"])],
+  ["ahorro-e-inversion", new Set(["ahorro-inversion"])],
+  ["deuda-credito", new Set(["deuda-credito"])],
+  ["seguridad-financiera", new Set(["seguridad-financiera"])],
+]);
+const HARDENED_OWNERSHIP_CLUSTERS = new Set([
+  "sueldo-remuneraciones",
+  "pensiones-afp",
+  "ahorro-e-inversion",
+]);
+
+function listMarkdownFiles(dir) {
+  return readdirSync(dir)
+    .filter(entry => /\.(md|mdx)$/i.test(entry))
+    .sort()
+    .map(entry => path.join(dir, entry));
+}
+
+function normalize(value) {
+  return String(value ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function tokenize(value) {
+  return normalize(value)
+    .replace(/[^a-z0-9\s-]/g, " ")
+    .replace(/[-_]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter(token => token.length > 2)
+    .filter(token => !STOPWORDS.has(token));
+}
+
+function toTokenSet(value) {
+  return new Set(tokenize(value));
+}
+
+function jaccard(setA, setB) {
+  const union = new Set([...setA, ...setB]);
+  if (union.size === 0) return 0;
+  let intersection = 0;
+  for (const item of setA) {
+    if (setB.has(item)) intersection += 1;
+  }
+  return intersection / union.size;
+}
+
+function readArticle(filePath) {
+  const raw = readFileSync(filePath, "utf8");
+  const frontmatterMatch = raw.match(/^---\n([\s\S]*?)\n---\n?/);
+  const frontmatter = frontmatterMatch ? yaml.load(frontmatterMatch[1]) ?? {} : {};
+  const body = frontmatterMatch ? raw.slice(frontmatterMatch[0].length) : raw;
+  const metaMatch = raw.match(
+    /META:\s*keyword_primary="([^"]+)"\s*\|\s*intent="([^"]+)"(?:\s*\|\s*cluster="([^"]+)")?/i
+  );
+  const headings = [...body.matchAll(/^##\s+(.+)$/gm)].map(match =>
+    match[1].trim()
+  );
+
+  return {
+    filePath,
+    file: path.basename(filePath),
+    slug: frontmatter.slug,
+    title: frontmatter.title,
+    category: frontmatter.category,
+    cluster: frontmatter.cluster,
+    draft: frontmatter.draft ?? false,
+    topicRole:
+      typeof frontmatter.topicRole === "string" ? frontmatter.topicRole : "",
+    canonicalTopic:
+      typeof frontmatter.canonicalTopic === "string"
+        ? frontmatter.canonicalTopic
+        : "",
+    description: frontmatter.description,
+    tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : [],
+    keywordPrimary: metaMatch?.[1]?.trim() ?? "",
+    intent: metaMatch?.[2]?.trim() ?? "",
+    metaCluster: metaMatch?.[3]?.trim() ?? "",
+    titleTokens: toTokenSet(frontmatter.title),
+    slugTokens: toTokenSet(frontmatter.slug),
+    descriptionTokens: toTokenSet(frontmatter.description),
+    headingTokens: toTokenSet(headings.join(" ")),
+  };
+}
+
+function classifyPair(a, b) {
+  const sameCluster = a.cluster === b.cluster;
+  const titleSimilarity = jaccard(a.titleTokens, b.titleTokens);
+  const slugSimilarity = jaccard(a.slugTokens, b.slugTokens);
+  const descriptionSimilarity = jaccard(a.descriptionTokens, b.descriptionTokens);
+  const headingSimilarity = jaccard(a.headingTokens, b.headingTokens);
+  const keywordOverlap =
+    a.keywordPrimary && b.keywordPrimary
+      ? jaccard(toTokenSet(a.keywordPrimary), toTokenSet(b.keywordPrimary))
+      : 0;
+  const exactKeyword =
+    a.keywordPrimary &&
+    b.keywordPrimary &&
+    normalize(a.keywordPrimary) === normalize(b.keywordPrimary);
+  const score =
+    (sameCluster ? 0.28 : 0) +
+    titleSimilarity * 0.28 +
+    slugSimilarity * 0.16 +
+    descriptionSimilarity * 0.16 +
+    headingSimilarity * 0.08 +
+    keywordOverlap * 0.12;
+  const strongSignals = [
+    titleSimilarity >= 0.12,
+    slugSimilarity >= 0.18,
+    descriptionSimilarity >= 0.14,
+    headingSimilarity >= 0.2,
+    keywordOverlap >= 0.3,
+  ].filter(Boolean).length;
+  const reviewSignals = [
+    titleSimilarity >= 0.08,
+    slugSimilarity >= 0.15,
+    descriptionSimilarity >= 0.08,
+    headingSimilarity >= 0.12,
+    keywordOverlap >= 0.2,
+  ].filter(Boolean).length;
+
+  let type = null;
+  let severity = null;
+
+  if (
+    exactKeyword ||
+    (sameCluster &&
+      titleSimilarity >= 0.22 &&
+      (descriptionSimilarity >= 0.18 || headingSimilarity >= 0.22))
+  ) {
+    type = "candidate_strong_overlap";
+    severity = "alta";
+  } else if (sameCluster && strongSignals >= 2) {
+    type = "candidate_same_intent";
+    severity = "media";
+  } else if (sameCluster && score >= 0.3 && reviewSignals >= 2) {
+    type = "candidate_cluster_review";
+    severity = "baja";
+  }
+
+  return {
+    type,
+    severity,
+    score,
+    titleSimilarity,
+    slugSimilarity,
+    descriptionSimilarity,
+    headingSimilarity,
+    keywordOverlap,
+    sameCluster,
+  };
+}
+
+function formatPair(candidate) {
+  const {
+    severity,
+    score,
+    titleSimilarity,
+    slugSimilarity,
+    descriptionSimilarity,
+    headingSimilarity,
+    keywordOverlap,
+    left,
+    right,
+    type,
+  } = candidate;
+
+  return [
+    `[${severity}] ${type} score=${score.toFixed(3)}`,
+    `  - ${left.slug} <-> ${right.slug}`,
+    `  - title=${titleSimilarity.toFixed(3)} slug=${slugSimilarity.toFixed(3)} desc=${descriptionSimilarity.toFixed(3)} h2=${headingSimilarity.toFixed(3)} keyword=${keywordOverlap.toFixed(3)}`,
+    `  - "${left.title}"`,
+    `  - "${right.title}"`,
+  ].join("\n");
+}
+
+const files = listMarkdownFiles(BLOG_DIR);
+const articles = files.map(readArticle);
+
+const metadataWarnings = [];
+for (const article of articles) {
+  if (
+    article.draft !== true &&
+    HARDENED_OWNERSHIP_CLUSTERS.has(article.cluster) &&
+    (!article.topicRole || !article.canonicalTopic)
+  ) {
+    metadataWarnings.push(
+      `[ownership] ${article.file}: missing topicRole/canonicalTopic in hardened cluster "${article.cluster}"`
+    );
+  }
+
+  const allowedCategories = CLUSTER_CATEGORY_MAP.get(article.cluster);
+  if (
+    allowedCategories &&
+    !allowedCategories.has(article.category) &&
+    article.category !== "general"
+  ) {
+    metadataWarnings.push(
+      `[taxonomy] ${article.file}: category="${article.category}" does not match cluster="${article.cluster}"`
+    );
+  }
+
+  if (
+    article.metaCluster &&
+    normalize(article.metaCluster) !== normalize(article.cluster)
+  ) {
+    metadataWarnings.push(
+      `[metadata] ${article.file}: META cluster="${article.metaCluster}" differs from frontmatter cluster="${article.cluster}"`
+    );
+  }
+}
+
+const ownerGroups = new Map();
+for (const article of articles) {
+  if (
+    article.draft === true ||
+    article.topicRole !== "owner" ||
+    !article.canonicalTopic
+  ) {
+    continue;
+  }
+
+  const groupKey = `${article.cluster}::${article.canonicalTopic}`;
+  ownerGroups.set(groupKey, [...(ownerGroups.get(groupKey) ?? []), article.file]);
+}
+
+for (const [groupKey, files] of ownerGroups.entries()) {
+  if (files.length < 2) continue;
+  metadataWarnings.push(
+    `[ownership] duplicate owner declaration for "${groupKey}": ${files.join(", ")}`
+  );
+}
+
+const candidates = [];
+for (let index = 0; index < articles.length; index += 1) {
+  for (let otherIndex = index + 1; otherIndex < articles.length; otherIndex += 1) {
+    const left = articles[index];
+    const right = articles[otherIndex];
+    const pair = classifyPair(left, right);
+    if (!pair.type) continue;
+    candidates.push({ ...pair, left, right });
+  }
+}
+
+candidates.sort((a, b) => b.score - a.score);
+
+console.log("[audit-topic-overlap] Corpus summary");
+console.log(
+  `- articles=${articles.length} metadata_warnings=${metadataWarnings.length} candidates=${candidates.length}`
+);
+console.log("");
+
+if (metadataWarnings.length > 0) {
+  console.log("[audit-topic-overlap] Metadata and taxonomy warnings");
+  for (const warning of metadataWarnings) {
+    console.log(`- ${warning}`);
+  }
+  console.log("");
+}
+
+console.log("[audit-topic-overlap] Top candidate pairs");
+for (const candidate of candidates.slice(0, 20)) {
+  console.log(formatPair(candidate));
+}

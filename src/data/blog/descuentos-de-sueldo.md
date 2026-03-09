@@ -1,7 +1,8 @@
 ---
-title: "Descuentos de sueldo en Chile: cuáles son obligatorios y cuáles no"
+title: "Descuentos de sueldo en Chile: cuáles son legales, voluntarios y prohibidos"
 author: "Equipo Monedario"
 pubDate: 2026-03-08T18:10:00Z
+updatedDate: 2026-03-09T18:10:00Z
 slug: descuentos-de-sueldo
 featured: false
 lang: es-CL
@@ -14,11 +15,17 @@ tags:
   - impuestos
 category: empleo-ingresos
 cluster: sueldo-remuneraciones
-description: "Guía práctica para distinguir descuentos obligatorios, voluntarios y prohibidos en tu sueldo en Chile, con foco en AFP, salud, cesantía e impuesto."
+topicRole: owner
+canonicalTopic: clasificacion-descuentos-sueldo
+description: "Guía para separar descuentos legales, autorizados y prohibidos en tu sueldo en Chile, sin confundir la clasificación jurídica con el cálculo completo del líquido."
 heroImage: /images/hero/descuentos-de-sueldo.avif
 ---
 
-Si quieres entender por qué tu depósito final no coincide con el bruto pactado, este artículo separa qué descuentos son legales, cuáles dependen de tu caso y cuáles no te los pueden cargar sin respaldo. Si quieres revisar más temas relacionados, parte por la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/), cruza con la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/) y usa la guía de [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/) cuando necesites rehacer el número completo.
+<!-- META: keyword_primary="descuentos de sueldo" | intent="informational-legal-classification" | cluster="sueldo-remuneraciones" -->
+
+Esta guía no existe para recalcular tu sueldo líquido completo. Existe para separar qué descuentos te puede hacer legalmente el empleador, cuáles dependen de tu autorización y qué cobros no deberían aparecer en la liquidación sin respaldo.
+
+Si lo que buscas es rehacer el número final de bruto a líquido, usa [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/). Si ya tienes la liquidación en la mano y quieres auditar el documento, te conviene más [liquidación de sueldo](/posts/liquidacion-de-sueldo/). También puedes partir por la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/) o cruzar con la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/).
 
 ## Tabla de contenidos
 
@@ -39,6 +46,8 @@ En una liquidación de sueldo típica de un trabajador dependiente aparecen cuat
 | Impuesto único     | Solo si superas el tramo exento      | Escala progresiva que publica el SII cada mes                            |
 
 Si además ves descuentos por caja de compensación, seguro voluntario, cuota sindical, ahorro o dividendos, ya no estás frente al bloque "legal básico" sino a descuentos especiales o autorizados.
+
+Ese es el límite de esta URL: clasificar líneas y su fundamento. El detalle de cómo todas esas líneas terminan formando tu líquido completo vive en [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/).
 
 ## Descuentos obligatorios que sí deben salir de tu liquidación
 

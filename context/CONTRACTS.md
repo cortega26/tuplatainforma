@@ -258,6 +258,26 @@ Change log:
 - Scope: Internal linking policy for `src/data/blog/**/*.md(x)`.
 - Source of truth:
   - Gate logic: `scripts/check-editorial-structure.mjs`
+
+### `CONTRACT.EDITORIAL.TOPIC_OWNERSHIP`
+
+- Scope: metadata editorial mínima para ownership/no-canibalización en `src/data/blog/**/*.md(x)`.
+- Source of truth:
+  - Schema/runtime compatibility: `src/content.config.ts`
+  - Contract enforcement: `scripts/check-frontmatter.mjs`
+  - Observability/audit: `scripts/audit-topic-overlap.mjs`
+- Baseline expectations:
+  - `topicRole` is one of `owner | support | reference`.
+  - `canonicalTopic` is a stable lowercase kebab-case identifier for the primary need addressed.
+  - `topicRole` and `canonicalTopic` travel together: neither should appear alone.
+  - In hardened clusters (`sueldo-remuneraciones`, `pensiones-afp`, `ahorro-e-inversion`), published articles should declare both fields.
+  - Only one publishable `owner` may exist per `cluster + canonicalTopic`.
+- Backward-compat expectations:
+  - Legacy corpus may remain partially unannotated during rollout; missing metadata is warning-first, not blocking, except for explicit owner conflicts.
+  - Existing lightweight `META` comments remain transitional audit input, not the canonical contract.
+- Enforcement:
+  - `pnpm run check:frontmatter`
+  - `pnpm run audit:topic-overlap`
   - Editorial invariant references: `context/INVARIANTS.md` (`INVARIANT.EDITORIAL.INTERNAL_LINKS_MIN`)
 - Purpose:
   - Improve article-to-article navigation.

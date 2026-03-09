@@ -12,13 +12,15 @@ tags:
   - impuestos
 category: ahorro-inversion
 cluster: ahorro-e-inversion
+topicRole: owner
+canonicalTopic: invertir-etfs-desde-chile
 lang: es-CL
 featured: false
 draft: false
 heroImage: /images/hero/como-invertir-en-etfs-desde-chile.avif
 ---
 
-<!-- META: keyword_primary="como invertir en etf desde chile" | intent="guia-procedimental" | cluster="ahorro-inversion" -->
+<!-- META: keyword_primary="como invertir en etf desde chile" | intent="guia-procedimental" | cluster="ahorro-e-inversion" -->
 
 Si quieres invertir en ETFs desde Chile, esta guía te ayuda a elegir intermediario, revisar costos, entender la custodia y mirar lo básico de impuestos antes de hacer tu primera compra. Para una mirada más amplia, revisa [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
 

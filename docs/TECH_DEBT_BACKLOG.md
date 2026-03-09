@@ -90,6 +90,26 @@ Fecha de corte: 2026-03-04
 - **Fecha de creación:** 2026-03-09
 - **Última actualización:** 2026-03-09
 
+## TD-0020 — Ownership temático y taxonomía editorial inconsistentes
+- **ID:** TD-0020
+- **Título corto:** Alinear ownership editorial entre cluster, category y hubs
+- **Descripción:** El corpus actual tiene piezas cuyo `cluster`, `category` y posicionamiento en hubs no cuentan la misma historia editorial. El caso más claro es `que-es-el-apv` (frontera ahorro/previsión) y artículos de ahorro-inversión marcados en `category: impuestos`, lo que aumenta riesgo de solapamiento y deriva temática.
+- **Evidencia (actualizada):** `src/data/blog/que-es-el-apv.mdx` (`category: prevision`, `cluster: ahorro-e-inversion`), `src/pages/guias/pensiones-afp/index.astro` enlaza APV como pieza central del hub previsional, `src/data/blog/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026.md` y `src/data/blog/fondos-mutuos-comisiones-rescate-impuestos.md` usan `category: impuestos` pese a pertenecer al cluster `ahorro-e-inversion`; auditoría `docs/research/seo/audits/2026-03-09_content-overlap-audit.md`.
+- **Impacto:** Riesgo de crecimiento editorial inconsistente, interlinking ambiguo y mayor probabilidad de canibalización a medida que se agreguen nuevas URLs.
+- **Riesgo:** medio
+- **Severidad (1-5):** 3
+- **Urgencia:** P2
+- **Esfuerzo estimado:** M
+- **Propuesta de solución:** decidir ownership canónico por topic en `docs/research/seo/strategy/topic_ownership_matrix.md`, luego alinear `category`, `cluster`, hubs y metadata de intención en el corpus afectado.
+- **Criterios de cierre (checklist verificable):**
+- [ ] APV tiene ownership explícito y consistente entre hub, cluster y category.
+- [ ] Las piezas del cluster `ahorro-e-inversion` usan categories coherentes con su función editorial.
+- [ ] `pnpm run audit:topic-overlap` deja de reportar incoherencias taxonómicas para estas piezas.
+- **Owner:** TBD
+- **Estado:** Backlog sin iniciar
+- **Fecha de creación:** 2026-03-09
+- **Última actualización:** 2026-03-09
+
 ## TD-0011 — Pilar CAE/costo real sin artículo editorial
 - **ID:** TD-0011
 - **Título corto:** Cubrir pilar faltante CAE/costo real

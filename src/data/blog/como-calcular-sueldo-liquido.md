@@ -1,8 +1,8 @@
 ---
-title: "Sueldo líquido en Chile: qué te descuentan, por qué y cómo calcularlo tú mismo"
+title: "Cómo calcular tu sueldo líquido en Chile: del imponible al depósito final"
 author: "Equipo Monedario"
 pubDate: 2026-02-24T10:00:00Z
-updatedDate: 2026-03-08T18:30:00Z
+updatedDate: 2026-03-09T18:30:00Z
 slug: como-calcular-sueldo-liquido
 featured: true
 homepagePriority: 100
@@ -16,15 +16,23 @@ tags:
   - liquidacion
 category: empleo-ingresos
 cluster: sueldo-remuneraciones
-description: "Guía completa para entender tu liquidación de sueldo en Chile: qué descuentos son obligatorios, cómo se calculan y por qué a veces tu líquido baja aunque tu bruto sube."
+topicRole: owner
+canonicalTopic: calcular-sueldo-liquido
+description: "Guía para reconstruir tu sueldo líquido en Chile desde el bruto e imponible hasta AFP, salud, cesantía e impuesto mensual, sin confundir cada línea."
 heroImage: /images/hero/como-calcular-sueldo-liquido.avif
 ---
 
-Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Nadie te explicó la diferencia. Este artículo sí. Además, puedes usar la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/) para ir a la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/), la guía de [descuentos de sueldo](/posts/descuentos-de-sueldo/), la lectura de [liquidación de sueldo](/posts/liquidacion-de-sueldo/) y el desglose específico de [cuánto descuenta la AFP de tu sueldo](/posts/cuanto-descuenta-la-afp-de-tu-sueldo/).
+<!-- META: keyword_primary="calcular sueldo liquido" | intent="informational-howto" | cluster="sueldo-remuneraciones" -->
+
+Te ofrecieron $1.200.000 brutos. Llegó el día de pago y te cayeron $950.000. Esta guía existe para rehacer ese cálculo de principio a fin: partir desde el bruto, separar el imponible y llegar al depósito final con AFP, salud, cesantía e impuesto.
+
+Si tu duda principal no es rehacer el número completo, usa mejor la [guía de descuentos de sueldo](/posts/descuentos-de-sueldo/) para distinguir qué líneas son legales o voluntarias, la de [liquidación de sueldo](/posts/liquidacion-de-sueldo/) para auditar el comprobante y la de [descuento AFP](/posts/cuanto-descuenta-la-afp-de-tu-sueldo/) si solo quieres revisar la línea previsional. También puedes partir por la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/) o ir directo a la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/).
 
 ## Tabla de contenidos
 
 ## La diferencia entre sueldo bruto y sueldo líquido
+
+Aquí el foco es el cálculo completo del líquido. No es la guía principal para discutir si un descuento es legal ni para revisar el formato del comprobante.
 
 **Sueldo bruto** es lo que acordaste con tu empleador. **Sueldo líquido** es lo que realmente llega a tu cuenta. Entre uno y otro hay una serie de descuentos obligatorios que establece la ley — no los decide tu empresa ni tu AFP.
 

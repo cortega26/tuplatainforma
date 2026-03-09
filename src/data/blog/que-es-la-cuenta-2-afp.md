@@ -1,7 +1,8 @@
 ---
-title: "¿Qué es la Cuenta 2 de la AFP y cuándo conviene usarla?"
+title: "Cuenta 2 de la AFP: ahorro flexible, retiros e impuestos"
 author: "Equipo Monedario"
 pubDate: 2026-02-23T12:00:00Z
+updatedDate: 2026-03-09T19:05:00Z
 slug: que-es-la-cuenta-2-afp
 featured: false
 lang: es-CL
@@ -13,13 +14,17 @@ tags:
   - pensiones
 category: prevision
 cluster: pensiones-afp
-description: "Todo lo que necesitas saber sobre la Cuenta 2 de la AFP: qué es, cómo funciona, cuánto puedes retirar, qué impuestos pagas y cuándo conviene usarla."
+topicRole: owner
+canonicalTopic: cuenta2-afp
+description: "Guía sobre la Cuenta 2 de la AFP como ahorro flexible: cómo funciona, cuánto puedes retirar, qué impuestos pagas y cuándo conviene frente al APV."
 heroImage: /images/hero/que-es-la-cuenta-2-afp.avif
 ---
 
+<!-- META: keyword_primary="cuenta 2 afp" | intent="informational-flexible-savings" | cluster="pensiones-afp" -->
+
 Cuando la gente habla de su AFP, casi siempre se refiere a la cuenta obligatoria donde va el 10% del sueldo. Pero existe una segunda cuenta, voluntaria y mucho más flexible, que muy poca gente conoce bien: la **Cuenta 2**, también llamada Cuenta de Ahorro Voluntario (CAV).
 
-En esta guía te explicamos todo lo que necesitas saber para decidir si te conviene usarla. Si quieres ver más temas relacionados, revisa la [sección de pensiones y AFP](/guias/pensiones-afp/).
+En esta guía te explicamos cuándo sirve para ahorro flexible dentro del ecosistema AFP. Si tu foco principal es bajar impuesto mientras ahorras, el owner de esa decisión está en [APV](/posts/que-es-el-apv/) dentro de [ahorro e inversión](/guias/ahorro-e-inversion/). Si quieres ver más temas del sistema previsional, revisa la [sección de pensiones y AFP](/guias/pensiones-afp/).
 
 ## Tabla de contenidos
 

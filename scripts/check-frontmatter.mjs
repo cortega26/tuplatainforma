@@ -28,6 +28,21 @@ const ALLOWED_CATEGORIES = new Set([
   "empleo-ingresos",
   "general",
 ]);
+const TOPIC_ROLES = new Set(["owner", "support", "reference"]);
+const HARDENED_OWNERSHIP_CLUSTERS = new Set([
+  "sueldo-remuneraciones",
+  "pensiones-afp",
+  "ahorro-e-inversion",
+]);
+const PRIMARY_CATEGORY_BY_CLUSTER = new Map([
+  ["pensiones-afp", new Set(["prevision"])],
+  ["sueldo-remuneraciones", new Set(["empleo-ingresos"])],
+  ["empleo-ingresos", new Set(["empleo-ingresos"])],
+  ["impuestos-personas", new Set(["impuestos"])],
+  ["ahorro-e-inversion", new Set(["ahorro-inversion"])],
+  ["deuda-credito", new Set(["deuda-credito"])],
+  ["seguridad-financiera", new Set(["seguridad-financiera"])],
+]);
 
 const CLUSTERS_TS_PATH = path.join(REPO_ROOT, "src", "config", "clusters.ts");
 const clustersSource = readFileSync(CLUSTERS_TS_PATH, "utf8");
@@ -41,6 +56,7 @@ const ALLOWED_CLUSTERS = new Set(
 
 const REQUIRED_LANG = "es-CL";
 const INLINE_IMAGE_EXCEPTION_MIN_REASON_LENGTH = 12;
+const CANONICAL_TOPIC_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 function listContentFiles(dirPath) {
   const result = [];
@@ -118,6 +134,7 @@ const qualityCounters = new Map([
 ]);
 
 const publishableSlugs = new Map();
+const publishableOwnershipRecords = [];
 
 for (const filePath of files) {
   const relativeFilePath = path.relative(REPO_ROOT, filePath).replace(/\\/g, "/");
@@ -246,6 +263,74 @@ for (const filePath of files) {
       errors,
       relativeFilePath,
       `Field "cluster" must be one of: ${Array.from(ALLOWED_CLUSTERS).join(", ")}.`
+    );
+  }
+
+  const allowedCategoriesForCluster =
+    typeof cluster === "string" ? PRIMARY_CATEGORY_BY_CLUSTER.get(cluster) : null;
+  if (
+    typeof category === "string" &&
+    allowedCategoriesForCluster &&
+    !allowedCategoriesForCluster.has(category)
+  ) {
+    if (category === "general") {
+      pushIssue(
+        warnings,
+        relativeFilePath,
+        `Category "general" inside cluster "${cluster}" is tolerated only for explicit reference/editorial debt; review taxonomy.`
+      );
+    } else {
+      pushIssue(
+        errors,
+        relativeFilePath,
+        `Category "${category}" does not match cluster "${cluster}". Expected: ${Array.from(
+          allowedCategoriesForCluster
+        ).join(", ")}.`
+      );
+    }
+  }
+
+  const topicRole = frontmatter.topicRole;
+  if (topicRole != null) {
+    if (typeof topicRole !== "string" || !TOPIC_ROLES.has(topicRole)) {
+      pushIssue(
+        errors,
+        relativeFilePath,
+        `Field "topicRole" must be one of: ${Array.from(TOPIC_ROLES).join(", ")}.`
+      );
+    }
+  }
+
+  const canonicalTopic = frontmatter.canonicalTopic;
+  if (canonicalTopic != null) {
+    if (typeof canonicalTopic !== "string" || canonicalTopic.trim() === "") {
+      pushIssue(
+        errors,
+        relativeFilePath,
+        'Field "canonicalTopic" must be a non-empty string when present.'
+      );
+    } else if (!CANONICAL_TOPIC_PATTERN.test(canonicalTopic.trim())) {
+      pushIssue(
+        errors,
+        relativeFilePath,
+        'Field "canonicalTopic" must use lowercase kebab-case.'
+      );
+    }
+  }
+
+  if (topicRole && !canonicalTopic) {
+    pushIssue(
+      errors,
+      relativeFilePath,
+      'Field "canonicalTopic" is required when "topicRole" is present.'
+    );
+  }
+
+  if (canonicalTopic && !topicRole) {
+    pushIssue(
+      errors,
+      relativeFilePath,
+      'Field "topicRole" is required when "canonicalTopic" is present.'
     );
   }
 
@@ -419,6 +504,13 @@ for (const filePath of files) {
       ...(publishableSlugs.get(slug) ?? []),
       relativeFilePath,
     ]);
+    publishableOwnershipRecords.push({
+      filePath: relativeFilePath,
+      cluster: typeof cluster === "string" ? cluster : "",
+      topicRole: typeof topicRole === "string" ? topicRole.trim() : "",
+      canonicalTopic:
+        typeof canonicalTopic === "string" ? canonicalTopic.trim() : "",
+    });
   }
 }
 
@@ -429,6 +521,53 @@ for (const [slug, relatedFiles] of publishableSlugs.entries()) {
     relatedFiles.join(", "),
     `Duplicate publishable slug "${slug}".`
   );
+}
+
+const ownerTopicMap = new Map();
+const ownershipGroups = new Map();
+
+for (const record of publishableOwnershipRecords) {
+  if (
+    HARDENED_OWNERSHIP_CLUSTERS.has(record.cluster) &&
+    (!record.topicRole || !record.canonicalTopic)
+  ) {
+    pushIssue(
+      warnings,
+      record.filePath,
+      `Published article in hardened cluster "${record.cluster}" is missing "topicRole" and/or "canonicalTopic".`
+    );
+  }
+
+  if (!record.topicRole || !record.canonicalTopic) continue;
+
+  const groupKey = `${record.cluster}::${record.canonicalTopic}`;
+  ownershipGroups.set(groupKey, [...(ownershipGroups.get(groupKey) ?? []), record]);
+
+  if (record.topicRole === "owner") {
+    ownerTopicMap.set(groupKey, [...(ownerTopicMap.get(groupKey) ?? []), record]);
+  }
+}
+
+for (const [groupKey, owners] of ownerTopicMap.entries()) {
+  if (owners.length < 2) continue;
+  pushIssue(
+    errors,
+    owners.map(owner => owner.filePath).join(", "),
+    `Duplicate topic owner for "${groupKey}". Only one publishable article may declare topicRole="owner" for the same cluster/canonicalTopic.`
+  );
+}
+
+for (const [groupKey, records] of ownershipGroups.entries()) {
+  const hasOwner = records.some(record => record.topicRole === "owner");
+  if (hasOwner) continue;
+  for (const record of records) {
+    if (!["support", "reference"].includes(record.topicRole)) continue;
+    pushIssue(
+      warnings,
+      record.filePath,
+      `No topic owner declared for "${groupKey}" even though this article is marked "${record.topicRole}".`
+    );
+  }
 }
 
 console.log(`[check-frontmatter] Scanned ${files.length} articles.`);

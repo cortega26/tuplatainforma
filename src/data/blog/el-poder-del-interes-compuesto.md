@@ -14,13 +14,15 @@ tags:
   - bolsa
 category: ahorro-inversion
 cluster: ahorro-e-inversion
+topicRole: owner
+canonicalTopic: interes-compuesto-caso
 lang: es-CL
 featured: true
 draft: false
 heroImage: /images/hero/el-poder-del-interes-compuesto.avif
 ---
 
-<!-- META: keyword_primary="interes compuesto" | intent="informacional-ejemplo" | cluster="ahorro-inversion" -->
+<!-- META: keyword_primary="interes compuesto" | intent="informacional-ejemplo" | cluster="ahorro-e-inversion" -->
 
 Imagina a alguien que nunca ganó más que el sueldo mínimo. Sin bonos, sin ascensos, sin herencias. Solo su sueldo de cada mes y la disciplina de apartar el 10% de su salario neto para invertirlo. Durante 36 años tuvo 24 meses sin trabajo, lagunas reales como las que le pueden pasar a cualquier trabajador chileno. El resto del tiempo, invirtió ese 10% en el NASDAQ-100. Si quieres revisar más temas relacionados, mira también la [sección de ahorro e inversión](/guias/ahorro-e-inversion/).
 

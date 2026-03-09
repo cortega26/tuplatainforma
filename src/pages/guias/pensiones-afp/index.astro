@@ -14,9 +14,9 @@ const articulosSeccion = [
   },
   {
     titulo:
-      "¿Cuánto descuenta la AFP de tu sueldo y para qué sirve ese dinero?",
+      "Descuento AFP en tu sueldo: cotización obligatoria, comisión y cómo revisarlo",
     resumen:
-      "Desglosa cotización obligatoria, comisión y su impacto real en el líquido mensual.",
+      "Desglosa la línea AFP de la liquidación sin mezclarla con el resto del cálculo del sueldo líquido.",
     href: getPath("/posts/cuanto-descuenta-la-afp-de-tu-sueldo/"),
   },
   {
@@ -26,16 +26,18 @@ const articulosSeccion = [
     href: getPath("/posts/fondos-afp-a-b-c-d-e/"),
   },
   {
-    titulo: "¿Qué es la Cuenta 2 de la AFP y cuándo conviene usarla?",
+    titulo: "Cuenta 2 de la AFP: ahorro flexible, retiros e impuestos",
     resumen:
-      "Explica para qué sirve la Cuenta 2, cómo retirar y en qué se diferencia del APV.",
+      "Explica cuándo sirve como ahorro flexible y cómo se diferencia del APV por liquidez e impuestos.",
     href: getPath("/posts/que-es-la-cuenta-2-afp/"),
   },
   {
-    titulo: "¿Qué es el APV y cómo funciona el beneficio tributario en Chile?",
+    titulo: "Reforma previsional 2025: qué cambia, cuándo y cómo te afecta",
     resumen:
-      "Explica cómo funciona el beneficio tributario del APV y cuándo puede convenirte.",
-    href: getPath("/posts/que-es-el-apv/"),
+      "Resume qué ya rige, qué entra por etapas y qué no debería confundirse con descuentos al trabajador.",
+    href: getPath(
+      "/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/"
+    ),
   },
 ];
 ---
@@ -55,8 +57,10 @@ const articulosSeccion = [
       </h1>
       <p class="max-w-3xl text-secondary">
         Esta página te ayuda a elegir qué leer primero si estás revisando tu
-        AFP, tus fondos o tus opciones de ahorro previsional. Úsala para ir
-        directo al tema que te importa hoy.
+        AFP, tus fondos, tu Cuenta 2 o cambios previsionales del sistema. Úsala
+        para ir directo al tema que te importa hoy. Si tu foco principal es un
+        instrumento de ahorro con beneficio tributario, el owner vive en ahorro
+        e inversión.
       </p>
     </section>
 
@@ -94,16 +98,15 @@ const articulosSeccion = [
           y luego revisa fondos A-E.
         </li>
         <li>
-          Quieres bajar impuesto mientras ahorras para jubilación: parte por{
-            " "
-          }
+          Quieres bajar impuesto mientras ahorras: parte por la sección de{" "}
           <a
             class="text-accent underline underline-offset-4 hover:opacity-80"
-            href={getPath("/posts/que-es-el-apv/")}
+            href={getPath("/guias/ahorro-e-inversion/")}
           >
-            la guía de APV
+            ahorro e inversión
           </a>{" "}
-          y luego revisa Cuenta 2 o cambio de AFP según tu objetivo.
+          y luego revisa la guía de APV. Desde este hub te conviene volver solo si
+          después quieres comparar con Cuenta 2, fondos o cambio de AFP.
         </li>
         <li>
           Buscas ahorro previsional con mayor flexibilidad: revisa{" "}
@@ -136,13 +139,36 @@ const articulosSeccion = [
       </ul>
     </section>
 
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">
+        Relacionado, pero fuera del núcleo AFP
+      </h2>
+      <div class="rounded-xl border border-border p-5">
+        <h3 class="mb-2 text-lg font-semibold">
+          APV: ahorro con beneficio tributario
+        </h3>
+        <p class="mb-3 text-sm text-secondary">
+          Lo enlazamos porque mucha gente compara APV con Cuenta 2, pero su
+          ownership principal está en ahorro e inversión: la pregunta base es
+          qué instrumento te conviene para ahorrar mejor, no cómo funciona tu
+          AFP obligatoria.
+        </p>
+        <a
+          href={getPath("/posts/que-es-el-apv/")}
+          class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+        >
+          Ir a la guía de APV
+        </a>
+      </div>
+    </section>
+
     <section class="py-8">
       <div class="rounded-xl border border-accent/20 bg-accent/5 p-6">
         <h2 class="mb-2 text-xl font-bold">
           Última actualización de la sección
         </h2>
         <p class="text-sm text-secondary">
-          Actualizado: 2026-03-02. Esta sección se revisa cuando cambian
+          Actualizado: 2026-03-09. Esta sección se revisa cuando cambian
           comisiones AFP, reglas de traspaso, reglas de fondos o normativa
           previsional obligatoria.
         </p>

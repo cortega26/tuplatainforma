@@ -12,13 +12,15 @@ tags:
   - inversiones
 category: ahorro-inversion
 cluster: ahorro-e-inversion
+topicRole: owner
+canonicalTopic: deposito-plazo-uf-vs-pesos
 lang: es-CL
 featured: false
 draft: false
 heroImage: /images/hero/deposito-a-plazo-uf-vs-pesos.avif
 ---
 
-<!-- META: keyword_primary="deposito a plazo en uf o pesos que conviene" | intent="comparativa" | cluster="ahorro-inversion" -->
+<!-- META: keyword_primary="deposito a plazo en uf o pesos que conviene" | intent="comparativa" | cluster="ahorro-e-inversion" -->
 
 Si estás eligiendo entre depósito a plazo en UF o en pesos, esta guía te ayuda a decidir según plazo, inflación esperada y necesidad de liquidez. Para una mirada más amplia de instrumentos, revisa primero la guía de [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
 

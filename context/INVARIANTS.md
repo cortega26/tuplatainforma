@@ -65,6 +65,8 @@ Change log:
 | `INVARIANT.EDITORIAL.INTERNAL_LINKS_MIN` | Articles should include minimum internal linking | Active | `pnpm run check:editorial` (warning) |
 | `INVARIANT.EDITORIAL.CLUSTER_DECLARED` | Every article declares non-empty string `cluster` in frontmatter | Active (rollout) | `pnpm run check:editorial-structure` (warning-first) |
 | `INVARIANT.EDITORIAL.CLUSTER_VALID` | `cluster` belongs to registered cluster set | Active | `pnpm run check:editorial-structure` |
+| `INVARIANT.EDITORIAL.TOPIC_OWNER_UNIQUENESS` | A cluster/topic cannot have two publishable `owner` pages | Active | `pnpm run check:frontmatter` |
+| `INVARIANT.EDITORIAL.TOPIC_OWNERSHIP_METADATA_HARDENED_CLUSTERS` | High-risk clusters should declare ownership metadata | Active (warning-first) | `pnpm run check:frontmatter`, `pnpm run audit:topic-overlap` |
 | `INVARIANT.EDITORIAL.CLUSTER_INTERNAL_LINK_MIN` | Article should link to at least one same-cluster article | Active (Canonical) | `pnpm run check:editorial-structure` (warning) |
 | `INVARIANT.EDITORIAL.LINKING.HUB_REQUIRED` | Clustered article should include a link to its hub `/guias/<cluster>/` | Active (manual) | PR review + `pnpm run check:editorial` |
 | `INVARIANT.EDITORIAL.LINKING.INTRA_CLUSTER_MIN_1` | Alias for intra-cluster min rule | Deprecated (Alias) | Reference `INVARIANT.EDITORIAL.CLUSTER_INTERNAL_LINK_MIN` |
@@ -246,6 +248,40 @@ Change log:
 - Examples:
   - Compliant: artículo con link markdown interno relativo (por ejemplo, `/ruta`, `./ruta`, `../ruta`).
   - Warning: artículo sin links internos y sin escape hatch.
+
+### `INVARIANT.EDITORIAL.TOPIC_OWNER_UNIQUENESS`
+
+- Statement: Dentro del mismo `cluster`, solo una URL publicable puede declarar `topicRole: owner` para un mismo `canonicalTopic`.
+- Canonical source: `scripts/check-frontmatter.mjs`, `docs/editorial/NON_CANNIBALIZATION_PROCESS.md`.
+- Rationale:
+  - Evita double-owners que compiten por la misma necesidad primaria.
+  - Convierte ownership editorial en una regla verificable, no solo documental.
+  - Mantiene la detección con muy bajo falso positivo porque depende de metadata explícita.
+- Enforcement: `pnpm run check:frontmatter`.
+- Detection:
+  - Blocking output includes: `Duplicate topic owner for "<cluster>::<canonicalTopic>"`.
+  - Exit code: `1`.
+- Examples:
+  - Compliant: una sola pieza `owner` para `sueldo-remuneraciones::calcular-sueldo-liquido`.
+  - Violation: dos artículos publicados con `topicRole: owner` y el mismo `canonicalTopic`.
+
+### `INVARIANT.EDITORIAL.TOPIC_OWNERSHIP_METADATA_HARDENED_CLUSTERS`
+
+- Statement: Los artículos publicados en clusters endurecidos (`sueldo-remuneraciones`, `pensiones-afp`, `ahorro-e-inversion`) deben declarar `topicRole` y `canonicalTopic`.
+- Canonical source: `scripts/check-frontmatter.mjs`, `scripts/audit-topic-overlap.mjs`.
+- Rationale:
+  - Añade fricción real donde la canibalización ya fue observada o el cluster tiene más riesgo de deriva.
+  - Limita el costo editorial al subconjunto donde el retorno es alto.
+  - Permite una adopción gradual sin bloquear todo el corpus legacy.
+- Enforcement:
+  - `pnpm run check:frontmatter` (warning-first)
+  - `pnpm run audit:topic-overlap`
+- Detection:
+  - Warning output includes: `missing "topicRole" and/or "canonicalTopic"`.
+  - No bloquea por sí solo en esta fase.
+- Examples:
+  - Compliant: artículo publicado en `pensiones-afp` con `topicRole` y `canonicalTopic`.
+  - Warning: artículo publicado en `ahorro-e-inversion` sin metadata de ownership.
 
 ### `INVARIANT.EDITORIAL.INLINE_IMAGE_AVIF_REQUIRED`
 

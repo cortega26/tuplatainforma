@@ -1,7 +1,8 @@
 ---
-title: "Liquidación de sueldo en Chile: cómo leerla y qué revisar"
+title: "Liquidación de sueldo en Chile: cómo auditar el comprobante y sus líneas clave"
 author: "Equipo Monedario"
 pubDate: 2026-03-08T18:20:00Z
+updatedDate: 2026-03-09T18:20:00Z
 slug: liquidacion-de-sueldo
 featured: false
 lang: es-CL
@@ -13,11 +14,17 @@ tags:
   - trabajo
 category: empleo-ingresos
 cluster: sueldo-remuneraciones
-description: "Explicación práctica de la liquidación de sueldo en Chile: qué debe mostrar, cómo leer haberes y descuentos, y qué revisar antes de aceptarla."
+topicRole: owner
+canonicalTopic: auditar-liquidacion-sueldo
+description: "Guía para auditar tu liquidación de sueldo en Chile: qué debe mostrar el comprobante, qué respaldos pedir y qué líneas revisar antes de darlo por bueno."
 heroImage: /images/hero/liquidacion-de-sueldo.avif
 ---
 
-La liquidación de sueldo es el documento donde realmente se cruzan tu contrato, tus horas, tus bonos y tus descuentos. Si quieres ver todas las ayudas relacionadas, parte por la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/). Si ya tienes un monto y quieres probarlo, usa la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/). Y si la duda es qué líneas te pueden descontar, complementa con [descuentos de sueldo en Chile](/posts/descuentos-de-sueldo/).
+<!-- META: keyword_primary="liquidacion de sueldo" | intent="informational-document-audit" | cluster="sueldo-remuneraciones" -->
+
+Esta guía es para auditar el comprobante que te entrega el empleador: qué bloques debe traer, qué respaldo pedir y cómo detectar una línea dudosa antes de que el error se repita otro mes.
+
+Si lo que quieres es recalcular el monto final, usa [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/). Si tu foco es distinguir descuentos legales, voluntarios o prohibidos, parte por [descuentos de sueldo en Chile](/posts/descuentos-de-sueldo/). También puedes ver la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/) o probar un escenario en la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/).
 
 ## Tabla de contenidos
 
@@ -29,6 +36,8 @@ La liquidación de sueldo es el documento donde realmente se cruzan tu contrato,
 **Fuentes oficiales:** [Dirección del Trabajo, artículo 54](https://www.dt.gob.cl/portal/1628/w3-article-60593.html), [Dirección del Trabajo, artículo 54 bis](https://www.dt.gob.cl/legislacion/1624/w3-article-60596.html), [Dirección del Trabajo, artículo 58](https://www.dt.gob.cl/portal/1628/w3-article-60593.html).
 
 En simple, la liquidación no es un favor administrativo: es el documento base para revisar si el pago coincide con tu contrato y para detectar errores antes de que se acumulen varios meses.
+
+Ese es el alcance de esta URL: leer y auditar el documento. El cálculo completo del líquido y la clasificación legal de descuentos tienen piezas separadas dentro del cluster.
 
 ## Qué debería mostrar una liquidación bien armada
 

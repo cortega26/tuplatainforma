@@ -14,6 +14,8 @@ tags:
   - inversiones
 category: prevision
 cluster: pensiones-afp
+topicRole: owner
+canonicalTopic: elegir-fondos-afp
 description: "Explicación clara de los fondos AFP A, B, C, D y E: en qué invierte cada uno, cuánto riesgo tienen y cuál conviene según tu edad y perfil."
 heroImage: /images/hero/fondos-afp-a-b-c-d-e.avif
 ---
