@@ -3,22 +3,8 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import { GUIDE_HUB_ORDER, GUIDE_HUBS } from "@/config/clusters";
 import { getPath } from "@/utils/getPath";
-
-type CapaId =
-  | "ingresos"
-  | "prevision"
-  | "ahorro-inversion"
-  | "impuestos"
-  | "deuda"
-  | "otros";
-
-type HubInfo = {
-  slug: string;
-  nombre: string;
-  descripcion: string;
-  capa: CapaId;
-};
 
 const capas = [
   {
@@ -58,66 +44,32 @@ const capas = [
   },
 ];
 
-const catalogoHubs: Record<string, Omit<HubInfo, "slug">> = {
-  "pensiones-afp": {
-    nombre: "Pensiones y AFP",
-    descripcion:
-      "Sección sobre previsión obligatoria en Chile: cotización, fondos y decisiones que afectan tu pensión futura.",
-    capa: "prevision",
-  },
-  "ahorro-e-inversion": {
-    nombre: "Ahorro e inversión",
-    descripcion:
-      "Sección para aprender a ahorrar e invertir según instrumento, costo, impuestos y plazo.",
-    capa: "ahorro-inversion",
-  },
-  "impuestos-personas": {
-    nombre: "Impuestos para personas",
-    descripcion:
-      "Sección para declarar renta, revisar devoluciones y entender tus principales dudas tributarias.",
-    capa: "impuestos",
-  },
-  "deuda-credito": {
-    nombre: "Deuda y crédito",
-    descripcion:
-      "Sección para entender el CAE, revisar tus deudas y tomar mejores decisiones de crédito.",
-    capa: "deuda",
-  },
-  "empleo-ingresos": {
-    nombre: "Empleo e ingresos",
-    descripcion:
-      "Sección para cesantía, licencias médicas, finiquito y otros problemas que afectan tu ingreso laboral.",
-    capa: "ingresos",
-  },
-  "sueldo-remuneraciones": {
-    nombre: "Sueldo y remuneraciones",
-    descripcion:
-      "Sección para entender tu sueldo líquido, la liquidación y los descuentos de cada mes.",
-    capa: "ingresos",
-  },
-};
-
 const hubsDetectados = Object.keys(import.meta.glob("./*/index.astro"))
   .map(path => path.match(/^\.\/([^/]+)\/index\.astro$/)?.[1])
   .filter((slug): slug is string => Boolean(slug));
 
-const hubs = hubsDetectados
-  .map(slug => {
-    const hub = catalogoHubs[slug];
-    if (hub) return { slug, ...hub };
+const hubSet = new Set(hubsDetectados);
+const orderedKnownHubs = GUIDE_HUB_ORDER.filter(slug => hubSet.has(slug)).map(
+  slug => ({ slug, ...GUIDE_HUBS[slug] })
+);
+const fallbackHubs = hubsDetectados
+  .filter(
+    slug => !GUIDE_HUB_ORDER.includes(slug as (typeof GUIDE_HUB_ORDER)[number])
+  )
+  .map(slug => ({
+    slug,
+    nombre: slug
+      .split("-")
+      .filter(Boolean)
+      .map(parte => parte.charAt(0).toUpperCase() + parte.slice(1))
+      .join(" "),
+    descripcion: "Sección de finanzas personales disponible en esta página.",
+    capa: "otros" as const,
+  }));
 
-    return {
-      slug,
-      nombre: slug
-        .split("-")
-        .filter(Boolean)
-        .map(parte => parte.charAt(0).toUpperCase() + parte.slice(1))
-        .join(" "),
-      descripcion: "Sección de finanzas personales disponible en esta página.",
-      capa: "otros" as const,
-    };
-  })
-  .sort((a, b) => a.nombre.localeCompare(b.nombre, "es-CL"));
+const hubs = [...orderedKnownHubs, ...fallbackHubs].sort((a, b) =>
+  a.nombre.localeCompare(b.nombre, "es-CL")
+);
 
 const capasConHubs = capas
   .map(capa => ({

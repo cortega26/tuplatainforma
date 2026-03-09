@@ -3,17 +3,44 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import Card from "@/components/Card.astro";
+import Datetime from "@/components/Datetime.astro";
 import LinkButton from "@/components/LinkButton.astro";
+import ArticlePlaceholder from "@/components/ArticlePlaceholder.astro";
 import SectionDivider from "@/components/SectionDivider.astro";
+import { GUIDE_HUBS } from "@/config/clusters";
 import getSortedPosts from "@/utils/getSortedPosts";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
 import { getCanonicalPathFromSlug } from "@/domain/content/path";
 import { getPath } from "@/utils/getPath";
+import { toArticleView } from "@/utils/articleView";
+import {
+  getBalancedHomepagePosts,
+  getHomepageHubRail,
+  getHomepageLeadPost,
+} from "@/utils/homepage";
 
 const posts = await getCollection("blog");
 const sortedPosts = getSortedPosts(posts);
-const recentPosts = sortedPosts.slice(0, SITE.postPerIndex);
+const heroPost = getHomepageLeadPost(sortedPosts);
+const heroArticle = heroPost ? toArticleView(heroPost) : null;
+const { richPosts: recentRichPosts, compactPosts: recentCompactPosts } =
+  getBalancedHomepagePosts(sortedPosts, {
+    heroSlug: heroArticle?.slug ?? null,
+    heroCluster: heroArticle?.cluster ?? null,
+    richCount: 3,
+    totalCount: SITE.postPerIndex,
+  });
+const heroHub =
+  heroArticle?.cluster && heroArticle.cluster in GUIDE_HUBS
+    ? GUIDE_HUBS[heroArticle.cluster as keyof typeof GUIDE_HUBS]
+    : null;
+const homepageHubRail = getHomepageHubRail(
+  heroArticle?.cluster ?? null,
+  recentRichPosts,
+  5
+);
 const homePath = getPath("/");
 const homeTitle =
   "Monedario | Calculadoras y guías para decisiones financieras en Chile";
@@ -22,50 +49,6 @@ const homeDescription =
 const heroTitle = "Calculadoras y guías sobre tu plata en Chile";
 const heroDescription =
   "Sueldo líquido, AFP, impuestos, crédito, UF y presupuesto en lenguaje claro. Elige el tema que quieres resolver y entra directo a la guía o calculadora.";
-const problemEntryPoints = [
-  {
-    eyebrow: "Sueldo",
-    title: "Sueldo líquido y liquidación",
-    description: "Descuentos, impuesto único y lectura del pago mensual.",
-    href: getPath("/guias/sueldo-remuneraciones/"),
-    cta: "Ir a sueldo y remuneraciones",
-  },
-  {
-    eyebrow: "AFP / APV",
-    title: "AFP, APV y cambio de administradora",
-    description: "Fondos, Cuenta 2 y ahorro tributario.",
-    href: getPath("/guias/pensiones-afp/"),
-    cta: "Ir a pensiones y AFP",
-  },
-  {
-    eyebrow: "Crédito",
-    title: "Deuda, CAE y costo real del crédito",
-    description: "Informe CMF, renegociación y otras salidas posibles.",
-    href: getPath("/guias/deuda-credito/"),
-    cta: "Ir a deuda y crédito",
-  },
-  {
-    eyebrow: "Cesantía",
-    title: "Cesantía, licencia y finiquito",
-    description: "Continuidad de ingresos cuando el trabajo se interrumpe.",
-    href: getPath("/guias/empleo-ingresos/"),
-    cta: "Ir a empleo e ingresos",
-  },
-  {
-    eyebrow: "Impuestos",
-    title: "Operación Renta y devoluciones",
-    description: "F22, honorarios y seguimiento tributario.",
-    href: getPath("/guias/impuestos-personas/"),
-    cta: "Ir a impuestos para personas",
-  },
-  {
-    eyebrow: "Presupuesto",
-    title: "Presupuesto mensual",
-    description: "Ordena ingresos, gastos y fugas antes de decidir.",
-    href: getPath("/posts/como-hacer-presupuesto-mensual-chile/"),
-    cta: "Ir a presupuesto mensual",
-  },
-];
 ---
 
 <Layout
@@ -80,34 +63,236 @@ const problemEntryPoints = [
     data-analytics-page-type="home"
     class="app-layout"
   >
-    <section class="border-b border-border py-8">
-      <p
-        class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase"
+    <section class="border-b border-border py-8 lg:py-10">
+      <div
+        class="grid gap-6 lg:grid-cols-[minmax(0,1.12fr)_minmax(300px,0.78fr)] xl:grid-cols-[minmax(0,1.22fr)_minmax(320px,0.82fr)]"
       >
-        Punto de entrada
-      </p>
-      <h1 class="mb-3 max-w-3xl text-2xl leading-tight font-bold sm:text-4xl">
-        {heroTitle}
-      </h1>
-      <p class="mb-6 max-w-3xl text-base leading-relaxed text-secondary">
-        {heroDescription}
-      </p>
-      <div class="flex flex-wrap gap-4 text-sm font-semibold">
-        <LinkButton
-          href={getPath("/guias/")}
-          data-analytics-cta="home-hero"
-          data-analytics-label="Ver rutas por tema"
-          data-analytics-location="home_hero"
+        <div class="space-y-6">
+          <div class="max-w-3xl">
+            <h1
+              class="homepage-body-heading mb-3 max-w-3xl text-2xl leading-tight font-bold sm:text-4xl"
+            >
+              {heroTitle}
+            </h1>
+            <p class="mb-5 max-w-3xl text-base leading-relaxed text-secondary">
+              {heroDescription}
+            </p>
+            <LinkButton
+              href={getPath("/guias/")}
+              class="text-sm font-semibold"
+              data-analytics-cta="home-hero"
+              data-analytics-label="Explorar guías por tema"
+              data-analytics-location="home_hero"
+            >
+              Explorar guías por tema <IconArrowRight
+                class="inline-block rtl:-rotate-180"
+              />
+            </LinkButton>
+          </div>
+
+          {
+            heroPost &&
+              heroArticle &&
+              (() => {
+                const heroImage = heroArticle.heroImage;
+
+                return (
+                  <article class="overflow-hidden rounded-xl border border-accent/20 bg-background">
+                    <a
+                      href={getCanonicalPathFromSlug(heroArticle.slug)}
+                      class="group grid h-full md:grid-cols-[minmax(0,1.12fr)_minmax(240px,0.9fr)]"
+                      data-analytics-cta="home-featured"
+                      data-analytics-label={heroPost.data.title}
+                      data-analytics-location="home_featured_story"
+                    >
+                      <div class="order-2 p-5 sm:p-6 md:order-1">
+                        <div class="mb-3 flex flex-wrap items-center gap-3 text-sm text-secondary">
+                          <span class="rounded-full bg-accent/10 px-2.5 py-1 font-semibold text-accent">
+                            Abre la portada
+                          </span>
+                          {heroHub && (
+                            <span class="font-semibold text-foreground">
+                              {heroHub.nombre}
+                            </span>
+                          )}
+                          <Datetime
+                            pubDatetime={heroArticle.pubDate}
+                            modDatetime={heroArticle.updatedDate}
+                            timezone={heroPost.data.timezone}
+                          />
+                        </div>
+                        <h2 class="mb-3 text-2xl leading-tight font-bold transition-colors group-hover:text-accent sm:text-[2rem]">
+                          {heroPost.data.title}
+                        </h2>
+                        <p class="max-w-2xl text-base leading-relaxed text-secondary">
+                          {heroPost.data.description}
+                        </p>
+                        <span class="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-accent">
+                          Leer artículo <IconArrowRight class="inline-block" />
+                        </span>
+                      </div>
+                      <div class="order-1 overflow-hidden border-b border-border md:order-2 md:border-b-0 md:border-l">
+                        {heroImage ? (
+                          <img
+                            src={heroImage}
+                            alt={`Portada de ${heroPost.data.title}`}
+                            width="1200"
+                            height="675"
+                            class="aspect-[16/10] w-full object-cover md:aspect-auto md:h-full"
+                            loading="eager"
+                            fetchpriority="high"
+                          />
+                        ) : (
+                          <ArticlePlaceholder tag={heroPost.data.tags?.[0]} />
+                        )}
+                      </div>
+                    </a>
+                  </article>
+                );
+              })()
+          }
+        </div>
+
+        <aside
+          class="rounded-xl border border-border bg-surface-muted/35 p-5 sm:p-6"
         >
-          Ver rutas por tema <IconArrowRight
-            class="inline-block rtl:-rotate-180"
-          />
-        </LinkButton>
+          <div class="mb-5">
+            <h2 class="homepage-body-heading text-xl font-semibold">
+              Explora por tema
+            </h2>
+            <p class="mt-2 text-sm leading-relaxed text-secondary">
+              Guías temáticas reales, alineadas con la taxonomía de Monedario y
+              ordenadas para abrir la portada con más amplitud.
+            </p>
+          </div>
+
+          <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+            {
+              homepageHubRail.map(entry => (
+                <li class="rounded-lg border border-border/80 bg-background/80 p-4">
+                  <a
+                    href={getPath(`/guias/${entry.slug}/`)}
+                    class="group block"
+                    data-analytics-cta="home-clusters"
+                    data-analytics-label={entry.nombre}
+                    data-analytics-location={`home_cluster_${entry.slug}`}
+                  >
+                    <h3 class="homepage-body-heading text-lg leading-snug font-semibold transition-colors group-hover:text-accent">
+                      {entry.nombre}
+                    </h3>
+                    <p class="mt-1 text-sm leading-relaxed text-secondary">
+                      {entry.homepageResumen}
+                    </p>
+                    <span class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-accent">
+                      Ir a la guía{" "}
+                      <IconArrowRight class="inline-block rtl:-rotate-180" />
+                    </span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <SectionDivider />
+
+    {
+      recentRichPosts.length > 0 && (
+        <section class="py-5 lg:py-6">
+          <div class="rounded-xl bg-surface-muted/22 px-4 py-5 sm:px-6 sm:py-6">
+            <div class="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <h2 class="homepage-body-heading text-xl font-semibold tracking-wide">
+                  Actualizaciones que amplían la portada
+                </h2>
+                <p class="mt-2 max-w-2xl text-sm leading-relaxed text-secondary">
+                  Después de la apertura editorial, esta capa abre otros frentes
+                  para que la home no quede atrapada en un solo tema.
+                </p>
+              </div>
+              <LinkButton
+                href={getPath("/posts/")}
+                class="text-sm font-semibold"
+                data-analytics-cta="home-all-posts-inline"
+                data-analytics-label="Ver todos los artículos"
+                data-analytics-location="home_recent_heading"
+              >
+                Ver todos los artículos{" "}
+                <IconArrowRight class="inline-block rtl:-rotate-180" />
+              </LinkButton>
+            </div>
+
+            <ul class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {recentRichPosts.map(post => (
+                <Card variant="h3" {...post} />
+              ))}
+            </ul>
+
+            {recentCompactPosts.length > 0 && (
+              <div class="mt-6 rounded-xl border border-border bg-background px-4 py-3 sm:px-5">
+                <div class="flex flex-col gap-2 border-b border-border/80 py-4 sm:flex-row sm:items-center sm:justify-between">
+                  <h3 class="homepage-body-heading text-lg font-semibold">
+                    Más reciente
+                  </h3>
+                  <p class="max-w-2xl text-sm text-secondary">
+                    Una lista más compacta para seguir explorando sin sumar otra
+                    grilla de cajas.
+                  </p>
+                </div>
+
+                <ul class="divide-y divide-border/80">
+                  {recentCompactPosts.map(post => {
+                    const postArticle = toArticleView(post);
+
+                    return (
+                      <li class="py-3">
+                        <a
+                          href={getCanonicalPathFromSlug(postArticle.slug)}
+                          class="group flex items-start justify-between gap-3"
+                          data-analytics-cta="home-recent"
+                          data-analytics-label={post.data.title}
+                          data-analytics-location="home_recent_posts"
+                        >
+                          <span class="homepage-body-heading text-base leading-snug font-semibold text-foreground transition-colors group-hover:text-accent">
+                            {post.data.title}
+                          </span>
+                          <IconArrowRight class="mt-1 shrink-0 rtl:-rotate-180" />
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )
+    }
+
+    <SectionDivider />
+
+    <section
+      class="mb-10 rounded-xl border border-accent/15 bg-accent/5 px-6 py-5"
+    >
+      <div
+        class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
+      >
+        <div>
+          <h2 class="homepage-body-heading text-lg font-semibold">
+            Calculadoras para pasar del texto al número
+          </h2>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-secondary">
+            Este es el punto de salida a herramientas. Lo dejé concentrado en un
+            solo bloque para que no compita con la apertura editorial.
+          </p>
+        </div>
         <LinkButton
           href={getPath("/calculadoras/")}
-          data-analytics-cta="home-hero"
+          data-analytics-cta="home-calculators"
           data-analytics-label="Ver calculadoras"
-          data-analytics-location="home_hero"
+          data-analytics-location="home_calculators"
         >
           Ver calculadoras <IconArrowRight
             class="inline-block rtl:-rotate-180"
@@ -115,130 +300,11 @@ const problemEntryPoints = [
         </LinkButton>
       </div>
     </section>
-
-    <SectionDivider />
-
-    <section class="py-8">
-      <p
-        class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase"
-      >
-        Elige un tema
-      </p>
-      <h2
-        class="homepage-body-heading mb-6 text-xl font-semibold tracking-wide"
-      >
-        Encuentra la ayuda que necesitas
-      </h2>
-
-      <ul class="grid gap-4 sm:grid-cols-2">
-        {
-          problemEntryPoints.map(entry => (
-            <li class="rounded-xl border border-border p-4">
-              <p class="mb-2 text-xs font-semibold tracking-wide text-accent uppercase">
-                {entry.eyebrow}
-              </p>
-              <h3 class="homepage-body-heading mb-1 text-lg leading-snug font-semibold">
-                {entry.title}
-              </h3>
-              <p class="mb-3 text-sm text-secondary">{entry.description}</p>
-              <a
-                href={entry.href}
-                class="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:opacity-80"
-                data-analytics-cta="problem-entry"
-                data-analytics-label={entry.title}
-                data-analytics-location={`home_problem_${entry.eyebrow.toLowerCase()}`}
-              >
-                {entry.cta}
-                <IconArrowRight class="inline-block rtl:-rotate-180" />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-
-    <SectionDivider />
-
-    <!-- CALCULADORAS CTA -->
-    <section class="rounded-xl border border-accent/20 bg-accent/5 px-6 py-6">
-      <h2 class="homepage-body-heading mb-1 text-lg font-semibold">
-        🧮 Calculadoras financieras
-      </h2>
-      <p class="mb-4 text-sm text-secondary">
-        Si ya tienes tus datos y quieres hacer el cálculo, entra directo a las
-        herramientas.
-      </p>
-      <LinkButton
-        href={getPath("/calculadoras/")}
-        data-analytics-cta="home-calculators"
-        data-analytics-label="Ver calculadoras"
-        data-analytics-location="home_calculators"
-      >
-        Ver calculadoras <IconArrowRight class="inline-block rtl:-rotate-180" />
-      </LinkButton>
-    </section>
-
-    <SectionDivider />
-
-    <!-- ARTÍCULOS RECIENTES -->
-    {
-      recentPosts.length > 0 && (
-        <section class="py-8">
-          <div class="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase">
-                Reciente
-              </p>
-              <h2 class="homepage-body-heading text-xl font-semibold tracking-wide">
-                Actualizaciones recientes
-              </h2>
-            </div>
-            <p class="max-w-2xl text-sm text-secondary">
-              Aquí puedes ver lo último publicado. Si buscas resolver una duda
-              puntual, te conviene entrar por tema.
-            </p>
-          </div>
-
-          <ul class="grid gap-3 md:grid-cols-2">
-            {recentPosts.map(post => (
-              <li class="rounded-xl border border-border px-4 py-3">
-                <a
-                  href={getCanonicalPathFromSlug(post.data.slug)}
-                  class="group flex items-start justify-between gap-3"
-                  data-analytics-cta="home-recent"
-                  data-analytics-label={post.data.title}
-                  data-analytics-location="home_recent_posts"
-                >
-                  <span class="homepage-body-heading text-base leading-snug font-semibold text-foreground transition-colors group-hover:text-accent">
-                    {post.data.title}
-                  </span>
-                  <IconArrowRight class="mt-1 shrink-0 rtl:-rotate-180" />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )
-    }
-
-    <!-- VER TODOS -->
-    <div class="mb-10 text-center">
-      <LinkButton
-        href={getPath("/posts/")}
-        data-analytics-cta="home-all-posts"
-        data-analytics-label="Ver todos los artículos"
-        data-analytics-location="home_footer"
-      >
-        Ver todos los artículos
-        <IconArrowRight class="inline-block rtl:-rotate-180" />
-      </LinkButton>
-    </div>
   </main>
   <Footer />
 </Layout>
 
 <style is:global>
-  [data-layout="index"] h1,
   [data-layout="index"] .homepage-body-heading,
   [data-layout="index"] .card h3 {
     font-family: var(--font-body) !important;

@@ -32,6 +32,7 @@ const blog = defineCollection({
         draft: z.boolean().default(false),
         unlisted: z.boolean().default(false),
         featured: z.boolean().default(false),
+        homepagePriority: z.number().int().min(0).default(0),
         author: z.string().trim().min(1).default(SITE.author),
         canonical: z
           .string()
