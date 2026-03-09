@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
 import type { CollectionEntry } from "astro:content";
 import {
   getBalancedHomepagePosts,
@@ -42,6 +43,30 @@ function makePost(
 }
 
 describe("homepage content helpers", () => {
+  it("does not contain internal editorial-facing homepage copy", () => {
+    const source = readFileSync("src/pages/index.astro", "utf8");
+
+    expect(source).not.toMatch(/taxonom[ií]a de Monedario/i);
+    expect(source).not.toMatch(/apertura editorial/i);
+    expect(source).not.toMatch(/lo dej[ée]/i);
+    expect(source).not.toMatch(/abrir la portada con m[aá]s amplitud/i);
+  });
+
+  it("does not contain internal editorial-facing release notes in reader-facing content", () => {
+    const articleSource = readFileSync(
+      "src/data/blog/el-poder-del-interes-compuesto.md",
+      "utf8"
+    );
+    const methodologySource = readFileSync(
+      "src/data/blog/interes-compuesto-nota-metodologica.md",
+      "utf8"
+    );
+
+    expect(articleSource).not.toMatch(/refuerzo editorial aplicado en esta revisi[oó]n/i);
+    expect(articleSource).not.toMatch(/correcci[oó]n aplicada en esta revisi[oó]n/i);
+    expect(methodologySource).not.toMatch(/correcci[oó]n aplicada en esta revisi[oó]n/i);
+  });
+
   it("prefers explicit homepage priority over featured recency", () => {
     const featured = makePost("featured-post", "deuda-credito", {
       featured: true,

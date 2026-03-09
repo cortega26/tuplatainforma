@@ -24,6 +24,7 @@
     "check:dialect": "node scripts/check-dialect.mjs",
     "check:editorial-artifacts": "node scripts/check-editorial-artifacts.mjs",
     "check:editorial": "pnpm run check:editorial-structure && pnpm run check:dialect && pnpm run check:editorial-artifacts",
+    "audit:reader-copy": "node scripts/audit-reader-facing-copy.mjs",
     "check:no-postid-urls": "node scripts/check-no-postid-urls.mjs",
     "routes:snapshot": "node scripts/snapshot-routes.mjs",
     "routes:compare": "node scripts/compare-routes.mjs docs/reports/routes_snapshot_before.json docs/reports/routes_snapshot_after.json",

@@ -22,7 +22,7 @@ Este documento detalla los supuestos, fuentes de datos y fórmulas utilizados en
 
 **Fecha de corte del ejercicio:** **2025-12-31**.
 
-**Corrección aplicada en esta revisión:** la serie 2025 del NASDAQ-100 dejó de usar un dato parcial conservador y pasó a usar el cierre anual reportado para 2025. Ese ajuste cambia el resultado final del ejercicio de **USD 104.018 / CLP 100,9 millones** a **USD 129.495 / CLP 125,6 millones**.
+**Actualización 2026-03-07:** la serie 2025 del NASDAQ-100 dejó de usar un dato parcial conservador y pasó a usar el cierre anual reportado para 2025. Ese ajuste cambia el resultado final del ejercicio de **USD 104.018 / CLP 100,9 millones** a **USD 129.495 / CLP 125,6 millones**.
 
 ## 1. Período y estructura de la simulación
 

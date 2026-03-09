@@ -1,13 +1,18 @@
  
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { extname, join } from "node:path";
+import {
+  INTERNAL_EDITORIAL_VISIBLE_RULES,
+  shouldSkipRuleForPath,
+} from "./editorial-copy-rules.mjs";
 
 const BLOG_SOURCE_DIR = "src/data/blog";
 const CALCULATORS_SOURCE_DIR = "src/pages/calculadoras";
+const PAGES_SOURCE_DIR = "src/pages";
 const DIST_POSTS_DIR = "dist/posts";
 
 const BLOG_EXTENSIONS = new Set([".md", ".mdx"]);
-const CALCULATOR_EXTENSIONS = new Set([".astro"]);
+const ASTRO_EXTENSIONS = new Set([".astro"]);
 const DIST_EXTENSIONS = new Set([".html"]);
 
 const ENGLISH_TOC_RE = /table of contents/gi;
@@ -62,6 +67,20 @@ function scanFilesForPattern(filePaths, regex, reason) {
   return findings;
 }
 
+function scanFilesForRule(filePaths, rule) {
+  const findings = [];
+
+  for (const filePath of filePaths) {
+    if (shouldSkipRuleForPath(rule, filePath)) {
+      continue;
+    }
+
+    findings.push(...scanFilesForPattern(filePath ? [filePath] : [], rule.regex, rule.reason));
+  }
+
+  return findings;
+}
+
 function countMatches(source, regex) {
   const re = new RegExp(regex.source, regex.flags);
   let count = 0;
@@ -83,12 +102,21 @@ if (!existsSync(CALCULATORS_SOURCE_DIR)) {
   process.exit(1);
 }
 
+if (!existsSync(PAGES_SOURCE_DIR)) {
+  console.error(
+    `[check-editorial-guard] Missing source directory: ${PAGES_SOURCE_DIR}`
+  );
+  process.exit(1);
+}
+
 const blogFiles = listFilesRecursively(BLOG_SOURCE_DIR, BLOG_EXTENSIONS);
-const calculatorFiles = listFilesRecursively(
-  CALCULATORS_SOURCE_DIR,
-  CALCULATOR_EXTENSIONS
-);
+const calculatorFiles = listFilesRecursively(CALCULATORS_SOURCE_DIR, ASTRO_EXTENSIONS);
+const pageFiles = listFilesRecursively(PAGES_SOURCE_DIR, ASTRO_EXTENSIONS);
 const checksSourceFiles = [...blogFiles, ...calculatorFiles];
+const visibleAstroFiles = pageFiles.filter(
+  filePath => !filePath.startsWith(`${CALCULATORS_SOURCE_DIR}/`)
+);
+const readerFacingFiles = [...blogFiles, ...visibleAstroFiles];
 
 const issues = [];
 
@@ -103,6 +131,14 @@ issues.push(
 for (const pattern of ENGLISH_VISIBLE_PATTERNS) {
   issues.push(
     ...scanFilesForPattern(checksSourceFiles, pattern, "English visible string")
+  );
+}
+
+for (const rule of INTERNAL_EDITORIAL_VISIBLE_RULES.filter(
+  candidate => candidate.severity === "error"
+)) {
+  issues.push(
+    ...scanFilesForRule(readerFacingFiles, rule)
   );
 }
 
@@ -154,5 +190,5 @@ if (issues.length > 0) {
 }
 
 console.log(
-  `[check-editorial-guard] OK: ${blogFiles.length} blog files and ${calculatorFiles.length} calculator files validated.`
+  `[check-editorial-guard] OK: ${blogFiles.length} blog files, ${calculatorFiles.length} calculator files, and ${visibleAstroFiles.length} page files validated.`
 );

@@ -71,3 +71,10 @@ Checklist YMYL:
 - Anti-canibalización validada.
 - QA editorial y de links sin errores 404.
 - Estado listo para publicar solo con todos los checks en `OK`.
+
+## 7) Copy público vs copy interno
+
+- El texto visible al lector debe hablar de su duda, su decisión o el uso práctico del contenido.
+- No publicar frases dirigidas al autor/editor como `lo dejé`, `esta capa`, `apertura editorial`, `alineado con la taxonomía`, `refuerzo editorial aplicado` o equivalentes.
+- Sí se permite transparencia editorial pública en páginas como `about` y `autor`, siempre redactada para el lector y no como nota operativa interna.
+- Antes de endurecer un patrón nuevo en CI, correr `pnpm run audit:reader-copy` y revisar manualmente los hallazgos.
