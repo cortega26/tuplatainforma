@@ -10,9 +10,9 @@ Operational goals:
 - Preserve auditable evidence through JSON/CSV artifacts.
 
 Core artifacts written on each run:
-- `scripts/urlcheck/artifacts/internal-broken.json`
-- `scripts/urlcheck/artifacts/internal-broken.csv`
-- `scripts/urlcheck/artifacts/urlcheck-report.json`
+- `output/validation/urlcheck/internal-broken.json`
+- `output/validation/urlcheck/internal-broken.csv`
+- `output/validation/urlcheck/urlcheck-report.json`
 
 ## Commands
 

@@ -20,7 +20,7 @@ const baselinePath = resolveArg(
 );
 const currentPath = resolveArg(
   positional[1],
-  "docs/reports/rss_snapshot_after.json"
+  "output/validation/rss_snapshot_after.json"
 );
 
 function loadSnapshot(filePath) {

@@ -2,10 +2,17 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
-import { PROMPTS_PATH, ensureDirectory, parseArgs, readJson, toRepoRelative } from "./lib.mjs";
+import {
+  HERO_OUTPUT_DIR,
+  PROMPTS_PATH,
+  ensureDirectory,
+  parseArgs,
+  readJson,
+  toRepoRelative,
+} from "./lib.mjs";
 import { renderSvgScene, listSvgSceneIds, getSvgSceneDefinition } from "./svg/scene-registry.mjs";
 
-export const PREVIEWS_DIR = path.join(process.cwd(), "scripts", "hero-images", "previews");
+export const PREVIEWS_DIR = path.join(HERO_OUTPUT_DIR, "previews");
 
 export function buildRenderPlan(entries, args) {
   const slug = args.get("--slug", "").trim();

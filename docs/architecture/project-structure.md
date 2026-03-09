@@ -59,15 +59,19 @@ tuplatainforma/
 │   │       ├── PERFORMANCE_REMOTE_CLOSURE_REPORT.md
 │   │       └── PHASE1_CLOSURE_REPORT.md
 │   ├── reports/
-│   │   ├── routes_snapshot_after.json
 │   │   ├── routes_snapshot_before.json
-│   │   ├── rss_before_phase5.xml
 │   │   ├── rss_snapshot.json
-│   │   └── rss_snapshot_after.json
 │   ├── research/
 │   │   └── deep-research-report.md
 │   ├── AI_ENGINEERING_CONSTITUTION.md
 │   └── TECH_DEBT_BACKLOG.md
+├── archive/
+│   └── reports/
+│       └── rss_before_phase5.xml
+├── output/
+│   └── validation/
+│       ├── routes_snapshot_after.json
+│       └── rss_snapshot_after.json
 ├── internal-docs/
 │   └── tuplatainforma-contexto.md
 ├── public/

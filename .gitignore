@@ -45,4 +45,4 @@ context/**/*.generated.*
 docs/reports/rss_snapshot_after.json
 
 # urlcheck generated artifacts
-scripts/urlcheck/artifacts/**
+output/validation/urlcheck/**

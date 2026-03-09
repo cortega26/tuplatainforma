@@ -4,6 +4,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
   DOWNLOADS_DIR,
+  POOL_ASSETS_DIR,
   POOL_ASSIGNMENTS_PATH,
   POOL_MANIFEST_PATH,
   PROMPTS_PATH,
@@ -68,7 +69,7 @@ export async function stagePoolImages({
   const promptEntries = (Array.isArray(prompts.entries) ? prompts.entries : []).filter(entry =>
     slugFilter ? entry.slug === slugFilter : true
   );
-  const resolvedAssetsDir = assetsDir || path.join(path.dirname(POOL_MANIFEST_PATH), "assets");
+  const resolvedAssetsDir = assetsDir || POOL_ASSETS_DIR;
   const resolvedOutputDir = outputDir || DOWNLOADS_DIR;
   const resolvedAssignmentsPath = assignmentsPath || POOL_ASSIGNMENTS_PATH;
 

@@ -46,4 +46,4 @@ export const DENYLIST_HOSTS_ALWAYS_SOFT = [];
 
 export const BASELINE_PATH = "scripts/urlcheck/baseline.json";
 export const LINKINATOR_CONFIG_PATH = ".linkinatorrc";
-export const URLCHECK_ARTIFACT_DIR = "scripts/urlcheck/artifacts";
+export const URLCHECK_ARTIFACT_DIR = "output/validation/urlcheck";

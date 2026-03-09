@@ -36,14 +36,14 @@ Run:
 node scripts/hero-images/export-pool-worklist.mjs
 ```
 
-This reads `manifest.json`, checks the current files in `assets/`, reconciles them against `run-state.json`, and writes:
+This reads `output/hero-images/pool/manifest.json`, checks the current files in `assets/`, reconciles them against `output/hero-images/pool/run-state.json`, and writes:
 
-- `scripts/hero-images/pool/worklist.json`
-- `scripts/hero-images/pool/worklist.txt`
+- `output/hero-images/pool/worklist.json`
+- `output/hero-images/pool/worklist.txt`
 
 ### 2. Generate images manually
 
-Open `scripts/hero-images/pool/worklist.txt`.
+Open `output/hero-images/pool/worklist.txt`.
 
 For each item:
 
@@ -69,10 +69,10 @@ node scripts/hero-images/import-pool-images.mjs --delete-source
 What this does:
 
 - reads files from `scripts/hero-images/pool/inbox/`
-- validates the `poolId` and variant number against `manifest.json`
+- validates the `poolId` and variant number against `output/hero-images/pool/manifest.json`
 - converts each file to `.avif`
 - writes the canonical asset into `scripts/hero-images/pool/assets/<poolId>/`
-- updates `scripts/hero-images/pool/run-state.json`
+- updates `output/hero-images/pool/run-state.json`
 - deletes the source file from `inbox/` if `--delete-source` is passed
 
 If you want to keep the original downloaded files in `inbox/`, omit `--delete-source`.
@@ -98,7 +98,7 @@ node scripts/hero-images/stage-pool-images.mjs
 This copies selected files into:
 
 ```text
-scripts/hero-images/downloads/
+output/hero-images/downloads/
 ```
 
 ### 6. Postprocess and apply
@@ -187,10 +187,10 @@ Use the browser only for manual image generation, not as the production automati
 
 Treat the deterministic parts of the system as authoritative:
 
-- `manifest.json`
-- `run-state.json`
-- `worklist.json`
-- `worklist.txt`
+- `output/hero-images/pool/manifest.json`
+- `output/hero-images/pool/run-state.json`
+- `output/hero-images/pool/worklist.json`
+- `output/hero-images/pool/worklist.txt`
 - `assets/`
 - `stage-pool-images.mjs`
 - `apply-images.mjs`

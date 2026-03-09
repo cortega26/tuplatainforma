@@ -58,7 +58,7 @@ Change log:
 - Scope: Route inventory produced from content paths and compared against baseline.
 - Source of truth:
   - Baseline: `docs/reports/routes_snapshot_before.json`
-  - Current snapshot: `docs/reports/routes_snapshot_after.json`
+  - Current snapshot: `output/validation/routes_snapshot_after.json`
   - Comparator logic: `scripts/compare-routes.mjs`
 - What counts as route change:
   - Added route: present in current, absent in baseline (reported, non-blocking).
@@ -76,7 +76,7 @@ Change log:
 - Scope: RSS feed item continuity policy.
 - Source of truth:
   - Baseline snapshot: `docs/reports/rss_snapshot.json`
-  - Current snapshot: `docs/reports/rss_snapshot_after.json` (generated from `dist/rss.xml`)
+  - Current snapshot: `output/validation/rss_snapshot_after.json` (generated from `dist/rss.xml`)
   - Comparator logic: `scripts/compare-rss.mjs`
 - Policy:
   - Removed links are forbidden (blocking).

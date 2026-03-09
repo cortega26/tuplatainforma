@@ -10,7 +10,7 @@ const REPO_ROOT = path.resolve(__dirname, "..");
 function parseCliArgs(argv) {
   const args = {
     input: path.join(REPO_ROOT, "dist", "rss.xml"),
-    out: path.join(REPO_ROOT, "docs", "reports", "rss_snapshot_after.json"),
+    out: path.join(REPO_ROOT, "output", "validation", "rss_snapshot_after.json"),
   };
 
   for (let i = 0; i < argv.length; i += 1) {

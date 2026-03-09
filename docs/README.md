@@ -28,7 +28,7 @@ This repository uses authority-layered documentation.
 - `docs/adr/`
 - Architecture Decision Records (single canonical ADR location).
 - `docs/reports/`
-- Machine-readable report snapshots used by validation scripts.
+- Canonical baseline snapshots used by validation scripts.
 
 ## Canonical anchors (do not relocate)
 

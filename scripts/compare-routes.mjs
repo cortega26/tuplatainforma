@@ -17,7 +17,7 @@ const beforePath = resolveArg(
 );
 const afterPath = resolveArg(
   process.argv[3],
-  "docs/reports/routes_snapshot_after.json"
+  "output/validation/routes_snapshot_after.json"
 );
 
 function loadRoutes(filePath) {
@@ -53,4 +53,3 @@ if (added.length > 0) {
 console.log(
   `[compare-routes] before=${beforeRoutes.size} after=${afterRoutes.size}`
 );
-
