@@ -65,11 +65,10 @@ const fallbackHubs = hubsDetectados
       .join(" "),
     descripcion: "Sección de finanzas personales disponible en esta página.",
     capa: "otros" as const,
-  }));
+  }))
+  .sort((a, b) => a.nombre.localeCompare(b.nombre, "es-CL"));
 
-const hubs = [...orderedKnownHubs, ...fallbackHubs].sort((a, b) =>
-  a.nombre.localeCompare(b.nombre, "es-CL")
-);
+const hubs = [...orderedKnownHubs, ...fallbackHubs];
 
 const capasConHubs = capas
   .map(capa => ({

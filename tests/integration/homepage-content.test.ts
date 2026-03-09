@@ -55,6 +55,33 @@ describe("homepage content helpers", () => {
     expect(getHomepageLeadPost([featured, lead])?.data.slug).toBe("lead-post");
   });
 
+  it("falls back to a featured post when no homepage priority is present", () => {
+    const regular = makePost("regular-post", "deuda-credito", {
+      updatedDate: new Date("2026-03-09T12:00:00Z"),
+    });
+    const featured = makePost("featured-post", "sueldo-remuneraciones", {
+      featured: true,
+      updatedDate: new Date("2026-03-01T12:00:00Z"),
+    });
+
+    expect(getHomepageLeadPost([regular, featured])?.data.slug).toBe(
+      "featured-post"
+    );
+  });
+
+  it("falls back to the provided post order when neither priority nor featured exists", () => {
+    const firstInFeed = makePost("first-in-feed", "deuda-credito", {
+      updatedDate: new Date("2026-03-01T12:00:00Z"),
+    });
+    const newerButSecond = makePost("newer-but-second", "sueldo-remuneraciones", {
+      updatedDate: new Date("2026-03-09T12:00:00Z"),
+    });
+
+    expect(getHomepageLeadPost([firstInFeed, newerButSecond])?.data.slug).toBe(
+      "first-in-feed"
+    );
+  });
+
   it("balances the rich recent rail away from the hero cluster when variety exists", () => {
     const hero = makePost("hero-post", "sueldo-remuneraciones", {
       homepagePriority: 100,
@@ -92,6 +119,42 @@ describe("homepage content helpers", () => {
       "seguridad-financiera",
     ]);
     expect(balanced.compactPosts.map(post => post.data.slug)).toContain("salary-2");
+  });
+
+  it("excludes the hero from recent slots using normalized slug identity", () => {
+    const hero = makePost("hero-entry", "sueldo-remuneraciones", {
+      slug: " Hero-Post ",
+      homepagePriority: 100,
+      updatedDate: new Date("2026-03-09T12:00:00Z"),
+    });
+    const posts = [
+      hero,
+      makePost("recent-1", "deuda-credito", {
+        updatedDate: new Date("2026-03-08T12:00:00Z"),
+      }),
+      makePost("recent-2", "ahorro-e-inversion", {
+        updatedDate: new Date("2026-03-07T12:00:00Z"),
+      }),
+      makePost("recent-3", "seguridad-financiera", {
+        updatedDate: new Date("2026-03-06T12:00:00Z"),
+      }),
+    ];
+
+    const balanced = getBalancedHomepagePosts(posts, {
+      heroSlug: "hero-post",
+      heroCluster: "sueldo-remuneraciones",
+      richCount: 2,
+      totalCount: 4,
+    });
+
+    const selectedSlugs = [...balanced.richPosts, ...balanced.compactPosts].map(
+      post => post.data.slug.trim().toLowerCase()
+    );
+
+    expect(selectedSlugs).not.toContain("hero-post");
+    expect(selectedSlugs).toEqual(
+      expect.arrayContaining(["recent-1", "recent-2", "recent-3"])
+    );
   });
 
   it("builds the thematic rail from the hero and recent clusters before falling back", () => {
