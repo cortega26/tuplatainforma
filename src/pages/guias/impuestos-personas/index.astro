@@ -34,8 +34,8 @@ const articulosSeccion = [
 ---
 
 <Layout
-  title="Guía de la sección: Impuestos Personas | Monedario"
-  description="Página índice de la sección Impuestos Personas: orden de lectura, artículos clave y errores frecuentes para declarar renta con menos fricción."
+  title="Impuestos para Personas en Chile | Monedario"
+  description="Guías y artículos sobre impuestos para personas en Chile para elegir qué leer primero si vas a declarar, revisar una devolución o entender tus boletas."
 >
   <Header />
   <Breadcrumb />
@@ -44,7 +44,7 @@ const articulosSeccion = [
     <section class="border-b border-border py-8">
       <!-- Removed Topic Authority Layer tag -->
       <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
-        Guía índice de la sección: Impuestos Personas
+        Impuestos para personas en Chile
       </h1>
       <p class="max-w-3xl text-secondary">
         Esta página te ayuda a elegir qué leer primero según tu situación
@@ -54,7 +54,7 @@ const articulosSeccion = [
     </section>
 
     <section class="border-b border-border py-8">
-      <h2 class="mb-4 text-2xl font-bold">Artículos de la sección</h2>
+      <h2 class="mb-4 text-2xl font-bold">Temas que puedes revisar</h2>
       <ul class="grid gap-4">
         {
           articulosSeccion.map(item => (
@@ -74,7 +74,7 @@ const articulosSeccion = [
     </section>
 
     <section class="border-b border-border py-8">
-      <h2 class="mb-4 text-2xl font-bold">Qué leer primero si...</h2>
+      <h2 class="mb-4 text-2xl font-bold">Empieza aquí si...</h2>
       <div class="grid gap-4 sm:grid-cols-2">
         <article class="rounded-xl border border-border p-5">
           <h3 class="mb-2 text-lg font-semibold">
@@ -128,14 +128,14 @@ const articulosSeccion = [
             Tienes observaciones y dudas de rectificatoria
           </h3>
           <p class="text-sm text-secondary">
-            Vuelve al flujo del F22 y revisa diferencias entre reemplazo y
+            Vuelve a la guía del F22 y revisa diferencias entre reemplazo y
             rectificación.
           </p>
           <a
             href={getPath("/posts/operacion-renta-f22-checklist/")}
             class="mt-3 inline-block text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
           >
-            Resolver con flujo F22
+            Revisar guía del F22
           </a>
         </article>
       </div>

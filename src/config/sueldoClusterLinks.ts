@@ -26,7 +26,7 @@ const sueldoCalculatorCard: LinkCard = {
   kind: "Calculadora",
   title: "Calculadora de sueldo líquido",
   description:
-    "Convierte bruto a líquido con AFP, salud, cesantía e impuesto único en un solo flujo.",
+    "Convierte sueldo bruto a líquido con AFP, salud, cesantía e impuesto único en un solo cálculo.",
   href: "/calculadoras/sueldo-liquido/",
   cta: "Calcular sueldo líquido",
 };
@@ -123,7 +123,7 @@ export const sueldoCalculatorSections: LinkSection[] = [
     eyebrow: "Siguiente paso",
     title: "Sigue desde el cálculo a la decisión",
     description:
-      "Desde aquí puedes revisar la guía paso a paso, entender la liquidación o profundizar en los descuentos que afectan tu resultado.",
+      "Desde aquí puedes revisar la guía paso a paso, entender la liquidación o ver con más detalle los descuentos que afectan tu resultado.",
     items: [sueldoHubCard, sueldoGuideCard, descuentosCard, liquidacionCard],
   },
   {
@@ -232,7 +232,7 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
       eyebrow: "Aclaraciones",
       title: "Descuentos y soportes que aclaran cada línea",
       description:
-        "Este bloque te ayuda a entender cada línea de la liquidación con apoyo sobre AFP, cesantía e impuesto.",
+        "Este bloque te ayuda a entender cada línea de la liquidación con explicaciones sobre AFP, cesantía e impuesto.",
       items: [
         afpDiscountCard,
         glossaryAfpCard,

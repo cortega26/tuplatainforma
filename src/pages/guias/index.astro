@@ -25,7 +25,7 @@ const capas = [
     id: "ingresos" as const,
     titulo: "Ganar y gestionar ingresos",
     resumen:
-      "Clústeres para ordenar decisiones sobre ingreso líquido, estabilidad laboral y gestión de flujo mensual.",
+      "Temas para entender tu sueldo, ordenar ingresos y saber qué hacer si tu situación laboral cambia.",
   },
   {
     id: "prevision" as const,
@@ -37,7 +37,7 @@ const capas = [
     id: "ahorro-inversion" as const,
     titulo: "Ahorro voluntario e inversión",
     resumen:
-      "Rutas para elegir instrumentos, controlar costos y alinear riesgo con horizonte y objetivos.",
+      "Temas para elegir instrumentos, controlar costos y ajustar el riesgo a tus objetivos.",
   },
   {
     id: "impuestos" as const,
@@ -54,7 +54,7 @@ const capas = [
   {
     id: "otros" as const,
     titulo: "Otras secciones",
-    resumen: "Temas adicionales disponibles en el mapa de guías.",
+    resumen: "Otros temas disponibles para seguir aprendiendo.",
   },
 ];
 
@@ -114,7 +114,7 @@ const hubs = hubsDetectados
         .map(parte => parte.charAt(0).toUpperCase() + parte.slice(1))
         .join(" "),
       descripcion:
-        "Sección de finanzas personales incluida en el mapa global de guías.",
+        "Sección de finanzas personales disponible en esta página.",
       capa: "otros" as const,
     };
   })
@@ -130,7 +130,7 @@ const capasConHubs = capas
 
 <Layout
   title="Guías de Finanzas Personales en Chile | Monedario"
-  description="Mapa completo de temas financieros en Chile: AFP, ahorro, inversión, impuestos y deuda para elegir la guía correcta en cada etapa."
+  description="Explora las guías de finanzas personales de Monedario por tema: sueldo, AFP, impuestos, deuda, ahorro e inversión."
 >
   <Header />
   <Breadcrumb />
@@ -140,7 +140,7 @@ const capasConHubs = capas
       <p
         class="mb-2 text-xs font-semibold tracking-widest text-accent uppercase"
       >
-        Mapa temático
+        Explora por tema
       </p>
       <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
         Guías de Finanzas Personales en Chile
