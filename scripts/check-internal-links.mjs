@@ -30,6 +30,7 @@ const __dirname = path.dirname(__filename);
 const REPO_ROOT = path.resolve(__dirname, "..");
 const BLOG_DIR = path.join(REPO_ROOT, "src", "data", "blog");
 const GUIAS_DIR = path.join(REPO_ROOT, "src", "pages", "guias");
+const CALCULADORAS_DIR = path.join(REPO_ROOT, "src", "pages", "calculadoras");
 const LAWS_DIR = path.join(REPO_ROOT, "src", "data", "laws");
 const GLOSSARY_DIR = path.join(REPO_ROOT, "src", "data", "glossary");
 
@@ -67,13 +68,14 @@ function isDraft(source) {
 
 /**
  * Extract all internal links from markdown/mdx content.
- * Returns: Array of { href, lineNumber }
+ * Returns: Array of { href, type, target, lineNumber }
+ * Validated route types: posts, guias, calculadoras, leyes, glosario
  */
 function extractInternalLinks(source) {
   const links = [];
   const lines = source.split("\n");
-  // Matches: [text](/posts/slug/) or [text](/guias/slug/) or /leyes/ or /glosario/ with optional trailing /
-  const RE = /\[([^\]]*)\]\((\/(posts|guias|leyes|glosario)\/([^)\s#?"]+))\)/g;
+  // Matches: [text](/posts/slug/) or [text](/guias/slug/) or /calculadoras/ or /leyes/ or /glosario/ with optional trailing /
+  const RE = /\[([^\]]*)\]\((\/(posts|guias|calculadoras|leyes|glosario)\/([^)\s#?"]+))\)/g;
   for (let i = 0; i < lines.length; i++) {
     let match;
     RE.lastIndex = 0;
@@ -110,6 +112,15 @@ const validGuias = new Set(
     ? readdirSync(GUIAS_DIR, { withFileTypes: true })
         .filter(e => e.isDirectory())
         .map(e => e.name)
+    : []
+);
+
+/** Valid calculadora slugs: .astro files in src/pages/calculadoras/ (excluding index.astro) */
+const validCalculadoras = new Set(
+  existsSync(CALCULADORAS_DIR)
+    ? readdirSync(CALCULADORAS_DIR, { withFileTypes: true })
+        .filter(e => e.isFile() && /\.astro$/i.test(e.name) && e.name !== "index.astro")
+        .map(e => e.name.replace(/\.astro$/i, ""))
     : []
 );
 
@@ -169,6 +180,14 @@ for (const [slug, { filePath, source }] of publishedSlugs.entries()) {
           filePath: relPath,
           lineNumber: link.lineNumber,
           message: `Broken /guias/ link: directory "${link.target}" not found in src/pages/guias/.`,
+        });
+      }
+    } else if (link.type === "calculadoras") {
+      if (!validCalculadoras.has(link.target)) {
+        errors.push({
+          filePath: relPath,
+          lineNumber: link.lineNumber,
+          message: `Broken /calculadoras/ link: page "${link.target}" not found in src/pages/calculadoras/.`,
         });
       }
     } else if (link.type === "leyes") {

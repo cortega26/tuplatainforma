@@ -1,6 +1,6 @@
 # TECH_DEBT_BACKLOG
 
-Fecha de corte: 2026-03-04
+Fecha de corte: 2026-03-11
 
 ## Métricas
 
@@ -10,21 +10,22 @@ Fecha de corte: 2026-03-04
 - **P2:** 9
 - **P3:** 1
 
-### Estado de avance (2026-03-06)
-- **Completados:** 12 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0013`, `TD-0014`)
-- **En progreso:** 1 (`TD-0012`)
-- **Backlog sin iniciar:** 4 (`TD-0011`, `TD-0015`, `TD-0016`, `TD-0017`)
+### Estado de avance (2026-03-11)
+- **Completados:** 20 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0011`, `TD-0012`, `TD-0013`, `TD-0014`, `TD-0015`, `TD-0017`, `TD-0018`, `TD-0019`, `FIX-MDX`, `FIX-LINKS-CALC`)
+- **En progreso:** 0
+- **Backlog sin iniciar:** 1 (`TD-0016`)
 
-### Top 5 riesgos
+> `FIX-MDX`: corregido comentario HTML (`<!-- -->`) en `que-es-el-apv.mdx:25` que rompía el build.
+> `FIX-LINKS-CALC`: ampliado `check-internal-links.mjs` para cubrir validación de rutas `/calculadoras/`.
+
+### Top riesgos restantes
 | Ranking | ID | Riesgo | Motivo principal |
 |---|---|---|---|
-| 1 | TD-0012 | Medio | Artículos del batch original sin `updatedDate` reducen señal de frescura editorial y aumentan riesgo YMYL percibido. |
-| 2 | TD-0016 | Alto | 24 artículos YMYL legacy no tienen paquete de artefactos editorial y bloquean endurecimiento global del gate. |
-| 3 | TD-0011 | Bajo-medio | Falta de pilar CAE/costo real deja hueco de cobertura en cluster deuda-crédito. |
+| 1 | TD-0016 | Alto | 24 artículos YMYL legacy no tienen paquete de artefactos editorial y bloquean endurecimiento global del gate. |
 
 ### Quick wins (alto impacto / bajo esfuerzo)
 - [x] `TD-0007` Corregir email placeholder en enlaces sociales.
-- [x] `TD-0005` Limpiar archivos/componentes legacy no usados (`*.bak`, layout/componente huérfano).
+- [x] `TD-0005` Limpiar archivos/componentes legacy no usados (`*.bak`, layout/componente hुérfano).
 - [x] `TD-0006` Alinear plantillas de GitHub con el proyecto real (no AstroPaper upstream).
 - [x] `TD-0009` Consolidar estrategia de tipografías (config experimental vs carga real).
 

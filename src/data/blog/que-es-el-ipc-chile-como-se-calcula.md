@@ -4,6 +4,7 @@ author: "Equipo Monedario"
 description: "Explicación práctica del IPC chileno: cómo lo calcula el INE, para qué sirve, cómo impacta tu arriendo, sueldo y deudas, y cómo leerlo sin confundirte."
 slug: que-es-el-ipc-chile-como-se-calcula
 pubDate: 2026-03-03T23:30:00Z
+updatedDate: 2026-03-11T00:00:00Z
 tags:
   - ipc
   - inflacion
