@@ -131,16 +131,19 @@ Orden de prioridad:
 
 ## 5. Metadata editorial mínima
 
-Contrato mínimo activo en Fase 3:
+Contrato mínimo activo en Fase 4:
 
 - `topicRole`: `owner`, `support`, `reference`
 - `canonicalTopic`: identificador estable en kebab-case para la necesidad primaria
 
 Estado operativo:
 
-- En `sueldo-remuneraciones`, `pensiones-afp` y `ahorro-e-inversion`, los artículos publicados **deberían** declarar ambos campos.
+- En `sueldo-remuneraciones`, `pensiones-afp` y `ahorro-e-inversion`, los artículos publicados **deben** declarar ambos campos.
 - Si aparece `topicRole`, `canonicalTopic` pasa a ser obligatorio.
+- En clusters endurecidos, `canonicalTopic` debe existir en el registro central `src/config/editorial-topic-policy.mjs`.
 - Dos páginas publicadas no pueden declarar `topicRole: owner` para el mismo `cluster + canonicalTopic`.
+- En clusters endurecidos, `support` o `reference` no pueden quedar huérfanos de owner.
+- `category: general` no sirve como escape hatch en clusters endurecidos; solo se acepta para piezas `reference` + `unlisted`.
 
 Campos que siguen fuera del contrato mínimo por ahora:
 

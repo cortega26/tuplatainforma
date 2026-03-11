@@ -3,6 +3,13 @@ import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
+import {
+  HARDENED_OWNERSHIP_CLUSTERS,
+  TOPIC_ROLES,
+  allowsGeneralCategoryInCluster,
+  getAllowedCategoriesForCluster,
+  getCanonicalTopicEntry,
+} from "../src/config/editorial-topic-policy.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,21 +35,7 @@ const ALLOWED_CATEGORIES = new Set([
   "empleo-ingresos",
   "general",
 ]);
-const TOPIC_ROLES = new Set(["owner", "support", "reference"]);
-const HARDENED_OWNERSHIP_CLUSTERS = new Set([
-  "sueldo-remuneraciones",
-  "pensiones-afp",
-  "ahorro-e-inversion",
-]);
-const PRIMARY_CATEGORY_BY_CLUSTER = new Map([
-  ["pensiones-afp", new Set(["prevision"])],
-  ["sueldo-remuneraciones", new Set(["empleo-ingresos"])],
-  ["empleo-ingresos", new Set(["empleo-ingresos"])],
-  ["impuestos-personas", new Set(["impuestos"])],
-  ["ahorro-e-inversion", new Set(["ahorro-inversion"])],
-  ["deuda-credito", new Set(["deuda-credito"])],
-  ["seguridad-financiera", new Set(["seguridad-financiera"])],
-]);
+const TOPIC_ROLE_SET = new Set(TOPIC_ROLES);
 
 const CLUSTERS_TS_PATH = path.join(REPO_ROOT, "src", "config", "clusters.ts");
 const clustersSource = readFileSync(CLUSTERS_TS_PATH, "utf8");
@@ -266,19 +259,36 @@ for (const filePath of files) {
     );
   }
 
-  const allowedCategoriesForCluster =
-    typeof cluster === "string" ? PRIMARY_CATEGORY_BY_CLUSTER.get(cluster) : null;
+  const allowedCategoriesRaw =
+    typeof cluster === "string" ? getAllowedCategoriesForCluster(cluster) : null;
+  const allowedCategoriesForCluster = allowedCategoriesRaw
+    ? new Set(allowedCategoriesRaw)
+    : null;
   if (
     typeof category === "string" &&
     allowedCategoriesForCluster &&
     !allowedCategoriesForCluster.has(category)
   ) {
     if (category === "general") {
-      pushIssue(
-        warnings,
-        relativeFilePath,
-        `Category "general" inside cluster "${cluster}" is tolerated only for explicit reference/editorial debt; review taxonomy.`
-      );
+      if (
+        !allowsGeneralCategoryInCluster({
+          cluster,
+          topicRole: typeof frontmatter.topicRole === "string" ? frontmatter.topicRole : "",
+          unlisted,
+        })
+      ) {
+        pushIssue(
+          errors,
+          relativeFilePath,
+          `Category "general" is blocked in hardened cluster "${cluster}" unless the article is an unlisted reference.`
+        );
+      } else {
+        pushIssue(
+          warnings,
+          relativeFilePath,
+          `Category "general" inside cluster "${cluster}" is tolerated only for explicit reference/editorial debt; review taxonomy.`
+        );
+      }
     } else {
       pushIssue(
         errors,
@@ -292,11 +302,11 @@ for (const filePath of files) {
 
   const topicRole = frontmatter.topicRole;
   if (topicRole != null) {
-    if (typeof topicRole !== "string" || !TOPIC_ROLES.has(topicRole)) {
+    if (typeof topicRole !== "string" || !TOPIC_ROLE_SET.has(topicRole)) {
       pushIssue(
         errors,
         relativeFilePath,
-        `Field "topicRole" must be one of: ${Array.from(TOPIC_ROLES).join(", ")}.`
+        `Field "topicRole" must be one of: ${Array.from(TOPIC_ROLE_SET).join(", ")}.`
       );
     }
   }
@@ -506,6 +516,7 @@ for (const filePath of files) {
     ]);
     publishableOwnershipRecords.push({
       filePath: relativeFilePath,
+      slug,
       cluster: typeof cluster === "string" ? cluster : "",
       topicRole: typeof topicRole === "string" ? topicRole.trim() : "",
       canonicalTopic:
@@ -528,17 +539,28 @@ const ownershipGroups = new Map();
 
 for (const record of publishableOwnershipRecords) {
   if (
-    HARDENED_OWNERSHIP_CLUSTERS.has(record.cluster) &&
+    HARDENED_OWNERSHIP_CLUSTERS.includes(record.cluster) &&
     (!record.topicRole || !record.canonicalTopic)
   ) {
     pushIssue(
-      warnings,
+      errors,
       record.filePath,
-      `Published article in hardened cluster "${record.cluster}" is missing "topicRole" and/or "canonicalTopic".`
+      `Published article in hardened cluster "${record.cluster}" must declare both "topicRole" and "canonicalTopic".`
     );
   }
 
   if (!record.topicRole || !record.canonicalTopic) continue;
+
+  if (
+    HARDENED_OWNERSHIP_CLUSTERS.includes(record.cluster) &&
+    !getCanonicalTopicEntry(record.cluster, record.canonicalTopic)
+  ) {
+    pushIssue(
+      errors,
+      record.filePath,
+      `Unregistered canonicalTopic "${record.canonicalTopic}" for hardened cluster "${record.cluster}". Add it to the central registry before publishing.`
+    );
+  }
 
   const groupKey = `${record.cluster}::${record.canonicalTopic}`;
   ownershipGroups.set(groupKey, [...(ownershipGroups.get(groupKey) ?? []), record]);
@@ -562,8 +584,11 @@ for (const [groupKey, records] of ownershipGroups.entries()) {
   if (hasOwner) continue;
   for (const record of records) {
     if (!["support", "reference"].includes(record.topicRole)) continue;
+    const issueCollection = HARDENED_OWNERSHIP_CLUSTERS.includes(record.cluster)
+      ? errors
+      : warnings;
     pushIssue(
-      warnings,
+      issueCollection,
       record.filePath,
       `No topic owner declared for "${groupKey}" even though this article is marked "${record.topicRole}".`
     );

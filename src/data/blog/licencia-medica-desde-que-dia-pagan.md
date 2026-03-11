@@ -86,7 +86,7 @@ Recibir un rechazo no es el fin del proceso: es el inicio de la etapa de reclama
 3. **Presenta reclamación formal** ante la entidad (COMPIN o Isapre) dentro del plazo indicado en la resolución. Pide acuse de recibo con folio y fecha.
 4. **Si la reclamación no prospera, apela** ante SUSESO o el organismo competente según correspondencia.
 
-Guardar folios y fechas de cada paso no es opcional — es lo que sostiene la apelación si el caso sube de nivel.
+Guardar folios y fechas de cada paso no es opcional —es lo que sostiene la apelación si el caso sube de nivel. Un expediente bien documentado es tu mejor argumento.
 
 ## Checklist de documentación para apelar
 

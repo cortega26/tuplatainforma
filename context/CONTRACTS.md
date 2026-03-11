@@ -270,14 +270,19 @@ Change log:
   - `topicRole` is one of `owner | support | reference`.
   - `canonicalTopic` is a stable lowercase kebab-case identifier for the primary need addressed.
   - `topicRole` and `canonicalTopic` travel together: neither should appear alone.
-  - In hardened clusters (`sueldo-remuneraciones`, `pensiones-afp`, `ahorro-e-inversion`), published articles should declare both fields.
+  - In hardened clusters (`sueldo-remuneraciones`, `pensiones-afp`, `ahorro-e-inversion`), published articles must declare both fields.
+  - In hardened clusters, `canonicalTopic` must come from the central registry in `src/config/editorial-topic-policy.mjs`.
   - Only one publishable `owner` may exist per `cluster + canonicalTopic`.
+  - In hardened clusters, `support` and `reference` metadata cannot point to an ownerless topic.
+  - `category: general` is not valid for hardened-cluster owner/support content; it is reserved for explicit unlisted reference material.
 - Backward-compat expectations:
-  - Legacy corpus may remain partially unannotated during rollout; missing metadata is warning-first, not blocking, except for explicit owner conflicts.
+  - Rollout remains progressive outside hardened clusters.
+  - Hardened clusters are no longer rollout territory for ownership metadata.
   - Existing lightweight `META` comments remain transitional audit input, not the canonical contract.
 - Enforcement:
   - `pnpm run check:frontmatter`
   - `pnpm run audit:topic-overlap`
+  - Decision record: `docs/adr/ADR-20260310-hardened-topic-ownership-gate.md`
   - Editorial invariant references: `context/INVARIANTS.md` (`INVARIANT.EDITORIAL.INTERNAL_LINKS_MIN`)
 - Purpose:
   - Improve article-to-article navigation.

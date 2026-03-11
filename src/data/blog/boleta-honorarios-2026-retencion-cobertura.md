@@ -18,7 +18,7 @@ draft: false
 heroImage: /images/hero/boleta-honorarios-2026-retencion-cobertura.avif
 ---
 
-Si emites boletas y quieres saber cuánto te llega líquido en 2026, esta guía separa tres cosas que suelen confundirse: retención mensual, cálculo de cotizaciones en Operación Renta y cobertura anual efectiva.
+Emites boletas y cada mes te preguntas lo mismo: ¿cuánto me llega realmente? En 2026 la respuesta cambia porque subió la retención. Esta guía separa tres cosas que suelen confundirse: la retención mensual que se aplica al emitir cada boleta, el cálculo de cotizaciones que ocurre en Operación Renta y la cobertura anual que resulta de ese proceso.
 
 ## Qué cambia y qué resuelve esta guía
 

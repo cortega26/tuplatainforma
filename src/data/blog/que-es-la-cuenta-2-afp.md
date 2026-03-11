@@ -22,7 +22,7 @@ heroImage: /images/hero/que-es-la-cuenta-2-afp.avif
 
 <!-- META: keyword_primary="cuenta 2 afp" | intent="informational-flexible-savings" | cluster="pensiones-afp" -->
 
-Cuando la gente habla de su AFP, casi siempre se refiere a la cuenta obligatoria donde va el 10% del sueldo. Pero existe una segunda cuenta, voluntaria y mucho más flexible, que muy poca gente conoce bien: la **Cuenta 2**, también llamada Cuenta de Ahorro Voluntario (CAV).
+Cuando la gente habla de su AFP, casi siempre se refiere a la cuenta obligatoria donde va el 10% del sueldo. Pero existe una segunda cuenta —voluntaria, flexible y mucho menos conocida— que puede servir como instrumento de ahorro de mediano plazo con rentabilidades similares a las de tu cotización obligatoria: la **Cuenta 2**, también llamada Cuenta de Ahorro Voluntario (CAV).
 
 En esta guía te explicamos cuándo sirve para ahorro flexible dentro del ecosistema AFP. Si tu foco principal es bajar impuesto mientras ahorras, el owner de esa decisión está en [APV](/posts/que-es-el-apv/) dentro de [ahorro e inversión](/guias/ahorro-e-inversion/). Si quieres ver más temas del sistema previsional, revisa la [sección de pensiones y AFP](/guias/pensiones-afp/).
 

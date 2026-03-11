@@ -22,113 +22,105 @@ heroImage: /images/hero/fondos-mutuos-comisiones-rescate-impuestos.avif
 
 <!-- META: keyword_primary="comisiones fondos mutuos cuanto cobran" | intent="informacional-transaccional" | cluster="ahorro-e-inversion" -->
 
-Si inviertes en fondos mutuos, esta guía te muestra dónde están los costos reales, cómo funciona el rescate y qué mirar en impuestos para evitar sorpresas. Para una mirada más amplia, parte por [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
+Los fondos mutuos tienen costos reales que no siempre aparecen en el primer número que ves. La remuneración de administración, la comisión de rescate y el tratamiento tributario del mayor valor son los tres puntos donde más se pierde por no haber leído bien antes de invertir. Esta guía los desglosa sin rodeos.
 
-## Requisitos y supuestos
+Para una mirada más amplia de instrumentos, parte por [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
 
-- Ya definiste horizonte (corto, medio o largo plazo).
-- Tienes claro que un fondo mutuo no garantiza rentabilidad futura.
-- Vas a revisar reglamento interno y folleto informativo antes de aportar.
-- Entiendes que tributación depende del tipo de renta efectivamente percibida.
+## Lo que esta guía asume
 
-## Tipos de costos: cómo leer la letra chica
+Que ya definiste tu horizonte: corto, mediano o largo plazo. Que entiendes que un fondo mutuo no garantiza rentabilidad futura. Y que vas a revisar el reglamento interno y el folleto informativo antes de aportar, no después. Si aún no tienes eso claro, ese es el primer paso.
+
+## Los cuatro tipos de costo que debes conocer
 
 | Costo                          | Qué significa                                 | Dónde se valida                 |
 | ------------------------------ | --------------------------------------------- | ------------------------------- |
 | Remuneración de administración | Cobro periódico por gestionar el fondo        | Reglamento interno (CMF)        |
-| Comisión de rescate            | Cobro al salir, según condiciones/serie/plazo | Reglamento interno + contrato   |
+| Comisión de rescate            | Cobro al salir, según serie/plazo/condiciones | Reglamento interno + contrato   |
 | Comisión de colocación         | Cobro al entrar (si aplica)                   | Folleto + contrato              |
 | Otros gastos atribuibles       | Costos de operación cargados al fondo         | Documentación oficial del fondo |
 
-CMF Educa indica que estas condiciones deben quedar establecidas en el reglamento interno depositado en la CMF.
+La CMF exige que todas estas condiciones queden establecidas en el reglamento interno depositado ante el regulador. Si no encuentras ese documento fácilmente, es una señal de alerta antes de aportar.
 
-## Rescate: plazos, ventanas y fricciones reales
+## Cómo funciona el rescate
 
-- Un fondo mutuo, por definición CMF, permite rescate total y permanente de cuotas y pago en plazo igual o inferior a 10 días.
-- El plazo exacto de pago depende del reglamento interno y de la serie.
-- En algunas series hay comisión de rescate que disminuye o desaparece si cumples permanencia mínima.
+Por definición regulatoria de la CMF, un fondo mutuo debe permitir el rescate total y permanente de cuotas con pago en un plazo igual o inferior a 10 días hábiles. Sin embargo —y esto es lo que muchos pasan por alto— el plazo exacto y la comisión que corresponde dependen del reglamento interno y de la serie en la que estás invertido.
+
+En algunas series, la comisión de rescate disminuye o desaparece si cumples una permanencia mínima. Verificarlo antes de salir puede evitarte un costo innecesario.
 
 ### Paso a paso para rescatar sin errores
 
-1. Revisa comisión de salida de tu serie y permanencia exigida.
-2. Verifica hora de corte para cursar rescate del día.
-3. Confirma plazo de pago según reglamento interno.
-4. Registra valor cuota de entrada y salida para cálculo tributario posterior.
-5. Guarda comprobantes de rescate para renta anual.
+1. Revisa la comisión de salida de tu serie específica y la permanencia mínima exigida.
+2. Verifica la hora de corte para que el rescate se curse en el día que necesitas.
+3. Confirma el plazo de pago según el reglamento interno.
+4. Registra el valor cuota de entrada y de salida: lo necesitarás para el cálculo tributario.
+5. Guarda todos los comprobantes de rescate para la declaración anual de renta.
 
-Ejemplo numérico simple:
+### Ejemplo de cómo afecta la comisión de rescate
 
-- Aporte: $2.000.000.
-- Valor final de rescate bruto: $2.120.000.
-- Comisión de rescate: 0,5% sobre monto rescatado = $10.600.
-- Monto neto antes de impuestos: $2.109.400.
+Supón que aportas $2.000.000 y al rescatar el valor bruto asciende a $2.120.000. Si la comisión de rescate es 0,5% sobre el monto:
 
-## Tributación básica al rescatar
+- Comisión: 0,5% × $2.120.000 = **$10.600**
+- Monto neto antes de impuestos: **$2.109.400**
 
-Según SII (FAQ), en fondos mutuos:
+El número final que recibes no es el valor bruto. Incluso una comisión "pequeña" se siente cuando el monto es relevante.
 
-- Valores no rescatados no se declaran como renta percibida.
-- Lo que sí se declara es el mayor valor obtenido en el rescate de cuotas (renta percibida).
+## Tributación: qué se declara y qué no
 
-Además, SII dispone el asistente de enajenación para apoyar determinación de mayor valor en acciones/cuotas de fondos mutuos/cuotas de fondos de inversión.
+Según el SII, en fondos mutuos hay una distinción importante:
 
-Para casos avanzados de imputación de créditos y tratamientos especiales según porcentaje de inversión en acciones, consulta las instrucciones vigentes del Suplemento de Renta del SII para el año tributario correspondiente. Para situaciones complejas, conviene asesoría tributaria profesional.
+- **Lo que no se declara:** el saldo que sigue invertido, mientras no se rescate. Los valores no rescatados no se consideran renta percibida.
+- **Lo que sí se declara:** el mayor valor obtenido en el rescate de cuotas —es decir, la diferencia positiva entre el valor de venta y el de compra.
 
-## Casos por perfil
+El SII dispone de un asistente de enajenación para apoyar en la determinación del mayor valor en acciones, cuotas de fondos mutuos y cuotas de fondos de inversión. Para casos con créditos imputables o tratamientos especiales según el porcentaje de inversión en acciones del fondo, revisa el Suplemento de Renta del SII del año tributario correspondiente.
 
-### Conservador
+Si tu situación es compleja, la asesoría tributaria profesional es el camino.
 
-- Prefiere fondos de deuda de corta duración.
-- Prioriza estabilidad y rescates con fricción baja.
+## Cómo encaja esto según tu perfil
 
-### Balanceado
+**Si priorizas estabilidad** (perfil conservador): los fondos de deuda de corta duración son el punto de entrada natural. Menor volatilidad, rescates con baja fricción, y costos que tienden a ser más predecibles.
 
-- Combina fondos de deuda y mixtos.
-- Controla costo total anual para no diluir retorno.
+**Si buscas equilibrio** (perfil balanceado): la combinación de fondos de deuda y mixtos permite controlar el costo total anual mientras se mantiene algo de exposición a mayor retorno. La clave es que las comisiones no se coman el diferencial.
 
-### Agresivo
+**Si toleras volatilidad** (perfil agresivo): mayor exposición a renta variable, períodos de caída más largos y mayor necesidad de seguimiento. El costo de administración en fondos activos de renta variable puede ser alto; compáralo con alternativas pasivas antes de elegir.
 
-- Mayor exposición a renta variable.
-- Acepta volatilidad y períodos de caída más largos.
+## Los 6 errores más frecuentes
 
-## Errores comunes
-
-1. Mirar solo rentabilidad y no comisión total.
-2. Rescatar sin revisar comisión de salida vigente.
-3. Ignorar plazo efectivo de pago del rescate.
-4. Confundir fondo mutuo con depósito a plazo.
-5. No guardar respaldo de aportes y rescates para renta.
-6. Asumir que no hay impuestos por tener saldo aún invertido.
+1. **Mirar solo la rentabilidad** y no calcular el costo total real del fondo.
+2. **Rescatar sin revisar la comisión de salida** vigente para tu serie en ese momento.
+3. **Ignorar el plazo efectivo de pago** del rescate y comprometer ese dinero antes de tenerlo disponible.
+4. **Confundir el fondo mutuo con un depósito a plazo:** son productos con lógicas, riesgos y garantías completamente distintas.
+5. **No guardar respaldo** de aportes y rescates para la declaración anual de renta.
+6. **Asumir que no hay impacto tributario** porque el saldo sigue invertido —la obligación surge al momento del rescate, no antes.
 
 ## Preguntas frecuentes
 
-**1) ¿Todos los fondos mutuos pagan en 24 horas?**
-No. Por definición regulatoria, el pago debe ser en plazo <= 10 días, pero el tiempo exacto depende del fondo.
+**¿Todos los fondos mutuos pagan en 24 horas?**
+No. La norma regulatoria establece un plazo máximo de 10 días hábiles, pero el tiempo exacto depende de cada fondo y serie.
 
-**2) ¿Un fondo mutuo puede asegurar rentabilidad?**
-Como regla general no. CMF indica que no se puede asegurar rentabilidad futura salvo casos específicos regulados.
+**¿Un fondo mutuo puede garantizar rentabilidad?**
+Como regla general, no. La CMF establece que la rentabilidad futura no está garantizada, salvo casos específicos regulados.
 
-**3) ¿Qué documento me dice los costos reales?**
-Reglamento interno, contrato general de fondos y folleto informativo.
+**¿Qué documento me muestra los costos reales?**
+El reglamento interno, el contrato general de fondos y el folleto informativo. Los tres deben estar disponibles antes de aportar.
 
-**4) ¿Qué es más importante: comisión o rentabilidad?**
-Ambas. La decisión correcta se toma con rentabilidad neta esperada y riesgo, no con un solo dato.
+**¿Qué pesa más: la comisión o la rentabilidad?**
+Ambas importan. La decisión correcta requiere mirar la rentabilidad neta esperada después de costos, no un solo dato aislado.
 
-**5) ¿Si no rescato debo declarar igual esa ganancia?**
-SII indica que lo no rescatado no se declara como renta percibida en ese marco.
+**¿Si no rescato, debo declarar la ganancia igual?**
+No. El SII indica que los valores no rescatados no se consideran renta percibida y no se declaran en ese período.
 
-**6) ¿Si rescato con pérdida pago impuesto igual?**
-Depende del resultado tributario neto y reglas aplicables del período; por eso conviene consolidar respaldo antes de declarar.
+**¿Si rescato con pérdida, pago impuesto igual?**
+Depende del resultado tributario neto y las reglas aplicables del año. Por eso conviene consolidar los respaldos antes de declarar.
 
-**7) ¿Sirve el asistente del SII para fondos mutuos?**
-Sí, SII informa que apoya determinación de mayor valor en ventas o rescates de cuotas.
+**¿El asistente del SII sirve para fondos mutuos?**
+Sí. El SII indica que apoya la determinación del mayor valor en rescates de cuotas de fondos mutuos.
 
-**8) ¿Esta guía reemplaza asesoría tributaria?**
-No. Es una guía educativa y no reemplaza asesoría profesional para tu caso.
+**¿Esta guía reemplaza asesoría tributaria?**
+No. Es contenido educativo y no reemplaza asesoría profesional para tu situación particular.
 
-## Cierre y siguiente lectura
+## Siguiente lectura
 
-Para decidir cómo encajan los fondos mutuos dentro de una estrategia integral de ahorro e inversión, vuelve a la guía general: [Ahorro e inversión en Chile: instrumentos, costos e impuestos (guía 2026)](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
+Para decidir cómo encajan los fondos mutuos en una estrategia integral de ahorro e inversión, vuelve a la guía general: [Ahorro e inversión en Chile: instrumentos, costos e impuestos (guía 2026)](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
 
 ## Fuentes y referencias primarias
 
@@ -143,4 +135,6 @@ Para decidir cómo encajan los fondos mutuos dentro de una estrategia integral d
 - Revisado el: 2026-02-28.
 - Gatilla actualización: cambios CMF sobre información obligatoria de fondos o cambios en instrucciones SII de renta anual.
 
-Contenido informativo; no reemplaza asesoría financiera ni tributaria personalizada.
+---
+
+*Contenido informativo; no reemplaza asesoría financiera ni tributaria personalizada.*

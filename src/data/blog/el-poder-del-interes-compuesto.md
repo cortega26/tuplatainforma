@@ -24,7 +24,7 @@ heroImage: /images/hero/el-poder-del-interes-compuesto.avif
 
 <!-- META: keyword_primary="interes compuesto" | intent="informacional-ejemplo" | cluster="ahorro-e-inversion" -->
 
-Imagina a alguien que nunca ganó más que el sueldo mínimo. Sin bonos, sin ascensos, sin herencias. Solo su sueldo de cada mes y la disciplina de apartar el 10% de su salario neto para invertirlo. Durante 36 años tuvo 24 meses sin trabajo, lagunas reales como las que le pueden pasar a cualquier trabajador chileno. El resto del tiempo, invirtió ese 10% en el NASDAQ-100. Si quieres revisar más temas relacionados, mira también la [sección de ahorro e inversión](/guias/ahorro-e-inversion/).
+Imagina a alguien que nunca ganó más que el sueldo mínimo. Sin bonos, sin ascensos, sin herencias. Solo el sueldo de cada mes y la disciplina de apartar el 10% del líquido para invertirlo. Durante 36 años tuvo 24 meses sin trabajo —lagunas reales, como las que le pasan a cualquier trabajador chileno. El resto del tiempo, ese 10% fue al NASDAQ-100. Lo que ocurrió después es lo que este ejercicio trata de mostrar. Si quieres revisar más temas relacionados, mira también la [sección de ahorro e inversión](/guias/ahorro-e-inversion/).
 
 ## Respuesta rápida
 
@@ -87,15 +87,15 @@ _La curva verde muestra el valor de la cartera en USD. Las líneas rojas puntead
 
 ## El multiplicador que pocos intuyen
 
-En total, esta persona habría aportado **$6.183.108 de su bolsillo** a lo largo de 36 años, equivalente a unos **USD 9.453** al tipo de cambio histórico de cada mes.
+En total, esta persona habría puesto **$6.183.108 de su propio bolsillo** a lo largo de 36 años: unos **USD 9.453** al tipo de cambio histórico de cada mes.
 
-El resultado final: **USD 129.495**, es decir, **13,7 veces** lo que invirtió.
+El resultado final: **USD 129.495**. Es decir, **13,7 veces** lo que aportó.
 
-No 13,7% más. Trece coma siete veces más. Cada peso que puso trabajó para traer aproximadamente 12,7 pesos adicionales por encima del aporte original.
+No 13,7% más. Trece coma siete veces. Cada peso que invirtió trajo aproximadamente 12,7 pesos adicionales por encima del aporte original. Es un número que cuesta visualizar porque nada en la vida cotidiana crece así, excepto el tiempo compuesto sobre sí mismo.
 
-Pero ese es un resultado **nominal**. No está ajustado por inflación. Dicho de otra forma: el poder adquisitivo real de ese capital final es menor al que sugieren los $125,6 millones nominales, aunque sigue siendo muy superior al monto efectivamente aportado.
+Dicho eso, hay que ser honesto: ese resultado es **nominal**. No está ajustado por inflación. El poder adquisitivo real de esos $125,6 millones es menor que lo que el número sugiere, aunque sigue siendo muy superior al monto efectivamente aportado.
 
-Eso es el interés compuesto en acción: los retornos de un año generan retornos al año siguiente, y esos retornos vuelven a generar retornos después. Al principio parece poco. Al final, cambia por completo la escala del resultado.
+Eso es el interés compuesto trabajando: los retornos de un año generan retornos al año siguiente, que generan retornos el año siguiente, que generan retornos el año siguiente. Al principio parece poco. Al final, cambia de escala todo lo que construiste.
 
 ## ¿Y con esos $125 millones, cuánto se puede retirar por mes?
 
@@ -124,7 +124,7 @@ Este artículo mejora si reconoce de frente las objeciones más obvias:
 - **El patrón de lagunas importa:** se asumieron 24 meses sin aporte distribuidos aleatoriamente, pero no es lo mismo quedar cesante en una crisis profunda que en una etapa alcista.
 - **El retiro está simplificado:** usar una tasa promedio fija para la jubilación sirve para ilustrar, pero no captura bien el riesgo de secuencia de retornos.
 
-Dicho más simple: este ejercicio no prueba que "cualquiera puede jubilar con un ETF". Lo que sí muestra es otra cosa, más sobria y más defendible: **ahorrar de forma persistente, invertir por décadas y no romper el plan en cada crisis puede cambiar de escala el patrimonio final, incluso partiendo desde un ingreso bajo**.
+Dicho más simple: este ejercicio no prueba que "cualquiera puede jubilar con un ETF". Lo que sí muestra es algo más sobrio y más defendible: **ahorrar de forma persistente, invertir por décadas y mantener el plan cuando vienen las crisis puede cambiar la escala del patrimonio final, incluso partiendo desde un ingreso bajo**. Eso no requiere suerte ni un benchmark ganador. Requiere tiempo y disciplina.
 
 ## Lo que esto no es
 

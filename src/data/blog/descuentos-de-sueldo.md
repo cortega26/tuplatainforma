@@ -23,7 +23,7 @@ heroImage: /images/hero/descuentos-de-sueldo.avif
 
 <!-- META: keyword_primary="descuentos de sueldo" | intent="informational-legal-classification" | cluster="sueldo-remuneraciones" -->
 
-Esta guía no existe para recalcular tu sueldo líquido completo. Existe para separar qué descuentos te puede hacer legalmente el empleador, cuáles dependen de tu autorización y qué cobros no deberían aparecer en la liquidación sin respaldo.
+Cuando ves un descuento en la liquidación, la pregunta correcta no es "¿por qué me descontaron tanto?" sino "¿de dónde viene esta línea?". Esta guía separa qué descuentos puede hacerte legalmente el empleador, cuáles dependen de tu autorización y qué cobros no deberían aparecer sin respaldo.
 
 Si lo que buscas es rehacer el número final de bruto a líquido, usa [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/). Si ya tienes la liquidación en la mano y quieres auditar el documento, te conviene más [liquidación de sueldo](/posts/liquidacion-de-sueldo/). También puedes partir por la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/) o cruzar con la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/).
 

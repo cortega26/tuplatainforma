@@ -19,9 +19,7 @@ draft: false
 heroImage: /images/hero/suplantacion-identidad-creditos-no-reconocidos.avif
 ---
 
-Recibes un correo que dice "tu crédito ha sido aprobado". El problema es que tú nunca pediste ningún crédito. Eso no es un error administrativo: es una señal crítica de que alguien usó tus datos para contratar deuda a tu nombre.
-
-La suplantación de identidad financiera ocurre cuando una tercera persona contrata productos de crédito —préstamos, tarjetas, líneas de crédito— usando tu RUT, tus datos personales o una copia falsa de tu documentación. Tú no firmaste nada, pero el sistema te registra como deudor.
+Recibes un correo que dice "tu crédito ha sido aprobado". El problema es que tú nunca pediste ningún crédito. Eso no es un error administrativo: es una señal de que alguien usó tus datos para contratar deuda a tu nombre.
 
 Esta guía te explica qué hacer para actuar rápido y evitar los errores que más atrasan la solución. Si quieres revisar más temas relacionados, entra a la [sección Seguridad Financiera](/guias/seguridad-financiera/).
 

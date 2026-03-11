@@ -66,7 +66,8 @@ Change log:
 | `INVARIANT.EDITORIAL.CLUSTER_DECLARED` | Every article declares non-empty string `cluster` in frontmatter | Active (rollout) | `pnpm run check:editorial-structure` (warning-first) |
 | `INVARIANT.EDITORIAL.CLUSTER_VALID` | `cluster` belongs to registered cluster set | Active | `pnpm run check:editorial-structure` |
 | `INVARIANT.EDITORIAL.TOPIC_OWNER_UNIQUENESS` | A cluster/topic cannot have two publishable `owner` pages | Active | `pnpm run check:frontmatter` |
-| `INVARIANT.EDITORIAL.TOPIC_OWNERSHIP_METADATA_HARDENED_CLUSTERS` | High-risk clusters should declare ownership metadata | Active (warning-first) | `pnpm run check:frontmatter`, `pnpm run audit:topic-overlap` |
+| `INVARIANT.EDITORIAL.TOPIC_OWNERSHIP_METADATA_HARDENED_CLUSTERS` | Hardened clusters require ownership metadata | Active | `pnpm run check:frontmatter`, `pnpm run audit:topic-overlap` |
+| `INVARIANT.EDITORIAL.CANONICAL_TOPIC_REGISTRY_HARDENED_CLUSTERS` | Hardened clusters must use registered canonical topics | Active | `pnpm run check:frontmatter`, `pnpm run audit:topic-overlap` |
 | `INVARIANT.EDITORIAL.CLUSTER_INTERNAL_LINK_MIN` | Article should link to at least one same-cluster article | Active (Canonical) | `pnpm run check:editorial-structure` (warning) |
 | `INVARIANT.EDITORIAL.LINKING.HUB_REQUIRED` | Clustered article should include a link to its hub `/guias/<cluster>/` | Active (manual) | PR review + `pnpm run check:editorial` |
 | `INVARIANT.EDITORIAL.LINKING.INTRA_CLUSTER_MIN_1` | Alias for intra-cluster min rule | Deprecated (Alias) | Reference `INVARIANT.EDITORIAL.CLUSTER_INTERNAL_LINK_MIN` |
@@ -272,16 +273,34 @@ Change log:
 - Rationale:
   - Añade fricción real donde la canibalización ya fue observada o el cluster tiene más riesgo de deriva.
   - Limita el costo editorial al subconjunto donde el retorno es alto.
-  - Permite una adopción gradual sin bloquear todo el corpus legacy.
+  - El corpus endurecido ya está anotado, por lo que mantenerlo warning-only solo dejaba una incoherencia contractual.
 - Enforcement:
-  - `pnpm run check:frontmatter` (warning-first)
+  - `pnpm run check:frontmatter` (blocking)
   - `pnpm run audit:topic-overlap`
 - Detection:
-  - Warning output includes: `missing "topicRole" and/or "canonicalTopic"`.
-  - No bloquea por sí solo en esta fase.
+  - Blocking output includes: `must declare both "topicRole" and "canonicalTopic"`.
+  - Exit code: `1`.
 - Examples:
   - Compliant: artículo publicado en `pensiones-afp` con `topicRole` y `canonicalTopic`.
-  - Warning: artículo publicado en `ahorro-e-inversion` sin metadata de ownership.
+  - Violation: artículo publicado en `ahorro-e-inversion` sin metadata de ownership.
+
+### `INVARIANT.EDITORIAL.CANONICAL_TOPIC_REGISTRY_HARDENED_CLUSTERS`
+
+- Statement: En clusters endurecidos, `canonicalTopic` debe pertenecer al registro central definido en `src/config/editorial-topic-policy.mjs`.
+- Canonical source: `src/config/editorial-topic-policy.mjs`, `scripts/check-frontmatter.mjs`, `scripts/audit-topic-overlap.mjs`.
+- Rationale:
+  - El formato kebab-case por sí solo no evita variantes casi equivalentes para la misma necesidad.
+  - Un registro chico por cluster reduce drift sin introducir NLP ni taxonomías pesadas.
+  - Hace auditable la incorporación de nuevos topics endurecidos.
+- Enforcement:
+  - `pnpm run check:frontmatter`
+  - `pnpm run audit:topic-overlap`
+- Detection:
+  - Blocking output includes: `Unregistered canonicalTopic`.
+  - Audit warning output includes: `canonicalTopic="<topic>" is not registered`.
+- Examples:
+  - Compliant: `ahorro-e-inversion::interes-compuesto-caso`.
+  - Violation: `ahorro-e-inversion::interes-compuesto-2026` si no está en el registro.
 
 ### `INVARIANT.EDITORIAL.INLINE_IMAGE_AVIF_REQUIRED`
 

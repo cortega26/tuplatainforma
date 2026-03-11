@@ -104,7 +104,7 @@ La Ley N°21.735, promulgada el 26 de marzo de 2025, introduce cambios relevante
 
 Depende. Si estás en una AFP con comisión alta y la rentabilidad de tu fondo no compensa esa diferencia, cambiarte a una AFP con menor comisión tiene sentido. El proceso es gratis, rápido y no afecta tus ahorros.
 
-Lo que no tiene sentido es cambiarse por pánico durante una crisis de mercado, o perseguir la AFP con mejor rentabilidad del último mes — la rentabilidad de corto plazo es muy volátil y no predice la rentabilidad futura.
+Lo que no tiene sentido es cambiarse por pánico durante una crisis de mercado, ni perseguir la AFP con mejor rentabilidad del último mes. La rentabilidad de corto plazo es muy volátil y no predice la futura. La decisión correcta se toma con datos de 36 meses, no de 36 días.
 
 ## Preguntas frecuentes
 

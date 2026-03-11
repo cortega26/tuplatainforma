@@ -18,7 +18,7 @@ draft: false
 heroImage: /images/hero/devolucion-impuestos-fechas-compensaciones.avif
 ---
 
-Si ya enviaste tu declaración y tu pregunta es "¿cuándo me depositan?", esta guía te ayuda a revisar fechas, estado del trámite y posibles compensaciones o retenciones.
+Ya enviaste tu declaración, tu propuesta dijo devolución y la fecha pasó. Esta guía responde la pregunta que más se repite: ¿_cuándo depositan?_ Y si no depositaron, te explica cómo revisar el estado y qué hacer.
 
 ## Qué cambia y qué debes mirar primero
 

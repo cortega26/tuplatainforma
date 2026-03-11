@@ -18,7 +18,7 @@ draft: false
 heroImage: /images/hero/operacion-renta-f22-checklist.avif
 ---
 
-Si vas a declarar renta como persona, esta guía te ayuda a revisar tu propuesta del SII antes de enviar el F22 y a reaccionar rápido si aparecen observaciones. Está pensada para quienes quieren evitar correcciones tardías y atrasos en devolución.
+Abres la propuesta del SII, ves los números y no sabes si aceptar o si algo está mal. Esta guía te ayuda a revisar cada punto antes de enviar el F22 y a reaccionar rápido si aparecen observaciones — para que no pierdas tiempo ni atrases tu devolución.
 
 ## Qué cambia y qué resuelve esta guía
 

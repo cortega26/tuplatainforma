@@ -1,6 +1,12 @@
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
+import {
+  CANONICAL_TOPIC_REGISTRY,
+  HARDENED_OWNERSHIP_CLUSTERS,
+  getAllowedCategoriesForCluster,
+  getCanonicalTopicEntry,
+} from "../src/config/editorial-topic-policy.mjs";
 
 const REPO_ROOT = process.cwd();
 const BLOG_DIR = path.join(REPO_ROOT, "src", "data", "blog");
@@ -67,21 +73,6 @@ const STOPWORDS = new Set([
   "2026",
   "2027",
   "2028",
-]);
-
-const CLUSTER_CATEGORY_MAP = new Map([
-  ["pensiones-afp", new Set(["prevision"])],
-  ["sueldo-remuneraciones", new Set(["empleo-ingresos"])],
-  ["empleo-ingresos", new Set(["empleo-ingresos", "general"])],
-  ["impuestos-personas", new Set(["impuestos"])],
-  ["ahorro-e-inversion", new Set(["ahorro-inversion"])],
-  ["deuda-credito", new Set(["deuda-credito"])],
-  ["seguridad-financiera", new Set(["seguridad-financiera"])],
-]);
-const HARDENED_OWNERSHIP_CLUSTERS = new Set([
-  "sueldo-remuneraciones",
-  "pensiones-afp",
-  "ahorro-e-inversion",
 ]);
 
 function listMarkdownFiles(dir) {
@@ -258,7 +249,7 @@ const metadataWarnings = [];
 for (const article of articles) {
   if (
     article.draft !== true &&
-    HARDENED_OWNERSHIP_CLUSTERS.has(article.cluster) &&
+    HARDENED_OWNERSHIP_CLUSTERS.includes(article.cluster) &&
     (!article.topicRole || !article.canonicalTopic)
   ) {
     metadataWarnings.push(
@@ -266,14 +257,25 @@ for (const article of articles) {
     );
   }
 
-  const allowedCategories = CLUSTER_CATEGORY_MAP.get(article.cluster);
+  const allowedCategories = getAllowedCategoriesForCluster(article.cluster);
   if (
     allowedCategories &&
-    !allowedCategories.has(article.category) &&
+    !allowedCategories.includes(article.category) &&
     article.category !== "general"
   ) {
     metadataWarnings.push(
       `[taxonomy] ${article.file}: category="${article.category}" does not match cluster="${article.cluster}"`
+    );
+  }
+
+  if (
+    article.draft !== true &&
+    HARDENED_OWNERSHIP_CLUSTERS.includes(article.cluster) &&
+    article.canonicalTopic &&
+    !getCanonicalTopicEntry(article.cluster, article.canonicalTopic)
+  ) {
+    metadataWarnings.push(
+      `[ownership] ${article.file}: canonicalTopic="${article.canonicalTopic}" is not registered for hardened cluster "${article.cluster}"`
     );
   }
 
@@ -308,6 +310,37 @@ for (const [groupKey, files] of ownerGroups.entries()) {
   );
 }
 
+const ownershipSummary = [];
+for (const cluster of HARDENED_OWNERSHIP_CLUSTERS) {
+  const clusterRegistry = CANONICAL_TOPIC_REGISTRY[cluster] ?? {};
+  const articlesByTopic = new Map();
+
+  for (const article of articles) {
+    if (article.draft === true || article.cluster !== cluster || !article.canonicalTopic) {
+      continue;
+    }
+    const topicArticles = articlesByTopic.get(article.canonicalTopic) ?? [];
+    topicArticles.push(article);
+    articlesByTopic.set(article.canonicalTopic, topicArticles);
+  }
+
+  for (const canonicalTopic of Object.keys(clusterRegistry).sort()) {
+    const topicArticles = articlesByTopic.get(canonicalTopic) ?? [];
+    const owners = topicArticles.filter(article => article.topicRole === "owner");
+    const supports = topicArticles.filter(article => article.topicRole === "support");
+    const references = topicArticles.filter(article => article.topicRole === "reference");
+    ownershipSummary.push(
+      [
+        cluster,
+        canonicalTopic,
+        `owner=${owners.map(article => article.slug).join(",") || "-"}`,
+        `support=${supports.map(article => article.slug).join(",") || "-"}`,
+        `reference=${references.map(article => article.slug).join(",") || "-"}`,
+      ].join(" | ")
+    );
+  }
+}
+
 const candidates = [];
 for (let index = 0; index < articles.length; index += 1) {
   for (let otherIndex = index + 1; otherIndex < articles.length; otherIndex += 1) {
@@ -325,6 +358,12 @@ console.log("[audit-topic-overlap] Corpus summary");
 console.log(
   `- articles=${articles.length} metadata_warnings=${metadataWarnings.length} candidates=${candidates.length}`
 );
+console.log("");
+
+console.log("[audit-topic-overlap] Hardened ownership summary");
+for (const line of ownershipSummary) {
+  console.log(`- ${line}`);
+}
 console.log("");
 
 if (metadataWarnings.length > 0) {

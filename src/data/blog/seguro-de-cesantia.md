@@ -167,7 +167,7 @@ Si prefieres ir en persona, puedes reservar hora en las sucursales AFC de todo e
 
 **Confundir la CIC con el FCS al momento de elegir.** Al hacer la solicitud debes elegir con qué fondo quieres cobrar. Si calificas para el FCS y tienes poco saldo en la CIC, el FCS puede darte más meses de cobertura. Tienes hasta **3 días hábiles antes del primer pago** para cambiar esta opción — después no puedes.
 
-**Pensar que pierdes el seguro si no lo cobras de inmediato.** Tu saldo en la CIC no desaparece si no lo cobras al salir de un trabajo. Se acumula para la próxima vez que lo necesites.
+**Pensar que pierdes el seguro si no lo cobras de inmediato.** Tu saldo en la CIC no desaparece si no lo cobras al salir de un trabajo. Se acumula para la próxima vez que lo necesites. Puedes decidir con calma.
 
 ---
 

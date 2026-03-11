@@ -66,7 +66,7 @@ Cuando en las noticias dicen "la inflación anual fue 4,5%", se refieren al acum
 
 El IPC mide el promedio. Si los alimentos suben 5% pero la gasolina baja 10%, el IPC puede mostrar una variación pequeña o negativa. Pero si eres una familia que gasta mucho en alimentos y poco en gasolina, **tu inflación personal es más alta** que la del indice.
 
-Esto es normal: el IPC es un promedio estadístico, no tu experiencia individual. Si tienes hijos en colegio privado, o arrendas en zona cara, o gastas más en salud que el promedio, sentirás la inflación distinto al dato oficial.
+Esto es normal: el IPC es un promedio estadístico, no tu experiencia individual. Si tienes hijos en colegio privado, arriendas en zona cara o gastas más en salud que el promedio, tu inflación real puede estar por encima del número oficial — y esa distancia es la que sientes en la billetera.
 
 ## Qué ajusta el IPC en tu vida cotidiana
 

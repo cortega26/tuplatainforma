@@ -9,7 +9,7 @@ tags:
   - ahorro
   - interes-compuesto
   - nasdaq-100
-category: general
+category: ahorro-inversion
 cluster: ahorro-e-inversion
 topicRole: reference
 canonicalTopic: interes-compuesto-caso
@@ -20,7 +20,7 @@ draft: false
 heroImage: /images/hero/interes-compuesto-nota-metodologica.avif
 ---
 
-Este documento detalla los supuestos, fuentes de datos y fórmulas utilizados en el artículo [El poder del interés compuesto: cómo el 10% del sueldo mínimo se convierte en más de $125 millones](/posts/el-poder-del-interes-compuesto/). El objetivo es que cualquier persona pueda replicar o cuestionar los resultados.
+Este documento detalla los supuestos, fuentes de datos y fórmulas del artículo [El poder del interés compuesto: cómo el 10% del sueldo mínimo se convierte en más de $125 millones](/posts/el-poder-del-interes-compuesto/). Está aquí para que cualquier lector pueda replicar los cálculos, cuestionar los supuestos o detectar errores. Si encuentras una discrepancia, el canal correcto es el mismo artículo.
 
 **Fecha de corte del ejercicio:** **2025-12-31**.
 

@@ -146,7 +146,7 @@ El informe no es solo para saber si "estás en DICOM". Tiene usos prácticos con
 
 **Para ordenar tus deudas:** Si tienes varios créditos, el informe te muestra el panorama completo: a quién le debes, cuánto y en qué estado está cada deuda. Es el punto de partida para cualquier estrategia de pago o renegociación.
 
-**Para detectar errores o fraudes:** Revisar el informe periódicamente te permite detectar deudas que no contrajiste antes de que se conviertan en un problema mayor.
+**Para detectar errores o fraudes:** Revisar el informe periódicamente te permite detectar deudas que no contrajiste antes de que escalen. Una deuda registrada por error o por suplantación de identidad es mucho más fácil de resolver cuando se identifica temprano.
 
 ---
 

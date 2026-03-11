@@ -72,7 +72,7 @@ Resumen práctico de causales frecuentes del Código del Trabajo y su impacto:
 | Despido injustificado (art. 168, declarado por tribunal)        | Se ordena pago de indemnizaciones legales más recargo legal cuando corresponda. | Sí, según sentencia.                               | Puede corresponder sustitutiva del aviso previo según caso. |
 | Vencimiento de plazo, término de obra, caso fortuito (art. 159) | Se pagan haberes pendientes y feriado proporcional.                             | No como regla general.                             | No como regla general.                                      |
 
-La causal exacta de la carta de despido manda el cálculo. Si hay duda fundada sobre una causal mal aplicada, no firmes a ciegas: deja constancia y pide revisión.
+La causal exacta de la carta de despido determina el cálculo. Si hay duda fundada sobre una causal mal aplicada, no firmes a ciegas: deja constancia escrita de los ítems en disputa y pide revisión antes de estampar tu firma.
 
 ## Cómo calcular las vacaciones proporcionales
 

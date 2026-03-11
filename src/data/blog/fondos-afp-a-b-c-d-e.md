@@ -20,7 +20,7 @@ description: "Explicación clara de los fondos AFP A, B, C, D y E: en qué invie
 heroImage: /images/hero/fondos-afp-a-b-c-d-e.avif
 ---
 
-Cuando te afilias a una AFP, tu dinero no queda guardado en una caja fuerte — se invierte en uno de cinco fondos disponibles. Elegir bien puede significar una pensión significativamente mayor. Elegir mal, también puede significar lo contrario.
+Cuando te afilias a una AFP, tu dinero no queda guardado en una caja fuerte —se invierte en uno de cinco fondos disponibles. Elegir bien puede significar una pensión significativamente mayor. Elegir mal, lo contrario. Lo que pocos saben es que si no eliges nada, la AFP elige por ti.
 
 Aquí te explicamos qué es cada fondo, sin tecnicismos. Si quieres revisar más temas relacionados, mira también la [sección de pensiones y AFP](/guias/pensiones-afp/).
 
@@ -82,10 +82,10 @@ A personas entre 55 y 65 años que ya están pensando en proteger lo acumulado, 
 
 **Renta variable: entre 15% y 40%**
 
-El Fondo C es el punto medio del sistema. Combina renta fija y renta variable en proporciones similares. Históricamente ha sido el fondo "por defecto" donde quedan quienes no eligen activamente.
+El Fondo C es el punto medio del sistema. Combina renta fija y renta variable en proporciones similares, lo que lo convierte en una opción estable sin renunciar del todo al crecimiento. Es también el fondo **por defecto** para la mayoría de los afiliados que no eligen activamente —lo que lo convierte en el más poblado del sistema.
 
 **¿A quién le conviene?**
-A personas entre 45 y 55 años que buscan un equilibrio entre crecimiento y estabilidad. También es una opción razonable para quienes no quieren preocuparse demasiado por sus inversiones.
+A personas entre 45 y 55 años que buscan un equilibrio entre crecimiento y estabilidad, y a quienes prefieren no preocuparse demasiado por el seguimiento de su cartera.
 
 ---
 
@@ -150,7 +150,7 @@ No es necesariamente la peor opción, pero tampoco es la más optimizada para tu
 
 Sí, y es gratuito e ilimitado. Puedes cambiarte de fondo cuantas veces quieras sin costo. El trámite se hace directamente en el sitio web o app de tu AFP en minutos.
 
-Lo que debes evitar es cambiar de fondo por pánico durante una crisis. Uno de los errores más comunes es pasarse al Fondo E cuando el mercado cae, lo que significa **cristalizar las pérdidas** — vender barato — y perderse la recuperación posterior.
+Lo que debes evitar es cambiar de fondo por pánico cuando el mercado cae. Es uno de los errores más comunes y más costosos: pasarse al Fondo E en plena crisis significa **cristalizar las pérdidas** —vender tus cuotas barato— y quedarte fuera cuando el mercado se recupere. El daño no es solo la caída; es no estar cuando sube.
 
 ## ¿Puedo estar en más de un fondo?
 

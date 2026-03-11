@@ -22,7 +22,7 @@ heroImage: /images/hero/cuanto-descuenta-la-afp-de-tu-sueldo.avif
 
 <!-- META: keyword_primary="descuento afp sueldo" | intent="informational-line-item-review" | cluster="sueldo-remuneraciones" -->
 
-Cada mes ves en tu liquidación una línea "AFP" y un número que te descuentan. Esta guía se queda en esa línea: cuánto corresponde a cotización obligatoria, cuánto es comisión y cómo revisar si ese cargo calza con tu AFP y tu imponible.
+Cada mes aparece en tu liquidación una línea que dice "AFP" y un número que te descuentan. Para la mayoría es un cálculo opaco que simplemente aceptan. Esta guía lo abre: cuánto corresponde a cotización obligatoria, cuánto es comisión y cómo verificar que ese cargo calza con tu AFP y tu imponible.
 
 Si quieres ver cómo esta línea se suma a salud, cesantía e impuesto único para llegar al depósito final, parte por [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/). Si tu pregunta es qué descuentos puede hacerte legalmente el empleador, usa [descuentos de sueldo](/posts/descuentos-de-sueldo/). Y si estás auditando el comprobante completo, sigue con [liquidación de sueldo](/posts/liquidacion-de-sueldo/) o la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/).
 
@@ -106,7 +106,7 @@ Supongamos que tienes un sueldo imponible de **$1.000.000** y estás en Habitat 
 | Comisión AFP (1.27%)         | $1.000.000 × 1.27% | **$12.700** → paga el servicio |
 | **Total descuento AFP**      |                    | **$112.700**                   |
 
-De ese total, **$100.000 son tuyos** y se suman a tu cuenta de pensión. Los **$12.700** restantes corresponden a la comisión vigente del servicio.
+De ese total, **$100.000 son tuyos** y se acumulan en tu cuenta de pensión. Los **$12.700** restantes son la comisión del servicio. Dicho así: más del 88% del descuento AFP trabaja para ti.
 
 ## ¿Cómo se relaciona esta línea con el resto de tu liquidación?
 

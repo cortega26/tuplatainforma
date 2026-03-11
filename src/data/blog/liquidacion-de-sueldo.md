@@ -22,7 +22,7 @@ heroImage: /images/hero/liquidacion-de-sueldo.avif
 
 <!-- META: keyword_primary="liquidacion de sueldo" | intent="informational-document-audit" | cluster="sueldo-remuneraciones" -->
 
-Esta guía es para auditar el comprobante que te entrega el empleador: qué bloques debe traer, qué respaldo pedir y cómo detectar una línea dudosa antes de que el error se repita otro mes.
+Recibes la liquidación cada mes y la mayoría de las veces la archivas sin leerla. Esta guía es para cuando dejas de hacer eso: cómo auditar el comprobante que te entrega el empleador, qué bloques debe traer, qué respaldo pedir y cómo detectar una línea dudosa antes de que el error se repita otro mes.
 
 Si lo que quieres es recalcular el monto final, usa [cómo calcular tu sueldo líquido](/posts/como-calcular-sueldo-liquido/). Si tu foco es distinguir descuentos legales, voluntarios o prohibidos, parte por [descuentos de sueldo en Chile](/posts/descuentos-de-sueldo/). También puedes ver la [sección sueldo y remuneraciones](/guias/sueldo-remuneraciones/) o probar un escenario en la [calculadora de sueldo líquido](/calculadoras/sueldo-liquido/).
 
@@ -111,7 +111,7 @@ Primero pide el detalle al área de remuneraciones o a tu empleador por escrito.
 - Anexo de comisiones o bonos, si corresponde.
 - Base de cálculo usada para AFP, salud, cesantía e impuesto.
 
-Si la respuesta no aclara el problema, guarda la liquidación y evalúa reclamar ante la [Dirección del Trabajo](https://www.dt.gob.cl). Una liquidación confusa no siempre implica mala fe, pero sí es una alerta cuando impide reconstruir el pago.
+Si la respuesta no aclara el problema, guarda la liquidación y evalúa reclamar ante la [Dirección del Trabajo](https://www.dt.gob.cl). Una liquidación confusa no siempre implica mala fe, pero una liquidación que no permite reconstruir el pago es una señal de alerta, especialmente si se repite varios meses.
 
 ## Preguntas frecuentes
 

@@ -2,6 +2,12 @@ import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 import { SITE } from "@/config";
 import { CLUSTERS } from "./config/clusters";
+import {
+  HARDENED_OWNERSHIP_CLUSTERS,
+  allowsGeneralCategoryInCluster,
+  getCanonicalTopicEntry,
+  getAllowedCategoriesForCluster,
+} from "./config/editorial-topic-policy.mjs";
 
 export const BLOG_PATH = "src/data/blog";
 
@@ -98,6 +104,44 @@ const blog = defineCollection({
             code: "custom",
             message:
               'Field "topicRole" is required when "canonicalTopic" is present.',
+          });
+        }
+        if (
+          HARDENED_OWNERSHIP_CLUSTERS.includes(data.cluster) &&
+          data.draft !== true &&
+          (!data.topicRole || !data.canonicalTopic)
+        ) {
+          ctx.addIssue({
+            code: "custom",
+            message:
+              'Published articles in hardened clusters must declare both "topicRole" and "canonicalTopic".',
+          });
+        }
+        const allowedCategories = getAllowedCategoriesForCluster(data.cluster);
+        if (
+          data.category === "general" &&
+          allowedCategories &&
+          !allowsGeneralCategoryInCluster({
+            cluster: data.cluster,
+            topicRole: data.topicRole,
+            unlisted: data.unlisted,
+          })
+        ) {
+          ctx.addIssue({
+            code: "custom",
+            message:
+              'Category "general" is blocked in hardened clusters unless the article is an unlisted reference.',
+          });
+        }
+        if (
+          HARDENED_OWNERSHIP_CLUSTERS.includes(data.cluster) &&
+          data.canonicalTopic &&
+          !getCanonicalTopicEntry(data.cluster, data.canonicalTopic)
+        ) {
+          ctx.addIssue({
+            code: "custom",
+            message:
+              'Field "canonicalTopic" must match the central registry for hardened clusters.',
           });
         }
       })

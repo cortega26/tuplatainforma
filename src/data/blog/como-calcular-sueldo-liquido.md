@@ -130,7 +130,7 @@ Esto pasa más seguido de lo que crees, y tiene dos causas principales:
 Si tu renta tributable pasó de $2.000.000 a $2.150.000, la parte que cruza los **$2.096.670** (referencia marzo 2026) ya entra al tramo siguiente. El impuesto aumenta más rápido que antes, y en algunos casos el alza efectiva del líquido se siente menor a lo esperado.
 
 **Causa 2: Te cambiaste a Isapre o subió tu plan.**
-Si antes estabas en Fonasa (7% fijo) y te cambiaste a una Isapre con un plan de 10%, ese 3% extra de diferencia puede comerse parte del aumento.
+Si antes estabas en Fonasa (7% fijo) y te cambiaste a una Isapre con un plan de 10%, ese 3% extra puede comerse parte del aumento. La matemática no miente: más bruto no siempre significa más líquido si al mismo tiempo subió algún descuento.
 
 ---
 
