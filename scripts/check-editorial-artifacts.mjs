@@ -645,6 +645,9 @@ function printPostReport(result) {
   console.log(
     `- Create artifacts at: ${result.artifactRootExpected}/YYYYMMDD-HHMM-<run-id>/`
   );
+  console.log(
+    `- Scaffold helper: pnpm run scaffold:editorial-artifacts -- --slug ${result.postId}`
+  );
 }
 
 function run() {

@@ -73,12 +73,17 @@ async function main() {
   try {
     const checker = new LinkChecker();
     const config = await readLinkinatorConfig();
+    const linksToSkip = buildLinksToSkip({
+      baseSkip: config.skip,
+      options,
+      targetUrl: target.targetUrl,
+    });
     const payload = await checker.check({
       path: target.targetUrl,
       recurse: true,
       concurrency: modeConfig.concurrency,
       timeout: modeConfig.timeoutMs,
-      linksToSkip: config.skip,
+      linksToSkip,
       retry: false,
       retryErrors: false,
     });
@@ -230,4 +235,28 @@ async function readLinkinatorConfig() {
   } catch {
     return { skip: [] };
   }
+}
+
+function buildLinksToSkip({ baseSkip, options, targetUrl }) {
+  const skip = Array.isArray(baseSkip) ? [...baseSkip] : [];
+  if (options.externalAudit) {
+    return skip;
+  }
+
+  skip.push(buildExternalHttpSkipPattern(targetUrl));
+  return skip;
+}
+
+function buildExternalHttpSkipPattern(targetUrl) {
+  const url = new URL(targetUrl);
+  const port = url.port ? `:${url.port}` : "";
+  const localHosts = [
+    `${escapeRegex(url.hostname)}${escapeRegex(port)}`,
+    `localhost${escapeRegex(port)}`,
+  ];
+  return `^https?:\\/\\/(?!(${localHosts.join("|")})(?:\\/|$)).+`;
+}
+
+function escapeRegex(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }

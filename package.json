@@ -24,6 +24,7 @@
     "check:dialect": "node scripts/check-dialect.mjs",
     "check:editorial-artifacts": "node scripts/check-editorial-artifacts.mjs",
     "check:editorial": "pnpm run check:editorial-structure && pnpm run check:dialect && pnpm run check:editorial-artifacts",
+    "scaffold:editorial-artifacts": "node scripts/scaffold-editorial-artifacts.mjs",
     "audit:reader-copy": "node scripts/audit-reader-facing-copy.mjs",
     "audit:topic-overlap": "node scripts/audit-topic-overlap.mjs",
     "check:no-postid-urls": "node scripts/check-no-postid-urls.mjs",

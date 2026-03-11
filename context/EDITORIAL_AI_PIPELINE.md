@@ -62,6 +62,11 @@ Artifact contracts are defined in:
 - `CONTRACT.EDITORIAL.COMPLIANCE_REPORT`
 - `CONTRACT.EDITORIAL.PUBLISH_PACKET`
 
+Operational helper:
+- `pnpm run scaffold:editorial-artifacts -- --slug <slug> [--slug <slug2>] [--cut-off-date YYYY-MM-DD]`
+- This creates a canonical run folder with policy-aligned templates under `artifacts/editorial/<slug>/<run-id>/`.
+- The scaffold is intentionally non-authoritative: it does not invent valid `sources.yaml` entries, does not prove role separation, and does not make the article compliant until the pack is completed.
+
 ## 4. Publish Gate (Editorial)
 
 Publication is allowed only when all checks are satisfied:

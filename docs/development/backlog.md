@@ -207,37 +207,37 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 2 - Authority Building
 
 ### MB-010 - Create cluster hub for AFP y APV
-- **Description:** Build a hub page for AFP, APV, Cuenta 2, fondos, cambio de AFP, and retirement planning, with clear paths to related guides and calculators.
+- **Description:** Build a hub page for AFP, APV, Cuenta 2, fondos, cambio de AFP, and retirement planning, with clear paths to related guides and calculators. The production hub now lives at `/guias/pensiones-afp/` and routes APV as a related cross-cluster asset instead of duplicating ownership.
 - **Impact:** 5
 - **Effort:** 3
 - **Confidence:** 4
 - **Priority Score:** 6.7
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-006, MB-026
 - **Roadmap Phase:** Phase 2 - Authority Building
 
 ### MB-011 - Create cluster hub for credito y deuda
-- **Description:** Build a hub page connecting CAE, crédito de consumo, prepago, tarjetas, renegociación, and debt diagnosis content into one decision-support structure.
+- **Description:** Build a hub page connecting CAE, crédito de consumo, prepago, tarjetas, renegociación, and debt diagnosis content into one decision-support structure. The production hub now lives at `/guias/deuda-credito/`; remaining content gaps belong to supporting-article work, not hub creation.
 - **Impact:** 5
 - **Effort:** 3
 - **Confidence:** 4
 - **Priority Score:** 6.7
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-006, MB-026
 - **Roadmap Phase:** Phase 2 - Authority Building
 
-### MB-012 - Create cluster hub for cesantia y proteccion social
-- **Description:** Build a hub page covering seguro de cesantía, AFC, saldo CIC, access conditions, and adjacent employment-shock support content.
+### MB-012 - Resolve public entry point for cesantia y proteccion social
+- **Description:** Resolve the public entry point for seguro de cesantía, AFC, saldo CIC, access conditions, and adjacent employment-shock support content. Repo truth keeps this cluster inside `/guias/empleo-ingresos/` instead of opening a separate public hub.
 - **Impact:** 4
 - **Effort:** 3
 - **Confidence:** 4
 - **Priority Score:** 5.3
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-006, MB-026
 - **Roadmap Phase:** Phase 2 - Authority Building
 
-### MB-013 - Create cluster hub for UF, inflacion y costo de vida
-- **Description:** Build a hub page linking UF explainers, calculator tools, arriendo adjustments, inflation context, and practical household impact scenarios.
+### MB-013 - Create future cluster hub for UF, inflacion y costo de vida
+- **Description:** Build a future hub page linking UF explainers, calculator tools, arriendo adjustments, inflation context, and practical household impact scenarios. Current repo truth still splits these assets across live clusters and calculators without a dedicated `/guias/uf-costo-de-vida/`.
 - **Impact:** 4
 - **Effort:** 3
 - **Confidence:** 4
@@ -247,17 +247,17 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 2 - Authority Building
 
 ### MB-014 - Create cluster hub for impuestos personales
-- **Description:** Build a hub page for Operación Renta, devolución, boletas de honorarios, impuesto único, and official tax guidance for individuals in Chile.
+- **Description:** Build a hub page for Operación Renta, devolución, boletas de honorarios, impuesto único, and official tax guidance for individuals in Chile. The production hub now lives at `/guias/impuestos-personas/`.
 - **Impact:** 5
 - **Effort:** 3
 - **Confidence:** 4
 - **Priority Score:** 6.7
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-006, MB-026
 - **Roadmap Phase:** Phase 2 - Authority Building
 
-### MB-015 - Create cluster hub for presupuesto y control financiero
-- **Description:** Build a hub page around presupuesto, gastos hormiga, control financiero, and basic planning habits, designed as an entry point for less technical users.
+### MB-015 - Create future cluster hub for presupuesto y control financiero
+- **Description:** Build a future hub page around presupuesto, gastos hormiga, control financiero, and basic planning habits, designed as an entry point for less technical users. Current repo truth only has the pillar article `/posts/como-hacer-presupuesto-mensual-chile/`; no dedicated `/guias/presupuesto-control-financiero/` exists yet.
 - **Impact:** 4
 - **Effort:** 3
 - **Confidence:** 4

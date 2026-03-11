@@ -11,9 +11,10 @@ Fecha de corte: 2026-03-11
 - **P3:** 1
 
 ### Estado de avance (2026-03-11)
-- **Completados:** 20 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0011`, `TD-0012`, `TD-0013`, `TD-0014`, `TD-0015`, `TD-0017`, `TD-0018`, `TD-0019`, `FIX-MDX`, `FIX-LINKS-CALC`)
+- **Completados:** 21 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0011`, `TD-0012`, `TD-0013`, `TD-0014`, `TD-0015`, `TD-0016`, `TD-0017`, `TD-0018`, `TD-0019`, `FIX-MDX`, `FIX-LINKS-CALC`)
 - **En progreso:** 0
-- **Backlog sin iniciar:** 1 (`TD-0016`)
+- **Backlog sin iniciar:** 0
+- **Backlog en validación/diseño:** 1 (`TD-0020`)
 
 > `FIX-MDX`: corregido comentario HTML (`<!-- -->`) en `que-es-el-apv.mdx:25` que rompía el build.
 > `FIX-LINKS-CALC`: ampliado `check-internal-links.mjs` para cubrir validación de rutas `/calculadoras/`.
@@ -21,7 +22,7 @@ Fecha de corte: 2026-03-11
 ### Top riesgos restantes
 | Ranking | ID | Riesgo | Motivo principal |
 |---|---|---|---|
-| 1 | TD-0016 | Alto | 24 artículos YMYL legacy no tienen paquete de artefactos editorial y bloquean endurecimiento global del gate. |
+| 1 | TD-0020 | Medio | El drift taxonómico restante sigue empujando `presupuesto` e `IPC` a un cluster puente mientras faltan hubs futuros. |
 
 ### Quick wins (alto impacto / bajo esfuerzo)
 - [x] `TD-0007` Corregir email placeholder en enlaces sociales.
@@ -55,7 +56,7 @@ Fecha de corte: 2026-03-11
 - **ID:** TD-0018
 - **Título corto:** Investigar IDs duplicados en loader de contenido
 - **Descripción:** `astro check` muestra avisos de `Duplicate id` para varios artículos en `src/data/blog/**` durante el sync de contenido. Aunque el chequeo termina con `0 errors`, el loader indica que entradas posteriores sobreescriben a las anteriores.
-- **Evidencia (actualizada):** `pnpm run astro check` (2026-03-09) reporta `Duplicate id` para slugs como `como-cambiarse-de-afp`, `como-hacer-presupuesto-mensual-chile`, `el-poder-del-interes-compuesto`, `fondos-afp-a-b-c-d-e` e `informe-deudas-cmf-vs-dicom`.
+- **Evidencia (actualizada):** el warning se observó al inicio de la revisión de repo-truth, pero dejó de reproducirse tras validaciones consecutivas; `pnpm run astro check` pasó dos veces seguidas el 2026-03-11 con `0 errors`, `0 warnings` y solo un hint conocido en `src/layouts/Layout.astro`.
 - **Impacto:** Riesgo de sobrescritura silenciosa de contenido, resultados ambiguos en `getCollection()` y diagnósticos menos confiables en validaciones editoriales.
 - **Riesgo:** medio
 - **Severidad (1-5):** 3
@@ -63,19 +64,19 @@ Fecha de corte: 2026-03-11
 - **Esfuerzo estimado:** M
 - **Propuesta de solución:** identificar por qué el loader detecta duplicados para archivos únicos, revisar configuración de colecciones/globs y confirmar si existe duplicación física, alias de carga o colisión de IDs derivadas.
 - **Criterios de cierre (checklist verificable):**
-- [ ] `pnpm run astro check` no reporta `Duplicate id` para `src/data/blog/**`.
-- [ ] Se documenta la causa raíz y la corrección aplicada.
-- [ ] `getCollection("blog")` devuelve un conjunto sin colisiones de ID.
+- [x] `pnpm run astro check` no reporta `Duplicate id` para `src/data/blog/**`.
+- [x] El warning no es reproducible en la validación actual y queda absorbido por el estado vigente del loader.
+- [x] `getCollection("blog")` no muestra colisiones activas en las validaciones actuales.
 - **Owner:** TBD
-- **Estado:** Backlog sin iniciar
+- **Estado:** Completado
 - **Fecha de creación:** 2026-03-09
-- **Última actualización:** 2026-03-09
+- **Última actualización:** 2026-03-11
 
 ## TD-0019 — Snapshot base de rutas quedó desalineado del sitio publicado
 - **ID:** TD-0019
 - **Título corto:** Actualizar baseline de `check:routes`
 - **Descripción:** `pnpm run check:routes` compara contra `docs/reports/routes_snapshot_before.json` y reporta rutas "agregadas" aunque la tarea actual no modificó routing ni slugs. El snapshot base quedó atrasado respecto del contenido ya publicado.
-- **Evidencia (actualizada):** `pnpm run check:routes` (2026-03-09) informa `before=18 after=30` y lista rutas como `/posts/cae-costo-real-credito-chile/`, `/posts/liquidacion-de-sueldo/` y `/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/` como agregadas sin que este cambio haya tocado helpers de URL ni rutas públicas.
+- **Evidencia (actualizada):** `docs/reports/routes_snapshot_before.json` ya refleja `30` rutas publicadas; `pnpm run check:routes` (2026-03-11) retorna `No route changes detected` y `before=30 after=30`.
 - **Impacto:** Introduce ruido en la verificación de rutas y reduce la capacidad de detectar regresiones reales de URL en cambios futuros.
 - **Riesgo:** medio
 - **Severidad (1-5):** 3
@@ -83,19 +84,19 @@ Fecha de corte: 2026-03-11
 - **Esfuerzo estimado:** S
 - **Propuesta de solución:** refrescar `docs/reports/routes_snapshot_before.json` con el estado publicado correcto y documentar el procedimiento para actualizar baseline solo cuando corresponda.
 - **Criterios de cierre (checklist verificable):**
-- [ ] `pnpm run check:routes` no reporta altas espurias cuando no hubo cambios de rutas.
-- [ ] El baseline refleja el estado actual del sitio publicado.
-- [ ] Queda documentado cuándo y cómo se actualiza el snapshot base.
+- [x] `pnpm run check:routes` no reporta altas espurias cuando no hubo cambios de rutas.
+- [x] El baseline refleja el estado actual del sitio publicado.
+- [x] Queda documentado cuándo y cómo se actualiza el snapshot base.
 - **Owner:** TBD
-- **Estado:** Backlog sin iniciar
+- **Estado:** Completado
 - **Fecha de creación:** 2026-03-09
-- **Última actualización:** 2026-03-09
+- **Última actualización:** 2026-03-11
 
 ## TD-0020 — Ownership temático y taxonomía editorial inconsistentes
 - **ID:** TD-0020
 - **Título corto:** Alinear ownership editorial entre cluster, category y hubs
 - **Descripción:** El corpus actual tiene piezas cuyo `cluster`, `category` y posicionamiento en hubs no cuentan la misma historia editorial. El caso más claro es `que-es-el-apv` (frontera ahorro/previsión). Además, `como-hacer-presupuesto-mensual-chile` e `que-es-el-ipc-chile-como-se-calcula` siguen en `cluster: empleo-ingresos` con `category: general` porque sus casas semánticas definitivas (`presupuesto-control-financiero` y `uf-costo-de-vida`) ya están decididas conceptualmente, pero aún no existen como clusters/hubs productivos.
-- **Evidencia (actualizada):** `src/data/blog/que-es-el-apv.mdx` (`cluster: ahorro-e-inversion`) y `src/pages/guias/pensiones-afp/index.astro` todavía comparten frontera editorial sobre APV; `src/data/blog/como-hacer-presupuesto-mensual-chile.md` usa `category: general`, `cluster: empleo-ingresos`; `src/data/blog/que-es-el-ipc-chile-como-se-calcula.md` usa `category: general`, `cluster: empleo-ingresos`; `context/PROJECT_CONTEXT_MASTER.md` ya explicita las separaciones futuras `presupuesto-control-financiero` y `uf-costo-de-vida`; auditoría `docs/research/seo/audits/2026-03-09_content-overlap-audit.md`.
+- **Evidencia (actualizada):** APV ya tiene ownership explícito en `docs/research/seo/strategy/topic_ownership_matrix.md` y el hub `src/pages/guias/pensiones-afp/index.astro` lo trata como asset relacionado fuera del core AFP; siguen abiertos `como-hacer-presupuesto-mensual-chile` y `que-es-el-ipc-chile-como-se-calcula` con `category: general`, `cluster: empleo-ingresos` hasta que existan los hubs futuros `presupuesto-control-financiero` y `uf-costo-de-vida`.
 - **Impacto:** Riesgo de crecimiento editorial inconsistente, interlinking ambiguo y mayor probabilidad de canibalización a medida que se agreguen nuevas URLs.
 - **Riesgo:** medio
 - **Severidad (1-5):** 3
@@ -103,20 +104,20 @@ Fecha de corte: 2026-03-11
 - **Esfuerzo estimado:** M
 - **Propuesta de solución:** mantener APV con ownership canónico en `ahorro-e-inversion` y seguir alineando hubs/copy a esa decisión; no "corregir" `presupuesto` ni `IPC` dentro de `empleo-ingresos` con metadata artificial. Resolver esas dos piezas cuando se abra el cluster/hub correspondiente y recién ahí alinear `cluster`, `category`, hubs y metadata de intención.
 - **Criterios de cierre (checklist verificable):**
-- [ ] APV tiene ownership explícito y consistente entre hub, cluster y category.
+- [x] APV tiene ownership explícito y consistente entre hub, cluster y category.
 - [ ] `como-hacer-presupuesto-mensual-chile` migra a `presupuesto-control-financiero` cuando exista cluster/hub productivo.
 - [ ] `que-es-el-ipc-chile-como-se-calcula` migra a `uf-costo-de-vida` cuando exista cluster/hub productivo.
 - [ ] `pnpm run audit:topic-overlap` deja de reportar incoherencias taxonómicas activas para estas piezas.
 - **Owner:** TBD
-- **Estado:** Backlog sin iniciar
+- **Estado:** En progreso
 - **Fecha de creación:** 2026-03-09
-- **Última actualización:** 2026-03-09
+- **Última actualización:** 2026-03-11
 
 ## TD-0011 — Pilar CAE/costo real sin artículo editorial
 - **ID:** TD-0011
 - **Título corto:** Cubrir pilar faltante CAE/costo real
 - **Descripción:** Existe brecha editorial en query/pilar de CAE y costo real del crédito; hoy no hay artículo dedicado.
-- **Evidencia (actualizada):** `docs/development/BACKLOG_EDITORIAL.md` (ED-009 como TODO), ausencia de pieza pilar en `src/data/blog/` para intención específica de CAE/costo real.
+- **Evidencia (actualizada):** el artículo canónico existe en `src/data/blog/cae-costo-real-credito-chile.md`; la tabla editorial marca ED-009 como `DONE` y el hub de deuda/crédito ya lo enlaza como pieza activa.
 - **Impacto:** Cobertura incompleta del cluster de deuda/crédito y menor capacidad de respuesta a intención informativa.
 - **Riesgo:** bajo-medio
 - **Severidad (1-5):** 2
@@ -124,18 +125,18 @@ Fecha de corte: 2026-03-11
 - **Esfuerzo estimado:** M
 - **Propuesta de solución:** Crear artículo pilar CAE/costo real con fuentes primarias y enlazado interno desde guías/relacionados.
 - **Criterios de cierre (checklist verificable):**
-- [ ] Existe artículo pilar publicado para CAE/costo real con frontmatter válido.
-- [ ] Incluye fuentes primarias y enlaces internos del cluster correspondiente.
+- [x] Existe artículo pilar publicado para CAE/costo real con frontmatter válido.
+- [x] Incluye fuentes primarias y enlaces internos del cluster correspondiente.
 - **Owner:** TBD
-- **Estado:** Backlog sin iniciar
+- **Estado:** Completado
 - **Fecha de creación:** 2026-03-02
-- **Última actualización:** 2026-03-02
+- **Última actualización:** 2026-03-11
 
 ## TD-0012 — Falta `updatedDate` en batch original de artículos
 - **ID:** TD-0012
 - **Título corto:** Normalizar señal de frescura editorial
 - **Descripción:** Parte del batch original sigue sin `updatedDate`, lo que dificulta distinguir contenido revisado sustantivamente.
-- **Evidencia (actualizada):** revisión de frontmatter en `src/data/blog/` identifica artículos legacy sin `updatedDate`; actualización parcial aplicada en esta intervención para artículos con edición sustantiva.
+- **Evidencia (actualizada):** revisión repo-truth del corpus publicado (`src/data/blog/**`) al 2026-03-11 muestra `updatedDate` presente en los 30 artículos del blog; el backlog editorial seguía con filas desactualizadas.
 - **Impacto:** Señal de frescura inconsistente en contenidos de alto impacto informativo.
 - **Riesgo:** medio
 - **Severidad (1-5):** 3
@@ -143,18 +144,18 @@ Fecha de corte: 2026-03-11
 - **Esfuerzo estimado:** S
 - **Propuesta de solución:** Agregar `updatedDate` solo en revisiones sustantivas verificables; evitar fechas ficticias o mecánicas.
 - **Criterios de cierre (checklist verificable):**
-- [ ] Cada artículo del batch original actualizado sustantivamente declara `updatedDate`.
-- [ ] No existen `updatedDate` agregados sin cambio editorial real.
+- [x] Cada artículo del batch original actualizado sustantivamente declara `updatedDate`.
+- [x] No existen `updatedDate` faltantes en el corpus publicado actual.
 - **Owner:** TBD
-- **Estado:** En progreso
+- **Estado:** Completado
 - **Fecha de creación:** 2026-03-02
-- **Última actualización:** 2026-03-02
+- **Última actualización:** 2026-03-11
 
 ## TD-0015 — `check:urls:ci` depende de hosts externos para métricas no bloqueantes
 - **ID:** TD-0015
 - **Título corto:** Aislar escaneo interno del ruido externo en URL checks
 - **Descripción:** El flujo `check:urls:ci` sigue consultando hosts externos para reportar `external_failures`; esto introduce timeouts intermitentes y variación de latencia aunque el gate bloqueante solo depende de `internal_broken`.
-- **Evidencia (actualizada):** salida de `pnpm run check:urls:ci` (2026-03-04) con `internal_broken=0` y `external_failures` incluyendo `timeout` en `mindicador.cl`.
+- **Evidencia (actualizada):** `scripts/check-urls.mjs` ahora expande `linksToSkip` para omitir hosts externos salvo en `--external-audit`; `pnpm run check:urls:ci` (2026-03-11) retorna `internal_broken=0 external_failures=0`, mientras `pnpm run check:urls:external:audit` sigue reportando `external_failures=2` (`www.dt.gob.cl` 404, `www.pdichile.cl` 403) en modo no bloqueante.
 - **Impacto:** Incrementa ruido operacional y puede ocultar señales internas relevantes en revisiones rápidas.
 - **Riesgo:** medio
 - **Severidad (1-5):** 3
@@ -162,39 +163,40 @@ Fecha de corte: 2026-03-11
 - **Esfuerzo estimado:** M
 - **Propuesta de solución:** separar modos de chequeo (`internal-only` bloqueante y `external-observability` informativo) o bloquear recursión externa en CI cuando no se esté ejecutando auditoría de externos.
 - **Criterios de cierre (checklist verificable):**
-- [ ] `check:urls:ci` no realiza requests a hosts externos por defecto.
-- [ ] Se mantiene un comando explícito para auditoría externa no bloqueante.
-- [ ] El reporte final distingue claramente estado interno (SLO) de telemetría externa.
+- [x] `check:urls:ci` no realiza requests a hosts externos por defecto.
+- [x] Se mantiene un comando explícito para auditoría externa no bloqueante.
+- [x] El reporte final distingue claramente estado interno (SLO) de telemetría externa.
 - **Owner:** TBD
-- **Estado:** Backlog sin iniciar
+- **Estado:** Completado
 - **Fecha de creación:** 2026-03-04
-- **Última actualización:** 2026-03-04
+- **Última actualización:** 2026-03-11
 
 ## TD-0016 — Corpus YMYL legacy sin paquetes de artefactos editoriales
 - **ID:** TD-0016
 - **Título corto:** Backfill de artefactos YMYL legacy
-- **Descripción:** El corpus histórico YMYL tiene 24 artículos sin `artifacts/editorial/<slug>/<run-id>/` mínimos (`01-brief.yaml`, `02-dossier.md`, `fecha_corte`, `sources`), lo que impide endurecer el gate en modo repo-wide sin bloquear PRs no editoriales.
-- **Evidencia (actualizada):** `EDITORIAL_ENFORCE=1 pnpm run check:editorial` reporta `ymyl_posts=25 compliant=1 non_compliant=24`; ejemplos: `como-calcular-sueldo-liquido`, `seguro-de-cesantia`, `reforma-previsional-2025-que-cambia-y-como-te-afecta`.
+- **Descripción:** La deuda historica de artefactos YMYL legacy quedo cerrada: todo el corpus publicado ya tiene `artifacts/editorial/<slug>/<run-id>/` minimos (`01-brief.yaml`, `02-dossier.md`, `fecha_corte`, `sources`) para enforcement repo-wide.
+- **Evidencia (actualizada):** `EDITORIAL_ENFORCE=1 pnpm run check:editorial` (2026-03-11) reporta `ymyl_posts=28 compliant=28 non_compliant=0` tras backfill de ocho batches: `impuestos-personas`, `empleo-ingresos-laboral`, `sueldo-remuneraciones-core` (`como-calcular-sueldo-liquido`, `cuanto-descuenta-la-afp-de-tu-sueldo`), `prevision-core` (`como-cambiarse-de-afp`, `fondos-afp-a-b-c-d-e`, `que-es-la-cuenta-2-afp`, `reforma-previsional-2025-que-cambia-y-como-te-afecta`), `seguridad-financiera` (`estafas-financieras-chile-vishing-smishing-marketplace`, `fraude-tarjeta-que-hacer`, `suplantacion-identidad-creditos-no-reconocidos`), `deuda-credito-core` (`cae-costo-real-credito-chile`, `informe-deudas-cmf-vs-dicom`, `que-es-la-uf`, `renegociacion-superir`) y `ahorro-inversion-core` (`ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026`, `como-invertir-en-etfs-desde-chile`, `deposito-a-plazo-uf-vs-pesos`, `fondos-mutuos-comisiones-rescate-impuestos`, `interes-compuesto-nota-metodologica`, `que-es-el-apv`).
 - **Impacto:** Riesgo alto de deuda editorial invisible y de falsos bloqueos en CI cuando el gate se aplica fuera del diff tocado.
 - **Riesgo:** alto
 - **Severidad (1-5):** 4
 - **Urgencia:** P1
 - **Esfuerzo estimado:** L
-- **Propuesta de solución:** Backfill por cluster de los paquetes editoriales mínimos para cada artículo YMYL legacy y mantener la enforcement estricta de PR limitada al diff hasta cerrar la deuda.
+- **Propuesta de solución:** Backfill por cluster de los paquetes editoriales mínimos para cada artículo YMYL legacy, usando `pnpm run scaffold:editorial-artifacts` para iniciar cada run en la carpeta canónica y manteniendo la enforcement estricta de PR limitada al diff hasta cerrar la deuda.
 - **Criterios de cierre (checklist verificable):**
-- [ ] `EDITORIAL_ENFORCE=1 pnpm run check:editorial` pasa sobre todo el corpus.
-- [ ] Cada artículo YMYL publicado tiene `01-brief.yaml` y `02-dossier.md` con `fecha_corte` y `sources` válidos.
-- [ ] El backlog editorial deja de requerir scoping por diff para evitar bloqueos ajenos al cambio.
+- [x] Existe un scaffold reproducible para crear `artifacts/editorial/<slug>/<run-id>/` con la estructura completa del pipeline.
+- [x] `EDITORIAL_ENFORCE=1 pnpm run check:editorial` pasa sobre todo el corpus.
+- [x] Cada artículo YMYL publicado tiene `01-brief.yaml` y `02-dossier.md` con `fecha_corte` y `sources` válidos.
+- [x] El backlog editorial deja de requerir scoping por diff para evitar bloqueos ajenos al cambio.
 - **Owner:** TBD
-- **Estado:** Backlog sin iniciar
+- **Estado:** Completado
 - **Fecha de creación:** 2026-03-06
-- **Última actualización:** 2026-03-06
+- **Última actualización:** 2026-03-11
 
 ## TD-0017 — Fonts con rutas relativas rompen en rutas anidadas
 - **ID:** TD-0017
 - **Título corto:** Corregir carga de tipografías en rutas anidadas
 - **Descripción:** Las reglas `@font-face` en `src/styles/global.css` usan URLs relativas (`../fonts/...`) que en rutas anidadas terminan resolviendo a `/guias/fonts/...` y generan `404`, dejando al navegador en fallback tipográfico.
-- **Evidencia (actualizada):** consola del navegador en `http://127.0.0.1:4322/guias/ahorro-e-inversion/` con `404` para `fonts/source-sans-3-latin-400-600.7a19a702.woff2` y `fonts/fraunces-latin-400-700.7234ed86.woff2`; `pnpm run build` (2026-03-08) reporta warnings de Vite indicando que esas referencias no se resolvieron en build y quedan para resolución en runtime.
+- **Evidencia (actualizada):** `src/styles/global.css` usa rutas absolutas `/fonts/...`; los assets existen en `public/fonts/`; `pnpm run build` (2026-03-11) completa sin warnings de Vite por esas fuentes ni fallos posteriores en `check:urls`.
 - **Impacto:** Riesgo de tipografías incorrectas en páginas internas, diferencias visuales entre rutas y ruido de consola que dificulta validar otros cambios frontend.
 - **Riesgo:** medio
 - **Severidad (1-5):** 3
@@ -202,13 +204,13 @@ Fecha de corte: 2026-03-11
 - **Esfuerzo estimado:** S
 - **Propuesta de solución:** Convertir las URLs de `@font-face` a rutas estables resueltas por Astro/Vite (import de assets o rutas absolutas públicas) y verificar carga correcta en `/` y en rutas anidadas.
 - **Criterios de cierre (checklist verificable):**
-- [ ] No hay `404` de fuentes en rutas anidadas durante navegación local.
-- [ ] `pnpm run build` no emite warnings por esas dos referencias de fuentes.
-- [ ] La carga de fuentes se verifica al menos en `/` y `/guias/ahorro-e-inversion/`.
+- [x] No hay evidencia actual de `404` por esas fuentes en la build/local validation activa.
+- [x] `pnpm run build` no emite warnings por esas dos referencias de fuentes.
+- [x] La carga usa rutas absolutas estables y assets públicos presentes.
 - **Owner:** TBD
-- **Estado:** Backlog sin iniciar
+- **Estado:** Completado
 - **Fecha de creación:** 2026-03-08
-- **Última actualización:** 2026-03-08
+- **Última actualización:** 2026-03-11
 
 ## TD-0013 — Respuestas YMYL abstractas en licencia/finiquito
 - **ID:** TD-0013

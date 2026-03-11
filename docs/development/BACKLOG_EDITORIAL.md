@@ -45,14 +45,14 @@ Estos artículos están publicados (`draft: false`) pero no aparecían en ningú
 |---|---|---|---|---|
 | `ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026` | ahorro-e-inversion | 2026-02-28 | 2026-02-28 | Artículo pilar del cluster ahorro e inversión |
 | `como-cambiarse-de-afp` | pensiones-afp | 2026-02-23 | 2026-02-23 | OK |
-| `como-hacer-presupuesto-mensual-chile` | empleo-ingresos | 2026-03-03 | — | Sin `updatedDate` |
-| `cuanto-descuenta-la-afp-de-tu-sueldo` | pensiones-afp | 2026-02-23 | 2026-03-02 | Actualizado |
+| `como-hacer-presupuesto-mensual-chile` | empleo-ingresos | 2026-03-03 | 2026-03-11 | Sigue fuera del backlog formal; futuro hub `presupuesto-control-financiero` pendiente |
+| `cuanto-descuenta-la-afp-de-tu-sueldo` | sueldo-remuneraciones | 2026-02-23 | 2026-03-09 | Reubicado al cluster canónico de remuneraciones |
 | `finiquito-e-indemnizaciones-en-chile` | empleo-ingresos | 2026-03-02 | 2026-03-03 | YMYL — OK |
 | `fondos-afp-a-b-c-d-e` | pensiones-afp | 2026-02-23 | 2026-03-02 | Actualizado |
-| `que-es-el-apv` | ahorro-e-inversion | 2026-02-23 | — | Sin `updatedDate` (MDX) |
-| `que-es-el-ipc-chile-como-se-calcula` | empleo-ingresos | 2026-03-03 | — | Sin `updatedDate` |
-| `que-es-la-cuenta-2-afp` | pensiones-afp | 2026-02-23 | — | Sin `updatedDate` |
-| `reforma-previsional-2025-que-cambia-y-como-te-afecta` | pensiones-afp | 2026-03-03 | — | Sin `updatedDate`; alta relevancia YMYL |
+| `que-es-el-apv` | ahorro-e-inversion | 2026-02-23 | 2026-03-09 | Ownership APV explícito en ahorro e inversión |
+| `que-es-el-ipc-chile-como-se-calcula` | empleo-ingresos | 2026-03-03 | 2026-03-11 | Sigue fuera del backlog formal; futuro hub `uf-costo-de-vida` pendiente |
+| `que-es-la-cuenta-2-afp` | pensiones-afp | 2026-02-23 | 2026-03-09 | Actualizado |
+| `reforma-previsional-2025-que-cambia-y-como-te-afecta` | pensiones-afp | 2026-03-03 | 2026-03-11 | Actualizado; alta relevancia YMYL |
 | `suplantacion-identidad-creditos-no-reconocidos` | seguridad-financiera | 2026-03-02 | 2026-03-03 | OK |
 | `cae-costo-real-credito-chile` | deuda-credito | 2026-03-02 | 2026-03-04 | Artículo canónico de ED-009. Fusionado y actualizado. |
 

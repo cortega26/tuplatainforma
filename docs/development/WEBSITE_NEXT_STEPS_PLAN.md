@@ -102,14 +102,15 @@ Reducir deuda que hoy limita confiabilidad, enforcement global y velocidad de pu
 
 Items prioritarios:
 
-1. `TD-0016`: backfill de artefactos YMYL legacy.
-2. Normalizacion continua de `updatedDate` cuando haya refresh sustantivo real.
-3. Registro formal en backlog de articulos publicados fuera del audit original.
+1. `TD-0016`: backfill de artefactos YMYL legacy, partiendo por el scaffold reproducible y luego cerrando clusters por lote.
+2. Registro formal en backlog de articulos publicados fuera del audit original.
+3. `TD-0018` + `TD-0020`: limpiar warnings del content loader y cerrar el drift taxonomico que sigue pendiente para hubs futuros.
 
 Razon:
 
 - Sin cerrar esa deuda, el proyecto sigue dependiendo de enforcement por diff y conserva riesgo editorial invisible.
 - Esta fase mejora confianza interna y hace mas segura la expansion de Actualidad.
+- El trabajo de metadata ya no es el cuello de botella principal; la deuda restante es mas estructural que mecanica.
 
 Criterio de salida:
 
