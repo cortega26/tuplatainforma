@@ -65,7 +65,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.2",
     "@pagefind/default-ui": "^1.4.0",
-    "@shikijs/transformers": "^4.0.0",
+    "@shikijs/transformers": "^4.0.2",
     "@tailwindcss/typography": "^0.5.19",
     "@types/js-yaml": "^4.0.9",
     "@types/lodash.kebabcase": "^4.1.9",
