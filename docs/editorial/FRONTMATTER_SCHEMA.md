@@ -69,6 +69,7 @@ Trade-off editorial:
 - Permitido con warning fuera de clusters endurecidos, solo como transición o deuda editorial.
 - Bloqueado en clusters endurecidos para piezas `owner` o `support`.
 - Única excepción endurecida: pieza `reference` y `unlisted`, cuando funciona como nota metodológica o material auxiliar y no compite por ownership.
+- Si el owner canónico ya está decidido pero el cluster productivo todavía no existe, la transición debe quedar registrada además en `src/config/editorial-topic-policy.mjs` y `docs/editorial/TOPIC_OWNERSHIP_POLICY.md`; `general` por sí solo no documenta nada.
 
 ## Compatibilidad técnica actual
 

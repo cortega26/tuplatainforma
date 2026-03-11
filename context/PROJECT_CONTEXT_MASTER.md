@@ -42,6 +42,13 @@ Los riesgos principales están en deuda de mantenibilidad y consistencia operati
 - Quedan explicitadas dos separaciones futuras ya decididas semánticamente: `uf-costo-de-vida` y `presupuesto-control-financiero`, ambas aún sin hub productivo.
 - Se documenta que `empleo-ingresos` sigue siendo el contenedor operativo para cesantía/protección social mientras no exista evidencia suficiente para abrir un hub separado.
 
+### Checkpoint 2026-03-11 (TD-0020 Topic Ownership Alignment)
+
+- Se formaliza la diferencia entre `canonical owner` y `transitional placement` en `docs/editorial/TOPIC_OWNERSHIP_POLICY.md` y `src/config/editorial-topic-policy.mjs`.
+- `como-hacer-presupuesto-mensual-chile` y `que-es-el-ipc-chile-como-se-calcula` quedan registrados como transiciones válidas desde `empleo-ingresos` hacia `presupuesto-control-financiero` y `uf-costo-de-vida`, respectivamente.
+- `src/pages/guias/pensiones-afp/index.astro` consume un modelo explícito `core` vs `related`, dejando a APV fuera del núcleo AFP.
+- `pnpm run audit:topic-overlap` ahora resume placements transitorios y clasificaciones de hub, en vez de tratar `category: general` como silencio taxonómico aceptable.
+
 ## 1. Stack técnico
 
 ### Runtime y package management

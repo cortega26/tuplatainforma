@@ -9,6 +9,7 @@ import {
   allowsGeneralCategoryInCluster,
   getAllowedCategoriesForCluster,
   getCanonicalTopicEntry,
+  getTransitionalOwnershipEntry,
 } from "../src/config/editorial-topic-policy.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -283,10 +284,16 @@ for (const filePath of files) {
           `Category "general" is blocked in hardened cluster "${cluster}" unless the article is an unlisted reference.`
         );
       } else {
+        const documentedTransition =
+          typeof frontmatter.slug === "string"
+            ? getTransitionalOwnershipEntry(frontmatter.slug)
+            : null;
         pushIssue(
           warnings,
           relativeFilePath,
-          `Category "general" inside cluster "${cluster}" is tolerated only for explicit reference/editorial debt; review taxonomy.`
+          documentedTransition
+            ? `Category "general" inside cluster "${cluster}" is a documented transitional placement toward "${documentedTransition.canonicalOwnerCluster}"; do not normalize it as definitive taxonomy before "${documentedTransition.targetHubPath}" exists.`
+            : `Category "general" inside cluster "${cluster}" is tolerated only for explicit reference/editorial debt; review taxonomy.`
         );
       }
     } else {

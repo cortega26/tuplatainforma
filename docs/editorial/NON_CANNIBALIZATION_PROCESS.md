@@ -8,6 +8,7 @@ Autoridad aplicable:
 3. `context/INVARIANTS.md`
 4. `context/CONTRACTS.md`
 5. `docs/editorial/SEO_ARCHITECTURE.md`
+6. `docs/editorial/TOPIC_OWNERSHIP_POLICY.md`
 
 Invariantes preservados:
 - `URL.PUBLIC.NO_POST_ID`
@@ -155,6 +156,13 @@ Campos que siguen fuera del contrato mínimo por ahora:
 Razón: agregan costo editorial y mantenimiento, pero todavía no entregan suficiente ROI como para endurecerlos.
 
 La convención `<!-- META: keyword_primary="..." | intent="..." | cluster="..." -->` queda como insumo transicional de auditoría, no como contrato canónico.
+
+## 5.1 Ownership canónico vs placement transitorio
+
+- El owner canónico de una URL se define por la necesidad dominante, no por el cluster operativo donde hoy quedó publicada.
+- Un `transitional placement` solo es válido si el owner futuro está documentado en `docs/editorial/TOPIC_OWNERSHIP_POLICY.md`, `docs/research/seo/strategy/topic_ownership_matrix.md` y `src/config/editorial-topic-policy.mjs`.
+- Un hub no puede absorber como `core` una URL cuyo owner canónico vive fuera de su cluster; en esos casos solo se permite `related`.
+- `category: general` no puede ocultar indefinidamente un owner ya decidido. Si persiste, `pnpm run audit:topic-overlap` debe tratarlo como transición documentada o como incoherencia real.
 
 ## 6. Implantación técnica mínima con ROI real
 

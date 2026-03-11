@@ -96,20 +96,20 @@ Fecha de corte: 2026-03-11
 - **ID:** TD-0020
 - **Título corto:** Alinear ownership editorial entre cluster, category y hubs
 - **Descripción:** El corpus actual tiene piezas cuyo `cluster`, `category` y posicionamiento en hubs no cuentan la misma historia editorial. El caso más claro es `que-es-el-apv` (frontera ahorro/previsión). Además, `como-hacer-presupuesto-mensual-chile` e `que-es-el-ipc-chile-como-se-calcula` siguen en `cluster: empleo-ingresos` con `category: general` porque sus casas semánticas definitivas (`presupuesto-control-financiero` y `uf-costo-de-vida`) ya están decididas conceptualmente, pero aún no existen como clusters/hubs productivos.
-- **Evidencia (actualizada):** APV ya tiene ownership explícito en `docs/research/seo/strategy/topic_ownership_matrix.md` y el hub `src/pages/guias/pensiones-afp/index.astro` lo trata como asset relacionado fuera del core AFP; siguen abiertos `como-hacer-presupuesto-mensual-chile` y `que-es-el-ipc-chile-como-se-calcula` con `category: general`, `cluster: empleo-ingresos` hasta que existan los hubs futuros `presupuesto-control-financiero` y `uf-costo-de-vida`.
+- **Evidencia (actualizada):** el repo ahora separa `canonical owner` vs `transitional placement` en `docs/editorial/TOPIC_OWNERSHIP_POLICY.md` y `src/config/editorial-topic-policy.mjs`; `src/pages/guias/pensiones-afp/index.astro` consume un modelo explícito `core` vs `related`; `pnpm run audit:topic-overlap` resume placements transitorios y clasificaciones de hub sin reinterpretar `category: general` como owner definitivo.
 - **Impacto:** Riesgo de crecimiento editorial inconsistente, interlinking ambiguo y mayor probabilidad de canibalización a medida que se agreguen nuevas URLs.
 - **Riesgo:** medio
 - **Severidad (1-5):** 3
 - **Urgencia:** P2
 - **Esfuerzo estimado:** M
-- **Propuesta de solución:** mantener APV con ownership canónico en `ahorro-e-inversion` y seguir alineando hubs/copy a esa decisión; no "corregir" `presupuesto` ni `IPC` dentro de `empleo-ingresos` con metadata artificial. Resolver esas dos piezas cuando se abra el cluster/hub correspondiente y recién ahí alinear `cluster`, `category`, hubs y metadata de intención.
+- **Propuesta de solución:** mantener APV con ownership canónico en `ahorro-e-inversion`; documentar presupuesto e IPC como placements transitorios explícitos; y endurecer la auditoría para distinguir owner real, related hub treatment y transición válida sin falsos arreglos de metadata.
 - **Criterios de cierre (checklist verificable):**
 - [x] APV tiene ownership explícito y consistente entre hub, cluster y category.
-- [ ] `como-hacer-presupuesto-mensual-chile` migra a `presupuesto-control-financiero` cuando exista cluster/hub productivo.
-- [ ] `que-es-el-ipc-chile-como-se-calcula` migra a `uf-costo-de-vida` cuando exista cluster/hub productivo.
-- [ ] `pnpm run audit:topic-overlap` deja de reportar incoherencias taxonómicas activas para estas piezas.
+- [x] `como-hacer-presupuesto-mensual-chile` queda documentado como transición hacia `presupuesto-control-financiero` con condición concreta de migración.
+- [x] `que-es-el-ipc-chile-como-se-calcula` queda documentado como transición hacia `uf-costo-de-vida` con condición concreta de migración.
+- [x] `pnpm run audit:topic-overlap` distingue transición válida, core vs related y uso indebido de `category: general`.
 - **Owner:** TBD
-- **Estado:** En progreso
+- **Estado:** Completado
 - **Fecha de creación:** 2026-03-09
 - **Última actualización:** 2026-03-11
 

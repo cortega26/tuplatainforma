@@ -36,7 +36,7 @@ Resolver la taxonomía semántica y la estrategia de hubs antes de seguir expand
 |---|---|---|
 | `sueldo-remuneraciones` | `/guias/sueldo-remuneraciones/` | Sueldo líquido, liquidación, descuentos, impuesto único, remuneraciones mensuales |
 | `empleo-ingresos` | `/guias/empleo-ingresos/` | Contingencias laborales: cesantía, licencia, finiquito, interrupción de caja |
-| `pensiones-afp` | `/guias/pensiones-afp/` | AFP, fondos, APV, Cuenta 2, decisiones previsionales |
+| `pensiones-afp` | `/guias/pensiones-afp/` | AFP obligatoria, fondos, Cuenta 2 y decisiones previsionales; APV solo como asset relacionado cuando aporta comparación |
 | `ahorro-e-inversion` | `/guias/ahorro-e-inversion/` | Instrumentos, costos, impuestos y horizonte de inversión |
 | `impuestos-personas` | `/guias/impuestos-personas/` | Operación Renta y obligaciones tributarias de personas |
 | `deuda-credito` | `/guias/deuda-credito/` | Crédito, deuda, renegociación, CAE y costo financiero |
@@ -74,9 +74,9 @@ Resolver la taxonomía semántica y la estrategia de hubs antes de seguir expand
 
 ### Regla APV
 
-- `APV` pertenece canónicamente a `pensiones-afp` cuando la intención es previsional o tributaria del beneficio.
-- `APV` se cruza hacia `ahorro-e-inversion` solo cuando la pregunta es comparativa contra otros instrumentos o construcción de portafolio.
-- No se duplica un pilar APV en ambos clusters.
+- `APV` pertenece canónicamente a `ahorro-e-inversion` porque la intención dominante es elegir un instrumento de ahorro con beneficio tributario.
+- `pensiones-afp` puede enlazar APV solo como `related` cuando la comparación con Cuenta 2 o decisiones previsionales vecinas aporta contexto.
+- No se duplica un pilar APV en ambos clusters ni se trata APV como core AFP por proximidad temática.
 
 ## Cuándo un tema se convierte en cada tipo de activo
 

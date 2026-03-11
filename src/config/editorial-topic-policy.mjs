@@ -82,6 +82,41 @@ export const CANONICAL_TOPIC_REGISTRY = {
   },
 };
 
+export const TRANSITIONAL_OWNERSHIP_REGISTRY = {
+  "como-hacer-presupuesto-mensual-chile": {
+    currentCluster: "empleo-ingresos",
+    currentCategory: "general",
+    canonicalOwnerCluster: "presupuesto-control-financiero",
+    canonicalTopic: "presupuesto-mensual-control-financiero",
+    targetHubPath: "/guias/presupuesto-control-financiero/",
+    migrationCondition:
+      "Migrar solo cuando exista el hub productivo /guias/presupuesto-control-financiero/ y al menos un activo satelite o herramienta adicional que convierta la URL actual en core real del cluster.",
+    rationale:
+      "La intencion dominante es habito y control financiero del hogar, no continuidad de ingreso laboral ni contingencia de empleo.",
+  },
+  "que-es-el-ipc-chile-como-se-calcula": {
+    currentCluster: "empleo-ingresos",
+    currentCategory: "general",
+    canonicalOwnerCluster: "uf-costo-de-vida",
+    canonicalTopic: "ipc-inflacion-costo-de-vida",
+    targetHubPath: "/guias/uf-costo-de-vida/",
+    migrationCondition:
+      "Migrar solo cuando exista el hub productivo /guias/uf-costo-de-vida/ y al menos un activo satelite o herramienta adicional que ordene la relacion entre IPC, UF y costo de vida.",
+    rationale:
+      "La necesidad primaria es entender inflacion, reajuste y bolsillo; no pertenece editorialmente al cluster de contingencias laborales.",
+  },
+};
+
+export function getTransitionalOwnershipEntry(slug) {
+  return TRANSITIONAL_OWNERSHIP_REGISTRY[slug] ?? null;
+}
+
+export function isDocumentedTransitionalPlacement({ slug, cluster, category }) {
+  const entry = getTransitionalOwnershipEntry(slug);
+  if (!entry) return false;
+  return entry.currentCluster === cluster && entry.currentCategory === category;
+}
+
 export function isHardenedOwnershipCluster(cluster) {
   return HARDENED_OWNERSHIP_CLUSTERS.includes(cluster);
 }

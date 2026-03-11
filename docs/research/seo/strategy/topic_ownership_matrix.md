@@ -7,11 +7,15 @@ Objetivo: fijar ownership editorial por intención para reducir canibalización,
 ## Reglas
 
 - `canonical topic owner`: URL principal para la intención dominante.
+- `canonical owner cluster`: cluster editorial que posee la intención, aunque la URL siga alojada transitoriamente en otro cluster operativo.
 - `supporting`: URL complementaria que no debe intentar rankear por la misma query head.
+- `related`: asset enlazado por cercanía temática, sin absorber ownership del topic.
 - `hub`: página de entrada y distribución, no reemplaza una guía o comparativa específica.
+- `transitional placement`: ubicación operativa temporal que no redefine la casa editorial real.
 - Si una pieza no cabe con claridad en una fila, no se publica hasta definir ownership.
+- Si una pieza ya tiene owner canónico decidido, `category: general` solo puede sobrevivir como estado transitorio documentado, nunca como clasificación conceptual final.
 
-| Cluster | Topic / necesidad dominante | Canonical topic owner | Supporting / complementos | Notas operativas |
+| Canonical owner cluster | Topic / necesidad dominante | Canonical topic owner | Supporting / complementos | Notas operativas |
 |---|---|---|---|---|
 | `sueldo-remuneraciones` | calcular sueldo líquido y entender el número final | `/calculadoras/sueldo-liquido/` para intent funcional; `/posts/como-calcular-sueldo-liquido/` para intent explicativo | `/posts/descuentos-de-sueldo/`, `/posts/liquidacion-de-sueldo/`, `/posts/cuanto-descuenta-la-afp-de-tu-sueldo/` | No reutilizar `sueldo líquido` como keyword head en piezas soporte |
 | `sueldo-remuneraciones` | leer una liquidación y auditar líneas | `/posts/liquidacion-de-sueldo/` | `/posts/descuentos-de-sueldo/`, `/posts/como-calcular-sueldo-liquido/` | H1 y snippet deben hablar de documento/comprobante, no de cálculo completo |
@@ -36,6 +40,8 @@ Objetivo: fijar ownership editorial por intención para reducir canibalización,
 | `seguridad-financiera` | cargo no reconocido / restitución | `/posts/fraude-tarjeta-que-hacer/` | `/posts/estafas-financieras-chile-vishing-smishing-marketplace/`, `/posts/suplantacion-identidad-creditos-no-reconocidos/` | Restitución reactiva, no prevención general |
 | `seguridad-financiera` | prevención por canal | `/posts/estafas-financieras-chile-vishing-smishing-marketplace/` | fraude tarjeta | Foco preventivo |
 | `seguridad-financiera` | suplantación + créditos no reconocidos | `/posts/suplantacion-identidad-creditos-no-reconocidos/` | informe CMF, fraude tarjeta | Caso de identidad/deuda, no fraude transaccional puro |
+| `presupuesto-control-financiero` | presupuesto mensual y control de gasto hogar | `/posts/como-hacer-presupuesto-mensual-chile/` | `/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/` | Owner canónico ya decidido. La URL sigue en `cluster: empleo-ingresos`, `category: general` solo como `transitional placement` hasta que exista `/guias/presupuesto-control-financiero/` y al menos un activo satélite o herramienta adicional del mismo cluster |
+| `uf-costo-de-vida` | IPC, inflación y lectura del costo de vida | `/posts/que-es-el-ipc-chile-como-se-calcula/` | `/posts/que-es-la-uf/`, `/calculadoras/conversor-uf/`, `/calculadoras/reajuste-arriendo/` | Owner canónico ya decidido. La URL sigue en `cluster: empleo-ingresos`, `category: general` solo como `transitional placement` hasta que exista `/guias/uf-costo-de-vida/` y al menos un activo satélite o herramienta adicional que ordene IPC + UF + bolsillo |
 
 ## Uso operativo
 

@@ -4,42 +4,9 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import { getPath } from "@/utils/getPath";
+import { getHubArticleAssignments } from "@/config/editorial-hub-model.mjs";
 
-const articulosSeccion = [
-  {
-    titulo: "¿Puedo cambiarme de AFP? Cómo hacerlo y qué considerar en 2026",
-    resumen:
-      "Explica qué mirar antes de cambiarte, cómo hacerlo y qué errores evitar.",
-    href: getPath("/posts/como-cambiarse-de-afp/"),
-  },
-  {
-    titulo:
-      "Descuento AFP en tu sueldo: cotización obligatoria, comisión y cómo revisarlo",
-    resumen:
-      "Desglosa la línea AFP de la liquidación sin mezclarla con el resto del cálculo del sueldo líquido.",
-    href: getPath("/posts/cuanto-descuenta-la-afp-de-tu-sueldo/"),
-  },
-  {
-    titulo: "Fondos AFP A, B, C, D y E: diferencias, riesgo y cuál te conviene",
-    resumen:
-      "Explica las diferencias entre fondos y cuál puede calzar mejor con tu edad y tolerancia al riesgo.",
-    href: getPath("/posts/fondos-afp-a-b-c-d-e/"),
-  },
-  {
-    titulo: "Cuenta 2 de la AFP: ahorro flexible, retiros e impuestos",
-    resumen:
-      "Explica cuándo sirve como ahorro flexible y cómo se diferencia del APV por liquidez e impuestos.",
-    href: getPath("/posts/que-es-la-cuenta-2-afp/"),
-  },
-  {
-    titulo: "Reforma previsional 2025: qué cambia, cuándo y cómo te afecta",
-    resumen:
-      "Resume qué ya rige, qué entra por etapas y qué no debería confundirse con descuentos al trabajador.",
-    href: getPath(
-      "/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/"
-    ),
-  },
-];
+const hubAssignments = getHubArticleAssignments("pensiones-afp");
 ---
 
 <Layout
@@ -68,18 +35,20 @@ const articulosSeccion = [
       <h2 class="mb-4 text-2xl font-bold">Temas que puedes revisar</h2>
       <ul class="grid gap-4">
         {
-          articulosSeccion.map(item => (
-            <li class="rounded-xl border border-border p-5">
-              <h3 class="mb-2 text-lg font-semibold">{item.titulo}</h3>
-              <p class="mb-3 text-sm text-secondary">{item.resumen}</p>
-              <a
-                href={item.href}
-                class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
-              >
-                Leer artículo
-              </a>
-            </li>
-          ))
+          hubAssignments.core.map(
+            (item: (typeof hubAssignments.core)[number]) => (
+              <li class="rounded-xl border border-border p-5">
+                <h3 class="mb-2 text-lg font-semibold">{item.title}</h3>
+                <p class="mb-3 text-sm text-secondary">{item.summary}</p>
+                <a
+                  href={getPath(item.href)}
+                  class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+                >
+                  Leer artículo
+                </a>
+              </li>
+            )
+          )
         }
       </ul>
     </section>
@@ -143,23 +112,24 @@ const articulosSeccion = [
       <h2 class="mb-4 text-2xl font-bold">
         Relacionado, pero fuera del núcleo AFP
       </h2>
-      <div class="rounded-xl border border-border p-5">
-        <h3 class="mb-2 text-lg font-semibold">
-          APV: ahorro con beneficio tributario
-        </h3>
-        <p class="mb-3 text-sm text-secondary">
-          Lo enlazamos porque mucha gente compara APV con Cuenta 2, pero su
-          ownership principal está en ahorro e inversión: la pregunta base es
-          qué instrumento te conviene para ahorrar mejor, no cómo funciona tu
-          AFP obligatoria.
-        </p>
-        <a
-          href={getPath("/posts/que-es-el-apv/")}
-          class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
-        >
-          Ir a la guía de APV
-        </a>
-      </div>
+      {
+        hubAssignments.related.map(
+          (item: (typeof hubAssignments.related)[number]) => (
+            <div class="rounded-xl border border-border p-5">
+              <h3 class="mb-2 text-lg font-semibold">{item.title}</h3>
+              <p class="mb-3 text-sm text-secondary">
+                {item.summary} {item.rationale}
+              </p>
+              <a
+                href={getPath(item.href)}
+                class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+              >
+                Ir a la guía relacionada
+              </a>
+            </div>
+          )
+        )
+      }
     </section>
 
     <section class="py-8">

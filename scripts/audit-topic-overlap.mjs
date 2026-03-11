@@ -6,7 +6,10 @@ import {
   HARDENED_OWNERSHIP_CLUSTERS,
   getAllowedCategoriesForCluster,
   getCanonicalTopicEntry,
+  getTransitionalOwnershipEntry,
+  isDocumentedTransitionalPlacement,
 } from "../src/config/editorial-topic-policy.mjs";
+import { HUB_ARTICLE_ASSIGNMENTS } from "../src/config/editorial-hub-model.mjs";
 
 const REPO_ROOT = process.cwd();
 const BLOG_DIR = path.join(REPO_ROOT, "src", "data", "blog");
@@ -133,6 +136,7 @@ function readArticle(filePath) {
     category: frontmatter.category,
     cluster: frontmatter.cluster,
     draft: frontmatter.draft ?? false,
+    unlisted: frontmatter.unlisted ?? false,
     topicRole:
       typeof frontmatter.topicRole === "string" ? frontmatter.topicRole : "",
     canonicalTopic:
@@ -244,8 +248,10 @@ function formatPair(candidate) {
 
 const files = listMarkdownFiles(BLOG_DIR);
 const articles = files.map(readArticle);
+const articlesBySlug = new Map(articles.map(article => [article.slug, article]));
 
 const metadataWarnings = [];
+const transitionalPlacements = [];
 for (const article of articles) {
   if (
     article.draft !== true &&
@@ -285,6 +291,45 @@ for (const article of articles) {
   ) {
     metadataWarnings.push(
       `[metadata] ${article.file}: META cluster="${article.metaCluster}" differs from frontmatter cluster="${article.cluster}"`
+    );
+  }
+
+  const transitionalEntry = getTransitionalOwnershipEntry(article.slug);
+  if (transitionalEntry) {
+    if (
+      !isDocumentedTransitionalPlacement({
+        slug: article.slug,
+        cluster: article.cluster,
+        category: article.category,
+      })
+    ) {
+      metadataWarnings.push(
+        `[transitional] ${article.file}: documented transitional placement expects cluster="${transitionalEntry.currentCluster}" and category="${transitionalEntry.currentCategory}", found cluster="${article.cluster}" and category="${article.category}"`
+      );
+    } else {
+      transitionalPlacements.push(
+        [
+          article.slug,
+          `current=${article.cluster}/${article.category}`,
+          `canonical=${transitionalEntry.canonicalOwnerCluster}`,
+          `topic=${transitionalEntry.canonicalTopic}`,
+          `target=${transitionalEntry.targetHubPath}`,
+        ].join(" | ")
+      );
+    }
+
+    if (article.topicRole || article.canonicalTopic) {
+      metadataWarnings.push(
+        `[transitional] ${article.file}: transitional article should not declare hardened-style ownership metadata until it reaches its canonical cluster`
+      );
+    }
+  } else if (
+    article.draft !== true &&
+    article.category === "general" &&
+    !(article.unlisted === true && article.topicRole === "reference")
+  ) {
+    metadataWarnings.push(
+      `[taxonomy] ${article.file}: category="general" requires a documented transitional placement or an explicit unlisted reference rationale`
     );
   }
 }
@@ -341,6 +386,76 @@ for (const cluster of HARDENED_OWNERSHIP_CLUSTERS) {
   }
 }
 
+const hubWarnings = [];
+const hubOwnershipSummary = [];
+for (const [hubCluster, assignments] of Object.entries(HUB_ARTICLE_ASSIGNMENTS)) {
+  const duplicateAssignments = new Set();
+  const seenSlugs = new Set();
+  for (const bucket of ["core", "related"]) {
+    for (const item of assignments[bucket]) {
+      if (seenSlugs.has(item.slug)) duplicateAssignments.add(item.slug);
+      seenSlugs.add(item.slug);
+    }
+  }
+
+  if (duplicateAssignments.size > 0) {
+    hubWarnings.push(
+      `[hub] ${hubCluster}: duplicated slug assignments detected (${[...duplicateAssignments].join(", ")})`
+    );
+  }
+
+  for (const item of assignments.core) {
+    const article = articlesBySlug.get(item.slug);
+    if (!article) {
+      hubWarnings.push(
+        `[hub-core] ${hubCluster}: slug "${item.slug}" is declared in hub config but no article was found`
+      );
+      continue;
+    }
+
+    const transitionalEntry = getTransitionalOwnershipEntry(article.slug);
+    const coreMatchesOwner =
+      article.cluster === hubCluster ||
+      transitionalEntry?.canonicalOwnerCluster === hubCluster;
+
+    if (!coreMatchesOwner) {
+      hubWarnings.push(
+        `[hub-core] ${hubCluster}: "${item.slug}" is marked core but its canonical owner is "${transitionalEntry?.canonicalOwnerCluster ?? article.cluster}"`
+      );
+    }
+  }
+
+  for (const item of assignments.related) {
+    const article = articlesBySlug.get(item.slug);
+    if (!article) {
+      hubWarnings.push(
+        `[hub-related] ${hubCluster}: slug "${item.slug}" is declared in hub config but no article was found`
+      );
+      continue;
+    }
+
+    const transitionalEntry = getTransitionalOwnershipEntry(article.slug);
+    const relatedMatchesForeignOwner =
+      article.cluster !== hubCluster ||
+      (transitionalEntry &&
+        transitionalEntry.canonicalOwnerCluster !== hubCluster);
+
+    if (!relatedMatchesForeignOwner) {
+      hubWarnings.push(
+        `[hub-related] ${hubCluster}: "${item.slug}" is marked related but still resolves to the same canonical owner cluster`
+      );
+    }
+  }
+
+  hubOwnershipSummary.push(
+    [
+      hubCluster,
+      `core=${assignments.core.map(item => item.slug).join(",") || "-"}`,
+      `related=${assignments.related.map(item => item.slug).join(",") || "-"}`,
+    ].join(" | ")
+  );
+}
+
 const candidates = [];
 for (let index = 0; index < articles.length; index += 1) {
   for (let otherIndex = index + 1; otherIndex < articles.length; otherIndex += 1) {
@@ -366,9 +481,33 @@ for (const line of ownershipSummary) {
 }
 console.log("");
 
+console.log("[audit-topic-overlap] Transitional placement summary");
+if (transitionalPlacements.length === 0) {
+  console.log("- none");
+} else {
+  for (const line of transitionalPlacements) {
+    console.log(`- ${line}`);
+  }
+}
+console.log("");
+
+console.log("[audit-topic-overlap] Hub ownership summary");
+for (const line of hubOwnershipSummary) {
+  console.log(`- ${line}`);
+}
+console.log("");
+
 if (metadataWarnings.length > 0) {
   console.log("[audit-topic-overlap] Metadata and taxonomy warnings");
   for (const warning of metadataWarnings) {
+    console.log(`- ${warning}`);
+  }
+  console.log("");
+}
+
+if (hubWarnings.length > 0) {
+  console.log("[audit-topic-overlap] Hub ownership warnings");
+  for (const warning of hubWarnings) {
     console.log(`- ${warning}`);
   }
   console.log("");
