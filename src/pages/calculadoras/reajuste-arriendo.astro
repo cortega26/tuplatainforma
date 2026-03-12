@@ -452,7 +452,7 @@ const economicSourceLabel =
       headerSub.className = "mt-1 text-sm text-muted";
       headerSub.textContent = `${arriendoUF.toLocaleString("es-CL", {
         minimumFractionDigits: 2,
-      })} UF × $${Math.round(ufHoy).toLocaleString("es-CL")}`;
+      })} UF × ${fmt(ufHoy)}`;
       header.append(headerTitle, headerValue, headerSub);
 
       const note = document.createElement("p");
