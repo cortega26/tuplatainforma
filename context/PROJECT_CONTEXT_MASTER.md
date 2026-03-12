@@ -49,6 +49,13 @@ Los riesgos principales están en deuda de mantenibilidad y consistencia operati
 - `src/pages/guias/pensiones-afp/index.astro` consume un modelo explícito `core` vs `related`, dejando a APV fuera del núcleo AFP.
 - `pnpm run audit:topic-overlap` ahora resume placements transitorios y clasificaciones de hub, en vez de tratar `category: general` como silencio taxonómico aceptable.
 
+### Checkpoint 2026-03-12 (TD-0021 Shared Payroll Taxable Base)
+
+- `sueldo-liquido` y `apv` ya no reconstruyen deducciones por separado: ambos consumen `src/application/use-cases/CalculateMonthlyPayrollBase.ts`.
+- `EconomicParameters` incorpora `previsionalTopes.pensionAndHealthMonthlyTaxableCapUf`, mientras `afcTopes.monthlyTaxableCapUf` se fija en `135,2 UF`; el snapshot económico y el provider quedan alineados con ese contrato.
+- Las calculadoras exponen imponible mensual opcional y tipo de contrato, haciendo explícito cuándo el bruto total se usa como aproximación rápida.
+- ADR de respaldo: `docs/adr/ADR-20260312-shared-payroll-taxable-base.md`.
+
 ## 1. Stack técnico
 
 ### Runtime y package management

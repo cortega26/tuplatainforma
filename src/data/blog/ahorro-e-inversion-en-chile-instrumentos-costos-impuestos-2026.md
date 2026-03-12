@@ -157,4 +157,4 @@ No. Es contenido educativo y no reemplaza asesoría profesional para tu situaci�
 
 ---
 
-*Esto es contenido informativo y no reemplaza asesoría financiera o tributaria personalizada.*
+_Esto es contenido informativo y no reemplaza asesoría financiera o tributaria personalizada._

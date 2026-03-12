@@ -1,19 +1,34 @@
 import type { EconomicParameters } from "@/domain/economic/EconomicParameters";
 import { calculateSecondCategoryTax } from "@/domain/taxation/TaxEngine";
+import {
+  calculateMonthlyPayrollBase,
+  type PayrollContractType,
+} from "@/application/use-cases/CalculateMonthlyPayrollBase";
 
 export interface NetSalaryInput {
   grossSalary: number;
+  taxableSalary?: number;
   afpRatePercent: number;
   healthSystem: "fonasa" | "isapre";
   isapreAdditionalPercent?: number;
-  unemploymentInsuranceRatePercent?: number;
-  economicParameters: Pick<EconomicParameters, "utm">;
+  contractType?: PayrollContractType;
+  economicParameters: Pick<
+    EconomicParameters,
+    "uf" | "utm" | "afcTopes" | "previsionalTopes"
+  >;
 }
 
 export interface NetSalaryOutput {
   grossSalary: number;
+  taxableSalary: number;
+  nonTaxableIncome: number;
   taxableBase: number;
   netSalary: number;
+  contractType: PayrollContractType;
+  cappedBases: {
+    pensionAndHealth: number;
+    unemploymentInsurance: number;
+  };
   deductions: {
     afp: number;
     health: number;
@@ -52,46 +67,60 @@ function assertInput(input: NetSalaryInput): void {
   ) {
     throw new Error("isapreAdditionalPercent must be >= 0 when provided.");
   }
+  if (
+    !Number.isFinite(input.economicParameters.uf) ||
+    input.economicParameters.uf <= 0
+  ) {
+    throw new Error(
+      "economicParameters.uf must be a finite number greater than 0."
+    );
+  }
 }
 
 export function calculateNetSalary(input: NetSalaryInput): NetSalaryOutput {
   assertInput(input);
 
-  const afpPercent = input.afpRatePercent / 100;
-  const isapreAdditionalPercent =
-    input.healthSystem === "isapre" ? (input.isapreAdditionalPercent ?? 0) : 0;
-  const healthPercent = 0.07 + isapreAdditionalPercent / 100;
-  const unemploymentInsurancePercent =
-    (input.unemploymentInsuranceRatePercent ?? 0.6) / 100;
-
-  const afp = input.grossSalary * afpPercent;
-  const health = input.grossSalary * healthPercent;
-  const unemploymentInsurance =
-    input.grossSalary * unemploymentInsurancePercent;
-  const taxableBase = Math.max(0, input.grossSalary - afp - health);
+  const payroll = calculateMonthlyPayrollBase({
+    grossSalary: input.grossSalary,
+    taxableSalary: input.taxableSalary,
+    afpRatePercent: input.afpRatePercent,
+    healthSystem: input.healthSystem,
+    isapreAdditionalPercent: input.isapreAdditionalPercent,
+    contractType: input.contractType,
+    economicParameters: input.economicParameters,
+  });
+  const taxableBase = payroll.incomeTaxBase;
   const taxResult = calculateSecondCategoryTax({
     taxableIncome: taxableBase,
     utm: input.economicParameters.utm,
   });
   const totalDeductions =
-    afp + health + unemploymentInsurance + taxResult.taxAmount;
+    payroll.deductions.afp +
+    payroll.deductions.health +
+    payroll.deductions.unemploymentInsurance +
+    taxResult.taxAmount;
   const netSalary = input.grossSalary - totalDeductions;
 
   return {
     grossSalary: input.grossSalary,
+    taxableSalary: payroll.taxableSalary,
+    nonTaxableIncome: payroll.nonTaxableIncome,
     taxableBase,
     netSalary,
+    contractType: payroll.contractType,
+    cappedBases: payroll.cappedBases,
     deductions: {
-      afp,
-      health,
-      unemploymentInsurance,
+      afp: payroll.deductions.afp,
+      health: payroll.deductions.health,
+      unemploymentInsurance: payroll.deductions.unemploymentInsurance,
       tax: taxResult.taxAmount,
       total: totalDeductions,
     },
     effectiveRates: {
-      afpPercent: afpPercent * 100,
-      healthPercent: healthPercent * 100,
-      unemploymentInsurancePercent: unemploymentInsurancePercent * 100,
+      afpPercent: payroll.effectiveRates.afpPercent,
+      healthPercent: payroll.effectiveRates.healthPercent,
+      unemploymentInsurancePercent:
+        payroll.effectiveRates.unemploymentInsurancePercent,
       marginalTaxPercent: taxResult.marginalRate * 100,
       totalDeductionPercent: (totalDeductions / input.grossSalary) * 100,
     },

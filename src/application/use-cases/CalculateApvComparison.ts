@@ -1,20 +1,37 @@
 import type { EconomicParameters } from "@/domain/economic/EconomicParameters";
 import { calculateSecondCategoryTax } from "@/domain/taxation/TaxEngine";
+import {
+  calculateMonthlyPayrollBase,
+  type PayrollContractType,
+} from "@/application/use-cases/CalculateMonthlyPayrollBase";
 
 export interface ApvComparisonInput {
   grossSalary: number;
+  taxableSalary?: number;
   monthlyApvContribution: number;
   annualDirectApvContribution?: number;
   afpRatePercent: number;
   healthSystem: "fonasa" | "isapre";
   isapreAdditionalPercent?: number;
-  economicParameters: Pick<EconomicParameters, "uf" | "utm">;
+  contractType?: PayrollContractType;
+  economicParameters: Pick<
+    EconomicParameters,
+    "uf" | "utm" | "afcTopes" | "previsionalTopes"
+  >;
 }
 
 export interface ApvComparisonOutput {
+  grossSalary: number;
+  taxableSalary: number;
+  nonTaxableIncome: number;
   taxableBase: number;
   taxWithoutApv: number;
   marginalRate: number;
+  contractType: PayrollContractType;
+  cappedBases: {
+    pensionAndHealth: number;
+    unemploymentInsurance: number;
+  };
   regimeA: {
     monthlyContributionForMaxBonus: number;
     annualContributionForMaxBonus: number;
@@ -105,17 +122,16 @@ export function calculateApvComparison(
   assertInput(input);
 
   const annualDirectApvContribution = input.annualDirectApvContribution ?? 0;
-  const afpPercent = input.afpRatePercent / 100;
-  const isapreAdditionalPercent =
-    input.healthSystem === "isapre" ? (input.isapreAdditionalPercent ?? 0) : 0;
-  const healthPercent = 0.07 + isapreAdditionalPercent / 100;
-
-  const afpDeduction = input.grossSalary * afpPercent;
-  const healthDeduction = input.grossSalary * healthPercent;
-  const taxableBase = Math.max(
-    0,
-    input.grossSalary - afpDeduction - healthDeduction
-  );
+  const payroll = calculateMonthlyPayrollBase({
+    grossSalary: input.grossSalary,
+    taxableSalary: input.taxableSalary,
+    afpRatePercent: input.afpRatePercent,
+    healthSystem: input.healthSystem,
+    isapreAdditionalPercent: input.isapreAdditionalPercent,
+    contractType: input.contractType,
+    economicParameters: input.economicParameters,
+  });
+  const taxableBase = payroll.incomeTaxBase;
 
   const taxWithoutApv = calculateSecondCategoryTax({
     taxableIncome: taxableBase,
@@ -206,9 +222,14 @@ export function calculateApvComparison(
         : "B";
 
   return {
+    grossSalary: input.grossSalary,
+    taxableSalary: payroll.taxableSalary,
+    nonTaxableIncome: payroll.nonTaxableIncome,
     taxableBase,
     taxWithoutApv: taxWithoutApv.taxAmount,
     marginalRate: taxWithoutApv.marginalRate,
+    contractType: payroll.contractType,
+    cappedBases: payroll.cappedBases,
     regimeA: {
       monthlyContributionForMaxBonus,
       annualContributionForMaxBonus,

@@ -11,7 +11,10 @@ const validParameters: EconomicParameters = {
   ipc: 0.4,
   tmc: 3.49,
   afcTopes: {
-    monthlyTaxableCapUf: 131.9,
+    monthlyTaxableCapUf: 135.2,
+  },
+  previsionalTopes: {
+    pensionAndHealthMonthlyTaxableCapUf: 90,
   },
   lastUpdated: "2026-02-27",
   source: "live",
@@ -49,5 +52,18 @@ describe("EconomicParameters.assertEconomicParameters", () => {
         },
       })
     ).toThrow("afcTopes.monthlyTaxableCapUf must be a finite number greater than 0.");
+  });
+
+  it("rejects invalid previsionalTopes values", () => {
+    expect(() =>
+      assertEconomicParameters({
+        ...validParameters,
+        previsionalTopes: {
+          pensionAndHealthMonthlyTaxableCapUf: 0,
+        },
+      })
+    ).toThrow(
+      "previsionalTopes.pensionAndHealthMonthlyTaxableCapUf must be a finite number greater than 0."
+    );
   });
 });

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { calculateApvComparison } from "@/application/use-cases/CalculateApvComparison";
+import { calculateNetSalary } from "@/application/use-cases/CalculateNetSalary";
 
 const UTM = 67294;
 const UF = 39300;
@@ -161,5 +162,53 @@ describe("calculateApvComparison", () => {
       result.regimeA.monthlyBenefit
     );
     expect(result.mixedStrategy.contributionToRegimeA).toBe(0);
+  });
+
+  it("uses the same taxable base as net salary when gross and taxable income differ", () => {
+    const sharedInput = {
+      grossSalary: 1500000,
+      taxableSalary: 1350000,
+      afpRatePercent: 10.77,
+      healthSystem: "fonasa" as const,
+      contractType: "plazo-fijo" as const,
+      economicParameters: {
+        uf: UF,
+        utm: UTM,
+        afcTopes: { monthlyTaxableCapUf: 135.2 },
+        previsionalTopes: { pensionAndHealthMonthlyTaxableCapUf: 90 },
+      },
+    };
+
+    const apv = calculateApvComparison({
+      ...sharedInput,
+      monthlyApvContribution: 100000,
+    });
+    const salary = calculateNetSalary(sharedInput);
+
+    expect(apv.taxableSalary).toBe(1350000);
+    expect(apv.nonTaxableIncome).toBe(150000);
+    expect(apv.taxableBase).toBeCloseTo(salary.taxableBase, 6);
+  });
+
+  it("caps payroll deductions before comparing APV regimes for high salaries", () => {
+    const result = calculateApvComparison({
+      grossSalary: 7000000,
+      taxableSalary: 6200000,
+      monthlyApvContribution: 250000,
+      afpRatePercent: 10.77,
+      healthSystem: "fonasa",
+      contractType: "indefinido",
+      economicParameters: {
+        uf: 40000,
+        utm: UTM,
+        afcTopes: { monthlyTaxableCapUf: 135.2 },
+        previsionalTopes: { pensionAndHealthMonthlyTaxableCapUf: 90 },
+      },
+    });
+
+    expect(result.cappedBases.pensionAndHealth).toBe(3600000);
+    expect(result.cappedBases.unemploymentInsurance).toBe(5408000);
+    expect(result.taxableBase).toBeCloseTo(5527832, 6);
+    expect(result.regimeB.reducedTaxBase).toBeCloseTo(5277832, 6);
   });
 });

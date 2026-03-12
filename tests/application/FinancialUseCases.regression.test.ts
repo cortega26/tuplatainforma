@@ -26,7 +26,7 @@ describe("Regression - Sueldo Líquido", () => {
       grossSalary: 900000,
       afpRatePercent: 10.77,
       healthSystem: "fonasa",
-      economicParameters: { utm: UTM },
+      economicParameters: { uf: UF, utm: UTM },
     });
     expect(round2(result.netSalary)).toBe(734670);
     expect(round2(result.deductions.tax)).toBe(0);
@@ -39,11 +39,11 @@ describe("Regression - Sueldo Líquido", () => {
       afpRatePercent: 10.77,
       healthSystem: "isapre",
       isapreAdditionalPercent: 2,
-      economicParameters: { utm: UTM },
+      economicParameters: { uf: UF, utm: UTM },
     });
-    expect(round2(result.netSalary)).toBe(1182650.76);
-    expect(round2(result.deductions.tax)).toBe(11799.24);
-    expect(round2(result.deductions.total)).toBe(317349.24);
+    expect(round2(result.netSalary)).toBe(1183010.76);
+    expect(round2(result.deductions.tax)).toBe(11439.24);
+    expect(round2(result.deductions.total)).toBe(316989.24);
   });
 
   it("case 3", () => {
@@ -51,10 +51,10 @@ describe("Regression - Sueldo Líquido", () => {
       grossSalary: 4500000,
       afpRatePercent: 10.49,
       healthSystem: "fonasa",
-      economicParameters: { utm: UTM },
+      economicParameters: { uf: UF, utm: UTM },
     });
-    expect(round2(result.netSalary)).toBe(3450513.05);
-    expect(round2(result.deductions.tax)).toBe(235436.95);
+    expect(round2(result.netSalary)).toBe(3599848.88);
+    expect(round2(result.deductions.tax)).toBe(254529.82);
     expect(round2(result.effectiveRates.marginalTaxPercent)).toBe(13.5);
   });
 });
@@ -68,8 +68,8 @@ describe("Regression - APV", () => {
       healthSystem: "fonasa",
       economicParameters: { uf: UF, utm: UTM },
     });
-    expect(round2(result.taxableBase)).toBe(1151220);
-    expect(round2(result.taxWithoutApv)).toBe(9710.04);
+    expect(round2(result.taxableBase)).toBe(1142820);
+    expect(round2(result.taxWithoutApv)).toBe(9374.04);
     expect(round2(result.regimeA.monthlyBenefit)).toBe(15000);
     expect(round2(result.regimeB.monthlyBenefit)).toBe(4000);
     expect(result.recommendedStrategy).toBe("A");
@@ -84,8 +84,8 @@ describe("Regression - APV", () => {
       isapreAdditionalPercent: 2,
       economicParameters: { uf: UF, utm: UTM },
     });
-    expect(round2(result.taxableBase)).toBe(1925520);
-    expect(round2(result.taxWithoutApv)).toBe(40682.04);
+    expect(round2(result.taxableBase)).toBe(1911120);
+    expect(round2(result.taxWithoutApv)).toBe(40106.04);
     expect(round2(result.regimeA.monthlyBenefit)).toBe(33647);
     expect(round2(result.regimeB.monthlyBenefit)).toBe(10000);
     expect(result.recommendedStrategy).toBe("MIXED");
@@ -99,10 +99,10 @@ describe("Regression - APV", () => {
       healthSystem: "fonasa",
       economicParameters: { uf: UF, utm: UTM },
     });
-    expect(round2(result.taxableBase)).toBe(4950600);
-    expect(round2(result.taxWithoutApv)).toBe(421956.9);
+    expect(round2(result.taxableBase)).toBe(5349498.54);
+    expect(round2(result.taxWithoutApv)).toBe(513703.56);
     expect(round2(result.regimeA.monthlyBenefit)).toBe(33647);
-    expect(round2(result.regimeB.monthlyBenefit)).toBe(140937.2);
+    expect(round2(result.regimeB.monthlyBenefit)).toBe(178832.56);
     expect(result.recommendedStrategy).toBe("MIXED");
   });
 });

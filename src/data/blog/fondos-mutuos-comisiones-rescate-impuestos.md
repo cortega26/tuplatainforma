@@ -137,4 +137,4 @@ Para decidir cómo encajan los fondos mutuos en una estrategia integral de ahorr
 
 ---
 
-*Contenido informativo; no reemplaza asesoría financiera ni tributaria personalizada.*
+_Contenido informativo; no reemplaza asesoría financiera ni tributaria personalizada._

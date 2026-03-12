@@ -4,6 +4,7 @@ export interface EconomicParameters {
   ipc: number;
   tmc?: number;
   afcTopes?: Record<string, number>;
+  previsionalTopes?: Record<string, number>;
   lastUpdated: string;
   source: "live" | "fallback";
 }
@@ -70,6 +71,16 @@ export function assertEconomicParameters(
       if (!isFiniteNumber(value) || value <= 0) {
         throw new EconomicParameterInvariantError(
           `afcTopes.${key} must be a finite number greater than 0.`
+        );
+      }
+    }
+  }
+
+  if (parameters.previsionalTopes) {
+    for (const [key, value] of Object.entries(parameters.previsionalTopes)) {
+      if (!isFiniteNumber(value) || value <= 0) {
+        throw new EconomicParameterInvariantError(
+          `previsionalTopes.${key} must be a finite number greater than 0.`
         );
       }
     }

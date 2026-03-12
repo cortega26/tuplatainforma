@@ -9,6 +9,12 @@ const SNAPSHOT = JSON.parse(
 ) as {
   uf: number;
   utm: number;
+  afcTopes?: {
+    monthlyTaxableCapUf?: number;
+  };
+  previsionalTopes?: {
+    pensionAndHealthMonthlyTaxableCapUf?: number;
+  };
   lastUpdated: string;
 };
 
@@ -64,6 +70,12 @@ describe("EconomicParameterProvider", () => {
     expect(bundle.parameters.source).toBe("fallback");
     expect(bundle.parameters.uf).toBe(SNAPSHOT.uf);
     expect(bundle.parameters.utm).toBe(SNAPSHOT.utm);
+    expect(bundle.parameters.afcTopes?.monthlyTaxableCapUf).toBe(
+      SNAPSHOT.afcTopes?.monthlyTaxableCapUf
+    );
+    expect(
+      bundle.parameters.previsionalTopes?.pensionAndHealthMonthlyTaxableCapUf
+    ).toBe(SNAPSHOT.previsionalTopes?.pensionAndHealthMonthlyTaxableCapUf);
     expect(bundle.parameters.lastUpdated).toBe(SNAPSHOT.lastUpdated);
     expect(fetchMock).not.toHaveBeenCalled();
 
@@ -78,6 +90,12 @@ describe("EconomicParameterProvider", () => {
     const payload = JSON.parse(readFileSync(snapshotPath, "utf-8")) as {
       uf: number;
       utm: number;
+      afcTopes?: {
+        monthlyTaxableCapUf?: number;
+      };
+      previsionalTopes?: {
+        pensionAndHealthMonthlyTaxableCapUf?: number;
+      };
       lastUpdated: string;
     };
 
@@ -86,6 +104,12 @@ describe("EconomicParameterProvider", () => {
     );
     expect(payload.uf).toBe(SNAPSHOT.uf);
     expect(payload.utm).toBe(SNAPSHOT.utm);
+    expect(payload.afcTopes?.monthlyTaxableCapUf).toBe(
+      SNAPSHOT.afcTopes?.monthlyTaxableCapUf
+    );
+    expect(payload.previsionalTopes?.pensionAndHealthMonthlyTaxableCapUf).toBe(
+      SNAPSHOT.previsionalTopes?.pensionAndHealthMonthlyTaxableCapUf
+    );
     expect(payload.lastUpdated).toBe(SNAPSHOT.lastUpdated);
   });
 
@@ -106,6 +130,10 @@ describe("EconomicParameterProvider", () => {
     expect(bundle.parameters.lastUpdated).toBe("2026-03-01");
     expect(bundle.parameters.uf).toBe(LIVE_RESPONSE.uf.valor);
     expect(bundle.parameters.utm).toBe(LIVE_RESPONSE.utm.valor);
+    expect(bundle.parameters.afcTopes?.monthlyTaxableCapUf).toBe(135.2);
+    expect(
+      bundle.parameters.previsionalTopes?.pensionAndHealthMonthlyTaxableCapUf
+    ).toBe(90);
 
     const telemetry = getEconomicProviderTelemetry();
     expect(telemetry.externalFetchCount).toBe(1);

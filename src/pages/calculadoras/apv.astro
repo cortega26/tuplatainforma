@@ -36,8 +36,8 @@ const economicSourceLabel =
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">📈 Simulador APV</h1>
       <p class="max-w-xl text-secondary">
         Estima de forma orientativa cuánto podrías ganar con APV en Régimen A,
-        Régimen B o una combinación de ambos según tu sueldo, tu ahorro mensual
-        y eventuales depósitos directos adicionales.
+        Régimen B o una combinación de ambos según tu sueldo, tu imponible real,
+        tu ahorro mensual y eventuales depósitos directos adicionales.
       </p>
     </section>
 
@@ -60,6 +60,31 @@ const economicSourceLabel =
             min="0"
             class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
           />
+          <p class="mt-1 text-xs text-muted">
+            Ingresa el bruto total. Si tu liquidación separa colación,
+            movilización u otros no imponibles, puedes ajustar el imponible
+            abajo.
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="sueldo-imponible"
+            class="mb-1 block text-sm font-medium text-secondary"
+          >
+            Sueldo imponible mensual ($) - opcional
+          </label>
+          <input
+            type="number"
+            id="sueldo-imponible"
+            placeholder="Ej: 1.350.000"
+            min="0"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+          <p class="mt-1 text-xs text-muted">
+            Si lo dejas vacío, el simulador usa el bruto como aproximación de
+            imponible.
+          </p>
         </div>
 
         <div class="mb-4">
@@ -103,6 +128,45 @@ const economicSourceLabel =
             comparte el tope anual conjunto de ~{
               formatCurrency(annualRegimeBContributionCap)
             } (600 UF) con los descuentos por planilla.
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <label class="mb-2 block text-sm font-medium text-secondary"
+            >Tipo de contrato</label
+          >
+          <div class="flex gap-2">
+            <label class="flex-1 cursor-pointer">
+              <input
+                type="radio"
+                name="tipo-contrato"
+                value="indefinido"
+                checked
+                class="peer sr-only"
+              />
+              <span
+                class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent"
+              >
+                Indefinido
+              </span>
+            </label>
+            <label class="flex-1 cursor-pointer">
+              <input
+                type="radio"
+                name="tipo-contrato"
+                value="plazo-fijo"
+                class="peer sr-only"
+              />
+              <span
+                class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent"
+              >
+                Plazo fijo / obra
+              </span>
+            </label>
+          </div>
+          <p class="mt-1 text-xs text-muted">
+            Cambia la cotización del trabajador al seguro de cesantía y, por lo
+            tanto, la base para impuesto y APV.
           </p>
         </div>
 
@@ -254,9 +318,9 @@ const economicSourceLabel =
       </p>
       <p class="text-sm text-muted">
         ⚠️ Valores referenciales. Parámetros económicos vigentes al momento del
-        build. Este simulador usa tu sueldo bruto como aproximación de base
-        imponible. En Régimen B trata el tope de 50 UF mensuales para aportes
-        por planilla y el tope conjunto anual de 600 UF como referencias
+        build. Si no ingresas el imponible, este simulador usa tu sueldo bruto
+        como aproximación. En Régimen B trata el tope de 50 UF mensuales para
+        aportes por planilla y el tope conjunto anual de 600 UF como referencias
         normativas para estimar beneficio tributario. Para información oficial
         visita la <a href="https://www.spensiones.cl" target="_blank"
           >Superintendencia de Pensiones</a
@@ -334,6 +398,13 @@ const economicSourceLabel =
       parseFloat(
         (document.getElementById("sueldo") as HTMLInputElement).value
       ) || 0;
+    const imponibleRaw = parseFloat(
+      (document.getElementById("sueldo-imponible") as HTMLInputElement).value
+    );
+    const imponible =
+      Number.isFinite(imponibleRaw) && imponibleRaw > 0
+        ? imponibleRaw
+        : undefined;
     const ahorro =
       parseFloat(
         (document.getElementById("ahorro") as HTMLInputElement).value
@@ -362,6 +433,14 @@ const economicSourceLabel =
       )?.value === "isapre"
         ? "isapre"
         : "fonasa";
+    const contractType =
+      (
+        document.querySelector(
+          "input[name='tipo-contrato']:checked"
+        ) as HTMLInputElement
+      )?.value === "plazo-fijo"
+        ? "plazo-fijo"
+        : "indefinido";
     const isapreAdicionalPercent =
       parseFloat(
         (document.getElementById("isapre-adicional") as HTMLInputElement).value
@@ -371,10 +450,12 @@ const economicSourceLabel =
     try {
       resultado = calculateApvComparison({
         grossSalary: bruto,
+        taxableSalary: imponible,
         monthlyApvContribution: ahorro,
         annualDirectApvContribution: aporteDirectoAnual,
         afpRatePercent: afpTasaPercent,
         healthSystem,
+        contractType,
         isapreAdditionalPercent: isapreAdicionalPercent,
         economicParameters,
       });
@@ -456,7 +537,28 @@ const economicSourceLabel =
       directContributionStrong,
       ` ${fmt(aporteDirectoAnual)}`
     );
-    summary.append(marginalText, taxText, targetText, directContributionText);
+    const taxableSalaryText = document.createElement("p");
+    const taxableSalaryStrong = document.createElement("strong");
+    taxableSalaryStrong.textContent = "Imponible usado:";
+    taxableSalaryText.append(
+      taxableSalaryStrong,
+      ` ${fmt(resultado.taxableSalary)}`
+    );
+    const nonTaxableText = document.createElement("p");
+    const nonTaxableStrong = document.createElement("strong");
+    nonTaxableStrong.textContent = "No imponible estimado:";
+    nonTaxableText.append(
+      nonTaxableStrong,
+      ` ${fmt(resultado.nonTaxableIncome)}`
+    );
+    summary.append(
+      marginalText,
+      taxText,
+      targetText,
+      directContributionText,
+      taxableSalaryText,
+      nonTaxableText
+    );
 
     const strategyMessage = document.createElement("div");
     strategyMessage.className =

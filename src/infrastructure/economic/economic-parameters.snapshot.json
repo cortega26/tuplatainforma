@@ -4,7 +4,10 @@
   "ipc": -0.2,
   "tmc": 3.49,
   "afcTopes": {
-    "monthlyTaxableCapUf": 131.9
+    "monthlyTaxableCapUf": 135.2
+  },
+  "previsionalTopes": {
+    "pensionAndHealthMonthlyTaxableCapUf": 90
   },
   "lastUpdated": "2026-03-08",
   "capturedAt": "2026-03-08T10:44:55.221Z",

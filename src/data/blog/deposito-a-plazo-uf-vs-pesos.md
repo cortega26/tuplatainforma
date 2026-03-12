@@ -41,12 +41,12 @@ Según el Banco Central, la UF es una unidad reajustable por IPC que se actualiz
 
 ## Matriz de decisión
 
-| Variable                     | DAP en pesos                                   | DAP en UF                                          |
-| ---------------------------- | ---------------------------------------------- | -------------------------------------------------- |
-| Inflación esperada baja      | Suele ser competitivo                          | Puede quedar por debajo en términos nominales      |
-| Inflación esperada alta      | Puede perder poder de compra real              | Suele proteger mejor el poder de compra            |
-| Plazo corto (menos de 90 días) | Más flexible según oferta                    | Puede no ser viable: plazo mínimo reajustable es 90 días |
-| Simplicidad del resultado    | Alta: el número final es claro desde el inicio | Requiere mirar reajuste + tasa real al cierre      |
+| Variable                       | DAP en pesos                                   | DAP en UF                                                |
+| ------------------------------ | ---------------------------------------------- | -------------------------------------------------------- |
+| Inflación esperada baja        | Suele ser competitivo                          | Puede quedar por debajo en términos nominales            |
+| Inflación esperada alta        | Puede perder poder de compra real              | Suele proteger mejor el poder de compra                  |
+| Plazo corto (menos de 90 días) | Más flexible según oferta                      | Puede no ser viable: plazo mínimo reajustable es 90 días |
+| Simplicidad del resultado      | Alta: el número final es claro desde el inicio | Requiere mirar reajuste + tasa real al cierre            |
 
 > **Dato clave (CMF Educa):** el plazo mínimo de pago de intereses no puede ser inferior a 7 días en depósitos no reajustables, ni a 90 días en depósitos reajustables. Si necesitas el dinero antes de 90 días, UF puede no ser opción.
 
@@ -142,4 +142,4 @@ Si quieres integrar esta decisión en una estrategia más amplia de instrumentos
 
 ---
 
-*Esto es contenido informativo y no reemplaza asesoría financiera o tributaria profesional.*
+_Esto es contenido informativo y no reemplaza asesoría financiera o tributaria profesional._

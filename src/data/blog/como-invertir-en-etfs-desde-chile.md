@@ -132,4 +132,4 @@ Para conectar esta decisión con una estrategia más amplia de instrumentos y ob
 
 ---
 
-*Contenido informativo; no reemplaza asesoría financiera, legal ni tributaria profesional.*
+_Contenido informativo; no reemplaza asesoría financiera, legal ni tributaria profesional._

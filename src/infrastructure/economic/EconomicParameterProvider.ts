@@ -21,6 +21,9 @@ interface EconomicSnapshotPayload {
   afcTopes?: {
     monthlyTaxableCapUf?: number;
   };
+  previsionalTopes?: {
+    pensionAndHealthMonthlyTaxableCapUf?: number;
+  };
   lastUpdated: string;
 }
 
@@ -44,7 +47,8 @@ export interface EconomicProviderTelemetry {
   lastFallbackReason?: string;
 }
 
-const DEFAULT_AFC_MONTHLY_TAXABLE_CAP_UF = 131.9;
+const DEFAULT_AFC_MONTHLY_TAXABLE_CAP_UF = 135.2;
+const DEFAULT_PENSION_AND_HEALTH_MONTHLY_TAXABLE_CAP_UF = 90;
 const FALLBACK_LAST_UPDATED = new Date().toISOString().slice(0, 10);
 const MODULE_DIR = dirname(fileURLToPath(import.meta.url));
 const SNAPSHOT_FILE_NAME = "economic-parameters.snapshot.json";
@@ -59,6 +63,10 @@ const FALLBACK_PARAMETERS: EconomicParameters = {
   tmc: 3.49,
   afcTopes: {
     monthlyTaxableCapUf: DEFAULT_AFC_MONTHLY_TAXABLE_CAP_UF,
+  },
+  previsionalTopes: {
+    pensionAndHealthMonthlyTaxableCapUf:
+      DEFAULT_PENSION_AND_HEALTH_MONTHLY_TAXABLE_CAP_UF,
   },
   lastUpdated: FALLBACK_LAST_UPDATED,
   source: "fallback",
@@ -125,6 +133,12 @@ function loadSnapshotEconomicParameters(): EconomicParameters {
           DEFAULT_AFC_MONTHLY_TAXABLE_CAP_UF
       ),
     },
+    previsionalTopes: {
+      pensionAndHealthMonthlyTaxableCapUf: Number(
+        payload.previsionalTopes?.pensionAndHealthMonthlyTaxableCapUf ??
+          DEFAULT_PENSION_AND_HEALTH_MONTHLY_TAXABLE_CAP_UF
+      ),
+    },
     lastUpdated: String(payload.lastUpdated),
     source: "fallback",
   };
@@ -150,6 +164,10 @@ async function fetchLiveEconomicParameters(): Promise<EconomicParameters> {
     tmc: payload.tmc?.valor !== undefined ? Number(payload.tmc.valor) : 3.49,
     afcTopes: {
       monthlyTaxableCapUf: DEFAULT_AFC_MONTHLY_TAXABLE_CAP_UF,
+    },
+    previsionalTopes: {
+      pensionAndHealthMonthlyTaxableCapUf:
+        DEFAULT_PENSION_AND_HEALTH_MONTHLY_TAXABLE_CAP_UF,
     },
     lastUpdated: toIsoDate(payload.uf?.fecha ?? payload.utm?.fecha),
     source: "live",

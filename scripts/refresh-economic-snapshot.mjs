@@ -9,7 +9,8 @@ const SNAPSHOT_PATH = resolve(
 );
 const ECONOMIC_API_URL = "https://mindicador.cl/api";
 const FETCH_TIMEOUT_MS = Number(process.env.ECONOMIC_SNAPSHOT_TIMEOUT_MS ?? 12000);
-const DEFAULT_AFC_MONTHLY_TAXABLE_CAP_UF = 131.9;
+const DEFAULT_AFC_MONTHLY_TAXABLE_CAP_UF = 135.2;
+const DEFAULT_PENSION_AND_HEALTH_MONTHLY_TAXABLE_CAP_UF = 90;
 
 function toIsoDate(value) {
   if (typeof value === "string" && value.length >= 10) {
@@ -56,6 +57,10 @@ async function fetchLiveParameters() {
     tmc,
     afcTopes: {
       monthlyTaxableCapUf: DEFAULT_AFC_MONTHLY_TAXABLE_CAP_UF,
+    },
+    previsionalTopes: {
+      pensionAndHealthMonthlyTaxableCapUf:
+        DEFAULT_PENSION_AND_HEALTH_MONTHLY_TAXABLE_CAP_UF,
     },
     lastUpdated,
     capturedAt: new Date().toISOString(),

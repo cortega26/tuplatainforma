@@ -11,9 +11,9 @@ Fecha de corte: 2026-03-12
 - **P3:** 1
 
 ### Estado de avance (2026-03-12)
-- **Completados:** 26 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0011`, `TD-0012`, `TD-0013`, `TD-0014`, `TD-0015`, `TD-0016`, `TD-0017`, `TD-0018`, `TD-0019`, `TD-0020`, `TD-0022`, `TD-0024`, `TD-0025`, `TD-0026`, `FIX-MDX`, `FIX-LINKS-CALC`)
+- **Completados:** 27 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0011`, `TD-0012`, `TD-0013`, `TD-0014`, `TD-0015`, `TD-0016`, `TD-0017`, `TD-0018`, `TD-0019`, `TD-0020`, `TD-0021`, `TD-0022`, `TD-0024`, `TD-0025`, `TD-0026`, `FIX-MDX`, `FIX-LINKS-CALC`)
 - **En progreso:** 0
-- **Backlog sin iniciar:** 4 (`TD-0021`, `TD-0023`, `TD-0027`, `TD-0028`)
+- **Backlog sin iniciar:** 3 (`TD-0023`, `TD-0027`, `TD-0028`)
 - **Backlog en validación/diseño:** 0
 
 > `FIX-MDX`: corregido comentario HTML (`<!-- -->`) en `que-es-el-apv.mdx:25` que rompía el build.
@@ -22,10 +22,9 @@ Fecha de corte: 2026-03-12
 ### Top riesgos restantes
 | Ranking | ID | Riesgo | Motivo principal |
 |---|---|---|---|
-| 1 | TD-0021 | Alto | Sueldo líquido y APV usan una base salarial sobrerreducida para jobs YMYL muy sensibles. |
-| 2 | TD-0023 | Alto | Cesantía y jubilación entregan proyecciones visibles con supuestos regulatorios y actuariales demasiado agresivos. |
-| 3 | TD-0028 | Alto | El artículo APV publicado traduce la elección A/B a bandas fijas de sueldo bruto y una mezcla no suficientemente trazada a fuentes oficiales. |
-| 4 | TD-0027 | Medio | El checklist de ahorro/inversión mezcla cálculo, copy y supuestos de producto sin un contrato común reutilizable. |
+| 1 | TD-0023 | Alto | Cesantía y jubilación entregan proyecciones visibles con supuestos regulatorios y actuariales demasiado agresivos. |
+| 2 | TD-0028 | Alto | El artículo APV publicado traduce la elección A/B a bandas fijas de sueldo bruto y una mezcla no suficientemente trazada a fuentes oficiales. |
+| 3 | TD-0027 | Medio | El checklist de ahorro/inversión mezcla cálculo, copy y supuestos de producto sin un contrato común reutilizable. |
 
 ### Quick wins (alto impacto / bajo esfuerzo)
 - [x] `TD-0007` Corregir email placeholder en enlaces sociales.
@@ -124,22 +123,23 @@ Fecha de corte: 2026-03-12
 - **ID:** TD-0021
 - **Título corto:** Rehacer base imponible y topes previsionales compartidos
 - **Descripción:** Las calculadoras `sueldo-liquido` y `apv` usan `grossSalary` como base total de AFP, salud y parte del cálculo tributario. Eso no cubre imponible real, no imponibles, topes previsionales ni diferencias por tipo de contrato, aunque el propio corpus editorial sí explica esas diferencias.
-- **Evidencia:** `src/application/use-cases/CalculateNetSalary.ts`; `src/application/use-cases/CalculateApvComparison.ts`; `src/pages/calculadoras/sueldo-liquido.astro`; `src/pages/calculadoras/apv.astro`; `src/data/blog/como-calcular-sueldo-liquido.md`.
+- **Evidencia (actualizada):** `src/application/use-cases/CalculateMonthlyPayrollBase.ts` centraliza imponible, topes y cotizaciones para sueldo/APV; `src/application/use-cases/CalculateNetSalary.ts` y `src/application/use-cases/CalculateApvComparison.ts` consumen ese motor; `src/pages/calculadoras/sueldo-liquido.astro` y `src/pages/calculadoras/apv.astro` ahora exponen imponible opcional y tipo de contrato; `src/domain/economic/EconomicParameters.ts`, `src/infrastructure/economic/EconomicParameterProvider.ts` y `src/infrastructure/economic/economic-parameters.snapshot.json` versionan tope previsional `90 UF` para AFP/salud y `135,2 UF` para AFC; tests golden agregados en `tests/application/CalculateNetSalary.test.ts` y `tests/application/CalculateApvComparison.test.ts`.
 - **Impacto:** Riesgo de falsa precisión en dos calculadoras de alto uso y alto impacto YMYL.
 - **Riesgo:** alto
 - **Severidad (1-5):** 5
 - **Urgencia:** P0
 - **Esfuerzo estimado:** L
 - **Propuesta de solución:** extraer un motor único de base laboral/imponible con inputs explícitos para imponible, no imponibles, topes AFP/salud/AFC y tipo de contrato; redefinir `sueldo-liquido` como estimador rápido o agregar modo avanzado.
+- **Avance actual (2026-03-12):** resuelto con motor compartido `CalculateMonthlyPayrollBase`, inputs visibles de imponible/contrato en ambas calculadoras y fixtures de regresión actualizados. La decisión de contrato quedó trazada en `docs/adr/ADR-20260312-shared-payroll-taxable-base.md`.
 - **Criterios de cierre (checklist verificable):**
-- [ ] `sueldo-liquido` y `apv` comparten una sola fuente de verdad para imponible, topes y cotizaciones.
-- [ ] Existe input o supuesto visible para diferenciar bruto total vs imponible real.
-- [ ] El cálculo contempla topes previsionales y causalmente distingue contrato indefinido vs plazo fijo donde corresponda.
-- [ ] Se agregan fixtures de golden cases con bruto != imponible y con sueldo sobre topes.
+- [x] `sueldo-liquido` y `apv` comparten una sola fuente de verdad para imponible, topes y cotizaciones.
+- [x] Existe input o supuesto visible para diferenciar bruto total vs imponible real.
+- [x] El cálculo contempla topes previsionales y causalmente distingue contrato indefinido vs plazo fijo donde corresponda.
+- [x] Se agregan fixtures de golden cases con bruto != imponible y con sueldo sobre topes.
 - **Owner:** TBD
-- **Estado:** Sin iniciar
+- **Estado:** Completado
 - **Fecha de creación:** 2026-03-11
-- **Última actualización:** 2026-03-11
+- **Última actualización:** 2026-03-12
 
 ## TD-0022 — Simulador APV recomienda con un cap de Régimen B incorrecto
 - **ID:** TD-0022
