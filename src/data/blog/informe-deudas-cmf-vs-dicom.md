@@ -2,7 +2,7 @@
 title: "Informe de deudas CMF: cómo sacarlo, qué dice y por qué no es lo mismo que DICOM"
 author: "Equipo Monedario"
 pubDate: 2026-02-24T11:00:00Z
-updatedDate: 2026-03-04T12:00:00Z
+updatedDate: 2026-03-12T18:20:00Z
 slug: informe-deudas-cmf-vs-dicom
 featured: true
 lang: es-CL
@@ -15,36 +15,64 @@ tags:
   - historial-crediticio
 category: deuda-credito
 cluster: deuda-credito
+topicRole: owner
+canonicalTopic: informe-deudas-cmf-vs-dicom
 description: "Guía práctica sobre el Informe de Deudas CMF: cómo descargarlo gratis, qué incluye, qué no incluye y en qué se diferencia del DICOM y el Boletín Comercial."
 heroImage: /images/hero/informe-deudas-cmf-vs-dicom.avif
+articleLead:
+  answer: "Si quieres saber qué deudas financieras vigentes aparecen a tu nombre, parte por el Informe de Deudas CMF. Si tu duda es 'estoy en DICOM' o buscas protestos y morosidades fuera del sistema financiero regulado, necesitas separar ese reporte de CMF antes de pagar o sacar conclusiones."
+  nextStepHref: "/posts/donde-ver-si-estoy-en-dicom-gratis/"
+  nextStepLabel: "Separar CMF, DICOM y Boletín"
+  validAsOf: 2026-03-12
+  officialSources:
+    - label: "CMF Chile - Informe de Deudas de Personas"
+      href: "https://www.cmfchile.cl/portal/principal/613/w3-article-95457.html"
+    - label: "CMF Chile - Preguntas frecuentes"
+      href: "https://conocetudeuda.cmfchile.cl/publico/preguntasFrecuentes"
+  covers:
+    - "Qué muestra el Informe de Deudas CMF y qué deudas quedan fuera."
+    - "Cómo diferenciar CMF, Boletín Comercial y reportes privados tipo DICOM."
+    - "Cuál es el siguiente paso si encuentras mora, errores o sobreendeudamiento."
+  limits:
+    - "No reemplaza un informe comercial privado."
+    - "No confirma por sí solo protestos o morosidades fuera del sistema financiero supervisado."
+    - "No resuelve disputas por fraude sin reclamo ante la institución acreedora."
 ---
 
-"Estoy en DICOM" es una de las frases más usadas en Chile para hablar de deudas. El problema es que DICOM como tal dejó de existir hace años, y la mayoría de las personas no sabe exactamente qué información tiene sobre ellas ni dónde está. Esta guía lo aclara de una vez, y si quieres revisar más temas relacionados puedes partir por la [sección Deuda y Crédito](/guias/deuda-credito/).
+La frase "estoy en DICOM" se usa en Chile como atajo para varias cosas distintas: deudas financieras vigentes, morosidades comerciales, protestos o incluso un informe privado que te pidió un tercero. El primer error es tratarlas como si fueran el mismo registro.
+
+La regla práctica es esta: si quieres ver qué deudas financieras vigentes aparecen a tu nombre, parte por el **Informe de Deudas CMF**. Si lo que buscas es revisar protestos, retail o un reporte privado usado por un arrendador o empleador, necesitas separar ese problema y no asumir que el CMF cubre todo. Si quieres revisar el mapa completo del frente, parte por la [sección Deuda y Crédito](/guias/deuda-credito/).
 
 ## Tabla de contenidos
 
+## Si tu pregunta es esta, parte por aquí
+
+- **"Quiero saber qué deudas financieras vigentes aparecen a mi nombre."** Parte por el **Informe de Deudas CMF**, porque es el reporte oficial y gratuito del sistema financiero supervisado.
+- **"Quiero ver si estoy en DICOM gratis."** No partas pagando un informe privado: primero separa qué cubren el CMF, el Boletín Comercial y los reportes privados en esta guía sobre [dónde ver si estás en DICOM gratis](/posts/donde-ver-si-estoy-en-dicom-gratis/).
+- **"Ya confirmé varias deudas morosas y no me da la caja."** El siguiente paso no es otro reporte sino revisar si calificas para [renegociación en Superir](/posts/renegociacion-superir/).
+- **"No estoy en mora, pero quiero evitar firmar un crédito caro."** Salta a [CAE y costo real del crédito](/posts/cae-costo-real-credito-chile/).
+
 ## Qué es el Informe de Deudas CMF
 
-La **Comisión para el Mercado Financiero (CMF)** es el organismo que supervisa a los bancos, cajas de compensación, cooperativas de ahorro y otras instituciones financieras en Chile. Como parte de esa supervisión, todas esas entidades le reportan mensualmente las deudas de sus clientes.
+La **Comisión para el Mercado Financiero (CMF)** es el organismo que supervisa bancos, cooperativas, emisores de tarjetas y otras entidades financieras en Chile. Como parte de esa supervisión, las instituciones reportan periódicamente las deudas de sus clientes y con esa información la CMF arma el **Informe de Deudas de Personas Naturales**.
 
-Con esa información, la CMF genera el **Informe de Deudas de Personas Naturales**: un documento que muestra el detalle de todas tus deudas vigentes con el sistema financiero regulado. Es gratuito, oficial y puedes descargarlo cuando quieras.
+Ese informe muestra el detalle de tus **deudas vigentes con el sistema financiero supervisado**. Es gratuito, oficial y lo puedes descargar con ClaveÚnica. Es el punto de partida correcto cuando necesitas ordenar acreedores, confirmar productos a tu nombre o distinguir si la mora está en una obligación regulada por la CMF.
 
 Lo que incluye:
 
-- Deudas con bancos (créditos de consumo, hipotecarios, líneas de crédito, tarjetas)
-- Deudas con cooperativas de ahorro y crédito supervisadas por la CMF
-- Deudas con cajas de compensación (en su parte crediticia)
-- Deudas con compañías de leasing y factoring reguladas
+- Deudas con bancos, incluyendo créditos, líneas y tarjetas.
+- Deudas con cooperativas de ahorro y crédito supervisadas.
+- Deudas con emisores de tarjetas y otras entidades financieras bajo supervisión CMF.
+- Avales y otras obligaciones en las que apareces como deudor indirecto.
 
 Lo que **no** incluye:
 
-- Deudas con casas comerciales (Falabella, Ripley, La Polar y similares)
-- Deudas con empresas de telecomunicaciones
-- Deudas con empresas de servicios básicos (luz, agua, gas)
-- Deudas con personas naturales
-- Multas, pensiones alimenticias atrasadas u obligaciones no financieras
+- Todo el universo de morosidades comerciales fuera del sistema financiero supervisado.
+- Protestos de cheques, letras o pagarés por sí solos.
+- Deudas de servicios básicos, telecomunicaciones u otras obligaciones no financieras.
+- Deudas entre personas naturales u obligaciones civiles que no reportan a la CMF.
 
-Si alguien te niega un arriendo "porque saliste en el informe CMF" por una deuda con una retail, eso no tiene sentido. El informe CMF no recoge esas deudas.
+Por eso conviene evitar la pregunta genérica "¿estoy en DICOM?". El informe CMF responde solo una parte del problema: las deudas financieras vigentes reportadas al regulador.
 
 ---
 
@@ -52,21 +80,21 @@ Si alguien te niega un arriendo "porque saliste en el informe CMF" por una deuda
 
 Aquí está la confusión más común, aclarada de una vez:
 
-|                    | Informe CMF                                                     | Boletín Comercial                                              | DICOM (Equifax)                                                                   |
-| ------------------ | --------------------------------------------------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| **Qué es**         | Registro oficial de deudas con el sistema financiero regulado   | Registro de protestos de documentos (cheques, letras, pagarés) | Producto comercial de Equifax (empresa privada)                                   |
-| **Quién lo emite** | CMF (organismo del Estado)                                      | Cámara de Comercio de Santiago                                 | Equifax (empresa privada)                                                         |
-| **Qué incluye**    | Deudas con bancos y entidades supervisadas                      | Documentos protestados sin pagar (cheques, pagarés)            | Combina varias fuentes: Boletín Comercial, morosidades de retail, servicios, etc. |
-| **Costo**          | Gratis, ilimitado                                               | Gratis 1 vez cada 4 meses (Ley 20.575); pagado el resto        | Depende del producto                                                              |
-| **Cómo se accede** | [conocetudeuda.cmfchile.cl](https://conocetudeuda.cmfchile.cl/) | [boletincomercial.cl](https://www.boletincomercial.cl/)        | equifax.cl                                                                        |
+|                    | Informe CMF                                                     | Boletín Comercial                                                | DICOM (Equifax)                                                                   |
+| ------------------ | --------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| **Qué es**         | Registro oficial de deudas con el sistema financiero regulado   | Registro de protestos de documentos (cheques, letras, pagarés)   | Producto comercial de Equifax (empresa privada)                                   |
+| **Quién lo emite** | CMF (organismo del Estado)                                      | Cámara de Comercio de Santiago                                   | Equifax (empresa privada)                                                         |
+| **Qué incluye**    | Deudas con bancos y entidades supervisadas                      | Documentos protestados sin pagar (cheques, pagarés)              | Combina varias fuentes: Boletín Comercial, morosidades de retail, servicios, etc. |
+| **Costo**          | Gratis, ilimitado                                               | Tiene consulta gratuita mínima por ley y otras consultas pagadas | Depende del producto                                                              |
+| **Cómo se accede** | [conocetudeuda.cmfchile.cl](https://conocetudeuda.cmfchile.cl/) | [boletincomercial.cl](https://www.boletincomercial.cl/)          | equifax.cl                                                                        |
 
-Cuando alguien dice "estoy en DICOM", generalmente quiere decir que tiene deudas morosas registradas en alguno de estos sistemas. Pero cada uno es distinto, recoge información diferente y tiene reglas distintas sobre cuánto tiempo permanece un registro.
+Cuando alguien dice "estoy en DICOM", normalmente está mezclando varias capas: el reporte oficial CMF, el Boletín Comercial y uno o más informes privados. Cada uno recoge información distinta y te sirve para decisiones distintas.
 
 ---
 
 ## Cómo descargar tu Informe CMF paso a paso
 
-El trámite es 100% online y toma menos de 5 minutos. Necesitas **ClaveÚnica** (la misma que usas para ChileAtiende o el SII).
+El trámite es online y requiere **ClaveÚnica**.
 
 **Paso 1.** Entra a [conocetudeuda.cmfchile.cl](https://conocetudeuda.cmfchile.cl/)
 
@@ -76,9 +104,9 @@ El trámite es 100% online y toma menos de 5 minutos. Necesitas **ClaveÚnica** 
 
 Si no tienes ClaveÚnica, puedes obtenerla en [claveunica.gob.cl](https://www.claveunica.gob.cl/) con tu RUT y número de documento del carnet.
 
-> **Dato importante:** El informe refleja la información que las instituciones le reportaron a la CMF. Hay un desfase de entre 10 y 20 días hábiles entre que se registra una operación en el banco y que aparece en el informe. Si recién pagaste una deuda, puede que todavía aparezca como vigente por algunos días.
+> **Dato importante:** Según la CMF, el informe se actualiza semanalmente, pero los datos pueden venir con un desfase de entre 10 y 20 días hábiles respecto de la operación real. Si recién pagaste o cerraste una deuda, no asumas que el reporte se corregirá el mismo día.
 
-Fuente oficial: [CMF Chile](https://www.cmfchile.cl/portal/principal/613/w3-article-95399.html)
+Fuente oficial: [CMF Chile](https://www.cmfchile.cl/portal/principal/613/w3-article-95457.html)
 
 ---
 
@@ -116,7 +144,7 @@ Esta es otra pregunta frecuente y la respuesta no es única — depende del tipo
 
 ## Tu informe comercial gratuito: Boletín Comercial
 
-La **Ley 20.575** establece que tienes derecho a obtener **gratuitamente** tu informe comercial del Boletín Comercial una vez cada cuatro meses. Para las demás consultas adicionales, se cobra una tarifa.
+La **Ley 20.575** contempla una consulta gratuita mínima del informe comercial y deja el resto de las consultas sujeto a la modalidad del servicio. En la práctica, el Boletín Comercial se usa para revisar protestos de documentos y no reemplaza al informe CMF.
 
 El Boletín Comercial registra protestos de documentos: cheques rechazados, letras y pagarés protestados. Si nunca has protestado un documento, probablemente tu informe está limpio.
 
@@ -153,7 +181,7 @@ El informe no es solo para saber si "estás en DICOM". Tiene usos prácticos con
 ## Preguntas frecuentes
 
 **¿Cada cuánto se actualiza el informe CMF?**
-Las instituciones reportan mensualmente. Los datos tienen un desfase de entre 10 y 20 días hábiles respecto a las operaciones reales.
+La CMF informa una actualización semanal, pero los datos pueden venir con un desfase de entre 10 y 20 días hábiles respecto de las operaciones reales.
 
 **¿El informe CMF lo puede ver cualquier persona?**
 No. Solo tú puedes ver tu propio informe usando tu ClaveÚnica. Ningún tercero puede descargarlo sin tu autorización.
@@ -162,7 +190,7 @@ No. Solo tú puedes ver tu propio informe usando tu ClaveÚnica. Ningún tercero
 Sí, con documentación que acredite la calidad de heredero. El proceso es presencial en la CMF.
 
 **¿Pagar una deuda la elimina inmediatamente del informe?**
-No de forma inmediata. La institución tiene hasta el próximo ciclo de reporte mensual para actualizar el estado. El desfase puede ser de semanas.
+No de forma inmediata. El desfase puede ser de días o semanas según el momento del reporte y la actualización que reciba la CMF desde la institución.
 
 **¿Qué hago si tengo deudas y quiero regularizarlas?**
 El primer paso es tener el informe CMF completo y saber exactamente cuánto debes y a quién. Si las deudas son con el sistema financiero y ya están en mora hace tiempo, puede valer la pena explorar la **renegociación a través de Superir** — el procedimiento concursal gratuito para personas naturales. [Más sobre eso en esta guía](/posts/renegociacion-superir/). Si además hay movimientos que no reconoces, revisa la guía de [fraude con tarjeta y suplantación](/posts/fraude-tarjeta-que-hacer/).

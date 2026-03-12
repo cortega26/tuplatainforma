@@ -1,10 +1,10 @@
 ---
 title: "CAE de un crédito: qué es, cómo se calcula y por qué la tasa sola engaña"
-description: "Guía práctica para entender la Carga Anual Equivalente (CAE) en Chile, cómo se relaciona con la TMC, qué incluye el costo real de un crédito y cómo leerlo antes de firmar."
+description: "Guía práctica para entender la CAE en Chile, qué incluye frente a la tasa y cómo comparar el costo real de un crédito antes de firmar."
 slug: cae-costo-real-credito-chile
 author: "Equipo Monedario"
 pubDate: 2026-03-02T19:00:00Z
-updatedDate: 2026-03-04T12:00:00Z
+updatedDate: 2026-03-12T18:35:00Z
 tags:
   - credito
   - cae
@@ -13,15 +13,39 @@ tags:
   - consumo
 category: deuda-credito
 cluster: deuda-credito
+topicRole: owner
+canonicalTopic: cae-costo-real
 lang: es-CL
 featured: false
 draft: false
 heroImage: /images/hero/cae-costo-real-credito-chile.avif
+articleLead:
+  answer: "Si estás comparando un crédito nuevo, la pregunta correcta no es '¿qué cuota me ofrecen?' sino '¿cuánto me costará en total?'. Para eso mira CAE y costo total en pesos, no solo la tasa ni la primera cuota. Si la deuda ya existe y no la puedes sostener, esta guía ya no es suficiente."
+  calculatorHref: "/calculadoras/credito-consumo/"
+  calculatorLabel: "Simular una oferta"
+  nextStepHref: "/posts/renegociacion-superir/"
+  nextStepLabel: "Ver salida si ya no puedes pagar"
+  validAsOf: 2026-03-12
+  officialSources:
+    - label: "CMF Educa - CAE y hoja resumen"
+      href: "https://www.cmfchile.cl/educa/621/w3-propertyvalue-29975.html"
+    - label: "BCN - Ley 18.010"
+      href: "https://www.bcn.cl/leychile/navegar?idNorma=29438"
+  covers:
+    - "Qué es la CAE y por qué sirve para comparar ofertas."
+    - "Cómo separar CAE, tasa nominal, cuota y costo total en pesos."
+    - "Cuándo dejar de comparar y pasar a ordenar una deuda ya existente."
+  limits:
+    - "No reemplaza la hoja de información precontractual del oferente."
+    - "No audita automáticamente la legalidad del contrato."
+    - "No sirve para casos de insolvencia o renegociación formal."
 ---
 
 <!-- META: keyword_primary="qué es la CAE de un crédito" | intent="informacional-pilar" | cluster="deuda-credito" -->
 
-Cuando comparas créditos, el número que más te muestran es la tasa de interés mensual. El problema es que esa tasa no incluye seguros, gastos operacionales ni comisiones. El CAE sí los incluye, y por eso es el único número que permite comparar productos distintos en igualdad de condiciones. Si quieres revisar más temas relacionados, entra a [Deuda y Crédito en Chile](/guias/deuda-credito/).
+Cuando comparas créditos, el número que más te empujan es la cuota o la tasa mensual. El problema es que ninguna de esas dos cifras, por sí sola, te dice cuánto terminarás pagando en total. El **CAE** existe precisamente para cerrar esa trampa.
+
+Usa esta guía si todavía estás evaluando una oferta, una repactación o un prepago. Si tu problema ya no es comparar sino ordenar deudas vencidas o ver qué aparece a tu nombre, salta a [Informe de deudas CMF vs DICOM](/posts/informe-deudas-cmf-vs-dicom/) o a [Renegociación Superir](/posts/renegociacion-superir/). Si quieres revisar más temas relacionados, entra a [Deuda y Crédito en Chile](/guias/deuda-credito/).
 
 ## Dos CAE que no tienen nada que ver entre sí
 
@@ -31,6 +55,12 @@ Antes de entrar al tema, hay que despejar una confusión frecuente de vocabulari
 - **CAE (Crédito con Aval del Estado):** Préstamo estudiantil gestionado por la Comisión Ingresa. No tiene relación directa con el indicador financiero anterior.
 
 En esta guía, "CAE" siempre se refiere al primer significado: el indicador de costo del crédito.
+
+## Esta guía sí te sirve cuando... y cuándo no
+
+- **Sí te sirve** si estás comparando un crédito nuevo, una repactación o un refinanciamiento y quieres separar cuota, tasa, CAE y costo total.
+- **No te alcanza** si el crédito ya está tomado y el problema real es una deuda rotativa o una mora que ya no puedes sostener. En ese caso, mide primero el [costo real de tu tarjeta](/calculadoras/tarjeta-credito/) o revisa si calificas para [renegociación en Superir](/posts/renegociacion-superir/).
+- **Tampoco reemplaza** el diagnóstico de tus acreedores. Si no tienes claro qué deudas vigentes siguen activas, parte por el [Informe de Deudas CMF](/posts/informe-deudas-cmf-vs-dicom/).
 
 ## Qué es el CAE y por qué existe
 
@@ -79,21 +109,19 @@ Este es el punto central. La tasa de interés mensual y el CAE son cosas distint
 
 **Diferencia total: $84.000** — por dos créditos con exactamente la misma tasa mensual nominal. La tasa mensual no te dijo nada de eso. El CAE sí.
 
-## Qué es la TMC y cómo se relaciona con el CAE
+## TMC y CAE no cumplen la misma función
 
-La **TMC (Tasa Máxima Convencional)** es el techo legal que fija la CMF cada mes para distintos segmentos de crédito. Ninguna institución puede ofrecer un crédito con CAE superior a ese límite.
+La **TMC (Tasa Máxima Convencional)** es un límite legal de interés para ciertas operaciones de crédito de dinero. La fija la CMF por tramos y periodos según la Ley 18.010. Sirve para detectar si te están cobrando por sobre el máximo permitido, no para comparar cuál oferta es más conveniente.
 
-La CMF publica la TMC mensualmente según el tipo y monto del crédito. Los segmentos más relevantes para personas naturales son:
+El **CAE**, en cambio, es un indicador de comparación. Resume tasa, seguros y otros costos obligatorios para que dos ofertas comparables no se vean "baratas" solo por esconder gastos fuera de la tasa nominal.
 
-| Segmento                         | Descripción                                                 |
-| -------------------------------- | ----------------------------------------------------------- |
-| Operaciones hasta 200 UF         | Créditos de consumo pequeños, tarjetas con cupo bajo        |
-| Operaciones entre 200 y 5.000 UF | Créditos de consumo medianos y algunos hipotecarios menores |
-| Operaciones sobre 5.000 UF       | Hipotecarios y financiamiento de alto monto                 |
+La regla práctica es esta:
 
-Si un crédito tiene CAE superior a la TMC vigente en su segmento en el mes de contratación, la diferencia se reduce automáticamente por ley al máximo permitido (**[Ley N° 18.010](/leyes/ley-18010-credito-dinero/)**). Puedes reclamar la diferencia si ya firmaste.
+- **CAE** para comparar ofertas entre sí.
+- **Costo total en pesos** para aterrizar cuánto saldrá de tu bolsillo.
+- **TMC** para revisar si la operación respeta el techo legal de interés que corresponde a su segmento.
 
-Para verificar la TMC vigente, la CMF publica los valores actualizados mensualmente: [cmfchile.cl](https://www.cmfchile.cl/portal/estadisticas/617/w3-propertyvalue-43345.html?indice=15.1)
+Puedes recibir un crédito completamente legal respecto de la TMC y, aun así, caro frente a otra oferta con mejor CAE y menor costo total.
 
 ## Cómo se calcula el CAE paso a paso
 
@@ -161,7 +189,7 @@ En hipotecarios el CAE incluye seguros de incendio y desgravamen. También puede
 
 1. **Lee el CAE, no solo la tasa mensual.** Ambos deben estar en la oferta escrita.
 2. **Pregunta qué incluye el CAE** — especialmente si hay seguros y su costo mensual.
-3. **Verifica que la tasa no supere la TMC vigente** en [cmfchile.cl](https://www.cmfchile.cl/portal/estadisticas/617/w3-propertyvalue-43345.html?indice=15.1).
+3. **Si quieres auditar legalidad, revisa la TMC vigente** para el segmento de tu crédito y compárala con la tasa y cargos relevantes del contrato, no con el CAE como si fueran la misma métrica.
 4. **Pide el cuadro de amortización completo** (todas las cuotas, con capital e interés desglosados).
 5. **Calcula el total pagado:** cuota × número de cuotas. Ese número real, no la tasa, es lo que te cuesta el crédito.
 6. **Averigua el costo de prepago** si crees que podrías pagar anticipado.
@@ -174,7 +202,7 @@ En hipotecarios el CAE incluye seguros de incendio y desgravamen. También puede
 3. **Ignorar el plazo.** Un CAE más bajo con el doble de plazo puede implicar pagar más en total.
 4. **Aceptar verbal que "no hay seguros" sin revisar el contrato.** Los seguros obligatorios deben aparecer en el contrato y en el CAE.
 5. **No pedir la Hoja de Información Precontractual.** La CMF obliga a los prestamistas regulados a entregarla antes de firmar.
-6. **Confundir TMC con CAE.** La TMC es el techo legal; el CAE es lo que te cobran. Puedes recibir un crédito con CAE muy por debajo de la TMC y aun así ser caro comparado con otra oferta.
+6. **Confundir TMC con CAE.** La TMC es un techo legal de interés; el CAE es un indicador comparativo de costo total. Un crédito puede ser legal respecto de la TMC y aun así ser caro frente a otra oferta.
 7. **Refinanciar sin hacer cuentas.** Extender el plazo puede bajar la cuota mensual, pero suele elevar el costo total significativamente.
 
 ## Si te pasa X, haz Y
@@ -182,7 +210,7 @@ En hipotecarios el CAE incluye seguros de incendio y desgravamen. También puede
 - **El prestamista no te muestra el CAE antes de firmar:** exige la Hoja de Información Precontractual. Si se niegan, puedes reportarlo a SERNAC.
 - **El CAE ofrecido supera el de otro banco por el mismo monto y plazo:** negocia o cambia de institución. La portabilidad financiera permite llevarte deudas entre bancos.
 - **No entiendes por qué el CAE es distinto en dos sucursales del mismo banco:** pide que te detallen qué seguros u otros costos están incluidos en cada versión.
-- **Quieres saber si tu deuda actual está dentro del límite legal:** consulta la TMC vigente en la CMF para el segmento de tu crédito y compara con el CAE de tu contrato.
+- **Quieres saber si tu deuda actual podría exceder el límite legal:** consulta la TMC vigente en la CMF para el segmento de tu crédito y pide el detalle de tasa, intereses y cargos del contrato. No uses el CAE como reemplazo de esa revisión.
 - **Estás sobreendeudado y evalúas consolidar deudas:** antes de repactar, revisa si calificarías para [renegociación en Superir](/posts/renegociacion-superir/), que puede ofrecer condiciones distintas.
 
 ## Preguntas frecuentes
@@ -196,8 +224,8 @@ Puedes negociar las condiciones que lo componen (eliminar seguros opcionales, re
 **¿El CAE aplica solo a bancos o también a cajas y cooperativas?**
 La obligación de informar el CAE aplica a toda institución financiera regulada por la CMF. Cajas de compensación y cooperativas supervisadas también deben informarlo.
 
-**¿Qué pasa si firmo un crédito con CAE sobre la TMC?**
-La ley reduce automáticamente los intereses al máximo legal. Sin embargo, en la práctica, un prestamista regulado no puede ofrecer ese producto. Si lo hace, es una irregularidad que puedes reportar a la CMF o SERNAC.
+**¿Qué pasa si sospecho que la tasa de mi crédito supera la TMC?**
+Pide el detalle de la tasa y de los cargos aplicados, revisa la TMC vigente para el segmento correspondiente y, si ves una inconsistencia, reclama ante la institución y luego ante la CMF o SERNAC. No mezcles ese chequeo con la comparación de CAE entre ofertas.
 
 **¿El CAE incluye el IVA de los seguros?**
 Sí, cuando los seguros tienen IVA, el CAE lo incorpora en el cálculo del costo total.

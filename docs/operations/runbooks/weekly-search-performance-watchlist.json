@@ -1,0 +1,245 @@
+{
+  "site": "monedario.cl",
+  "pages": [
+    {
+      "path": "/guias/sueldo-remuneraciones/",
+      "label": "Hub sueldo y remuneraciones",
+      "cluster": "sueldo-remuneraciones",
+      "role": "hub",
+      "priority": "p1",
+      "refreshSla": "weekly",
+      "queryThemes": ["sueldo liquido", "remuneraciones", "liquidacion de sueldo"],
+      "nextStepPaths": ["/posts/como-calcular-sueldo-liquido/", "/calculadoras/sueldo-liquido/"]
+    },
+    {
+      "path": "/posts/como-calcular-sueldo-liquido/",
+      "label": "Owner sueldo liquido explicativo",
+      "cluster": "sueldo-remuneraciones",
+      "role": "owner",
+      "priority": "p1",
+      "refreshSla": "quarterly",
+      "queryThemes": ["descuentos sueldo", "sueldo liquido", "liquidacion de sueldo"],
+      "nextStepPaths": ["/calculadoras/sueldo-liquido/", "/posts/liquidacion-de-sueldo/"]
+    },
+    {
+      "path": "/posts/liquidacion-de-sueldo/",
+      "label": "Owner liquidacion de sueldo",
+      "cluster": "sueldo-remuneraciones",
+      "role": "owner",
+      "priority": "p1",
+      "refreshSla": "quarterly",
+      "queryThemes": ["liquidacion de sueldo", "leer liquidacion", "descuentos sueldo"],
+      "nextStepPaths": ["/posts/como-calcular-sueldo-liquido/", "/calculadoras/sueldo-liquido/"]
+    },
+    {
+      "path": "/posts/finiquito-e-indemnizaciones-en-chile/",
+      "label": "Owner finiquito e indemnizaciones",
+      "cluster": "empleo-ingresos",
+      "role": "owner",
+      "priority": "p1",
+      "refreshSla": "quarterly",
+      "queryThemes": ["finiquito", "indemnizacion anos de servicio"],
+      "nextStepPaths": ["/calculadoras/finiquito-indemnizacion/", "/posts/indemnizacion-anos-de-servicio-chile/"]
+    },
+    {
+      "path": "/posts/seguro-de-cesantia/",
+      "label": "Owner seguro de cesantia",
+      "cluster": "empleo-ingresos",
+      "role": "owner",
+      "priority": "p1",
+      "refreshSla": "72h",
+      "queryThemes": ["seguro de cesantia", "afc", "como cobrar seguro de cesantia"],
+      "nextStepPaths": ["/calculadoras/seguro-cesantia/", "/posts/seguro-cesantia-cuenta-individual-vs-fondo-solidario/"]
+    },
+    {
+      "path": "/posts/boleta-honorarios-2026-retencion-cobertura/",
+      "label": "Owner boleta honorarios 2026",
+      "cluster": "impuestos-personas",
+      "role": "owner",
+      "priority": "p1",
+      "refreshSla": "72h",
+      "queryThemes": ["boleta honorarios", "retencion honorarios 2026", "honorarios 2026"],
+      "nextStepPaths": ["/calculadoras/boleta-honorarios-liquido/", "/posts/operacion-renta-f22-checklist/"]
+    },
+    {
+      "path": "/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/",
+      "label": "Owner reforma previsional",
+      "cluster": "pensiones-afp",
+      "role": "owner",
+      "priority": "p1",
+      "refreshSla": "72h",
+      "queryThemes": ["reforma previsional", "ley 21735", "fondos generacionales"],
+      "nextStepPaths": ["/posts/que-es-el-apv/", "/posts/fondos-afp-a-b-c-d-e/"]
+    },
+    {
+      "path": "/posts/que-es-el-apv/",
+      "label": "Owner APV",
+      "cluster": "ahorro-e-inversion",
+      "role": "owner",
+      "priority": "p1",
+      "refreshSla": "72h",
+      "queryThemes": ["apv", "beneficio tributario apv", "regimen a regimen b"],
+      "nextStepPaths": ["/calculadoras/apv/", "/posts/que-es-la-cuenta-2-afp/"]
+    },
+    {
+      "path": "/posts/fondos-afp-a-b-c-d-e/",
+      "label": "Owner fondos AFP A-E",
+      "cluster": "pensiones-afp",
+      "role": "owner",
+      "priority": "p1",
+      "refreshSla": "72h",
+      "queryThemes": ["fondos afp", "fondo a b c d e", "que fondo afp me conviene"],
+      "nextStepPaths": ["/posts/como-cambiarse-de-afp/", "/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/"]
+    },
+    {
+      "path": "/posts/informe-deudas-cmf-vs-dicom/",
+      "label": "Owner informe deudas CMF vs DICOM",
+      "cluster": "deuda-credito",
+      "role": "owner",
+      "priority": "p2",
+      "refreshSla": "weekly",
+      "queryThemes": ["informe deudas cmf", "cmf vs dicom", "informe deudas gratis"],
+      "nextStepPaths": ["/posts/renegociacion-superir/", "/guias/deuda-credito/"]
+    },
+    {
+      "path": "/posts/renegociacion-superir/",
+      "label": "Owner renegociacion Superir",
+      "cluster": "deuda-credito",
+      "role": "owner",
+      "priority": "p2",
+      "refreshSla": "weekly",
+      "queryThemes": ["renegociacion superir", "quien puede renegociar deudas"],
+      "nextStepPaths": ["/calculadoras/simulador-renegociacion/", "/posts/informe-deudas-cmf-vs-dicom/"]
+    },
+    {
+      "path": "/posts/que-es-la-uf/",
+      "label": "Owner UF",
+      "cluster": "uf-costo-de-vida",
+      "role": "owner",
+      "priority": "p2",
+      "refreshSla": "weekly",
+      "queryThemes": ["que es la uf", "por que sube la uf", "como afecta la uf"],
+      "nextStepPaths": ["/calculadoras/conversor-uf/", "/posts/reajuste-arriendo-uf-ipc-chile/"]
+    },
+    {
+      "path": "/posts/reajuste-arriendo-uf-ipc-chile/",
+      "label": "Owner reajuste de arriendo",
+      "cluster": "uf-costo-de-vida",
+      "role": "owner",
+      "priority": "p2",
+      "refreshSla": "weekly",
+      "queryThemes": ["reajuste arriendo", "reajuste arriendo uf", "reajuste arriendo ipc"],
+      "nextStepPaths": ["/calculadoras/reajuste-arriendo/", "/posts/que-es-la-uf/"]
+    },
+    {
+      "path": "/posts/indemnizacion-anos-de-servicio-chile/",
+      "label": "Support indemnizacion años de servicio",
+      "cluster": "empleo-ingresos",
+      "role": "support",
+      "priority": "p2",
+      "refreshSla": "weekly",
+      "queryThemes": ["indemnizacion anos de servicio"],
+      "nextStepPaths": ["/posts/finiquito-e-indemnizaciones-en-chile/", "/calculadoras/finiquito-indemnizacion/"]
+    },
+    {
+      "path": "/posts/seguro-cesantia-cuenta-individual-vs-fondo-solidario/",
+      "label": "Support CIC vs Fondo Solidario",
+      "cluster": "empleo-ingresos",
+      "role": "support",
+      "priority": "p2",
+      "refreshSla": "weekly",
+      "queryThemes": ["cuenta individual de cesantia", "fondo solidario cesantia", "cic afc"],
+      "nextStepPaths": ["/posts/seguro-de-cesantia/", "/calculadoras/seguro-cesantia/"]
+    },
+    {
+      "path": "/calculadoras/sueldo-liquido/",
+      "label": "Tool sueldo liquido",
+      "cluster": "sueldo-remuneraciones",
+      "role": "tool",
+      "priority": "p1",
+      "refreshSla": "weekly",
+      "queryThemes": ["sueldo liquido", "sueldo bruto a liquido", "calculadora sueldo liquido"],
+      "nextStepPaths": ["/posts/como-calcular-sueldo-liquido/"]
+    },
+    {
+      "path": "/calculadoras/boleta-honorarios-liquido/",
+      "label": "Tool boleta honorarios liquido",
+      "cluster": "impuestos-personas",
+      "role": "tool",
+      "priority": "p1",
+      "refreshSla": "weekly",
+      "queryThemes": ["simulador honorarios", "honorarios liquido", "retencion honorarios"],
+      "nextStepPaths": ["/posts/boleta-honorarios-2026-retencion-cobertura/"]
+    },
+    {
+      "path": "/calculadoras/finiquito-indemnizacion/",
+      "label": "Tool finiquito",
+      "cluster": "empleo-ingresos",
+      "role": "tool",
+      "priority": "p1",
+      "refreshSla": "weekly",
+      "queryThemes": ["calculadora finiquito", "simulador finiquito"],
+      "nextStepPaths": ["/posts/finiquito-e-indemnizaciones-en-chile/"]
+    },
+    {
+      "path": "/calculadoras/seguro-cesantia/",
+      "label": "Tool seguro de cesantia",
+      "cluster": "empleo-ingresos",
+      "role": "tool",
+      "priority": "p1",
+      "refreshSla": "weekly",
+      "queryThemes": ["calculadora seguro de cesantia", "simulador afc", "estimar pago afc"],
+      "nextStepPaths": ["/posts/seguro-de-cesantia/"]
+    },
+    {
+      "path": "/calculadoras/apv/",
+      "label": "Tool APV",
+      "cluster": "ahorro-e-inversion",
+      "role": "tool",
+      "priority": "p1",
+      "refreshSla": "weekly",
+      "queryThemes": ["simulador apv", "apv regimen a vs b", "calculadora apv"],
+      "nextStepPaths": ["/posts/que-es-el-apv/"]
+    },
+    {
+      "path": "/calculadoras/conversor-uf/",
+      "label": "Tool conversor UF",
+      "cluster": "uf-costo-de-vida",
+      "role": "tool",
+      "priority": "p2",
+      "refreshSla": "weekly",
+      "queryThemes": ["uf a pesos", "conversor uf", "valor uf hoy"],
+      "nextStepPaths": ["/posts/que-es-la-uf/"]
+    },
+    {
+      "path": "/calculadoras/reajuste-arriendo/",
+      "label": "Tool reajuste arriendo",
+      "cluster": "uf-costo-de-vida",
+      "role": "tool",
+      "priority": "p2",
+      "refreshSla": "weekly",
+      "queryThemes": ["calculadora reajuste arriendo", "reajuste arriendo uf", "reajuste arriendo ipc"],
+      "nextStepPaths": ["/posts/reajuste-arriendo-uf-ipc-chile/"]
+    },
+    {
+      "path": "/calculadoras/credito-consumo/",
+      "label": "Tool credito de consumo",
+      "cluster": "deuda-credito",
+      "role": "tool",
+      "priority": "p2",
+      "refreshSla": "weekly",
+      "queryThemes": ["simulador credito consumo", "cuota credito consumo", "cae credito consumo"],
+      "nextStepPaths": ["/posts/cae-costo-real-credito-chile/"]
+    },
+    {
+      "path": "/calculadoras/simulador-renegociacion/",
+      "label": "Tool renegociacion",
+      "cluster": "deuda-credito",
+      "role": "tool",
+      "priority": "p2",
+      "refreshSla": "weekly",
+      "queryThemes": ["simulador renegociacion", "renegociar deudas simulador"],
+      "nextStepPaths": ["/posts/renegociacion-superir/"]
+    }
+  ]
+}

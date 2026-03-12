@@ -359,12 +359,12 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 3 - Conversion and Distribution Readiness
 
 ### MB-023 - Build weekly keyword and performance reporting ritual
-- **Description:** Create a recurring weekly scorecard that reviews the watchlist, indexation health, top winners and losers, CTR changes, and opportunities for content refresh or internal-link updates.
+- **Description:** Build a repo-driven weekly reporting ritual that uses `scripts/build-weekly-search-report.mjs`, the strategic watchlist in `docs/operations/runbooks/weekly-search-performance-watchlist.json`, and the runbook in `docs/operations/runbooks/weekly-search-performance-ritual.md` to consolidate weekly GSC page/query exports, Bing/Google indexation notes, and analytics event summaries into a markdown + JSON scorecard with winners, losers, watchlist items, refresh candidates, and internal-link/packaging actions. The script can also initialize the weekly input bundle under `output/operations/weekly-search-performance/<week>/`.
 - **Impact:** 4
 - **Effort:** 2
 - **Confidence:** 5
 - **Priority Score:** 10.0
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-001, MB-002, MB-003, MB-004
 - **Roadmap Phase:** Phase 3 - Conversion and Distribution Readiness
 

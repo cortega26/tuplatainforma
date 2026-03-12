@@ -25,6 +25,7 @@ import ArticleDecisionIntro from "@/components/ArticleDecisionIntro.astro";
 import { getPath } from "@/utils/getPath";
 import { SITE } from "@/config";
 import { getSueldoArticleSections } from "@/config/sueldoClusterLinks";
+import { getDeudaArticleSections } from "@/config/deudaClusterLinks";
 
 type Props = {
   post: CollectionEntry<"blog">;
@@ -94,7 +95,10 @@ const allPosts = posts.map(entry => {
 });
 
 const currentPostIndex = allPosts.findIndex(a => a.slug === article.slug);
-const contextualSections = getSueldoArticleSections(article.slug);
+const contextualSections = [
+  ...getSueldoArticleSections(article.slug),
+  ...getDeudaArticleSections(article.slug),
+];
 const articleLead = post.data.articleLead;
 
 const prevPost = currentPostIndex > 0 ? allPosts[currentPostIndex - 1] : null;
