@@ -3,6 +3,13 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
+
+const { parameters: economicParameters } = await getEconomicParameters();
+const economicSourceLabel =
+  economicParameters.source === "live"
+    ? "dato en línea"
+    : "fallback controlado";
 ---
 
 <Layout
@@ -23,8 +30,9 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
         🏖️ Simulador de Jubilación
       </h1>
       <p class="max-w-xl text-secondary">
-        Estima cuánto acumularás en tu AFP al jubilar y qué pensión mensual
-        podrías esperar, según tu sueldo y años restantes.
+        Proyecta tu saldo AFP con escenarios comparativos, tope imponible y
+        lagunas previsionales visibles, sin mezclar beneficios que no van
+        directo a tu cuenta individual.
       </p>
     </section>
 
@@ -123,7 +131,30 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
             <option value="7">7% — Agresiva (Fondos A/B)</option>
           </select>
           <p class="mt-1 text-xs text-muted">
-            Rentabilidad real histórica promedio, descontada inflación.
+            Este será tu escenario destacado. Más abajo verás también los otros
+            escenarios comparativos.
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="lagunas"
+            class="mb-1 block text-sm font-medium text-secondary"
+          >
+            Lagunas previsionales esperadas (% del tiempo restante)
+          </label>
+          <select
+            id="lagunas"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          >
+            <option value="0">0% — Cotización continua</option>
+            <option value="10" selected>10% — Lagunas ocasionales</option>
+            <option value="20">20% — Intermitencia relevante</option>
+            <option value="30">30% — Alta inestabilidad laboral</option>
+            <option value="40">40% — Trayectoria muy irregular</option>
+          </select>
+          <p class="mt-1 text-xs text-muted">
+            Las lagunas reducen los meses en que proyectamos cotizaciones.
           </p>
         </div>
 
@@ -154,6 +185,12 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
         >
           Simular jubilación →
         </button>
+        <div
+          id="jubilacion-error"
+          class="mt-3 hidden rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-200"
+          role="alert"
+        >
+        </div>
       </div>
 
       <!-- RESULTADO -->
@@ -166,6 +203,22 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
           <p class="mb-3 text-4xl">🏖️</p>
           <p class="text-sm">Ingresa tus datos y presiona simular.</p>
         </div>
+        <div
+          id="economic-parameters"
+          data-uf={String(economicParameters.uf)}
+          data-pension-monthly-taxable-cap-uf={String(
+            economicParameters.previsionalTopes
+              ?.pensionAndHealthMonthlyTaxableCapUf ?? 90
+          )}
+          class="hidden"
+          aria-hidden="true"
+        >
+        </div>
+        <p class="mt-3 text-xs text-muted">
+          Fuente económica: {economicSourceLabel} ({
+            economicParameters.lastUpdated
+          }).
+        </p>
       </div>
     </section>
 
@@ -177,22 +230,21 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
       <p>
         La calculadora proyecta el saldo acumulado en tu AFP al momento de
         jubilarte, considerando las cotizaciones mensuales del 10% de tu sueldo
-        más el aporte adicional del empleador contemplado en la Reforma
-        Previsional vigente (que llega gradualmente al 7%).
+        imponible, el tope imponible vigente y el tramo del aporte del empleador
+        que sí entra directo a tu cuenta individual según el calendario oficial.
       </p>
       <ul>
         <li>
-          <strong>Cotización base:</strong> 10% de tu sueldo bruto cada mes.
+          <strong>Cotización base:</strong> 10% de tu sueldo imponible con tope previsional.
         </li>
         <li>
-          <strong>Aporte empleador (reforma vigente):</strong> Parte de este 7% adicional
-          va directo a tu cuenta individual (4.5% del total). La simulación lo incorpora
-          de forma gradual durante el período de implementación.
+          <strong>Aporte del empleador a tu cuenta individual:</strong> la simulación
+          usa un cronograma versionado de la Superintendencia de Pensiones para la
+          parte que entra directo a la cuenta AFP.
         </li>
         <li>
-          <strong>Rentabilidad:</strong> El fondo genera rentabilidad real sobre el
-          saldo acumulado. La rentabilidad real histórica del sistema ha sido de entre
-          4% y 7% anual en fondos medios.
+          <strong>Lagunas previsionales:</strong> reducen los meses con cotización
+          y cambian materialmente el resultado.
         </li>
         <li>
           <strong>Pensión estimada:</strong> Se calcula dividiendo el saldo acumulado
@@ -201,9 +253,9 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
         </li>
       </ul>
       <p class="text-sm text-muted">
-        ⚠️ Esta es una simulación educativa con supuestos simplificados. La
-        pensión real depende de muchos factores adicionales: lagunas
-        previsionales, modalidad de pensión, PGU, etc. Para una proyección
+        ⚠️ Esta es una simulación educativa del saldo AFP individual. No incluye
+        PGU, comisiones, SIS, modalidad de pensión ni los componentes de
+        seguridad social que no van directo a tu saldo. Para una proyección
         oficial consulta tu AFP o la <a
           href="https://www.spensiones.cl"
           target="_blank">Superintendencia de Pensiones</a
@@ -227,7 +279,46 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
     return fmt(n);
   }
 
+  function showInlineError(message: string) {
+    const errorBox = document.getElementById("jubilacion-error");
+    if (!errorBox) return;
+    errorBox.textContent = message;
+    errorBox.classList.remove("hidden");
+  }
+
+  function clearInlineError() {
+    const errorBox = document.getElementById("jubilacion-error");
+    if (!errorBox) return;
+    errorBox.textContent = "";
+    errorBox.classList.add("hidden");
+  }
+
+  function readEconomicParameters(): {
+    uf: number;
+    pensionMonthlyTaxableCapUf: number;
+  } {
+    const element = document.getElementById("economic-parameters");
+    const uf = Number(element?.dataset?.uf);
+    const pensionMonthlyTaxableCapUf = Number(
+      element?.dataset?.pensionMonthlyTaxableCapUf
+    );
+
+    if (
+      !Number.isFinite(uf) ||
+      uf <= 0 ||
+      !Number.isFinite(pensionMonthlyTaxableCapUf) ||
+      pensionMonthlyTaxableCapUf <= 0
+    ) {
+      throw new Error("No se pudieron cargar los parámetros previsionales.");
+    }
+
+    return { uf, pensionMonthlyTaxableCapUf };
+  }
+
+  const economicParameters = readEconomicParameters();
+
   document.getElementById("calcBtn")?.addEventListener("click", () => {
+    clearInlineError();
     const edad =
       parseInt((document.getElementById("edad") as HTMLInputElement).value) ||
       35;
@@ -247,19 +338,25 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
       parseFloat(
         (document.getElementById("rentabilidad") as HTMLSelectElement).value
       ) / 100;
+    const lagunasPercent =
+      parseFloat(
+        (document.getElementById("lagunas") as HTMLSelectElement).value
+      ) || 0;
     const expectativaVida =
       parseInt(
         (document.getElementById("expectativa-vida") as HTMLInputElement).value
       ) || 85;
 
     if (sueldo <= 0) {
-      alert("Por favor ingresa tu sueldo bruto mensual.");
+      showInlineError("Ingresa tu sueldo bruto mensual antes de simular.");
       return;
     }
 
     const añosRestantes = Math.max(0, edadJubilacion - edad);
     if (añosRestantes <= 0) {
-      alert("La edad de jubilación debe ser mayor que tu edad actual.");
+      showInlineError(
+        "La edad de jubilación debe ser mayor que tu edad actual."
+      );
       return;
     }
 
@@ -272,9 +369,17 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
         currentBalance: saldoInicial,
         annualReturnPercent: rentAnual * 100,
         lifeExpectancyAge: expectativaVida,
+        contributionDensityPercent: 100 - lagunasPercent,
+        economicParameters: {
+          uf: economicParameters.uf,
+          previsionalTopes: {
+            pensionAndHealthMonthlyTaxableCapUf:
+              economicParameters.pensionMonthlyTaxableCapUf,
+          },
+        },
       });
     } catch (error) {
-      alert(
+      showInlineError(
         error instanceof Error
           ? error.message
           : "No se pudo simular la jubilación."
@@ -299,6 +404,38 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
       return line;
     };
 
+    const buildScenarioCard = (
+      label: string,
+      annualReturnPercent: number,
+      monthlyPension: number,
+      projectedBalance: number,
+      replacementPercent: number,
+      emphasized = false
+    ) => {
+      const card = document.createElement("div");
+      card.className = `rounded-lg border p-3 ${
+        emphasized
+          ? "border-accent/30 bg-accent/10"
+          : "border-border bg-foreground/5"
+      }`;
+
+      const title = document.createElement("p");
+      title.className =
+        "text-xs font-bold tracking-widest text-muted uppercase";
+      title.textContent = `${label} · ${annualReturnPercent}% real`;
+
+      const pension = document.createElement("p");
+      pension.className = "mt-2 text-lg font-bold";
+      pension.textContent = fmt(monthlyPension);
+
+      const subtitle = document.createElement("p");
+      subtitle.className = "mt-1 text-xs text-secondary";
+      subtitle.textContent = `${replacementPercent.toFixed(0)}% de reemplazo · saldo ${fmtM(projectedBalance)}`;
+
+      card.append(title, pension, subtitle);
+      return card;
+    };
+
     const headline = document.createElement("div");
     headline.className =
       "mb-5 rounded-lg border border-accent/20 bg-accent/10 p-4 text-center";
@@ -308,11 +445,33 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
     headlineLabel.textContent = "Saldo estimado al jubilar";
     const headlineValue = document.createElement("p");
     headlineValue.className = "text-4xl font-bold";
-    headlineValue.textContent = fmtM(proyeccion.projectedBalance);
+    headlineValue.textContent = fmtM(
+      proyeccion.selectedScenario.projectedBalance
+    );
     const headlineSub = document.createElement("p");
     headlineSub.className = "mt-1 text-sm text-muted";
-    headlineSub.textContent = `En ${añosRestantes} años (a los ${edadJubilacion})`;
+    headlineSub.textContent = `En ${añosRestantes} años (a los ${edadJubilacion}) · escenario ${proyeccion.selectedScenario.label.toLowerCase()}`;
     headline.append(headlineLabel, headlineValue, headlineSub);
+
+    const comparisonLabel = document.createElement("p");
+    comparisonLabel.className =
+      "mb-2 text-xs font-bold tracking-widest text-muted uppercase";
+    comparisonLabel.textContent = "Escenarios comparativos";
+
+    const comparisonGrid = document.createElement("div");
+    comparisonGrid.className = "grid gap-3 sm:grid-cols-3";
+    proyeccion.scenarios.forEach(scenario => {
+      comparisonGrid.appendChild(
+        buildScenarioCard(
+          scenario.label,
+          scenario.annualReturnPercent,
+          scenario.estimatedMonthlyPension,
+          scenario.projectedBalance,
+          scenario.salaryReplacementPercent,
+          scenario.id === "selected"
+        )
+      );
+    });
 
     const hint = document.createElement("div");
     hint.className =
@@ -322,31 +481,75 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
     hint.append(
       hintTitle,
       document.createElement("br"),
-      `Agregar APV mensual aumenta significativamente el saldo final. Con $100.000/mes de APV durante ${añosRestantes} años a ${
-        rentAnual * 100
-      }% anual, sumarías aprox. ${fmtM(proyeccion.apvExtraProjectionAt100kMonthly)} adicionales al fondo.`
+      `Agregar APV mensual aumenta significativamente el saldo final. Con $100.000/mes de APV en los meses con cotización, el escenario destacado suma aprox. ${fmtM(proyeccion.selectedScenario.apvExtraProjectionAt100kMonthly)} adicionales al fondo.`
     );
+
+    const scopeBox = document.createElement("div");
+    scopeBox.className = "mt-4 rounded-lg bg-foreground/5 p-3 text-xs";
+    const scopeTitle = document.createElement("p");
+    scopeTitle.className =
+      "mb-2 font-bold tracking-widest text-muted uppercase";
+    scopeTitle.textContent = "Supuestos clave";
+    const scopeList = document.createElement("ul");
+    scopeList.className = "space-y-1 text-secondary";
+    [
+      `Meses con cotización proyectados: ${proyeccion.monthsWithContributions} de ${proyeccion.totalMonths}.`,
+      `Sueldo usado para cotizar: ${fmt(proyeccion.taxableSalaryUsedClp)} (tope vigente ${fmt(proyeccion.salaryCapClp)}).`,
+      `Cronograma empleador versionado: ${proyeccion.employerContributionScheduleVersion}.`,
+      ...proyeccion.excludedBenefits,
+    ].forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      scopeList.appendChild(li);
+    });
+    const sourceLine = document.createElement("p");
+    sourceLine.className = "mt-2 text-muted";
+    const sourceLink = document.createElement("a");
+    sourceLink.href = proyeccion.employerContributionScheduleSource.url;
+    sourceLink.target = "_blank";
+    sourceLink.className = "underline";
+    sourceLink.textContent = "fuente oficial";
+    sourceLine.append(
+      "Cronograma del empleador: ",
+      sourceLink,
+      ` (${proyeccion.employerContributionScheduleSource.lastVerified}).`
+    );
+    scopeBox.append(scopeTitle, scopeList, sourceLine);
 
     document
       .getElementById("resultado-contenido")!
       .replaceChildren(
         headline,
+        comparisonLabel,
+        comparisonGrid,
         buildRow(
           "Pensión mensual estimada",
-          fmt(proyeccion.estimatedMonthlyPension),
+          fmt(proyeccion.selectedScenario.estimatedMonthlyPension),
           "text-accent"
         ),
         buildRow(
           "Como % de tu sueldo actual",
-          `${proyeccion.salaryReplacementPercent.toFixed(0)}%`
+          `${proyeccion.selectedScenario.salaryReplacementPercent.toFixed(0)}%`
         ),
         buildRow(
           "Años de pensión (vida estimada)",
           `${proyeccion.pensionMonths / 12} años`
         ),
+        buildRow(
+          "Lagunas previsionales asumidas",
+          `${lagunasPercent.toFixed(0)}% del tiempo restante`
+        ),
         buildRow("Rentabilidad anual usada", `${rentAnual * 100}%`),
         buildRow("Saldo inicial ingresado", fmt(saldoInicial)),
-        hint
+        buildRow(
+          "Aporte empleador directo proyectado",
+          fmt(
+            proyeccion.selectedScenario
+              .totalEmployerContributionsToIndividualAccount
+          )
+        ),
+        hint,
+        scopeBox
       );
 
     trackAnalyticsEvent("calculator_complete", {

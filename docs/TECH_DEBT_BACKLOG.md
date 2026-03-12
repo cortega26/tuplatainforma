@@ -7,13 +7,13 @@ Fecha de corte: 2026-03-12
 ### Total de items por urgencia
 - **P0:** 3
 - **P1:** 11
-- **P2:** 12
+- **P2:** 13
 - **P3:** 1
 
 ### Estado de avance (2026-03-12)
-- **Completados:** 27 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0011`, `TD-0012`, `TD-0013`, `TD-0014`, `TD-0015`, `TD-0016`, `TD-0017`, `TD-0018`, `TD-0019`, `TD-0020`, `TD-0021`, `TD-0022`, `TD-0024`, `TD-0025`, `TD-0026`, `FIX-MDX`, `FIX-LINKS-CALC`)
+- **Completados:** 28 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0011`, `TD-0012`, `TD-0013`, `TD-0014`, `TD-0015`, `TD-0016`, `TD-0017`, `TD-0018`, `TD-0019`, `TD-0020`, `TD-0021`, `TD-0022`, `TD-0023`, `TD-0024`, `TD-0025`, `TD-0026`, `FIX-MDX`, `FIX-LINKS-CALC`)
 - **En progreso:** 0
-- **Backlog sin iniciar:** 3 (`TD-0023`, `TD-0027`, `TD-0028`)
+- **Backlog sin iniciar:** 3 (`TD-0027`, `TD-0028`, `TD-0029`)
 - **Backlog en validación/diseño:** 0
 
 > `FIX-MDX`: corregido comentario HTML (`<!-- -->`) en `que-es-el-apv.mdx:25` que rompía el build.
@@ -22,9 +22,9 @@ Fecha de corte: 2026-03-12
 ### Top riesgos restantes
 | Ranking | ID | Riesgo | Motivo principal |
 |---|---|---|---|
-| 1 | TD-0023 | Alto | Cesantía y jubilación entregan proyecciones visibles con supuestos regulatorios y actuariales demasiado agresivos. |
-| 2 | TD-0028 | Alto | El artículo APV publicado traduce la elección A/B a bandas fijas de sueldo bruto y una mezcla no suficientemente trazada a fuentes oficiales. |
-| 3 | TD-0027 | Medio | El checklist de ahorro/inversión mezcla cálculo, copy y supuestos de producto sin un contrato común reutilizable. |
+| 1 | TD-0028 | Alto | El artículo APV publicado traduce la elección A/B a bandas fijas de sueldo bruto y una mezcla no suficientemente trazada a fuentes oficiales. |
+| 2 | TD-0027 | Medio | El checklist de ahorro/inversión mezcla cálculo, copy y supuestos de producto sin un contrato común reutilizable. |
+| 3 | TD-0029 | Medio | Las fichas legales de cesantía y reforma previsional quedaron desalineadas del modelado oficial usado por las calculadoras. |
 
 ### Quick wins (alto impacto / bajo esfuerzo)
 - [x] `TD-0007` Corregir email placeholder en enlaces sociales.
@@ -169,23 +169,24 @@ Fecha de corte: 2026-03-12
 - **ID:** TD-0023
 - **Título corto:** Endurecer simuladores previsionales de cesantía y jubilación
 - **Descripción:** `seguro-cesantia` estima CIC y FCS con proxies demasiado gruesos; `simulador-jubilacion` usa un cronograma simplificado del aporte patronal y no valida escenarios actuariales clave. Ambos outputs son visibles y pueden parecer más exactos de lo que son.
-- **Evidencia:** `src/application/use-cases/EstimateUnemploymentCoverage.ts`; `src/pages/calculadoras/seguro-cesantia.astro`; `src/application/use-cases/SimulateRetirementProjection.ts`; `src/pages/calculadoras/simulador-jubilacion.astro`; `src/data/laws/ley-19728-seguro-cesantia.md`; `src/data/laws/proyecto-reforma-previsional-2025.md`.
+- **Evidencia (actualizada):** `EstimateUnemploymentCoverage` ahora diferencia `balanceSource`, separa CIC vs Fondo Solidario, usa tasas CIC/FCS vigentes por tipo de contrato y expone referencia oficial AFC versionada sin prometer montos FCS; `SimulateRetirementProjection` consume un cronograma versionado en `src/application/use-cases/shared/retirementEmployerContributionSchedule.ts`, aplica tope imponible previsional, modela lagunas (`contributionDensityPercent`) y devuelve escenarios comparativos `conservative/base/aggressive`; `tests/application/EstimateUnemploymentCoverage.test.ts`, `tests/application/SimulateRetirementProjection.test.ts` y `tests/application/FinancialUseCases.regression.test.ts` cubren bordes y regresión.
 - **Impacto:** Riesgo alto de decisiones equivocadas en contingencia laboral y planificación previsional.
 - **Riesgo:** alto
 - **Severidad (1-5):** 4
 - **Urgencia:** P1
 - **Esfuerzo estimado:** L
 - **Propuesta de solución:** dividir cesantía en dos modos (`eligibilidad` y `estimación con saldo real`), modelar FCS solo cuando haya tabla oficial versionada, alinear jubilación con una única fuente de parámetros previsionales y validar expectativa de vida, lagunas y alcance del estimador.
+- **Avance actual (2026-03-12):** `seguro-cesantia` ahora distingue saldo real vs saldo estimado, exige confirmación de continuidad para cerrar el filtro base del FCS y deja explícito que los montos FCS se revisan en AFC. `simulador-jubilacion` pasó a usar una sola tabla versionada para el aporte del empleador a la cuenta individual, aplica tope imponible, incorpora lagunas previsionales visibles y muestra escenarios comparativos conservador/base/agresivo, además de fallar explícitamente cuando la expectativa de vida no alcanza para estimar meses de pensión.
 - **Criterios de cierre (checklist verificable):**
-- [ ] Cesantía diferencia claramente CIC real vs saldo estimado.
-- [ ] Cesantía no promete montos FCS sin tabla/versionado verificable.
-- [ ] Jubilación usa una sola tabla/versionado para reforma previsional.
-- [ ] Jubilación falla con mensaje explícito si expectativa de vida <= edad de retiro.
-- [ ] Se agregan casos borde y escenarios comparativos conservador/base/agresivo.
+- [x] Cesantía diferencia claramente CIC real vs saldo estimado.
+- [x] Cesantía no promete montos FCS sin tabla/versionado verificable.
+- [x] Jubilación usa una sola tabla/versionado para reforma previsional.
+- [x] Jubilación falla con mensaje explícito si expectativa de vida <= edad de retiro.
+- [x] Se agregan casos borde y escenarios comparativos conservador/base/agresivo.
 - **Owner:** TBD
-- **Estado:** Sin iniciar
+- **Estado:** Completado
 - **Fecha de creación:** 2026-03-11
-- **Última actualización:** 2026-03-11
+- **Última actualización:** 2026-03-12
 
 ## TD-0024 — Renegociación Superir mezcla unidades de mora y omite filtros legales críticos
 - **ID:** TD-0024
@@ -291,6 +292,26 @@ Fecha de corte: 2026-03-12
 - [ ] La combinación A+B queda presentada como resumen orientativo condicionado, no como regla universal de “muchos asesores”.
 - [ ] El artículo queda alineado con la lógica vigente del simulador APV o explicita cualquier diferencia residual mientras `TD-0021` siga abierto.
 - [ ] El refresh incluye artifact chain editorial completo (`brief`, `dossier`, `outline`, `draft`, `math audit`, `compliance`, `publish packet`).
+- **Owner:** TBD
+- **Estado:** Sin iniciar
+- **Fecha de creación:** 2026-03-12
+- **Última actualización:** 2026-03-12
+
+## TD-0029 — Fichas legales de cesantía y reforma previsional quedaron desalineadas del modelado vigente
+- **ID:** TD-0029
+- **Título corto:** Actualizar fichas legales de cesantía y reforma previsional según parámetros oficiales vigentes
+- **Descripción:** Durante `TD-0023` quedó en evidencia que `src/data/laws/ley-19728-seguro-cesantia.md` y `src/data/laws/proyecto-reforma-previsional-2025.md` resumen porcentajes y cronogramas que ya no calzan exactamente con el modelado oficial usado por las calculadoras. El runtime quedó endurecido, pero la capa documental todavía puede inducir una lectura distinta.
+- **Evidencia:** `src/data/laws/ley-19728-seguro-cesantia.md`; `src/data/laws/proyecto-reforma-previsional-2025.md`; `src/application/use-cases/EstimateUnemploymentCoverage.ts`; `src/application/use-cases/shared/retirementEmployerContributionSchedule.ts`; validación primaria 2026-03-12 en AFC Chile y Superintendencia de Pensiones.
+- **Impacto:** Riesgo de que una ficha legal interna contradiga la lógica visible de calculadoras YMYL ya corregidas.
+- **Riesgo:** medio
+- **Severidad (1-5):** 3
+- **Urgencia:** P2
+- **Esfuerzo estimado:** S
+- **Propuesta de solución:** refrescar ambas fichas legales con cifras, cortes temporales y notas de alcance alineadas con las fuentes primarias ya usadas por el runtime, sin introducir reglas simplificadas que mezclen cuenta individual con componentes colectivos.
+- **Criterios de cierre (checklist verificable):**
+- [ ] La ficha de cesantía refleja tasas CIC/FCS y mínimos vigentes.
+- [ ] La ficha de reforma previsional distingue con claridad el tramo que va directo a la cuenta individual.
+- [ ] Las dos fichas explicitan fecha de corte y fuente primaria crítica.
 - **Owner:** TBD
 - **Estado:** Sin iniciar
 - **Fecha de creación:** 2026-03-12

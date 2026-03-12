@@ -142,13 +142,15 @@ describe("Regression - Seguro de Cesantía", () => {
       contractType: "indefinido",
       terminationCause: "necesidad",
       monthsContributed: 24,
+      lastThreeContinuousContributions: true,
       economicParameters: { uf: UF, afcTopes: { monthlyTaxableCapUf: 131.9 } },
     });
     expect(round2(result.taxableSalaryClp)).toBe(1200000);
-    expect(round2(result.estimatedCicBalance)).toBe(777600);
-    expect(round2(result.totalCoverage)).toBe(777600);
+    expect(round2(result.estimatedCicBalance)).toBe(633600);
+    expect(round2(result.totalCoverage)).toBe(633600);
     expect(result.monthsCovered).toBe(1);
     expect(result.eligibleForSolidarityFund).toBe(true);
+    expect(result.solidarityFundStatus).toBe("minimum-criteria-met");
   });
 
   it("case 2", () => {
@@ -165,6 +167,7 @@ describe("Regression - Seguro de Cesantía", () => {
     expect(round2(result.totalCoverage)).toBe(500000);
     expect(result.monthsCovered).toBe(1);
     expect(result.eligibleForSolidarityFund).toBe(false);
+    expect(result.minimumContributionsRequired).toBe(5);
   });
 
   it("case 3", () => {
@@ -176,10 +179,11 @@ describe("Regression - Seguro de Cesantía", () => {
       economicParameters: { uf: UF, afcTopes: { monthlyTaxableCapUf: 131.9 } },
     });
     expect(round2(result.taxableSalaryClp)).toBe(3000000);
-    expect(round2(result.estimatedCicBalance)).toBe(648000);
-    expect(round2(result.totalCoverage)).toBe(648000);
+    expect(round2(result.estimatedCicBalance)).toBe(528000);
+    expect(round2(result.totalCoverage)).toBe(528000);
     expect(result.monthsCovered).toBe(1);
     expect(result.eligibleForSolidarityFund).toBe(false);
+    expect(result.solidarityFundStatus).toBe("ineligible-cause");
   });
 });
 
@@ -440,12 +444,24 @@ describe("Regression - Simulador de Jubilación", () => {
       currentBalance: 12000000,
       annualReturnPercent: 5,
       lifeExpectancyAge: 90,
-      currentYear: 2026,
+      currentDate: "2026-03-01",
+      contributionDensityPercent: 90,
+      economicParameters: {
+        uf: UF,
+        previsionalTopes: { pensionAndHealthMonthlyTaxableCapUf: 90 },
+      },
     });
-    expect(round2(result.projectedBalance)).toBe(296191641.23);
-    expect(round2(result.estimatedMonthlyPension)).toBe(987305.47);
-    expect(round2(result.salaryReplacementPercent)).toBe(65.82);
-    expect(round2(result.apvExtraProjectionAt100kMonthly)).toBe(110846297.45);
+    expect(round2(result.selectedScenario.projectedBalance)).toBe(264518648.4);
+    expect(round2(result.selectedScenario.estimatedMonthlyPension)).toBe(
+      881728.83
+    );
+    expect(round2(result.selectedScenario.salaryReplacementPercent)).toBe(
+      58.78
+    );
+    expect(round2(result.selectedScenario.apvExtraProjectionAt100kMonthly)).toBe(
+      99784933.32
+    );
+    expect(result.monthsWithContributions).toBe(378);
   });
 
   it("case 2", () => {
@@ -456,12 +472,26 @@ describe("Regression - Simulador de Jubilación", () => {
       currentBalance: 45000000,
       annualReturnPercent: 4,
       lifeExpectancyAge: 92,
-      currentYear: 2026,
+      currentDate: "2026-03-01",
+      contributionDensityPercent: 90,
+      economicParameters: {
+        uf: UF,
+        previsionalTopes: { pensionAndHealthMonthlyTaxableCapUf: 90 },
+      },
     });
-    expect(round2(result.projectedBalance)).toBe(274240088.25);
-    expect(round2(result.estimatedMonthlyPension)).toBe(846420.03);
-    expect(round2(result.salaryReplacementPercent)).toBe(38.47);
-    expect(round2(result.apvExtraProjectionAt100kMonthly)).toBe(50884811.94);
+    expect(round2(result.selectedScenario.projectedBalance)).toBe(
+      252434292.72
+    );
+    expect(round2(result.selectedScenario.estimatedMonthlyPension)).toBe(
+      779118.19
+    );
+    expect(round2(result.selectedScenario.salaryReplacementPercent)).toBe(
+      35.41
+    );
+    expect(round2(result.selectedScenario.apvExtraProjectionAt100kMonthly)).toBe(
+      45804863.38
+    );
+    expect(result.monthsWithContributions).toBe(270);
   });
 
   it("case 3", () => {
@@ -472,11 +502,25 @@ describe("Regression - Simulador de Jubilación", () => {
       currentBalance: 2500000,
       annualReturnPercent: 6.5,
       lifeExpectancyAge: 87,
-      currentYear: 2026,
+      currentDate: "2026-03-01",
+      contributionDensityPercent: 90,
+      economicParameters: {
+        uf: UF,
+        previsionalTopes: { pensionAndHealthMonthlyTaxableCapUf: 90 },
+      },
     });
-    expect(round2(result.projectedBalance)).toBe(179743710.49);
-    expect(round2(result.estimatedMonthlyPension)).toBe(554764.54);
-    expect(round2(result.salaryReplacementPercent)).toBe(58.4);
-    expect(round2(result.apvExtraProjectionAt100kMonthly)).toBe(123575774.63);
+    expect(round2(result.selectedScenario.projectedBalance)).toBe(
+      156693125.94
+    );
+    expect(round2(result.selectedScenario.estimatedMonthlyPension)).toBe(
+      483620.76
+    );
+    expect(round2(result.selectedScenario.salaryReplacementPercent)).toBe(
+      50.91
+    );
+    expect(round2(result.selectedScenario.apvExtraProjectionAt100kMonthly)).toBe(
+      111352620.3
+    );
+    expect(result.monthsWithContributions).toBe(346);
   });
 });
