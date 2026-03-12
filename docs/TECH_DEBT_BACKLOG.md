@@ -299,7 +299,7 @@ Fecha de corte: 2026-03-12
 - **ID:** TD-0029
 - **Título corto:** Actualizar fichas legales de cesantía y reforma previsional según parámetros oficiales vigentes
 - **Descripción:** Durante `TD-0023` quedó en evidencia que `src/data/laws/ley-19728-seguro-cesantia.md` y `src/data/laws/proyecto-reforma-previsional-2025.md` resumen porcentajes y cronogramas que ya no calzan exactamente con el modelado oficial usado por las calculadoras. El runtime quedó endurecido, pero la capa documental todavía puede inducir una lectura distinta.
-- **Evidencia:** `src/data/laws/ley-19728-seguro-cesantia.md`; `src/data/laws/proyecto-reforma-previsional-2025.md`; `src/application/use-cases/EstimateUnemploymentCoverage.ts`; `src/application/use-cases/shared/retirementEmployerContributionSchedule.ts`; validación primaria 2026-03-12 en AFC Chile y Superintendencia de Pensiones.
+- **Evidencia (actualizada):** `src/data/laws/ley-19728-seguro-cesantia.md` ahora explicita la distribución vigente CIC/FCS (1,6% + 0,8% + 0,6% para indefinido; 2,8% + 0,2% para plazo fijo/obra/servicio), los mínimos CIC/FCS y las tablas FCS vigentes al 2026-03-12 con fecha de corte visible; `src/data/laws/proyecto-reforma-previsional-2025.md` distingue implementación actual vs régimen 2033, explicita que hoy solo 0,1% del nuevo 1% va directo a cuenta individual y documenta el cronograma usado por `src/application/use-cases/shared/retirementEmployerContributionSchedule.ts`; validación primaria 2026-03-12 en AFC, ChileAtiende, BCN y Superintendencia de Pensiones.
 - **Impacto:** Riesgo de que una ficha legal interna contradiga la lógica visible de calculadoras YMYL ya corregidas.
 - **Riesgo:** medio
 - **Severidad (1-5):** 3
@@ -307,11 +307,11 @@ Fecha de corte: 2026-03-12
 - **Esfuerzo estimado:** S
 - **Propuesta de solución:** refrescar ambas fichas legales con cifras, cortes temporales y notas de alcance alineadas con las fuentes primarias ya usadas por el runtime, sin introducir reglas simplificadas que mezclen cuenta individual con componentes colectivos.
 - **Criterios de cierre (checklist verificable):**
-- [ ] La ficha de cesantía refleja tasas CIC/FCS y mínimos vigentes.
-- [ ] La ficha de reforma previsional distingue con claridad el tramo que va directo a la cuenta individual.
-- [ ] Las dos fichas explicitan fecha de corte y fuente primaria crítica.
+- [x] La ficha de cesantía refleja tasas CIC/FCS y mínimos vigentes.
+- [x] La ficha de reforma previsional distingue con claridad el tramo que va directo a la cuenta individual.
+- [x] Las dos fichas explicitan fecha de corte y fuente primaria crítica.
 - **Owner:** TBD
-- **Estado:** Sin iniciar
+- **Estado:** Completado
 - **Fecha de creación:** 2026-03-12
 - **Última actualización:** 2026-03-12
 
