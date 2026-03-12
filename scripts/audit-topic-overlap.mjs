@@ -4,6 +4,7 @@ import yaml from "js-yaml";
 import {
   CANONICAL_TOPIC_REGISTRY,
   HARDENED_OWNERSHIP_CLUSTERS,
+  allowsGeneralCategoryInCluster,
   getAllowedCategoriesForCluster,
   getCanonicalTopicEntry,
   getTransitionalOwnershipEntry,
@@ -326,6 +327,11 @@ for (const article of articles) {
   } else if (
     article.draft !== true &&
     article.category === "general" &&
+    !allowsGeneralCategoryInCluster({
+      cluster: article.cluster,
+      topicRole: article.topicRole,
+      unlisted: article.unlisted,
+    }) &&
     !(article.unlisted === true && article.topicRole === "reference")
   ) {
     metadataWarnings.push(

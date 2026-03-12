@@ -50,7 +50,7 @@ export const HUB_ARTICLE_ASSIGNMENTS = {
         summary:
           "Sirve como salida relacionada cuando una cuota, arriendo u otra obligación está en UF y necesitas entender el reajuste antes de decidir qué hacer.",
         rationale:
-          "Su owner canónico vive en uf-costo-de-vida; este hub solo puede usarla como puente mientras siga en placement transitorio dentro de deuda.",
+          "Su owner canónico ya vive en uf-costo-de-vida; este hub solo puede usarla como puente relacionado cuando la duda nace desde una obligación reajustable.",
       },
     ],
   },

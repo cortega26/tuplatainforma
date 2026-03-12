@@ -34,9 +34,9 @@ const relatedBridges = [
   },
 ];
 
-const futureAdditions = [
-  "Hardening puntual de metadata/frontmatter para mover juntos UF, IPC y reajuste al cluster canónico sin abrir una migración masiva.",
+const nextAdjustments = [
   "Ajuste fino de bridges desde activos vecinos si aparece una nueva necesidad causal real, no por inflar enlazado.",
+  "Normalización futura de taxonomía solo si el repo necesita una categoría dedicada para este frente, no como requisito para operar el cluster.",
 ];
 ---
 
@@ -157,20 +157,18 @@ const futureAdditions = [
     </section>
 
     <section class="border-b border-border py-8">
-      <h2 class="mb-4 text-2xl font-bold">Transición operativa explícita</h2>
+      <h2 class="mb-4 text-2xl font-bold">Estado operativo del frente</h2>
       <div class="rounded-xl border border-accent/20 bg-accent/5 p-6">
         <p class="text-sm text-secondary">
-          Este hub ya es la entrada editorial correcta del frente, pero no finge
-          una migración total. Por ahora,{" "}
-          <strong><code>que-es-la-uf</code></strong> y{" "}
-          <strong><code>reajuste-arriendo-uf-ipc-chile</code></strong> siguen publicados
-          con placement operativo heredado desde <strong>deuda-credito</strong>,
-          y <strong><code>que-es-el-ipc-chile-como-se-calcula</code></strong>{
+          Este hub ya no depende de placements heredados para ordenar el frente.
+          <strong><code>que-es-la-uf</code></strong>,{" "}
+          <strong><code>que-es-el-ipc-chile-como-se-calcula</code></strong> y{
             " "
           }
-          sigue con placement heredado desde <strong>empleo-ingresos</strong>.
-          Aquí se ordenan como núcleo canónico del frente sin forzar todavía una
-          pasada masiva de metadata o runtime.
+          <strong><code>reajuste-arriendo-uf-ipc-chile</code></strong> quedaron endurecidos
+          en <strong>uf-costo-de-vida</strong> como piezas core con ownership explícito.
+          <strong>Deuda y crédito</strong> sobrevive solo como bridge relacionado
+          cuando la pregunta real parte desde una obligación reajustable.
         </p>
       </div>
     </section>
@@ -204,13 +202,12 @@ const futureAdditions = [
       <div class="rounded-xl border border-border p-6">
         <h2 class="mb-4 text-xl font-bold">Lo que no migramos todavía</h2>
         <ul class="list-disc space-y-2 pl-6 text-secondary">
-          {futureAdditions.map(item => <li>{item}</li>)}
+          {nextAdjustments.map(item => <li>{item}</li>)}
         </ul>
         <p class="mt-4 text-sm text-secondary">
           Actualizado: 2026-03-12. Esta sección se revisa cuando cambian
-          metodología UF/IPC, emerge una herramienta nueva del frente o se abre
-          la pasada puntual de hardening para alinear metadata con ownership
-          canónico.
+          metodología UF/IPC, emerge una herramienta nueva del frente o aparece
+          una razón editorial real para extender taxonomía o bridges.
         </p>
       </div>
     </section>

@@ -139,12 +139,12 @@ Contrato mínimo activo en Fase 4:
 
 Estado operativo:
 
-- En `sueldo-remuneraciones`, `pensiones-afp` y `ahorro-e-inversion`, los artículos publicados **deben** declarar ambos campos.
+- En `sueldo-remuneraciones`, `pensiones-afp`, `ahorro-e-inversion` y `uf-costo-de-vida`, los artículos publicados **deben** declarar ambos campos.
 - Si aparece `topicRole`, `canonicalTopic` pasa a ser obligatorio.
 - En clusters endurecidos, `canonicalTopic` debe existir en el registro central `src/config/editorial-topic-policy.mjs`.
 - Dos páginas publicadas no pueden declarar `topicRole: owner` para el mismo `cluster + canonicalTopic`.
 - En clusters endurecidos, `support` o `reference` no pueden quedar huérfanos de owner.
-- `category: general` no sirve como escape hatch en clusters endurecidos; solo se acepta para piezas `reference` + `unlisted`.
+- `category: general` no sirve como escape hatch en clusters endurecidos; solo se acepta para piezas `reference` + `unlisted`, salvo la excepción explícita de `uf-costo-de-vida`, donde `general` es la categoría operativa del frente.
 
 Campos que siguen fuera del contrato mínimo por ahora:
 
@@ -162,7 +162,7 @@ La convención `<!-- META: keyword_primary="..." | intent="..." | cluster="..." 
 - El owner canónico de una URL se define por la necesidad dominante, no por el cluster operativo donde hoy quedó publicada.
 - Un `transitional placement` solo es válido si el owner futuro está documentado en `docs/editorial/TOPIC_OWNERSHIP_POLICY.md`, `docs/research/seo/strategy/topic_ownership_matrix.md` y `src/config/editorial-topic-policy.mjs`.
 - Un hub no puede absorber como `core` una URL cuyo owner canónico vive fuera de su cluster; en esos casos solo se permite `related`.
-- `category: general` no puede ocultar indefinidamente un owner ya decidido. Si persiste, `pnpm run audit:topic-overlap` debe tratarlo como transición documentada o como incoherencia real.
+- `category: general` no puede ocultar indefinidamente un owner ya decidido. Si persiste fuera de `uf-costo-de-vida`, `pnpm run audit:topic-overlap` debe tratarlo como transición documentada o como incoherencia real.
 
 ## 6. Implantación técnica mínima con ROI real
 

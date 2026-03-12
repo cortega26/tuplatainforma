@@ -268,7 +268,7 @@ Change log:
 
 ### `INVARIANT.EDITORIAL.TOPIC_OWNERSHIP_METADATA_HARDENED_CLUSTERS`
 
-- Statement: Los artículos publicados en clusters endurecidos (`sueldo-remuneraciones`, `pensiones-afp`, `ahorro-e-inversion`) deben declarar `topicRole` y `canonicalTopic`.
+- Statement: Los artículos publicados en clusters endurecidos (`sueldo-remuneraciones`, `pensiones-afp`, `ahorro-e-inversion`, `uf-costo-de-vida`) deben declarar `topicRole` y `canonicalTopic`.
 - Canonical source: `scripts/check-frontmatter.mjs`, `scripts/audit-topic-overlap.mjs`.
 - Rationale:
   - Añade fricción real donde la canibalización ya fue observada o el cluster tiene más riesgo de deriva.

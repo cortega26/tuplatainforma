@@ -12,7 +12,9 @@ tags:
   - presupuesto
   - costo-de-vida
 category: general
-cluster: empleo-ingresos
+cluster: uf-costo-de-vida
+topicRole: owner
+canonicalTopic: ipc-inflacion-costo-de-vida
 lang: es-CL
 featured: false
 draft: false

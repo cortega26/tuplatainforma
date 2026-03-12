@@ -13,8 +13,10 @@ tags:
   - ipc
   - arriendos
   - creditos
-category: deuda-credito
-cluster: deuda-credito
+category: general
+cluster: uf-costo-de-vida
+topicRole: owner
+canonicalTopic: uf-reajustes-costo-de-vida
 description: "Explicación práctica de la Unidad de Fomento (UF): qué es, cómo se calcula, por qué cambia cada día y cómo impacta tu arriendo, dividendo y deudas en Chile."
 heroImage: /images/hero/que-es-la-uf.avif
 ---

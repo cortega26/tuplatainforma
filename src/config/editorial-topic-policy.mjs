@@ -4,6 +4,7 @@ export const HARDENED_OWNERSHIP_CLUSTERS = [
   "sueldo-remuneraciones",
   "pensiones-afp",
   "ahorro-e-inversion",
+  "uf-costo-de-vida",
 ];
 
 export const PRIMARY_CATEGORY_BY_CLUSTER = {
@@ -14,6 +15,7 @@ export const PRIMARY_CATEGORY_BY_CLUSTER = {
   "ahorro-e-inversion": ["ahorro-inversion"],
   "deuda-credito": ["deuda-credito"],
   "seguridad-financiera": ["seguridad-financiera"],
+  "uf-costo-de-vida": ["general"],
 };
 
 export const CANONICAL_TOPIC_REGISTRY = {
@@ -80,6 +82,20 @@ export const CANONICAL_TOPIC_REGISTRY = {
       intentLabel: "interes compuesto caso",
     },
   },
+  "uf-costo-de-vida": {
+    "uf-reajustes-costo-de-vida": {
+      ownerSlug: "que-es-la-uf",
+      intentLabel: "entender UF y reajustes de costo de vida",
+    },
+    "ipc-inflacion-costo-de-vida": {
+      ownerSlug: "que-es-el-ipc-chile-como-se-calcula",
+      intentLabel: "entender IPC e inflacion de costo de vida",
+    },
+    "reajuste-arriendo-contrato-uf-ipc": {
+      ownerSlug: "reajuste-arriendo-uf-ipc-chile",
+      intentLabel: "interpretar reajuste de arriendo en UF o IPC",
+    },
+  },
 };
 
 export const TRANSITIONAL_OWNERSHIP_REGISTRY = {
@@ -93,39 +109,6 @@ export const TRANSITIONAL_OWNERSHIP_REGISTRY = {
       "Migrar solo cuando exista el hub productivo /guias/presupuesto-control-financiero/ y al menos un activo satelite o herramienta adicional que convierta la URL actual en core real del cluster.",
     rationale:
       "La intencion dominante es habito y control financiero del hogar, no continuidad de ingreso laboral ni contingencia de empleo.",
-  },
-  "que-es-la-uf": {
-    currentCluster: "deuda-credito",
-    currentCategory: "deuda-credito",
-    canonicalOwnerCluster: "uf-costo-de-vida",
-    canonicalTopic: "uf-reajustes-costo-de-vida",
-    targetHubPath: "/guias/uf-costo-de-vida/",
-    migrationCondition:
-      "Migrar en una pasada puntual de hardening cuando el hub productivo /guias/uf-costo-de-vida/ ya abierto pueda absorber junto a IPC y reajuste de arriendo el cambio de metadata/frontmatter sin abrir una migracion masiva del resto de clusters.",
-    rationale:
-      "La necesidad primaria es entender UF, inflacion y reajustes de bolsillo/contratos; credito solo debe enlazarlo como salida related cuando la duda nace desde una obligacion reajustable.",
-  },
-  "reajuste-arriendo-uf-ipc-chile": {
-    currentCluster: "deuda-credito",
-    currentCategory: "general",
-    canonicalOwnerCluster: "uf-costo-de-vida",
-    canonicalTopic: "reajuste-arriendo-contrato-uf-ipc",
-    targetHubPath: "/guias/uf-costo-de-vida/",
-    migrationCondition:
-      "Migrar en la misma pasada puntual de hardening del frente cuando el hub productivo /guias/uf-costo-de-vida/ ya abierto alinee explainers y herramientas sin falsear una migracion total del ecosistema.",
-    rationale:
-      "La necesidad primaria es interpretar una clausula de reajuste de arriendo y su impacto en bolsillo, no resolver un problema crediticio. Se mantiene en placement transitorio para no inventar el cluster futuro en runtime.",
-  },
-  "que-es-el-ipc-chile-como-se-calcula": {
-    currentCluster: "empleo-ingresos",
-    currentCategory: "general",
-    canonicalOwnerCluster: "uf-costo-de-vida",
-    canonicalTopic: "ipc-inflacion-costo-de-vida",
-    targetHubPath: "/guias/uf-costo-de-vida/",
-    migrationCondition:
-      "Migrar en una pasada puntual de hardening cuando el hub productivo /guias/uf-costo-de-vida/ ya abierto pueda mover juntos IPC, UF y reajuste sin reabrir refactors taxonomicos amplios.",
-    rationale:
-      "La necesidad primaria es entender inflacion, reajuste y bolsillo; no pertenece editorialmente al cluster de contingencias laborales.",
   },
 };
 
@@ -161,5 +144,8 @@ export function allowsGeneralCategoryInCluster({
   unlisted,
 }) {
   if (!isHardenedOwnershipCluster(cluster)) return true;
+  if (cluster === "uf-costo-de-vida") {
+    return ["owner", "support", "reference"].includes(topicRole ?? "");
+  }
   return topicRole === "reference" && unlisted === true;
 }

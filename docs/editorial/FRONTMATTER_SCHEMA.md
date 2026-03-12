@@ -35,8 +35,9 @@ Usados para taxonomía, navegación y agrupación. Deben coincidir con los slugs
 | `ahorro-inversion` | `ahorro-e-inversion` | DAP, fondos mutuos, ETFs, APV, Cuenta 2 |
 | `deuda-credito` | `deuda-credito` | CMF, DICOM, renegociación Superir, CAE y costo real del crédito. UF solo puede permanecer aquí como placement transitorio documentado, no como owner final |
 | `seguridad-financiera` | `seguridad-financiera` | Fraude, estafas, suplantación |
+| `general` | `uf-costo-de-vida` | UF, IPC, inflación y reajustes de bolsillo/contratos. `general` funciona aquí como categoría operativa explícita del frente mientras la taxonomía no necesite una categoría dedicada |
 
-> **Regla:** `cluster` debe coincidir con un directorio existente en `src/pages/guias/`. `category` es el valor que se usa en filtros y agregaciones. Ambos deben ser consistentes entre sí. `general` solo se tolera como deuda explícita o pieza de referencia, no como sustituto por defecto de la categoría principal del cluster. En clusters endurecidos, además, `general` queda bloqueado salvo `reference + unlisted`.
+> **Regla:** `cluster` debe coincidir con un directorio existente en `src/pages/guias/`. `category` es el valor que se usa en filtros y agregaciones. Ambos deben ser consistentes entre sí. `general` solo se tolera como deuda explícita o pieza de referencia, salvo la excepción operativa documentada de `uf-costo-de-vida`. En clusters endurecidos, además, `general` queda bloqueado salvo `reference + unlisted` o la excepción explícita de `uf-costo-de-vida`.
 
 ## Contrato mínimo de ownership (Fase 4)
 
@@ -44,7 +45,7 @@ Campos mínimos:
 
 | Campo | Requerido | Regla | Qué previene |
 |---|---|---|---|
-| `topicRole` | Sí en `sueldo-remuneraciones`, `pensiones-afp`, `ahorro-e-inversion` cuando la pieza es publicable | `owner`, `support`, `reference` | Ambigüedad sobre si una URL manda o solo complementa |
+| `topicRole` | Sí en `sueldo-remuneraciones`, `pensiones-afp`, `ahorro-e-inversion` y `uf-costo-de-vida` cuando la pieza es publicable | `owner`, `support`, `reference` | Ambigüedad sobre si una URL manda o solo complementa |
 | `canonicalTopic` | Sí cuando existe `topicRole`; sí en clusters endurecidos publicables | kebab-case estable registrado centralmente, por ejemplo `calcular-sueldo-liquido` | Double-owner, naming drift y bypass accidental |
 
 Trade-off editorial:
@@ -69,6 +70,7 @@ Trade-off editorial:
 - Permitido con warning fuera de clusters endurecidos, solo como transición o deuda editorial.
 - Bloqueado en clusters endurecidos para piezas `owner` o `support`.
 - Única excepción endurecida: pieza `reference` y `unlisted`, cuando funciona como nota metodológica o material auxiliar y no compite por ownership.
+- Excepción operativa adicional: `uf-costo-de-vida` usa `category: general` como categoría final del frente. Ahí la desambiguación obligatoria la aportan `cluster + topicRole + canonicalTopic`, no un alias de categoría prestado desde otro cluster.
 - Si el owner canónico ya está decidido pero el cluster productivo todavía no existe, la transición debe quedar registrada además en `src/config/editorial-topic-policy.mjs` y `docs/editorial/TOPIC_OWNERSHIP_POLICY.md`; `general` por sí solo no documenta nada.
 - La transición explícita también puede conservar el `cluster` y `category` operativos vigentes de un asset ya publicado. En ese caso, el owner canónico y la condición de migración siguen siendo obligatorios en el registry y el hub actual no puede tratar la pieza como `core`.
 
@@ -146,3 +148,4 @@ draft: false
 ## Historial de cambios
 
 - **2026-03-03:** Agregados campos `author` y `category`/`cluster` como obligatorios al esquema. Formalizados enums de valores permitidos para `category` y `cluster` (DE-004). Se resolvieron inconsistencias taxonómicas detectadas en auditoría editorial.
+- **2026-03-12:** `uf-costo-de-vida` pasa a cluster endurecido de ownership. Se documenta `category: general` como categoría operativa explícita del frente UF/IPC/reajustes.

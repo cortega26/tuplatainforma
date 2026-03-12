@@ -13,12 +13,14 @@ tags:
   - inflacion
   - costo-de-vida
 category: general
-cluster: deuda-credito
+cluster: uf-costo-de-vida
+topicRole: owner
+canonicalTopic: reajuste-arriendo-contrato-uf-ipc
 description: "Guía para entender el reajuste de arriendo en Chile: cuándo depende del contrato, cómo funciona en UF o IPC y cómo estimar el nuevo monto sin confusiones."
 heroImage: /images/hero/reajuste-arriendo-uf-ipc-chile.avif
 ---
 
-<!-- META: keyword_primary="reajuste arriendo chile" | intent="informational-explainer" | cluster="deuda-credito" -->
+<!-- META: keyword_primary="reajuste arriendo chile" | intent="informational-explainer" | cluster="uf-costo-de-vida" -->
 
 Cuando llega el aviso de pago y el arriendo subió, la duda real casi nunca es filosófica: quieres saber si el cambio corresponde, qué lo gatilla y cuánto más vas a pagar. Esta guía existe para eso. Si ya tienes la cláusula en la mano y solo quieres aterrizar el número, anda directo a la [calculadora de reajuste de arriendo](/calculadoras/reajuste-arriendo/). Si primero necesitas contexto, complétala con [qué es la UF](/posts/que-es-la-uf/) y [qué es el IPC en Chile](/posts/que-es-el-ipc-chile-como-se-calcula/). Si quieres ver el frente completo de UF, inflación y bolsillo en una sola entrada, vuelve a la [guía UF, inflación y costo de vida](/guias/uf-costo-de-vida/).
 

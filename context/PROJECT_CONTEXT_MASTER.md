@@ -63,6 +63,13 @@ Los riesgos principales están en deuda de mantenibilidad y consistencia operati
 - `src/config/editorial-hub-model.mjs` trata `que-es-la-uf`, `que-es-el-ipc-chile-como-se-calcula` y `reajuste-arriendo-uf-ipc-chile` como núcleo canónico del hub, aunque sus placements operativos sigan transitorios.
 - La policy y la matrix pasan a distinguir entre `hub productivo abierto` y `hardening metadata pendiente`, evitando fingir una migración total antes de la siguiente fase.
 
+### Checkpoint 2026-03-12 (TD-0020 uf-costo-de-vida Metadata Hardening)
+
+- `que-es-la-uf`, `que-es-el-ipc-chile-como-se-calcula` y `reajuste-arriendo-uf-ipc-chile` dejan de ser placements transitorios y pasan a `cluster: uf-costo-de-vida`.
+- El cluster `uf-costo-de-vida` entra al set endurecido de ownership con `topicRole` y `canonicalTopic` obligatorios para piezas publicadas.
+- El repositorio documenta una excepción explícita: `category: general` queda como categoría operativa propia de `uf-costo-de-vida`, sin reciclar categorías de deuda o empleo.
+- `deuda-credito` preserva solo el bridge relacionado hacia UF cuando la duda nace desde una obligación reajustable; ya no absorbe ownership del frente.
+
 ### Checkpoint 2026-03-12 (TD-0021 Shared Payroll Taxable Base)
 
 - `sueldo-liquido` y `apv` ya no reconstruyen deducciones por separado: ambos consumen `src/application/use-cases/CalculateMonthlyPayrollBase.ts`.
