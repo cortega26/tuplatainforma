@@ -2,7 +2,7 @@
 title: "APV en Chile: beneficio tributario, regímenes A y B, y cuándo conviene"
 author: "Equipo Monedario"
 pubDate: 2026-02-23T14:00:00Z
-updatedDate: 2026-03-09T19:00:00Z
+updatedDate: 2026-03-12T09:21:00Z
 slug: que-es-el-apv
 featured: false
 lang: es-CL
@@ -16,7 +16,7 @@ category: ahorro-inversion
 cluster: ahorro-e-inversion
 topicRole: owner
 canonicalTopic: apv-beneficio-tributario
-description: "Guía para evaluar el APV como instrumento de ahorro con beneficio tributario en Chile: regímenes A y B, límites, retiros y cuándo conviene frente a otras alternativas."
+description: "Guía para evaluar el APV en Chile: regímenes A y B, topes, retiros y cuándo conviene según tu base imponible y tasa marginal."
 heroImage: /images/hero/que-es-el-apv.avif
 ---
 
@@ -26,108 +26,123 @@ import IndicadorEconomico from "@/components/IndicadorEconomico.astro";
 
 El APV es un instrumento de ahorro con beneficio tributario. En Monedario, esta URL vive principalmente en [ahorro e inversión](/guias/ahorro-e-inversion/) porque la decisión central es elegir si te conviene usarlo para ahorrar mejor y pagar menos impuesto, no revisar el funcionamiento base de tu AFP obligatoria.
 
-En esta guía te explicamos qué es el APV, cómo funciona el beneficio real y qué tienes que considerar para decidir si te conviene. Si tu duda principal es AFP obligatoria, fondos o traspasos dentro del sistema previsional, parte mejor por [pensiones y AFP](/guias/pensiones-afp/). Y si estás comparando liquidez versus beneficio tributario, cruza esta lectura con [Cuenta 2 de la AFP](/posts/que-es-la-cuenta-2-afp/).
+En esta guía te explicamos qué es el APV, cómo funciona el beneficio real y qué mirar para escoger entre Régimen A, Régimen B o una combinación. Si tu duda principal es AFP obligatoria, fondos o traspasos dentro del sistema previsional, parte mejor por [pensiones y AFP](/guias/pensiones-afp/). Y si estás comparando liquidez versus beneficio tributario, cruza esta lectura con [Cuenta 2 de la AFP](/posts/que-es-la-cuenta-2-afp/).
 
 ## Tabla de contenidos
 
+## Respuesta rápida: cuándo suele convenir A, B o mixta
+
+**Respuesta rápida (regla general):** no uses bandas fijas de sueldo bruto como regla central. Si el peso que quieres ahorrar cae en una **tasa marginal efectiva de 15% o menos** en tu renta líquida imponible mensual, el **Régimen A** suele ser más conveniente mientras todavía tengas espacio para su bonificación. Si ese peso reduce impuesto a una tasa **mayor a 15%**, el **Régimen B** puede pasar a ser mejor para ese tramo. Y una estrategia **mixta A+B** solo tiene sentido como resumen orientativo cuando aún te queda espacio para el bono del A y, además, parte del ahorro cae en una tasa marginal superior a 15%.
+
+**Excepciones comunes:** si ahorras vía depósito directo y no por planilla, el beneficio del Régimen B normalmente se regulariza en la Operación Renta y no como menor impuesto mensual; si tu base imponible cambia mucho por bonos, rentas mixtas o ingresos no imponibles, no congeles la decisión con un sueldo bruto redondo.
+
+**Vigencia:** fecha de corte `2026-03-12`. En la tabla del Impuesto Único de Segunda Categoría publicada por el SII para 2026, el primer tramo que supera el 15% parte desde una renta líquida imponible mensual superior a <IndicadorEconomico tipo="utm" multiplicador={70} descripcion="70 UTM" />.
+
+**Fuentes:** [SII - Impuesto Único de Segunda Categoría 2026](https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm), [SII - regímenes tributarios del APV (art. 42 bis)](https://www.sii.cl/preguntas_frecuentes/declaracion_renta/001_140_5883.htm), [SII - tope mensual/anual del beneficio del Régimen B](https://www.sii.cl/pagina/jurisprudencia/adminis/2002/renta/ja287.htm), [SII - Circular 24 de 2023 sobre retiros y retención](https://www.sii.cl/normativa_legislacion/circulares/2023/circu24.pdf), [Superintendencia de Pensiones - APV](https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-9929.html) y [Superintendencia de Pensiones - bonificación fiscal del APV](https://www.spensiones.cl/portal/compendio/596/w3-propertyvalue-2929.html).
+
+> **Nota (resumen orientativo):** esta síntesis simplifica la norma para fines informativos. El resultado cambia si tu base imponible real no coincide con tu sueldo bruto, si mezclas rentas dependientes e independientes, si agotaste topes legales o si haces retiros antes de pensionarte.
+
 ## ¿Qué es el APV?
 
-El APV (Ahorro Previsional Voluntario) es un mecanismo de ahorro a largo plazo diseñado para complementar tu pensión futura. Es voluntario — nadie te obliga a tenerlo — pero el Estado lo incentiva con beneficios tributarios concretos: o te devuelve dinero directamente, o te permite pagar menos impuestos.
+El APV (Ahorro Previsional Voluntario) es un ahorro adicional al 10% obligatorio, pensado para **aumentar o adelantar tu pensión** y, al mismo tiempo, acceder a un incentivo tributario. Puedes contratarlo en tu AFP o en otras instituciones autorizadas por la CMF, como bancos, compañías de seguros, administradoras generales de fondos o intermediarios de valores aprobados para este fin.
 
-Puedes contratar un APV en tu AFP, en bancos, corredoras de bolsa, compañías de seguros y otras instituciones autorizadas por la CMF. No hay montos mínimos para empezar, y puedes hacer depósitos mensuales o esporádicos según tu disponibilidad.
+No es un envase neutro: al abrirlo eliges un régimen tributario. Esa elección define si el beneficio llega como **bonificación estatal** (Régimen A) o como **rebaja de base imponible** (Régimen B). Si quieres aterrizarlo con tus datos, revisa el [simulador APV](/calculadoras/apv/), que ya compara según renta líquida imponible y no por bandas fijas de sueldo bruto.
 
-El único requisito es tener al menos una cotización previsional en el año en curso.
+## Régimen A: bono estatal de 15% con tope
 
-## ¿Dónde se invierte el dinero del APV?
+En el Régimen A no rebajas tu impuesto mensual. El incentivo llega después, como una **bonificación fiscal equivalente al 15%** de los depósitos destinados a mejorar o anticipar tu pensión.
 
-Eso depende de la institución donde lo contrates. Si lo haces en tu AFP, el dinero se invierte en los mismos multifondos disponibles para tu cotización obligatoria (A, B, C, D o E). Si lo contratas en una administradora de fondos como Fintual o LarrainVial, se invierte en fondos mutuos con distintos perfiles de riesgo.
+Los límites importantes son dos:
 
-En todos los casos, el dinero genera rentabilidad que se suma a tu saldo con el tiempo.
+- La bonificación anual no puede exceder **6 UTM** (<IndicadorEconomico tipo="utm" multiplicador={6} descripcion="6 UTM anuales" />).
+- Para obtener esa bonificación, los aportes que se consideran en el año no pueden superar **10 veces tus cotizaciones obligatorias** del mismo año.
 
-## Los dos regímenes tributarios del APV
+En la práctica, si logras ahorrar hasta **40 UTM al año** (<IndicadorEconomico tipo="utm" multiplicador={40} descripcion="40 UTM anuales" />), el 15% de ese ahorro equivale al tope de 6 UTM. Desde ahí, seguir aportando bajo A puede seguir sirviendo como ahorro previsional, pero ya no aumenta la bonificación estatal del año.
 
-Al abrir un APV debes elegir entre dos regímenes tributarios: **Régimen A** y **Régimen B**. Esta es la decisión más importante porque determina cuándo y cómo recibes el beneficio del Estado.
+### ¿Cuándo suele ganar el Régimen A?
 
-### Régimen A — El Estado te paga un bono directo
+- Cuando tu tasa marginal efectiva es **0%, 4%, 8% o 13,5%**: en esos tramos, el 15% fijo del A suele ser mejor por cada peso ahorrado.
+- Cuando todavía no llenas el espacio que te interesa usar para la bonificación.
+- Cuando tu objetivo principal es acumular ahorro previsional de largo plazo y no adelantar la rebaja tributaria al mes.
 
-En el Régimen A pagas impuestos normalmente sobre tu sueldo, pero el Estado te recompensa depositando directamente en tu cuenta APV un **bono fiscal del 15%** sobre lo que hayas ahorrado durante el año.
+### Riesgo práctico del Régimen A
 
-El bono tiene un tope máximo de **6 UTM anuales**, equivalente a aproximadamente <IndicadorEconomico tipo="utm" multiplicador={6} descripcion="6 UTM" /> al año.
+Si retiras antes de pensionarte, el beneficio deja de comportarse como "plata gratis". La Superintendencia de Pensiones regula la restitución de la bonificación fiscal asociada a esos fondos, por lo que A funciona mejor cuando de verdad piensas dejar el ahorro para pensión.
 
-Para recibir el bono máximo, necesitas ahorrar al menos <IndicadorEconomico tipo="utm" multiplicador={40} descripcion="~40 UTM anuales" /> al año (aproximadamente <IndicadorEconomico tipo="utm" multiplicador={3.33} descripcion="~3.33 UTM mensuales" /> al mes), que es el monto sobre el cual el 15% equivale a 6 UTM.
+## Régimen B: rebaja de base imponible hoy
 
-> 💡 **Ejemplo concreto:** Si ahorras <IndicadorEconomico tipo="utm" multiplicador={2.23} descripcion="~2.23 UTM mensuales" mostrarFecha={false} /> al mes en APV Régimen A, el Estado te deposita el 15% de lo ahorrado en el año directamente en tu cuenta. Ese dinero es tuyo y genera rentabilidad.
+En el Régimen B el beneficio no es un bono. El aporte **rebaja la base imponible** del Impuesto Único de Segunda Categoría o del Global Complementario, según corresponda. Por eso, el valor real del beneficio depende de tu **tasa marginal efectiva**: a mayor tasa, mayor ahorro tributario por cada peso acogido al régimen.
 
-**Condición importante:** Si retiras el dinero antes de jubilarte, devuelves el bono recibido más su rentabilidad asociada. El bono es para la pensión, no para gasto corriente.
+Los topes que sí son reglas duras son estos:
 
-### Régimen B — Pagas menos impuestos hoy
+- Si aportas por planilla, el monto acogido al beneficio no puede exceder **50 UF al mes** (<IndicadorEconomico tipo="uf" multiplicador={50} descripcion="50 UF mensuales" />).
+- El tope conjunto anual es **600 UF** (<IndicadorEconomico tipo="uf" multiplicador={600} descripcion="600 UF anuales" />), descontando lo que ya fue rebajado mensualmente por planilla.
 
-En el Régimen B no recibes un bono directo, pero los montos que depositas en el APV **se descuentan de tu base imponible**, lo que reduce el impuesto de segunda categoría que pagas cada mes.
+### ¿Cuándo suele ganar el Régimen B?
 
-En términos simples: el Estado financia parte de tu ahorro a través de un menor cobro de impuestos. La proporción que financia el Estado equivale exactamente a tu tasa marginal de impuesto — si pagas 8%, el Estado financia el 8% de lo que ahorras. Si pagas 23%, el Estado financia el 23%.
+- Cuando el peso ahorrado cae en una tasa marginal **superior al 15%**.
+- En la tabla vigente del SII para 2026, eso empieza desde el tramo sobre **70 UTM** de renta líquida imponible mensual, donde la tasa marginal sube a **23%**.
+- Cuando haces aportes altos y ya no te queda espacio útil en el bono del Régimen A.
 
-El límite máximo de ahorro con beneficio es **600 UF anuales** (<IndicadorEconomico tipo="uf" multiplicador={600} descripcion="600 UF" /> al año). Si depositas a través de tu empleador, el límite mensual es **50 UF** (<IndicadorEconomico tipo="uf" multiplicador={50} descripcion="50 UF" /> al mes).
+### Ojo con el timing del beneficio
 
-> 💡 **Ejemplo concreto:** Si tienes un sueldo bruto de $2.000.000 y ahorras $200.000 al mes en APV Régimen B, tu base imponible se reduce en $200.000 ese mes. Si tu tasa de impuesto es 8%, pagas $16.000 menos de impuesto — es como si el Estado pusiera $16.000 de los $200.000 que ahorraste.
+Si el aporte se hace **vía empleador**, la rebaja normalmente se nota en la retención mensual. Si haces **depósitos directos**, la rebaja puede terminar regularizándose en la Operación Renta del año siguiente. Esa diferencia de timing no cambia la regla tributaria, pero sí cambia tu caja mensual.
 
-**Condición importante:** Si retiras el dinero antes de jubilarte, ese monto tributa porque nunca pagó impuestos al ahorrarse, más una **sobretasa de entre 3% y 7%** dependiendo del monto retirado.
+## Cómo elegir sin usar bandas fijas de sueldo bruto
 
-## ¿Cuál régimen conviene según tu sueldo?
+La pregunta útil no es "¿gano más o menos de $4,8 millones?", sino esta:
 
-La regla general es simple:
+1. ¿Cuál es tu **renta líquida imponible real** después de cotizaciones obligatorias, topes e ingresos no imponibles?
+2. ¿En qué **tasa marginal** cae el próximo peso que ahorrarías en APV?
+3. ¿Todavía tienes espacio útil en el bono del Régimen A?
+4. ¿Tu aporte será por planilla o directo?
 
-- **Régimen A conviene** si tu sueldo bruto es menor a **$4.800.000 mensuales** aproximadamente. A estos niveles de ingreso, el bono del 15% del Estado suele ser más valioso que el ahorro en impuestos del Régimen B.
+| Qué revisar                             | Si pasa esto                                                         | Lectura orientativa                                           |
+| --------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------- |
+| Tasa marginal del próximo peso ahorrado | Es 15% o menos                                                       | A suele ganar                                                 |
+| Tasa marginal del próximo peso ahorrado | Es mayor a 15%                                                       | B puede ganar en ese tramo                                    |
+| Aporte anual total                      | Excede el espacio útil del A, pero parte del ahorro cae en tasa >15% | Mixta puede tener sentido                                     |
+| Necesidad de liquidez                   | Alta probabilidad de retiro antes de pensionarte                     | APV suele perder atractivo frente a alternativas más líquidas |
 
-- **Régimen B conviene** si tu sueldo bruto es mayor a **$4.800.000 mensuales**, porque estás en tramos de impuesto altos (23% o más) y la rebaja tributaria supera el bono fijo del Régimen A.
-
-- **Combinación de ambos:** Muchos asesores recomiendan maximizar primero el Régimen A hasta el tope de 6 UTM (<IndicadorEconomico tipo="utm" multiplicador={3.33} descripcion="~$231.000 equiv. aprox." mostrarFecha={false} /> al mes) y destinar cualquier ahorro adicional al Régimen B. Así aprovechas el bono máximo del Estado y además reduces impuestos.
-
-| Sueldo bruto aprox.     | Régimen recomendado                   |
-| ----------------------- | ------------------------------------- |
-| Menos de $1.500.000     | A (si puedes ahorrar ~3.33 UTM/mes)   |
-| $1.500.000 – $4.800.000 | A (maximizar bono primero)            |
-| $4.800.000 – $8.000.000 | Combinar A + B                        |
-| Más de $8.000.000       | B (rebaja tributaria más conveniente) |
-
-> ⚠️ Esta tabla es orientativa. La decisión óptima depende de tu situación específica, incluyendo otros ingresos y deducciones.
+> **Resumen orientativo:** una estrategia mixta A+B no es una regla universal de asesor. Tiene sentido cuando una parte del ahorro todavía aprovecha bien el bono fijo del A y otra parte reduce impuesto a una tasa marginal superior al 15%. Si tu situación es variable o mixta, decide con tu base imponible real y no con una banda de sueldo bruto.
 
 ## ¿Qué pasa si retiro el APV antes de jubilarme?
 
-Puedes hacerlo, pero tiene costos tributarios importantes:
+Sí se puede, pero el costo tributario cambia según el régimen:
 
-**Régimen A:** Debes devolver el bono recibido más la rentabilidad que generó ese bono. El retiro del capital propio solo tributa si la rentabilidad supera 30 UTM anuales (<IndicadorEconomico tipo="utm" multiplicador={30} descripcion="30 UTM" />).
+- **Régimen A:** el retiro deja de ser consistente con el incentivo para pensión y activa la restitución de la bonificación fiscal asociada a esos fondos.
+- **Régimen B:** el monto retirado queda afecto al **Impuesto Único del N° 3 del artículo 42 bis**, que se declara y paga en abril del año siguiente. Además, la institución pagadora practica una **retención del 15%** a cuenta de ese impuesto, criterio operativo que el SII también resume en su [Circular 24 de 2023](https://www.sii.cl/normativa_legislacion/circulares/2023/circu24.pdf).
 
-**Régimen B:** El monto retirado se suma a tus ingresos del año y tributa en el Impuesto Global Complementario, más una sobretasa de entre 3% y 7%. Esto puede resultar en un pago de impuestos significativo si el monto retirado es alto.
+Si tu caso es retiro y no ahorro de largo plazo, no tomes el APV como si fuera una cuenta flexible. Compáralo con [Cuenta 2 de la AFP](/posts/que-es-la-cuenta-2-afp/) o con instrumentos de ahorro no previsionales según tu horizonte real.
 
-En ambos casos, el APV **no es un instrumento de ahorro de corto plazo**. Si tienes alta probabilidad de necesitar el dinero antes de jubilar, considera instrumentos más flexibles como la Cuenta 2 o un fondo mutuo sin beneficio tributario.
+## ¿Dónde conviene contratarlo?
 
-## ¿Dónde puedo contratar un APV?
+La primera comparación no es la "marca", sino la estructura del plan:
 
-Las opciones disponibles en Chile incluyen:
+- comisión fija o porcentual,
+- tipo de cartera o fondo disponible,
+- facilidad para aportar por planilla o en forma directa,
+- reglas de rescate, cambio de fondo y traspaso,
+- soporte tributario y reportes.
 
-- **AFPs:** Capital, Cuprum, Habitat, Modelo, PlanVital, ProVida, Uno
-- **Administradoras de fondos:** Fintual, LarrainVial, BTG Pactual, Banchile
-- **Bancos:** BancoEstado, Santander, BCI, Scotiabank, entre otros
-- **Compañías de seguros:** Metlife, SURA, Principal, Confuturo
-
-Compara comisiones y rentabilidad histórica antes de elegir. Las diferencias pueden ser significativas a largo plazo.
+La Superintendencia de Pensiones resume el APV como ahorro voluntario previsional y la CMF supervisa a varias de las instituciones autorizadas fuera de AFP. Por eso conviene comparar costo total y política de inversión, no solo marketing o rentabilidad del último año.
 
 ## Preguntas frecuentes
 
-**¿Puedo tener APV en más de una institución?**
-Sí. Puedes tener APV en varias instituciones simultáneamente, pero el límite de 600 UF anuales con beneficio tributario es conjunto para todos tus APV, no por institución.
+**¿Puedo tener APV en más de una institución?**  
+Sí. Pero los topes del beneficio se miran en conjunto: no tienes 600 UF por institución.
 
-**¿El APV aparece en mi liquidación de sueldo?**
-Si lo contratas con descuento por planilla (a través de tu empleador), sí aparece como descuento mensual y el beneficio tributario se aplica mes a mes. Si haces depósitos directos, el beneficio se refleja en tu Operación Renta del año siguiente.
+**¿El beneficio del Régimen B siempre se ve mes a mes?**  
+No. Si va por planilla suele verse en la retención mensual; si el depósito es directo, puede regularizarse en la Operación Renta.
 
-**¿Puedo cambiar de Régimen A a Régimen B?**
-Sí, en cualquier momento para los aportes futuros. Los aportes ya realizados bajo un régimen no cambian retroactivamente.
+**¿Puedo combinar Régimen A y B en el mismo año?**  
+Sí. La propia lógica del artículo 42 bis permite usar ambos, siempre respetando los topes y el régimen elegido para cada aporte.
 
-**¿El APV cuenta para la Pensión Garantizada Universal?**
-Sí. A diferencia de la Cuenta 2, el saldo del APV sí se considera para determinar el derecho a la PGU.
+**¿Cuál es la mejor regla rápida si solo conozco mi sueldo bruto?**  
+No decidir todavía. Primero estima tu base imponible real. Para eso te sirve el [simulador APV](/calculadoras/apv/) y, si necesitas entender tu liquidación, la guía de [cómo calcular sueldo líquido](/posts/como-calcular-sueldo-liquido/).
 
-Si quieres aterrizar el beneficio según tu sueldo, usa el [simulador APV](/calculadoras/apv/). Y si priorizas liquidez antes de jubilarte, compara con la guía de [Cuenta 2 de la AFP](/posts/que-es-la-cuenta-2-afp/). Para ver cómo encaja en una estrategia más amplia, revisa [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
+Si quieres aterrizar el beneficio según tu base imponible, usa el [simulador APV](/calculadoras/apv/). Y si priorizas liquidez antes de jubilarte, compara con la guía de [Cuenta 2 de la AFP](/posts/que-es-la-cuenta-2-afp/). Para verlo dentro de una estrategia más amplia, revisa [ahorro e inversión en Chile](/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/).
 
 ---
 
-_La información de este artículo es de carácter educativo y está basada en la normativa vigente a febrero de 2026. Los montos en pesos son referenciales y se calculan automáticamente en base al valor vigente de la UF y UTM publicado por [mindicador.cl](https://mindicador.cl). Para asesoría personalizada consulta con un profesional o visita la [Superintendencia de Pensiones](https://www.spensiones.cl) y la [CMF](https://www.cmfchile.cl)._
+_Fecha de corte: 12 de marzo de 2026. Esta guía es educativa y resume reglas vigentes del APV con foco en la elección entre regímenes A y B. Los montos en pesos marcados con UF o UTM se actualizan automáticamente desde [mindicador.cl](https://mindicador.cl), pero la regla legal y tributaria se contrastó con el [SII](https://www.sii.cl) y la [Superintendencia de Pensiones](https://www.spensiones.cl)._

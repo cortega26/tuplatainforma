@@ -11,9 +11,9 @@ Fecha de corte: 2026-03-12
 - **P3:** 1
 
 ### Estado de avance (2026-03-12)
-- **Completados:** 28 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0011`, `TD-0012`, `TD-0013`, `TD-0014`, `TD-0015`, `TD-0016`, `TD-0017`, `TD-0018`, `TD-0019`, `TD-0020`, `TD-0021`, `TD-0022`, `TD-0023`, `TD-0024`, `TD-0025`, `TD-0026`, `FIX-MDX`, `FIX-LINKS-CALC`)
+- **Completados:** 29 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0011`, `TD-0012`, `TD-0013`, `TD-0014`, `TD-0015`, `TD-0016`, `TD-0017`, `TD-0018`, `TD-0019`, `TD-0020`, `TD-0021`, `TD-0022`, `TD-0023`, `TD-0024`, `TD-0025`, `TD-0026`, `TD-0028`, `FIX-MDX`, `FIX-LINKS-CALC`)
 - **En progreso:** 0
-- **Backlog sin iniciar:** 3 (`TD-0027`, `TD-0028`, `TD-0029`)
+- **Backlog sin iniciar:** 2 (`TD-0027`, `TD-0029`)
 - **Backlog en validación/diseño:** 0
 
 > `FIX-MDX`: corregido comentario HTML (`<!-- -->`) en `que-es-el-apv.mdx:25` que rompía el build.
@@ -22,9 +22,8 @@ Fecha de corte: 2026-03-12
 ### Top riesgos restantes
 | Ranking | ID | Riesgo | Motivo principal |
 |---|---|---|---|
-| 1 | TD-0028 | Alto | El artículo APV publicado traduce la elección A/B a bandas fijas de sueldo bruto y una mezcla no suficientemente trazada a fuentes oficiales. |
-| 2 | TD-0027 | Medio | El checklist de ahorro/inversión mezcla cálculo, copy y supuestos de producto sin un contrato común reutilizable. |
-| 3 | TD-0029 | Medio | Las fichas legales de cesantía y reforma previsional quedaron desalineadas del modelado oficial usado por las calculadoras. |
+| 1 | TD-0027 | Medio | El checklist de ahorro/inversión mezcla cálculo, copy y supuestos de producto sin un contrato común reutilizable. |
+| 2 | TD-0029 | Medio | Las fichas legales de cesantía y reforma previsional quedaron desalineadas del modelado oficial usado por las calculadoras. |
 
 ### Quick wins (alto impacto / bajo esfuerzo)
 - [x] `TD-0007` Corregir email placeholder en enlaces sociales.
@@ -279,7 +278,7 @@ Fecha de corte: 2026-03-12
 - **ID:** TD-0028
 - **Título corto:** Rehacer refresh YMYL de `que-es-el-apv` para recomendación A/B/mixta trazable
 - **Descripción:** El artículo `que-es-el-apv.mdx` explica bien la mecánica base del APV, pero hoy traduce la decisión de Régimen A vs B a bandas fijas de sueldo bruto (`<$4.800.000`, `>$4.800.000`, `$4.800.000-$8.000.000`, `>$8.000.000`) y a una recomendación de combinación A+B que no queda suficientemente anclada en fuentes oficiales ni en renta líquida imponible/tramo marginal efectivo. Tras la revisión de `TD-0022`, esa sección quedó desalineada del criterio más defendible para el producto y puede inducir una elección tributaria demasiado simplificada en un artículo YMYL publicado.
-- **Evidencia:** `src/data/blog/que-es-el-apv.mdx` (sección `¿Cuál régimen conviene según tu sueldo?`); SII `Impuesto Único de Segunda Categoría` 2026 (tabla mensual con corte `70 UTM -> 23%`); SII Suplemento Tributario 2026 y jurisprudencia/FAQ sobre APV con tope `50 UF` mensual y `600 UF` anual; Superintendencia de Pensiones sobre beneficios tributarios y separación de aportes por régimen.
+- **Evidencia (actualizada):** `src/data/blog/que-es-el-apv.mdx` ahora reemplaza la tabla por sueldo bruto con una respuesta rápida anclada en renta líquida imponible, tasa marginal y remanente del bono A; `artifacts/editorial/que-es-el-apv/20260312-0928-codex/` contiene `brief`, `dossier`, `outline`, `draft`, `math audit`, `compliance`, `publish packet`, `metadata` y `sources`; validación primaria 2026-03-12 en SII (`impuesto2026.htm`, `001_140_5883.htm`, `ja287.htm`, `circu24.pdf`) y Superintendencia de Pensiones (`w3-propertyvalue-9929.html`, `w3-propertyvalue-2929.html`).
 - **Impacto:** Riesgo alto de orientación imprecisa en una pieza YMYL publicada que ayuda a elegir un beneficio tributario/previsional.
 - **Riesgo:** alto
 - **Severidad (1-5):** 4
@@ -287,13 +286,13 @@ Fecha de corte: 2026-03-12
 - **Esfuerzo estimado:** M
 - **Propuesta de solución:** ejecutar refresh editorial completo con pipeline YMYL para `que-es-el-apv`; reemplazar la tabla de bandas fijas de sueldo por una respuesta rápida con vigencia y fuentes oficiales; explicar la lógica A/B/mixta como resumen orientativo en función de renta líquida imponible, tramo marginal y agotamiento del tope bonificable del Régimen A; actualizar `updatedDate` y publish packet con math/compliance review.
 - **Criterios de cierre (checklist verificable):**
-- [ ] El artículo ya no usa bandas fijas de sueldo bruto como regla central de decisión A vs B.
-- [ ] La sección de recomendación A/B/mixta tiene respuesta rápida, vigencia explícita y al menos una fuente oficial crítica por regla.
-- [ ] La combinación A+B queda presentada como resumen orientativo condicionado, no como regla universal de “muchos asesores”.
-- [ ] El artículo queda alineado con la lógica vigente del simulador APV o explicita cualquier diferencia residual mientras `TD-0021` siga abierto.
-- [ ] El refresh incluye artifact chain editorial completo (`brief`, `dossier`, `outline`, `draft`, `math audit`, `compliance`, `publish packet`).
+- [x] El artículo ya no usa bandas fijas de sueldo bruto como regla central de decisión A vs B.
+- [x] La sección de recomendación A/B/mixta tiene respuesta rápida, vigencia explícita y al menos una fuente oficial crítica por regla.
+- [x] La combinación A+B queda presentada como resumen orientativo condicionado, no como regla universal de “muchos asesores”.
+- [x] El artículo queda alineado con la lógica vigente del simulador APV o explicita cualquier diferencia residual mientras `TD-0021` siga abierto.
+- [x] El refresh incluye artifact chain editorial completo (`brief`, `dossier`, `outline`, `draft`, `math audit`, `compliance`, `publish packet`).
 - **Owner:** TBD
-- **Estado:** Sin iniciar
+- **Estado:** Completado
 - **Fecha de creación:** 2026-03-12
 - **Última actualización:** 2026-03-12
 
