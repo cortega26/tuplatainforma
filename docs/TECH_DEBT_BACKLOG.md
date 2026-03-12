@@ -60,7 +60,7 @@ Fecha de corte: 2026-03-12
 - **ID:** TD-0018
 - **Título corto:** Investigar IDs duplicados en loader de contenido
 - **Descripción:** `astro check` muestra avisos de `Duplicate id` para varios artículos en `src/data/blog/**` durante el sync de contenido. Aunque el chequeo termina con `0 errors`, el loader indica que entradas posteriores sobreescriben a las anteriores.
-- **Evidencia (actualizada):** el warning se observó al inicio de la revisión de repo-truth, pero dejó de reproducirse tras validaciones consecutivas; `pnpm run astro check` pasó dos veces seguidas el 2026-03-11 con `0 errors`, `0 warnings` y solo un hint conocido en `src/layouts/Layout.astro`.
+- **Evidencia (actualizada):** el root cause quedó aislado en el loader `glob()` de Astro 5.18: al rehidratar el store desde `.astro/data-store.json`, una entrada ya existente del mismo archivo cambiada entre syncs quedaba en `store.has(id)` y el loader emitía el warning como si fuera una colisión real entre archivos distintos. Se aplicó un wrapper local `safeGlob` en `src/content/loaders/safeGlob.ts` que suprime solo el caso `mismo id + mismo archivo` y conserva la advertencia si el id viene desde otra ruta. `pnpm run astro -- check` y `pnpm run build` quedaron limpios el 2026-03-12.
 - **Impacto:** Riesgo de sobrescritura silenciosa de contenido, resultados ambiguos en `getCollection()` y diagnósticos menos confiables en validaciones editoriales.
 - **Riesgo:** medio
 - **Severidad (1-5):** 3
@@ -68,13 +68,13 @@ Fecha de corte: 2026-03-12
 - **Esfuerzo estimado:** M
 - **Propuesta de solución:** identificar por qué el loader detecta duplicados para archivos únicos, revisar configuración de colecciones/globs y confirmar si existe duplicación física, alias de carga o colisión de IDs derivadas.
 - **Criterios de cierre (checklist verificable):**
-- [x] `pnpm run astro check` no reporta `Duplicate id` para `src/data/blog/**`.
-- [x] El warning no es reproducible en la validación actual y queda absorbido por el estado vigente del loader.
-- [x] `getCollection("blog")` no muestra colisiones activas en las validaciones actuales.
+- [x] `pnpm run astro check` no reporta `Duplicate id` para `src/data/blog/**` ni `src/data/laws/**`.
+- [x] El warning deja de reproducirse en la validación actual.
+- [x] `getCollection("blog")` y `getCollection("laws")` no muestran colisiones activas en las validaciones actuales.
 - **Owner:** TBD
 - **Estado:** Completado
 - **Fecha de creación:** 2026-03-09
-- **Última actualización:** 2026-03-11
+- **Última actualización:** 2026-03-12
 
 ## TD-0019 — Snapshot base de rutas quedó desalineado del sitio publicado
 - **ID:** TD-0019

@@ -20,7 +20,7 @@ La Ley 21.735 rediseña el ahorro previsional obligatorio, crea nuevos component
 
 ## Respuesta rápida
 
-**Regla general:** desde **agosto de 2025** el empleador empezó a pagar una **nueva cotización de 1%** sobre la remuneración imponible. De ese 1%, **0,1% va directo a la cuenta individual AFP** y **0,9% va al Seguro Social / FAPP**. El nuevo aporte sube gradualmente hasta llegar a **7% en agosto de 2033**, y en ese punto su reparto final es **4,5% a cuenta individual**, **1,5% a Cotización con Rentabilidad Protegida (CRP)** y **1% a la compensación por diferencia de expectativa de vida para mujeres**.
+**Regla general:** desde **agosto de 2025** el empleador empezó a pagar una **nueva cotización de 1%** sobre la remuneración imponible. De ese 1%, **0,1% va directo a la cuenta individual AFP** y **0,9% va al Seguro Social / FAPP**. El nuevo aporte sube gradualmente hasta llegar a **7% en agosto de 2033**, y en ese punto su reparto oficial queda en **4,5% a cuenta individual**, **1,5% a Cotización con Rentabilidad Protegida (CRP)** y **2,5% al Seguro Social**.
 
 **Excepciones o condiciones comunes:** el **1,5% del SIS** ya existía a cargo del empleador y, desde agosto de 2026, se integra al esquema del Seguro Social. Por eso el aporte patronal previsional total puede describirse como **8,5% en 2033**, pero no porque el nuevo 7% vaya completo a la AFP.
 
@@ -68,9 +68,9 @@ La calculadora de jubilación del sitio usa un cronograma oficial versionado par
 | 1,0%           | Compensación por diferencia de expectativa de vida para mujeres  |
 | 1,5% adicional | SIS ya existente, que se integra al esquema desde agosto de 2026 |
 
-### El BAC (Beneficio de Ahorro Colectivo)
+### El BAC (Beneficio por Años Cotizados)
 
-La ley creó componentes colectivos para mejorar pensiones y compensar brechas previsionales. En la práctica, el punto clave es separar:
+La ley creó componentes colectivos para mejorar pensiones y compensar brechas previsionales. En esta reforma, `BAC` se usa para referirse al **Beneficio por Años Cotizados**, no como nombre genérico de todo el componente colectivo. En la práctica, el punto clave es separar:
 
 - **Cuenta individual:** sí forma parte de tu ahorro previsional propio y sigue las reglas de herencia del sistema AFP.
 - **Componentes colectivos del Seguro Social:** no son lo mismo que tu cuenta individual y no deben sumarse como si fueran saldo propio AFP.

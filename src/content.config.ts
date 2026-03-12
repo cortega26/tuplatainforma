@@ -1,6 +1,6 @@
 import { defineCollection, z } from "astro:content";
-import { glob } from "astro/loaders";
 import { SITE } from "@/config";
+import { safeGlob } from "./content/loaders/safeGlob";
 import { CLUSTERS } from "./config/clusters";
 import {
   HARDENED_OWNERSHIP_CLUSTERS,
@@ -24,7 +24,7 @@ const CATEGORIES = [
 const TOPIC_ROLES = ["owner", "support", "reference"] as const;
 
 const blog = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: `./${BLOG_PATH}` }),
+  loader: safeGlob({ pattern: "**/[^_]*.{md,mdx}", base: `./${BLOG_PATH}` }),
   schema: ({ image }) =>
     z
       .object({
@@ -189,7 +189,7 @@ const LEGAL_AREAS = [
 ] as const;
 
 const laws = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: `./${LAWS_PATH}` }),
+  loader: safeGlob({ pattern: "**/[^_]*.{md,mdx}", base: `./${LAWS_PATH}` }),
   schema: z.object({
     numero: z.string().trim().min(1), // "20.009" | "DL 824"
     title: z.string().trim().min(1), // título oficial
@@ -207,7 +207,7 @@ const laws = defineCollection({
 });
 
 const glossary = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/data/glossary" }),
+  loader: safeGlob({ pattern: "**/*.{md,mdx}", base: "./src/data/glossary" }),
   schema: z.object({
     term: z.string().trim().min(1), // Término oficial completo
     shortDefinition: z.string().trim().min(10).max(160), // Definición concisa (SEO/Tooltip)

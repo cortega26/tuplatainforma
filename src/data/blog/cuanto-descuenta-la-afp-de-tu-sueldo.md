@@ -29,7 +29,7 @@ articleLead:
     - label: "Superintendencia de Pensiones"
       href: "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-9908.html"
     - label: "BCN — Ley 21.735"
-      href: "https://www.bcn.cl/leychile/navegar?idNorma=1212074"
+      href: "https://www.bcn.cl/leychile/navegar?idNorma=1212060"
   covers:
     - "Qué parte es cotización y qué parte es comisión."
     - "Cómo revisar si el descuento AFP calza con tu imponible."

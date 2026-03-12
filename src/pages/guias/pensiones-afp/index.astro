@@ -5,6 +5,11 @@ import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import { getPath } from "@/utils/getPath";
 import { getHubArticleAssignments } from "@/config/editorial-hub-model.mjs";
+import ContextLinkSection from "@/components/ContextLinkSection.astro";
+import {
+  pensionHubPrimaryCards,
+  pensionHubRelatedCards,
+} from "@/config/pensionClusterLinks";
 
 const hubAssignments = getHubArticleAssignments("pensiones-afp");
 ---
@@ -18,7 +23,6 @@ const hubAssignments = getHubArticleAssignments("pensiones-afp");
 
   <main id="main-content" class="app-layout">
     <section class="border-b border-border py-8">
-      <!-- Removed Topic Authority Layer tag -->
       <h1 class="mb-4 text-3xl font-bold sm:text-4xl">
         Pensiones y AFP en Chile
       </h1>
@@ -30,6 +34,91 @@ const hubAssignments = getHubArticleAssignments("pensiones-afp");
         e inversión.
       </p>
     </section>
+
+    <section class="border-b border-border py-8">
+      <div class="grid gap-4 lg:grid-cols-3">
+        <article class="rounded-xl border border-border bg-background p-5">
+          <p
+            class="text-xs font-semibold tracking-[0.16em] text-accent uppercase"
+          >
+            Si tu pregunta es del sistema
+          </p>
+          <h2 class="mt-3 text-xl font-semibold">Empieza por la reforma</h2>
+          <p class="mt-2 text-sm leading-relaxed text-secondary">
+            Úsala para separar qué cambió hoy, qué entra después y por qué el
+            nuevo aporte del empleador no equivale a saldo directo en tu AFP.
+          </p>
+          <a
+            href={getPath(
+              "/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/"
+            )}
+            class="mt-4 inline-flex text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+          >
+            Ver cronograma
+          </a>
+        </article>
+        <article class="rounded-xl border border-border bg-background p-5">
+          <p
+            class="text-xs font-semibold tracking-[0.16em] text-accent uppercase"
+          >
+            Si tu decisión es de riesgo
+          </p>
+          <h2 class="mt-3 text-xl font-semibold">Elige fondo o proyecta</h2>
+          <p class="mt-2 text-sm leading-relaxed text-secondary">
+            Los multifondos A-E siguen vivos en 2026. Parte por fondos si
+            decides riesgo; usa jubilación si tu pregunta ya es resultado
+            futuro.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
+            <a
+              href={getPath("/posts/fondos-afp-a-b-c-d-e/")}
+              class="text-accent underline underline-offset-4 hover:opacity-80"
+            >
+              Ver fondos A-E
+            </a>
+            <a
+              href={getPath("/calculadoras/simulador-jubilacion/")}
+              class="text-accent underline underline-offset-4 hover:opacity-80"
+            >
+              Simular jubilación
+            </a>
+          </div>
+        </article>
+        <article class="rounded-xl border border-border bg-background p-5">
+          <p
+            class="text-xs font-semibold tracking-[0.16em] text-accent uppercase"
+          >
+            Si tu decisión es tributaria
+          </p>
+          <h2 class="mt-3 text-xl font-semibold">Salta a APV o Cuenta 2</h2>
+          <p class="mt-2 text-sm leading-relaxed text-secondary">
+            No todo lo previsional se resuelve dentro de AFP obligatoria. Si
+            buscas beneficio tributario o más liquidez, cambia de ruta a tiempo.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
+            <a
+              href={getPath("/posts/que-es-el-apv/")}
+              class="text-accent underline underline-offset-4 hover:opacity-80"
+            >
+              Ir a APV
+            </a>
+            <a
+              href={getPath("/posts/que-es-la-cuenta-2-afp/")}
+              class="text-accent underline underline-offset-4 hover:opacity-80"
+            >
+              Ver Cuenta 2
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <ContextLinkSection
+      eyebrow="Núcleo previsional"
+      title="Empieza por la decisión correcta"
+      description="Estas son las piezas núcleo del hub AFP: reforma, fondos, cambio de AFP y Cuenta 2. Cada una resuelve un trabajo distinto."
+      items={pensionHubPrimaryCards}
+    />
 
     <section class="border-b border-border py-8">
       <h2 class="mb-4 text-2xl font-bold">Temas que puedes revisar</h2>
@@ -52,6 +141,13 @@ const hubAssignments = getHubArticleAssignments("pensiones-afp");
         }
       </ul>
     </section>
+
+    <ContextLinkSection
+      eyebrow="Relacionado"
+      title="Instrumentos y herramientas cercanas"
+      description="APV vive fuera del núcleo AFP, pero debe aparecer aquí cuando la comparación con Cuenta 2, beneficio tributario o pensión futura sí ayuda a decidir."
+      items={pensionHubRelatedCards}
+    />
 
     <section class="border-b border-border py-8">
       <h2 class="mb-4 text-2xl font-bold">Empieza aquí si...</h2>
@@ -98,8 +194,11 @@ const hubAssignments = getHubArticleAssignments("pensiones-afp");
         </li>
         <li>Confundir comisión baja con mejor resultado previsional total.</li>
         <li>
-          No revisar impacto de decisiones previsionales en el sueldo líquido
-          mensual.
+          Leer la reforma como si todo ya operara igual hoy, sin separar 2026,
+          2027 y 2033.
+        </li>
+        <li>
+          Confundir APV con elección de fondo AFP o con proyección de pensión.
         </li>
         <li>
           Seguir aquí cuando tu duda real es la liquidación mensual. En ese
@@ -138,9 +237,9 @@ const hubAssignments = getHubArticleAssignments("pensiones-afp");
           Última actualización de la sección
         </h2>
         <p class="text-sm text-secondary">
-          Actualizado: 2026-03-09. Esta sección se revisa cuando cambian
-          comisiones AFP, reglas de traspaso, reglas de fondos o normativa
-          previsional obligatoria.
+          Actualizado: 2026-03-12. Esta sección se revisa cuando cambian
+          comisiones AFP, cronograma de la nueva cotización del empleador,
+          transición a fondos generacionales o comparaciones APV / Cuenta 2.
         </p>
       </div>
     </section>

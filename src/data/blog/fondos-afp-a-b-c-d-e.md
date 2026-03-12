@@ -2,7 +2,7 @@
 title: "Fondos AFP A, B, C, D y E: diferencias, riesgo y cuál te conviene"
 author: "Equipo Monedario"
 pubDate: 2026-02-23T11:00:00Z
-updatedDate: 2026-03-12T14:18:00Z
+updatedDate: 2026-03-12T19:08:00Z
 slug: fondos-afp-a-b-c-d-e
 featured: true
 lang: es-CL
@@ -29,7 +29,7 @@ articleLead:
     - label: "Superintendencia de Pensiones"
       href: "https://www.spensiones.cl/"
     - label: "BCN — Ley 21.735"
-      href: "https://www.bcn.cl/leychile/navegar?idNorma=1212074"
+      href: "https://www.bcn.cl/leychile/navegar?idNorma=1212060"
   covers:
     - "Diferencias de riesgo y composición entre fondos."
     - "Qué decisión sirve hoy mientras siguen vigentes."
@@ -43,6 +43,12 @@ articleLead:
 Cuando te afilias a una AFP, tu dinero no queda guardado en una caja fuerte —se invierte en uno de cinco fondos disponibles. Elegir bien puede significar una pensión significativamente mayor. Elegir mal, lo contrario. Lo que pocos saben es que si no eliges nada, la AFP elige por ti.
 
 Aquí te explicamos qué es cada fondo, sin tecnicismos. Si quieres revisar más temas relacionados, mira también la [sección de pensiones y AFP](/guias/pensiones-afp/).
+
+## Si tu duda real es otra, cambia de pieza ahora
+
+- **Quieres entender la transición 2027+ y no solo elegir fondo hoy:** revisa la [reforma previsional 2025](/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/).
+- **Tu decisión es tributaria y no de riesgo:** sal a [APV](/posts/que-es-el-apv/) o al [simulador APV](/calculadoras/apv/).
+- **Tu pregunta ya es cuánto podrías acumular al jubilar:** usa el [simulador de jubilación](/calculadoras/simulador-jubilacion/).
 
 ## Qué cambia entre 2025 y 2027
 
@@ -188,6 +194,8 @@ Generalmente no. Si cambias durante una caída, conviertes una pérdida temporal
 El Fondo C concentra la mayor parte de los afiliados, en parte porque es el fondo por defecto para muchos rangos de edad.
 
 Para convertir esta elección en una decisión completa, cruza esta guía con [cómo cambiarte de AFP](/posts/como-cambiarse-de-afp/) y con el desglose de [cuánto descuenta la AFP de tu sueldo](/posts/cuanto-descuenta-la-afp-de-tu-sueldo/).
+
+Si quieres salir de la lógica "fondo por fondo" y mirar el cambio estructural del sistema, vuelve a la [guía de reforma previsional 2025](/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/).
 
 ### Fuentes oficiales para el bloque 2025-2027
 

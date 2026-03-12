@@ -4,7 +4,7 @@ author: "Equipo Monedario"
 description: "Guía práctica de la reforma previsional chilena: el 7% adicional del empleador, el BAC, los fondos generacionales y qué significa para tu jubilación."
 slug: reforma-previsional-2025-que-cambia-y-como-te-afecta
 pubDate: 2026-03-03T23:00:00Z
-updatedDate: 2026-03-12T14:17:00Z
+updatedDate: 2026-03-12T19:05:00Z
 tags:
   - reforma-previsional
   - afp
@@ -28,7 +28,7 @@ articleLead:
   validAsOf: 2026-03-12
   officialSources:
     - label: "BCN — Ley 21.735"
-      href: "https://www.bcn.cl/leychile/navegar?idNorma=1212074"
+      href: "https://www.bcn.cl/leychile/navegar?idNorma=1212060"
     - label: "Superintendencia de Pensiones"
       href: "https://www.spensiones.cl/"
   covers:
@@ -41,17 +41,24 @@ articleLead:
     - "No debe leerse como si todos los hitos ya estuvieran vigentes."
 ---
 
-En julio de 2025 se promulgó la reforma previsional más importante en décadas. Cambia cómo se financia tu jubilación, introduce un nuevo beneficio para pensiones más bajas y reemplaza los multifondos con un esquema distinto. Y aunque entra en vigencia por etapas —la mayoría de los cambios entre 2026 y 2029—, conviene entenderla ahora para saber qué esperar.
+En julio de 2025 se promulgó la reforma previsional más importante en décadas. Cambia cómo se financia tu jubilación, introduce nuevos componentes del Seguro Social y reemplaza los multifondos con un esquema distinto. Como su implementación se despliega por etapas entre 2025 y 2033, conviene entenderla separando con cuidado qué ya opera hoy y qué todavía viene después.
 
 Si quieres entender primero cómo funciona el sistema actual, parte por la [guía de fondos AFP A, B, C, D, E](/posts/fondos-afp-a-b-c-d-e/) o por [cuánto te descuenta la AFP de tu sueldo](/posts/cuanto-descuenta-la-afp-de-tu-sueldo/). Si quieres revisar más temas relacionados, entra a la [sección de Pensiones y AFP](/guias/pensiones-afp/).
 
 ## Lo esencial en 3 minutos
 
-La reforma tiene **tres grandes cambios:**
+La reforma tiene **tres grandes cambios**, pero no todos operan igual hoy:
 
-1. **El empleador paga más.** Se crea un aporte adicional obligatorio del empleador que sube gradualmente hasta el 7% de tu sueldo imponible. No te descuentan a ti — lo paga tu empleador sobre tu sueldo.
-2. **Un nuevo beneficio para pensiones bajas (BAC).** Parte de ese 7% va a un fondo solidario que mejora pensiones de quienes tienen saldos bajos, especialmente mujeres y personas con trayectorias laborales informales.
-3. **Los multifondos desaparecen.** En abril de 2027 se reemplazarán por fondos generacionales, que ajustan automáticamente el riesgo según tu edad.
+1. **El empleador paga una nueva cotización adicional.** Parte en **1%** desde agosto de 2025 y sube gradualmente hasta **7%** en agosto de 2033. No te lo descuentan a ti.
+2. **No todo ese nuevo aporte entra directo a tu cuenta individual.** Hoy solo una fracción de ese nuevo 1% va a tu AFP; el resto alimenta componentes colectivos del nuevo Seguro Social.
+3. **Los multifondos A-E se reemplazan por fondos generacionales.** La transición operativa parte en **abril de 2027**, no antes.
+
+## Si tu pregunta real es una de estas, parte por aquí
+
+- **"¿Me cambia el sueldo líquido hoy?"** No por esta vía. Revisa mejor [cuánto descuenta la AFP de tu sueldo](/posts/cuanto-descuenta-la-afp-de-tu-sueldo/).
+- **"¿Qué fondo AFP me conviene mientras siguen existiendo los A-E?"** Parte por [fondos AFP A, B, C, D y E](/posts/fondos-afp-a-b-c-d-e/).
+- **"¿Mi decisión hoy es tributaria, no de sistema?"** Anda al [APV](/posts/que-es-el-apv/) o directo al [simulador APV](/calculadoras/apv/).
+- **"¿Quiero proyectar cuánto podría acumular?"** Usa el [simulador de jubilación](/calculadoras/simulador-jubilacion/).
 
 ---
 
@@ -61,18 +68,13 @@ La reforma tiene **tres grandes cambios:**
 
 La reforma obliga al empleador a pagar un porcentaje adicional sobre tu remuneración imponible. Este aporte es **complementario** al 10% que ya descuentan de tu sueldo — no lo reemplaza ni lo reduce.
 
-### Cronograma de implementación
+### Qué cambia hoy versus después
 
-| Año  | Aporte empleador adicional                                         |
-| ---- | ------------------------------------------------------------------ |
-| 2025 | 0% (ley promulgada, sin aporte aún)                                |
-| 2026 | Inicio gradual (primer tranche)                                    |
-| 2027 | Segundo tranche                                                    |
-| 2028 | Tercer tranche                                                     |
-| 2029 | Régimen permanente: **6%** a tu cuenta + **1%** al fondo solidario |
-
-> [!IMPORTANT]
-> El cronograma exacto de fracciones por año (0,5%, 1%, 1,5%…) está definido en la Ley y puede revisarse en la [guía BCN Ley Fácil](https://www.bcn.cl/api-leyfacil/servicio/ObtenerGuiaPublicadaHTML?uri=reforma-de-pensiones-de-2025). Las fechas son referenciales y sujetas a confirmación reglamentaria.
+| Bloque                                      | Hoy (fecha de corte 2026-03-12)                                | Después                                                           |
+| ------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Nuevo aporte del empleador                  | Ya existe una nueva cotización de **1%** desde agosto de 2025. | Sube gradualmente hasta llegar a **7%** en agosto de 2033.        |
+| Tramo que va directo a tu cuenta individual | Hoy solo **0,1%** de ese nuevo 1% entra directo a tu AFP.      | La fracción directa sube gradualmente hasta **4,5%** en 2033.     |
+| Multifondos / fondos generacionales         | Los fondos **A, B, C, D y E siguen vigentes** en 2026.         | La transición a fondos generacionales parte en **abril de 2027**. |
 
 ### ¿A ti te afecta el sueldo líquido?
 
@@ -80,31 +82,41 @@ La reforma obliga al empleador a pagar un porcentaje adicional sobre tu remunera
 
 ### ¿Y en licencias médicas?
 
-En períodos de licencia, el subsidio se calcula sobre la remuneración imponible antes de la licencia. El empleador no suele pagar el aporte adicional durante la licencia porque no hay remuneración efectiva pagada por él — hay que revisar el reglamento final para casos específicos.
+En licencias médicas no conviene extrapolar la regla del sueldo ordinario sin revisar el flujo operativo. La declaración del aporte patronal usa reglas específicas sobre remuneración imponible y tratamiento del período subsidiado, así que para casos reales conviene revisar la instrucción vigente de Previred, tu empleador o la Superintendencia de Pensiones.
 
 ### ¿Y los independientes?
 
-Los trabajadores a honorarios que cotizan a través de Operación Renta **no están incluidos** en el aporte patronal (no tienen empleador). Su situación previsional sigue el esquema anterior de cotización voluntary/obligatoria anual. Revisa la [guía de boletas de honorarios 2026](/posts/boleta-honorarios-2026-retencion-cobertura/) para el detalle de su cotización.
+Los trabajadores a honorarios **no reciben aporte patronal**, porque no tienen empleador. Eso no significa que la reforma no los toque: desde agosto de 2025 existe también la opción de cotizar mensualmente al nuevo Seguro Social en calidad de independientes, además del esquema anual por Operación Renta. Revisa la [guía de boletas de honorarios 2026](/posts/boleta-honorarios-2026-retencion-cobertura/) para el detalle operativo de ese caso.
 
 ---
 
-## Cambio 2: El BAC (Beneficio de Ahorro Colectivo)
+## Cambio 2: BAC y componentes colectivos del nuevo Seguro Social
 
-### Qué es
+### Qué no conviene confundir
 
-El BAC es el nuevo nombre para el componente solidario de la reforma. El 1% del aporte del empleador que no va a tu cuenta individual va a un fondo común administrado por una entidad pública. Ese fondo se usa para pagar un complemento mensual a quienes tengan pensiones bajas al jubilar.
+Una de las confusiones más comunes es tratar todo lo colectivo como si fuera "BAC". No es así.
 
-### ¿Quién se beneficia más?
+- **BAC** significa **Beneficio por Años Cotizados**.
+- **No es sinónimo** de "todo lo que no va a la cuenta individual".
+- El nuevo esquema también incorpora otros componentes del Seguro Social y repartos que no deben leerse como saldo propio en tu AFP.
+
+### Regla práctica para no perderse
+
+Si tu pregunta es "¿cuánto de este nuevo aporte patronal entra directo a mi cuenta?", entonces BAC no es la respuesta correcta. La respuesta correcta es revisar el cronograma de fracción directa a cuenta individual.
+
+Si tu pregunta es "¿qué beneficios futuros colectivos puede crear la reforma?", ahí sí BAC entra como parte de la conversación, junto con otros componentes del Seguro Social, pero no como sustituto de tu saldo AFP.
+
+### ¿Quién podría capturar mejor estos beneficios?
 
 - Personas con trayectorias laborales interrumpidas (cuidado de hijos, desempleo, trabajo informal).
 - Mujeres, históricamente con menores saldos acumulados.
 - Personas que jubilan con saldo bajo en su cuenta individual.
 
-El BAC es una redistribución desde quienes tienen más saldo hacia quienes tienen menos. Si acumulaste un saldo alto, tu pensión de jubilación no se afecta negativamente, pero el complemento que recibirás del fondo colectivo será menor o nulo.
+La idea general es reforzar pensiones bajas y compensar brechas previsionales. Pero el monto final depende de reglamentos, historial de cotizaciones y etapa real de implementación.
 
-### ¿Cuánto paga?
+### ¿Cuánto paga hoy?
 
-El monto exacto depende de las tablas actuariales y del saldo que acumule el fondo. En la fase inicial (2026–2027) el fondo aún estará en crecimiento, por lo que los primeros beneficiarios recibirán montos más pequeños que los de largo plazo.
+No conviene prometer un monto fijo desde esta guía. En 2026 el sistema todavía está en implementación gradual, así que esta pieza debe usarse para entender estructura y calendario, no para leer BAC como un simulador de monto.
 
 ---
 
@@ -124,7 +136,7 @@ Conforme pasan los años, el fondo ajusta automáticamente hacia perfiles más c
 
 ### ¿Qué pasa con mis fondos actuales?
 
-La SPensiones comunicará el proceso de transición. Los saldos existentes en multifondos migrarán al fondo generacional que corresponde a tu cohorte de nacimiento. Habrá un período de transición con opciones de elección para quienes quieran una asignación distinta.
+La Superintendencia de Pensiones comunicará el proceso operativo. Por ahora, la lectura útil es esta: en 2026 sigues decidiendo dentro de A-E; la conversación de fondos generacionales es una transición aprobada, no el régimen operativo actual.
 
 ### ¿Puedo seguir eligiendo?
 
@@ -140,11 +152,11 @@ No. El aporte adicional del empleador no aumenta tu líquido — es un costo que
 
 ### ¿Aumenta mi pensión futura?
 
-Sí, potencialmente. 6 puntos porcentuales adicionales de aportes durante años de trabajo acumulan capital significativo. El efecto depende de cuántos años resten hasta tu jubilación. A más años de trabajo restantes, mayor impacto.
+Sí, potencialmente. El efecto viene de una combinación de mayor ahorro individual, componentes del Seguro Social y CRP, no de leer el nuevo 7% como si fuera 7% íntegro dentro de tu cuenta AFP. Cuantos más años te queden para jubilar y más continuidad de cotizaciones tengas, mayor podría ser el impacto.
 
 ### ¿Qué pasa si ya estoy jubilado?
 
-Las pensiones ya pagadas no cambian con la reforma. El BAC podría complementar pensiones bajas existentes, pero los detalles de elegibilidad en ese caso dependen del reglamento.
+Las pensiones ya pagadas no cambian automáticamente por leer la ley. Algunos beneficios futuros pueden complementar pensiones bajas, pero la elegibilidad práctica depende de implementación y reglas específicas.
 
 ### ¿Qué pasa con las personas con contrato a plazo fijo?
 
@@ -152,7 +164,7 @@ El aporte patronal aplica a todos los contratos con relación laboral dependient
 
 ### ¿El BAC se hereda?
 
-El componente solidario (el 1%) es colectivo: no se hereda como la cuenta individual. El saldo de tu cuenta individual AFP (el 10% + el 6% de aportes patronales que van a tu cuenta) sigue siendo heredable según las normas previsionales vigentes.
+Los componentes colectivos no deben leerse como saldo propio heredable en tu AFP. Lo que sigue tu lógica previsional habitual es la cuenta individual bajo las reglas vigentes del sistema.
 
 ### ¿Cuándo debo hacer algo?
 
@@ -162,9 +174,9 @@ Ahora, nada urgente. Para el cambio de fondos generacionales (abril 2027) la SPe
 
 ## Fuentes oficiales
 
-- BCN, Ley Fácil Reforma Previsional 2025: https://www.bcn.cl/api-leyfacil/servicio/ObtenerGuiaPublicadaHTML?uri=reforma-de-pensiones-de-2025
+- BCN, Ley Fácil Reforma Previsional 2025: https://www.bcn.cl/leyfacil/recurso/reforma-de-pensiones-de-2025
 - Superintendencia de Pensiones, comunicado Fondos Generacionales: https://www.spensiones.cl
-- ChileAtiende, aportes del empleador (cronograma): https://www.chileatiende.gob.cl
+- ChileAtiende, nueva cotización de empleadores: https://www.chileatiende.gob.cl/preguntas-frecuentes/nueva-cotizacion-empleadores
 
 ---
 

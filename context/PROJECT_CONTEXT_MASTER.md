@@ -90,6 +90,20 @@ Los riesgos principales están en deuda de mantenibilidad y consistencia operati
 - Se suman las calculadoras `/calculadoras/boleta-honorarios-liquido/` y `/calculadoras/finiquito-indemnizacion/`, más dos piezas support nuevas: `indemnizacion-anos-de-servicio-chile` y `seguro-cesantia-cuenta-individual-vs-fondo-solidario`.
 - `src/config/editorial-topic-policy.mjs`, `docs/research/seo/strategy/topic_ownership_matrix.md`, `docs/operations/runbooks/phase1-refresh-policy.md` y `docs/operations/reports/phase1_measurement_baseline.md` congelan ownership, SLA y medición de la Fase 1 sin abrir clusters nuevos.
 
+### Checkpoint 2026-03-12 (Sprint Prevision/APV Packaging)
+
+- `src/config/pensionClusterLinks.ts` agrega una capa explícita de linking contextual para `reforma`, `fondos AFP`, `APV`, `Cuenta 2`, `cambio de AFP` y los simuladores previsionales, reutilizada por artículos owner y por el hub `pensiones-afp`.
+- `src/pages/guias/pensiones-afp/index.astro` deja de comportarse como índice plano y pasa a ordenar el journey por tres decisiones: sistema/reforma, riesgo/fondos y beneficio tributario/APV.
+- `reforma-previsional-2025-que-cambia-y-como-te-afecta`, `fondos-afp-a-b-c-d-e` y `que-es-el-apv` quedan reforzados con aperturas más directas, rutas de escape explícitas y mejor separación entre vigencia 2026, transición 2027 y régimen permanente 2033.
+- La pieza legal `src/data/laws/proyecto-reforma-previsional-2025.md` se alinea terminológicamente con el owner y deja fijado `BAC = Beneficio por Años Cotizados`, evitando contaminar el cluster con la etiqueta incorrecta.
+
+### Checkpoint 2026-03-12 (TD-0018 Safe Content Loader)
+
+- `src/content/loaders/safeGlob.ts` envuelve `glob()` de Astro y suprime únicamente el falso positivo `Duplicate id` cuando el store ya contiene el mismo `id` desde la misma ruta física.
+- `src/content.config.ts` migra `blog`, `laws` y `glossary` a `safeGlob`, preservando patrones, ids públicos y contratos de colecciones.
+- `tests/integration/safeGlobLoader.test.ts` fija la regresión con una prueba pura sobre el parseo del warning y la condición `same id + same file`.
+- `pnpm run astro -- check` y `pnpm run build` quedan en `0 warnings` para el caso que antes reabría `TD-0018` tras tocar contenido YMYL.
+
 ## 1. Stack técnico
 
 ### Runtime y package management
