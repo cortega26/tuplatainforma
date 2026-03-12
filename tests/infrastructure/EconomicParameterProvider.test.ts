@@ -72,6 +72,23 @@ describe("EconomicParameterProvider", () => {
     expect(telemetry.lastSource).toBe("fallback");
   });
 
+  it("resolves the snapshot from a real filesystem path", async () => {
+    const { __getEconomicSnapshotFilePathForTests } = await loadProviderModule();
+    const snapshotPath = __getEconomicSnapshotFilePathForTests();
+    const payload = JSON.parse(readFileSync(snapshotPath, "utf-8")) as {
+      uf: number;
+      utm: number;
+      lastUpdated: string;
+    };
+
+    expect(snapshotPath.endsWith("economic-parameters.snapshot.json")).toBe(
+      true
+    );
+    expect(payload.uf).toBe(SNAPSHOT.uf);
+    expect(payload.utm).toBe(SNAPSHOT.utm);
+    expect(payload.lastUpdated).toBe(SNAPSHOT.lastUpdated);
+  });
+
   it("returns live payload when live mode is explicitly enabled", async () => {
     setMode("live");
     const fetchMock = vi.fn().mockResolvedValue({

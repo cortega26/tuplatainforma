@@ -2,7 +2,9 @@ import {
   assertEconomicParameters,
   type EconomicParameters,
 } from "@/domain/economic/EconomicParameters";
-import { readFileSync } from "fs";
+import { existsSync, readFileSync } from "fs";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 
 type MindicadorResponse = {
   uf?: { valor?: number; fecha?: string };
@@ -44,10 +46,8 @@ export interface EconomicProviderTelemetry {
 
 const DEFAULT_AFC_MONTHLY_TAXABLE_CAP_UF = 131.9;
 const FALLBACK_LAST_UPDATED = new Date().toISOString().slice(0, 10);
-const SNAPSHOT_FILE_URL = new URL(
-  "./economic-parameters.snapshot.json",
-  import.meta.url
-);
+const MODULE_DIR = dirname(fileURLToPath(import.meta.url));
+const SNAPSHOT_FILE_NAME = "economic-parameters.snapshot.json";
 const ECONOMIC_PROVIDER_MODE_ENV = "TPI_ECONOMIC_PROVIDER_MODE";
 const ECONOMIC_API_URL = "https://mindicador.cl/api";
 const FETCH_TIMEOUT_MS = 5000;
@@ -96,9 +96,22 @@ function resolveEconomicProviderMode(): EconomicProviderMode {
     : "snapshot";
 }
 
+function resolveSnapshotFilePath(): string {
+  const cwdCandidate = resolve(
+    process.cwd(),
+    "src",
+    "infrastructure",
+    "economic",
+    SNAPSHOT_FILE_NAME
+  );
+  if (existsSync(cwdCandidate)) return cwdCandidate;
+
+  return resolve(MODULE_DIR, SNAPSHOT_FILE_NAME);
+}
+
 function loadSnapshotEconomicParameters(): EconomicParameters {
   const payload = JSON.parse(
-    readFileSync(SNAPSHOT_FILE_URL, "utf-8")
+    readFileSync(resolveSnapshotFilePath(), "utf-8")
   ) as EconomicSnapshotPayload;
 
   const snapshotParameters: EconomicParameters = {
@@ -237,4 +250,8 @@ export function __resetEconomicParameterProviderForTests(): void {
   telemetryState.lastSource = undefined;
   telemetryState.lastFallbackReason = undefined;
   syncDevTelemetry();
+}
+
+export function __getEconomicSnapshotFilePathForTests(): string {
+  return resolveSnapshotFilePath();
 }
