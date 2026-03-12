@@ -16,7 +16,7 @@ const economicSourceLabel =
 
 <Layout
   title="Simulador de Renegociación de Deudas | Superir"
-  description="Evalúa si podrías calificar para renegociación y estima una cuota posible según deudas e ingresos."
+  description="Evalúa si cumples el filtro básico de renegociación Superir y separa esa revisión legal de una simulación orientativa de cuota."
 >
   <Header />
   <Breadcrumb />
@@ -32,8 +32,8 @@ const economicSourceLabel =
         ⚖️ Simulador de Renegociación Superir
       </h1>
       <p class="max-w-xl text-secondary">
-        Ingresa tus deudas e ingresos y estima si calificas para la
-        renegociación gratuita y qué cuota podrías pagar.
+        Revisa primero si cumples el filtro básico de la Superir y, por
+        separado, estima una cuota orientativa según tus deudas e ingresos.
       </p>
     </section>
 
@@ -44,7 +44,7 @@ const economicSourceLabel =
 
         <div class="mb-5">
           <p class="mb-3 text-sm font-medium text-secondary">
-            Deudas vencidas (con mora +90 días)
+            Deudas vencidas (cada una con más de 90 días corridos)
           </p>
           <div id="deudas-container" class="space-y-3">
             <div class="deuda-row flex items-center gap-2">
@@ -56,10 +56,10 @@ const economicSourceLabel =
               />
               <input
                 type="number"
-                placeholder="Meses mora"
+                placeholder="Días mora"
                 min="1"
-                max="240"
-                value="90"
+                max="5000"
+                value="91"
                 class="deuda-dias w-28 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none"
               />
             </div>
@@ -72,10 +72,10 @@ const economicSourceLabel =
               />
               <input
                 type="number"
-                placeholder="Meses mora"
+                placeholder="Días mora"
                 min="1"
-                max="240"
-                value="90"
+                max="5000"
+                value="91"
                 class="deuda-dias w-28 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none"
               />
             </div>
@@ -86,8 +86,70 @@ const economicSourceLabel =
             >+ Agregar otra deuda</button
           >
           <p class="mt-1 text-xs text-muted">
-            Meses mora = tiempo desde el último pago. Necesitas ≥ 3 meses en
-            cada deuda.
+            La regla legal no es "3 meses aproximados": cada deuda debe superar
+            90 días corridos al momento de presentar la solicitud.
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="primera-categoria"
+            class="mb-1 block text-sm font-medium text-secondary"
+          >
+            ¿Tuviste inicio de actividades o rentas de primera categoría en los
+            últimos 24 meses?
+          </label>
+          <select
+            id="primera-categoria"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          >
+            <option value="">Selecciona una opción</option>
+            <option value="no">No</option>
+            <option value="si">Sí</option>
+          </select>
+          <p class="mt-1 text-xs text-muted">
+            Si emitiste boletas de honorarios, eso no equivale por sí solo a
+            primera categoría.
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="juicio-ejecutivo"
+            class="mb-1 block text-sm font-medium text-secondary"
+          >
+            ¿Te notificaron formalmente una demanda ejecutiva o una liquidación
+            forzosa?
+          </label>
+          <select
+            id="juicio-ejecutivo"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          >
+            <option value="">Selecciona una opción</option>
+            <option value="no">No</option>
+            <option value="si">Sí</option>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="documentos-completos"
+            class="mb-1 block text-sm font-medium text-secondary"
+          >
+            ¿Ya tienes reunidos los documentos y declaraciones que pide la
+            Superir?
+          </label>
+          <select
+            id="documentos-completos"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          >
+            <option value="">Selecciona una opción</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+          <p class="mt-1 text-xs text-muted">
+            Esto no reemplaza la revisión de admisibilidad, pero sí cambia si tu
+            caso está listo para solicitud formal o solo para evaluación.
           </p>
         </div>
 
@@ -206,12 +268,18 @@ const economicSourceLabel =
           <strong>No aplica a:</strong> contribuyentes de primera categoría (empresas
           con actividad comercial) en los últimos 24 meses.
         </li>
+        <li>
+          <strong>También bloquea:</strong> haber sido notificado de un juicio ejecutivo
+          o de una liquidación forzosa, y llegar sin la documentación requerida.
+        </li>
       </ul>
       <p class="text-sm text-muted">
-        ⚠️ Esta simulación es educativa. Las condiciones reales del acuerdo
-        dependen de la negociación con los acreedores. Para iniciar el trámite
-        visita <a href="https://www.superir.gob.cl" target="_blank"
-          >superir.gob.cl</a
+        ⚠️ Esta simulación es educativa. El bloque superior revisa un filtro
+        legal básico y el bloque de cuota es solo una referencia financiera. La
+        admisibilidad final la decide la Superir al revisar tus antecedentes.
+        Para iniciar el trámite visita <a
+          href="https://www.superir.gob.cl"
+          target="_blank">superir.gob.cl</a
         >.
       </p>
       <p>
@@ -284,10 +352,10 @@ const economicSourceLabel =
 
     const overdueInput = document.createElement("input");
     overdueInput.type = "number";
-    overdueInput.placeholder = "Meses mora";
+    overdueInput.placeholder = "Días mora";
     overdueInput.min = "1";
-    overdueInput.max = "240";
-    overdueInput.value = "90";
+    overdueInput.max = "5000";
+    overdueInput.value = "91";
     overdueInput.className =
       "deuda-dias w-28 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none";
 
@@ -315,18 +383,18 @@ const economicSourceLabel =
     if (!guideUrl || !Number.isFinite(ufValue) || ufValue <= 0) return;
 
     const filas = document.querySelectorAll(".deuda-row");
-    const deudas: { monto: number; meses: number }[] = [];
+    const deudas: { monto: number; dias: number }[] = [];
 
     filas.forEach(fila => {
       const monto =
         parseFloat(
           (fila.querySelector(".deuda-monto") as HTMLInputElement).value
         ) || 0;
-      const meses =
+      const dias =
         parseInt(
           (fila.querySelector(".deuda-dias") as HTMLInputElement).value
         ) || 0;
-      if (monto > 0) deudas.push({ monto, meses });
+      if (monto > 0) deudas.push({ monto, dias });
     });
 
     const ingreso =
@@ -341,9 +409,26 @@ const economicSourceLabel =
       parseFloat(
         (document.getElementById("tasa-renego") as HTMLInputElement).value
       ) / 100;
+    const primeraCategoria = (
+      document.getElementById("primera-categoria") as HTMLSelectElement
+    ).value;
+    const juicioEjecutivo = (
+      document.getElementById("juicio-ejecutivo") as HTMLSelectElement
+    ).value;
+    const documentosCompletos = (
+      document.getElementById("documentos-completos") as HTMLSelectElement
+    ).value;
 
-    if (deudas.length === 0 || ingreso <= 0) {
-      alert("Por favor ingresa al menos una deuda y tu ingreso mensual.");
+    if (
+      deudas.length === 0 ||
+      ingreso <= 0 ||
+      !primeraCategoria ||
+      !juicioEjecutivo ||
+      !documentosCompletos
+    ) {
+      alert(
+        "Completa al menos una deuda, tu ingreso y las preguntas legales antes de simular."
+      );
       return;
     }
 
@@ -352,12 +437,15 @@ const economicSourceLabel =
       simulacion = simulateDebtRenegotiation({
         debts: deudas.map(deuda => ({
           amount: deuda.monto,
-          overdueMonths: deuda.meses,
+          overdueDays: deuda.dias,
         })),
         monthlyIncome: ingreso,
         termMonths: plazo,
         monthlyRatePercent: tasaMensual * 100,
         ufValue,
+        hasFirstCategoryActivityLast24Months: primeraCategoria === "si",
+        hasNotifiedExecutiveProceeding: juicioEjecutivo === "si",
+        hasRequiredDocuments: documentosCompletos === "si",
       });
     } catch (error) {
       alert(
@@ -372,18 +460,26 @@ const economicSourceLabel =
 
     const statusBox = document.createElement("div");
     statusBox.className = `mb-5 rounded-lg border p-4 ${
-      simulacion.qualifies
+      simulacion.canSubmitApplication
         ? "border-green-500/30 bg-green-500/5"
-        : "border-red-500/30 bg-red-500/10"
+        : simulacion.meetsBasicEligibility
+          ? "border-yellow-500/30 bg-yellow-500/10"
+          : "border-red-500/30 bg-red-500/10"
     }`;
 
     const statusTitle = document.createElement("p");
     statusTitle.className = `mb-3 text-base font-bold ${
-      simulacion.qualifies ? "text-green-500" : "text-red-400"
+      simulacion.canSubmitApplication
+        ? "text-green-500"
+        : simulacion.meetsBasicEligibility
+          ? "text-yellow-500"
+          : "text-red-400"
     }`;
-    statusTitle.textContent = simulacion.qualifies
-      ? "✓ Probablemente calificas para renegociar"
-      : "⚠️ Posibles problemas para calificar";
+    statusTitle.textContent = simulacion.canSubmitApplication
+      ? "✓ Cumples el filtro básico y podrías preparar la solicitud"
+      : simulacion.meetsBasicEligibility
+        ? "⚠️ Cumples el filtro básico, pero aún no estás listo para calificar formalmente"
+        : "✗ No cumples el filtro básico de elegibilidad";
 
     const checklist = document.createElement("div");
     checklist.className = "space-y-1.5 text-sm";
@@ -394,14 +490,33 @@ const economicSourceLabel =
       ),
       buildChecklistLine(
         simulacion.requirementChecks.hasTwoOrMoreQualifiedDebts,
-        `Con +90 días de mora: ${simulacion.qualifiedDebtCount} califican`
+        `Con más de 90 días corridos: ${simulacion.qualifiedDebtCount} califican`
       ),
       buildChecklistLine(
         simulacion.requirementChecks.reachesMinimumUf,
         `Total supera ${simulacion.minimumDebtUf} UF: ${fmtUF(simulacion.qualifiedDebtUf)} (mín. ${simulacion.minimumDebtUf} UF = ${fmt(simulacion.minimumDebtUf * ufValue)})`
+      ),
+      buildChecklistLine(
+        simulacion.requirementChecks.hasNoFirstCategoryActivity,
+        "Sin actividad de primera categoría en los últimos 24 meses"
+      ),
+      buildChecklistLine(
+        simulacion.requirementChecks.hasNoNotifiedExecutiveProceeding,
+        "Sin juicio ejecutivo ni liquidación forzosa notificada"
+      ),
+      buildChecklistLine(
+        simulacion.requirementChecks.hasRequiredDocuments,
+        "Documentos y declaraciones listos para presentar la solicitud"
       )
     );
-    statusBox.append(statusTitle, checklist);
+    const statusNote = document.createElement("p");
+    statusNote.className = "mt-3 text-xs text-secondary";
+    statusNote.textContent = simulacion.canSubmitApplication
+      ? "Esto no garantiza admisión automática: la revisión formal final depende de la Superir y de tus respaldos."
+      : simulacion.meetsBasicEligibility
+        ? "Tu caso podría ser renegociable, pero todavía no equivale a 'calificas formalmente'. Te faltan antecedentes para presentar la solicitud."
+        : "La cuota de abajo sigue siendo solo una simulación financiera orientativa. No corrige exclusiones legales ni reemplaza asesoría.";
+    statusBox.append(statusTitle, checklist, statusNote);
 
     const burdenColorClass =
       simulacion.incomeBurdenPercent <= 30
@@ -414,7 +529,7 @@ const economicSourceLabel =
     simulationSection.className = "mt-5";
     const simulationLabel = document.createElement("p");
     simulationLabel.className = "mb-2 text-xs font-bold text-muted uppercase";
-    simulationLabel.textContent = `Simulación de acuerdo — ${plazo} meses`;
+    simulationLabel.textContent = `Simulación financiera orientativa — ${plazo} meses`;
     simulationSection.append(
       simulationLabel,
       buildRow(
@@ -436,10 +551,10 @@ const economicSourceLabel =
       "mt-3 rounded-lg bg-foreground/5 p-3 text-xs text-secondary";
     advisory.textContent =
       simulacion.incomeBurdenPercent <= 30
-        ? "✅ La cuota simulada es manejable (≤30% de tu ingreso). Una propuesta en este rango tiene más chances de ser aceptada."
+        ? "✅ La cuota simulada es manejable (≤30% de tu ingreso). Úsala como punto de partida para armar tu propuesta, no como aprobación legal."
         : simulacion.incomeBurdenPercent <= 50
-          ? "⚠️ La cuota es alta (30–50% del ingreso). Considera extender el plazo o negociar condonación de intereses."
-          : "🔴 La cuota supera el 50% de tu ingreso. Ajusta el plazo o solicita en la Superir que medien una quita de capital.";
+          ? "⚠️ La cuota es alta (30–50% del ingreso). Considera extender el plazo o negociar intereses antes de presentar una propuesta."
+          : "🔴 La cuota supera el 50% de tu ingreso. Antes de pensar en admisibilidad, revisa si tu propuesta es realmente pagable o si necesitas otra salida.";
 
     const guideLink = document.createElement("a");
     guideLink.href = guideUrl;
@@ -462,7 +577,11 @@ const economicSourceLabel =
     trackAnalyticsEvent("calculator_complete", {
       calculator_slug: "simulador-renegociacion",
       calculator_name: "Simulador de Renegociacion Superir",
-      outcome: simulacion.qualifies ? "qualifies" : "not-qualified",
+      outcome: simulacion.canSubmitApplication
+        ? "basic-filter-pass"
+        : simulacion.meetsBasicEligibility
+          ? "missing-documents"
+          : "basic-filter-fail",
     });
   });
 </script>

@@ -1,3 +1,5 @@
+import { simulateCreditRepayment } from "@/application/use-cases/shared/creditAmortization";
+
 export interface CreditCardCostInput {
   debt: number;
   monthlyRatePercent: number;
@@ -17,39 +19,6 @@ export interface CreditCardCostOutput {
   usesFixedPayment: boolean;
   baseline: CreditCardScenarioOutput;
   doubledPayment: CreditCardScenarioOutput;
-}
-
-function simulateRepayment(
-  debt: number,
-  monthlyRateDecimal: number,
-  paymentStrategy: (balance: number) => number,
-  maxMonths: number
-): CreditCardScenarioOutput {
-  let balance = debt;
-  let totalPaid = 0;
-  let months = 0;
-  const firstMonthlyPayments: number[] = [];
-
-  while (balance > 100 && months < maxMonths) {
-    const interest = balance * monthlyRateDecimal;
-    const plannedPayment = Math.max(paymentStrategy(balance), interest + 100);
-    const realPayment = Math.min(plannedPayment, balance + interest);
-
-    balance = balance + interest - realPayment;
-    totalPaid += realPayment;
-    months += 1;
-
-    if (months <= 6) {
-      firstMonthlyPayments.push(realPayment);
-    }
-  }
-
-  return {
-    months,
-    totalPaid,
-    totalInterest: totalPaid - debt,
-    firstMonthlyPayments,
-  };
 }
 
 function assertInput(input: CreditCardCostInput): void {
@@ -93,17 +62,21 @@ export function simulateCreditCardCost(
 
   return {
     usesFixedPayment,
-    baseline: simulateRepayment(
-      input.debt,
+    baseline: simulateCreditRepayment({
+      principal: input.debt,
       monthlyRateDecimal,
-      baselinePaymentStrategy,
-      maxMonths
-    ),
-    doubledPayment: simulateRepayment(
-      input.debt,
+      paymentStrategy: ({ balance }) => baselinePaymentStrategy(balance),
+      paymentFloor: ({ interest }) => interest + 100,
+      maxMonths,
+      trackedMonths: 6,
+    }),
+    doubledPayment: simulateCreditRepayment({
+      principal: input.debt,
       monthlyRateDecimal,
-      doubledPaymentStrategy,
-      maxMonths
-    ),
+      paymentStrategy: ({ balance }) => doubledPaymentStrategy(balance),
+      paymentFloor: ({ interest }) => interest + 100,
+      maxMonths,
+      trackedMonths: 6,
+    }),
   };
 }

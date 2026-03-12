@@ -1,3 +1,5 @@
+import { calculateAnnuityPayment } from "@/application/use-cases/shared/creditAmortization";
+
 export interface ConsumerCreditInput {
   principal: number;
   termMonths: number;
@@ -27,16 +29,6 @@ function assertInput(input: ConsumerCreditInput): void {
   if (!Number.isFinite(input.rateValue) || input.rateValue <= 0) {
     throw new Error("rateValue must be a finite number greater than 0.");
   }
-}
-
-function annuityPayment(
-  principal: number,
-  monthlyRateDecimal: number,
-  termMonths: number
-): number {
-  if (monthlyRateDecimal === 0) return principal / termMonths;
-  const factor = Math.pow(1 + monthlyRateDecimal, termMonths);
-  return (principal * monthlyRateDecimal * factor) / (factor - 1);
 }
 
 function estimateCaePercent(
@@ -75,7 +67,7 @@ export function calculateConsumerCredit(
       ? Math.pow(1 + input.rateValue / 100, 1 / 12) - 1
       : input.rateValue / 100;
 
-  const monthlyPaymentBase = annuityPayment(
+  const monthlyPaymentBase = calculateAnnuityPayment(
     input.principal,
     monthlyRateDecimal,
     input.termMonths

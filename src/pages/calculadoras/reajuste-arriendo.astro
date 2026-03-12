@@ -217,6 +217,11 @@ const economicSourceLabel =
         >
           Calcular reajuste →
         </button>
+        <div
+          id="reajuste-error"
+          class="mt-3 hidden rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-200"
+        >
+        </div>
       </div>
 
       <!-- RESULTADO -->
@@ -317,6 +322,20 @@ const economicSourceLabel =
     return line;
   }
 
+  function showInlineError(message: string): void {
+    const errorBox = document.getElementById("reajuste-error");
+    if (!errorBox) return;
+    errorBox.textContent = message;
+    errorBox.classList.remove("hidden");
+  }
+
+  function clearInlineError(): void {
+    const errorBox = document.getElementById("reajuste-error");
+    if (!errorBox) return;
+    errorBox.textContent = "";
+    errorBox.classList.add("hidden");
+  }
+
   // Toggle campos
   document.querySelectorAll("input[name='tipo']").forEach(r => {
     r.addEventListener("change", () => {
@@ -336,6 +355,7 @@ const economicSourceLabel =
   });
 
   document.getElementById("calcBtn")?.addEventListener("click", () => {
+    clearInlineError();
     const tipo = (
       document.querySelector("input[name='tipo']:checked") as HTMLInputElement
     )?.value;
@@ -345,6 +365,12 @@ const economicSourceLabel =
         parseFloat(
           (document.getElementById("arriendo-pesos") as HTMLInputElement).value
         ) || 0;
+      if (arriendo <= 0) {
+        showInlineError(
+          "Ingresa el arriendo actual en pesos para mostrar el caso de contrato sin reajuste automático."
+        );
+        return;
+      }
       const box = document.createElement("div");
       box.className =
         "rounded-lg border border-yellow-500/30 bg-yellow-500/10 p-4 text-sm text-secondary";
@@ -392,7 +418,7 @@ const economicSourceLabel =
         ) || 0;
 
       if (arriendoUF <= 0 || ufAntes <= 0 || ufHoy <= 0) {
-        alert("Completa todos los campos de UF.");
+        showInlineError("Completa todos los campos de UF antes de calcular.");
         return;
       }
 
@@ -404,7 +430,7 @@ const economicSourceLabel =
           currentUfValue: ufHoy,
         });
       } catch (error) {
-        alert(
+        showInlineError(
           error instanceof Error
             ? error.message
             : "No se pudo calcular el reajuste por UF."
@@ -468,7 +494,9 @@ const economicSourceLabel =
       );
 
       if (arriendoPesos <= 0 || isNaN(ipcVariacion)) {
-        alert("Completa el arriendo actual y la variación IPC.");
+        showInlineError(
+          "Completa el arriendo actual y la variación IPC antes de calcular."
+        );
         return;
       }
 
@@ -479,7 +507,7 @@ const economicSourceLabel =
           ipcVariationPercent: ipcVariacion,
         });
       } catch (error) {
-        alert(
+        showInlineError(
           error instanceof Error
             ? error.message
             : "No se pudo calcular el reajuste por IPC."

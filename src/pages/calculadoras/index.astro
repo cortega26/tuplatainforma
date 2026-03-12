@@ -33,7 +33,7 @@ const calculadoras = [
   {
     titulo: "Costo Real Tarjeta de Crédito",
     descripcion:
-      "Descubre cuánto pagas realmente si solo abonas el mínimo. Ve el costo total y el tiempo para saldar.",
+      "Úsala si ya tienes deuda en la tarjeta y quieres medir el costo de pagar el mínimo o una cuota fija.",
     href: getPath("/calculadoras/tarjeta-credito/"),
     icono: "💳",
     tag: "Nueva",
@@ -49,7 +49,7 @@ const calculadoras = [
   {
     titulo: "Calculadora de Crédito de Consumo",
     descripcion:
-      "Calcula cuota, CAE e intereses totales de cualquier crédito. Ingresa tasa mensual o anual.",
+      "Úsala para evaluar una oferta nueva de crédito de consumo: cuota, CAE e intereses totales.",
     href: getPath("/calculadoras/credito-consumo/"),
     icono: "🏦",
     tag: "Nueva",
@@ -73,7 +73,7 @@ const calculadoras = [
   {
     titulo: "¿Conviene prepagar el crédito?",
     descripcion:
-      "Calcula el ahorro en intereses de un abono extraordinario y compáralo con invertir ese dinero.",
+      "Úsala si ya tienes un crédito vigente y estás evaluando un abono extraordinario versus invertir ese dinero.",
     href: getPath("/calculadoras/prepago-credito/"),
     icono: "💡",
     tag: "Nueva",
@@ -114,6 +114,42 @@ const tagStyles: Record<string, string> = {
         Herramientas gratuitas para hacer tus propios números. Sin registro, sin
         datos personales.
       </p>
+    </section>
+
+    <section class="py-8">
+      <div class="rounded-xl border border-border bg-foreground/5 p-5">
+        <h2 class="mb-3 text-lg font-semibold">Elegir calculadora de deuda</h2>
+        <div class="grid gap-3 sm:grid-cols-3">
+          <div class="rounded-lg border border-border bg-background p-4">
+            <p class="mb-1 text-sm font-semibold">Oferta nueva</p>
+            <p class="text-sm text-secondary">
+              Si estás cotizando un préstamo antes de firmarlo, parte por
+              <a href={getPath("/calculadoras/credito-consumo/")}>
+                crédito de consumo
+              </a>.
+            </p>
+          </div>
+          <div class="rounded-lg border border-border bg-background p-4">
+            <p class="mb-1 text-sm font-semibold">Deuda de tarjeta</p>
+            <p class="text-sm text-secondary">
+              Si ya usaste la tarjeta y quieres medir el costo del pago mínimo,
+              usa
+              <a href={getPath("/calculadoras/tarjeta-credito/")}>
+                tarjeta de crédito
+              </a>.
+            </p>
+          </div>
+          <div class="rounded-lg border border-border bg-background p-4">
+            <p class="mb-1 text-sm font-semibold">Abono extraordinario</p>
+            <p class="text-sm text-secondary">
+              Si el crédito ya existe y tu duda es si conviene prepagar, ve a
+              <a href={getPath("/calculadoras/prepago-credito/")}>
+                prepago de crédito
+              </a>.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="py-8">

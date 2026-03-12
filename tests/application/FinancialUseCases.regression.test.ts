@@ -72,7 +72,7 @@ describe("Regression - APV", () => {
     expect(round2(result.taxWithoutApv)).toBe(9710.04);
     expect(round2(result.regimeA.monthlyBenefit)).toBe(15000);
     expect(round2(result.regimeB.monthlyBenefit)).toBe(4000);
-    expect(result.recommendedRegime).toBe("A");
+    expect(result.recommendedStrategy).toBe("A");
   });
 
   it("case 2", () => {
@@ -87,8 +87,8 @@ describe("Regression - APV", () => {
     expect(round2(result.taxableBase)).toBe(1925520);
     expect(round2(result.taxWithoutApv)).toBe(40682.04);
     expect(round2(result.regimeA.monthlyBenefit)).toBe(33647);
-    expect(round2(result.regimeB.monthlyBenefit)).toBe(6550);
-    expect(result.recommendedRegime).toBe("A");
+    expect(round2(result.regimeB.monthlyBenefit)).toBe(10000);
+    expect(result.recommendedStrategy).toBe("MIXED");
   });
 
   it("case 3", () => {
@@ -102,8 +102,8 @@ describe("Regression - APV", () => {
     expect(round2(result.taxableBase)).toBe(4950600);
     expect(round2(result.taxWithoutApv)).toBe(421956.9);
     expect(round2(result.regimeA.monthlyBenefit)).toBe(33647);
-    expect(round2(result.regimeB.monthlyBenefit)).toBe(37662.5);
-    expect(result.recommendedRegime).toBe("B");
+    expect(round2(result.regimeB.monthlyBenefit)).toBe(140937.2);
+    expect(result.recommendedStrategy).toBe("MIXED");
   });
 });
 
@@ -279,6 +279,7 @@ describe("Regression - Prepago de Crédito", () => {
       monthlyRatePercent: 0.95,
       remainingMonths: 180,
       prepaymentAmount: 2000000,
+      prepaymentCost: 0,
       effect: "reducir-plazo",
       alternativeAnnualReturnPercent: 6,
     });
@@ -295,6 +296,7 @@ describe("Regression - Prepago de Crédito", () => {
       monthlyRatePercent: 1.1,
       remainingMonths: 120,
       prepaymentAmount: 1500000,
+      prepaymentCost: 0,
       effect: "reducir-cuota",
       alternativeAnnualReturnPercent: 4,
     });
@@ -312,6 +314,7 @@ describe("Regression - Prepago de Crédito", () => {
       monthlyRatePercent: 0.8,
       remainingMonths: 48,
       prepaymentAmount: 500000,
+      prepaymentCost: 0,
       effect: "reducir-plazo",
       alternativeAnnualReturnPercent: 8,
     });
@@ -326,15 +329,19 @@ describe("Regression - Renegociación", () => {
   it("case 1", () => {
     const result = simulateDebtRenegotiation({
       debts: [
-        { amount: 1800000, overdueMonths: 4 },
-        { amount: 2200000, overdueMonths: 5 },
+        { amount: 1800000, overdueDays: 120 },
+        { amount: 2200000, overdueDays: 150 },
       ],
       monthlyIncome: 1200000,
       termMonths: 48,
       monthlyRatePercent: 1.2,
       ufValue: UF,
+      hasFirstCategoryActivityLast24Months: false,
+      hasNotifiedExecutiveProceeding: false,
+      hasRequiredDocuments: true,
     });
-    expect(result.qualifies).toBe(true);
+    expect(result.meetsBasicEligibility).toBe(true);
+    expect(result.canSubmitApplication).toBe(true);
     expect(round2(result.qualifiedDebtUf)).toBe(101.78);
     expect(round2(result.monthlyPayment)).toBe(110110.21);
     expect(round2(result.incomeBurdenPercent)).toBe(9.18);
@@ -344,16 +351,20 @@ describe("Regression - Renegociación", () => {
   it("case 2", () => {
     const result = simulateDebtRenegotiation({
       debts: [
-        { amount: 500000, overdueMonths: 4 },
-        { amount: 900000, overdueMonths: 2 },
-        { amount: 700000, overdueMonths: 6 },
+        { amount: 500000, overdueDays: 120 },
+        { amount: 900000, overdueDays: 60 },
+        { amount: 700000, overdueDays: 180 },
       ],
       monthlyIncome: 900000,
       termMonths: 36,
       monthlyRatePercent: 1.4,
       ufValue: UF,
+      hasFirstCategoryActivityLast24Months: false,
+      hasNotifiedExecutiveProceeding: false,
+      hasRequiredDocuments: true,
     });
-    expect(result.qualifies).toBe(false);
+    expect(result.meetsBasicEligibility).toBe(false);
+    expect(result.canSubmitApplication).toBe(false);
     expect(round2(result.qualifiedDebtUf)).toBe(30.53);
     expect(round2(result.monthlyPayment)).toBe(74661.87);
     expect(round2(result.incomeBurdenPercent)).toBe(8.3);
@@ -363,16 +374,20 @@ describe("Regression - Renegociación", () => {
   it("case 3", () => {
     const result = simulateDebtRenegotiation({
       debts: [
-        { amount: 4000000, overdueMonths: 10 },
-        { amount: 3500000, overdueMonths: 12 },
-        { amount: 2200000, overdueMonths: 7 },
+        { amount: 4000000, overdueDays: 300 },
+        { amount: 3500000, overdueDays: 360 },
+        { amount: 2200000, overdueDays: 210 },
       ],
       monthlyIncome: 2500000,
       termMonths: 60,
       monthlyRatePercent: 0.95,
       ufValue: UF,
+      hasFirstCategoryActivityLast24Months: false,
+      hasNotifiedExecutiveProceeding: false,
+      hasRequiredDocuments: true,
     });
-    expect(result.qualifies).toBe(true);
+    expect(result.meetsBasicEligibility).toBe(true);
+    expect(result.canSubmitApplication).toBe(true);
     expect(round2(result.qualifiedDebtUf)).toBe(246.82);
     expect(round2(result.monthlyPayment)).toBe(212841.65);
     expect(round2(result.incomeBurdenPercent)).toBe(8.51);

@@ -1,20 +1,20 @@
 # TECH_DEBT_BACKLOG
 
-Fecha de corte: 2026-03-11
+Fecha de corte: 2026-03-12
 
 ## Métricas
 
 ### Total de items por urgencia
-- **P0:** 1
-- **P1:** 6
-- **P2:** 9
+- **P0:** 3
+- **P1:** 11
+- **P2:** 12
 - **P3:** 1
 
-### Estado de avance (2026-03-11)
-- **Completados:** 21 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0011`, `TD-0012`, `TD-0013`, `TD-0014`, `TD-0015`, `TD-0016`, `TD-0017`, `TD-0018`, `TD-0019`, `FIX-MDX`, `FIX-LINKS-CALC`)
+### Estado de avance (2026-03-12)
+- **Completados:** 26 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0011`, `TD-0012`, `TD-0013`, `TD-0014`, `TD-0015`, `TD-0016`, `TD-0017`, `TD-0018`, `TD-0019`, `TD-0020`, `TD-0022`, `TD-0024`, `TD-0025`, `TD-0026`, `FIX-MDX`, `FIX-LINKS-CALC`)
 - **En progreso:** 0
-- **Backlog sin iniciar:** 0
-- **Backlog en validación/diseño:** 1 (`TD-0020`)
+- **Backlog sin iniciar:** 4 (`TD-0021`, `TD-0023`, `TD-0027`, `TD-0028`)
+- **Backlog en validación/diseño:** 0
 
 > `FIX-MDX`: corregido comentario HTML (`<!-- -->`) en `que-es-el-apv.mdx:25` que rompía el build.
 > `FIX-LINKS-CALC`: ampliado `check-internal-links.mjs` para cubrir validación de rutas `/calculadoras/`.
@@ -22,13 +22,19 @@ Fecha de corte: 2026-03-11
 ### Top riesgos restantes
 | Ranking | ID | Riesgo | Motivo principal |
 |---|---|---|---|
-| 1 | TD-0020 | Medio | El drift taxonómico restante sigue empujando `presupuesto` e `IPC` a un cluster puente mientras faltan hubs futuros. |
+| 1 | TD-0021 | Alto | Sueldo líquido y APV usan una base salarial sobrerreducida para jobs YMYL muy sensibles. |
+| 2 | TD-0023 | Alto | Cesantía y jubilación entregan proyecciones visibles con supuestos regulatorios y actuariales demasiado agresivos. |
+| 3 | TD-0028 | Alto | El artículo APV publicado traduce la elección A/B a bandas fijas de sueldo bruto y una mezcla no suficientemente trazada a fuentes oficiales. |
+| 4 | TD-0027 | Medio | El checklist de ahorro/inversión mezcla cálculo, copy y supuestos de producto sin un contrato común reutilizable. |
 
 ### Quick wins (alto impacto / bajo esfuerzo)
 - [x] `TD-0007` Corregir email placeholder en enlaces sociales.
-- [x] `TD-0005` Limpiar archivos/componentes legacy no usados (`*.bak`, layout/componente hुérfano).
+- [x] `TD-0005` Limpiar archivos/componentes legacy no usados (`*.bak`, layout/componente huerfano).
 - [x] `TD-0006` Alinear plantillas de GitHub con el proyecto real (no AstroPaper upstream).
 - [x] `TD-0009` Consolidar estrategia de tipografías (config experimental vs carga real).
+- [x] `TD-0022` Corregir cap mensual del Régimen B y copy del recomendador APV.
+- [x] `TD-0024` Cambiar “meses mora”/`90` por input coherente de días o meses en renegociación.
+- [x] `TD-0026` Validar modo `pesos fijos` de arriendo para bloquear pseudo-resultados en blanco.
 
 ---
 
@@ -39,6 +45,7 @@ Fecha de corte: 2026-03-11
 - **Evidencia (actualizada):** `package.json` (`packageManager: pnpm@10.30.2`); `package-lock.json` eliminado; `.github/workflows/ci.yml` (`pnpm install --frozen-lockfile`); `.github/workflows/deploy.yml` (`pnpm install --frozen-lockfile` + `pnpm run build`); `Dockerfile` (`corepack prepare pnpm@10.30.2`); `docker-compose.yml` (`pnpm run dev`); `README.md` (flujo `pnpm`).
 - **Impacto:** Aumenta riesgo de diferencias entre entornos, fallos intermitentes y fricción de contribución.
 - **Riesgo:** alto
+- **Severidad (1-5):** 3
 - **Urgencia:** P1
 - **Esfuerzo estimado:** M
 - **Propuesta de solución:** Elegir un único gestor (recomendado: `pnpm` por uso actual en CI), declarar `packageManager` en `package.json`, dejar un lockfile único, alinear workflows/Docker/README/scripts.
@@ -112,6 +119,182 @@ Fecha de corte: 2026-03-11
 - **Estado:** Completado
 - **Fecha de creación:** 2026-03-09
 - **Última actualización:** 2026-03-11
+
+## TD-0021 — Modelo salarial base insuficiente para calculadoras de sueldo y APV
+- **ID:** TD-0021
+- **Título corto:** Rehacer base imponible y topes previsionales compartidos
+- **Descripción:** Las calculadoras `sueldo-liquido` y `apv` usan `grossSalary` como base total de AFP, salud y parte del cálculo tributario. Eso no cubre imponible real, no imponibles, topes previsionales ni diferencias por tipo de contrato, aunque el propio corpus editorial sí explica esas diferencias.
+- **Evidencia:** `src/application/use-cases/CalculateNetSalary.ts`; `src/application/use-cases/CalculateApvComparison.ts`; `src/pages/calculadoras/sueldo-liquido.astro`; `src/pages/calculadoras/apv.astro`; `src/data/blog/como-calcular-sueldo-liquido.md`.
+- **Impacto:** Riesgo de falsa precisión en dos calculadoras de alto uso y alto impacto YMYL.
+- **Riesgo:** alto
+- **Severidad (1-5):** 5
+- **Urgencia:** P0
+- **Esfuerzo estimado:** L
+- **Propuesta de solución:** extraer un motor único de base laboral/imponible con inputs explícitos para imponible, no imponibles, topes AFP/salud/AFC y tipo de contrato; redefinir `sueldo-liquido` como estimador rápido o agregar modo avanzado.
+- **Criterios de cierre (checklist verificable):**
+- [ ] `sueldo-liquido` y `apv` comparten una sola fuente de verdad para imponible, topes y cotizaciones.
+- [ ] Existe input o supuesto visible para diferenciar bruto total vs imponible real.
+- [ ] El cálculo contempla topes previsionales y causalmente distingue contrato indefinido vs plazo fijo donde corresponda.
+- [ ] Se agregan fixtures de golden cases con bruto != imponible y con sueldo sobre topes.
+- **Owner:** TBD
+- **Estado:** Sin iniciar
+- **Fecha de creación:** 2026-03-11
+- **Última actualización:** 2026-03-11
+
+## TD-0022 — Simulador APV recomienda con un cap de Régimen B incorrecto
+- **ID:** TD-0022
+- **Título corto:** Corregir cap de Régimen B y rebajar agresividad del recomendador APV
+- **Descripción:** El simulador APV calcula el tope mensual con beneficio del Régimen B como `50 UF / 12`, mientras el copy visible lo presenta como `50 UF` mensual. Esto subestima el beneficio tributario, distorsiona la comparación y puede sugerir un régimen equivocado. Además, la decisión A vs B está modelada como binaria pese a que la validación normativa permite combinar aportes bajo ambos regímenes en un mismo año y la conveniencia real depende de la renta líquida imponible, del tramo marginal efectivo y del tope anual bonificable del Régimen A.
+- **Evidencia:** `src/application/use-cases/CalculateApvComparison.ts`; `src/pages/calculadoras/apv.astro`; `src/data/blog/que-es-el-apv.mdx`; validación normativa 2026-03-12 en SII (Suplemento Tributario, art. 42 bis) y Superintendencia de Pensiones sobre uso de regímenes A/B y tope conjunto de `600 UF`.
+- **Impacto:** La calculadora puede inducir una mala decisión tributaria/previsional justo en el output principal.
+- **Riesgo:** crítico
+- **Severidad (1-5):** 5
+- **Urgencia:** P0
+- **Esfuerzo estimado:** M
+- **Propuesta de solución:** corregir la fórmula del cap de Régimen B, separar aporte por planilla vs depósito directo si aplica, reemplazar “Recomendado para ti” por una recomendación condicionada y agregar nota explícita sobre casos no cubiertos. Si se mantiene un recomendador, debe contemplar escenario mixto A+B cuando el aporte óptimo no sea puramente binario y explicar la lógica en función de renta imponible/tramo marginal y del tope anual de bonificación del Régimen A.
+- **Avance actual (2026-03-12):** el motor ya distingue entre aporte mensual por planilla y aporte directo anual adicional, mantiene el tope mensual de `50 UF` para planilla, aplica el tope anual conjunto de `600 UF` en Régimen B y muestra equivalentes mensuales cuando hay depósitos directos que normalmente se regularizan en Operación Renta. La calculadora conserva la sugerencia orientativa, mantiene la estrategia mixta A+B y ahora muestra el timing tributario correcto para aportes directos.
+- **Criterios de cierre (checklist verificable):**
+- [x] El cap visible y el cap usado por el motor coinciden.
+- [x] La calculadora no subestima el beneficio B por un factor 12.
+- [x] El copy distingue recomendación fuerte vs sugerencia condicionada.
+- [x] La UX no fuerza una recomendación binaria cuando la estrategia óptima puede ser mixta A+B.
+- [x] La lógica mixta, si se implementa, se basa en renta imponible/tramo marginal y no en una banda fija simplificada de sueldo bruto.
+- [x] Existen tests para aportes bajo, cerca y sobre el cap mensual/anual.
+- **Owner:** TBD
+- **Estado:** Completado
+- **Fecha de creación:** 2026-03-11
+- **Última actualización:** 2026-03-12
+
+## TD-0023 — Cesantía y jubilación proyectan con supuestos insuficientes para decisión real
+- **ID:** TD-0023
+- **Título corto:** Endurecer simuladores previsionales de cesantía y jubilación
+- **Descripción:** `seguro-cesantia` estima CIC y FCS con proxies demasiado gruesos; `simulador-jubilacion` usa un cronograma simplificado del aporte patronal y no valida escenarios actuariales clave. Ambos outputs son visibles y pueden parecer más exactos de lo que son.
+- **Evidencia:** `src/application/use-cases/EstimateUnemploymentCoverage.ts`; `src/pages/calculadoras/seguro-cesantia.astro`; `src/application/use-cases/SimulateRetirementProjection.ts`; `src/pages/calculadoras/simulador-jubilacion.astro`; `src/data/laws/ley-19728-seguro-cesantia.md`; `src/data/laws/proyecto-reforma-previsional-2025.md`.
+- **Impacto:** Riesgo alto de decisiones equivocadas en contingencia laboral y planificación previsional.
+- **Riesgo:** alto
+- **Severidad (1-5):** 4
+- **Urgencia:** P1
+- **Esfuerzo estimado:** L
+- **Propuesta de solución:** dividir cesantía en dos modos (`eligibilidad` y `estimación con saldo real`), modelar FCS solo cuando haya tabla oficial versionada, alinear jubilación con una única fuente de parámetros previsionales y validar expectativa de vida, lagunas y alcance del estimador.
+- **Criterios de cierre (checklist verificable):**
+- [ ] Cesantía diferencia claramente CIC real vs saldo estimado.
+- [ ] Cesantía no promete montos FCS sin tabla/versionado verificable.
+- [ ] Jubilación usa una sola tabla/versionado para reforma previsional.
+- [ ] Jubilación falla con mensaje explícito si expectativa de vida <= edad de retiro.
+- [ ] Se agregan casos borde y escenarios comparativos conservador/base/agresivo.
+- **Owner:** TBD
+- **Estado:** Sin iniciar
+- **Fecha de creación:** 2026-03-11
+- **Última actualización:** 2026-03-11
+
+## TD-0024 — Renegociación Superir mezcla unidades de mora y omite filtros legales críticos
+- **ID:** TD-0024
+- **Título corto:** Separar elegibilidad legal de simulación de cuota en Superir
+- **Descripción:** La calculadora usa `months` en el modelo, muestra “Meses mora” en UI, setea `90` por defecto y comunica el requisito legal como `+90 días`. Además, puede marcar `probablemente calificas` sin preguntar por primera categoría, juicios ejecutivos ni completitud documental.
+- **Evidencia:** `src/application/use-cases/SimulateDebtRenegotiation.ts`; `src/pages/calculadoras/simulador-renegociacion.astro`; `src/data/blog/renegociacion-superir.md`.
+- **Impacto:** Riesgo alto de falso positivo en una herramienta orientada a una decisión formal/regulatoria.
+- **Riesgo:** alto
+- **Severidad (1-5):** 4
+- **Urgencia:** P1
+- **Esfuerzo estimado:** M
+- **Propuesta de solución:** separar en dos bloques: `filtro legal mínimo` y `simulación financiera`; corregir la unidad temporal; agregar preguntas de exclusión crítica y bajar el lenguaje conclusivo cuando falten antecedentes.
+- **Avance actual (2026-03-12):** la calculadora ahora usa `overdueDays` con mínimo legal de `91` días, cambia el input visible a días corridos, agrega preguntas explícitas por primera categoría, juicio ejecutivo/liquidación forzosa notificada y documentación completa, y separa `cumples el filtro básico` de `estás listo para solicitud formal`.
+- **Criterios de cierre (checklist verificable):**
+- [x] La unidad temporal del input coincide con la regla legal comunicada.
+- [x] El default ya no induce `90 meses` como dato implícito.
+- [x] La calculadora pregunta por primera categoría y juicios ejecutivos notificados, o explicita que no los cubre antes del resultado.
+- [x] El resultado distingue “cumples filtro básico” de “calificas formalmente”.
+- **Owner:** TBD
+- **Estado:** Completado
+- **Fecha de creación:** 2026-03-11
+- **Última actualización:** 2026-03-12
+
+## TD-0025 — Calculadoras de deuda comparten job parcial pero no comparten motor ni framing
+- **ID:** TD-0025
+- **Título corto:** Consolidar arquitectura de deuda amortizable y comparadores
+- **Descripción:** `credito-consumo`, `tarjeta-credito` y `prepago-credito` comparten mecánicas de amortización/costo, pero hoy operan con motores y supuestos separados. Además, `credito-consumo` promete comparación lado a lado sin ofrecerla.
+- **Evidencia:** `src/application/use-cases/CalculateConsumerCredit.ts`; `src/application/use-cases/SimulateCreditCardCost.ts`; `src/application/use-cases/SimulateCreditPrepayment.ts`; `src/pages/calculadoras/credito-consumo.astro`; `src/pages/calculadoras/tarjeta-credito.astro`; `src/pages/calculadoras/prepago-credito.astro`.
+- **Impacto:** Portafolio menos mantenible, más difícil de ampliar y con promesas UX inconsistentes.
+- **Riesgo:** medio
+- **Severidad (1-5):** 3
+- **Urgencia:** P1
+- **Esfuerzo estimado:** M
+- **Propuesta de solución:** extraer un motor común de amortización, convertir `credito-consumo` en comparador A/B real y documentar explícitamente cuándo usar tarjeta vs crédito vs prepago.
+- **Avance actual (2026-03-12):** se extrajo `src/application/use-cases/shared/creditAmortization.ts` como motor común de amortización, reutilizado por `CalculateConsumerCredit`, `SimulateCreditCardCost` y `SimulateCreditPrepayment`. `credito-consumo` dejó de prometer comparación A/B inexistente y ahora deriva al usuario a la herramienta correcta según necesidad. La landing de calculadoras incorpora un bloque para elegir entre crédito nuevo, tarjeta o prepago, y los tests verifican equivalencia del motor compartido con escenarios ya publicados.
+- **Criterios de cierre (checklist verificable):**
+- [x] Existe un módulo común de amortización reutilizado por las tres superficies.
+- [x] `credito-consumo` cumple o deja de prometer comparación A/B.
+- [x] La landing de calculadoras ayuda a escoger la herramienta correcta en deuda/crédito.
+- [x] Los tests cubren equivalencia entre motor común y casos actuales donde siga aplicando.
+- **Owner:** TBD
+- **Estado:** Completado
+- **Fecha de creación:** 2026-03-11
+- **Última actualización:** 2026-03-12
+
+## TD-0026 — Faltan inputs críticos y validaciones visibles en prepago y arriendo
+- **ID:** TD-0026
+- **Título corto:** Endurecer validaciones y supuestos en prepago y arriendo
+- **Descripción:** `prepago-credito` no pide comisión de prepago ni valida consistencia entre saldo/cuota/plazo; `reajuste-arriendo` en modo `pesos fijos` puede producir un pseudo-resultado con `$0` si el usuario no ingresa monto.
+- **Evidencia:** `src/application/use-cases/SimulateCreditPrepayment.ts`; `src/pages/calculadoras/prepago-credito.astro`; `src/pages/calculadoras/reajuste-arriendo.astro`.
+- **Impacto:** Riesgo de recomendaciones binarias engañosas y de outputs basura por inputs incompletos.
+- **Riesgo:** medio
+- **Severidad (1-5):** 3
+- **Urgencia:** P2
+- **Esfuerzo estimado:** S
+- **Propuesta de solución:** agregar comisión de prepago, validación de coherencia contractual y bloqueo explícito de resultados en blanco; reemplazar `alert()` por errores inline contextualizados.
+- **Avance actual (2026-03-12):** `prepago-credito` ahora pide comisión/costo de prepago con supuesto visible en `0`, descuenta ese costo del beneficio neto y rechaza escenarios donde la cuota no amortiza razonablemente el crédito. `reajuste-arriendo` bloquea el modo `pesos fijos` si falta monto y ambas calculadoras muestran errores inline en vez de depender solo de `alert()`.
+- **Criterios de cierre (checklist verificable):**
+- [x] `prepago-credito` contempla comisión/costo de prepago o explicita antes del cálculo que asume cero.
+- [x] `prepago-credito` detecta inputs incompatibles que no amortizan razonablemente.
+- [x] `reajuste-arriendo` no devuelve pseudo-resultados con monto vacío.
+- [x] Los errores se muestran inline y no solo por `alert()`.
+- **Owner:** TBD
+- **Estado:** Completado
+- **Fecha de creación:** 2026-03-11
+- **Última actualización:** 2026-03-12
+
+## TD-0027 — Portafolio de calculadoras creció sin una taxonomía de decisión visible
+- **ID:** TD-0027
+- **Título corto:** Reordenar landing y política de creación/fusión de calculadoras
+- **Descripción:** El portafolio actual es útil pero se presenta como una lista plana. Eso deja fronteras borrosas entre herramientas cercanas y no explicita una política reusable para crear, extender, fusionar o eliminar calculadoras.
+- **Evidencia:** `src/pages/calculadoras/index.astro`; `context/PROJECT_CONTEXT_MASTER.md`; auditoría integral de calculadoras 2026-03-11.
+- **Impacto:** Mayor riesgo de canibalización, navegación ineficiente y expansión desordenada del producto.
+- **Riesgo:** medio
+- **Severidad (1-5):** 3
+- **Urgencia:** P2
+- **Esfuerzo estimado:** M
+- **Propuesta de solución:** reordenar `/calculadoras/` por familias (`Ingresos`, `Ahorro/Previsión`, `Deuda/Crédito`, `Vivienda/UF`), agregar ayudantes de elección y convertir la política de portfolio en checklist operativa antes de crear nuevas herramientas.
+- **Criterios de cierre (checklist verificable):**
+- [ ] La landing agrupa calculadoras por familia y no solo por lista plana.
+- [ ] Existe ayuda visible para escoger entre calculadoras parcialmente cercanas.
+- [ ] La política de creación/fusión/extensión queda documentada y referenciable en backlog o docs operativos.
+- [ ] Nuevas propuestas de calculadoras deben declarar JTBD distinto y riesgo de overlap.
+- **Owner:** TBD
+- **Estado:** Sin iniciar
+- **Fecha de creación:** 2026-03-11
+- **Última actualización:** 2026-03-11
+
+## TD-0028 — Artículo APV publicado usa bandas de sueldo y recomendación A/B demasiado rígidas
+- **ID:** TD-0028
+- **Título corto:** Rehacer refresh YMYL de `que-es-el-apv` para recomendación A/B/mixta trazable
+- **Descripción:** El artículo `que-es-el-apv.mdx` explica bien la mecánica base del APV, pero hoy traduce la decisión de Régimen A vs B a bandas fijas de sueldo bruto (`<$4.800.000`, `>$4.800.000`, `$4.800.000-$8.000.000`, `>$8.000.000`) y a una recomendación de combinación A+B que no queda suficientemente anclada en fuentes oficiales ni en renta líquida imponible/tramo marginal efectivo. Tras la revisión de `TD-0022`, esa sección quedó desalineada del criterio más defendible para el producto y puede inducir una elección tributaria demasiado simplificada en un artículo YMYL publicado.
+- **Evidencia:** `src/data/blog/que-es-el-apv.mdx` (sección `¿Cuál régimen conviene según tu sueldo?`); SII `Impuesto Único de Segunda Categoría` 2026 (tabla mensual con corte `70 UTM -> 23%`); SII Suplemento Tributario 2026 y jurisprudencia/FAQ sobre APV con tope `50 UF` mensual y `600 UF` anual; Superintendencia de Pensiones sobre beneficios tributarios y separación de aportes por régimen.
+- **Impacto:** Riesgo alto de orientación imprecisa en una pieza YMYL publicada que ayuda a elegir un beneficio tributario/previsional.
+- **Riesgo:** alto
+- **Severidad (1-5):** 4
+- **Urgencia:** P1
+- **Esfuerzo estimado:** M
+- **Propuesta de solución:** ejecutar refresh editorial completo con pipeline YMYL para `que-es-el-apv`; reemplazar la tabla de bandas fijas de sueldo por una respuesta rápida con vigencia y fuentes oficiales; explicar la lógica A/B/mixta como resumen orientativo en función de renta líquida imponible, tramo marginal y agotamiento del tope bonificable del Régimen A; actualizar `updatedDate` y publish packet con math/compliance review.
+- **Criterios de cierre (checklist verificable):**
+- [ ] El artículo ya no usa bandas fijas de sueldo bruto como regla central de decisión A vs B.
+- [ ] La sección de recomendación A/B/mixta tiene respuesta rápida, vigencia explícita y al menos una fuente oficial crítica por regla.
+- [ ] La combinación A+B queda presentada como resumen orientativo condicionado, no como regla universal de “muchos asesores”.
+- [ ] El artículo queda alineado con la lógica vigente del simulador APV o explicita cualquier diferencia residual mientras `TD-0021` siga abierto.
+- [ ] El refresh incluye artifact chain editorial completo (`brief`, `dossier`, `outline`, `draft`, `math audit`, `compliance`, `publish packet`).
+- **Owner:** TBD
+- **Estado:** Sin iniciar
+- **Fecha de creación:** 2026-03-12
+- **Última actualización:** 2026-03-12
 
 ## TD-0011 — Pilar CAE/costo real sin artículo editorial
 - **ID:** TD-0011
@@ -257,6 +440,7 @@ Fecha de corte: 2026-03-11
 - **Evidencia (actualizada):** `src/domain/economic/EconomicParameters.ts` (contrato + invariantes), `src/infrastructure/economic/EconomicParameterProvider.ts` (fuente única + fallback controlado + telemetría + memoización), `src/application/use-cases/GetEconomicParameters.ts`, consumo en `src/pages/calculadoras/{apv,conversor-uf,sueldo-liquido,seguro-cesantia,reajuste-arriendo,simulador-renegociacion}.astro` + `src/utils/indicadores.ts`, documentación en `README.md` ("Economic Data Governance & Fallback Strategy"), pruebas en `tests/infrastructure/EconomicParameterProvider.test.ts`.
 - **Impacto:** Riesgo de recomendaciones/cálculos desactualizados, pérdida de confianza y soporte correctivo frecuente.
 - **Riesgo:** alto
+- **Severidad (1-5):** 5
 - **Urgencia:** P0
 - **Esfuerzo estimado:** M
 - **Propuesta de solución:** Centralizar parámetros económicos en un módulo/fuente única con timestamp; cargar valores dinámicos en build/runtime con fallback explícito y banner de vigencia; eliminar fechas hardcodeadas de copy.
@@ -277,6 +461,7 @@ Fecha de corte: 2026-03-11
 - **Evidencia (actualizada):** `src/domain/taxation/TaxEngine.ts`; `src/application/use-cases/{CalculateNetSalary,CalculateApvComparison}.ts`; consumo desde `src/pages/calculadoras/sueldo-liquido.astro` y `src/pages/calculadoras/apv.astro`; regresión de tramos/tasa marginal/redondeo en `tests/domain/TaxEngine.test.ts`.
 - **Impacto:** Riesgo de resultados inconsistentes, mantenimiento costoso y errores silenciosos.
 - **Riesgo:** medio
+- **Severidad (1-5):** 3
 - **Urgencia:** P1
 - **Esfuerzo estimado:** M
 - **Propuesta de solución:** Crear util compartida tipada (por ejemplo `src/utils/tax.ts`) con pruebas de casos límite; consumir desde ambas calculadoras.
@@ -296,6 +481,7 @@ Fecha de corte: 2026-03-11
 - **Evidencia (actualizada):** `package.json` (`test: vitest run`); `vitest.config.ts`; `.github/workflows/ci.yml` ejecuta `check:boundaries`, `lint`, `format:check`, `test`, `build`; suites en `tests/domain/`, `tests/application/`, `tests/infrastructure/`.
 - **Impacto:** Mayor probabilidad de errores en producción al cambiar reglas financieras o refactorizar.
 - **Riesgo:** alto
+- **Severidad (1-5):** 4
 - **Urgencia:** P1
 - **Esfuerzo estimado:** L
 - **Propuesta de solución:** Introducir framework de tests (p. ej. Vitest), extraer funciones de cálculo a `src/utils/` y cubrir escenarios base/edge.
@@ -315,6 +501,7 @@ Fecha de corte: 2026-03-11
 - **Evidencia (actualizada):** eliminados `src/components/Card.astro.bak`, `src/pages/about.md.bak`, `src/layouts/AboutLayout.astro` y `src/components/BarraIndicadores.astro`; validación de cierre con `rg --files src | rg '\.bak$'` (0) y `rg -n "AboutLayout|BarraIndicadores" src` (0).
 - **Impacto:** Riesgo de editar archivos incorrectos y deuda cognitiva para onboarding.
 - **Riesgo:** medio
+- **Severidad (1-5):** 2
 - **Urgencia:** P2
 - **Esfuerzo estimado:** S
 - **Propuesta de solución:** Eliminar o mover a carpeta de archivo explícita; si se conserva, documentar propósito y estado no productivo.
@@ -334,6 +521,7 @@ Fecha de corte: 2026-03-11
 - **Evidencia (actualizada):** `.github/CONTRIBUTING.md`, `.github/PULL_REQUEST_TEMPLATE.md`, `.github/ISSUE_TEMPLATE/*` y `.github/CODE_OF_CONDUCT.md` alineados a `cortega26/tuplatainforma`; `rg -n "astro-paper|satnaing|AstroPaper" .github` devuelve 0.
 - **Impacto:** Fricción para colaboradores, issues en repos equivocados, ruido de gobernanza.
 - **Riesgo:** medio
+- **Severidad (1-5):** 2
 - **Urgencia:** P2
 - **Esfuerzo estimado:** S
 - **Propuesta de solución:** Reescribir plantillas con naming, links, contacto y reglas del repo actual.
@@ -353,6 +541,7 @@ Fecha de corte: 2026-03-11
 - **Evidencia (actualizada):** ítem `Mail` removido de `SOCIALS` en `src/constants.ts`; `rg -n "\[EMAIL_ADDRESS\]" src` devuelve 0.
 - **Impacto:** UX rota y pérdida de canal de contacto.
 - **Riesgo:** medio
+- **Severidad (1-5):** 2
 - **Urgencia:** P2
 - **Esfuerzo estimado:** S
 - **Propuesta de solución:** Configurar email real o remover temporalmente el ítem de `SOCIALS`.
@@ -371,6 +560,7 @@ Fecha de corte: 2026-03-11
 - **Evidencia (actualizada):** `src/infrastructure/economic/EconomicParameterProvider.ts` (memoización en módulo con `cachedBundlePromise` + `getEconomicProviderTelemetry()`), `src/utils/indicadores.ts` consume provider unificado, `src/components/IndicadorEconomico.astro` reutiliza la misma fuente y hay validación de una sola llamada externa en `tests/infrastructure/EconomicParameterProvider.test.ts`.
 - **Impacto:** Latencia extra, dependencia de red repetida y potencial throttling/fallos intermitentes.
 - **Riesgo:** medio
+- **Severidad (1-5):** 3
 - **Urgencia:** P2
 - **Esfuerzo estimado:** M
 - **Propuesta de solución:** Memoizar resultado por ciclo de render/build (cache en módulo o singleton), con TTL corto y fallback explícito.
@@ -390,6 +580,7 @@ Fecha de corte: 2026-03-11
 - **Evidencia (actualizada):** `astro.config.ts` mantiene `experimental.preserveScriptOrder` pero sin `experimental.fonts`; `src/layouts/Layout.astro` conserva una sola carga manual de Google Fonts (Fraunces + Source Sans 3); `src/styles/global.css` permanece alineado con `--font-display`/`--font-body`.
 - **Impacto:** Complejidad innecesaria y posible costo de rendimiento/configuración.
 - **Riesgo:** bajo
+- **Severidad (1-5):** 1
 - **Urgencia:** P3
 - **Esfuerzo estimado:** S
 - **Propuesta de solución:** Elegir una sola vía de carga (experimental o manual) y remover configuración no usada.
@@ -409,6 +600,7 @@ Fecha de corte: 2026-03-11
 - **Evidencia (actualizada):** Motores extraídos a `src/application/use-cases/**` (sueldo, APV, UF, cesantía, renegociación, reajuste, tarjeta, crédito consumo, prepago, jubilación); render de resultados en `src/pages/calculadoras/*.astro` migrado a DOM API sin `innerHTML`; regresión funcional en `tests/application/FinancialUseCases.regression.test.ts`.
 - **Impacto:** Baja mantenibilidad, alto costo de cambios y riesgo de regressions/errores de rendering.
 - **Riesgo:** medio
+- **Severidad (1-5):** 3
 - **Urgencia:** P2
 - **Esfuerzo estimado:** L
 - **Propuesta de solución:** Extraer motores de cálculo a módulos puros en `src/utils/`, tipar inputs/outputs y dejar en página solo wiring de UI.
