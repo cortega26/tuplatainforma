@@ -26,6 +26,8 @@ Fuente base: [Gap Audit v1](../operations/audits/closed/2026/2026-02-27_gap-audi
 - `Owner` queda vacío por instrucción; completar al asignar sprint.
 - `Estado` permitido: `TODO`, `IN_PROGRESS`, `REVIEW`, `DONE`, `REFRESH`.
 - Si falta evidencia en fuentes primarias durante ejecución, marcar `TODO` explícito en el issue antes de redactar.
+- `que-es-la-uf` queda alineado canónicamente con el futuro frente `uf-costo-de-vida`; mientras siga en `cluster/category: deuda-credito`, el hub de deuda solo puede exponerlo como `related / bridge`, no como pieza core.
+- `como-hacer-presupuesto-mensual-chile` sigue en transición y no debe abrir por sí solo `/guias/presupuesto-control-financiero/` hasta cumplir la condición mínima de hub + segundo activo satélite o herramienta.
 
 ## Deuda técnica editorial (control 2026-03-04)
 

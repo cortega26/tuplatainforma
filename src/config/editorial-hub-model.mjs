@@ -14,6 +14,46 @@
  */
 
 export const HUB_ARTICLE_ASSIGNMENTS = {
+  "deuda-credito": {
+    core: [
+      {
+        slug: "cae-costo-real-credito-chile",
+        href: "/posts/cae-costo-real-credito-chile/",
+        title:
+          "CAE de un crédito: qué es, cómo leerla y cuándo te sirve comparar",
+        summary:
+          "Aterriza el costo real del crédito para que no compares solo la cuota o la tasa nominal.",
+      },
+      {
+        slug: "informe-deudas-cmf-vs-dicom",
+        href: "/posts/informe-deudas-cmf-vs-dicom/",
+        title:
+          "Informe de deudas CMF: cómo sacarlo, qué dice y por qué no es lo mismo que DICOM",
+        summary:
+          "Aclara qué muestra el informe oficial, qué no incluye y cómo usarlo para ordenar tu situación financiera.",
+      },
+      {
+        slug: "renegociacion-superir",
+        href: "/posts/renegociacion-superir/",
+        title:
+          "Renegociación Superir: qué es, quién puede pedir y cómo hacerlo sin abogado",
+        summary:
+          "Explica quién puede pedir la renegociación, qué documentos reunir y cómo evitar rechazos.",
+      },
+    ],
+    related: [
+      {
+        slug: "que-es-la-uf",
+        href: "/posts/que-es-la-uf/",
+        title:
+          "UF en simple: qué es, por qué sube todos los días y cómo te afecta",
+        summary:
+          "Sirve como salida relacionada cuando una cuota, arriendo u otra obligación está en UF y necesitas entender el reajuste antes de decidir qué hacer.",
+        rationale:
+          "Su owner canónico vive en uf-costo-de-vida; este hub solo puede usarla como puente mientras siga en placement transitorio dentro de deuda.",
+      },
+    ],
+  },
   "pensiones-afp": {
     core: [
       {

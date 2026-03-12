@@ -237,7 +237,7 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 2 - Authority Building
 
 ### MB-013 - Create future cluster hub for UF, inflacion y costo de vida
-- **Description:** Build a future hub page linking UF explainers, calculator tools, arriendo adjustments, inflation context, and practical household impact scenarios. Current repo truth still splits these assets across live clusters and calculators without a dedicated `/guias/uf-costo-de-vida/`. This hub is also the migration gate for `/posts/que-es-el-ipc-chile-como-se-calcula/`, which must remain a documented transitional placement until the hub exists and at least one aligned satellite or tool is live.
+- **Description:** Build a future hub page linking UF explainers, calculator tools, arriendo adjustments, inflation context, and practical household impact scenarios. Current repo truth still splits these assets across live clusters and calculators without a dedicated `/guias/uf-costo-de-vida/`. This hub is the migration gate for both `/posts/que-es-la-uf/` and `/posts/que-es-el-ipc-chile-como-se-calcula/`, which must remain documented transitional placements until the hub exists and at least one aligned satellite or tool is live.
 - **Impact:** 4
 - **Effort:** 3
 - **Confidence:** 4
@@ -257,7 +257,7 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 2 - Authority Building
 
 ### MB-015 - Create future cluster hub for presupuesto y control financiero
-- **Description:** Build a future hub page around presupuesto, gastos hormiga, control financiero, and basic planning habits, designed as an entry point for less technical users. Current repo truth only has the pillar article `/posts/como-hacer-presupuesto-mensual-chile/`; no dedicated `/guias/presupuesto-control-financiero/` exists yet. This hub is also the migration gate for `/posts/como-hacer-presupuesto-mensual-chile/`, which must remain a documented transitional placement until the hub exists and at least one aligned satellite or tool is live.
+- **Description:** Build a future hub page around presupuesto, gastos hormiga, control financiero, and basic planning habits, designed as an entry point for less technical users. Current repo truth only has the pillar article `/posts/como-hacer-presupuesto-mensual-chile/`; no dedicated `/guias/presupuesto-control-financiero/` exists yet. This hub is also the migration gate for `/posts/como-hacer-presupuesto-mensual-chile/`, which must remain a documented transitional placement until the hub exists and at least one aligned satellite or tool is live. The minimum opening condition is still unmet, so this remains a future-hub task rather than an active rollout.
 - **Impact:** 4
 - **Effort:** 3
 - **Confidence:** 4

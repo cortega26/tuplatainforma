@@ -1,6 +1,6 @@
 # Topic Ownership Matrix
 
-Fecha de corte: 2026-03-09
+Fecha de corte: 2026-03-12
 
 Objetivo: fijar ownership editorial por intención para reducir canibalización, definir qué URL manda en cada topic y qué piezas son soporte.
 
@@ -36,11 +36,12 @@ Objetivo: fijar ownership editorial por intención para reducir canibalización,
 | `deuda-credito` | costo real del crédito / CAE | `/posts/cae-costo-real-credito-chile/` | `/calculadoras/credito-consumo/`, `/calculadoras/prepago-credito/` | Mantener ownership del concepto; calculadoras resuelven ejecución |
 | `deuda-credito` | informe CMF y diferencia con DICOM | `/posts/informe-deudas-cmf-vs-dicom/` | `/posts/suplantacion-identidad-creditos-no-reconocidos/` | La pieza de suplantación puede enlazar pero no debe intentar rankear por `informe de deudas` |
 | `deuda-credito` | renegociación Superir | `/posts/renegociacion-superir/` | hub de deuda-crédito | Procedimental, distinta de diagnóstico de deudas |
-| `deuda-credito` | qué es la UF y cómo afecta obligaciones | `/posts/que-es-la-uf/` | `/calculadoras/conversor-uf/`, `/calculadoras/reajuste-arriendo/` | Head explainer separado de herramientas |
 | `seguridad-financiera` | cargo no reconocido / restitución | `/posts/fraude-tarjeta-que-hacer/` | `/posts/estafas-financieras-chile-vishing-smishing-marketplace/`, `/posts/suplantacion-identidad-creditos-no-reconocidos/` | Restitución reactiva, no prevención general |
 | `seguridad-financiera` | prevención por canal | `/posts/estafas-financieras-chile-vishing-smishing-marketplace/` | fraude tarjeta | Foco preventivo |
 | `seguridad-financiera` | suplantación + créditos no reconocidos | `/posts/suplantacion-identidad-creditos-no-reconocidos/` | informe CMF, fraude tarjeta | Caso de identidad/deuda, no fraude transaccional puro |
 | `presupuesto-control-financiero` | presupuesto mensual y control de gasto hogar | `/posts/como-hacer-presupuesto-mensual-chile/` | `/posts/ahorro-e-inversion-en-chile-instrumentos-costos-impuestos-2026/` | Owner canónico ya decidido. La URL sigue en `cluster: empleo-ingresos`, `category: general` solo como `transitional placement` hasta que exista `/guias/presupuesto-control-financiero/` y al menos un activo satélite o herramienta adicional del mismo cluster |
+| `uf-costo-de-vida` | qué es la UF y cómo afecta bolsillo y contratos reajustables | `/posts/que-es-la-uf/` | `/posts/que-es-el-ipc-chile-como-se-calcula/`, `/calculadoras/conversor-uf/`, `/calculadoras/reajuste-arriendo/` | Owner canónico ya decidido. La URL sigue en `cluster: deuda-credito`, `category: deuda-credito` solo como `transitional placement` hasta que exista `/guias/uf-costo-de-vida/` y al menos un activo satélite o herramienta adicional alineada. `deuda-credito` puede enlazarla solo como `related / bridge`, no como owner |
+| `uf-costo-de-vida` | reajuste de arriendo y lectura de cláusula UF / IPC | `/posts/reajuste-arriendo-uf-ipc-chile/` | `/calculadoras/reajuste-arriendo/`, `/posts/que-es-la-uf/`, `/posts/que-es-el-ipc-chile-como-se-calcula/` | Owner canónico ya decidido. La URL queda en `cluster: deuda-credito`, `category: general` solo como `transitional placement` hasta que exista `/guias/uf-costo-de-vida/` y ese frente pueda absorber explainers y herramientas sin fakear un hub vivo hoy |
 | `uf-costo-de-vida` | IPC, inflación y lectura del costo de vida | `/posts/que-es-el-ipc-chile-como-se-calcula/` | `/posts/que-es-la-uf/`, `/calculadoras/conversor-uf/`, `/calculadoras/reajuste-arriendo/` | Owner canónico ya decidido. La URL sigue en `cluster: empleo-ingresos`, `category: general` solo como `transitional placement` hasta que exista `/guias/uf-costo-de-vida/` y al menos un activo satélite o herramienta adicional que ordene IPC + UF + bolsillo |
 
 ## Uso operativo

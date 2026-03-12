@@ -173,7 +173,7 @@ En el sitio del Banco Central: [si3.bcentral.cl/Siete](https://si3.bcentral.cl/S
 - Puede bajar si hay deflación, aunque es infrecuente.
 - El valor oficial lo publica el Banco Central y es el mismo para todos.
 
-Si necesitas convertir montos al instante, usa el [conversor UF a pesos](/calculadoras/conversor-uf/). Y para aterrizarlo en contratos habitacionales, prueba la [calculadora de reajuste de arriendo](/calculadoras/reajuste-arriendo/).
+Si necesitas convertir montos al instante, usa el [conversor UF a pesos](/calculadoras/conversor-uf/). Si quieres entender primero cómo se traduce esa indexación en una cláusula de vivienda, revisa [reajuste de arriendo en Chile: UF, IPC y cálculo](/posts/reajuste-arriendo-uf-ipc-chile/). Y para aterrizarlo en números, prueba la [calculadora de reajuste de arriendo](/calculadoras/reajuste-arriendo/).
 
 ---
 

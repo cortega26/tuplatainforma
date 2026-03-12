@@ -49,6 +49,13 @@ Los riesgos principales están en deuda de mantenibilidad y consistencia operati
 - `src/pages/guias/pensiones-afp/index.astro` consume un modelo explícito `core` vs `related`, dejando a APV fuera del núcleo AFP.
 - `pnpm run audit:topic-overlap` ahora resume placements transitorios y clasificaciones de hub, en vez de tratar `category: general` como silencio taxonómico aceptable.
 
+### Checkpoint 2026-03-12 (TD-0028 UF Canonical Closure Phase 1)
+
+- `que-es-la-uf` queda registrado como `transitional placement` desde `deuda-credito` hacia `uf-costo-de-vida`, sin alterar todavía su frontmatter operativo ni abrir el hub futuro.
+- `src/config/editorial-hub-model.mjs` y `src/pages/guias/deuda-credito/index.astro` adoptan la separación explícita `core` vs `related`, dejando UF solo como bridge relacionado dentro del hub de deuda.
+- La matriz de ownership, la policy editorial y el mapa de linking interno ya no tratan a `que-es-la-uf` como owner canónico de `deuda-credito`.
+- `presupuesto-control-financiero` sigue documentado como transición cerrada, sin apertura de hub hasta cumplir la condición mínima de hub + segundo activo alineado.
+
 ### Checkpoint 2026-03-12 (TD-0021 Shared Payroll Taxable Base)
 
 - `sueldo-liquido` y `apv` ya no reconstruyen deducciones por separado: ambos consumen `src/application/use-cases/CalculateMonthlyPayrollBase.ts`.

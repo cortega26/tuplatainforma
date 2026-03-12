@@ -73,7 +73,7 @@ Esto es normal: el IPC es un promedio estadístico, no tu experiencia individual
 
 ### Arriendos
 
-Muchos contratos de arriendo se reajustan anualmente según el IPC o la UF (que a su vez sigue el IPC). Si firmaste un arriendo con cláusula de reajuste IPC, el aumento de tu arriendo será equivalente a la inflación del período. No es discrecional del arrendador — está en el contrato.
+Muchos contratos de arriendo se reajustan según el IPC o la UF, que a su vez sigue el IPC. Si firmaste un arriendo con cláusula de reajuste IPC, el aumento depende de la variación y del período que describa el contrato. Si quieres ver esa lógica aterrizada a cláusulas típicas, revisa [esta guía sobre reajuste de arriendo en Chile](/posts/reajuste-arriendo-uf-ipc-chile/).
 
 ### Sueldo mínimo
 

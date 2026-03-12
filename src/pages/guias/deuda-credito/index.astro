@@ -4,30 +4,9 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import { getPath } from "@/utils/getPath";
+import { getHubArticleAssignments } from "@/config/editorial-hub-model.mjs";
 
-const articulosSeccion = [
-  {
-    titulo:
-      "Informe de deudas CMF: cómo sacarlo, qué dice y por qué no es lo mismo que DICOM",
-    resumen:
-      "Aclara qué muestra el informe oficial, qué no incluye y cómo usarlo para ordenar tu situación financiera.",
-    href: getPath("/posts/informe-deudas-cmf-vs-dicom/"),
-  },
-  {
-    titulo:
-      "Renegociación Superir: qué es, quién puede pedir y cómo hacerlo sin abogado",
-    resumen:
-      "Explica quién puede pedir la renegociación, qué documentos reunir y cómo evitar rechazos.",
-    href: getPath("/posts/renegociacion-superir/"),
-  },
-  {
-    titulo:
-      "UF en simple: qué es, por qué sube todos los días y cómo te afecta",
-    resumen:
-      "Explica por qué la UF sube y cómo afecta créditos, arriendos y otras deudas.",
-    href: getPath("/posts/que-es-la-uf/"),
-  },
-];
+const hubAssignments = getHubArticleAssignments("deuda-credito");
 ---
 
 <Layout
@@ -46,7 +25,9 @@ const articulosSeccion = [
       <p class="max-w-3xl text-secondary">
         Esta sección te ayuda a entender tu nivel de deuda, revisar opciones
         para salir de un problema financiero y entender cuánto termina costando
-        un crédito.
+        un crédito. Si tu duda principal es UF, IPC o costo de vida, ese frente
+        no vive en el núcleo de deuda: aquí solo lo enlazamos cuando aparece
+        dentro de una obligación reajustable.
       </p>
     </section>
 
@@ -54,18 +35,20 @@ const articulosSeccion = [
       <h2 class="mb-4 text-2xl font-bold">Temas que puedes revisar</h2>
       <ul class="grid gap-4">
         {
-          articulosSeccion.map(item => (
-            <li class="rounded-xl border border-border p-5">
-              <h3 class="mb-2 text-lg font-semibold">{item.titulo}</h3>
-              <p class="mb-3 text-sm text-secondary">{item.resumen}</p>
-              <a
-                href={item.href}
-                class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
-              >
-                Leer artículo
-              </a>
-            </li>
-          ))
+          hubAssignments.core.map(
+            (item: (typeof hubAssignments.core)[number]) => (
+              <li class="rounded-xl border border-border p-5">
+                <h3 class="mb-2 text-lg font-semibold">{item.title}</h3>
+                <p class="mb-3 text-sm text-secondary">{item.summary}</p>
+                <a
+                  href={getPath(item.href)}
+                  class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+                >
+                  Leer artículo
+                </a>
+              </li>
+            )
+          )
         }
       </ul>
     </section>
@@ -86,6 +69,17 @@ const articulosSeccion = [
           .
         </li>
         <li>
+          Quieres comparar bien el costo total de un crédito antes de firmar:
+          revisa{" "}
+          <a
+            class="text-accent underline underline-offset-4 hover:opacity-80"
+            href={getPath("/posts/cae-costo-real-credito-chile/")}
+          >
+            la guía de CAE y costo real
+          </a>
+          .
+        </li>
+        <li>
           Ya estás en mora y buscas una salida formal: continúa con{" "}
           <a
             class="text-accent underline underline-offset-4 hover:opacity-80"
@@ -95,19 +89,31 @@ const articulosSeccion = [
           </a>
           .
         </li>
-        <li>
-          Quieres entender por qué suben cuotas y montos reajustables: revisa{
-            " "
-          }
-          <a
-            class="text-accent underline underline-offset-4 hover:opacity-80"
-            href={getPath("/posts/que-es-la-uf/")}
-          >
-            la guía de la UF
-          </a>
-          .
-        </li>
       </ul>
+    </section>
+
+    <section class="border-b border-border py-8">
+      <h2 class="mb-4 text-2xl font-bold">
+        Relacionado, pero fuera del núcleo deuda
+      </h2>
+      {
+        hubAssignments.related.map(
+          (item: (typeof hubAssignments.related)[number]) => (
+            <div class="rounded-xl border border-border p-5">
+              <h3 class="mb-2 text-lg font-semibold">{item.title}</h3>
+              <p class="mb-3 text-sm text-secondary">
+                {item.summary} {item.rationale}
+              </p>
+              <a
+                href={getPath(item.href)}
+                class="text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+              >
+                Ir a la guía relacionada
+              </a>
+            </div>
+          )
+        )
+      }
     </section>
 
     <section class="border-b border-border py-8">
@@ -134,9 +140,10 @@ const articulosSeccion = [
           Última actualización de la sección
         </h2>
         <p class="text-sm text-secondary">
-          Actualizado: 2026-03-02. Esta sección se revisa cuando cambian reglas
+          Actualizado: 2026-03-12. Esta sección se revisa cuando cambian reglas
           de reporte comercial, requisitos de renegociación o condiciones
-          relevantes de crédito en Chile.
+          relevantes de crédito en Chile, o cuando un activo relacionado deja de
+          pertenecer al núcleo editorial de deuda.
         </p>
       </div>
     </section>

@@ -33,7 +33,7 @@ Usados para taxonomía, navegación y agrupación. Deben coincidir con los slugs
 | `empleo-ingresos` | `empleo-ingresos` | Cesantía, licencia médica, finiquito e interrupción del ingreso laboral |
 | `impuestos` | `impuestos-personas` | Operación renta, F22, boletas honorarios, devolución |
 | `ahorro-inversion` | `ahorro-e-inversion` | DAP, fondos mutuos, ETFs, APV, Cuenta 2 |
-| `deuda-credito` | `deuda-credito` | CMF, DICOM, renegociación Superir, UF |
+| `deuda-credito` | `deuda-credito` | CMF, DICOM, renegociación Superir, CAE y costo real del crédito. UF solo puede permanecer aquí como placement transitorio documentado, no como owner final |
 | `seguridad-financiera` | `seguridad-financiera` | Fraude, estafas, suplantación |
 
 > **Regla:** `cluster` debe coincidir con un directorio existente en `src/pages/guias/`. `category` es el valor que se usa en filtros y agregaciones. Ambos deben ser consistentes entre sí. `general` solo se tolera como deuda explícita o pieza de referencia, no como sustituto por defecto de la categoría principal del cluster. En clusters endurecidos, además, `general` queda bloqueado salvo `reference + unlisted`.
@@ -70,6 +70,7 @@ Trade-off editorial:
 - Bloqueado en clusters endurecidos para piezas `owner` o `support`.
 - Única excepción endurecida: pieza `reference` y `unlisted`, cuando funciona como nota metodológica o material auxiliar y no compite por ownership.
 - Si el owner canónico ya está decidido pero el cluster productivo todavía no existe, la transición debe quedar registrada además en `src/config/editorial-topic-policy.mjs` y `docs/editorial/TOPIC_OWNERSHIP_POLICY.md`; `general` por sí solo no documenta nada.
+- La transición explícita también puede conservar el `cluster` y `category` operativos vigentes de un asset ya publicado. En ese caso, el owner canónico y la condición de migración siguen siendo obligatorios en el registry y el hub actual no puede tratar la pieza como `core`.
 
 ## Compatibilidad técnica actual
 

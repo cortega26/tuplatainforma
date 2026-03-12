@@ -94,6 +94,28 @@ export const TRANSITIONAL_OWNERSHIP_REGISTRY = {
     rationale:
       "La intencion dominante es habito y control financiero del hogar, no continuidad de ingreso laboral ni contingencia de empleo.",
   },
+  "que-es-la-uf": {
+    currentCluster: "deuda-credito",
+    currentCategory: "deuda-credito",
+    canonicalOwnerCluster: "uf-costo-de-vida",
+    canonicalTopic: "uf-reajustes-costo-de-vida",
+    targetHubPath: "/guias/uf-costo-de-vida/",
+    migrationCondition:
+      "Migrar solo cuando exista el hub productivo /guias/uf-costo-de-vida/ y al menos un activo satelite o herramienta adicional alineada que permita tratar UF como nucleo propio de costo de vida sin depender del hub de deuda como entrada principal.",
+    rationale:
+      "La necesidad primaria es entender UF, inflacion y reajustes de bolsillo/contratos; credito solo debe enlazarlo como salida related cuando la duda nace desde una obligacion reajustable.",
+  },
+  "reajuste-arriendo-uf-ipc-chile": {
+    currentCluster: "deuda-credito",
+    currentCategory: "general",
+    canonicalOwnerCluster: "uf-costo-de-vida",
+    canonicalTopic: "reajuste-arriendo-contrato-uf-ipc",
+    targetHubPath: "/guias/uf-costo-de-vida/",
+    migrationCondition:
+      "Migrar solo cuando exista el hub productivo /guias/uf-costo-de-vida/ y el frente pueda ordenar de forma estable UF, IPC, reajustes y costo de vida sin presentar esta URL como parte definitiva del cluster de deuda.",
+    rationale:
+      "La necesidad primaria es interpretar una clausula de reajuste de arriendo y su impacto en bolsillo, no resolver un problema crediticio. Se mantiene en placement transitorio para no inventar el cluster futuro en runtime.",
+  },
   "que-es-el-ipc-chile-como-se-calcula": {
     currentCluster: "empleo-ingresos",
     currentCategory: "general",

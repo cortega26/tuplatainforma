@@ -90,11 +90,12 @@ Create one canonical map for the Phase 2 cluster-linking architecture using repo
 ### 3. `deuda-credito`
 
 - Hub: live at `/guias/deuda-credito/`
-- Primary articles:
+- Core articles:
   - `/posts/cae-costo-real-credito-chile/`
   - `/posts/informe-deudas-cmf-vs-dicom/`
   - `/posts/renegociacion-superir/`
-  - `/posts/que-es-la-uf/` (supportive cost-of-credit bridge while UF remains split)
+- Related bridge:
+  - `/posts/que-es-la-uf/` (transitional placement in `deuda-credito`, but canonical owner lives in future `uf-costo-de-vida`)
 - Calculators:
   - `/calculadoras/credito-consumo/`
   - `/calculadoras/prepago-credito/`
@@ -112,9 +113,10 @@ Create one canonical map for the Phase 2 cluster-linking architecture using repo
   - `/leyes/ley-21680-registro-deuda-consolidada/`
   - `/leyes/ley-20555-sernac-financiero/`
 - Canonical link pattern:
-  - Hub -> diagnostic article + formal-exit article + high-intent calculators
+  - Hub -> diagnostic article + cost-of-credit explainer + formal-exit article + high-intent calculators
   - Credit calculators -> CAE explainer or debt hub before asking for deeper action
   - Debt articles -> relevant calculator only when intent becomes scenario testing
+  - UF bridge stays outside the debt core and only appears when the user needs context for a reajustable obligation
   - Glossary/legal blocks support regulated terms, not the first CTA
 - Open gaps:
   - No plain-language explainer yet for `prepago credito`
@@ -146,8 +148,8 @@ Create one canonical map for the Phase 2 cluster-linking architecture using repo
 
 - Future hub: `/guias/uf-costo-de-vida/`
 - Current articles split across live clusters:
-  - `/posts/que-es-la-uf/`
-  - `/posts/que-es-el-ipc-chile-como-se-calcula/`
+  - `/posts/que-es-la-uf/` (`cluster: deuda-credito`, transitional placement only)
+  - `/posts/que-es-el-ipc-chile-como-se-calcula/` (`cluster: empleo-ingresos`, transitional placement only)
 - Calculators:
   - `/calculadoras/conversor-uf/`
   - `/calculadoras/reajuste-arriendo/`
@@ -209,6 +211,7 @@ Create one canonical map for the Phase 2 cluster-linking architecture using repo
   - No dedicated hub
   - No budget tool
   - No emergency-fund satellite or comparable second article
+  - Do not open yet: the minimum opening condition (hub plus a second aligned satellite or tool) is still unmet
 
 ## Shared adjacent hub that remains active
 
