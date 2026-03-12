@@ -237,12 +237,12 @@ Priority Score Formula: `Impact x Confidence / Effort`
 - **Roadmap Phase:** Phase 2 - Authority Building
 
 ### MB-013 - Create future cluster hub for UF, inflacion y costo de vida
-- **Description:** Build a future hub page linking UF explainers, calculator tools, arriendo adjustments, inflation context, and practical household impact scenarios. Current repo truth still splits these assets across live clusters and calculators without a dedicated `/guias/uf-costo-de-vida/`. This hub is the migration gate for both `/posts/que-es-la-uf/` and `/posts/que-es-el-ipc-chile-como-se-calcula/`, which must remain documented transitional placements until the hub exists and at least one aligned satellite or tool is live.
+- **Description:** Build the productive hub page linking UF explainers, calculator tools, arriendo adjustments, inflation context, and practical household impact scenarios. The hub now lives at `/guias/uf-costo-de-vida/` and becomes the editorial entry point while the current article frontmatter placements remain explicitly transitional until a later hardening pass.
 - **Impact:** 4
 - **Effort:** 3
 - **Confidence:** 4
 - **Priority Score:** 5.3
-- **Status:** TODO
+- **Status:** DONE
 - **Dependencies:** MB-006, MB-026
 - **Roadmap Phase:** Phase 2 - Authority Building
 

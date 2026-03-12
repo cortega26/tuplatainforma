@@ -8,6 +8,7 @@ import { getPath } from "@/utils/getPath";
 
 const { parameters: economicParameters } = await getEconomicParameters();
 const ufGuidePath = getPath("/posts/que-es-la-uf/");
+const ufHubPath = getPath("/guias/uf-costo-de-vida/");
 const economicSourceLabel =
   economicParameters.source === "live"
     ? "dato en línea"
@@ -183,6 +184,10 @@ const ufDateDisplay = new Intl.DateTimeFormat("es-CL", {
           data-analytics-location="calculator_explainer"
           >guía explicativa de la UF</a
         >.
+      </p>
+      <p>
+        Si quieres conectar esa explicación con IPC, reajustes y arriendo, sigue
+        por la <a href={ufHubPath}>guía UF, inflación y costo de vida</a>.
       </p>
     </section>
   </main>

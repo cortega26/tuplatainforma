@@ -101,7 +101,7 @@ export const TRANSITIONAL_OWNERSHIP_REGISTRY = {
     canonicalTopic: "uf-reajustes-costo-de-vida",
     targetHubPath: "/guias/uf-costo-de-vida/",
     migrationCondition:
-      "Migrar solo cuando exista el hub productivo /guias/uf-costo-de-vida/ y al menos un activo satelite o herramienta adicional alineada que permita tratar UF como nucleo propio de costo de vida sin depender del hub de deuda como entrada principal.",
+      "Migrar en una pasada puntual de hardening cuando el hub productivo /guias/uf-costo-de-vida/ ya abierto pueda absorber junto a IPC y reajuste de arriendo el cambio de metadata/frontmatter sin abrir una migracion masiva del resto de clusters.",
     rationale:
       "La necesidad primaria es entender UF, inflacion y reajustes de bolsillo/contratos; credito solo debe enlazarlo como salida related cuando la duda nace desde una obligacion reajustable.",
   },
@@ -112,7 +112,7 @@ export const TRANSITIONAL_OWNERSHIP_REGISTRY = {
     canonicalTopic: "reajuste-arriendo-contrato-uf-ipc",
     targetHubPath: "/guias/uf-costo-de-vida/",
     migrationCondition:
-      "Migrar solo cuando exista el hub productivo /guias/uf-costo-de-vida/ y el frente pueda ordenar de forma estable UF, IPC, reajustes y costo de vida sin presentar esta URL como parte definitiva del cluster de deuda.",
+      "Migrar en la misma pasada puntual de hardening del frente cuando el hub productivo /guias/uf-costo-de-vida/ ya abierto alinee explainers y herramientas sin falsear una migracion total del ecosistema.",
     rationale:
       "La necesidad primaria es interpretar una clausula de reajuste de arriendo y su impacto en bolsillo, no resolver un problema crediticio. Se mantiene en placement transitorio para no inventar el cluster futuro en runtime.",
   },
@@ -123,7 +123,7 @@ export const TRANSITIONAL_OWNERSHIP_REGISTRY = {
     canonicalTopic: "ipc-inflacion-costo-de-vida",
     targetHubPath: "/guias/uf-costo-de-vida/",
     migrationCondition:
-      "Migrar solo cuando exista el hub productivo /guias/uf-costo-de-vida/ y al menos un activo satelite o herramienta adicional que ordene la relacion entre IPC, UF y costo de vida.",
+      "Migrar en una pasada puntual de hardening cuando el hub productivo /guias/uf-costo-de-vida/ ya abierto pueda mover juntos IPC, UF y reajuste sin reabrir refactors taxonomicos amplios.",
     rationale:
       "La necesidad primaria es entender inflacion, reajuste y bolsillo; no pertenece editorialmente al cluster de contingencias laborales.",
   },

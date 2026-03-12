@@ -26,7 +26,7 @@ Fuente base: [Gap Audit v1](../operations/audits/closed/2026/2026-02-27_gap-audi
 - `Owner` queda vacío por instrucción; completar al asignar sprint.
 - `Estado` permitido: `TODO`, `IN_PROGRESS`, `REVIEW`, `DONE`, `REFRESH`.
 - Si falta evidencia en fuentes primarias durante ejecución, marcar `TODO` explícito en el issue antes de redactar.
-- `que-es-la-uf` queda alineado canónicamente con el futuro frente `uf-costo-de-vida`; mientras siga en `cluster/category: deuda-credito`, el hub de deuda solo puede exponerlo como `related / bridge`, no como pieza core.
+- `que-es-la-uf` queda alineado canónicamente con el frente ya abierto `uf-costo-de-vida`; mientras siga en `cluster/category: deuda-credito`, el hub de deuda solo puede exponerlo como `related / bridge`, no como pieza core.
 - `como-hacer-presupuesto-mensual-chile` sigue en transición y no debe abrir por sí solo `/guias/presupuesto-control-financiero/` hasta cumplir la condición mínima de hub + segundo activo satélite o herramienta.
 
 ## Deuda técnica editorial (control 2026-03-04)
@@ -52,7 +52,7 @@ Estos artículos están publicados (`draft: false`) pero no aparecían en ningú
 | `finiquito-e-indemnizaciones-en-chile` | empleo-ingresos | 2026-03-02 | 2026-03-03 | YMYL — OK |
 | `fondos-afp-a-b-c-d-e` | pensiones-afp | 2026-02-23 | 2026-03-02 | Actualizado |
 | `que-es-el-apv` | ahorro-e-inversion | 2026-02-23 | 2026-03-09 | Ownership APV explícito en ahorro e inversión |
-| `que-es-el-ipc-chile-como-se-calcula` | empleo-ingresos | 2026-03-03 | 2026-03-11 | Sigue fuera del backlog formal; futuro hub `uf-costo-de-vida` pendiente |
+| `que-es-el-ipc-chile-como-se-calcula` | empleo-ingresos | 2026-03-03 | 2026-03-11 | Hub `uf-costo-de-vida` ya abierto; metadata transitoria sigue pendiente de hardening |
 | `que-es-la-cuenta-2-afp` | pensiones-afp | 2026-02-23 | 2026-03-09 | Actualizado |
 | `reforma-previsional-2025-que-cambia-y-como-te-afecta` | pensiones-afp | 2026-03-03 | 2026-03-11 | Actualizado; alta relevancia YMYL |
 | `suplantacion-identidad-creditos-no-reconocidos` | seguridad-financiera | 2026-03-02 | 2026-03-03 | OK |

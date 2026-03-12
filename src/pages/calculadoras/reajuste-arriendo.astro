@@ -4,12 +4,15 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import { getEconomicParameters } from "@/application/use-cases/GetEconomicParameters";
+import { getPath } from "@/utils/getPath";
 
 const { parameters: economicParameters } = await getEconomicParameters();
 const economicSourceLabel =
   economicParameters.source === "live"
     ? "dato en línea"
     : "fallback controlado";
+const rentGuidePath = getPath("/posts/reajuste-arriendo-uf-ipc-chile/");
+const ufHubPath = getPath("/guias/uf-costo-de-vida/");
 ---
 
 <Layout
@@ -35,11 +38,12 @@ const economicSourceLabel =
       </p>
       <p class="mt-3 max-w-2xl text-sm text-secondary">
         Si antes de calcular necesitas interpretar la cláusula, revisa la guía
-        <a
-          href="/posts/reajuste-arriendo-uf-ipc-chile/"
-          class="underline underline-offset-4"
-        >
+        <a href={rentGuidePath} class="underline underline-offset-4">
           Reajuste de arriendo en Chile: UF, IPC y cálculo
+        </a>. Si quieres ver además cómo esta herramienta se conecta con UF e
+        inflación, parte por la{" "}
+        <a href={ufHubPath} class="underline underline-offset-4">
+          guía UF, inflación y costo de vida
         </a>.
       </p>
     </section>

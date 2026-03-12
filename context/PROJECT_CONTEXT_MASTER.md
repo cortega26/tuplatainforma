@@ -56,6 +56,13 @@ Los riesgos principales están en deuda de mantenibilidad y consistencia operati
 - La matriz de ownership, la policy editorial y el mapa de linking interno ya no tratan a `que-es-la-uf` como owner canónico de `deuda-credito`.
 - `presupuesto-control-financiero` sigue documentado como transición cerrada, sin apertura de hub hasta cumplir la condición mínima de hub + segundo activo alineado.
 
+### Checkpoint 2026-03-12 (MB-013 uf-costo-de-vida Productive Hub Open)
+
+- Se abre `src/pages/guias/uf-costo-de-vida/index.astro` como primera superficie productiva real del frente UF/IPC/reajustes/costo de vida.
+- `src/config/clusters.ts` registra `uf-costo-de-vida` como hub explícito y elimina UF/IPC de los resúmenes semánticos de `deuda-credito` y `empleo-ingresos`.
+- `src/config/editorial-hub-model.mjs` trata `que-es-la-uf`, `que-es-el-ipc-chile-como-se-calcula` y `reajuste-arriendo-uf-ipc-chile` como núcleo canónico del hub, aunque sus placements operativos sigan transitorios.
+- La policy y la matrix pasan a distinguir entre `hub productivo abierto` y `hardening metadata pendiente`, evitando fingir una migración total antes de la siguiente fase.
+
 ### Checkpoint 2026-03-12 (TD-0021 Shared Payroll Taxable Base)
 
 - `sueldo-liquido` y `apv` ya no reconstruyen deducciones por separado: ambos consumen `src/application/use-cases/CalculateMonthlyPayrollBase.ts`.

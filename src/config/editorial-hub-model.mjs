@@ -108,6 +108,35 @@ export const HUB_ARTICLE_ASSIGNMENTS = {
       },
     ],
   },
+  "uf-costo-de-vida": {
+    core: [
+      {
+        slug: "que-es-la-uf",
+        href: "/posts/que-es-la-uf/",
+        title:
+          "UF en simple: qué es, por qué sube todos los días y cómo te afecta",
+        summary:
+          "Es la base del frente: explica la unidad que traduce la inflación a arriendos, dividendos y otros montos reajustables.",
+      },
+      {
+        slug: "que-es-el-ipc-chile-como-se-calcula",
+        href: "/posts/que-es-el-ipc-chile-como-se-calcula/",
+        title:
+          "Qué es el IPC en Chile: cómo se calcula y por qué afecta tu bolsillo",
+        summary:
+          "Aterriza el índice que mueve la inflación mensual y ayuda a leer por qué la UF y otros ajustes terminan pegando en tus gastos.",
+      },
+      {
+        slug: "reajuste-arriendo-uf-ipc-chile",
+        href: "/posts/reajuste-arriendo-uf-ipc-chile/",
+        title:
+          "Reajuste de arriendo en Chile: cuándo aplica, UF vs IPC y cómo calcularlo",
+        summary:
+          "Convierte la teoría en una cláusula concreta: qué manda el contrato, cuándo corresponde el reajuste y cómo estimarlo sin confusiones.",
+      },
+    ],
+    related: [],
+  },
 };
 
 /**
