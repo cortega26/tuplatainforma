@@ -2,7 +2,7 @@
 title: "Fondos AFP A, B, C, D y E: diferencias, riesgo y cuál te conviene"
 author: "Equipo Monedario"
 pubDate: 2026-02-23T11:00:00Z
-updatedDate: 2026-03-02T19:30:00Z
+updatedDate: 2026-03-12T14:18:00Z
 slug: fondos-afp-a-b-c-d-e
 featured: true
 lang: es-CL
@@ -18,6 +18,26 @@ topicRole: owner
 canonicalTopic: elegir-fondos-afp
 description: "Explicación clara de los fondos AFP A, B, C, D y E: en qué invierte cada uno, cuánto riesgo tienen y cuál conviene según tu edad y perfil."
 heroImage: /images/hero/fondos-afp-a-b-c-d-e.avif
+articleLead:
+  answer: "En 2026 los multifondos A, B, C, D y E siguen vigentes. La decisión útil hoy todavía es elegir riesgo según horizonte y tolerancia, pero sin olvidar que la reforma ya aprobó el paso a fondos generacionales desde 2027."
+  calculatorHref: "/calculadoras/simulador-jubilacion/"
+  calculatorLabel: "Proyectar jubilación"
+  nextStepHref: "/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/"
+  nextStepLabel: "Entender transición 2027+"
+  validAsOf: 2026-03-12
+  officialSources:
+    - label: "Superintendencia de Pensiones"
+      href: "https://www.spensiones.cl/"
+    - label: "BCN — Ley 21.735"
+      href: "https://www.bcn.cl/leychile/navegar?idNorma=1212074"
+  covers:
+    - "Diferencias de riesgo y composición entre fondos."
+    - "Qué decisión sirve hoy mientras siguen vigentes."
+    - "Cómo se cruza con la transición a fondos generacionales."
+  limits:
+    - "No sustituye recomendación personalizada de inversión."
+    - "No define por sí sola si debes cambiarte de AFP."
+    - "No resume toda la reforma previsional."
 ---
 
 Cuando te afilias a una AFP, tu dinero no queda guardado en una caja fuerte —se invierte en uno de cinco fondos disponibles. Elegir bien puede significar una pensión significativamente mayor. Elegir mal, lo contrario. Lo que pocos saben es que si no eliges nada, la AFP elige por ti.

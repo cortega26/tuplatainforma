@@ -37,6 +37,34 @@ export const CANONICAL_TOPIC_REGISTRY = {
       intentLabel: "descuento AFP del trabajador",
     },
   },
+  "empleo-ingresos": {
+    "seguro-cesantia-cobertura": {
+      ownerSlug: "seguro-de-cesantia",
+      intentLabel: "seguro de cesantia cobertura y cobro",
+    },
+    "finiquito-indemnizaciones": {
+      ownerSlug: "finiquito-e-indemnizaciones-en-chile",
+      intentLabel: "finiquito e indemnizaciones",
+    },
+    "licencia-medica-pago": {
+      ownerSlug: "licencia-medica-desde-que-dia-pagan",
+      intentLabel: "licencia medica pago y rechazo",
+    },
+  },
+  "impuestos-personas": {
+    "operacion-renta-f22": {
+      ownerSlug: "operacion-renta-f22-checklist",
+      intentLabel: "operacion renta F22 checklist",
+    },
+    "devolucion-impuestos": {
+      ownerSlug: "devolucion-impuestos-fechas-compensaciones",
+      intentLabel: "devolucion de impuestos fechas y compensaciones",
+    },
+    "honorarios-retencion-cobertura": {
+      ownerSlug: "boleta-honorarios-2026-retencion-cobertura",
+      intentLabel: "boleta honorarios retencion y cobertura anual",
+    },
+  },
   "pensiones-afp": {
     "cambio-afp": {
       ownerSlug: "como-cambiarse-de-afp",
@@ -80,6 +108,20 @@ export const CANONICAL_TOPIC_REGISTRY = {
     "interes-compuesto-caso": {
       ownerSlug: "el-poder-del-interes-compuesto",
       intentLabel: "interes compuesto caso",
+    },
+  },
+  "deuda-credito": {
+    "cae-costo-real": {
+      ownerSlug: "cae-costo-real-credito-chile",
+      intentLabel: "CAE costo real del credito",
+    },
+    "informe-deudas-cmf-vs-dicom": {
+      ownerSlug: "informe-deudas-cmf-vs-dicom",
+      intentLabel: "informe deudas CMF vs DICOM",
+    },
+    "renegociacion-superir": {
+      ownerSlug: "renegociacion-superir",
+      intentLabel: "renegociacion Superir",
     },
   },
   "uf-costo-de-vida": {

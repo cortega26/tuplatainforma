@@ -4,7 +4,7 @@ author: "Equipo Monedario"
 description: "Guía para revisar tu finiquito, calcular lo que te corresponde y detectar errores antes de firmar o aceptar montos sin revisar."
 slug: finiquito-e-indemnizaciones-en-chile
 pubDate: 2026-03-02T18:40:00Z
-updatedDate: 2026-03-03T00:00:00Z
+updatedDate: 2026-03-12T14:14:00Z
 tags:
   - empleo-ingresos
   - finiquito
@@ -13,10 +13,32 @@ tags:
   - despido
 category: empleo-ingresos
 cluster: empleo-ingresos
+topicRole: owner
+canonicalTopic: finiquito-indemnizaciones
 lang: es-CL
 featured: false
 draft: false
 heroImage: /images/hero/finiquito-e-indemnizaciones-en-chile.avif
+articleLead:
+  answer: "Si te están apurando para firmar el finiquito, no partas por el total final: primero separa sueldo pendiente, feriado proporcional, aviso previo e indemnización por años de servicio, porque la causal de término cambia por completo lo que corresponde."
+  calculatorHref: "/calculadoras/finiquito-indemnizacion/"
+  calculatorLabel: "Estimar finiquito"
+  nextStepHref: "/posts/indemnizacion-anos-de-servicio-chile/"
+  nextStepLabel: "Ver años de servicio en detalle"
+  validAsOf: 2026-03-12
+  officialSources:
+    - label: "BCN — Código del Trabajo"
+      href: "https://www.bcn.cl/leychile/navegar?idNorma=207436"
+    - label: "Dirección del Trabajo"
+      href: "https://www.dt.gob.cl/portal/1626/w3-channel.html"
+  covers:
+    - "Qué debe incluir normalmente un finiquito."
+    - "Cómo cambia el cálculo según la causal de término."
+    - "Qué revisar antes de firmar o reservar derechos."
+  limits:
+    - "No incorpora recargos judiciales ni cláusulas pactadas complejas."
+    - "No sustituye asesoría laboral si la causal está discutida."
+    - "No reemplaza revisar el documento y sus respaldos."
 ---
 
 Te llega el finiquito, el empleador te apura para firmarlo ese mismo día, y tú no sabes si lo que dice es correcto. Es una situación más común de lo que parece — y firmar sin revisar puede costarte el equivalente a varios meses de sueldo.
@@ -33,6 +55,8 @@ Un finiquito es el documento que liquida todos los pagos pendientes al término 
 - **Descuentos legales o pactados** cuando procedan (por ejemplo, anticipos de sueldo).
 
 Hay algo que muchos trabajadores no saben: no todo despido genera los mismos pagos. La causal que aparece en la carta de despido no es un detalle — es la variable que determina si te corresponde indemnización por años de servicio, si hay aviso previo o indemnización sustitutiva, y cuánto vale cada uno.
+
+Si solo quieres aislar la partida de años de servicio antes de volver al finiquito completo, usa esta guía corta de [indemnización por años de servicio en Chile](/posts/indemnizacion-anos-de-servicio-chile/).
 
 ## Las dos indemnizaciones más importantes
 

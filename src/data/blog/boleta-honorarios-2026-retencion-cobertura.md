@@ -4,7 +4,7 @@ description: "Explicación práctica de la retención 2026 en boletas de honorar
 slug: boleta-honorarios-2026-retencion-cobertura
 author: "Equipo Monedario"
 pubDate: 2026-02-28T15:20:00Z
-updatedDate: 2026-03-03T22:00:00Z
+updatedDate: 2026-03-12T14:16:00Z
 tags:
   - boletas
   - honorarios
@@ -12,10 +12,32 @@ tags:
   - seguridad-social
 category: impuestos
 cluster: impuestos-personas
+topicRole: owner
+canonicalTopic: honorarios-retencion-cobertura
 lang: es-CL
 featured: false
 draft: false
 heroImage: /images/hero/boleta-honorarios-2026-retencion-cobertura.avif
+articleLead:
+  answer: "En 2026 la boleta de honorarios se parte en dos preguntas distintas: cuánto te retienen y cuánto te llega líquido hoy, versus qué cotización y cobertura anual se regularizan después en Operación Renta."
+  calculatorHref: "/calculadoras/boleta-honorarios-liquido/"
+  calculatorLabel: "Calcular líquido por boleta"
+  nextStepHref: "/posts/operacion-renta-f22-checklist/"
+  nextStepLabel: "Ir al checklist F22"
+  validAsOf: 2026-03-12
+  officialSources:
+    - label: "SII — Boletas de honorarios"
+      href: "https://www.sii.cl/destacados/boletas_honorarios/"
+    - label: "ChileAtiende — Cotización de honorarios"
+      href: "https://www.chileatiende.gob.cl/fichas/12016-cotizacion-de-trabajadores-que-emiten-boletas-de-honorarios"
+  covers:
+    - "Retención 2026 y cálculo del líquido recibido."
+    - "Relación entre retención mensual y regularización anual."
+    - "Qué revisar si emites poco o tienes dudas de cobertura."
+  limits:
+    - "No sustituye la declaración anual real ante SII."
+    - "No define por sí sola exenciones legales o por monto."
+    - "No reemplaza asesoría tributaria en casos mixtos."
 ---
 
 Emites boletas y cada mes te preguntas lo mismo: ¿cuánto me llega realmente? En 2026 la respuesta cambia porque subió la retención. Esta guía separa tres cosas que suelen confundirse: la retención mensual que se aplica al emitir cada boleta, el cálculo de cotizaciones que ocurre en Operación Renta y la cobertura anual que resulta de ese proceso.

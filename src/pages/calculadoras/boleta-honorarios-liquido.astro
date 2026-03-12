@@ -1,0 +1,369 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import { getPath } from "@/utils/getPath";
+
+const guidePath = getPath("/posts/boleta-honorarios-2026-retencion-cobertura/");
+const rentaGuidePath = getPath("/posts/operacion-renta-f22-checklist/");
+---
+
+<Layout
+  title="Calculadora Boleta de Honorarios 2026 | Líquido y retención"
+  description="Calcula cuánto te llega líquido por boleta, cuánto retiene el SII y cuál sería tu base anual de cobertura previsional orientativa."
+>
+  <Header />
+  <Breadcrumb />
+  <main
+    id="main-content"
+    class="app-layout"
+    data-analytics-page-type="calculator"
+    data-analytics-calculator="boleta-honorarios-liquido"
+    data-analytics-calculator-name="Calculadora Boleta Honorarios Liquido"
+  >
+    <section class="border-b border-border pt-8 pb-6">
+      <h1 class="my-4 text-3xl font-bold sm:text-4xl">
+        🧾 Calculadora de Boleta de Honorarios 2026
+      </h1>
+      <p class="max-w-2xl text-secondary">
+        Separa tres cosas que suelen mezclarse: cuánto te retienen al emitir la
+        boleta, cuánto recibes líquido hoy y qué base anual usaría tu cobertura
+        previsional orientativa.
+      </p>
+    </section>
+
+    <section
+      class="grid items-start gap-6 py-8 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)]"
+    >
+      <div class="rounded-xl border border-border p-6">
+        <h2 class="mb-5 text-lg font-semibold">📝 Tus supuestos</h2>
+
+        <div class="mb-4">
+          <label
+            for="gross-fee"
+            class="mb-1 block text-sm font-medium text-secondary"
+          >
+            Monto bruto de una boleta ($)
+          </label>
+          <input
+            id="gross-fee"
+            type="number"
+            min="0"
+            placeholder="Ej: 500.000"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="issued-months"
+            class="mb-1 block text-sm font-medium text-secondary"
+          >
+            Meses con boletas este año
+          </label>
+          <input
+            id="issued-months"
+            type="number"
+            min="1"
+            max="12"
+            value="12"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+          <p class="mt-1 text-xs text-muted">
+            Si no boleteas todos los meses, ajusta este número para una
+            proyección anual más útil.
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="annual-gross"
+            class="mb-1 block text-sm font-medium text-secondary"
+          >
+            Total bruto anual boleteado ($) - opcional
+          </label>
+          <input
+            id="annual-gross"
+            type="number"
+            min="0"
+            placeholder="Si ya sabes tu total anual, úsalo aquí"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+          <p class="mt-1 text-xs text-muted">
+            Reemplaza la proyección automática `boleta × meses`.
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="withholding-rate"
+            class="mb-1 block text-sm font-medium text-secondary"
+          >
+            Retención aplicada (%)
+          </label>
+          <input
+            id="withholding-rate"
+            type="number"
+            min="0"
+            max="100"
+            step="0.01"
+            value="15.25"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+          <p class="mt-1 text-xs text-muted">
+            En 2026 la referencia vigente es 15,25%. Solo cámbiala si estás
+            revisando otro año.
+          </p>
+        </div>
+
+        <button
+          id="calcBtn"
+          class="mt-2 w-full rounded-lg bg-accent px-4 py-3 text-base font-bold text-background transition-opacity hover:opacity-90"
+        >
+          Calcular líquido →
+        </button>
+
+        <div
+          id="honorarios-error"
+          class="mt-3 hidden rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-200"
+          role="alert"
+        >
+        </div>
+      </div>
+
+      <div class="rounded-xl border border-border bg-background p-6">
+        <h2 class="mb-5 text-lg font-semibold">💵 Resultado orientativo</h2>
+        <div id="resultado-contenido" class="py-8 text-center text-muted">
+          <p class="mb-3 text-4xl">🧮</p>
+          <p class="text-sm">Ingresa tus datos y presiona calcular.</p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert"
+    >
+      <h2>Qué sí responde esta calculadora</h2>
+      <ul>
+        <li>Cuánto te retienen al emitir una boleta.</li>
+        <li>Cuánto recibes líquido hoy por ese documento.</li>
+        <li>
+          Cuál sería tu base anual de cobertura estimada si proyectas el total
+          boleteado.
+        </li>
+        <li>
+          Qué parte depende de Operación Renta y no se define al emitir cada
+          boleta.
+        </li>
+      </ul>
+
+      <h2>Qué no resuelve por sí sola</h2>
+      <ul>
+        <li>
+          Si quedas eximido por no superar el umbral anual de 5 ingresos mínimos
+          mensuales.
+        </li>
+        <li>
+          Si tu situación previsional o de salud tiene una causal especial de
+          exención.
+        </li>
+        <li>
+          Si terminarás con devolución o diferencia a pagar en Operación Renta.
+        </li>
+      </ul>
+
+      <p class="text-sm text-muted">
+        ⚠️ Estimador educativo. La regularización final depende de SII, TGR y tu
+        situación previsional real.
+      </p>
+      <p>
+        Si quieres el paso a paso completo, revisa la <a
+          href={guidePath}
+          data-analytics-cta="calculator-guide"
+          data-analytics-label="Guia de boletas honorarios 2026"
+          data-analytics-location="calculator_explainer"
+          >guía de boletas de honorarios 2026</a
+        >. Si tu foco es la declaración anual completa, parte por el <a
+          href={rentaGuidePath}
+          data-analytics-cta="calculator-guide"
+          data-analytics-label="Checklist operacion renta"
+          data-analytics-location="calculator_explainer_secondary"
+          >checklist de Operación Renta</a
+        >.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { calculateHonorariosNet } from "@/application/use-cases/CalculateHonorariosNet";
+  import { trackAnalyticsEvent } from "@/utils/analytics";
+
+  const currencyFormatter = new Intl.NumberFormat("es-CL", {
+    style: "currency",
+    currency: "CLP",
+    maximumFractionDigits: 0,
+  });
+
+  function fmtCurrency(value: number): string {
+    return currencyFormatter.format(Math.round(value));
+  }
+
+  function buildRow(
+    label: string,
+    value: string,
+    colorClass = ""
+  ): HTMLDivElement {
+    const line = document.createElement("div");
+    line.className =
+      "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
+
+    const labelElement = document.createElement("span");
+    labelElement.className = "text-secondary";
+    labelElement.textContent = label;
+
+    const valueElement = document.createElement("span");
+    valueElement.className = `font-mono font-semibold ${colorClass}`.trim();
+    valueElement.textContent = value;
+
+    line.append(labelElement, valueElement);
+    return line;
+  }
+
+  function showInlineError(message: string) {
+    const errorBox = document.getElementById("honorarios-error");
+    if (!errorBox) return;
+    errorBox.textContent = message;
+    errorBox.classList.remove("hidden");
+  }
+
+  function clearInlineError() {
+    const errorBox = document.getElementById("honorarios-error");
+    if (!errorBox) return;
+    errorBox.textContent = "";
+    errorBox.classList.add("hidden");
+  }
+
+  document.getElementById("calcBtn")?.addEventListener("click", () => {
+    clearInlineError();
+
+    const grossFee =
+      parseFloat(
+        (document.getElementById("gross-fee") as HTMLInputElement).value
+      ) || 0;
+    const issuedMonths =
+      parseInt(
+        (document.getElementById("issued-months") as HTMLInputElement).value
+      ) || 0;
+    const annualGrossRaw = parseFloat(
+      (document.getElementById("annual-gross") as HTMLInputElement).value
+    );
+    const withholdingRate =
+      parseFloat(
+        (document.getElementById("withholding-rate") as HTMLInputElement).value
+      ) || 0;
+
+    if (grossFee <= 0) {
+      showInlineError("Ingresa un monto bruto válido antes de calcular.");
+      return;
+    }
+
+    let result;
+    try {
+      result = calculateHonorariosNet({
+        grossFee,
+        issuedMonthsPerYear: issuedMonths,
+        annualGrossFees:
+          Number.isFinite(annualGrossRaw) && annualGrossRaw > 0
+            ? annualGrossRaw
+            : undefined,
+        withholdingRatePercent: withholdingRate,
+      });
+    } catch (error) {
+      showInlineError(
+        error instanceof Error
+          ? error.message
+          : "No se pudo calcular el líquido de honorarios."
+      );
+      return;
+    }
+
+    const headline = document.createElement("div");
+    headline.className =
+      "mb-6 rounded-lg border border-accent/20 bg-accent/10 p-4 text-center";
+
+    const headlineLabel = document.createElement("p");
+    headlineLabel.className =
+      "mb-1 text-xs font-bold tracking-widest text-accent uppercase";
+    headlineLabel.textContent = "Líquido por boleta";
+
+    const headlineValue = document.createElement("p");
+    headlineValue.className = "text-4xl font-bold";
+    headlineValue.textContent = fmtCurrency(result.netFeeReceived);
+
+    headline.append(headlineLabel, headlineValue);
+
+    const assumptions = document.createElement("ul");
+    assumptions.className = "mt-4 space-y-2 text-xs leading-relaxed text-muted";
+    result.assumptions.forEach(item => {
+      const line = document.createElement("li");
+      line.textContent = `• ${item}`;
+      assumptions.appendChild(line);
+    });
+
+    document
+      .getElementById("resultado-contenido")
+      ?.replaceChildren(
+        headline,
+        buildRow(
+          "Bruto de la boleta",
+          fmtCurrency(result.grossFee),
+          "text-green-500"
+        ),
+        buildRow(
+          `Retención (${result.withholdingRatePercent.toFixed(2)}%)`,
+          `− ${fmtCurrency(result.withholdingAmount)}`,
+          "text-red-400"
+        ),
+        buildRow(
+          "Líquido recibido hoy",
+          fmtCurrency(result.netFeeReceived),
+          "text-accent"
+        ),
+        buildRow(
+          "Bruto anual usado",
+          fmtCurrency(result.annualGrossFees),
+          "text-secondary"
+        ),
+        buildRow(
+          "Retención anual estimada",
+          fmtCurrency(result.annualWithholdingAmount),
+          "text-secondary"
+        ),
+        buildRow(
+          "Base anual de cobertura (80%)",
+          fmtCurrency(result.annualCoverageBase),
+          "text-secondary"
+        ),
+        buildRow(
+          "Equivalente mensual orientativo",
+          fmtCurrency(result.monthlyCoverageBaseEquivalent),
+          "text-secondary"
+        ),
+        buildRow(
+          "Ventana de cobertura estimada",
+          `${result.annualCoverageWindow.startsOn} → ${result.annualCoverageWindow.endsOn}`,
+          "text-secondary"
+        ),
+        assumptions
+      );
+
+    trackAnalyticsEvent("calculator_complete", {
+      calculator_slug: "boleta-honorarios-liquido",
+      calculator_name: "Calculadora Boleta Honorarios Liquido",
+      outcome: "success",
+    });
+  });
+</script>

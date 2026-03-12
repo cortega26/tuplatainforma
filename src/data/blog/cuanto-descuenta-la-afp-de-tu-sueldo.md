@@ -2,7 +2,7 @@
 title: "Descuento AFP en tu sueldo: cotización obligatoria, comisión y cómo revisarlo"
 author: "Equipo Monedario"
 pubDate: 2026-02-23T10:00:00Z
-updatedDate: 2026-03-09T18:40:00Z
+updatedDate: 2026-03-12T14:13:00Z
 slug: cuanto-descuenta-la-afp-de-tu-sueldo
 featured: true
 lang: es-CL
@@ -18,6 +18,26 @@ topicRole: owner
 canonicalTopic: descuento-afp-trabajador
 description: "Desglose de la línea AFP en tu sueldo: cotización obligatoria, comisión, reforma vigente y cómo revisar ese descuento sin abrir todo el cálculo del líquido."
 heroImage: /images/hero/cuanto-descuenta-la-afp-de-tu-sueldo.avif
+articleLead:
+  answer: "En tu liquidación, la línea AFP no es solo '10%': mezcla cotización obligatoria y comisión, y además convive con cambios previsionales que hoy afectan al empleador pero no necesariamente tu descuento mensual."
+  calculatorHref: "/calculadoras/sueldo-liquido/"
+  calculatorLabel: "Ver el sueldo líquido completo"
+  nextStepHref: "/posts/reforma-previsional-2025-que-cambia-y-como-te-afecta/"
+  nextStepLabel: "Entender la reforma previsional"
+  validAsOf: 2026-03-12
+  officialSources:
+    - label: "Superintendencia de Pensiones"
+      href: "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-9908.html"
+    - label: "BCN — Ley 21.735"
+      href: "https://www.bcn.cl/leychile/navegar?idNorma=1212074"
+  covers:
+    - "Qué parte es cotización y qué parte es comisión."
+    - "Cómo revisar si el descuento AFP calza con tu imponible."
+    - "Qué cambió y qué no cambió con la reforma."
+  limits:
+    - "No reemplaza una revisión AFP por AFP."
+    - "No cubre elección de fondos o cambio de administradora en detalle."
+    - "No calcula por sí solo salud, AFC ni impuesto."
 ---
 
 <!-- META: keyword_primary="descuento afp sueldo" | intent="informational-line-item-review" | cluster="sueldo-remuneraciones" -->

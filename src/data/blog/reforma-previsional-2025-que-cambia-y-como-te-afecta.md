@@ -4,7 +4,7 @@ author: "Equipo Monedario"
 description: "Guía práctica de la reforma previsional chilena: el 7% adicional del empleador, el BAC, los fondos generacionales y qué significa para tu jubilación."
 slug: reforma-previsional-2025-que-cambia-y-como-te-afecta
 pubDate: 2026-03-03T23:00:00Z
-updatedDate: 2026-03-11T00:00:00Z
+updatedDate: 2026-03-12T14:17:00Z
 tags:
   - reforma-previsional
   - afp
@@ -19,6 +19,26 @@ lang: es-CL
 featured: false
 draft: false
 heroImage: /images/hero/reforma-previsional-2025-que-cambia-y-como-te-afecta.avif
+articleLead:
+  answer: "La forma correcta de leer la reforma previsional es separar qué ya está operando hoy de lo que recién entra después. Si mezclas aporte del empleador, BAC y fondos generacionales como si todo rigiera al mismo tiempo, terminas tomando malas decisiones con información aprobada pero no implementada."
+  calculatorHref: "/calculadoras/apv/"
+  calculatorLabel: "Comparar APV ahora"
+  nextStepHref: "/posts/fondos-afp-a-b-c-d-e/"
+  nextStepLabel: "Ver fondos AFP vigentes"
+  validAsOf: 2026-03-12
+  officialSources:
+    - label: "BCN — Ley 21.735"
+      href: "https://www.bcn.cl/leychile/navegar?idNorma=1212074"
+    - label: "Superintendencia de Pensiones"
+      href: "https://www.spensiones.cl/"
+  covers:
+    - "Qué cambió hoy y qué viene después en el calendario."
+    - "Cómo afecta el aporte del empleador y el BAC."
+    - "Qué pasa con multifondos y fondos generacionales."
+  limits:
+    - "No reemplaza planificación previsional individual."
+    - "No calcula pensión final ni proyección completa."
+    - "No debe leerse como si todos los hitos ya estuvieran vigentes."
 ---
 
 En julio de 2025 se promulgó la reforma previsional más importante en décadas. Cambia cómo se financia tu jubilación, introduce un nuevo beneficio para pensiones más bajas y reemplaza los multifondos con un esquema distinto. Y aunque entra en vigencia por etapas —la mayoría de los cambios entre 2026 y 2029—, conviene entenderla ahora para saber qué esperar.

@@ -73,6 +73,28 @@ const blog = defineCollection({
         series: z.string().trim().min(1).optional(),
         timezone: z.string().optional(),
         hideEditPost: z.boolean().optional(),
+        articleLead: z
+          .object({
+            answer: z.string().trim().min(24),
+            calculatorHref: z.string().trim().min(1).optional(),
+            calculatorLabel: z.string().trim().min(3).optional(),
+            nextStepHref: z.string().trim().min(1).optional(),
+            nextStepLabel: z.string().trim().min(3).optional(),
+            validAsOf: z.date().optional(),
+            officialSources: z
+              .array(
+                z
+                  .object({
+                    label: z.string().trim().min(2),
+                    href: z.string().url(),
+                  })
+                  .strict()
+              )
+              .default([]),
+            covers: z.array(z.string().trim().min(4)).default([]),
+            limits: z.array(z.string().trim().min(4)).default([]),
+          })
+          .optional(),
       })
       .strict()
       .superRefine((data, ctx) => {

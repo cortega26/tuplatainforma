@@ -51,10 +51,80 @@ const adjacentRoutes = [
       </p>
     </section>
 
+    <section class="border-b border-border py-8">
+      <div class="grid gap-4 lg:grid-cols-3">
+        <article class="rounded-xl border border-border bg-background p-5">
+          <p
+            class="text-xs font-semibold tracking-[0.16em] text-accent uppercase"
+          >
+            Si partes desde una oferta o un bruto
+          </p>
+          <h2 class="mt-3 text-xl font-semibold">Primero calcula el líquido</h2>
+          <p class="mt-2 text-sm leading-relaxed text-secondary">
+            Sirve para pasar de bruto e imponible a depósito final sin abrir
+            todavía el detalle legal de cada línea.
+          </p>
+          <a
+            href={getPath("/calculadoras/sueldo-liquido/")}
+            class="mt-4 inline-flex text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+          >
+            Abrir calculadora
+          </a>
+        </article>
+        <article class="rounded-xl border border-border bg-background p-5">
+          <p
+            class="text-xs font-semibold tracking-[0.16em] text-accent uppercase"
+          >
+            Si ya tienes el comprobante
+          </p>
+          <h2 class="mt-3 text-xl font-semibold">Audita la liquidación</h2>
+          <p class="mt-2 text-sm leading-relaxed text-secondary">
+            Revisa haberes, descuentos, respaldos y errores típicos antes de
+            asumir que el cálculo del empleador está bien.
+          </p>
+          <a
+            href={getPath("/posts/liquidacion-de-sueldo/")}
+            class="mt-4 inline-flex text-sm font-semibold text-accent underline underline-offset-4 hover:opacity-80"
+          >
+            Leer guía
+          </a>
+        </article>
+        <article class="rounded-xl border border-border bg-background p-5">
+          <p
+            class="text-xs font-semibold tracking-[0.16em] text-accent uppercase"
+          >
+            Si el problema cambió
+          </p>
+          <h2 class="mt-3 text-xl font-semibold">
+            Sal de esta sección a tiempo
+          </h2>
+          <p class="mt-2 text-sm leading-relaxed text-secondary">
+            Empleo e ingresos toma el relevo cuando la duda ya es finiquito,
+            cesantía o corte del ingreso; honorarios cuando tu caso no nace en
+            una liquidación.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
+            <a
+              href={getPath("/guias/empleo-ingresos/")}
+              class="text-accent underline underline-offset-4 hover:opacity-80"
+            >
+              Ir a empleo e ingresos
+            </a>
+            <a
+              href={getPath("/calculadoras/boleta-honorarios-liquido/")}
+              class="text-accent underline underline-offset-4 hover:opacity-80"
+            >
+              Ver honorarios
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <ContextLinkSection
       eyebrow="Empieza aquí"
       title="Elige la opción que mejor te ayude"
-      description="Lee la guía si quieres entender el tema, usa la calculadora si necesitas sacar tu sueldo líquido y revisa una ayuda específica si tu duda es sobre descuentos, liquidación o AFP."
+      description="La decisión correcta depende del trabajo que tienes delante: calcular el depósito, auditar el comprobante, clasificar un descuento o pasar a otra sección porque el problema ya cambió."
       items={sueldoClusterHubPrimaryCards}
     />
 
@@ -73,6 +143,10 @@ const adjacentRoutes = [
         <li>
           Separación entre descuentos obligatorios, autorizados y prohibidos
           para auditar mejor lo que baja tu líquido.
+        </li>
+        <li>
+          Fronteras claras para no mezclar esta sección con honorarios,
+          finiquito o cesantía cuando la duda ya se movió de etapa.
         </li>
       </ul>
     </section>
@@ -112,9 +186,9 @@ const adjacentRoutes = [
           Última actualización de la sección
         </h2>
         <p class="text-sm text-secondary">
-          Actualizado: 2026-03-08. Esta sección se revisa cuando cambian
+          Actualizado: 2026-03-12. Esta sección se revisa cuando cambian
           porcentajes de descuento, reglas de impuesto único, estructura de la
-          liquidación o ayudas clave para entender estos temas.
+          liquidación o el puente hacia honorarios, finiquito y cesantía.
         </p>
       </div>
     </section>

@@ -1,0 +1,86 @@
+---
+import { getPath } from "@/utils/getPath";
+import type { CalculatorPortfolioEntry } from "@/config/calculatorPortfolio";
+
+type Props = {
+  calc: CalculatorPortfolioEntry;
+  familyId: string;
+  tagClass: string;
+};
+
+const { calc, familyId, tagClass } = Astro.props;
+---
+
+<article
+  class="rounded-xl border border-border bg-background p-5 transition-colors duration-150 hover:border-accent hover:bg-accent/5"
+>
+  <div class="flex items-start justify-between gap-3">
+    <span class="text-2xl">{calc.icon}</span>
+    <span
+      class:list={[
+        "rounded-md border px-2 py-1 text-[11px] font-semibold",
+        tagClass,
+      ]}
+    >
+      {calc.tag}
+    </span>
+  </div>
+
+  <h3 class="mt-4 text-lg leading-snug font-semibold">
+    <a
+      href={getPath(calc.href)}
+      class="underline decoration-transparent underline-offset-4 transition-colors hover:text-accent hover:decoration-border"
+      data-analytics-cta="calculator-index"
+      data-analytics-label={calc.title}
+      data-analytics-location={`calculator_family_${familyId}_title`}
+    >
+      {calc.title}
+    </a>
+  </h3>
+  <p class="mt-2 text-sm leading-relaxed text-secondary">
+    {calc.description}
+  </p>
+
+  <div class="mt-4 space-y-2 text-sm leading-relaxed text-secondary">
+    <p>
+      <span class="font-semibold text-foreground">Sirve para:</span>{" "}
+      {calc.primaryJtbd}
+    </p>
+    <p>
+      <span class="font-semibold text-foreground">Úsala si:</span>{" "}
+      {calc.whenToUse}
+    </p>
+    <p>
+      <span class="font-semibold text-foreground">No es para:</span>{" "}
+      {calc.notFor}
+    </p>
+  </div>
+
+  {
+    calc.related[0] && (
+      <div class="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-secondary">
+        <span class="font-semibold text-foreground">Cámbiate si:</span>{" "}
+        {calc.related[0].when}{" "}
+        <a
+          href={getPath(calc.related[0].href)}
+          class="font-semibold text-foreground underline decoration-border underline-offset-4 hover:text-accent"
+        >
+          {calc.related[0].label}
+        </a>
+        .
+      </div>
+    )
+  }
+
+  <div class="mt-5">
+    <a
+      href={getPath(calc.href)}
+      class="inline-flex items-center rounded-full bg-accent px-4 py-2 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+      data-analytics-cta="calculator-index"
+      data-analytics-label={calc.title}
+      data-analytics-location={`calculator_family_${familyId}_button`}
+    >
+      Abrir calculadora
+    </a>
+  </div>
+</article>

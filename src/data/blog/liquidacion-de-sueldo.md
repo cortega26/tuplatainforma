@@ -2,7 +2,7 @@
 title: "Liquidación de sueldo en Chile: cómo auditar el comprobante y sus líneas clave"
 author: "Equipo Monedario"
 pubDate: 2026-03-08T18:20:00Z
-updatedDate: 2026-03-09T18:20:00Z
+updatedDate: 2026-03-12T14:11:00Z
 slug: liquidacion-de-sueldo
 featured: false
 lang: es-CL
@@ -18,6 +18,26 @@ topicRole: owner
 canonicalTopic: auditar-liquidacion-sueldo
 description: "Guía para auditar tu liquidación de sueldo en Chile: qué debe mostrar el comprobante, qué respaldos pedir y qué líneas revisar antes de darlo por bueno."
 heroImage: /images/hero/liquidacion-de-sueldo.avif
+articleLead:
+  answer: "La liquidación de sueldo sirve para auditar el comprobante del mes, no para adivinarlo: tiene que mostrar haberes, descuentos y bases suficientes para reconstruir por qué tu depósito terminó en ese número."
+  calculatorHref: "/calculadoras/sueldo-liquido/"
+  calculatorLabel: "Cruzar con la calculadora"
+  nextStepHref: "/posts/descuentos-de-sueldo/"
+  nextStepLabel: "Revisar descuentos legales"
+  validAsOf: 2026-03-12
+  officialSources:
+    - label: "Dirección del Trabajo — artículo 54"
+      href: "https://www.dt.gob.cl/portal/1628/w3-article-60593.html"
+    - label: "Dirección del Trabajo — artículo 54 bis"
+      href: "https://www.dt.gob.cl/legislacion/1624/w3-article-60596.html"
+  covers:
+    - "Qué bloques mínimos debe traer el comprobante."
+    - "Qué respaldo pedir si una línea no cuadra."
+    - "Cómo separar documento, cálculo y legalidad del descuento."
+  limits:
+    - "No sustituye la revisión contractual completa."
+    - "No calcula por sí sola finiquitos ni indemnizaciones."
+    - "No determina la validez de descuentos discutidos judicialmente."
 ---
 
 <!-- META: keyword_primary="liquidacion de sueldo" | intent="informational-document-audit" | cluster="sueldo-remuneraciones" -->

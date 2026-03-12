@@ -1,0 +1,528 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import { getPath } from "@/utils/getPath";
+
+const finiquitoGuidePath = getPath(
+  "/posts/finiquito-e-indemnizaciones-en-chile/"
+);
+const cesantiaGuidePath = getPath("/posts/seguro-de-cesantia/");
+---
+
+<Layout
+  title="Calculadora de Finiquito e Indemnización | Chile"
+  description="Estima finiquito, aviso previo, años de servicio y feriado proporcional con supuestos visibles para revisar tu salida laboral."
+>
+  <Header />
+  <Breadcrumb />
+  <main
+    id="main-content"
+    class="app-layout"
+    data-analytics-page-type="calculator"
+    data-analytics-calculator="finiquito-indemnizacion"
+    data-analytics-calculator-name="Calculadora Finiquito e Indemnizacion"
+  >
+    <section class="border-b border-border pt-8 pb-6">
+      <h1 class="my-4 text-3xl font-bold sm:text-4xl">
+        📄 Calculadora de Finiquito e Indemnización
+      </h1>
+      <p class="max-w-2xl text-secondary">
+        Estima un caso base de salida laboral: sueldo pendiente, feriado
+        proporcional, aviso previo e indemnización por años de servicio. No
+        reemplaza la revisión del documento real ni un caso judicial.
+      </p>
+    </section>
+
+    <section
+      class="grid items-start gap-6 py-8 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)]"
+    >
+      <div class="rounded-xl border border-border p-6">
+        <h2 class="mb-5 text-lg font-semibold">📝 Datos del caso</h2>
+
+        <div class="mb-4">
+          <label
+            for="monthly-salary"
+            class="mb-1 block text-sm font-medium text-secondary"
+          >
+            Última remuneración mensual ($)
+          </label>
+          <input
+            id="monthly-salary"
+            type="number"
+            min="0"
+            placeholder="Ej: 900.000"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="mb-4">
+            <label
+              for="years-worked"
+              class="mb-1 block text-sm font-medium text-secondary"
+            >
+              Años completos trabajados
+            </label>
+            <input
+              id="years-worked"
+              type="number"
+              min="0"
+              value="0"
+              class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="months-worked"
+              class="mb-1 block text-sm font-medium text-secondary"
+            >
+              Meses adicionales
+            </label>
+            <input
+              id="months-worked"
+              type="number"
+              min="0"
+              max="11"
+              value="0"
+              class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="termination-cause"
+            class="mb-1 block text-sm font-medium text-secondary"
+          >
+            Causal de término
+          </label>
+          <select
+            id="termination-cause"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          >
+            <option value="necesidad"
+              >Necesidades de la empresa (art. 161)</option
+            >
+            <option value="mutuo-acuerdo">Mutuo acuerdo</option>
+            <option value="renuncia">Renuncia voluntaria</option>
+            <option value="disciplinaria"
+              >Despido por causal disciplinaria</option
+            >
+            <option value="vencimiento-obra"
+              >Vencimiento de plazo / fin de obra</option
+            >
+            <option value="judicial"
+              >Despido injustificado declarado judicialmente</option
+            >
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label class="mb-2 block text-sm font-medium text-secondary">
+            ¿Te avisaron con 30 días de anticipación?
+          </label>
+          <div class="flex gap-2">
+            <label class="flex-1 cursor-pointer">
+              <input
+                type="radio"
+                name="notice-given"
+                value="si"
+                checked
+                class="peer sr-only"
+              />
+              <span
+                class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent"
+              >
+                Sí
+              </span>
+            </label>
+            <label class="flex-1 cursor-pointer">
+              <input
+                type="radio"
+                name="notice-given"
+                value="no"
+                class="peer sr-only"
+              />
+              <span
+                class="block rounded-lg border border-border px-3 py-2 text-center text-sm font-medium transition-all peer-checked:border-accent peer-checked:text-accent"
+              >
+                No
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="mb-4">
+            <label
+              for="pending-salary-days"
+              class="mb-1 block text-sm font-medium text-secondary"
+            >
+              Días pendientes del mes
+            </label>
+            <input
+              id="pending-salary-days"
+              type="number"
+              min="0"
+              max="30"
+              value="0"
+              class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="vacation-months"
+              class="mb-1 block text-sm font-medium text-secondary"
+            >
+              Meses desde el último ciclo de vacaciones
+            </label>
+            <input
+              id="vacation-months"
+              type="number"
+              min="0"
+              max="12"
+              value="0"
+              class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="vacation-extra-days"
+            class="mb-1 block text-sm font-medium text-secondary"
+          >
+            Días extra del ciclo de vacaciones
+          </label>
+          <input
+            id="vacation-extra-days"
+            type="number"
+            min="0"
+            max="30"
+            value="0"
+            class="w-full rounded-lg border border-border bg-background px-3 py-2 text-foreground focus:border-accent focus:outline-none"
+          />
+          <p class="mt-1 text-xs text-muted">
+            Si no sabes este dato exacto, usa `0` y revisa luego con tus fechas
+            reales.
+          </p>
+        </div>
+
+        <button
+          id="calcBtn"
+          class="mt-2 w-full rounded-lg bg-accent px-4 py-3 text-base font-bold text-background transition-opacity hover:opacity-90"
+        >
+          Estimar finiquito →
+        </button>
+
+        <div
+          id="finiquito-error"
+          class="mt-3 hidden rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-200"
+          role="alert"
+        >
+        </div>
+      </div>
+
+      <div class="rounded-xl border border-border bg-background p-6">
+        <h2 class="mb-5 text-lg font-semibold">💰 Estimación orientativa</h2>
+        <div id="resultado-contenido" class="py-8 text-center text-muted">
+          <p class="mb-3 text-4xl">📄</p>
+          <p class="text-sm">Completa los datos y presiona calcular.</p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="prose prose-sm max-w-none border-t border-border pt-8 pb-12 dark:prose-invert"
+    >
+      <h2>Cuándo esta calculadora sí sirve</h2>
+      <ul>
+        <li>
+          Para revisar rápido si el orden de magnitud del finiquito parece
+          razonable.
+        </li>
+        <li>
+          Para separar sueldo pendiente, vacaciones, aviso previo e
+          indemnización.
+        </li>
+        <li>
+          Para detectar si la causal declarada cambia por completo el resultado.
+        </li>
+      </ul>
+
+      <h2>Cuándo debes escalar</h2>
+      <ul>
+        <li>
+          Si tu remuneración incluye variables complejas, comisiones o promedio
+          de bonos.
+        </li>
+        <li>
+          Si hay discusión por causal de despido, reserva de derechos o recargo
+          judicial.
+        </li>
+        <li>
+          Si el documento ya viene firmado o el empleador no entrega desglose.
+        </li>
+      </ul>
+
+      <p class="text-sm text-muted">
+        ⚠️ Estimador educativo. El finiquito real puede cambiar por topes,
+        pactos, variables remuneracionales y controversias legales.
+      </p>
+      <p>
+        Para revisar la lógica completa, abre la <a
+          href={finiquitoGuidePath}
+          data-analytics-cta="calculator-guide"
+          data-analytics-label="Guia de finiquito"
+          data-analytics-location="calculator_explainer"
+          >guía de finiquito e indemnizaciones</a
+        >. Si además quedaste sin trabajo, complementa con la guía de <a
+          href={cesantiaGuidePath}
+          data-analytics-cta="calculator-guide"
+          data-analytics-label="Guia de seguro de cesantia"
+          data-analytics-location="calculator_explainer_secondary"
+          >seguro de cesantía</a
+        >.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { estimateFiniquito } from "@/application/use-cases/EstimateFiniquito";
+  import { trackAnalyticsEvent } from "@/utils/analytics";
+
+  const currencyFormatter = new Intl.NumberFormat("es-CL", {
+    style: "currency",
+    currency: "CLP",
+    maximumFractionDigits: 0,
+  });
+
+  function fmtCurrency(value: number): string {
+    return currencyFormatter.format(Math.round(value));
+  }
+
+  function buildRow(
+    label: string,
+    value: string,
+    colorClass = ""
+  ): HTMLDivElement {
+    const line = document.createElement("div");
+    line.className =
+      "flex items-center justify-between border-b border-border py-2 text-sm last:border-0";
+
+    const labelElement = document.createElement("span");
+    labelElement.className = "text-secondary";
+    labelElement.textContent = label;
+
+    const valueElement = document.createElement("span");
+    valueElement.className = `font-mono font-semibold ${colorClass}`.trim();
+    valueElement.textContent = value;
+
+    line.append(labelElement, valueElement);
+    return line;
+  }
+
+  function showInlineError(message: string) {
+    const errorBox = document.getElementById("finiquito-error");
+    if (!errorBox) return;
+    errorBox.textContent = message;
+    errorBox.classList.remove("hidden");
+  }
+
+  function clearInlineError() {
+    const errorBox = document.getElementById("finiquito-error");
+    if (!errorBox) return;
+    errorBox.textContent = "";
+    errorBox.classList.add("hidden");
+  }
+
+  document.getElementById("calcBtn")?.addEventListener("click", () => {
+    clearInlineError();
+
+    const monthlySalary =
+      parseFloat(
+        (document.getElementById("monthly-salary") as HTMLInputElement).value
+      ) || 0;
+    const yearsWorked =
+      parseInt(
+        (document.getElementById("years-worked") as HTMLInputElement).value
+      ) || 0;
+    const monthsWorked =
+      parseInt(
+        (document.getElementById("months-worked") as HTMLInputElement).value
+      ) || 0;
+    const pendingSalaryDays =
+      parseInt(
+        (document.getElementById("pending-salary-days") as HTMLInputElement)
+          .value
+      ) || 0;
+    const vacationMonths =
+      parseInt(
+        (document.getElementById("vacation-months") as HTMLInputElement).value
+      ) || 0;
+    const vacationExtraDays =
+      parseInt(
+        (document.getElementById("vacation-extra-days") as HTMLInputElement)
+          .value
+      ) || 0;
+    const terminationCause = (
+      document.getElementById("termination-cause") as HTMLSelectElement
+    ).value;
+    const noticeGiven =
+      (
+        document.querySelector(
+          "input[name='notice-given']:checked"
+        ) as HTMLInputElement
+      )?.value === "si";
+
+    if (monthlySalary <= 0) {
+      showInlineError(
+        "Ingresa una remuneración mensual válida antes de calcular."
+      );
+      return;
+    }
+
+    let result;
+    try {
+      result = estimateFiniquito({
+        monthlySalary,
+        yearsWorked,
+        additionalMonthsWorked: monthsWorked,
+        pendingSalaryDays,
+        monthsSinceLastVacationCycle: vacationMonths,
+        additionalVacationDaysWorked: vacationExtraDays,
+        terminationCause: terminationCause as
+          | "necesidad"
+          | "mutuo-acuerdo"
+          | "renuncia"
+          | "disciplinaria"
+          | "vencimiento-obra"
+          | "judicial",
+        noticeGiven,
+      });
+    } catch (error) {
+      showInlineError(
+        error instanceof Error
+          ? error.message
+          : "No se pudo calcular el finiquito."
+      );
+      return;
+    }
+
+    const headline = document.createElement("div");
+    headline.className =
+      "mb-6 rounded-lg border border-accent/20 bg-accent/10 p-4 text-center";
+
+    const headlineLabel = document.createElement("p");
+    headlineLabel.className =
+      "mb-1 text-xs font-bold tracking-widest text-accent uppercase";
+    headlineLabel.textContent = "Total estimado";
+
+    const headlineValue = document.createElement("p");
+    headlineValue.className = "text-4xl font-bold";
+    headlineValue.textContent = fmtCurrency(result.totalEstimate);
+    headline.append(headlineLabel, headlineValue);
+
+    const notes = document.createElement("ul");
+    notes.className = "mt-4 space-y-2 text-xs leading-relaxed text-muted";
+    result.assumptions.forEach(item => {
+      const line = document.createElement("li");
+      line.textContent = `• ${item}`;
+      notes.appendChild(line);
+    });
+
+    const flags = document.createElement("div");
+    flags.className = "mt-4 flex flex-wrap gap-2";
+
+    const buildFlag = (text: string, className: string) => {
+      const badge = document.createElement("span");
+      badge.className = className;
+      badge.textContent = text;
+      return badge;
+    };
+
+    if (result.compensationProfile.appliesYearsOfService) {
+      flags.appendChild(
+        buildFlag(
+          "Incluye años de servicio",
+          "rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold text-accent"
+        )
+      );
+    }
+
+    if (!result.compensationProfile.appliesYearsOfService) {
+      flags.appendChild(
+        buildFlag(
+          "No incluye años de servicio",
+          "rounded-full border border-border px-3 py-1 text-xs font-semibold text-secondary"
+        )
+      );
+    }
+
+    if (result.compensationProfile.requiresProfessionalReview) {
+      flags.appendChild(
+        buildFlag(
+          "Revisión profesional recomendada",
+          "rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-semibold text-red-300"
+        )
+      );
+    }
+
+    document
+      .getElementById("resultado-contenido")
+      ?.replaceChildren(
+        headline,
+        buildRow(
+          "Años contados",
+          `${result.serviceYearsCounted}`,
+          "text-secondary"
+        ),
+        buildRow(
+          "Años con tope legal",
+          `${result.cappedServiceYears}`,
+          "text-secondary"
+        ),
+        buildRow(
+          "Sueldo pendiente del mes",
+          fmtCurrency(result.pendingSalaryAmount),
+          "text-secondary"
+        ),
+        buildRow(
+          "Feriado proporcional",
+          `${result.proportionalVacationDays.toFixed(2)} días`,
+          "text-secondary"
+        ),
+        buildRow(
+          "Monto por feriado proporcional",
+          fmtCurrency(result.proportionalVacationAmount),
+          "text-secondary"
+        ),
+        buildRow(
+          "Indemnización años de servicio",
+          fmtCurrency(result.yearsOfServiceIndemnity),
+          result.yearsOfServiceIndemnity > 0 ? "text-accent" : "text-secondary"
+        ),
+        buildRow(
+          "Aviso previo sustitutivo",
+          fmtCurrency(result.substituteNoticeIndemnity),
+          result.substituteNoticeIndemnity > 0
+            ? "text-accent"
+            : "text-secondary"
+        ),
+        flags,
+        notes
+      );
+
+    trackAnalyticsEvent("calculator_complete", {
+      calculator_slug: "finiquito-indemnizacion",
+      calculator_name: "Calculadora Finiquito e Indemnizacion",
+      outcome: "success",
+    });
+  });
+</script>

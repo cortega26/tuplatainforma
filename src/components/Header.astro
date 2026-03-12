@@ -2,7 +2,6 @@
 import IconX from "@/assets/icons/IconX.svg";
 import IconMoon from "@/assets/icons/IconMoon.svg";
 import IconSearch from "@/assets/icons/IconSearch.svg";
-import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import generalSans600 from "@/assets/fonts/general-sans-600.woff2";
@@ -172,26 +171,6 @@ const isActive = (path: string) => {
             Nosotros
           </a>
         </li>
-        {
-          SITE.showArchives && (
-            <li class="col-span-2">
-              <LinkButton
-                href={getPath("/archives/")}
-                class:list={[
-                  "focus-outline flex justify-center p-3 sm:p-1",
-                  {
-                    "active-nav [&>svg]:stroke-accent": isActive("/archives"),
-                  },
-                ]}
-                title="Archivo"
-                aria-label="archivo"
-              >
-                <IconArchive class="hidden sm:inline-block" />
-                <span class="sm:sr-only">Archivo</span>
-              </LinkButton>
-            </li>
-          )
-        }
         <li class="col-span-1 flex items-center justify-center">
           <LinkButton
             href={getPath("/search/")}

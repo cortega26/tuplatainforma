@@ -2,7 +2,7 @@
 title: "Descuentos de sueldo en Chile: cuáles son legales, voluntarios y prohibidos"
 author: "Equipo Monedario"
 pubDate: 2026-03-08T18:10:00Z
-updatedDate: 2026-03-09T18:10:00Z
+updatedDate: 2026-03-12T14:12:00Z
 slug: descuentos-de-sueldo
 featured: false
 lang: es-CL
@@ -19,6 +19,26 @@ topicRole: owner
 canonicalTopic: clasificacion-descuentos-sueldo
 description: "Guía para separar descuentos legales, autorizados y prohibidos en tu sueldo en Chile, sin confundir la clasificación jurídica con el cálculo completo del líquido."
 heroImage: /images/hero/descuentos-de-sueldo.avif
+articleLead:
+  answer: "La pregunta útil no es solo cuánto te descontaron, sino de qué tipo de descuento se trata: en Chile no todo lo que baja tu líquido es legal, obligatorio o libremente imponible por el empleador."
+  calculatorHref: "/calculadoras/sueldo-liquido/"
+  calculatorLabel: "Ver impacto en el líquido"
+  nextStepHref: "/posts/liquidacion-de-sueldo/"
+  nextStepLabel: "Auditar el comprobante"
+  validAsOf: 2026-03-12
+  officialSources:
+    - label: "Dirección del Trabajo — artículo 58"
+      href: "https://www.dt.gob.cl/portal/1628/w3-article-60593.html"
+    - label: "AFC — financiamiento del seguro"
+      href: "https://www.afc.cl/afiliados/seguro-de-cesantia/financiamiento/"
+  covers:
+    - "Clasificación entre descuentos legales, autorizados y prohibidos."
+    - "Excepciones típicas por tipo de contrato o sistema de salud."
+    - "Cómo usar la clasificación para leer mejor la liquidación."
+  limits:
+    - "No reemplaza la revisión del contrato ni anexos."
+    - "No calcula por sí sola el depósito final."
+    - "No resuelve diferencias judicializadas o multas administrativas."
 ---
 
 <!-- META: keyword_primary="descuentos de sueldo" | intent="informational-legal-classification" | cluster="sueldo-remuneraciones" -->

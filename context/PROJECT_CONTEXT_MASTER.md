@@ -83,6 +83,13 @@ Los riesgos principales están en deuda de mantenibilidad y consistencia operati
 - `/calculadoras/` se reordena por cuatro familias operativas (`ingresos`, `ahorro-prevision`, `deuda-credito`, `vivienda-uf`) y expone ayuda visible para elegir entre herramientas cercanas.
 - La política operativa para crear, extender, fusionar o retirar calculadoras queda documentada en `docs/operations/runbooks/calculator-portfolio-policy.md`, con JTBD y riesgo de overlap obligatorios.
 
+### Checkpoint 2026-03-12 (Phase 1 Income System Packaging)
+
+- `src/layouts/PostDetails.astro` ahora puede renderizar un bloque reusable `articleLead` con respuesta rápida, CTA primaria, vigencia, fuentes y límites, definido desde frontmatter y usado en owners de Fase 1.
+- El índice `/calculadoras/` elimina nested links mediante `src/components/CalculatorCard.astro`, y el header deja `Archivo` fuera de la navegación principal para reducir ruido de decisión.
+- Se suman las calculadoras `/calculadoras/boleta-honorarios-liquido/` y `/calculadoras/finiquito-indemnizacion/`, más dos piezas support nuevas: `indemnizacion-anos-de-servicio-chile` y `seguro-cesantia-cuenta-individual-vs-fondo-solidario`.
+- `src/config/editorial-topic-policy.mjs`, `docs/research/seo/strategy/topic_ownership_matrix.md`, `docs/operations/runbooks/phase1-refresh-policy.md` y `docs/operations/reports/phase1_measurement_baseline.md` congelan ownership, SLA y medición de la Fase 1 sin abrir clusters nuevos.
+
 ## 1. Stack técnico
 
 ### Runtime y package management

@@ -2,7 +2,7 @@
 title: "Cómo calcular tu sueldo líquido en Chile: del imponible al depósito final"
 author: "Equipo Monedario"
 pubDate: 2026-02-24T10:00:00Z
-updatedDate: 2026-03-09T18:30:00Z
+updatedDate: 2026-03-12T14:10:00Z
 slug: como-calcular-sueldo-liquido
 featured: true
 homepagePriority: 100
@@ -20,6 +20,26 @@ topicRole: owner
 canonicalTopic: calcular-sueldo-liquido
 description: "Guía para reconstruir tu sueldo líquido en Chile desde el bruto e imponible hasta AFP, salud, cesantía e impuesto mensual, sin confundir cada línea."
 heroImage: /images/hero/como-calcular-sueldo-liquido.avif
+articleLead:
+  answer: "Si quieres reconstruir tu sueldo líquido en Chile, parte por el imponible y no por el bruto total: AFP, salud, cesantía e impuesto único no usan exactamente la misma base ni siempre aplican sobre el total que te prometieron en la oferta."
+  calculatorHref: "/calculadoras/sueldo-liquido/"
+  calculatorLabel: "Usar calculadora de sueldo líquido"
+  nextStepHref: "/posts/liquidacion-de-sueldo/"
+  nextStepLabel: "Auditar la liquidación"
+  validAsOf: 2026-03-12
+  officialSources:
+    - label: "SII — Impuesto Único 2026"
+      href: "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2026.htm"
+    - label: "Superintendencia de Pensiones"
+      href: "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-9908.html"
+  covers:
+    - "Cómo pasar de bruto e imponible a depósito final."
+    - "Qué descuentos obligatorios afectan realmente el cálculo."
+    - "Cuándo conviene cruzar con liquidación o descuentos."
+  limits:
+    - "No reemplaza el documento oficial del empleador."
+    - "No resuelve casos de boletas de honorarios."
+    - "No modela juicios laborales ni reclamos por finiquito."
 ---
 
 <!-- META: keyword_primary="calcular sueldo liquido" | intent="informational-howto" | cluster="sueldo-remuneraciones" -->

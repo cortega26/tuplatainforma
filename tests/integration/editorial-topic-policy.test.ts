@@ -23,21 +23,19 @@ describe("editorial topic ownership policy", () => {
     ).toBe(true);
   });
 
-  it("documents the IPC article as a transitional placement", () => {
+  it("keeps the IPC article out of the transitional registry after UF hardening", () => {
     const entry = getTransitionalOwnershipEntry(
       "que-es-el-ipc-chile-como-se-calcula"
     );
 
-    expect(entry).not.toBeNull();
-    expect(entry?.canonicalOwnerCluster).toBe("uf-costo-de-vida");
-    expect(entry?.targetHubPath).toBe("/guias/uf-costo-de-vida/");
+    expect(entry).toBeNull();
     expect(
       isDocumentedTransitionalPlacement({
         slug: "que-es-el-ipc-chile-como-se-calcula",
         cluster: "empleo-ingresos",
         category: "general",
       })
-    ).toBe(true);
+    ).toBe(false);
   });
 
   it("keeps APV related in the pensions hub instead of core", () => {

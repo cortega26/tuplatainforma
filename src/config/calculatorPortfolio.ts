@@ -99,6 +99,52 @@ export const CALCULATOR_PORTFOLIO: CalculatorPortfolioEntry[] = [
     ],
   },
   {
+    href: "/calculadoras/boleta-honorarios-liquido/",
+    slug: "boleta-honorarios-liquido",
+    title: "Boleta de Honorarios 2026",
+    description:
+      "Calcula líquido por boleta, retención vigente y base anual de cobertura orientativa sin mezclarlo con la declaración completa.",
+    icon: "🧾",
+    tag: "Más usada",
+    family: "ingresos",
+    primaryJtbd:
+      "Saber cuánto recibes hoy por una boleta y cómo se proyecta esa retención en el año.",
+    whenToUse:
+      "Cuando emites honorarios y tu duda es líquido vs retención, no sueldo dependiente.",
+    notFor:
+      "No reemplaza la revisión de Operación Renta ni resuelve por sí sola exenciones legales.",
+    related: [
+      {
+        href: "/calculadoras/sueldo-liquido/",
+        label: "Sueldo líquido",
+        when: "si tu ingreso principal viene de contrato dependiente y necesitas revisar descuentos de planilla.",
+      },
+    ],
+  },
+  {
+    href: "/calculadoras/finiquito-indemnizacion/",
+    slug: "finiquito-indemnizacion",
+    title: "Finiquito e Indemnización",
+    description:
+      "Estima años de servicio, aviso previo y feriado proporcional para revisar una salida laboral antes de firmar.",
+    icon: "📄",
+    tag: "Contingencia",
+    family: "ingresos",
+    primaryJtbd:
+      "Revisar si un finiquito parece razonable antes de aceptar el monto sin revisar.",
+    whenToUse:
+      "Cuando el problema ya es el término del contrato y necesitas separar cada ítem del pago final.",
+    notFor:
+      "No reemplaza asesoría laboral ni casos con discusión judicial, recargos o variables complejas.",
+    related: [
+      {
+        href: "/calculadoras/seguro-cesantia/",
+        label: "Seguro de cesantía",
+        when: "si además del finiquito necesitas revisar cuánto colchón laboral te queda por AFC.",
+      },
+    ],
+  },
+  {
     href: "/calculadoras/seguro-cesantia/",
     slug: "seguro-cesantia",
     title: "Seguro de Cesantía",
@@ -331,6 +377,22 @@ export const CALCULATOR_DECISION_GUIDES: CalculatorDecisionGuide[] = [
     recommendedHref: "/calculadoras/sueldo-liquido/",
     recommendedLabel: "Calculadora de Sueldo Líquido",
     why: "Te responde el depósito mensual; no mezcla esa duda con APV ni pensión futura.",
+  },
+  {
+    title: "Emito boletas y quiero saber mi líquido real",
+    situation:
+      "Tu ingreso viene de honorarios y necesitas separar retención mensual, líquido recibido y cobertura anual orientativa.",
+    recommendedHref: "/calculadoras/boleta-honorarios-liquido/",
+    recommendedLabel: "Boleta de Honorarios 2026",
+    why: "No conviene partir por sueldo líquido si la pregunta nace en una boleta y no en una liquidación.",
+  },
+  {
+    title: "Me finiquitaron y quiero revisar el monto",
+    situation:
+      "Necesitas un estimado base de años de servicio, aviso previo y vacaciones antes de firmar.",
+    recommendedHref: "/calculadoras/finiquito-indemnizacion/",
+    recommendedLabel: "Finiquito e Indemnización",
+    why: "Te ayuda a separar cada componente del pago final antes de pasar a AFC o a una reclamación.",
   },
   {
     title: "Quiero medir mi colchón si pierdo la pega",

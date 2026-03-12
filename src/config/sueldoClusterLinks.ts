@@ -49,6 +49,24 @@ const afpDiscountCard: LinkCard = {
   cta: "Ver el desglose AFP",
 };
 
+const honorariosCalculatorCard: LinkCard = {
+  kind: "Calculadora",
+  title: "Boleta de honorarios 2026",
+  description:
+    "Úsala si tu ingreso nace en boletas y necesitas separar retención, líquido y cobertura anual orientativa.",
+  href: "/calculadoras/boleta-honorarios-liquido/",
+  cta: "Calcular líquido por boleta",
+};
+
+const empleoHubCard: LinkCard = {
+  kind: "Sección",
+  title: "Empleo e ingresos",
+  description:
+    "Pasa aquí cuando el problema ya no es la liquidación del mes sino finiquito, cesantía o interrupción del ingreso.",
+  href: "/guias/empleo-ingresos/",
+  cta: "Ir a empleo e ingresos",
+};
+
 const descuentosCard: LinkCard = {
   kind: "Artículo",
   title: "Descuentos de sueldo en Chile",
@@ -109,6 +127,7 @@ export const sueldoClusterHubPrimaryCards: LinkCard[] = [
   descuentosCard,
   liquidacionCard,
   afpDiscountCard,
+  honorariosCalculatorCard,
 ];
 
 export const sueldoClusterHubSupportCards: LinkCard[] = [
@@ -124,7 +143,13 @@ export const sueldoCalculatorSections: LinkSection[] = [
     title: "Sigue desde el cálculo a la decisión",
     description:
       "Desde aquí puedes revisar la guía paso a paso, entender la liquidación o ver con más detalle los descuentos que afectan tu resultado.",
-    items: [sueldoHubCard, sueldoGuideCard, descuentosCard, liquidacionCard],
+    items: [
+      sueldoHubCard,
+      sueldoGuideCard,
+      descuentosCard,
+      liquidacionCard,
+      empleoHubCard,
+    ],
   },
   {
     eyebrow: "Aclaraciones",
@@ -147,6 +172,7 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
         descuentosCard,
         liquidacionCard,
         sueldoHubCard,
+        empleoHubCard,
       ],
     },
     {
@@ -173,6 +199,7 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
         descuentosCard,
         liquidacionCard,
         sueldoHubCard,
+        empleoHubCard,
       ],
     },
     {
@@ -199,6 +226,7 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
         sueldoGuideCard,
         liquidacionCard,
         sueldoHubCard,
+        honorariosCalculatorCard,
       ],
     },
     {
@@ -226,6 +254,7 @@ const sueldoArticleSectionsBySlug: Record<string, LinkSection[]> = {
         sueldoGuideCard,
         descuentosCard,
         sueldoHubCard,
+        empleoHubCard,
       ],
     },
     {
