@@ -56,12 +56,18 @@ Los riesgos principales están en deuda de mantenibilidad y consistencia operati
 - Las calculadoras exponen imponible mensual opcional y tipo de contrato, haciendo explícito cuándo el bruto total se usa como aproximación rápida.
 - ADR de respaldo: `docs/adr/ADR-20260312-shared-payroll-taxable-base.md`.
 
+### Checkpoint 2026-03-12 (TD-0027 Calculator Portfolio Taxonomy)
+
+- La fuente de verdad del portafolio de calculadoras ahora vive en `src/config/calculatorPortfolio.ts`.
+- `/calculadoras/` se reordena por cuatro familias operativas (`ingresos`, `ahorro-prevision`, `deuda-credito`, `vivienda-uf`) y expone ayuda visible para elegir entre herramientas cercanas.
+- La política operativa para crear, extender, fusionar o retirar calculadoras queda documentada en `docs/operations/runbooks/calculator-portfolio-policy.md`, con JTBD y riesgo de overlap obligatorios.
+
 ## 1. Stack técnico
 
 ### Runtime y package management
 - **Node objetivo:** 20 (`README.md`, `.github/workflows/ci.yml`, `.github/workflows/deploy.yml`).
-- **Gestores en uso (inconsistente):** `pnpm` y `npm`.
-- **Lockfiles presentes:** `pnpm-lock.yaml` y `package-lock.json`.
+- **Gestor en uso:** `pnpm`.
+- **Lockfiles presentes:** `pnpm-lock.yaml`.
 
 ### Dependencias principales (relevantes)
 

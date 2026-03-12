@@ -3,101 +3,43 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import {
+  CALCULATOR_DECISION_GUIDES,
+  CALCULATOR_FAMILIES,
+  CALCULATOR_FAMILY_ORDER,
+  CALCULATOR_PORTFOLIO,
+} from "@/config/calculatorPortfolio";
 import { getPath } from "@/utils/getPath";
 
-const calculadoras = [
-  {
-    titulo: "Calculadora de Sueldo Líquido",
-    descripcion:
-      "¿Cuánto recibirás después de AFP, salud e impuestos? Obtén el desglose completo de tus descuentos.",
-    href: getPath("/calculadoras/sueldo-liquido/"),
-    icono: "💰",
-    tag: "Más usada",
-  },
-  {
-    titulo: "Conversor UF ↔ Pesos",
-    descripcion:
-      "Convierte entre UF y pesos al valor oficial del día. Incluye tabla de referencias rápidas.",
-    href: getPath("/calculadoras/conversor-uf/"),
-    icono: "🔄",
-    tag: "Nueva",
-  },
-  {
-    titulo: "Simulador APV",
-    descripcion:
-      "Compara Régimen A y B según tu sueldo y descubre cuál te ahorra más en impuestos.",
-    href: getPath("/calculadoras/apv/"),
-    icono: "📈",
-    tag: "Nueva",
-  },
-  {
-    titulo: "Costo Real Tarjeta de Crédito",
-    descripcion:
-      "Úsala si ya tienes deuda en la tarjeta y quieres medir el costo de pagar el mínimo o una cuota fija.",
-    href: getPath("/calculadoras/tarjeta-credito/"),
-    icono: "💳",
-    tag: "Nueva",
-  },
-  {
-    titulo: "Simulador de Jubilación",
-    descripcion:
-      "Proyecta tu saldo AFP al jubilar considerando la reforma previsional vigente y estima tu pensión.",
-    href: getPath("/calculadoras/simulador-jubilacion/"),
-    icono: "🏖️",
-    tag: "Nueva",
-  },
-  {
-    titulo: "Calculadora de Crédito de Consumo",
-    descripcion:
-      "Úsala para evaluar una oferta nueva de crédito de consumo: cuota, CAE e intereses totales.",
-    href: getPath("/calculadoras/credito-consumo/"),
-    icono: "🏦",
-    tag: "Nueva",
-  },
-  {
-    titulo: "Seguro de Cesantía",
-    descripcion:
-      "Estima tu saldo CIC y cuánto recibirías cada mes si quedaras sin trabajo según tu contrato y causal.",
-    href: getPath("/calculadoras/seguro-cesantia/"),
-    icono: "🛡️",
-    tag: "Nueva",
-  },
-  {
-    titulo: "Simulador Renegociación Superir",
-    descripcion:
-      "Ingresa tus deudas y verifica si calificas para la renegociación gratuita. Simula tu cuota.",
-    href: getPath("/calculadoras/simulador-renegociacion/"),
-    icono: "⚖️",
-    tag: "Nueva",
-  },
-  {
-    titulo: "¿Conviene prepagar el crédito?",
-    descripcion:
-      "Úsala si ya tienes un crédito vigente y estás evaluando un abono extraordinario versus invertir ese dinero.",
-    href: getPath("/calculadoras/prepago-credito/"),
-    icono: "💡",
-    tag: "Nueva",
-  },
-  {
-    titulo: "Reajuste de Arriendo",
-    descripcion:
-      "Calcula cuánto sube tu arriendo según la variación de la UF o el IPC. Para contratos en UF, IPC o pesos.",
-    href: getPath("/calculadoras/reajuste-arriendo/"),
-    icono: "🏠",
-    tag: "Nueva",
-  },
-];
+const groupedFamilies = CALCULATOR_FAMILY_ORDER.map(familyId => ({
+  id: familyId,
+  ...CALCULATOR_FAMILIES[familyId],
+  calculators: CALCULATOR_PORTFOLIO.filter(calc => calc.family === familyId),
+}));
 
 const tagStyles: Record<string, string> = {
-  "Más usada": "bg-accent/20 text-accent",
-  Nueva: "bg-green-500/20 text-green-500",
-  Próximamente: "bg-foreground/10 text-muted",
+  "Más usada": "border-accent/30 bg-accent/10 text-accent",
+  Contingencia:
+    "border-[color:var(--color-accent-2)]/30 bg-[color:var(--color-accent-2)]/10 text-[color:var(--color-accent-2)]",
+  "Decisión APV":
+    "border-[color:var(--color-accent-2)]/30 bg-[color:var(--color-accent-2)]/10 text-[color:var(--color-accent-2)]",
+  "Largo plazo": "border-accent/30 bg-accent/10 text-accent",
+  "Oferta nueva":
+    "border-[color:var(--color-highlight)]/30 bg-[color:var(--color-highlight)]/10 text-[color:var(--color-highlight)]",
+  "Deuda usada":
+    "border-[color:var(--color-highlight)]/30 bg-[color:var(--color-highlight)]/10 text-[color:var(--color-highlight)]",
+  "Abono extra":
+    "border-[color:var(--color-highlight)]/30 bg-[color:var(--color-highlight)]/10 text-[color:var(--color-highlight)]",
+  "Salida formal":
+    "border-[color:var(--color-highlight)]/30 bg-[color:var(--color-highlight)]/10 text-[color:var(--color-highlight)]",
+  Referencia: "border-border bg-background text-secondary",
+  Contrato: "border-border bg-background text-secondary",
 };
 ---
 
 <Layout
   title="Calculadoras Financieras en Chile | Monedario"
-  description="Explora calculadoras gratuitas de sueldo líquido, APV, UF, crédito, cesantía, jubilación y más en un solo lugar."
+  description="Explora calculadoras gratuitas agrupadas por ingresos, previsión, deuda y UF para llegar más rápido a la herramienta correcta."
   enableClientRouter={false}
 >
   <Header />
@@ -109,87 +51,153 @@ const tagStyles: Record<string, string> = {
   >
     <section class="border-b border-border pt-8 pb-6">
       <h1 class="my-4 text-3xl font-bold sm:text-4xl">
-        🧮 Calculadoras Financieras
+        Calculadoras financieras para decisiones concretas
       </h1>
-      <p class="max-w-xl text-secondary">
-        Herramientas gratuitas para hacer tus propios números. Sin registro, sin
-        datos personales.
+      <p class="max-w-3xl text-secondary">
+        El portafolio ya no está ordenado como una lista plana. Partimos por la
+        duda que quieres resolver y después por la familia correcta: ingresos,
+        previsión, deuda o UF.
+      </p>
+      <p class="mt-3 text-sm text-secondary">
+        {CALCULATOR_PORTFOLIO.length} herramientas activas agrupadas en{" "}
+        {groupedFamilies.length} familias. Sin registro, sin pedir datos personales.
       </p>
     </section>
 
     <section class="py-8">
-      <div class="rounded-xl border border-border bg-foreground/5 p-5">
-        <h2 class="mb-3 text-lg font-semibold">Elegir calculadora de deuda</h2>
-        <div class="grid gap-3 sm:grid-cols-3">
-          <div class="rounded-lg border border-border bg-background p-4">
-            <p class="mb-1 text-sm font-semibold">Oferta nueva</p>
-            <p class="text-sm text-secondary">
-              Si estás cotizando un préstamo antes de firmarlo, parte por
-              <a href={getPath("/calculadoras/credito-consumo/")}>
-                crédito de consumo
-              </a>.
-            </p>
-          </div>
-          <div class="rounded-lg border border-border bg-background p-4">
-            <p class="mb-1 text-sm font-semibold">Deuda de tarjeta</p>
-            <p class="text-sm text-secondary">
-              Si ya usaste la tarjeta y quieres medir el costo del pago mínimo,
-              usa
-              <a href={getPath("/calculadoras/tarjeta-credito/")}>
-                tarjeta de crédito
-              </a>.
-            </p>
-          </div>
-          <div class="rounded-lg border border-border bg-background p-4">
-            <p class="mb-1 text-sm font-semibold">Abono extraordinario</p>
-            <p class="text-sm text-secondary">
-              Si el crédito ya existe y tu duda es si conviene prepagar, ve a
-              <a href={getPath("/calculadoras/prepago-credito/")}>
-                prepago de crédito
-              </a>.
-            </p>
-          </div>
+      <div
+        class="rounded-xl border border-border bg-surface-muted/22 p-5 sm:p-6"
+      >
+        <div class="max-w-3xl">
+          <h2 class="text-2xl font-semibold">Empieza por tu situación</h2>
+          <p class="mt-2 text-sm leading-relaxed text-secondary">
+            Si dos nombres te suenan parecidos, usa esta guía rápida antes de
+            abrir una herramienta. La frontera importante es el trabajo que
+            necesitas resolver, no la palabra “simulador”.
+          </p>
         </div>
+
+        <ol class="mt-6 grid gap-4 lg:grid-cols-2">
+          {
+            CALCULATOR_DECISION_GUIDES.map(guide => (
+              <li class="rounded-lg border border-border bg-background p-4">
+                <h3 class="text-lg leading-snug font-semibold">
+                  {guide.title}
+                </h3>
+                <p class="mt-2 text-sm leading-relaxed text-secondary">
+                  {guide.situation}
+                </p>
+                <p class="mt-3 text-sm leading-relaxed text-secondary">
+                  Parte por{" "}
+                  <a
+                    href={getPath(guide.recommendedHref)}
+                    class="font-semibold text-foreground underline decoration-border underline-offset-4 hover:text-accent"
+                  >
+                    {guide.recommendedLabel}
+                  </a>
+                  . {guide.why}
+                </p>
+              </li>
+            ))
+          }
+        </ol>
       </div>
     </section>
 
-    <section class="py-8">
-      <ul class="grid gap-4 sm:grid-cols-2">
-        {
-          calculadoras.map(calc => (
-            <li>
-              <a
-                href={calc.href}
-                class:list={[
-                  "block rounded-xl border border-border p-5",
-                  "transition-all duration-200",
-                  calc.tag === "Próximamente"
-                    ? "cursor-not-allowed opacity-60"
-                    : "hover:border-accent hover:bg-accent/5",
-                ]}
-                data-analytics-cta="calculator-index"
-                data-analytics-label={calc.titulo}
-                data-analytics-location="calculator_index"
-              >
-                <div class="mb-2 flex items-start justify-between gap-2">
-                  <span class="text-2xl">{calc.icono}</span>
-                  <span
-                    class:list={[
-                      "rounded-full px-2 py-0.5 text-xs font-bold",
-                      tagStyles[calc.tag] ?? "bg-foreground/10 text-muted",
-                    ]}
-                  >
-                    {calc.tag}
-                  </span>
-                </div>
-                <h2 class="mb-1 text-lg font-semibold">{calc.titulo}</h2>
-                <p class="text-sm text-secondary">{calc.descripcion}</p>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+    <div class="py-4">
+      {
+        groupedFamilies.map(family => (
+          <section class="border-t border-border py-8 first:border-t-0 first:pt-0">
+            <div class="grid gap-5 lg:grid-cols-[minmax(0,280px)_minmax(0,1fr)]">
+              <div>
+                <h2 class="text-2xl font-semibold">{family.title}</h2>
+                <p class="mt-2 text-sm leading-relaxed text-secondary">
+                  {family.description}
+                </p>
+                <p class="mt-3 text-sm leading-relaxed text-secondary">
+                  {family.chooserPrompt}
+                </p>
+              </div>
+
+              <ul class="grid gap-4 sm:grid-cols-2">
+                {family.calculators.map(calc => (
+                  <li>
+                    <a
+                      href={getPath(calc.href)}
+                      class="block rounded-xl border border-border bg-background p-5 transition-colors duration-150 hover:border-accent hover:bg-accent/5"
+                      data-analytics-cta="calculator-index"
+                      data-analytics-label={calc.title}
+                      data-analytics-location={`calculator_family_${family.id}`}
+                    >
+                      <div class="flex items-start justify-between gap-3">
+                        <span class="text-2xl">{calc.icon}</span>
+                        <span
+                          class:list={[
+                            "rounded-md border px-2 py-1 text-[11px] font-semibold",
+                            tagStyles[calc.tag] ??
+                              "border-border bg-background text-secondary",
+                          ]}
+                        >
+                          {calc.tag}
+                        </span>
+                      </div>
+
+                      <h3 class="mt-4 text-lg leading-snug font-semibold">
+                        {calc.title}
+                      </h3>
+                      <p class="mt-2 text-sm leading-relaxed text-secondary">
+                        {calc.description}
+                      </p>
+
+                      <div class="mt-4 space-y-2 text-sm leading-relaxed text-secondary">
+                        <p>
+                          <span class="font-semibold text-foreground">
+                            Sirve para:
+                          </span>{" "}
+                          {calc.primaryJtbd}
+                        </p>
+                        <p>
+                          <span class="font-semibold text-foreground">
+                            Úsala si:
+                          </span>{" "}
+                          {calc.whenToUse}
+                        </p>
+                        <p>
+                          <span class="font-semibold text-foreground">
+                            No es para:
+                          </span>{" "}
+                          {calc.notFor}
+                        </p>
+                      </div>
+
+                      {calc.related[0] && (
+                        <div class="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-secondary">
+                          <span class="font-semibold text-foreground">
+                            Cámbiate si:
+                          </span>{" "}
+                          {calc.related[0].when}{" "}
+                          <a
+                            href={getPath(calc.related[0].href)}
+                            class="font-semibold text-foreground underline decoration-border underline-offset-4 hover:text-accent"
+                          >
+                            {calc.related[0].label}
+                          </a>
+                          .
+                        </div>
+                      )}
+
+                      <span class="mt-5 inline-flex items-center text-sm font-semibold text-accent">
+                        Abrir calculadora
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        ))
+      }
+    </div>
   </main>
   <Footer />
 </Layout>

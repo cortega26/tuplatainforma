@@ -11,9 +11,9 @@ Fecha de corte: 2026-03-12
 - **P3:** 1
 
 ### Estado de avance (2026-03-12)
-- **Completados:** 29 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0011`, `TD-0012`, `TD-0013`, `TD-0014`, `TD-0015`, `TD-0016`, `TD-0017`, `TD-0018`, `TD-0019`, `TD-0020`, `TD-0021`, `TD-0022`, `TD-0023`, `TD-0024`, `TD-0025`, `TD-0026`, `TD-0028`, `FIX-MDX`, `FIX-LINKS-CALC`)
+- **Completados:** 30 (`TD-0001`, `TD-0002`, `TD-0003`, `TD-0004`, `TD-0005`, `TD-0006`, `TD-0007`, `TD-0008`, `TD-0009`, `TD-0010`, `TD-0011`, `TD-0012`, `TD-0013`, `TD-0014`, `TD-0015`, `TD-0016`, `TD-0017`, `TD-0018`, `TD-0019`, `TD-0020`, `TD-0021`, `TD-0022`, `TD-0023`, `TD-0024`, `TD-0025`, `TD-0026`, `TD-0027`, `TD-0028`, `FIX-MDX`, `FIX-LINKS-CALC`)
 - **En progreso:** 0
-- **Backlog sin iniciar:** 2 (`TD-0027`, `TD-0029`)
+- **Backlog sin iniciar:** 1 (`TD-0029`)
 - **Backlog en validación/diseño:** 0
 
 > `FIX-MDX`: corregido comentario HTML (`<!-- -->`) en `que-es-el-apv.mdx:25` que rompía el build.
@@ -22,8 +22,7 @@ Fecha de corte: 2026-03-12
 ### Top riesgos restantes
 | Ranking | ID | Riesgo | Motivo principal |
 |---|---|---|---|
-| 1 | TD-0027 | Medio | El checklist de ahorro/inversión mezcla cálculo, copy y supuestos de producto sin un contrato común reutilizable. |
-| 2 | TD-0029 | Medio | Las fichas legales de cesantía y reforma previsional quedaron desalineadas del modelado oficial usado por las calculadoras. |
+| 1 | TD-0029 | Medio | Las fichas legales de cesantía y reforma previsional quedaron desalineadas del modelado oficial usado por las calculadoras. |
 
 ### Quick wins (alto impacto / bajo esfuerzo)
 - [x] `TD-0007` Corregir email placeholder en enlaces sociales.
@@ -257,7 +256,7 @@ Fecha de corte: 2026-03-12
 - **ID:** TD-0027
 - **Título corto:** Reordenar landing y política de creación/fusión de calculadoras
 - **Descripción:** El portafolio actual es útil pero se presenta como una lista plana. Eso deja fronteras borrosas entre herramientas cercanas y no explicita una política reusable para crear, extender, fusionar o eliminar calculadoras.
-- **Evidencia:** `src/pages/calculadoras/index.astro`; `context/PROJECT_CONTEXT_MASTER.md`; auditoría integral de calculadoras 2026-03-11.
+- **Evidencia (actualizada):** `src/config/calculatorPortfolio.ts` centraliza familias, JTBD, fronteras y guías de elección; `src/pages/calculadoras/index.astro` renderiza el landing desde esa fuente de verdad en cuatro familias con ayuda visible para casos cercanos; `docs/operations/runbooks/calculator-portfolio-policy.md` fija el intake obligatorio con JTBD y riesgo de overlap; `tests/application/CalculatorPortfolio.test.ts` evita rutas duplicadas y omisiones de metadata crítica.
 - **Impacto:** Mayor riesgo de canibalización, navegación ineficiente y expansión desordenada del producto.
 - **Riesgo:** medio
 - **Severidad (1-5):** 3
@@ -265,14 +264,14 @@ Fecha de corte: 2026-03-12
 - **Esfuerzo estimado:** M
 - **Propuesta de solución:** reordenar `/calculadoras/` por familias (`Ingresos`, `Ahorro/Previsión`, `Deuda/Crédito`, `Vivienda/UF`), agregar ayudantes de elección y convertir la política de portfolio en checklist operativa antes de crear nuevas herramientas.
 - **Criterios de cierre (checklist verificable):**
-- [ ] La landing agrupa calculadoras por familia y no solo por lista plana.
-- [ ] Existe ayuda visible para escoger entre calculadoras parcialmente cercanas.
-- [ ] La política de creación/fusión/extensión queda documentada y referenciable en backlog o docs operativos.
-- [ ] Nuevas propuestas de calculadoras deben declarar JTBD distinto y riesgo de overlap.
+- [x] La landing agrupa calculadoras por familia y no solo por lista plana.
+- [x] Existe ayuda visible para escoger entre calculadoras parcialmente cercanas.
+- [x] La política de creación/fusión/extensión queda documentada y referenciable en backlog o docs operativos.
+- [x] Nuevas propuestas de calculadoras deben declarar JTBD distinto y riesgo de overlap.
 - **Owner:** TBD
-- **Estado:** Sin iniciar
+- **Estado:** Completado
 - **Fecha de creación:** 2026-03-11
-- **Última actualización:** 2026-03-11
+- **Última actualización:** 2026-03-12
 
 ## TD-0028 — Artículo APV publicado usa bandas de sueldo y recomendación A/B demasiado rígidas
 - **ID:** TD-0028
